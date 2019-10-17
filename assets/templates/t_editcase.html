@@ -1,0 +1,365 @@
+<!-- t_editcase.html -->
+<section class="content">
+    <div class="row">
+        <div class="{CLASSE_COLUNA_PROCESSO|constant:CLASSE_COLUNA_PROCESSO}">
+            <div class="box"> <!-- TODO: BOOTSTRAP: TAMANHO DA PAGINA QDO CARREGA -->        
+                <div class="box-body">
+                        {CABECALHO_CAMPOS}
+                    <div class="row">
+                        <!-- BLOCO DE CAMPOS DO FORMULARIO -->
+                        <div class="{CLASSE_WRAP_EDITAR}" id="divWrapEditar">
+                            <div class="{CLASSE_DADOS_CASO|constant:CLASSE_DADOS_CASO}">
+                                <!-- NAV  -->
+                                <div class="nav-tabs-custom {HIDE_CABECALHO_CASO|constant:HIDE_CABECALHO_CASO}">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="#tab_1" data-toggle="tab">Dados {DESCRICAO_TAREFA}</a></li>
+                                        <li style='{ESCONDE_DADOS_ADICIONAIS}'>
+                                            <a href="#tab_2" data-toggle="tab" onclick="jsCarregaDadosExtendidosCaso({PROCID}, {STEPID}, {CASENUM})">Outras Informações</a>
+                                        </li>
+                                        <!-- BEGIN BLOCO_ALTERAR_SITUACAO_PROCESSO -->
+                                        <li class="dropdown" style="{SHOW_SITUACAO_PROCESSO}">                                      
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:" aria-expanded="true">
+                                                Situação: <span id="SITUACAO_ATUAL_TOPO">{SITUACAO_ATUAL_TEXTO}</span> <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <!-- BEGIN BLOCO_OPCOES_SITUACAO -->
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" onclick="jsAlteraStatusCaso('{NOVA_SITUACAO_ID}', '{NOVA_SITUACAO_TEXTO}')">Enviar para {NOVA_SITUACAO_TEXTO}</a></li>
+                                                <!-- END BLOCO_OPCOES_SITUACAO -->
+                                                <li role="presentation" class="divider"></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" onclick="jsAlteraStatusCaso('{SITUACAO_ATUAL_ID}', '{SITUACAO_ATUAL_TEXTO}')">Manter {SITUACAO_ATUAL_TEXTO}</a></li>
+                                            </ul>
+                                        </li>                                <!-- /.tab-pane -->
+                                        <!-- END BLOCO_ALTERAR_SITUACAO_PROCESSO -->
+                                        <!-- BEGIN BLOCO_SITUACAO_PROCESSO -->
+                                        <li>     
+                                            <a href="javascript:" title="Não permitido alterar situação do Processo" data-toggle="tab">Situação: <span id="SITUACAO_ATUAL_TOPO">{SITUACAO_ATUAL_TEXTO}</span></a></li>
+                                        </li>
+                                        <!-- END BLOCO_SITUACAO_PROCESSO -->
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_1">
+                                            <div>{DESCRICAO_TAREFA}: {STEPNAME}</div>
+                                            <div>Identificação: {CASENUM}</div>    
+                                        </div>
+                                        <!-- /.tab-pane -->
+                                        <div class="tab-pane" id="tab_2">
+                                            <div>{DESCRICAO_TAREFA}: {STEPNAME}</div>
+                                            <div>Identificação: {CASENUM}</div>    
+                                            <!-- BEGIN BLOCK_LOCKED -->
+                                            <div>Aberto/Bloqueado por {LOCKEDBY}</div>
+                                            <!-- END BLOCK_LOCKED -->
+                                            <div id="divDadosExtended">                                        
+                                                Carregando..
+                                                <div class="text-center"><i class="fa fa-refresh fa-spin fa-4x"></i> <br>Carregando lista de documentos</div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.tab-content -->
+                                </div>
+                            </div>
+                            <div class="col-lg-6 {MOSTRA_TOOLBAR_FORMALIZACAO}">
+                                {TOOLBAR_FORMALIZACAO}
+                            </div>
+                            {TOOLBAR}
+                            <form action="fetchdata.php" {METODO_FORM} name="textos" id="textos" onsubmit="return verifica(document.textos)">				
+                                <!-- Inicio Form -->
+                                <!-- CLASS_COL_MASTER_EDITAR -->
+                                <div class="{CLASS_COL_MASTER_EDITAR}" style="{ESCONDE_FORMULARIO_EDICAO}">                             
+                                    <div id="divCabecalhoProcesso">
+                                        {CABECALHO_PROCESSO}
+                                    </div>                        
+
+                                    <div class="form-row">
+                                        <!-- INICIO CAMPOS -->
+                                        <!-- BEGIN BLOCK_NORMAL -->
+                                        {CONTEUDO_FIELDS}                                 
+                                        <!-- END BLOCK_NORMAL -->
+                                        <!-- BEGIN BLOCK_FORMALIZACAO -->
+                                        <div class="row">         
+                                            <!-- CLASS_TAMANHO_FORMULARIO -->
+                                            <div class="col-lg-12">
+                                                {CONTEUDO_FIELDS}
+                                            </div>                                 
+                                            <div class="col-lg-6">
+                                                {CAMPO_IMAGEM_FORMALIZACAO}
+                                            </div>
+                                        </div>                                     
+                                        <!-- END BLOCK_FORMALIZACAO -->
+                                        <!-- FIM CAMPOS -->                                
+                                    </div>
+                                </div>
+                                <!-- FIM CLASS_COL_MASTER_EDITAR -->
+                                <input name="ProcId" id="ProcId" type="hidden" value="{PROCID}" aria-code="procId" />
+                                <input name="StepId" id="StepId" type="hidden" value="{STEPID}" aria-code="stepId" />
+                                <input name="CaseNum" id="CaseNum" type="hidden" value="{CASENUM}"  aria-code="caseNum"/>
+                                <input name="fechado" id="fechado" type="hidden" value="{FECHADO}" />
+                                <input name="Prioridade" id="Prioridade" type="hidden" value="{PRIORIDADE}" />	
+                                <input name="Pagina" id="Pagina" type="hidden" value="{PAGINA}" />
+                                <input name="AcaoAposProcessar" id="AcaoAposProcessar" type="hidden" value="{POSACTION}" />
+                                <input name="NewCaseCreate" id="NewCaseCreate" type="hidden" value="{NOVOCASO}" />                        
+                                <input name="userId" id="userId" type="hidden" value="{USER_ID}" />
+                                <input name="Acao" type="hidden" value="{OPERACAO}" />
+                            </form>
+                        </div>
+
+                        <!--- DIV DE FORMALIZAÇÂO -->
+                        <div class="ESCODE_IMAGEM_TIPIFICACAO col-lg-8">
+                            {IMAGEM_FORMALIZACAO}
+                        </div>
+                    </div>
+                </div> 
+                <!-- /.box-body -->
+                <div class="box-footer hide">
+                </div>
+                <!-- /.box-footer-->
+
+            </div>
+        </div>
+        <!-- /.box -->
+        <!-- BEGIN BLOCO_DOCUMENTOS_PROCESSO -->
+        <div class="col-lg-6">
+            <div id="divDocumentosProcesso">
+                <div class="box box-default">
+                    <div class="box-header" style="padding-top: 20px">        
+                        <div class="col-lg-12">
+                            <div class="box-title"><i class="fa fa-files-o" id="documentos_processo_icone"></i> Documentos do Processo</div>
+                        </div>
+                        <!--        <div class="col-lg-12" style="display:none">
+                                    <button type="button" class="btn btn-primary btn-sm pull-right" {BOTAO_CAPTURAR_DISABLED} onclick="jsWebCapturaDocumentoCT({PROCDOCID}, {DOCID_DEFAULT}, {CASENUM_PAI})"><i class="fa fa-camera"></i> Anexar Arquivos</button>
+                                </div>-->
+                        <div class="col-lg-12 hidden-xs hidden-xl">
+                            <small><i class="fa fa-file"></i> Documentos Requeridos</small> <small><i class="fa fa-file"></i> Documentos Anexados</small>
+                        </div>            
+                    </div>
+                    <div class="box-body">
+                        <div class="text-center"><i class="fa fa-refresh fa-spin fa-4x"></i> <br>Carregando lista de documentos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END BLOCO_DOCUMENTOS_PROCESSO -->
+    </div>
+</section>
+
+<!-- Fim DivMasterProcess -->	
+
+<!-- BPMSelUserForm -->
+
+<!-- BPMTickler -->
+<div id="DivMasterTickler" style="display:none">
+    <div id="DivConteudoTickler"> 
+        <div class="DivTopPopUp"> 
+            <div style="float:left" id="DivTituloAdHoc">Comentários do </div>
+            <input id="BotaoWindowClose" type="button" value="" onclick="EscondeTickler()" />
+        </div>
+    </div>
+</div>
+<!-- BPMTickler -->
+
+<div class="modal fade primary" id="fdModal" tabindex="-1" role="dialog" aria-labelledby="fdModal{FIELD_ID}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="DivModalFD" style="width:800px">
+        </div>
+    </div>
+</div>  
+
+
+<!-- BPMAttachFileForm -->
+<div id="DivMasterUpload" style="display:none">
+    <div id="DivConteudoUpload">
+    </div>
+</div>
+<!-- BPMAttachFileForm -->
+
+<!-- BPMSelItemForm -->
+<div id="DivMasterLista" class="DivMasterLista" style="display:none;">
+    <div>
+        <div class="DivTopPopUp">
+            <div style="float:left">Seleção de Valor em Lista</div>
+            <input id="BotaoWindowClose" type="button" value="" onclick="EscondeDivSelLista()" /></div>
+        <div id="DivSelLista">
+            <div id="DivConteudoLista" >	
+            </div>
+            <div class="DivPanel">       
+                <table width="100%" border="0">
+                    <tbody>
+                        <tr> 
+                            <td width="45%">
+                                <div align="center"> 
+                                    <input name="AtualizaSelUser" type="button" class="buttonOk" value="Limpar" onclick="MudaItemLista('', '')" />
+                                </div>
+                            </td>
+                            <td width="55%">
+                                <div align="center"> 
+                                    <input name="CancelaSelUser" type="button" class="buttonCancel" value="Cancelar" onclick="EscondeDivSelLista()" />
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BPMSelItemForm -->
+
+<!-- BPMHistoricoCaso -->
+<div id="DivMasterHistorico_old" style="display:none">
+    <div class="DivDisplayDadosHistorico">
+        <div class="DivTopPopUp">    
+            <div style="float:left">Histórico</div>			
+            <input id="BotaoWindowClose" type="button" value="" onclick="EscondeHistorico()">
+        </div>	
+        <div id="DivConteudoHistorico">
+            <div id="DivNewWindowHistorico">
+                <a href="BPMEventListWindow.php" target="_blank" onclick="EscondeHistorico()">Abrir em nova janela</a>
+            </div>			
+            <div class="EventListScrool" id="EventListScrool_">
+                Carregando Histórico
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BPMHistoricoCaso -->
+
+
+<!-- BPMAdHoc -->
+<div name="DivMasterAdHoc" id="DivMasterAdHoc" style="display:none">
+    <div name="DivConteudoAdHoc" id="DivConteudoAdHoc" onmouseover="AdHocOver()" onmouseout="AdHocOut()"> 
+        <div class="DivTopPopUp"> 
+            <div style="float:left" id="DivTituloAdHoc">
+                Enviar AdHoc
+            </div>
+            <input id="BotaoWindowClose" type="button" value="" onclick="EscondeAdHoc()">
+        </div>
+        <form name="FormAdHoc" method="get" action="">
+            <table border="0">
+                <tbody><tr id="DivDestinatarioAdHoc"> 
+                        <td align="right">Destinatário:</td>
+                        <td> 
+                            <input type="text" class="EditCaseTextSelUser" value="" readonly="True" size="30" id="rDestinatario" name="rDestinatario" />
+                            <input onmouseover="window.status = 'Selecionar'" onmouseout="window.status = ''" name="SelecionarUsuario" type="button" class="ButtonSel" id="SelUserDestinatario" value="..." onclick="JSselecionaUsuario('rDestinatario', 'tDestinatario', '', tDestinatario.value, '')" /> <input type="hidden" name="tDestinatario" id="tDestinatario" value=""/>
+                            <a href="javascript:void(0)" tabindex="-1" onclick="document.getElementById('tDestinatario').value = ''; document.getElementById('rDestinatario').value = ''">Limpar</a>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td align="right"> 
+                            <div id="TextoComentario">Comentário:</div>
+                        </td>
+                        <td>
+                            <textarea name="comentario" id="comentario" cols="60" rows="8" class="texto1black" onchange="Alterado = 0"></textarea>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td>&nbsp;</td>
+                        <td> 
+                            <div id="DivDeadTimeAdHoc">
+                                AdHoc expira em <input name="DeadTimeSoft" type="text" id="DeadTimeSoft" value="0" size="3" maxlength="3" /> minutos
+                            </div>
+                            <input name="StepId" type="hidden" value="{STEPID}" /> 
+                            <input name="Id" type="hidden" id="Id" value="" /> 
+                            <input name="nome" type="hidden" id="nome" value="" /> 
+                            <input name="CaseNum" type="hidden" id="CaseNum" value="{CASENUM}" /> 
+                            <input name="ProcId" type="hidden" id="ProcId" value="{PROCID}" /> 
+                            <input name="FieldId" type="hidden" id="FieldId" value="0" /> 
+                            <input name="Edit" type="hidden" id="Edit" value="" /> 
+                            <input name="Tickler" type="hidden" id="Tickler" value="" /> 
+                            <input name="Close" type="hidden" id="CloseAdHoc" value="" /> 
+                            <input name="DeadSoftOriginal" type="hidden" id="DeadSoftOriginal" value="" /> 
+                            <input name="DeadHardOriginal" type="hidden" id=DeadHardOriginal" value="" /> 
+                            <input name="Adicionar" type="hidden" id="Adicionar" value="" /> 
+                            <input name="UserId" type="hidden" id="UserId" value="{USER_ID}" />
+                        </td>
+                    </tr>
+                </tbody></table>
+        </form>
+        <div id="BotoesOkCancel">
+            <input name="Enviar" type="button" value="Enviar" onclick="ValidaAdHoc(1)" />
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="desbloqueioModal" tabindex="-1" role="dialog" aria-labelledby="historicoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-danger">
+        <div class="modal-content" id="DivModal">
+            <div class="modal-header">                
+                <h4 class="modal-title" id="myModalLabel">Desbloqueio Forçado</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 text-justify">
+                        Este caso foi desbloqueado por excesso de Tempo.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" onclick="document.location = 'queue/{PROCID}'">Abandonar Edição</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>        
+
+
+<div class="modal fade" id="historicoModal" tabindex="-1" role="dialog" aria-labelledby="historicoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="DivModal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title " id="myModalLabel">Histórico</h4>
+            </div>
+            <div class="modal-body" id="EventListScrool">
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>        
+
+{HTML_WEBCAPTURA}
+
+<div class="modal fade" id="modalEditDadosCaso" tabindex="-1" role="dialog" aria-labelledby="historicoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="DivModal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title " id="myModalLabel">Edição de dados do Processo</h4>
+            </div>
+            <div class="modal-body">   
+                <form  name="frmEditarCaso" id="frmEditarCaso">
+                    <div id="divFormEdit">
+                        <div class="text-center" id="divLoadingForm"><i class="fa fa-refresh fa-spin fa-4x"></i> <br>Carregando dados</div>                        
+                    </div>
+                    <input name="AcaoAposProcessar" id="AcaoAposProcessar" type="hidden" value="SalvaPagina" />
+                    <input name="ProcCode" id="ProcCode" type="hidden" value="{PROCCODE}" />
+                    <input name="StepCode" id="StepCode" type="hidden" value="{STEPCODE_ORIGEM_CAMPOS}" />                    
+                    <input name="ProcId" id="ProcId" type="hidden" value="{PROCID}" />
+                    <input name="StepId" id="StepId" type="hidden" value="{STEPID_ORIGEM_CAMPOS}" />
+                    <input name="CaseNum" id="CaseNum" type="hidden" value="{CASENUM}" />
+                    <input name="fechado" id="fechado" type="hidden" value="{FECHADO}" />
+                    <input name="Prioridade" id="Prioridade" type="hidden" value="{PRIORIDADE}" />	
+                    <input name="Pagina" id="Pagina" type="hidden" value="{PAGINA}" />
+                    <input name="NewCaseCreate" id="NewCaseCreate" type="hidden" value="{NOVOCASO}" />                        
+                    <input name="userId" id="userId" type="hidden" value="{USER_ID}" />
+                    <input name="Acao" type="hidden" value="Salvar" />             
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <button type="button" id="btnSalvarModalEditDadosCaso" class="btn btn-primary btn-sm pull-left" onclick="jsSalvarDadosProcessoCT()" disabled><i class="fa fa-save"></i> Salvar</button>
+                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true"><i class="fa fa-ban"></i> Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>  
+
+<!-- BPMAdHoc -->

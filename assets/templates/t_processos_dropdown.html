@@ -1,0 +1,21 @@
+<!-- t_processos_dropdown.html -->
+<div style="width:500px;background-color: #FFF;padding: 5px" id="allProcsUser">
+    <div class="row">
+        <div class="col-lg-12 form-group form-group-sm">
+            <div class="input-group">
+            <span class="input-group-addon text-green"><i class="fa fa-search" ></i></span>
+            <input type="text" class="form-control  text-green" value="" id="txtFiltroProcessos" placeholder="Filtro de processo" onkeyup="jsFiltraProcessoEntrada()">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- BEGIN BLOCO_SHORTCUT_PROCESSOS -->
+        <div class="col-lg-6 selProc" style="white-space: nowrap;">
+            <a href="{PROCACTION}" title="{PROCNAME} - {PROCDESC}" style="text-overflow: ellipsis;"><i class="{PROCICON}" style="color:{PROCCOLOR}"></i><span class="hidden">{PROCNAMELOWERCASE}</span> {PROCNAME}</a>
+        </div>
+        <!-- END BLOCO_SHORTCUT_PROCESSOS -->
+    </div>    
+    <div class="col-lg-12 text-center">
+        <a href="javascript:" onclick="jsMostraTodosProcessos()">Mostrar todos as Soluções</a>
+    </div>
+</div>

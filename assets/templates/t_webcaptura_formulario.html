@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-lg-12 form-group form-group-sm">
+        <span class="text-warning">Documentos</span> 
+        <select id="selProcWebCapture" class=" form-control form-controlinput-sm" onchange="jsSelecionaProcesso()">
+            <option></option>
+            <!-- BEGIN BLOCK_PROCESSOS_CAPTURA -->
+            <option value="{PROCID}">{PROCNAME}</option>             
+            <!-- END BLOCK_PROCESSOS_CAPTURA -->
+        </select>
+    </div>
+    <form name="textos" id="textos">
+        <div class="col-lg-12" id="camposFormulario" class="camposProcessoWebCapture">            
+        </div>
+    </form>
+</div>

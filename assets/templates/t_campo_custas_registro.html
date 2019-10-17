@@ -1,0 +1,118 @@
+<!-- BEGIN BLOCO_VIEW_FIELD -->
+<div id="divDados{FIELDID}">
+    <div id="divDetalhes{FIELDID}" style="display:none">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box box-warning box-solid">
+                    <div class="box-header">
+                        <h4 class="box-title">Detalhe dos Custos</h4>
+                        <div class="box-tools pull-right">
+                            <button type="button" onclick="jsCustosRegistroHideDetalhes({FIELDID})" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
+                        </div>                      
+                    </div>
+                    <div class="box-body">
+                        <!-- BEGIN BLOCK_EDITAR -->
+                        <div class="row">
+                            <div class="col-lg-12 form-group">
+                                <button class="btn btn-success btn-sm" type="button" onclick="jsShowModalCustas({FIELDID})"><i class="fa fa-edit"></i> Editar</button>
+                            </div>                    
+                        </div>
+                        <!-- END BLOCK_EDITAR -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="divCustasRegistroTableDetalhe">
+                                    {TABELA_DESPESAS}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>             
+        </div>
+    </div>
+    <div id="divResumo{FIELDID}">
+        <div class="row">   
+            <div class="col-lg-4">
+                <input type="text" value="R$ {VALOR_CAMPO}" class="form-control" title="Custos do Registro" id="total_custos_registro{FIELDID}" namd="total_custos_registro{FIELDID}" readonly="">           
+                <input type="hidden" value="{LISTADESPESAS}" class="form-control" title="Custos do Registro" id="t{FIELDID}" name="t{FIELDID}">           
+            </div>
+            <div class="col-lg-4">
+                <button class="btn btn-success btn-sm" type="button" onclick="jsCustosRegistroShowDetalhes('{FIELDID}')"><i class="fa fa-list"></i> Visualizar Detalhes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END BLOCO_VIEW_FIELD -->
+
+<div class="modal fade primary" id="modal{FIELDID}" tabindex="-1" role="dialog" aria-labelledby="fdModal{FIELDID}" aria-hidden="true">
+</div>  
+
+
+<!-- BEGIN BLOCO_JAVASCRIPT -->
+<script src="assets/js/{ARQUIVO_JS}?{RELEASE_SCRIPT|constant:RELEASE_SCRIPT}"></script>
+<!-- END BLOCO_JAVASCRIPT -->  
+
+<!-- BEGIN BLOCO_MODAL_FIELD -->
+<div class="modal-dialog modal-lg">
+    <div class="modal-content" id="DivModal{FIELDID}">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title " id="myModalLabel">Editar Detalhes dos Custos</h4>
+        </div>        
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="divFormDespesas">
+                        <form name="frmCustasRegistro">                            
+                            <div class="row">
+                                <input type="hidden" value="{FIELDID}" id="CUSTAS_REGISTRO_FIELDID" name="CUSTAS_REGISTRO_FIELDID">
+                                <input type="hidden" value="{LISTADESPESAS}" id="CUSTAS_REGISTRO_LISTADESPESAS" name="CUSTAS_REGISTRO_LISTADESPESAS">
+                                <input type="hidden" value="{INDICEDESPESA}" id="CUSTAS_REGISTRO_INDICE_DESPESA" name="CUSTAS_REGISTRO_INDICE_DESPESA">
+                                <div class="col-lg-4 form-group form-group-sm">
+                                    <label>Tipo Despesa</label>
+                                    <select class="form-control" name="CUSTAS_REGISTRO_TipoDespesa" id="CUSTAS_REGISTRO_TipoDespesa" onchange="jsSelecionaTipoDespesa()">
+                                        <option></option>
+                                        <option value="Emolumentos" aria-tipo="EMOLUMENTOS">Emolumentos</option>
+                                        <option value="Tribunal de Justiça">Tribunal de Justiça</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 form-group form-group-sm">
+                                    <label>Despesa</label>
+                                    <select class="form-control" name="CUSTAS_REGISTRO_Despesa" id="CUSTAS_REGISTRO_Despesa">
+                                        <option></option>
+                                        <option value="Registro" aria-tipo="Emolumentos" aria-despesa="" style="display:none">Registro</option>
+                                        <option value="Averbação" aria-tipo="Emolumentos" aria-despesa="" style="display:none">Averbação</option>
+                                        <option value="FRJ" aria-tipo="Tribunal de Justiça" aria-despesa="" style="display:none">FRJ</option>
+                                        <option value="Selos" aria-tipo="Tribunal de Justiça" aria-despesa="" style="display:none">Selos</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 form-group form-group-sm">
+                                    <label>Valor</label>
+                                    <input  type="number" class="form-control" name="CUSTAS_REGISTRO_ValorDespesa" id="CUSTAS_REGISTRO_ValorDespesa">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 form-group">
+                                    <button class="btn btn-sm btn-success" type="button" title="Adicionar Despesa" onclick="jsCustasRegistroAdicionaDespesa()" id="btnAddDespesa"><i class="fa fa-plus"></i> Adicionar</button>
+                                    <button class="btn btn-sm btn-success" type="button" title="Adicionar Despesa" onclick="jsCustasRegistroAdicionaDespesa()" id="btnSalvaDespesa" style="display:none"><i class="fa fa-check"></i> Modificar</button>
+                                    <button class="btn btn-sm btn-default pull-right" type="button" title="Adicionar Despesa" onclick="jsCustasRegistroCancelarEdicao()"><i class="fa fa-ban"></i> Cancelar</button>                                
+                                </div>        
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div id="divCustasRegistroModalTable">
+                        {TABELA_DESPESAS}
+                    </div>                        
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-sm pull-left" onClick="jsCustasRegistroSalvar({FIELDID})"><i class="fa fa-check"></i> Salvar</button>
+            <button type="button" class="btn btn-default btn-sm pull-right" onClick="$('#modal{FIELDID}').modal('hide')"><i class="fa fa-ban"></i> Fechar</button>
+        </div>
+    </div>
+</div>
+</div>
+<!-- END BLOCO_MODAL_FIELD -->

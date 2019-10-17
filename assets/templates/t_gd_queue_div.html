@@ -1,0 +1,98 @@
+<!-- Main content -->
+<section class="content">
+    <div id="ModalContent">
+
+    </div>    
+    <div class="box hidden">
+        {FILTROS}
+    </div>
+    <!-- TOOL BAR -->
+    {TOOLBAR}      
+    <!-- TOOL BAR -->
+    <div class='row'>
+        <div class="col-lg-3">
+            <div style="margin:20px" class="hidden-xs hidden-md hidden-sm">
+                <img src="images/{LOGO_PARCEIRO|constant:LOGO_PARCEIRO}" style="width: 100%">
+            </div>
+            <div class="row">
+                <div style="margin:20px" class="hidden-lg text-center col-sm-2 col-xs-2">
+                    <img src="images/{LOGO_PARCEIRO|constant:LOGO_PARCEIRO}" style="width: 100%">
+                </div>
+                <div class="col-lg-12 col-sm-4">
+                    <div class="box box-success {CLASS_BOX_DATATABLE_HIDE}|default:hidden}" style="height: 100%" id="box-content-datatable"> <!-- TODO: BOOTSTRAP: TAMANHO DA PAGINA QDO CARREGA -->
+                        <div class="box-header">
+                            <h4>Criar Registro Pleno</h4>
+                        </div>
+                        <div class="box-body">            
+                            <a href="javascript:jsCriaNovoCaso('gdedit', 0)"><i class="fa fa-star"></i> Criar novo Registro Pleno</a>
+                        </div>
+                        <!-- /.box-footer-->
+                    </div>
+                </div>
+            </div>
+            <div id="divResumoLotes">
+            </div>
+        </div>    
+        <div class="col-lg-8">
+            <div class="box box-primary" style="height: 100%" id="box-content-datatable"> <!-- TODO: BOOTSTRAP: TAMANHO DA PAGINA QDO CARREGA -->
+                <div class="box-header with-border">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form id="frmQueueFilter" name="frmQueueFilter">
+                                <div class="row">                        
+                                    <div class="col-lg-12">
+                                        <h4 class="Box-title">Consulta de Protocolos de Registro</h4>
+                                    </div>
+                                </div>
+                                <div class="row form-group form-group-sm">
+                                    <div class="col-lg-3">
+                                        <div>                                            
+                                            Cliente
+                                        </div>
+                                        {CAMPO_LISTA_CLIENTES}
+                                    </div>
+                                    <div class="col-lg-3">
+                                        Data Criação
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" placeholder="Data Inicial" id="dataInicio" name="dataInicio"  value="">    
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" placeholder="Data Final"  id="dataFim" name="dataFim" value="">    
+                                            </div>                                    
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        Praça (cidade) 
+                                        <input type="text" class="form-control" placeholder="Praça" id="praca" name="praca">    
+                                    </div>
+                                    <div class="col-lg-3">
+                                        Status  
+                                        <select class="form-control" id="status" aria-field-type="TX">
+                                            <option valor=""></option>
+                                            <!-- BEGIN BLOCK_STATUS_ITEM -->
+                                            <option value="{ITEM_DESC}">{ITEM_VALOR}</option>
+                                            <!-- END BLOCK_STATUS_ITEM -->                                            
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-lg-12 form-group form-group-sm">
+                                    <button class="btn btn-success btn-sm" type="button" onclick="jsRegistrosQueueFilter()"><i class="fa fa-search"></i> Filtrar</button>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="box-body">            
+                        <div id="divListaLotes" class="{CLASS_DATATABLE_WRAPPER_HIDE}|default:hidden}" style="height: 100%">
+                        </div>
+                        <!-- /.box-footer-->
+                        <div class="loading text-center {SHOW_LOADING|default:hidden}"><i class="fa fa-refresh fa-spin fa-4x"></i> <br>Carregando Dados</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {QUEUE_FORM}
+        <!-- /.box -->
+</section>

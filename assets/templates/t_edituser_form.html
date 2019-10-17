@@ -1,0 +1,58 @@
+<div class="modal fade" id="crModalEditUser" tabindex="-1" role="dialog" aria-labelledby="crModalEditUser" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="divEditUser" style="display: none">
+            </div>
+            <div id="divLoading">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel"><span class="{CLASS_COR_ICONE}"><li class="fa fa-user fa-2x"></li> {TEXTO_TITULO}</span></h4>   
+                </div>                  
+                <div class="modal-body">      
+                    <form name="frmDadosUser" id="frmDadosUser">
+                        <div class="row">
+                            <div class="col-lg-12 form-group form-group-sm">
+                                Usuário (login)
+                                <input class="form-control input-sm" type="text" name="USUARIO_NOME" id="USUARIO_NOME" value="{USUARIO_NAME}" {USUARIO_NAME_DISABLED}>                            
+                            </div>
+                            <div class="col-lg-12 form-group form-group-sm">
+                                Nome do Usuário
+                                <input class="form-control input-sm" type="text" name="USUARIO_DESC" id="USUARIO_DESC" value="{USUARIO_DESC}">                            
+                            </div>
+                            <div class="col-lg-12 form-group form-group-sm">
+                                E-mail
+                                <input class="form-control input-sm" type="text" name="USUARIO_EMAIL" id="USUARIO_EMAIL" value="{USUARIO_EMAIL}">                            
+                            </div>
+                            <div class="col-lg-12 form-group form-group-sm">
+                                Status Usuário
+                                <select name="USUARIO_ATIVO" class="form-control input-sm">
+                                    <option value="1" {USUARIO_ATIVO}>Ativo</option>
+                                    <option value="0" {USUARIO_INATIVO}>Inativo</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-12 form-group form-group-sm">
+                                Origem do Usuário
+                                <!--<input type="text"  name="USUARIO_ORIGEM" id="USUARIO_ORIGEM" value="{USUARIO_ORIGEM}" class="form-control input-sm">-->
+                                {CAMPO_ORIGEM}
+                                <small class="text-danger"><i class="fa fa-warning"></i> Apenas origem de documento estão disponiveis para seleção</small>
+                            </div>
+                            <div class="col-lg-12 form-group form-group-sm">
+                                Token
+                                <textarea readonly="" class="form-control input-sm" name="token" id="token" rows="5">{JWT_USER}</textarea>
+                            </div>
+                        </div>
+                        <input type="hidden" value="{USUARIO_ID}" name="USUARIO_ID" id="USUARIO_ID">
+                    </form>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-lg-12 text-left">
+                                <button type="button" class="btn btn-sm btn-primary pull-left" onclick="jsSalvarUsuario()"><i class="fa fa-archive"></i> Salvar</button>
+                                <button type="button" class="btn btn-sm btn-default pull-right" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

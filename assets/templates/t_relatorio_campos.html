@@ -1,0 +1,32 @@
+<table class="table table-striped table-bordered" id='tableRelatorio'>
+    <thead>
+        <tr>
+            <!-- BEGIN BLOCO_CABECALHO -->
+            <th>{CAMPO_NOME}</th>
+            <!-- END BLOCO_CABECALHO -->
+        </tr>
+    </thead>
+    <tbody>
+        <!-- BEGIN BLOCO_LINHA -->
+        <tr>
+            <!-- BEGIN BLOCO_CAMPO -->
+            <td align="{ALINHAMENTO_CELULA}" colspan="{COLSPAN}">{CAMPO_VALOR}</td>
+            <!-- END BLOCO_CAMPO -->
+        </tr>
+        <!-- END BLOCO_LINHA -->
+    </tbody>
+    <!-- BEGIN BLOCK_TOTAL_GERAL -->
+    <tfoot>
+        <tr>
+            <th>
+                Total Geral
+            </th>
+            <!-- BEGIN BLOCO_COLUNA_TOTAL_GERAL -->
+            <th colspan="1">
+                {VALOR_TOTAL}
+            </th>
+            <!-- END BLOCO_COLUNA_TOTAL_GERAL -->
+        </tr>
+    </tfoot>
+    <!-- END BLOCK_TOTAL_GERAL -->
+</table>

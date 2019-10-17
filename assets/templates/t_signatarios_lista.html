@@ -1,0 +1,24 @@
+<table class="table table-striped">
+    <thead>
+        <tr>            
+            <th class="signatario_cab_edit"></th>     
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Tipo Assinatura</th>                        
+            <th>Status</th>   
+        </tr>
+    </thead>
+    <!-- BEGIN BLOCK_SIGNATARIO -->
+    <tr>                
+        <td class="signatario_cab_edit"><i class="fa fa-edit text-primary" title="Editar" onclick="jsSignatarioCad_Editar({indiceSignatario})"></i> <i class="fa fa-trash-o text-warning" title="Remover" onclick="jsSignatarioCad_Remover({indiceSignatario})"></i></td>
+        <td>{signatario_nome}</td>        
+        <td>{signatario_email}</td>        
+        <td>
+            <!-- BEGIN signatario_participacoes -->
+            {DESCRICAO}
+            <!-- END signatario_participacoes -->            
+        </td>        
+        <td>{STATUS}</td>        
+    </tr>
+    <!-- END BLOCK_SIGNATARIO -->
+</table>

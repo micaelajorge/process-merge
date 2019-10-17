@@ -1,0 +1,20 @@
+﻿{
+"regras": [
+{
+"operacoes": [
+{
+"typeOperation": "funcao",
+"logic": null,
+"funcao": "buscaValorCampoUnique(\"\", \"!%CAMPO_VALOR_UNICO!%\",  \"CAMPO_VALOR_UNICO\")",
+"comparador": ">",
+"valor": "0"
+}
+],
+"resultado": {
+"true": "",
+"false": ""
+},
+"operacao": "uiuiui"
+}
+]
+}

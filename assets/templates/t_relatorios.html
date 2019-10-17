@@ -1,0 +1,93 @@
+<section class="content">   
+    <div class="box"> <!-- TODO: BOOTSTRAP: TAMANHO DA PAGINA QDO CARREGA -->                
+        <div class="box-body">
+            <div class="row">
+                <!-- BEGIN BLOCO_RELATORIO -->
+                <div class="col-lg-4 col-md-6">   
+                    <div class="box box-primary box-solid collapsed-box">
+                        <div class="box-header with-border ">
+                            <h3 class="box-title">{PROCNAME} - {STEPNAME}</h3>
+
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="">
+                            <form name="formRelat_{PROCCOD}_{STEPCOD}" id="formRelat_{PROCCOD}_{STEPCOD}" action="{PAGINA_RELATORIO}" target="relarorio" method="POST">
+                                <!--<form name="formRelat_{PROCCOD}_{STEPCOD}" id="formRelat_{PROCCOD}_{STEPCOD}">-->
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-6">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-sm-6 col-md-6 form-group">
+                                                Data Inicio
+                                                <input type="text" name="data_inicio" id="formRelat_{PROCCOD}_{STEPCOD}_data_inicio" class="form-control input-sm"  value="{DATA_INICIO}">
+                                            </div>
+                                            <div class="col-lg-6 col-sm-6 col-md-6 form-group">
+                                                Data Fim
+                                                <input type="text" name="data_fim" id="formRelat_{PROCCOD}_{STEPCOD}_data_fim" class="form-control input-sm" value="{DATA_FIM}">
+                                            </div>
+                                            <input type="hidden" name="tipoArquivo" value="excel">
+                                            <div class="col-lg-12 col-sm-6 col-md-6">
+                                                <br>
+                                                <div class="btn-group pull-right">
+                                                    <button type="button" class="btn btn-primary btn-sm" onclick="jsGeraXSL('formRelat_{PROCCOD}_{STEPCOD}')" id="formRelat_{PROCCOD}_{STEPCOD}"><i class="fa fa-file-excel-o"></i> Arquivo Excel</button>
+                                                    <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                                        <span class="caret"></span>
+                                                        <span class="sr-only">Opções</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="javascript:" onclick="jsGeraRelatorio('formRelat_{PROCCOD}_{STEPCOD}', '{PAGINA_RELATORIO}', '{PROCNAME} - {STEPNAME}')"><i class="fa fa-file-pdf-o"></i> Arquivo Pdf</a></li>
+                                                        <li><a href="javascript:" onclick="jsGeraCSV('formRelat_{PROCCOD}_{STEPCOD}')" id="formRelat_{PROCCOD}_{STEPCOD}"><i class="fa fa-file-pdf-o"></i> Arquivo CSV</a></li>
+                                                    </ul>
+                                                </div>                                        
+                                            </div>
+                                        </div>
+                                        <div class="row hide">
+                                            <div class="col-lg-4">
+                                                Fila
+                                                <select class="input-group" name="STEPSEL" id="STEPSEL">
+                                                    <option value="0">Todos</option>
+                                                    <!-- BEGIN BLOCK_PASSOS -->
+                                                    <option value="{STEPID}">{STEPNAME}</option>
+                                                    <!-- END BLOCK_PASSOS -->                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="PROCCOD" value="{PROCCOD}">
+                                <input type="hidden" name="STEPCOD" value="{STEPCOD}">
+                                <input type="hidden" name="PROCNAME" value="{PROCNAME}">
+                                <input type="hidden" name="STEPNAME" value="{STEPNAME}">   
+                                <input type="hidden" name="FIELDSELECTION" value="{FIELDSELECTION}">   
+                            </form>
+                        </div>
+                    </div>                
+                </div>                
+                <!-- END BLOCO_RELATORIO -->                
+                <div class="hidden" id='divRelPreview' >
+
+                </div>
+                <!-- /.box-body -->
+                <!-- /.box-body -->
+                <div class="box-footer hide">
+                </div>
+                <!-- /.box-footer-->
+
+            </div>
+            <!-- /.box -->
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Fim DivMasterProcess -->	
+
+<!-- BPMSelUserForm -->
+
+
+<!-- BPMAdHoc -->

@@ -1,0 +1,361 @@
+<!-- BEGIN BLOCK_CAMPO_HIDDEN -->
+
+<!---- CAMPO HIDDEN -->
+
+<input aria-code="{FIELDCODE}" type="hidden"  name="{PRE_FIELDID}{FIELD_ID}" id="{PRE_FIELDID}{FIELD_ID}" value="{FIELD_VALUE}" aria-type="{FIELD_TYPE}">
+
+<!---- CAMPO HIDDEN -->
+<!-- END BLOCK_CAMPO_HIDDEN -->
+
+
+
+<!-- BEGIN BLOCK_CAMPO_TD -->
+<div>
+    <div class="box box-warning box-solid box-tipificacao">   
+        <div class="box-header">
+            {FIELD_NAME}
+        </div>        
+        <div class="box-body" >
+            <div class="row" style="height: 100%">
+                <div class="col-lg-12 box-sel-formalizacao" aria-code="{FIELDCOD}" ondrop="drop(event)" ondragover="allowDrop(event)" style="min-height: 100px" id="TD{FIELD_ID}">
+                </div>
+                <input type="hidden" value="0" aria-tipificacao="{FIELDCOD}" name="t{FIELD_ID}" id="t{FIELD_ID}">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END BLOCK_CAMPO_TD -->
+
+
+<!-- BEGIN BLOCK_CAMPO_IT -->
+<!-- INICIO GEM TIPIFICACAO -->
+<script>
+    //var imgsrc = '{URL_IMAGEM}';    
+    var imgsrc;
+    var listaImagensPDF = [];
+</script>
+
+<div class="row">
+    <div class="col-lg-12 " >
+        <div class="box box-primary">
+            <div class="box-body box-disp-formalizacao pre-scrollable" ondrop="drop(event)" ondragover="allowDrop(event)" id="IT" aria-code="">
+
+                <!-- BEGIN BLOCO_IMAGENS_SMALL -->
+
+
+                <!-- <img style="display:none" src="{URL_IMAGEM_SMALL}" onclick="jsPanChangeImage('{URL_IMAGEM_SMALL}');" aria-tipodoc="{TIPO_DOCUMENTO}" draggable="true" ondragstart="drag(event)" id="IMG{NRDOCUMENTO}" aria-nr-pagina="{NRDOCUMENTO}" /> -->
+                <img style="display:none" src="{URL_IMAGEM_SMALL}" onclick="jsPanChangeImage(this);" aria-tipodoc="{TIPO_DOCUMENTO}" draggable="true" ondragstart="drag(event)" id="IMG{NRDOCUMENTO}" aria-nr-pagina="{NRDOCUMENTO}" />
+                <input size="200px" type="hidden" value="{CONTEUDO_DOCUMENTO}" id="TX{NRDOCUMENTO}" name="t{FIELD_ID}[]">
+                <!-- END BLOCO_IMAGENS_SMALL -->
+                <!-- BEGIN BLOCO_JS_IMAGEM_PDF -->
+                <!-- 
+                IMG{NRDOCUMENTO} 
+                -->                
+                <script>
+                    dadosImagem = {url: "{URL_PDF}", objImagem: "IMG{NRDOCUMENTO}"};
+                    listaImagensPDF.push(dadosImagem);
+                </script>
+
+
+                <!-- END BLOCO_JS_IMAGEM_PDF -->
+            </div>
+        </div>
+    </div>  
+    <!--{IMAGEM_FORMALIZACAO}-->
+</div>
+<!--    <img src="{URL_IMAGEM}" id="IMG_FORMALIZACAO"/> -->
+
+
+<!-- FIM IMAGEM FORMALIZACAO -->
+<!-- END BLOCK_CAMPO_IT -->
+
+<!-- BEGIN BLOCK_CAMPO_IF -->
+<!-- INICIO GEM FORMALIZACAO -->
+<script>
+    var imgsrc = null;
+    var listaImagensPDF = [];
+</script>
+<div id="divVisualizacaoFormalizacao">
+    <div id="divCanvasFORMALIZACAO">
+        <div class="row">
+            <div class="col-lg-12">  
+                <div class="col-lg-11">                    
+                    {CONTROLES_IMAGEM}
+                    <!-- BEGIN BLOCO_BOTOES_DOCUMENTOS -->                    
+                    <!--                        
+                    <img src="" id="IMG{NRDOCUMENTO}" nome="IMG{NRDOCUMENTO}" {IMAGE_ONLOAD} aria-imagem-formalizacao="{URL_IMAGEM_BOTAO}" style="width:50px; height: 50px" class="hidden"/>                    
+                    <button type="button" class="btn {CLASSE_BOTAO}" disabled onclick="jsMudaImagemBotao(this, 'IMG{NRDOCUMENTO}')" aria-nr-imagem="{NRDOCUMENTO}" aria-code="button-sel-image">{NRDOCUMENTO}</button>-->
+                    <!-- BEGIN BLOCO_JS_IMAGEM_PDF_IF -->
+                    <div class="pull-left" id="IMG{NRDOCUMENTO}" style="margin-right: 6px"></div>
+                    <script>
+                        dadosImagem = {url: "{URL_PDF}", objImagem: "IMG{NRDOCUMENTO}"};
+                        listaImagensPDF.push(dadosImagem);
+                    </script>                    
+                    <!-- END BLOCO_JS_IMAGEM_PDF_IF -->
+                    <!-- END BLOCO_BOTOES_DOCUMENTOS -->
+                </div>
+                <div class="col-lg-1">
+                    <button type="button" class="btn btn-primary" onclick="jsAbreJanelaFormalizacao()" title="Abrir em outra Janela"><i class="fa fa-expand"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {IMAGEM_FORMALIZACAO}    
+        </div>
+    </div>
+</div>
+<!--    <img src="{URL_IMAGEM}" id="IMG_FORMALIZACAO"/> -->
+
+
+<!-- FIM IMAGEM FORMALIZACAO -->
+<!-- END BLOCK_CAMPO_IF -->
+
+<!-- BEGIN BLOCK_CAMPO_IM -->
+<div class="row" field_image='IM'>
+    <div class="col-lg-6 col-md-6 col-xs-6">
+        <div class="input-group">            
+            <input class="form-control input-sm" type="text" name="I{FIELD_ID}" id="I{FIELD_ID}" value="{FIELD_VALUE}" readonly="" /><span class="input-group-addon primary" id="Link{FIELD_ID}"><li class="fa fa-picture-o text-primary" onclick="jsViewFile({PROCID}, {CASENUM}, {FIELD_ID}, '{STORAGEFILENAME}', '{FILENAME}')"></li></span>
+            <input aria-field-code="{FIELDCODE}" type="hidden" name="{TIPOCAMPO}{FIELD_ID}" id="{TIPOCAMPO}{FIELD_ID}" value="{FIELD_VALUE}" /></span>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-xs-6">
+        <!--<button class="btn btn-primary pull-left" type="button" id="Link{FIELD_ID}" target="_blank" <li class="fa fa-picture-o"></li> <span class="visible-lg-inline visible-md-inline">Abrir</span></button>-->
+        <!-- <button class="btn btn-primary" id="Link{FIELD_ID}" target="_blank" href="BPMViewFile.php?ProcId={PROCID}&CaseNum={CASENUM}"><li class="fa fa-picture-o"></li> <span class="visible-lg-inline visible-md-inline">Abrir</span></button> -->
+
+        <!-- BEGIN BLOCK_SELECT_CAMPO_IM -->
+        <button class="btn btn-default pull-left" type="button" id="Upload{FIELD_ID}"  onclick="jsSelecionaArquivoUpload('{FIELD_ID}', {PROCID}, {CASENUM}, 1, 1)"><i class="fa {CAMPO_IM_ICONE_ANEXAR}"></i> <span class="visible-lg-inline visible-md-inline">Anexar</span></button>
+        <button class="btn btn-warning pull-right" type="button" id="Remove{FIELD_ID}" onclick="LimpaCamposArquivo({FIELD_ID})" {EXCLUIRDESABILITADO}><li class="fa fa-trash-o" ></li> <span class="visible-lg-inline visible-md-inline">Excluir</span></button>
+        <!-- END BLOCK_SELECT_CAMPO_IM -->
+    </div>
+</div>
+<!-- END BLOCK_CAMPO_IM -->                                            
+
+<!-- BEGIN BLOCK_CAMPO_SFR -->
+<!-- ###### INICIO CAMPO SFR ########### -->
+<div class="col-md-6">
+    {CONTEUDO_CAMPO}
+    {VALIDACAO_CAMPO}
+</div>
+<!-- ########### FIM CAMPO SFR ######### -->
+<!-- END BLOCK_CAMPO_SFR -->
+
+<!-- BEGIN BLOCK_CAMPO_READONLY -->
+<!-- READ ONLY -->
+<div>
+    <input type="text" value="{FIELD_DISPLAY}" aria-field-code="{FIELDCODE}" readonly="True" class="form-control input-sm" id="r{FIELD_ID}" name="r{FIELD_ID} " />
+</div>
+<!-- END BLOCK_CAMPO_READONLY -->
+
+<!-- BEGIN BLOCK_CAMPO_TL -->
+<div >
+    <textarea class="form-control" aria-field-code="{FIELDCODE}" name="{TIPOCAMPO}{FIELD_ID}" id="{TIPOCAMPO}{FIELD_ID}" onKeyUp="ContaCaracteres(40, 20, this);" {READONLY}  style="resize: none" class="form-control input-sm">{FIELD_VALUE}</textarea>
+</div>
+<!--<div class="input-group">
+    <textarea aria-field-code="{FIELDCODE}" name="{TIPOCAMPO}{FIELD_ID}" id="{TIPOCAMPO}{FIELD_ID}" onKeyUp="ContaCaracteres(40, 20, this);" {READONLY}  style="resize: none" class="form-control input-sm">{FIELD_VALUE}</textarea><span class="input-group-addon"></span>
+</div>-->
+<!-- END BLOCK_CAMPO_TL -->
+
+<!-- BEGIN BLOCK_CAMPO_SRF -->  
+<div id="Formulario{FIELD_ID}">
+</div>
+<!-- END BLOCK_CAMPO_SRF -->
+
+<!-- BEGIN BLOCK_CAMPO_ATB -->
+<div>
+    {VALOR_ATB}
+</div>            
+<!-- END BLOCK_CAMPO_ATB -->
+
+<!-- BEGIN BLOCK_CAMPO_LB -->
+<div>
+    <span>{FIELD_NAME}</span>
+</div>
+<!-- END BLOCK_CAMPO_LB -->
+
+<!-- BEGIN BLOCK_CAMPO_HD -->
+<div>
+    <input aria-field-code="{FIELDCODE}" name="{TIPOCAMPO}{FIELD_ID}" {CAMPOREADONLY} id="{TIPOCAMPO}{FIELD_ID}" class="form-control input-sm" type="text" value="{FIELD_VALUE}" size="10" maxlength="10" /> 
+</div>
+<!-- END BLOCK_CAMPO_HD -->                                   
+
+<!-- BEGIN BLOCK_CAMPO_NU -->
+<div class="input-group">
+    <input aria-field-code="{FIELDCODE}" name="{TIPOCAMPO}{FIELD_ID}" id="{TIPOCAMPO}{FIELD_ID}" class="form-control input-sm" type="text" value="{FIELD_VALUE}" size="10" maxlength="10" /><span class="input-group-addon">.00</span> 
+</div>
+<!-- END BLOCK_CAMPO_NU -->
+
+<!-- BEGIN BLOCK_CAMPO_PR -->
+<!--- INICIO CAMPO PR -->
+{CONTEUDO_CAMPO}
+{VALIDACAO_CAMPO}
+<!--- FIM CAMPO PR -->
+<!-- END BLOCK_CAMPO_PR -->
+
+<!-- BEGIN BLOCK_CAMPO_HR -->
+<input type="text"aria-field-code="{FIELDCODE}"  name="{TIPOCAMPO}{FIELD_ID}" id="{TIPOCAMPO}{FIELD_ID}" class="form-control input-sm"  size=6 value="{FIELD_VALUE}" onKeypress="FormataHora(this, event)" /> 
+<!-- END BLOCK_CAMPO_HR -->                                          
+
+<!-- BEGIN BLOCK_CAMPO_TX -->  
+{CONTEUDO_CAMPO}
+<!-- END BLOCK_CAMPO_TX -->
+
+<!-- BEGIN BLOCK_CAMPO_ATX -->  
+<div id="conteudoATXt{FIELD_ID}">
+    {CONTEUDO_CAMPO}
+</div>
+<div class="row">
+    <div class="col-lg-12 form-group" style="margin-top: 5px">
+        <button type="button" class="btn btn-sm btn-success" title="Adicionar Campo" onclick="jsAdicionaCampoArray('{TIPOCAMPO}{FIELD_ID}', 'TX')"><i class="fa fa-plus"></i></button>
+    </div>
+</div>
+<!-- END BLOCK_CAMPO_ATX -->
+
+<!-- BEGIN BLOCK_CAMPO_DT --> 
+<div class="input-group">
+    <input  aria-code="{FIELDCODE}" tipocampo="DT" type="text" id="{TIPOCAMPO}{FIELD_ID}" class="form-control input-sm" name="{TIPOCAMPO}{FIELD_ID}" value="{FIELD_VALUE}" onkeypress="FormataData(this, event)" />                         
+    <!-- BEGIN BLOCK_CAMPO_DT_CALENDARIO -->            
+    <span class="input-group-addon">
+        <a href="javascript:MostraCalendario('{TIPOCAMPO}{FIELD_ID}')" tabindex="-1">
+            <img src="images/dyncalendar.gif" border="0" width="16" height="16">
+        </a>
+    </span>
+</div> 
+<div>
+    <div class="dynCalendar" id="dynCalendar_layer_fooCalendart{FIELD_ID}" onmouseover="fooCalendar._mouseover(true)" onmouseout="fooCalendar._mouseover(false)"></div>
+</div>            
+
+<!-- END BLOCK_CAMPO_DT_CALENDARIO -->
+<!-- END BLOCK_CAMPO_DT -->
+
+<!-- BEGIN BLOCK_CAMPO_TB -->  
+<select name="{TIPOCAMPO}{FIELD_ID}" id="{TIPOCAMPO}{FIELD_ID}" class="form-control input-sm" id="t{FIELD_ID}" size="1" aria-field-code="{FIELDCODE}">
+    <option value="-1"></option>
+    <!-- BEGIN BLOCK_CAMPO_TB_ITENS -->
+    <option value="{VALOR}" {SELECTED}>{DISPLAY}</option>
+    <!-- END BLOCK_CAMPO_TB_ITENS -->
+</select>
+<!-- END BLOCK_CAMPO_TB -->
+
+<!-- BEGIN BLOCK_CAMPO_FD -->                     
+<div class="{CLASSEDIVBOTAO}">
+    <button type="button" title="Visualiar Lista de Arquivos" data-toggle="modal" data-target="#fdModal" onclick="jsCarregaFolder('{PROCID}', '{STEPID}', '{CASENUM}', '{FIELD_ID}', '{FD_READONLY}', '{MULTIPLOSARQUIVOS}'); return false"  class="btn {CLASS_BUTTON_FD}"><span class="hidden-md hidden-xs"><i class="fa fa-files-o"></i> Arquivos: </span><span id="nrArquivos{FIELD_ID}">{NR_ARQUIVOS}</span></button>
+    <button type="button" class="btn {CLASS_BUTTON_FD} dropdown-toggle {HIDEBOTAOARQUIVOS}" data-toggle="dropdown" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Opções</span>
+    </button>
+    <ul class="dropdown-menu" role="menu" id="FD_FILES_{FIELD_ID}">        
+        <div id="listaArquivos{FIELD_ID}">
+            {FD_FILE_LIST}
+        </div>
+    </ul>
+</div>                                        
+<input type="hidden" name="r{FIELD_ID}" value="{NR_ARQUIVOS}" id="r{FIELD_ID}" aria-field-code="{FIELDCODE}" />
+<!-- END BLOCK_CAMPO_FD -->
+
+<!-- BEGIN BLOCK_CAMPO_AR -->
+<!-- AR LF-->
+<div class="row">
+    <div class="col-xs-6 col-lg-6 col-md-6">
+        <input type="text" name="I{FIELD_ID}" id="I{FIELD_ID}" class="form-control input-sm" readonly="true" size="10" value="{FIELD_VALUE}" />
+        <input type="hidden" name="{TIPOCAMPO}{FIELD_ID}" id="{TIPOCAMPO}{FIELD_ID}" value='{FILE_DATA}' aria-field-code="{FIELDCODE}" aria-field-type="{FIELDTYPE}" aria-field-id="{FIELD_ID}" /> 
+        <input type="hidden" name="{TIPOCAMPO}{FIELD_ID}_2" id="{TIPOCAMPO}_{FIELD_ID}" size="10" value="" />						 
+    </div>
+    <div class="col-xs-6 col-lg-6 col-md-6">
+        <!--<button class="btn btn-primary btn-sm" type="button" id="Link{FIELD_ID}" target="_blank" href="BPMViewFile.php?ProcId={PROCID}&CaseNum={CASENUM}" {ABRIRDESABILITADO}><li class="fa fa-file-o"></li> <span class="visible-lg-inline visible-md-inline">Abrir</span></button>-->
+        <button class="btn btn-primary btn-sm" type="button" id="Link{FIELD_ID}" target="_blank" onclick="jsViewFile({PROCID}, {CASENUM}, {FIELD_ID}, '{FILE_NAME}', '{FIELD_VALUE}')" {ABRIRDESABILITADO}><li class="fa fa-file-o"></li> <span class="visible-lg-inline visible-md-inline">Abrir</span></button>
+        <!-- BEGIN BLOCK_CAMPO_AR_EDICAO -->
+        <!--            <a class="btn btn-primary  btn-xs" id="Upload{FIELD_ID}" href="javascript:void(0)" onclick="UploadArquivo('{FIELDID}', {PROCID}, {CASENUM}, 1)" data-toggle="modal" data-target="#exampleModal">Anexar</a>&nbsp; -->
+        <button class="btn btn-primary btn-sm" type="button" id="Upload{FIELD_ID}" data-toggle="modal" data-target="#fdModal" onclick="jsSelecionaArquivoUpload('{FIELD_ID}', {PROCID}, {CASENUM}, '{ACCEPT_TIPOARQUIVOS}')"><li class="fa fa-paperclip"></li> <span class="visible-lg-inline visible-md-inline">Anexar</span></button>
+        <button class="btn btn-primary btn btn-primary btn-sm pull-right" type="button" id="Remove{FIELD_ID}"  onclick="LimpaCamposArquivo({FIELD_ID})" {EXCLUIRDESABILITADO}><li class="fa fa-trash-o"></li> <span class="visible-lg-inline visible-md-inline"> Excluir</span></button>
+        <!-- END BLOCK_CAMPO_AR_EDICAO -->
+    </div>
+</div>
+<!-- END BLOCK_CAMPO_AR -->
+
+<!-- BEGIN BLOCK_CAMPO_FRP -->
+<!-- FRP -->
+<div class="row">
+    <div class="col-xs-6 col-lg-6 col-md-6">
+        <input type="text" name="I{FIELD_ID}" id="I{FIELD_ID}" class="form-control input-sm" readonly="true" size="10" value="{NOME_ARQUIVO}" />
+        <input type="hidden" name="{TIPOCAMPO}{FIELD_ID}" id="{TIPOCAMPO}{FIELD_ID}" aria-file-data="{FILE_DATA}" aria-field-code="{FIELDCODE}" aria-field-type="{FIELDTYPE}" aria-field-id="{FIELD_ID}" value="{FIELD_VALUE}"/> 
+    </div>
+    <div class="col-xs-6 col-lg-6 col-md-6">
+        <!--<button class="btn btn-primary btn-sm" type="button" id="Link{FIELD_ID}" target="_blank" href="BPMViewFile.php?ProcId={PROCID}&CaseNum={CASENUM}" {ABRIRDESABILITADO}><li class="fa fa-file-o"></li> <span class="visible-lg-inline visible-md-inline">Abrir</span></button>-->
+        <button class="btn btn-primary btn-sm" type="button" id="Link{FIELD_ID}" target="_blank" onclick="jsViewFile({PROC_REPOSITORIO}, '{FIELD_VALUE}', '{FIELD_DOC}', '', '', '{FIELD_ID}')" {ABRIRDESABILITADO}><li class="fa fa-file-o"></li> <span class="visible-lg-inline visible-md-inline">Abrir</span></button>
+        <!-- BEGIN BLOCK_CAMPO_FRP_EDICAO -->
+        <!--            <a class="btn btn-primary  btn-xs" id="Upload{FIELD_ID}" href="javascript:void(0)" onclick="UploadArquivo('{FIELDID}', {PROCID}, {CASENUM}, 1)" data-toggle="modal" data-target="#exampleModal">Anexar</a>&nbsp; -->
+        <button class="btn btn-primary btn-sm" type="button" id="Upload{FIELD_ID}" data-toggle="modal" data-target="#fdModal" onclick="jsSelecionaArquivoUploadRepositorio('{FIELD_ID}', {PROC_REPOSITORIO}, {CASENUM}, '{ACCEPT_TIPOARQUIVOS}', '{DOCUMENTO_REPOSITORIO}')"><li class="fa fa-paperclip"></li> <span class="visible-lg-inline visible-md-inline">Anexar</span></button>
+        <button class="btn btn-primary btn btn-primary btn-sm pull-right" type="button" id="Remove{FIELD_ID}"  onclick="LimpaCamposArquivo({FIELD_ID})" {EXCLUIRDESABILITADO}><li class="fa fa-trash-o"></li> <span class="visible-lg-inline visible-md-inline"> Excluir</span></button>
+        <!-- END BLOCK_CAMPO_FRP_EDICAO -->
+    </div>
+</div>
+<!-- END BLOCK_CAMPO_FRP -->
+
+
+<!-- BEGIN BLOCK_CAMPO_GR -->
+{CONTEUDO_CAMPO}
+<!-- END BLOCK_CAMPO_GR -->
+
+<!-- BEGIN BLOCK_CAMPO_BO_CHECKBOX -->   
+<div class="input-group">
+    <input aria-code="{FIELDCODE}" type="checkbox" value="1" name="t{FIELD_ID}" id="t{FIELD_ID}" {ITEM_CHECKED} {BUTTON_DISABLED} aria-field-code="{FIELDCODE}">
+</div>
+<!-- END BLOCK_CAMPO_BO_CHECKBOX -->
+
+<!-- BEGIN BLOCK_CAMPO_BO_BUTTON -->   
+<div class="input-group">    
+    <button class="btn {CLASS_BO_BUTTON}" type="button" {BUTTON_DISABLED} onclick="jsMudaStatusButtonBO(this, 't{FIELD_ID}', true)" aria-reverso="{ARIA_REVERSO}" aria-campo="{ARIA_CODE}" onfocus="jsMudaTextoDivProcura(this)">{CAPTION_BO_BUTTON}</button>
+    <!--    <input class="hide" type="checkbox" value="1" name="t{FIELD_ID}" id="t{FIELD_ID}" {ITEM_CHECKED}>-->
+    <input  aria-code="{FIELDCODE}" type="hidden" value="{CHECK_VALOR}" name="t{FIELD_ID}" id="t{FIELD_ID}">
+</div>
+<!-- END BLOCK_CAMPO_BO_BUTTON -->
+
+<!-- BEGIN BLOCK_CAMPO_BO_CHECK -->   
+<div class="input-group">    
+    <button class="btn btn-sm {CLASS_BO_BUTTON}" style="width:34px" type="button" {BUTTON_DISABLED} onclick="jsMudaStatusButtonBOCheck(this, 't{FIELD_ID}')"  aria-reverso="{ARIA_REVERSO}" aria-campo="{ARIA_CODE}" onfocus="jsMudaTextoDivProcura(this)"><i class="fa {CLASS_BO_ICON}"></i></button>
+    <!--    <input class="hide" type="checkbox" value="1" name="t{FIELD_ID}" id="t{FIELD_ID}" {ITEM_CHECKED}>-->
+    <input aria-code="{FIELDCODE}"  type="hidden" value="{CHECK_VALOR}" name="t{FIELD_ID}" id="t{FIELD_ID}">
+</div>
+<!-- END BLOCK_CAMPO_BO_CHECK -->
+
+<!-- BEGIN BLOCK_CAMPO_BO_COMBOBOX -->   
+<div class="input-group">
+    <select class="form-control input-sm" name="{TIPOCAMPO}{FIELD_ID}" id="t{FIELD_ID}" size="1" {BUTTON_DISABLED} aria-code="{FIELDCODE}">
+        <option value="0" {ITEM_SELECTED_BRANCO}></option>
+        <option value="0" {ITEM_SELECTED_FALSE}>Não</option>
+        <option value="1" {ITEM_SELECTED_TRUE}>Sim</option> fa-check
+    </select>                    
+    <span class="input-group-addon"><i class="fa fa-check" > </i></span>
+</div>
+<!-- END BLOCK_CAMPO_BO_COMBOBOX -->
+
+
+<!-- BEGIN BLOCK_CAMPO_LK -->   
+<a href="{URL_CAMPO}" target="blank" tabindex="-1">Abrir</a>
+<!-- END BLOCK_CAMPO_LK -->
+
+<!-- BEGIN BLOCK_CAMPO_CR -->   
+<div style="width:100%">
+    <div id="Queue">
+        <div id="Cabecalho"></div>
+        <div id="Itens"> 
+            <table width="100%">
+                <tbody><tr>
+                        <td class="Referencia">
+                            Número
+                        </td>		
+                    </tr>
+                </tbody>
+            </table>
+        </div>	
+    </div>
+</div>
+<!-- END BLOCK_CAMPO_CR -->
+
+<!-- BEGIN BLOCK_CAMPO_LT -->   
+<select class="form-control input-sm" name="{TIPOCAMPO}{FIELD_ID}" id="{TIPOCAMPO}{FIELD_ID}" size="1" aria-field-code="{FIELDCODE}" aria-field-type="{FIELDTYPE}" aria-field-id="{FIELD_ID}" aria-field-name="{FIELDNAME}">
+    <!-- BEGIN BLOCK_CAMPO_LT_ITEMS -->    
+    <option value="{ITEM_ID}" {ITEM_SELECTED}>{ITEM_VALUE}</option>
+    <!-- END BLOCK_CAMPO_LT_ITEMS -->                
+</select>
+<!-- END BLOCK_CAMPO_LT -->

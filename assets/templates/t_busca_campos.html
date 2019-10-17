@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a class="text-primary" href="#busca" data-toggle="tab" aria-expanded="true">
+                        <span><i class="fa fa-bolt"></i> Busca Direta</span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#buscaavancada" data-toggle="tab" aria-expanded="false">
+                        <span><i class="fa fa-search"></i> Busca Avançada
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="busca">
+                    <div class="row">
+                        <form  name="frmSearch" >	
+                            <div class="col-lg-4">
+                                <div class="form-group">
+                                    Processo
+                                    <select name="SELPROC" id="SELPROC" class="form-control input-sm" onclick="jsSelProcesso()">
+                                        <option>Todos</option>
+                                        <!-- BEGIN BLOCO_SEL_PROCESSOS -->
+                                        <option value="{PROCID}">{PROCNAME}</option>
+                                        <!-- END BLOCO_SEL_PROCESSOS -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    Conteúdo para Busca
+                                    <input type="text" class="form-control input-sm" id="termoBuscaSimples">
+                                </div>
+                            </div>
+                        </form>
+                    </div> 
+                </div>
+                <div class="tab-pane" id="buscaavancada">
+                    <form  name="frmSearch">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-lg-1">
+                                    <br>
+                                    <select class="form-control input-sm" {LOGICA_DISABLED} id="LOGICA_SEL" name="LOGICA_SEL">
+                                        <option></option>
+                                        <option>E</option>
+                                        <option>OU</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    Campos para Pesquisa
+                                    <select class="form-control input-sm" onchange="jsSelectFieldBusca()" name="CAMPO_SEL" id="CAMPO_SEL">
+                                        <option></option>
+                                        <!-- BEGIN BLOCO_CAMPOS_PESQUISA -->
+                                        <option value="{FIELDID}" aria-procid="{PROCID}" aria-field-id="{FIELDID}" aria-field-type="{FIELDTYPE}" class="{ITEMCLASS}" {ITEMDISABLED}>{FIELDNAME}</option>
+                                        <!-- END BLOCO_CAMPOS_PESQUISA -->
+                                    </select>
+                                </div>                                        
+                                <div class="col-lg-2">
+                                    Comparador
+                                    <select class="form-control input-sm" {COMPARADOR_DISABLED} name="COMPARADOR" id="COMPARADOR" onchange="jsSelOperador()">
+                                        <option></option>
+                                        <option value="=">igual</option>
+                                        <option value="><">entre</option>
+                                        <option value="%">contém</option>
+                                        <option value="#">diferente</option>
+                                        <option value=">">menor</option>
+                                        <option value="<">maior</option>
+                                        <option value=">=">maior ou igual</option>
+                                        <option value="<=">menor ou igual</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="col-lg-4" id="PESQ_VAL1" >
+                                        Primeiro Valor
+                                        <input type="text" class="form-control input-sm" value="{PRIMERIOVALOR_VALUE}" name="PRIMEIRO_VALOR" id="PRIMEIRO_VALOR" {PRIMEIROVALOR_DISABLED} style="{PRIMEIROVALOR_HIDDEN}">                                                
+                                        <select name="BOLEANO_VALOR" id="BOLEANO_VALOR" style="display:none" class="form-control input-sm">
+                                            <option value="0">Não</option>
+                                            <option value="1">Sim</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4" id="PESQ_VAL2">
+                                        Segundo Valor
+                                        <input type="text" class="form-control input-sm" value="{SEGUNDOVALOR_VALUE}" name="SEGUNDO_VALOR" id="SEGUNDO_VALOR" {SEGUNDOVALOR_DISABLED}>
+                                    </div>                                                
+                                    <div class="col-lg-1" style="display:none">
+                                        <br>
+                                        <button type="button" id="BTN_ADDCRITERIO" class="btn btn-info btn-sm pull-right" {ADICIONAR_DISABLED} onclick="jsAddCriterioBusca()"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <br>
+                    <div id="criteriosBusca" style="size: 14px">                                                
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <br />
+                        <button type="button" class="btn btn-sm btn-primary" onclick="jsExecutaBuscaSimples()" id="botaoBusca" disabled><i class="fa fa-search"></i> Efetuar Busca</button>
+                    </div>
+                </div>                
+            </div>
+        </div>  
+    </div>
+</div>

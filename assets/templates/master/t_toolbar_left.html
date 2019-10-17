@@ -1,0 +1,66 @@
+<!-- INICIO TOOLBAR {Menu} -->
+<!-- BEGIN BLOCK_TOOLBAR -->
+<!-- BEGIN BLOCK_BOTAO_COLLAPSE -->
+<li class="treeview">
+    <a href="javascript:" title="{BUTTON_TITLE}">
+        <!-- BEGIN BLOCK_BOTAO_ICON_COLLAPSE -->
+        <i class="{BUTTON_ICON}"></i>
+        <!-- END BLOCK_BOTAO_ICON_COLLAPSE -->
+        <span>{BUTTON_TEXT}</span>
+        <span class="pull-right-container">            
+            <i class="fa fa-angle-left pull-right"></i>
+        </span>
+    </a>
+    <!--- LISTA OPCOES MENU -->
+    <ul class="treeview-menu">
+        <!-- BEGIN BLOCK_SELSTEPIDNOVOCASO -->
+        <li class="primary"><a onclick="{NOVOCASOACAO}" href="javascript:"><i class="fa fa-star-o"></i> {NOVOCASOSTEPNAME}</a></li>
+        <!-- END BLOCK_SELSTEPIDNOVOCASO -->
+    </ul>
+    <!--- FIM OPCOES MENU -->
+</li>
+<!-- END BLOCK_BOTAO_COLLAPSE -->
+
+<!-- BEGIN BLOCK_BOTAO_LEFT -->
+<li class="primary">
+    <a {BUTTON_ACTION} title="{BUTTON_TITLE}" href="javascript:">
+        <!-- BEGIN BLOCK_BOTAO_ICON_LEFT -->            
+        <i class="{BUTTON_ICON} text-primary"></i>
+        <!-- END BLOCK_BOTAO_ICON_LEFT -->
+        <span class='text-primary'>{BUTTON_TEXT}</span>
+    </a>
+    <!-- BEGIN BLOCK_MENU_TREE -->
+    <ul class="treeview-menu" style="display: block;">
+        <!-- BEGIN MENU_TREE_BLOCK_ITEM -->
+        <li><a href="{OPCAO_ACAO}" class="OPCAO_CLASSE" title="{OPCAO_TITULO}"><i class="{OPCAO_ICONE}"></i> {OPCAO_TEXTO}</a></li>
+        <!-- END MENU_TREE_BLOCK_ITEM -->
+    </ul>
+    <!-- END BLOCK_MENU_TREE -->
+</li>
+<!-- END BLOCK_BOTAO_LEFT -->    
+
+<!-- BEGIN BLOCK_BOTAO_MODAL -->
+<li class="primary">
+    <!--<a role="button" class="btn btn-primary" id="modalMenuButton" data-toggle="modal" data-target="#historicoModal" aria-haspopup="true" {BUTTON_ACTION} title="{BUTTON_TITLE}">-->
+    <a id="modalMenuButton" data-toggle="modal" data-target="#historicoModal" aria-haspopup="true" {BUTTON_ACTION} title="{BUTTON_TITLE}">
+        <!--        <button class="btn  btn-outline btn-primary" type="button" id="modalMenuButton" data-toggle="modal" data-target="#historicoModal" aria-haspopup="true" {BUTTON_ACTION}>-->
+        <!-- BEGIN BLOCK_BOTAO_ICON_MODAL -->            
+        <i class="{BUTTON_ICON} text-primary"></i>
+        <!-- END BLOCK_BOTAO_ICON_MODAL -->
+        <span class='text-primary'>{BUTTON_TEXT}</span>
+        <!--        </button>-->
+    </a>
+<li class="primary">
+    <!-- END BLOCK_BOTAO_MODAL -->        
+    <!-- BEGIN BLOCK_BOTAO_RIGHT -->
+<li class="primary">
+    <a {BUTTON_ACTION} title="{BUTTON_TITLE}" href="javascript:">
+        <!-- BEGIN BLOCK_BOTAO_ICON_RIGHT -->
+        <i class="{BUTTON_ICON} text-primary"></i>
+        <!-- END BLOCK_BOTAO_ICON_RIGHT -->
+        <span class='text-primary'>{BUTTON_TEXT}</span>
+    </a>
+</li>
+<!-- END BLOCK_BOTAO_RIGHT -->
+<!-- END BLOCK_TOOLBAR -->
+<!-- FIM TOOLBAR -->

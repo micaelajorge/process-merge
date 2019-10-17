@@ -1,0 +1,55 @@
+<!-----  Menu: {Menu} -------->
+<!-- BEGIN BLOCK_TOOLBAR -->
+<nav class="nav navbar" style="margin-bottom: 0px">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-xs-6">
+            <!-- BEGIN BLOCK_BOTAO_COLLAPSE -->
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{BUTTON_TITLE}">
+                <!-- BEGIN BLOCK_BOTAO_ICON_COLLAPSE -->            
+                <i class="{BUTTON_ICON}"></i>
+                <!-- END BLOCK_BOTAO_ICON_COLLAPSE -->
+                {BUTTON_TEXT}
+            </button>
+            <!-- END BLOCK_BOTAO_COLLAPSE -->
+
+            <!-- BEGIN BLOCK_MENU_TREE -->
+            <ul class="treeview-menu" style="display: block;">
+                <!-- BEGIN MENU_TREE_BLOCK_ITEM -->
+                <li><a href="{OPCAO_ACAO}" class="OPCAO_CLASSE" title="{OPCAO_TITULO}"><i class="{OPCAO_ICONE}"></i> {OPCAO_TEXTO}</a></li>
+                <!-- END MENU_TREE_BLOCK_ITEM -->
+            </ul>
+            <!-- END BLOCK_MENU_TREE -->            
+
+            <!-- BEGIN BLOCK_BOTAO_LEFT -->
+            <button type="button" class="btn btn-primary" {BUTTON_ACTION} title="{BUTTON_TITLE}">
+                <!-- BEGIN BLOCK_BOTAO_ICON_LEFT -->                       
+                <i class="{BUTTON_ICON}"></i>
+                <!-- END BLOCK_BOTAO_ICON_LEFT -->     
+                <span class="visible-lg-inline visible-md-inline">{BUTTON_TEXT}</span></button>    
+            <!-- END BLOCK_BOTAO_LEFT -->    
+
+            <!-- BEGIN BLOCK_BOTAO_MODAL -->
+            <a role="button" class="btn btn-primary " id="modalMenuButton" data-toggle="modal" data-target="#historicoModal" aria-haspopup="true" {BUTTON_ACTION} title="{BUTTON_TITLE}">
+                <!--        <button class="btn  btn-outline btn-primary" type="button" id="modalMenuButton" data-toggle="modal" data-target="#historicoModal" aria-haspopup="true" {BUTTON_ACTION}>-->
+                <!-- BEGIN BLOCK_BOTAO_ICON_MODAL -->            
+                <i class="{BUTTON_ICON}"></i>
+                <!-- END BLOCK_BOTAO_ICON_MODAL -->
+                <span class="visible-lg-inline visible-md-inline">{BUTTON_TEXT}</span>
+                <!--        </button>-->
+            </a>
+            <!-- END BLOCK_BOTAO_MODAL -->        
+        </div>    
+        <!-- BEGIN BLOCK_BOTAO_RIGHT -->
+        <div class="text-right col-lg-6 col-md-6 col-xs-6">
+            <button type="button" class="btn btn-primary" {BUTTON_ACTION} title="{BUTTON_TITLE}">
+                <!-- BEGIN BLOCK_BOTAO_ICON_RIGHT -->   
+                <i class="{BUTTON_ICON}"></i>
+                <!-- END BLOCK_BOTAO_ICON_RIGHT -->         
+                <span class="visible-lg-inline visible-md-inline">{BUTTON_TEXT}</span>
+            </button>
+        </div>
+        <!-- END BLOCK_BOTAO_RIGHT -->
+    </div>
+</nav>                
+<!-- END BLOCK_TOOLBAR -->
+<!-- FIM TOOLBAR -->

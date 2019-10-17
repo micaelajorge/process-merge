@@ -1,0 +1,22 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30/10/2018, 23:03:11
+    Author     : Marcelo Mosczynski <mmoscz@gmail.com>
+*/
+
+.img-magnifier-container {
+  position:relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 400px;
+  height: 200px;
+}

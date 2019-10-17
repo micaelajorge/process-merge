@@ -1,0 +1,26 @@
+<!-- BEGIN BLOCK_LISTA_USUARIOS -->
+<div class="row">
+    <div class="col-lg-12">
+        Nome - (<i class="fa fa-users"></i> - Grupo / <i class="fa fa-user"></i> - Usuário)
+    </div>
+</div>
+<!-- BEGIN BLOCK_USUARIO -->
+<div class="row" id="Linha{NRLINHA}">
+    <div class="col-lg-12">
+
+        <a href="javascript:" onclick="JSselecionaUsuarioGrupoPermissao('Linha{NRLINHA}', '{USER_ID}', '{USERNAME}', '{GRPFLD}')" title="Selecionar Grupo/Usuário"><i class="fa {CLASS_GRUPOUSUARIO}"></i> {USERNAME} - {USERDESC}</a>
+    </div>
+</div>
+<!-- END BLOCK_USUARIO -->
+<!-- BEGIN BLOCK_USUARIO_DISABLE -->
+<div class="row" id="Linha{NRLINHA}">
+    <div class="col-lg-12">
+        <span title="Já pertence"><i class="fa {CLASS_GRUPOUSUARIO}"></i> {USERNAME} - {USERDESC}</span>
+    </div>
+</div>
+<!-- END BLOCK_USUARIO_DISABLE -->
+</table>    
+</div>
+<!-- END BLOCK_LISTA_USUARIOS -->
+Não foram encontrados usuários
+<!-- FINALLY BLOCK_LISTA_USUARIOS -->

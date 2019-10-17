@@ -1,0 +1,27 @@
+[
+    {
+        "servers": ["40.114.46.89"],
+        "instancias": [{
+                "instanceName": "geru",
+                "constants": {
+                    "securities": {
+                        "comparaValorCCB": false,
+                        "comparaCPJ": true
+                    }
+                }
+            }
+        ]
+    }, {
+        "servers": ["localhost"],
+        "instancias": [{
+                "intanceName": "default"
+                        "constants": {
+                        "securities": {
+                        "comparaValorCCB": true,
+                        "comparaCPJ": true
+                    }
+                    }
+            }
+        ]
+        }        
+        ]

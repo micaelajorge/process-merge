@@ -1,0 +1,576 @@
+﻿[{
+		"servidores": ["process.plenainformatica.com"],
+		"instancias": [{
+				"instancia": "default",
+				"ALINHAMENTO_LOGO": "float:left",
+				"BPMUSER": "process";
+				"BPMPWD": "cerberus";
+				"EXTERNALUSER": "process";
+				"EXTERNALPWD": "cerberus";
+				"EXTERNAL_USERNAME": "process";
+				"BPMDB": "process_plena";
+				"EXTERNALDB": "process_plena";
+				"ALINHAMENTO_LOGO": "float:left",
+				"SITE_ROOT": "http://$servidor",
+				"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+				"configDB": "localhost",
+				"SERVER_ADDRESS": $servidor,
+				"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+				"_SECRET_KEY": "f9QsJ4Oufz",
+				"ALLOW_SEARCH": FALSE,
+				"FILES_FOLDER": "/",
+				"FILES_UPLOAD": "/system/transferwise/storage/files",
+				"INSTANCENAME": "Process Demo",
+				"SITE_FOLDER": "/",
+				"SITE_FOLDER_COMPLEMENT": "",
+				"LOGO_PARCEIRO": "logo-plena.png",
+				"PARCEIRONAME": "Plena",
+				"ICONE_PARCEIRO": "logo-plena-mini.png",
+				"URL_OWNER": "https://www.agilizaonline.com.br",
+				"NAME_OWNER": "Plena Informática",
+				"ALINHAMENTO_LOGO": "float:left"
+			}
+		]
+	}, {
+		"servidores": ["sandbox.certdox.com.br"],
+		"instancias": [{
+				"instancia": "default",
+				"ALINHAMENTO_LOGO": "float:left",
+				"TEMASISTEMA": "skin-red",
+				"BPMUSER": "process";
+				"BPMPWD": "cerberus";
+				"EXTERNALUSER": "process";
+				"EXTERNALPWD": "cerberus";
+				"EXTERNAL_USERNAME": "process";
+				"BPMDB": "process_certdox_poc";
+				"EXTERNALDB": "process_certdox_poc";
+				"ALINHAMENTO_LOGO": "float:left",
+				"SITE_ROOT": "http://$servidor",
+				"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+				"SERVER_ADDRESS": $servidor,
+				"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+				"_SECRET_KEY": "f9QsJ4Oufz",
+				"ALLOW_SEARCH": FALSE,
+				"FILES_FOLDER": "/",
+				"FILES_UPLOAD": "/storage/certdox_poc",
+				"INSTANCENAME": "Sandbox Certdox",
+				"SITE_FOLDER": "/",
+				"SITE_FOLDER_COMPLEMENT": "",
+				"LOGO_PARCEIRO": "logo-certdox-final.jpg",
+				"PARCEIRONAME": "Sandbox Certdox",
+				"ICONE_PARCEIRO": "icone-certdox-final.jpg",
+				"URL_OWNER": "https://www.certdox.com.br",
+				"ALINHAMENTO_LOGO": "float:left",
+				"NAME_OWNER": "Certdox"
+			}
+		]
+	}, {
+		"servidores": ["process.certdox.com.br", "40.114.46.89"],
+		"instancias": [{
+
+				"instancia": "gatewaydigital":
+				"ALINHAMENTO_LOGO": "float:left",
+				"TEMASISTEMA": "skin-red",
+				"TEMPLATE_LOGON": "t_logon_dmcard.html",
+				"BPMUSER": "process";
+				"BPMPWD": "cerberus";
+				"EXTERNALUSER": "process";
+				"EXTERNALPWD": "cerberus";
+				"EXTERNAL_USERNAME": "process";
+				"BPMDB": "process_certdox_poc";
+				"EXTERNALDB": "process_certdox_poc";
+				"ALINHAMENTO_LOGO": "float:left",
+				"SITE_ROOT": "http://$servidor",
+				"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+				"SERVER_ADDRESS": $servidor,
+				"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+				"_SECRET_KEY": "f9QsJ4Oufz",
+				"ALLOW_SEARCH": FALSE,
+				"FILES_FOLDER": "/",
+				"FILES_UPLOAD": "/storage/certdox_poc",
+				"INSTANCENAME": "DM Card Certdox",
+				"SITE_FOLDER": "/",
+				"SITE_FOLDER_COMPLEMENT": "",
+				"LOGO_PARCEIRO": "logo-certdox-final.jpg",
+				"PARCEIRONAME": "DM Card Certdox",
+				"ICONE_PARCEIRO": "icone-certdox-final.jpg",
+				"URL_OWNER": "https://www.certdox.com.br",
+				"ALINHAMENTO_LOGO": "float:left",
+				"NAME_OWNER": "Certdox"
+			}, {
+
+				"instancias": "idtrust",
+				"ALINHAMENTO_LOGO": "float:left",
+				"BPMUSER": "process";
+				"BPMPWD": "cerberus";
+				"EXTERNALUSER": "process";
+				"EXTERNALPWD": "cerberus";
+				"EXTERNAL_USERNAME": "process";
+				"BPMDB": "process_idtrust";
+				"EXTERNALDB": "process_idtrust";
+				"ALINHAMENTO_LOGO": "float:left",
+				"SITE_ROOT": "http://$servidor",
+				"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+				"SERVER_ADDRESS": $servidor,
+				"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+				"_SECRET_KEY": "f9QsJ4Oufz",
+				"ALLOW_SEARCH": FALSE,
+				"FILES_FOLDER": "/",
+				"FILES_UPLOAD": "/storage/idtrust",
+				"INSTANCENAME": "Id Trust",
+				"SITE_FOLDER": "/",
+				"SITE_FOLDER_COMPLEMENT": "",
+				"LOGO_PARCEIRO": "logo-certdox-final.jpg",
+				"PARCEIRONAME": "Id Trust Certdox",
+				"ICONE_PARCEIRO": "icone-certdox-final.jpg",
+				"URL_OWNER": "https://www.certdox.com.br",
+				"ALINHAMENTO_LOGO": "float:left",
+				"NAME_OWNER": "Certdox"
+			}, {
+
+				"instancia": "sandbox",
+				"ALINHAMENTO_LOGO": "float:left",
+				"TEMASISTEMA": "skin-red",
+				"BPMUSER": "process";
+				"BPMPWD": "cerberus";
+				"EXTERNALUSER": "process";
+				"EXTERNALPWD": "cerberus";
+				"EXTERNAL_USERNAME": "process";
+				"BPMDB": "process_certdox_poc";
+				"EXTERNALDB": "process_certdox_poc";
+				"ALINHAMENTO_LOGO": "float:left",
+				"SITE_ROOT": "http://$servidor",
+				"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+				"SERVER_ADDRESS": $servidor,
+				"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+				"_SECRET_KEY": "f9QsJ4Oufz",
+				"ALLOW_SEARCH": FALSE,
+				"FILES_FOLDER": "/",
+				"FILES_UPLOAD": "/storage/certdox_poc",
+				"INSTANCENAME": "Sandbox Certdox",
+				"SITE_FOLDER": "/",
+				"SITE_FOLDER_COMPLEMENT": "",
+				"LOGO_PARCEIRO": "logo-certdox-final.jpg",
+				"PARCEIRONAME": "Sandbox Certdox",
+				"ICONE_PARCEIRO": "icone-certdox-final.jpg",
+				"URL_OWNER": "https://www.certdox.com.br",
+				"ALINHAMENTO_LOGO": "float:left",
+				"NAME_OWNER": "Certdox"
+			}, {
+
+				"instancia": "alicred":
+				"ALINHAMENTO_LOGO": "float:left",
+				"TEMASISTEMA": "skin-red",
+				"BPMUSER": "process";
+				"BPMPWD": "cerberus";
+				"EXTERNALUSER": "process";
+				"EXTERNALPWD": "cerberus";
+				"EXTERNAL_USERNAME": "process";
+				"BPMDB": "process_certdox_poc";
+				"EXTERNALDB": "process_certdox_poc";
+				"ALINHAMENTO_LOGO": "float:left",
+				"SITE_ROOT": "http://$servidor",
+				"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+				"SERVER_ADDRESS": $servidor,
+				"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+				"_SECRET_KEY": "f9QsJ4Oufz",
+				"ALLOW_SEARCH": FALSE,
+				"FILES_FOLDER": "/",
+				"FILES_UPLOAD": "/storage/certdox_poc",
+				"INSTANCENAME": "Sandbox Certdox",
+				"SITE_FOLDER": "/alicred/",
+				"SITE_FOLDER_COMPLEMENT": "",
+				"LOGO_PARCEIRO": "logo-certdox-final.jpg",
+				"PARCEIRONAME": "Sandbox Alicred",
+				"ICONE_PARCEIRO": "icone-certdox-final.jpg",
+				"URL_OWNER": "https://www.certdox.com.br",
+				"ALINHAMENTO_LOGO": "float:left",
+				"NAME_OWNER": "AliCred"
+			}, {
+
+				"instancia": "geru",
+				"ALINHAMENTO_LOGO": "float:left",
+				"TEMASISTEMA": "skin-red",
+
+				"BPMUSER": "process";
+				"BPMPWD": "cerberus";
+				"EXTERNALUSER": "process";
+				"EXTERNALPWD": "cerberus";
+				"EXTERNAL_USERNAME": "process";
+				"BPMDB": "process_certdox_geru";
+				"EXTERNALDB": "process_certdox_geru";
+				"ALINHAMENTO_LOGO": "float:left",
+				"SITE_ROOT": "http://$servidor",
+				"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+				"SERVER_ADDRESS": $servidor,
+				"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+				"_SECRET_KEY": "f9QsJ4Oufz",
+				"ALLOW_SEARCH": FALSE,
+				"FILES_FOLDER": "/",
+				"FILES_UPLOAD": "/storage/certdox_poc",
+				"INSTANCENAME": "Sandbox Geru",
+				"SITE_FOLDER": "/geru/",
+				"SITE_FOLDER_COMPLEMENT": "",
+				"LOGO_PARCEIRO": "logo-certdox-final.jpg",
+				"PARCEIRONAME": "Sandbox Geru",
+				"ICONE_PARCEIRO": "icone-certdox-final.jpg",
+				"URL_OWNER": "https://www.clicksign-securities.com",
+				"ALINHAMENTO_LOGO": "float:left",
+				"NAME_OWNER": "Clicksign Securities"
+			}, {
+
+				"instancia": "default",
+				"ALINHAMENTO_LOGO": "float:left",
+				"BPMUSER": "process";
+				"BPMPWD": "cerberus";
+				"EXTERNALUSER": "process";
+				"EXTERNALPWD": "cerberus";
+				"EXTERNAL_USERNAME": "process";
+				"BPMDB": "process_certdox_poc";
+				"EXTERNALDB": "process_certdox_poc";
+				"ALINHAMENTO_LOGO": "float:left",
+				"SITE_ROOT": "http://$servidor",
+				"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+				"SERVER_ADDRESS": $servidor,
+				"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+				"_SECRET_KEY": "f9QsJ4Oufz",
+				"ALLOW_SEARCH": FALSE,
+				"FILES_FOLDER": "/",
+				"FILES_UPLOAD": "/storage/certdox",
+				"INSTANCENAME": "Certdox",
+				"SITE_FOLDER": "/",
+				"SITE_FOLDER_COMPLEMENT": "",
+				"LOGO_PARCEIRO": "logo-certdox-final.jpg",
+				"PARCEIRONAME": "Certdox",
+				"ICONE_PARCEIRO": "icone-certdox.png",
+				"URL_OWNER": "https://www.certdox.com.br",
+				"ALINHAMENTO_LOGO": "float:left",
+				"NAME_OWNER": "Certdox"
+			}
+		}, {
+
+			"servidores": ["registros.certdox.com.br"],
+			"instancias": [{
+					"instancia": "default",
+					"ALINHAMENTO_LOGO": "float:left",
+					"TEMASISTEMA": "skin-blue-light",
+					"TEMPLATE_LOGON": "t_logon_dmcard.html",
+					"BPMUSER": "process";
+					"BPMPWD": "cerberus";
+					"EXTERNALUSER": "process";
+					"EXTERNALPWD": "cerberus";
+					"EXTERNAL_USERNAME": "process";
+					"BPMDB": "process_certdox_poc";
+					"EXTERNALDB": "process_certdox_poc";
+					"ALINHAMENTO_LOGO": "float:left",
+					"SITE_ROOT": "http://$servidor",
+					"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+					"SERVER_ADDRESS": $servidor,
+					"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+					"_SECRET_KEY": "f9QsJ4Oufz",
+					"ALLOW_SEARCH": FALSE,
+					"FILES_FOLDER": "/",
+					"FILES_UPLOAD": "/storage/certdox_poc",
+					"INSTANCENAME": "Sandbox Certdox",
+					"SITE_FOLDER": "/",
+					"SITE_FOLDER_COMPLEMENT": "",
+					"LOGO_PARCEIRO": "logo-certdox-final.jpg",
+					"PARCEIRONAME": "Gateway Digital",
+					"ICONE_PARCEIRO": "icone-certdox-final.jpg",
+					"URL_OWNER": "https://www.certdox.com.br",
+					"ALINHAMENTO_LOGO": "float:left",
+					"NAME_OWNER": "Certdox"
+				}
+			]
+		}, {
+
+			"servidores": ["idtrust.certdox.com.br"],
+			"instancias": [{
+					"instancia": "default",
+					"ALINHAMENTO_LOGO": "float:left",
+					"BPMUSER": "process";
+					"BPMPWD": "cerberus";
+					"EXTERNALUSER": "process";
+					"EXTERNALPWD": "cerberus";
+					"EXTERNAL_USERNAME": "process";
+					"BPMDB": "process_idtrust";
+					"EXTERNALDB": "process_idtrust";
+					"ALINHAMENTO_LOGO": "float:left",
+					"SITE_ROOT": "http://$servidor",
+					"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+					"SERVER_ADDRESS": $servidor,
+					"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+					"_SECRET_KEY": "f9QsJ4Oufz",
+					"ALLOW_SEARCH": FALSE,
+					"FILES_FOLDER": "/",
+					"FILES_UPLOAD": "/storage/idtrust",
+					"INSTANCENAME": "Certdox",
+					"SITE_FOLDER": "/",
+					"SITE_FOLDER_COMPLEMENT": "",
+					"LOGO_PARCEIRO": "logo-certdox-final.jpg",
+					"PARCEIRONAME": "Id Trust Certdox",
+					"ICONE_PARCEIRO": "icone-certdox-final.png",
+					"URL_OWNER": "https://www.certdox.com.br",
+					"ALINHAMENTO_LOGO": "float:left",
+					"NAME_OWNER": "Certdox"
+				}
+			]
+		}, {
+			"servidores": ["showroom.agilizaonline.com.br"],
+			"instancias": [{
+					"instancia": "caruana",
+					"BPMUSER": "process";
+					"BPMPWD": "cerberus";
+					"EXTERNALUSER": "process";
+					"EXTERNALPWD": "cerberus";
+					"EXTERNAL_USERNAME": "process",
+					"instancia": "poc_caruana":
+					"TEMASISTEMA": "skin-purple-light",
+					"FILES_FOLDER": "/",
+					"SITE_FOLDER": "/poc_caruana/",
+					"SITE_ROOT": "http://$servidor",
+					"SITE_FOLDER_COMPLEMENT": "",
+					"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+					"configDB": "localhost",
+					"SERVER_ADDRESS": $servidor,
+					"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+					"FILES_UPLOAD": "/system/caruana/storage/files",
+					"_SECRET_KEY": "f9QsJ4Oufz",
+					"ALLOW_SEARCH": false,
+					"INSTANCENAME": "POC Caruana",
+					"LOGO_PARCEIRO": "logo-agiliza.png",
+					"PARCEIRONAME": "Agiliza",
+					"ICONE_PARCEIRO": "logo-agiliza-mini.png",
+					"URL_OWNER": "https://www.agilizaonline.com.br",
+					"NAME_OWNER": "Agiliza",
+					"BPMDB": "process_poc_caruana",
+					"EXTERNALDB": "process_poc_caruana"
+				}
+			]
+		}, {
+			"servidores": ["23.96.24.191", "23.96.24.191:8080", "137.117.100.121:8080", "23.96.24.191:8080"],
+			"instancias": [{
+					"instancia": "default",
+					"TEMASISTEMA": "skin-red",
+					"BPMUSER": "process";
+					"BPMPWD": "cerberus";
+					"EXTERNALUSER": "process";
+					"EXTERNALPWD": "cerberus";
+					"EXTERNAL_USERNAME": "process";
+					"OrigemLogon": "ProcessLogon";
+					"BPMDB": "processteste";
+					"EXTERNALDB": "processteste";
+					"SITE_ROOT": "http://$servidor",
+					"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+					"configDB": "localhost",
+					"SERVER_ADDRESS": "$servidor",
+					"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+					"_SECRET_KEY": "f9QsJ4Oufz",
+					"ALLOW_SEARCH": FALSE,
+					"TEMASISTEMA": "skin-blue",
+					"TEMASISTEMA": "skin-blue",
+					"FILES_UPLOAD": "/system/transferwise/storage/files",
+					"INSTANCENAME": "ShowRoom - Agiliza Flow",
+					"SITE_FOLDER": "/showroom/",
+					"SITE_FOLDER_COMPLEMENT": "",
+					"LOGO_PARCEIRO": "logo-agiliza.png",
+					"PARCEIRONAME": "Agiliza",
+					"ICONE_PARCEIRO": "logo-agiliza-mini.png",
+					"URL_OWNER": "https://www.agilizaonline.com.br",
+					"NAME_OWNER": "Agiliza"
+				}
+			]
+		}, {
+			"servidores": ["40.121.135.140", "orion.app.agilizaonline.com.br"],
+			"instancias": [{
+					"instancia": "caruana",
+					"INSTANCENAME": "Agiliza Flow - Caruana",
+					"LOGO_PARCEIRO": "logo-agiliza.png",
+					"PARCEIRONAME": "Agiliza",
+					"SITE_FOLDER": "/caruana/",
+					"BPMUSER": "process";
+					"BPMPWD": "cerberus";
+					"EXTERNALUSER": "process",
+					"EXTERNALPWD": "cerberus",
+					"EXTERNAL_USERNAME": "process",
+					"BPMDB": "caruana",
+					"EXTERNALDB": "caruana"
+				}, {
+					"instancia": "default",
+					"INSTANCENAME": "Agiliza Flow",
+					"LOGO_PARCEIRO": "logo-agiliza.png",
+					"PARCEIRONAME": "Agiliza",
+					"SITE_FOLDER": "",
+					"BPMUSER": "process";
+					"BPMPWD": "cerberus";
+					"EXTERNALUSER": "process";
+					"EXTERNALPWD": "cerberus";
+					"EXTERNAL_USERNAME": "process";
+					"BPMDB": "processteste";
+					"EXTERNALDB": "processteste";
+				}
+				"TEMASISTEMA": "skin-blue",
+				"FILES_FOLDER": "/",
+				"SITE_ROOT": "https://$servidor",
+				"SITE_FOLDER_COMPLEMENT": "/",
+				"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+				"configDB": "localhost",
+				"SERVER_ADDRESS": $servidor,
+				"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+				"FILES_UPLOAD": "/system/transferwise/storage/files",
+				"_SECRET_KEY": "cLWD;KCBgP?a10m03W ",
+				"ALLOW_SEARCH ": false,
+				"ICONE_PARCEIRO ": "logo-agiliza-mini.png ",
+			}
+		]
+		}, {
+			"servidores": "caruana.agilizaonline.com.br",
+			"instancias": [{
+					"instancia": "default",
+					" BPMUSER ": " process ";
+					" BPMPWD ": " cerberus ";
+					" EXTERNALUSER ": " process ";
+					" EXTERNALPWD ": " cerberus ";
+					" EXTERNAL_USERNAME ": " process ";
+					" BPMDB ": " caruana ";
+					" EXTERNALDB ": " caruana ";
+					" TEMASISTEMA ": " skin - blue ",
+					" FILES_FOLDER ": " / ",
+					" SITE_FOLDER ": " ",
+					" SITE_ROOT ": " http: //$servidor/",
+					"SITE_FOLDER_COMPLEMENT": "/",
+					"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+					"configDB": "localhost",
+					"SERVER_ADDRESS": $servidor,
+					"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+					"FILES_UPLOAD": "/system/caruana/storage/files",
+					" ALLOW_SEARCH ": false,
+					" INSTANCENAME ": " Caruana ",
+					" LOGO_PARCEIRO ": " logo - agiliza.png ",
+					" PARCEIRONAME ": " Agiliza ",
+					" ICONE_PARCEIRO ": " logo - agiliza - mini.png "
+				}
+			]
+		}, {
+
+		case " poc.caruana.agilizaonline.com.br ":
+			/**
+			 *  Definições Banco de dados
+			 */
+			" BPMUSER ": " process ";
+			" BPMPWD ": " cerberus ";
+			" EXTERNALUSER ": " process ";
+			" EXTERNALPWD ": " cerberus ";
+			" EXTERNAL_USERNAME ": " process ";
+			" BPMDB ": " process_poc_caruana ";
+			" EXTERNALDB ": " process_poc_caruana ";
+			" TEMASISTEMA ": " skin - purple - light ",
+			" FILES_FOLDER ": " / ",
+			" SITE_FOLDER ": " ",
+			" SITE_ROOT ": " https: //$servidor",
+			"SITE_FOLDER_COMPLEMENT": "/",
+			"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+			"configDB": "localhost",
+			"SERVER_ADDRESS": $servidor,
+			"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+			"FILES_UPLOAD": "/system/caruana/storage/files",
+																	        " ALLOW_SEARCH ": false,
+																	        " INSTANCENAME ": " POC Caruana ",
+																	        " LOGO_PARCEIRO ": " logo - agiliza.png ",
+																	        " PARCEIRONAME ": " Agiliza ",
+																	        " ICONE_PARCEIRO ": " logo - agiliza - mini.png ",
+																	        break;
+
+																	    case " caruana.agilizaonline.com.br ":
+																	        /**
+																	         *  Definições Banco de dados
+																	         */
+																	        " BPMUSER ": " process ";
+																	        " BPMPWD ":" cerberus ";
+																	        " EXTERNALUSER ":" process ";
+																	        " EXTERNALPWD ":" cerberus ";
+																	        " EXTERNAL_USERNAME ":" process ";
+																	        " BPMDB ":" process_caruana ";
+																	        " EXTERNALDB ":" process_caruana ";
+																	        " TEMASISTEMA ": " skin - red - light ",
+																	        " FILES_FOLDER ": " / ",
+																	        " SITE_FOLDER ": " ",
+																	        " SITE_ROOT ": " https: //$servidor",
+				"SITE_FOLDER_COMPLEMENT": "/",
+				"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+				"configDB": "localhost",
+				"SERVER_ADDRESS": $servidor,
+				"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+				"FILES_UPLOAD": "/system/caruana/storage/files",
+				"_SECRET_KEY": "cLWD;KCBgP?a1"(0m03W ",
+																				        " ALLOW_SEARCH ": false,
+																				        " INSTANCENAME ": " Caruana ",
+																				        " LOGO_PARCEIRO ": " logo - agiliza.png ",
+																				        " PARCEIRONAME ": " Agiliza ",
+																				        " ICONE_PARCEIRO ": " logo - agiliza - mini.png ",
+																				        break;
+
+																				    case " localhost ":
+																				    case " 192.168.42.193 ":
+																				    case " 127.0.0.1 ":
+																				    case " 192.168.1.16 ":
+																				        " ALINHAMENTO_LOGO ": " float: left ",
+																				        /**
+																				         *  Definições Banco de dados
+																				         */
+																				        " BPMUSER ": " root ";
+																				        " BPMPWD ":" ";
+																				        " EXTERNALUSER ":" root ";
+																				        " EXTERNALPWD ":" ";
+																				        " EXTERNAL_USERNAME ":" root ";
+																				        switch ($aliasServidor) {
+																				            case " process - teste ":
+																				                " TEMASISTEMA ": " skin - red ",
+																				                " INSTANCENAME ": " Process Teste ",
+																				                " SITE_FOLDER ": " / process - teste / ",
+																				                " INSTANCENAME ": " Process Teste ",
+																				                " FILES_UPLOAD ": " E: /developer/STORAGE_PROCESS_TESTE",
+																				                " configDB ": " db - teste ",
+																				                " BPMDB ":" process_desenv ";
+																				                " EXTERNALDB ":" process_desenv ";
+																				                break;
+
+																				            case " dmcard ":
+																				                " TEMASISTEMA ": " skin - red ",
+																				                " TEMPLATE_LOGON ": " t_logon_dmcard.html ",
+																				                " INSTANCENAME ": " DM Card ",
+																				                " SITE_FOLDER ": " / dmcard / ",
+																				                " INSTANCENAME ": " DM Card ",
+																				                " FILES_UPLOAD ": " E: /developer/STORAGE_PROCESS_TESTE",
+																				                " configDB ": " db - teste ",
+																				                " BPMDB ":" processteste ";
+																				                " EXTERNALDB ":" processteste ";
+																				                break;
+
+																				            default:
+																				                setcookie(" XDEBUG_SESSION ": " netbeans - xdebug ",
+																				                " INSTANCENAME ": " Process Desenv ",
+																				                " SITE_FOLDER ": " / process / ",
+																				                " INSTANCENAME ": " Process Local ",
+																				                " FILES_UPLOAD ": " E: /developer/STORAGE_PROCESS",
+																				                " configDB ": " localhost ",
+																				                " BPMDB ":" processteste ";
+																				                " EXTERNALDB ":" processteste ";
+																				                break;
+																				        }
+																				        " FILES_FOLDER ": " \\ ",
+																				        " SITE_ROOT ": " http: //$servidor",
+					//        "SITE_FOLDER_COMPLEMENT": "/",
+					"SITE_FOLDER_COMPLEMENT": "",
+					"SITE_PRINCIPAL_PAGE": "pages/entrada.inc",
+					"SERVER_ADDRESS": $servidor,
+					"ARQUIVO_ERROR_LOG_PHP": "log/PHP_errors.log",
+					"_SECRET_KEY": "f9QsJ4Oufz",
+					"ALLOW_SEARCH": false,
+					"LOGO_PARCEIRO": "logo-certdox-final.jpg",
+					"LOGO_PARCEIRO_TOP": "icone-certdox-final.jpg",
+					"PARCEIRONAME": "Certdox",
+					"ICONE_PARCEIRO": "icone-certdox-final.jpg",
+					"URL_OWNER": "https://www.certdox.com.br",
+					"NAME_OWNER": "Cerdox",
+					break;

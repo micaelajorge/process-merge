@@ -1,0 +1,18 @@
+{
+    "startstep": "startstep",
+    "AttachData" {
+        "stepCode": "IMPORTAR_ARQUIVOS",
+        "objectFieldCode": "ObjectID"
+    },
+    "importData": {
+        "classname": "ANSECOMISS",
+        "statename": "Pendente Análise nota",
+        "state": "PNOTA",
+        "userName": "jbarreto.agiliza",
+        "userPWD": "Agiliza@2020"
+    },
+    "getDocument": {
+        "userName": "jbarreto.agiliza",
+        "userPWD": "Agiliza@2020"        
+    }
+}

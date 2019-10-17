@@ -1,0 +1,40 @@
+/* 
+    Created on : 31/10/2018, 13:25:09
+    Author     : Marcelo Mosczynski <mmoscz@gmail.com>
+*/
+
+canvas
+{ 
+    display:block; 
+    margin:1em auto; 
+    background:#FFF; 
+    border:1px solid #ccc;
+    /*width:100%;*/
+}
+
+
+.div-menu-imagem {
+    position: absolute;
+    top:10px;
+    left:10px;  
+    font-size: 52px    
+}
+
+.div-menu-imagem i {
+    padding:20px;
+    color: #ccc;
+    opacity: 0.1
+}
+
+.div-menu-imagem i:hover {
+    opacity: 0.5;
+    color: #0066FF;
+}
+
+.rotate90 {
+    transform: rotate(90deg);
+}
+
+.rotate180 {
+    transform: rotate(180deg);
+}

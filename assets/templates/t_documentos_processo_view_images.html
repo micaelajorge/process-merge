@@ -1,0 +1,23 @@
+<!-- BEGIN BLOCO_IMAGEM -->
+<div class="col-lg-3 text-center" style="min-height: 185px">
+    <div class="doc-view">
+        <img  src="{URL_IMAGEM}" style="width: 90%" id="IMG_{DOCID}_{IMG_ID}" onclick="jsViewFile({PROCID}, {CASENUM}, {FIELDID}, '{ARQUIVO_NOME_STORAGE}', '{FILE_NAME}')"/><br />
+        <small>{FILE_NAME}</small>
+        <div class="doc-view-toolbar  {HIDE_EDIT}">
+            <i class="fa fa-edit text-primary  " title="Editar dados"></i><br>
+        </div>
+    </div>
+</div>
+<!-- END BLOCO_IMAGEM -->
+<!-- BEGIN BLOCO_PDF -->
+<div class="col-lg-3 text-center" style="min-height: 185px">
+    <div class="doc-view">
+        <span id="loading_IMG_{DOCID}_{IMG_ID}"><i class="fa fa-refresh fa-2x fa-spin text-success"></i><br></span>
+        <img aria-url="{URL_IMAGEM}" style="width: 90%" id="IMG_{DOCID}_{IMG_ID}" onclick="jsViewFile({PROCID}, {CASENUM}, {FIELDID}, '{ARQUIVO_NOME_STORAGE}', '{FILE_NAME}')"/><br />    
+        <small>{FILE_NAME}</small>
+        <div class="doc-view-toolbar {HIDE_EDIT}">
+            <a><i class="fa fa-edit text-primary" title="Editar dados"></i></a><br>
+        </div>
+    </div>
+</div>
+<!-- END BLOCO_PDF -->

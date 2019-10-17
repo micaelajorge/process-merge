@@ -1,0 +1,57 @@
+<!-- BEGIN BLOCO_CR_NORMAL -->
+<div>
+    <table class="table table-striped" style="font-size: 12px">
+        <tr>
+            <th></th>
+            <!-- BEGIN BLOCK_NOME_REFERENCIAS -->
+            <th>{CAMPOREF}</th>
+            <!-- END BLOCK_NOME_REFERENCIAS -->
+        </tr>
+        <!-- BEGIN BLOCK_CASO -->                
+        <tr>
+            <td>
+                <a href="javascript:JSvisualizaDoc('{CASENUMCR}', '{PROCID}')"><i class="fa fa-search-plus"></i></a>
+            </td>
+            <!-- BEGIN BLOCK_VALOR_REFERENCIAS -->
+            <td>{CAMPOVALOR}</td>
+            <!-- END BLOCK_VALOR_REFERENCIAS -->
+        </tr>
+        <!-- END BLOCK_CASO -->
+    </table>
+</div>
+<!-- END BLOCO_CR_NORMAL -->
+<!-- BEGIN BLOCO_MODAL -->
+<button type="button" title="Visualiar Todos" data-toggle="modal" data-target="#crModal{FIELDID}" onclick="JScarregaCampoCR('{PROCID}', '{FIELDID}', '{CASENUM}', '{FIELDNAME}'); return false"  class="btn btn-primary btn-outline btn-xs">Visualizar Todos</button>&nbsp;
+<div class="modal fade" id="crModal{FIELDID}" tabindex="-1" role="dialog" aria-labelledby="crModalLabel{FIELDID}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title " id="myModalLabel">{FIELDNAME}</h4>
+            </div>
+            <div id="DivModal{FIELDID}">                
+            </div>
+        </div>
+    </div>
+</div>  
+<!-- END BLOCO_MODAL -->
+<!-- BEGIN BLOCO_CR_CONTENT -->
+<div>
+    <!-- 
+    <div class="row  form-row">
+        <div class="col-lg-12 form-group">
+            <button onclick="JSvisualizaDoc('{CASENUMCR}', '{PROCID}')" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> Visualizar Todos</button>
+        </div>
+    </div>    
+    -->
+    <div class="row form-row">
+        <div class="col-lg-12">
+            <!-- BEGIN BLOCK_IMAGEM -->                
+            <div class='form-group pull-left'>
+                <button type="button" onclick="jsViewFile('{PROCID}', '{CASENUMCR}', '{FIELDID}', '{CAMPOARQUIVO}', '{CAMPOARQUIVO}')" class="btn btn-primary btn-xs"><i class="fa fa-file-o"></i> {CAMPOVALOR} - {CAMPOARQUIVO}</button>&nbsp;
+            </div>
+            <!-- END BLOCK_IMAGEM -->
+        </div>        
+    </div>
+</div>
+<!-- END BLOCO_CR_CONTENT -->

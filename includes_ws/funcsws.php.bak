@@ -1,0 +1,67 @@
+<?php
+function PegaPropCampos($ProcId, $StepId)
+	{
+	global $connect;
+	$SQL = "select stepfieldsdef.FieldId, Optional, ReadOnly, FieldType from procfieldsdef, stepfieldsdef where stepfieldsdef.ProcId = $ProcId and stepfieldsdef.StepId = $StepId and procfieldsdef.ProcId = stepfieldsdef.ProcId and procfieldsdef.FieldId = stepfieldsdef.FieldId ";
+	$Query = mysqli_query($connect, $SQL);	
+	while ($Result = @mysqli_fetch_array($Query))
+		{
+		$Campos[$Result["FieldId"]]["Optional"] = $Result["Optional"];
+		$Campos[$Result["FieldId"]]["ReadOnly"] = $Result["ReadOnly"];
+		$Campos[$Result["FieldId"]]["FieldType"] = $Result["FieldType"];
+		$Campos[$Result["FieldId"]]["Valido"] = 1;		
+		}
+	return $Campos;
+	}
+		
+function ValidaCampos($ProcId, $StepId, $casedata)
+	{
+	$Retorno = true;
+	$PropCampos = PegaPropCampos($ProcId, $StepId);
+	if (!is_array($PropCampos))
+		{
+		return false;
+		}				
+	
+	if ($casedata["NumFields"] <> count($casedata["Fields"]))
+	{
+	GeraErro(8, 'NumFields diferente de Campos Enviados');	
+	}
+	
+	if ($casedata["NumFields"] > count($PropCampos))
+	{
+	GeraErro(8, 'Numero de Campos passados maior q o esperado');	
+	}
+
+	for ($i=0; $i < $casedata["NumFields"]; $i++)
+		{
+		$FieldId = $casedata["Fields"][$i]["FieldId"];
+		// Campos Read Only são tratados na função Pega Dados Array		
+		$ReadOnly = $PropCampos[$FieldId]["ReadOnly"];
+		if ($ReadOnly)
+			{ 
+			GeraErro(7, 'Campo ReadOnly');
+			$casedata["Fields"][$i]["ReadOnly"] = 1;
+			continue;
+			}			
+		$Optional = $PropCampos[$FieldId]["Optional"];					
+		if (!$Optional && empty($casedata["Fields"][$i]["Value"]))
+			{						
+			GeraErro(8, "Campo " . $casedata["Fields"][$i]["FieldId"] );	
+			$Retorno = false;
+			continue;
+			}							
+		$FieldType = $PropCampos[$FieldId]["FieldType"];				
+		}				
+	
+	while(list($key, $valor) = each($PropCampos))
+		{
+		if ($valor["Valido"] == 0)
+			{
+			GeraErro(6, $key);
+			$Retorno = false;
+			}
+		}
+	return $Retorno;
+	}
+?>

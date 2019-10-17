@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28/07/2018, 00:08:41
+    Author     : Marcelo Mosczynski <mmoscz@gmail.com>
+*/
+
+/*.dataTable { 
+    height: 652px;
+}*/
+
+@media screen and (min-width: 500px) {
+    .dataTables_scroll {
+        height: 450px;
+    }
+
+}
+
+@media screen and (min-width: 1201px) {
+    .hidden-xl {
+        display: none
+    }
+}
+
+
+.loading {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    width: 300px;
+    border: 1px solid #999;
+    padding: 10px;   
+}
+
+.dataTables_scrollBody {
+    height: calc(100% - 50px);
+}

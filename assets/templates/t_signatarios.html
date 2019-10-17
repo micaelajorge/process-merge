@@ -1,0 +1,122 @@
+<!--
+Criação: Marcelo Mosczynski <mmoscz@gmail.com>
+Data Criação 15/05/2019
+Sistema: Process_XAMPP    
+-->
+<button type="button" class="btn btn-success btn-sm" title="Editar Signatários" onclick="$('#modalSignatarios').modal()"><i class="fa {ICON_SIGNATARIOS}"></i></button>
+<input type="hidden" value='{VALOR_CAMPO}' id="t{FIELD_ID}" name="t{FIELD_ID}" size="50" aria-fieldType="SCC">
+<div id="divListaSignatariosCaso">
+    {LISTA_SIGNATARIOS}
+</div>
+<div class="modal fade primary" id="modalSignatarios" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalSignatarios" style="display: none;">    
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4>Signatários do Documento</h4>
+            </div>    
+            <div class="modal-body">
+                <div id="signatarioLista">
+                    <button type="button" class="btn btn-success btn-sm" title="Adicionar Signatário" onclick="jsSignatarioCad_Novo()"><i class="fa fa-plus"></i> Adicionar</button>
+                    <div id="divListaSignatariosEdicao">
+                        {LISTA_SIGNATARIOS}
+                    </div>
+                </div>
+                <!-- FORMULARIO CADASTRO SIGNATARIO -->
+                <div id="signatarioCadastro" style="display:none">
+                    <input type="hidden" id="indiceSignatario" name="indiceSignatario" value="-1">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group form-group-sm">
+                                <label>Nome do Signatário</label>
+                                <input type="text" class="form-control" name="signatario_nome" id="signatario_nome">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group  form-group-sm">
+                                <label>Email</label>
+                                <input type="text" class="form-control" name="signatario_email" id="signatario_email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group form-group-sm">
+                                <label>CPF</label>
+                                <input type="text" class="form-control" name="signatario_cpf" id="signatario_cpf">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group form-group-sm">
+                                <label>Data Nascimento</label>
+                                <input type="text" class="form-control" name="signatario_datanasc" id="signatario_datanasc">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group form-group-sm">
+                                <label>Telefone</label>
+                                <input type="text" class="form-control" name="signatario_telefone" id="signatario_telefone">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group form-group-sm">                            
+                                <label>Tipo Assinatura</label>
+                                <div class="input-group">                                
+                                    <select class="form-control" id="sel_particiacao_signatario">
+                                        <option></option>
+                                        <option value="sign">Assinar</option>
+                                        <option value="approve">Assinar para aprovar</option>
+                                        <option value="party">Assinar como parte</option>
+                                        <option value="witness">Assinar como testemunha</option>
+                                        <option value="intervening">Assinar como interveniente</option>
+                                        <option value="receipt">Assinar para acusar recebimento</option>
+                                        <option value="endorser">Assinar como endossante</option>
+                                        <option value="endorsee">Assinar como endossatário</option>
+                                        <option value="administrator">Assinar como administrador</option>
+                                        <option value="guarantor">Assinar como avalista</option>
+                                        <option value="transferor">Assinar como cedente</option>
+                                        <option value="transferee">Assinar como cessionário</option>
+                                        <option value="contractee">Assinar como contratada</option>
+                                        <option value="contractor">Assinar como contratante</option>
+                                        <option value="joint_debtor">Assinar como devedor solidário</option>
+                                        <option value="issuer">Assinar como emitente</option>
+                                        <option value="manager">Assinar como gestor</option>
+                                        <option value="buyer">Assinar como parte compradora</option>
+                                        <option value="seller">Assinar como parte vendedora</option>
+                                        <option value="attorney">Assinar como procurador</option>
+                                        <option value="legal_representative">Assinar como representante legal</option>
+                                        <option value="co_responsible">Assinar como responsável solidário</option>
+                                        <option value="validator">Assinar como validador</option>                                    
+                                    </select>
+                                    <div class="input-group-addon text-success">
+                                        <i class="fa fa-plus" title="Adicionar Participação" onclick="jsSignatarioCad_adicionaParticipacao()"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="col-lg-12">
+                            <div class="form-group form-group-sm" id="particiacao_signatario">
+                                <label>Participações</label>
+                                <div id="listaParticipacoes" class='form-control'>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="signatario_participacoes" id="signatario_participacoes">
+                    </div>
+                    <div class="alert alert-warning text-center" id="div_alert_campos" style="display:none;margin-top: 5px">
+
+                    </div>
+                    <div style="margin-top:5px">
+                        <button type="button" class="btn btn-primary" onclick="jsSignatarioCad_Incluir()" id="btnSalvarSignatario">Incluir</button>
+                        <button type="button" class="btn btn-warning pull-right" onclick="jsSignatarioCad_Cancelar()">Cancelar</button>                        
+                    </div>
+                </div>
+                <!-- FIM FORMULARIO CADASTRO SIGNATARIO -->
+            </div>
+        </div>
+    </div>
+</div>

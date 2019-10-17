@@ -1,0 +1,77 @@
+<!-- t_uploadfile.html -->
+<div id="DivFolderSelFile" >
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title" id="modal-title-fd">Selecionar {TIPOARQUIVO}</h4>
+        {FOOTER_TEXT_FIELD}
+    </div>
+    <div class="modal-body">
+        <div class="hidden">
+            <form method="POST" enctype="multipart/form-data" name="formFD{FIELDID}" id="formFD{FIELDID}">
+                <div class="row">
+                    <div class="col-md-12 form-group" >
+                        <!-- <label>Arquivo</label><input class="form-control-file" name="file{FIELDID}" type="file" size="40" id="file{FIELDID}" onchange="var filename = $('#file{FIELDID}').val(); $('#nomeArquivo').val(filename.size);">  -->
+                        <!-- BEGIN BLOCK_SEL_ARQUIVO -->
+                        <input class="form-control-file hidden" name="file{FIELDID}" type="file"  id="file{FIELDID}" onchange="jsValidaArquivoEnviado('file{FIELDID}', {MAXFILESIZEBYTES})" accept="{ACCEPT_FILES}" readonly=""> 
+                        <!-- END BLOCK_SEL_ARQUIVO -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        Tamanho máximo do arquivo: {MAXFILESIZE}
+                    </div>            
+                </div>
+                <input type="hidden" value="{PROCID}" name="ProcId" id="ProcId">
+                <input type="hidden" value="{CASENUM}" name="CaseNum" id="CaseNum">
+                <input type="hidden" value="{FIELDID}" name="FieldId" id="FieldId"> 
+                <input type="hidden" value="1" name="valueId" id="valueId">
+                <input type="hidden" value="{USERID}" name="userId" id="userId">
+                <input type="hidden" value="{TIPOCAMPO}" name="tipoCampo" id="tipoCampo">                
+                <!--- CAMPOS PARA ARQUIVO EM REPOSITORIO -->
+                <input type="hidden" value="{PROCID_REPOSITORIO}" name="procId" id="procId">
+                <input type="hidden" value="{STEPID_REPOSITORIO}" name="stepIdForm" id="stepIdForm">
+                <!-- BEGIN BLOCK_SEL_ARQUIVO_REPOSITORIO -->
+                <input class="form-control-file hidden" name="arquivoUpload" type="file"  id="file{FIELDID}" onchange="jsValidaArquivoEnviado('file{FIELDID}', {MAXFILESIZEBYTES})" accept="{ACCEPT_FILES}" readonly=""> 
+                <!-- END BLOCK_SEL_ARQUIVO_REPOSITORIO -->
+            </form>
+        </div>
+        <div class="box">
+            <div class="overlay" id="OverlayWaitingSendFile" style="display: none">
+                <i class="fa fa-refresh fa-spin"></i>     
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1>Enviando Arquivo <span id="spanDadosArquivoUpload"></span></h1>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-primary progress-bar-striped" id="progressBarFile" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="sr-only"><span id="porcentagemValorFile">0</span>% Completo</span>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12 form-group" id="divNomeArquivo">
+                        <label>Arquivo:</label><input type="text" id="nomeArquivo" class="form-control input-sm" name="nomeArquivo" readonly/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-xs-4">
+                        <button class="btn btn-primary" onclick="$('#file{FIELDID}').click()">Selecionar Arquivo</button>                
+                    </div>            
+                </div>        
+                <small>Tamanho máximo do arquivo: {MAXFILESIZE}</small>
+            </div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" id="progressBarCaptura" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                <span class="sr-only"><span id="porcentagemValorFolderCaptura">%</span> Completo</span>
+            </div>
+        </div>
+        <div class="modal-footer" id="divBoxAcaoEnviarArquivo">        
+            <button name="Input" class="btn btn-success pull-left" type="button" id="buttonEnviar" onclick="{ACAO_UPLOAD}" disabled ><i class="fa fa-upload"></i> Enviar</button>
+            <button name="Input2" class="btn btn-default pull-right" type="button"  onClick="CancelaSelArquivo()" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+        </div>
+    </div>
+</div>

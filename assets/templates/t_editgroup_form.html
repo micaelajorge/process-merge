@@ -1,0 +1,37 @@
+<div class="modal fade" id="crModalEditUser" tabindex="-1" role="dialog" aria-labelledby="crModalEditUser" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="divEditUser" style="display: none">
+            </div>
+            <div id="divLoading">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel"><span class="{CLASS_COR_ICONE}"><li class="fa fa-users fa-2x"></li> {TEXTO_TITULO}</span></h4>   
+                </div>                  
+                <div class="modal-body">      
+                    <form name="frmDadosGrupo" id="frmDadosGrupo">
+                        <div class="row">
+                            <div class="col-lg-12 form-group form-group-sm">
+                                Nome do Grupo
+                                <input class="form-control input-sm" type="text" name="GROUP_NAME" id="GROUP_NAME" value="{GROUP_NAME}">                            
+                            </div>
+                            <div class="col-lg-12 form-group form-group-sm">
+                                Descrição Grupo
+                                <input class="form-control input-sm" type="text" name="GROUP_DESC" id="GROUP_DESC" value="{GROUP_DESC}">                            
+                            </div>
+                        </div>
+                        <input type="hidden" value="{GROUP_ID}" name="GROUP_ID" id="GROUP_ID">
+                    </form>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-lg-12 text-left">
+                                <button type="button" class="btn btn-sm btn-primary pull-left" onclick="jsSalvarGrupo()"><i class="fa fa-archive"></i> Salvar</button>
+                                <button type="button" class="btn btn-sm btn-default pull-right" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

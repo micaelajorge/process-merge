@@ -1,0 +1,59 @@
+<!-- BEGIN BLOCK_VOTO -->
+<div class="box box-solid box-primary">
+    <div class="box-header">
+        <h1 class="box-title">Item em Pauta</h1>
+    </div>
+    <div class="box-body">
+        <div class="col-lg-12">
+            {DESCRICAO_VOTO}
+        </div>
+    </div>    
+    <div class="box-footer">        
+        <button class="bnt btn-sm btn-success" style="width: 100px" id="btn_sim{ITEM}" onclick="js_voto_cotista({ITEM}, 'sim')" type="button"><i class="fa fa-check-circle"></i> Sim</button>
+        <button class="bnt btn-sm btn-warning" style="width: 100px" id="btn_nao{ITEM}" onclick="js_voto_cotista({ITEM}, 'nao')" type="button"><i class="fa fa-times-circle"></i> Não</button>
+        <button class="bnt btn-sm btn-default" style="width: 100px" id="btn_abter{ITEM}" onclick="js_voto_cotista({ITEM}, 'abster')" type="button"><i class="fa  fa-circle-o"></i> Abster</button>
+        <input type="hidden" id="votos" value="[]">
+        <input type="hidden" id="totalVotos" value="{TOTAL_VOTOS}">
+        <span>Voto: <span id="voto{ITEM}">Aguardando Voto</span></span>        
+    </div>
+</div>
+<!-- END BLOCK_VOTO -->
+<div class="row" style="margin-top: 10px">
+    <div class="col-lg-12 text-center">
+        <span class="pull-left">Votos efetuados <span id="VOTOS_EFETUADOS">0</span> de <span>{TOTAL_VOTOS}</span></span> <button class="btn btn-sm btn-primary" style="width: 100px" type="button" disabled="" id="btnEncerraVoto" onclick="$('#modalVoto').modal()"><i class="fa fa-check"></i> Encerrar Voto</button> 
+    </div>
+</div>
+
+<script src="expand/voto_cotista/js_voto_cotista.js?{RELEASE_SCRIPT|constant:RELEASE_SCRIPT}"></script>
+
+<div class="modal" id="modalVoto">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Voto Computado</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="text-center">Seu voto foi computado.</h3>
+                        <h4 class="text-center">Resumo do Voto</h4>
+                    </div>
+                </div>
+                <!-- BEGIN BLOCK_ITEMS_VOTO -->
+                <div class="row">                    
+                    <div class="col-lg-12">
+                        <div class="box box-primary">
+                            <div class="box-body">
+                                <div class="col-lg-8 col-lg-offset-2">
+                                    <h4>Item {ID_ITEM}: <span id="RESULTADO_VOTO_{ITEM}"></span></h4>
+                                </div>        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END BLOCK_ITEMS_VOTO -->
+            </div>
+        </div>
+    </div>
+</div>
+

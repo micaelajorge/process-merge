@@ -1,0 +1,14 @@
+{DISPLAYCAMPO}
+<!-- BEGIN BLOCO_SELECIONAR_CASO -->
+<!--<button type="button" title="Selecionar Caso" data-toggle="modal" data-target="#dcModal{FIELDID}" onClick="JSselecionaDoc('{TABLESOURCE}','{DISPLAYFIELD}', '{FIELDID}', '{VALORCAMPO}')" class="btn btn-primary btn-outline btn-xs">Selecionar</button>&nbsp;-->
+<a type="button" title="Selecionar Caso" data-toggle="modal" data-target="#dcModal{FIELDID}" onClick="jsCarregaSelecaoCaso('{TABLESOURCE}','{DISPLAYFIELD}', '{FIELDID}', '{VALORCAMPO}')" class="btn btn-primary btn-xs">Selecionar</a>&nbsp;
+<!-- END BLOCO_SELECIONAR_CASO -->    
+<button id="{IDBUTTONVISUALIZAR}" type="button" title="Visualizar Caso" {DISABLEDVISUALIZAR}  onClick="JSvisualizaDoc(document.getElementById('t{FIELDID}').value, '{TABLESOURCE}')" class="btn btn-primary btn-xs">Visualizar</button>
+<input type="hidden" name="t{FIELDID}" id="t{FIELDID}" value="{VALORCAMPO}">
+<div class="modal fade" id="dcModal{FIELDID}" tabindex="-1" role="dialog" aria-labelledby="dcModalLabel{FIELDID}" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content" id="DivModal{FIELDID}">
+            
+        </div>
+    </div>
+</div>  

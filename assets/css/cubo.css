@@ -1,0 +1,11 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/11/2018, 22:46:18
+    Author     : Marcelo Mosczynski <mmoscz@gmail.com>
+*/
+
+.rotate-90-ccw{-webkit-animation:rotate-90-ccw .4s cubic-bezier(.25,.46,.45,.94) both;animation:rotate-90-ccw .4s cubic-bezier(.25,.46,.45,.94) both}

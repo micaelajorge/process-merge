@@ -1,0 +1,79 @@
+<!-- INICIO TOOLBAR {Menu} -->
+<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+    <ul class="nav navbar-nav">
+        <!-- BEGIN BLOCK_TOOLBAR -->
+        <!-- BEGIN BLOCK_BOTAO_COLLAPSE -->
+        <li class="treeview">
+            <a href="javascript:" title="{BUTTON_TITLE}" tabindex="-1">
+                <!-- BEGIN BLOCK_BOTAO_ICON_COLLAPSE -->
+                <i class="{BUTTON_ICON}"></i>
+                <!-- END BLOCK_BOTAO_ICON_COLLAPSE -->
+                <span>{BUTTON_TEXT}</span>
+                <span class="pull-right-container">            
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <!--- LISTA OPCOES MENU -->
+            <ul class="treeview-menu">
+                <!-- BEGIN BLOCK_SELSTEPIDNOVOCASO -->
+                <li class="primary"><a onclick="{
+                            NOVOCASOACAO
+                        }" href="javascript:"><i class="fa fa-star-o"></i> {NOVOCASOSTEPNAME}</a></li>
+                <!-- END BLOCK_SELSTEPIDNOVOCASO -->
+            </ul>
+            <!--- FIM OPCOES MENU -->
+        </li>
+        <!-- END BLOCK_BOTAO_COLLAPSE -->
+
+        <!-- BEGIN BLOCK_BOTAO_LEFT -->
+        <li>
+            <a {BUTTON_ACTION} title="{BUTTON_TITLE}" href="javascript:"  tabindex="-1">
+                <!-- BEGIN BLOCK_BOTAO_ICON_LEFT -->            
+                <i class="{BUTTON_ICON}"></i>
+                <!-- END BLOCK_BOTAO_ICON_LEFT -->
+                <span>{BUTTON_TEXT}</span>
+            </a>
+        </li>
+        <!-- END BLOCK_BOTAO_LEFT -->    
+
+        <!-- BEGIN BLOCK_BOTAO_MODAL -->
+        <li>
+            <a href="javascript:" id="modalMenuButton" data-toggle="modal" data-target="#historicoModal" aria-haspopup="true" {BUTTON_ACTION} title="{BUTTON_TITLE}"  tabindex="-1">
+                <!--        <button class="btn  btn-outline btn-primary" type="button" id="modalMenuButton" data-toggle="modal" data-target="#historicoModal" aria-haspopup="true" {BUTTON_ACTION}>-->
+                <!-- BEGIN BLOCK_BOTAO_ICON_MODAL -->            
+                <i class="{BUTTON_ICON}"></i>
+                <!-- END BLOCK_BOTAO_ICON_MODAL -->
+                <span class="visible-lg-inline visible-md-inline">{BUTTON_TEXT}</span>
+                <!--        </button>-->
+            </a>
+        </li>
+        <!-- END BLOCK_BOTAO_MODAL -->        
+        <!-- BEGIN BLOCK_BOTAO_RIGHT -->
+        <li>
+            <a {BUTTON_ACTION} title="{BUTTON_TITLE}" href="javascript:"  tabindex="-1">
+                <!-- BEGIN BLOCK_BOTAO_ICON_RIGHT -->
+                <i class="{BUTTON_ICON}"></i>
+                <!-- END BLOCK_BOTAO_ICON_RIGHT -->
+                <span>{BUTTON_TEXT}</span>
+            </a>
+        </li>
+        <!-- END BLOCK_BOTAO_RIGHT -->
+        <!-- BEGIN BLOCK_BOTAO_DROPDOWN_ITENS -->
+        <li>
+            <a href="javascript:" {BUTTON_ACTION} class="dropdown-toggle" data-toggle="dropdown" title="{BUTTON_TITLE}">  
+                <!-- BEGIN BLOCK_BOTAO_ICON_DROPDOWN_ITENS -->
+                <i class="{BUTTON_ICON}"></i>
+                <!-- END BLOCK_BOTAO_ICON_DROPDOWN_ITENS -->
+                <span class="hidden-xs" >{BUTTON_TEXT}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    {TOOLBAR_DROPDOWN}
+                </li>
+            </ul>
+        </li>
+        <!-- END BLOCK_BOTAO_DROPDOWN_ITENS -->                
+        <!-- END BLOCK_TOOLBAR -->
+        <!-- FIM TOOLBAR -->
+    </ul>
+</div>

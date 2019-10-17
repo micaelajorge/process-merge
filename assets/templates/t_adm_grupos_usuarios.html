@@ -1,0 +1,29 @@
+<div class="row" style="{STYLE_HIDE_PERMISSOES}" id="permissoesEntidade">
+    <div class="col-lg-12">
+        <form name="frmDadosEntidade" id="frmDadosEntidade">
+            <div class="row">                                                         
+                <div class="col-lg-12 form-group">
+                    <div class="col-lg-4"></div>                                
+                    <input type="checkbox" name="VIEW_QUEUE" id="VIEW_QUEUE" {VIEWQUEUE_CHECKED} value='1' {VIEWQUEUE_DISABLED}>
+                    <label>Permitir Visualizar fila</label>
+                </div>
+                <div class="col-lg-12 form-group">                                
+                    <div class="col-lg-4"></div>
+                    <input type="checkbox" name="EDIT_ITEM" id="EDIT_ITEM" {EDIT_CHECKED} onclick="jsClickPermissaoEditar()" value='1' {EDIT_DISABLED}>
+                    <label>Permitir editar Item</label>
+                </div>
+                <div class="col-lg-12 form-group">     
+                    <div class="col-lg-4"></div>
+                    <input type="checkbox" name="CRIAR_NOVO" id="CRIAR_NOVO" {CRIARNOVO_CHECKED} {CRIARNOVO_DISABLED} value='1'>
+                    <label>Permitir criar Novo Item</label>
+                </div>
+            </div>
+            <input type="hidden" value="0" id="TypePesqSelUser" name="TypePesqSelUser">
+            <input type="hidden" value="{GROUPID}" name="GROUPID" id="GROUPID">
+            <input type="hidden" value="{GRPFLD}" name="GRPFLD" id="GRPFLD">
+            <input type="hidden" value="{PROCID}" name="PROCID" id="PROCID">
+            <input type="hidden" value="{STEPID}" name="STEPID" id="STEPID">
+            <input type="hidden" value="{ADDEDIT}" name="ADDEDIT" id="ADDEDIT">
+        </form>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<!-- INICIO WRAP FIELDS -->
+<!-- BEGIN BLOCO_CAMPO_NORMAL -->
+<!-- 
+################################################################################
+################################################################################
+
+Normal FieldId: {FIELD_ID} FieldName: {FIELD_NAME} FieldType: {FIELD_TYPE} {FIELDCODE}
+
+################################################################################
+-->    
+<div class="{CLASSEFORMULARIO} control-form" style="min-height: 60px" field_type='{FIELD_TYPE}'>    
+    <div  id="STATUS_F{TIPOCAMPO}{FIELD_ID} ">             
+        <div class="{CLASSSTATUS}">
+            <{TIPO_LABEL_CAMPO|default:label} class="control-label">{FIELD_NAME}</{TIPO_LABEL_CAMPO|default:label}>
+        </div>
+        <a name="Hook{FIELD_ID}" id="Hookt{FIELD_ID}" class="{CLASSSTATUS}"></a>                                        
+        <div id="DivConteudoCampo{FIELD_ID}" title="{FIELD_DESC}">  
+            {CAMPOSFORMULARIO}
+        </div> 
+        <!-- BEGIN BLOCO_FOOTER_FIELD -->
+        {FOOTER_TEXT_FIELD}
+        <!-- END BLOCO_FOOTER_FIELD -->        
+    </div>
+</div>
+<!-- END BLOCO_CAMPO_NORMAL -->
+
+<!-- BEGIN BLOCO_CAMPO_FORMALIZACAO -->
+<!-- 
+################################################################################
+################################################################################
+
+Tipificacao
+
+FieldId: {FIELD_ID} FieldName: FIELD_NAME} FieldType: {FIELD_TYPE} 
+
+################################################################################
+-->  
+<div class="{CLASSEFORMULARIO}" style="min-height: 60px">
+    <!-- FieldId: {FIELD_ID} FieldName: {FIELD_NAME} FieldType: {FIELD_TYPE} -->    
+    <div  id="STATUS_F{TIPOCAMPO}{FIELD_ID} ">             
+        <a name="Hook{FIELD_ID}" id="Hookt{FIELD_ID}" class="{CLASSSTATUS}"></a>                                        
+        <div id="DivConteudoCampo{FIELD_ID}" title="{FIELD_DESC}">  
+            {CAMPOSFORMULARIO}
+        </div>                                        
+    </div>
+</div>
+<!--- 
+
+################################################################################
+
+-->
+
+<!-- END BLOCO_CAMPO_FORMALIZACAO -->                                    
+
+<!-- BEGIN BLOCO_CAMPO_SUBFORM -->
+{CAMPOSFORMULARIO}
+<!-- END BLOCO_CAMPO_SUBFORM -->
+
+<!-- BEGIN BLOCO_CAMPO_CABECALHO -->
+<!-- CAMPO CABECALHO {FIELDCODE} {FIELD_NAME}-{FIELD_ID} -->
+<div class="col-lg-4">
+    <span aria-code_cabecalho= "FIELDCODE" title="{FIELD_DESC}" style="cursor:pointer"><b>{FIELD_NAME}:</b> {FIELD_VALUE}</span>
+    <input aria-code="{FIELDCODE}" type="hidden" id="h{FIELD_ID}" name="h{FIELD_ID}" value="{FIELD_VALUEDB}" aria-type="field" />
+</div>
+<!-- FIM CAMPO CABECALHO ({FIELD_CODE})-->
+<!-- END BLOCO_CAMPO_CABECALHO -->
+
+<!-- BEGIN BLOCK_FORMCAPTURA -->
+<form id="formDataCaptura" name="formDataCaptura" enctype="multipart/form-data">  
+    <input type="file" name="arquivoUpload" id="arquivoUpload" value="arquivoUpload" onchange="jsHabilitaBotaoEnvio()">
+    {CAMPO_FORMULARIO_CAPTURA}
+</form>
+<!-- END BLOCK_FORMCAPTURA -->
+
+
+
+<!-- FIM WRAP FIELDS -->
+
+

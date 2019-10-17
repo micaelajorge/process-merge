@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <!-- BEGIN BLOCK_SEL_TIPOS_ASSINATURA -->
+            <div class="col-lg-3">
+                <input type="checkbox" aria-type-assing="{FIELD_CODE}" name="assing_{FIELDID}_{ASSING_TIPO}" id="assing_{FIELDID}_{ASSING_TIPO}" value="{ASSING_TIPO}" {TIPO_CHECKED} onclick="js_ext_tipo_assinatura_click('{FIELD_CODE}')"> <span class="text-blue">{ASSING_DESC}</span><br />
+            </div>
+            <!-- END BLOCK_SEL_TIPOS_ASSINATURA -->
+            <!-- BEGIN BLOCK_VIEW_TIPOS_ASSINATURA -->
+            <div class="col-lg-3">
+            <span class="badge {TIPO_BADGE}">{ASSING_DESC}</span>
+            </div>
+            <!-- END BLOCK_VIEW_TIPOS_ASSINATURA -->
+        </div>
+    </div>
+</div>
+<input aria-code="{FIELD_CODE}" aria-conversion="JSON" type="hidden" id="{TIPO_CAMPO}{FIELD_ID}" name="{TIPO_CAMPO}{FIELD_ID}" value="{FIELD_VALUE}" aria-field-code="{FIELD_CODE}">
+
+<!-- BEGIN BLOCO_JAVASCRIPT -->
+<script src="assets/js/{ARQUIVO_JS}?{RELEASE_SCRIPT|constant:RELEASE_SCRIPT}"></script>
+<!-- END BLOCO_JAVASCRIPT -->  

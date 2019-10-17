@@ -1,0 +1,8 @@
+{
+    "busca_cartorios": {
+        "GET": {
+            "page": "expand/busca_cartorions/ext_busca_cartorios.inc",
+            "funcao": ""
+        }            
+    }       
+}

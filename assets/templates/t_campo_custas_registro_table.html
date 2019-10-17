@@ -1,0 +1,43 @@
+<table class="table table-striped table-condensed table-bordered">
+    <col align="left">
+    <col align="left">
+    <col align="right">    
+    <col align="center">    
+    <thead>
+        <!-- BEGIN BLOCK_HEADER_EDITAR -->
+        <tr>
+            <th class="text-center" style="width:145px">Ações</th>
+            <th style="width:340px">Tipo Despesa</th>
+            <th style="width:145px">Item</th>
+            <th class="text-right" style="width:235px">Valor</th>
+        </tr>
+        <!-- END BLOCK_HEADER_EDITAR -->
+        <!-- BEGIN BLOCK_HEADER -->
+        <tr>
+            <th >Tipo Despesa</th>
+            <th >Item</th>
+            <th class="text-right">Valor</th>
+        </tr>
+        <!-- END BLOCK_HEADER -->
+    </thead>
+
+    <tbody>
+        <!-- BEGIN BLOCK_DETALHES --> 
+        <tr>
+            <!-- BEGIN BLOCK_EDITAR_DESPESA -->
+            <td class="text-center"><a href="javascript:jsCustosRegistroEditarDespesa({INDICE_DESPESA})" title="Editar Despesa"><i class="fa fa-edit text-primary"></i></a> <a href="javascript:jsCustasRegistroRemoverDespesa({INDICE_DESPESA})" title="Remover Despesa"><i class="fa fa-trash-o text-warning"></i></a></td>            
+            <!-- END BLOCK_EDITAR_DESPESA -->                        
+            <td>{TIPODESPESA}</td>
+            <td>{DESPESA}</td>
+            <td class="text-right">R$ {VALOR}</td>            
+        </tr>
+        <!-- END BLOCK_DETALHES --> 
+    </tbody>
+    <tfoot>
+        <tr>
+            <!-- TOTAL DA TABELA -->
+            <td colspan="{COLSOAN_TOTAL}"><b>Total</b></td>
+            <td class="text-right"><b>R$ {VALORTOTAL}</b></td>
+        </tr>
+    </tfoot>
+</table>

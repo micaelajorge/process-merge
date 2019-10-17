@@ -1,0 +1,45 @@
+<div class="modal fade" id="crModalQueueFilter" tabindex="-1" role="dialog" aria-labelledby="crModalEditUser" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Filtrar Fila</h4>   
+            </div>                  
+            <div class="modal-body">  
+                <div class="pre-scrollable" style="padding: 5px">
+                    <form name="frmQueueFilter" id="frmQueueFilter">
+                        <div class="row">
+                            <!-- BEGIN BLOCO_CAMPO_FILTRO -->
+                            <div class="col-lg-12 form-group form-group-sm">
+                                {CAMPO_NOME}
+                                <input class="form-control input-sm" type="text" name="Campo{CAMPO_ID}" id="Campo{CAMPO_ID}" aria-field-name="{CAMPO_NOME}" aria-field-id="{CAMPO_ID}" aria-field-type="{CAMPO_TIPO}" value="{CAMPO_VALOR}" >                            
+                            </div>
+                            <!-- END BLOCO_CAMPO_FILTRO -->
+                            <!-- BEGIN BLOCO_CAMPO_FILTRO_LT -->
+                            <div class="col-lg-12 form-group form-group-sm">
+                                {CAMPO_NOME}
+                                <select class="form-control input-sm" name="Campo{CAMPO_ID}" id="Campo{CAMPO_ID}" aria-field-name="{CAMPO_NOME}" aria-field-id="{CAMPO_ID}" aria-field-type="{CAMPO_TIPO}">
+                                    <option></option>
+                                    <!-- BEGIN BLOCO_OPCAO_LT -->
+                                    <option value="{OPT_VALOR}" {OPT_SELECTED}>{OPT_DESC}</option>
+                                    <!-- END BLOCO_OPCAO_LT -->
+                                </select>
+                            </div>
+                            <!-- END BLOCO_CAMPO_FILTRO_LT -->
+                        </div>
+                        <input type="hidden" value="{USUARIO_ID}" name="USUARIO_ID" id="USUARIO_ID">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12 text-left">
+                            <button type="button" class="btn btn-sm btn-primary pull-left" onclick="jsQueueFilter()"><i class="fa fa-filter"></i> Filtrar</button>
+                            <button type="button" class="btn btn-sm btn-warning pull-left" onclick="jsLimparFiltros()"><i class="fa fa-ban"></i> Limpar Filtros</button>
+                            <button type="button" class="btn btn-sm btn-default pull-right" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>  

@@ -1,0 +1,25 @@
+[
+    {
+        "descricao": "Endossante",
+        "valor": "endorser"
+    },
+    {
+        "descricao": "Endossatário",
+        "valor": "endorsee"
+    },
+    {
+        "descricao": "Testemunha",
+        "valor": "witness"
+    },
+    {
+        "descricao": "Cedente",
+        "valor": "transferor"
+    },
+    {
+        "descricao": "Representante Legal",
+        "valor": "legal_representative"
+    },
+    {
+        "descricao": "Cessionário",
+        "valor": "transferee"
+    }]

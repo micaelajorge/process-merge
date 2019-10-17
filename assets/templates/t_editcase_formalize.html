@@ -1,0 +1,214 @@
+<section class="content">
+
+    <div class="box"> <!-- TODO: BOOTSTRAP: TAMANHO DA PAGINA QDO CARREGA -->
+        <div class="box-body">
+            <div>                
+                <!-- Default box -->
+                <div>Tarefa: {STEPNAME}</div>
+                <div>Identificação: {CASENUM}</div>    
+                <!-- BEGIN BLOCK_LOCKED -->
+                <div>Aberto/Bloqueado por {LOCKEDBY}</div>
+                <!-- END BLOCK_LOCKED -->
+                {TOOLBAR}
+                <form action="fetchdata.php" {METODO_FORM} name="textos" onsubmit="return verifica(document.textos)">				
+                    <!-- Inicio Form -->
+                    <!-- BEGIN BLOCO_FORMALIZACAO -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-row">
+                                <div class="row">         
+                                    <div class="col-lg-6">
+                                        {CONTEUDO_FIELDS}
+                                    </div>                                 
+                                    <div class="col-lg-6">
+                                        {CAMPO_IMAGEM_FORMALIZACAO}
+                                    </div>
+                                </div>                                     
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END BLOCO_FORMALIZACAO -->
+                    <!-- BEGIN BLOCO_NORMAL -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            {CONTEUDO_FIELDS}
+                        </div>
+                    </div>
+                    <!-- END BLOCO_NORMAL -->
+                    <input name="ProcId" id="ProcId" type="hidden" value="{PROCID}" />
+                    <input name="StepId" id="StepId" type="hidden" value="{STEPID}" />
+                    <input name="CaseNum" id="CaseNum" type="hidden" value="{CASENUM}" />
+                    <input name="fechado" id="fechado" type="hidden" value="{FECHADO}" />
+                    <input name="Prioridade" id="Prioridade" type="hidden" value="{PRIORIDADE}" />	
+                    <input name="Pagina" id="Pagina" type="hidden" value="{PAGINA}" />
+                    <input name="AcaoAposProcessar" id="AcaoAposProcessar" type="hidden" value="{POSACTION}" />
+                    <input name="NewCaseCreate" id="NewCaseCreate" type="hidden" value="{NOVOCASO}" />                        
+                    <input name="Acao" type="hidden" value="" />
+                </form>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+</section>
+
+<!-- Fim DivMasterProcess -->	
+
+<!-- BPMSelUserForm -->
+
+<!-- BPMTickler -->
+<div id="DivMasterTickler" style="display:none">
+    <div id="DivConteudoTickler"> 
+        <div class="DivTopPopUp"> 
+            <div style="float:left" id="DivTituloAdHoc">Comentários do </div>
+            <input id="BotaoWindowClose" type="button" value="" onclick="EscondeTickler()" />
+        </div>
+    </div>
+</div>
+<!-- BPMTickler -->
+
+<div class="modal fade primary" id="fdModal" tabindex="-1" role="dialog" aria-labelledby="fdModal{FIELD_ID}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="DivModalFD">
+        </div>
+    </div>
+</div>  
+
+
+<!-- BPMAttachFileForm -->
+<div id="DivMasterUpload" style="display:none">
+    <div id="DivConteudoUpload">
+    </div>
+</div>
+<!-- BPMAttachFileForm -->
+
+<!-- BPMSelItemForm -->
+<div id="DivMasterLista" class="DivMasterLista" style="display:none;">
+    <div>
+        <div class="DivTopPopUp">
+            <div style="float:left">Seleção de Valor em Lista</div>
+            <input id="BotaoWindowClose" type="button" value="" onclick="EscondeDivSelLista()" /></div>
+        <div id="DivSelLista">
+            <div id="DivConteudoLista" >	
+            </div>
+            <div class="DivPanel">       
+                <table width="100%" border="0">
+                    <tbody>
+                        <tr> 
+                            <td width="45%">
+                                <div align="center"> 
+                                    <input name="AtualizaSelUser" type="button" class="buttonOk" value="Limpar" onclick="MudaItemLista('', '')" />
+                                </div>
+                            </td>
+                            <td width="55%">
+                                <div align="center"> 
+                                    <input name="CancelaSelUser" type="button" class="buttonCancel" value="Cancelar" onclick="EscondeDivSelLista()" />
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BPMSelItemForm -->
+
+<!-- BPMHistoricoCaso -->
+<div id="DivMasterHistorico_old" style="display:none">
+    <div class="DivDisplayDadosHistorico">
+        <div class="DivTopPopUp">    
+            <div style="float:left">Histórico</div>			
+            <input id="BotaoWindowClose" type="button" value="" onclick="EscondeHistorico()">
+        </div>	
+        <div id="DivConteudoHistorico">
+            <div id="DivNewWindowHistorico">
+                <a href="BPMEventListWindow.php" target="_blank" onclick="EscondeHistorico()">Abrir em nova janela</a>
+            </div>			
+            <div class="EventListScrool" id="EventListScrool_">
+                Carregando Histórico
+            </div>
+        </div>
+    </div>
+</div>
+<!-- BPMHistoricoCaso -->
+
+
+<!-- BPMAdHoc -->
+<div name="DivMasterAdHoc" id="DivMasterAdHoc" style="display:none">
+    <div name="DivConteudoAdHoc" id="DivConteudoAdHoc" onmouseover="AdHocOver()" onmouseout="AdHocOut()"> 
+        <div class="DivTopPopUp"> 
+            <div style="float:left" id="DivTituloAdHoc">
+                Enviar AdHoc
+            </div>
+            <input id="BotaoWindowClose" type="button" value="" onclick="EscondeAdHoc()">
+        </div>
+        <form name="FormAdHoc" method="get" action="">
+            <table border="0">
+                <tbody><tr id="DivDestinatarioAdHoc"> 
+                        <td align="right">Destinatário:</td>
+                        <td> 
+                            <input type="text" class="EditCaseTextSelUser" value="" readonly="True" size="30" id="rDestinatario" name="rDestinatario" />
+                            <input onmouseover="window.status = 'Selecionar'" onmouseout="window.status = ''" name="SelecionarUsuario" type="button" class="ButtonSel" id="SelUserDestinatario" value="..." onclick="JSselecionaUsuario('rDestinatario', 'tDestinatario', '', tDestinatario.value, '')" /> <input type="hidden" name="tDestinatario" id="tDestinatario" value=""/>
+                            <a href="javascript:void(0)" tabindex="-1" onclick="document.getElementById('tDestinatario').value = ''; document.getElementById('rDestinatario').value = ''">Limpar</a>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td align="right"> 
+                            <div id="TextoComentario">Comentário:</div>
+                        </td>
+                        <td>
+                            <textarea name="comentario" id="comentario" cols="60" rows="8" class="texto1black" onchange="Alterado = 0"></textarea>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td>&nbsp;</td>
+                        <td> 
+                            <div id="DivDeadTimeAdHoc">
+                                AdHoc expira em <input name="DeadTimeSoft" type="text" id="DeadTimeSoft" value="0" size="3" maxlength="3" /> minutos
+                            </div>
+                            <input name="StepId" type="hidden" value="{STEPID}" /> 
+                            <input name="Id" type="hidden" id="Id" value="" /> 
+                            <input name="nome" type="hidden" id="nome" value="" /> 
+                            <input name="CaseNum" type="hidden" id="CaseNum" value="{CASENUM}" /> 
+                            <input name="ProcId" type="hidden" id="ProcId" value="{PROCID}" /> 
+                            <input name="FieldId" type="hidden" id="FieldId" value="0" /> 
+                            <input name="Edit" type="hidden" id="Edit" value="" /> 
+                            <input name="Tickler" type="hidden" id="Tickler" value="" /> 
+                            <input name="Close" type="hidden" id="CloseAdHoc" value="" /> 
+                            <input name="DeadSoftOriginal" type="hidden" id="DeadSoftOriginal" value="" /> 
+                            <input name="DeadHardOriginal" type="hidden" id=DeadHardOriginal" value="" /> 
+                            <input name="Adicionar" type="hidden" id="Adicionar" value="" /> 
+                        </td>
+                    </tr>
+                </tbody></table>
+        </form>
+        <div id="BotoesOkCancel">
+            <input name="Enviar" type="button" value="Enviar" onclick="ValidaAdHoc(1)" />
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="historicoModal" tabindex="-1" role="dialog" aria-labelledby="historicoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" id="DivModal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title " id="myModalLabel">Histórico</h4>
+            </div>
+            <div class="modal-body" id="EventListScrool">
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>        
+
+
+<!-- BPMAdHoc -->

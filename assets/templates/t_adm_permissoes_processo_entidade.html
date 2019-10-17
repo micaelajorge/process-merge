@@ -1,0 +1,41 @@
+<div class="modal fade" id="crModalEditPermissoes" tabindex="-1" role="dialog" aria-labelledby="crModalEditUser" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="divEditUser" style="display: none"></div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel"><span class="{CLASS_COR_ICONE}"> <li class="fa fa-user fa-2x"></li> <span id="TITULO_EDITAR" style="{STYLE_TEXTO_EDITAR}">{TEXTO_TITULO_EDITAR}</span> <span id="TITULO_INSERIR" style="{STYLE_TEXTO_INSERIR}">{TEXTO_TITULO_INSERIR}</span></span></h4>   
+            </div>                  
+            <div class="modal-body">   
+                <div  class="alert alert-info text-center" style="{STYLE_NOME_USUARIO}" id="tituloEntidade"><span> Usuário/Grupo "<span id="nomeUsuario">{USERNAME}</span>"</span></div>
+                <div style="{STYLE_SEARCH}" id="searchEntidade">
+                    <div class="row" >
+                        <div class="col-lg-12">
+                            <label>Usuário / Grupo</label>
+                            <div class="input-group input-group-sm">
+                                <input class="form-control input-sm" id="Filtrar" name="Filtrar" type="text" onkeyup="jsKeyUpFiltro(event)"><span class="input-group-btn"><button title="Buscar Usuários / Grupos" onclick="JSBuscaListaUsersGroups('')" class="btn btn-info btn-flat" type="button" id="btnEfetuaBusca"><i class="fa fa-search"></i></button></span>
+                            </div>    
+                        </div>                      
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="DivConteudoUser">                            
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="TIPOFILTRO" id="TIPOFILTRO" value="{TIPOFILTRO}">                       
+                {FORM_ENTIDADE}
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button type="button" id="BTN_SALVAR" class="btn btn-sm btn-primary pull-left" onclick="jsSalvarPermissoes()" {DISABLED_SALVAR}><i class="fa fa-archive"></i> Salvar</button>
+                            <button type="button" class="btn btn-sm btn-danger pull-left {BOTAO_PAGAR_HIDDEN}" onclick="jsRemoverEntidade('{ENTIDADE}')"><i class="fa fa-trash-o"></i> Excluir</button>
+                            <button type="button" class="btn btn-sm btn-default pull-right" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

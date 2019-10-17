@@ -1,0 +1,83 @@
+<!-- 
+
+t_editcase_webcaptura.html 
+
+-->
+<div class="modal fade" id="capturaModal" tabindex="-1" aria-labelledby="capturaModalLabel" aria-hidden="true">
+    <!--<div class="modal fade" id="capturaModal" tabindex="-1" role="dialog" aria-labelledby="capturaModalLabel" aria-hidden="true">-->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-aqua">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title " id="myModalLabel">Novos documentos do Processo</h4>
+            </div>
+            <div class="modal-body" id="EventListScrool">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tab_anexar" data-toggle="tab"><span class="text-primary"><i class="fa fa-upload"></i> Anexar Documentos</a></span></li>
+                        <li>
+                        <li>
+                            <a href="#tab_captura" data-toggle="tab"><span class="text-primary"><i class="fa fa-camera"></i> Capturar Documentos</a></span></li>
+                        <li>
+                    </ul>
+                    <div class="tab-content">                        
+                        <div class="tab-pane active" id="tab_anexar">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="divAnexarArquivos">
+                                        <div  class="form-group">
+                                            Arquivo Upload: <b><span id="nomeArquivoSelecionado"></span></b>
+                                        </div>                                        
+                                        <button class="btn btn-default btn-sm" type="button" onclick="$('#arquivoUpload').click()">Selecionar Arquivo</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12" style="height: 300px;overflow: scroll">
+                                    <canvas id="pdfPreviewFile" style="width: 100%;display:none"></canvas>
+                                    <img style="width: 100%;display:none" id="imgPreviewFile"/>                            
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab_captura">
+                            <div class="row">
+                                <div class="col-lg-6 col-lg-offset-3">
+                                    <div id="dwtcontrolContainer" class="text-center"></div>
+                                    <button type="button" onclick="AcquireImage();" id="buttonDigitalizar" class="btn btn-success btn-sm pull-left"><i class="fa fa-camera-retro"></i> Digitalizar</button>
+                                    <button type="button" onclick="jsGuardarImagem()" id="buttonArmazenar" class="btn btn-success btn-sm pull-left" style="display:none"><i class="fa fa-save"></i> Guardar Imagem</button>                                              
+                                    <button type="button" id="buttonDescartar"    id="buttonDescartar" class="btn btn-warning btn-sm pull-right"><i class="fa fa-trash-o"></i> Descartar</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <button type="button" class="btn btn-primary btn-sm pull-left"  id="buttonEnviarWebCaptura" onclick="jsUploadImage()"><i class="fa fa-save"></i> Enviar</button>                                    
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divFormCaptura" class="hidden">
+                </div>                       
+                <div class="progress">
+                    <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" id="progressBarCaptura" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <span class="sr-only"><span id="porcentagemValorFolderCaptura">%</span> Completo</span>
+                    </div>
+                </div>                
+                <div class="alert alert-info text-center" id="divAlertDocumentoEnviado" style="display:none">
+                    Arquivo <b><span id="nomeArquivoAnterior"></span></b> anexado
+                </div>
+                <div class="alert alert-warning text-center" id="divAlertDocumentoEnviadoErro" style="display:none">
+                    Falha ao anexar arquivo: erro <b><span id="erroAnexar"></span></b>
+                </div>
+                <div class="modal-footer">                                        
+                    <button id="btnEnvio" type="button" class="btn btn-primary btn-sm pull-left"  id="buttonEnviarWebCaptura" onclick="jsUploadDocument()" disabled><i class="fa fa-save"></i> Enviar</button>                                    
+                    <button type="button" class="btn btn-default btn-sm pull-right" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->

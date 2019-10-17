@@ -1,0 +1,25 @@
+<div class="modal fade" id="crModalEditPermissoes" tabindex="-1" role="dialog" aria-labelledby="crModalEditUser" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="divEditUser" style="display: none">
+            </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel"><span class="{CLASS_COR_ICONE}"><li class="fa fa-user fa-2x"></li> <span id="TITULO_INSERIR">Grupos do Usuário "{USERNAME}"</span></span></h4>   
+            </div>                  
+            <div class="modal-body" >   
+                <div style="min-height: 300px" id="listagrupos">
+                    {CONTEUDO_GRUPOS}
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <!--<button type="button" id="BTN_SALVAR" class="btn btn-sm btn-primary pull-left" onclick="jsSalvarPermissoes()" {DISABLED_SALVAR}><i class="fa fa-archive"></i> Salvar</button>-->
+                        <!--<button type="button" class="btn btn-sm btn-danger pull-left {BOTAO_PAGAR_HIDDEN}" onclick="jsRemoverEntidade('{ENTIDADE}')"><i class="fa fa-trash-o"></i> Excluir</button>-->
+                        <button type="button" class="btn btn-sm btn-default pull-right" data-dismiss="modal" id="CANCELAR_ENTIDADES"><i class="fa fa-ban"></i> Cancelar</button>
+                        <button type="button" class="btn btn-sm btn-default pull-right" onclick="jsCancelarPesquisaEntidades()" id="CANCELAR_SEL_ENTIDADE" style="display:none"><i class="fa fa-ban"></i> Cancelar</button>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>  

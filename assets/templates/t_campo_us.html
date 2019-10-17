@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-lg-6 col-md-6 col-xs-6">
+        {DISPLAYCAMPO}
+    </div>
+    <!-- BEGIN BLOCO_SELECIONAR_USUARIO -->    
+    <div class="col-lg-6 col-md-6 col-xs-6">
+        <button type="button"  id="SelUser{FIELDID}" name="SelUser{FIELDID}" title="Selecionar Usuário" data-toggle="modal" data-target="#Modal{FIELDID}" onclick="JSselecionaUsuarioEditCase('r{FIELDID}', 't{FIELDID}', '0', 't{FIELDID}.value', '')" class="btn btn-primary"><li class="fa fa-edit"></li><span class="visible-lg-inline visible-md-inline"> Selecionar</span></button>
+        <button id="limpar{FIELDID}" name="limpar{FIELD_ID}" type="button" title="Limpar Usuário"  onclick="document.getElementById('t{FIELDID}').value = ''; document.getElementById('r{FIELDID}').value = ''; return false;" class="btn btn-primary pull-right"><li class="fa fa-trash-o"></li><span class="visible-lg-inline visible-md-inline"> Limpar</span></button>
+        <input type="hidden" name="t{FIELDID}" id="t{FIELDID}" value="{FIELD_VALUE}" />
+    </div>
+    <!-- END BLOCO_SELECIONAR_USUARIO -->    
+</div>
+<div class="modal fade" id="Modal{FIELDID}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel{FIELDID}" aria-hidden="true" >
+    <div class="modal-dialog">
+        <div class="modal-content" id="DivModal{FIELDID}">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title " id="myModalLabel">Seleção de Usuário</h4>
+            </div>
+            <div id="DivMasterUser" style="margin: 5px">                                
+                <p>
+                    Sele&ccedil;&atilde;o por:&nbsp;   
+                    <label for="TypePesqSelUser">Usu&aacute;rio</label>&nbsp;<input type="radio" name="TypePesqSelNome"  value="0" id="TypePesqSelUser" checked />&nbsp;
+                    <label for="TypePesqSelNome">Nome</label>&nbsp;<input type="radio" name="TypePesqSelNome" value="1" id="TypePesqSelNome" />                                        
+                </p>
+                <div class="input-group">
+                    <input  type="text" id="Filtrar" class="form-control input-sm" name="FILTRAR{FIELD_ID}" value=""  onkeyup="JSBuscaListaUsersGroups('')"/>   
+                    <span class="input-group-addon">
+                        <a type="button" onclick="JSBuscaListaUsersGroups('')" ><i class="fa fa-search"></i></a>
+                    </span>
+                </div>
+                <div id="DivConteudoUser" class="modal-body">
+                    <div class="DivListaUser">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">                
+                <button  id="selButtonr{FIELDID}" type="button"  name="AtualizaSelUser{FIELDID}" disabled title="Selecionar Usuario" onclick="$('#Modal{FIELDID}').modal('hide'); jsAtualizaUser(uValor, dValor)" class="btn btn-primary">Selecionar</button>
+            </div>
+        </div>
+    </div>
+</div>  
+

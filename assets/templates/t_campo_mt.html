@@ -1,0 +1,20 @@
+<!-- BEGIN BLOCO_EDITAR_MT -->
+<div class="input-group">
+    <textarea  name="t{FIELDID}" id="t{FIELDID}" class="form-control input-sm" style="resize: none"></textarea><span class="input-group-addon"></span>
+</div>
+<!-- END BLOCO_EDITAR_MT -->
+    <button type="button" class="btn btn-primary btn-xs" id="abreHistorico{FIELDID}" name="abreHistorico{FIELDID}" data-toggle="modal" data-target="#Modal{FIELDID}"
+        <!-- BEGIN BLOCO_ACIONA_HISTORICO --> 
+        onclick="JSmostraHistoricoCampo({PROCID}, {FIELDID}, {CASENUM}); return false;"
+        <!-- END BLOCO_ACIONA_HISTORICO -->       
+        disabled                               
+        <!-- FINALLY BLOCO_ACIONA_HISTORICO -->
+         >Histórico {ENTRADAS}</button>
+<div class="modal fade" id="Modal{FIELDID}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel{FIELDID}" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content" id="DivModal{FIELDID}">
+            <div id="DivConteudoHistoricoCampo{FIELDID}">                
+            </div>
+        </div>
+    </div>
+</div>  

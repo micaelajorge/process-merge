@@ -1,0 +1,39 @@
+<div class="modal fade" id="capturaModal" tabindex="-1" aria-labelledby="capturaModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="capturaModal" tabindex="-1" role="dialog" aria-labelledby="capturaModalLabel" aria-hidden="true">-->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-aqua">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title " id="myModalLabel">Captura de Documentos</h4>
+            </div>
+            <div class="modal-body" id="EventListScrool">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div id="divDadosWebCaptura">
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="dwtcontrolContainer" ></div>
+                        <button type="button" onclick="AcquireImage();" id="buttonDigitalizar" class="btn btn-success btn-sm pull-left"><i class="fa fa-camera-retro"></i> Digitalizar</button>
+                        <button type="button" onclick="jsGuardarImagem()" id="buttonArmazenar" class="btn btn-success btn-sm pull-left" style="display:none"><i class="fa fa-save"></i> Guardar Imagem</button>                                              
+                        <button type="button" disabled id="buttonDescartar"    id="buttonDescartar" class="btn btn-warning btn-sm pull-right"><i class="fa fa-trash-o"></i> Descartar</button>
+                    </div>
+                </div>
+                <div class="row" style="display: none">
+                    <div class="col-lg-12">
+                        <br />
+                        <div class="pre-scrollable" style="min-height: 200px">
+                        </div>                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-sm pull-left"  id="buttonEnviarWebCaptura" onclick="jsUploadImage()"><i class="fa fa-save"></i> Enviar</button>
+                    <button type="button" class="btn btn-default btn-sm pull-right" data-dismiss="modal"><i class="fa fa-ban"></i> Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->

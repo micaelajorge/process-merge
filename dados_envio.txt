@@ -1,0 +1,1 @@
+{"document":{"content_base64":"data:;base64,","path":"\/"}}

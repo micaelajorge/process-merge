@@ -1,0 +1,39 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29/07/2018, 00:31:24
+    Author     : Marcelo Mosczynski <mmoscz@gmail.com>
+*/
+
+.selprocesso {
+    border : 1px solid #999;
+    margin: 5px;
+}
+
+.selprocesso .icon {
+    font-size: 40px;
+    float: left;
+    display: inline;
+}
+
+.selprocess-dados {
+    display: inline;
+}
+
+
+@-webkit-keyframes blinker {
+  from {opacity: 1.0;}
+  to {opacity: 0.0;}
+}
+
+.blink {
+	text-decoration: blink;
+	-webkit-animation-name: blinker;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:ease-in-out;
+	-webkit-animation-direction: alternate;
+}

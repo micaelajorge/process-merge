@@ -1,0 +1,35 @@
+<div class="box box-default">
+    <div class="box-header" style="padding-top: 20px">        
+        <div class="col-lg-12">
+            <div class="box-title text-primary"><i class="fa fa-files-o" id="documentos_processo_icone"></i> Documentos do Processo</div>
+        </div>
+        <!--        <div class="col-lg-12" style="display:none">
+                    <button type="button" class="btn btn-primary btn-sm pull-right" {BOTAO_CAPTURAR_DISABLED} onclick="jsWebCapturaDocumentoCT({PROCDOCID}, {DOCID_DEFAULT}, {CASENUM_PAI})"><i class="fa fa-camera"></i> Anexar Arquivos</button>
+                </div>-->
+        <div class="col-lg-12 hidden-xs hidden-xl">
+            <small><i class="fa fa-file text-orange"></i> Documentos Requeridos</small> <small><i class="fa fa-file text-green"></i> Documentos Anexados</small>
+        </div>            
+    </div>
+    <div class="box-body">
+        <div class="box-group" id="accordion">
+            <!-- BEGIN BLOCO_DOCUMENTO -->
+            <div class="panel box {TIPOBOXDOCUMENTOOPCIONAL}" aria-documento-obrigatorio="{DOCUMENTOOBRIGATORIO}" aria-document-code="{DOCUMENT_CODE}" aria-document-id="{DOCID}">
+                <div class="box-header">                    
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse{DOCID}" aria-expanded="false" class="collapsed" onclick="jsViewFilesDocCT({PROCDOCID}, {DOCID}, {PROCID}, {CASENUM_PAI})">
+                        <span class="{CORTEXTODOCUMENTO} texto-documento"> {NOMEDOCUMENTO}</span> <small class="{CORTEXTODOCUMENTO}">Arquivos: <span id="TOTAL_DOCS_{DOCID}" class="total-imagens">{TOTAL_IMAGENS_DOCUMENTO}</small> 
+                    </a>                    
+                    <span class="pull-right {HIDE_EDIT}">
+                        <small><a href="javascript:" onclick="jsWebCapturaDocumentoCT({PROCDOCID}, {DOCID}, {CASENUM_PAI})"><i class="fa fa-camera"></i> Anexar</a></small>                         
+                    </span>
+                </div>
+                <div id="collapse{DOCID}" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                    <div class="box-body">
+                        <div id="divImagens{DOCID}">                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END BLOCO_DOCUMENTO -->
+        </div>
+    </div>
+</div>

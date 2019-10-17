@@ -1,0 +1,18 @@
+{
+	"contrato": {
+		"originador_cnpj":"49631990000155",
+		"codigo_contrato_operacao_credito":"1515151515",
+		"id_registro_contrato": 273917,
+		"devedor_tipo_pessoa": 1,
+		"devedor_documento":"3411725778"
+	},
+	"parcela": {
+		"id_registro_parcela": 274843,
+		"data_vencimento_parcela":"2019-10-02T16:12:15.733",
+		"preco_cessao_parcela":"300"
+	},
+	"cessao":{
+		"aceito": 1,
+		"data_cessao":"2019-09-02T16:11:15.733"
+	}
+}

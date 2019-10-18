@@ -1,4 +1,5 @@
 <?php
+
 /*
   Criação: Marcelo Mosczynski <mmoscz@gmail.com>
   Data Criação 01/06/2018
@@ -8,23 +9,38 @@
 include_once(FILES_ROOT . "include/resource01.php");
 
 /**
+ * 
+ * @param array $listaArquivosRotas
+ */
+function incluiRotasArquivo($listaArquivosRotas)
+{
+    $retornoRotas = [];
+    foreach ($listaArquivosRotas as $arquivoRota) {
+        $rotasArquivo = carregaArrayRotas($arquivoRota);
+        if (is_array($rotasArquivo)) {
+            $retornoRotas = array_merge($retornoRotas, $rotasArquivo);
+        }
+    }
+    return $retornoRotas;
+}
+
+/**
  * Carrega as rotas existentes no sistema
  * 
  * @return type array com as rotas existentes
  */
-function carregaArrayRotas()
+function carregaArrayRotas($arquivoRotas = ARQUIVO_ROTAS)
 {
-    $arquivoRotasNome = FILES_ROOT . "assets/config/" . ARQUIVO_ROTAS;
-    // E:\desenvolvimento\PHPSistemas\Process\assets\config
+    $arquivoRotasNome = FILES_ROOT . "assets/config/" . $arquivoRotas;
     $conteudoArquivoRotas = file_get_contents($arquivoRotasNome);
-    $rotas = json_decode($conteudoArquivoRotas, true);
+    $rotasLidas = json_decode($conteudoArquivoRotas, true);
 
-    if (key_exists("rotas", $rotas)) {
-        $rotas_retorno = $rotas["rotas"];
-    } else {
-        $rotas_retorno = $rotas;
+    if (key_exists("rotas", $rotasLidas)) {
+        $rotas_retorno = $rotasLidas["rotas"];
     }
-
+    if (key_exists("arquivos", $rotasLidas)) {
+        $rotas_retorno = incluiRotasArquivo($rotasLidas["arquivos"]);
+    }
     return $rotas_retorno;
 }
 
@@ -186,21 +202,20 @@ function defineRota($p_dadosURI, $methodHTTP)
     // Gera os parametros através dos dados recebidos da URL
     geraParametrosRecebidosURL($paginaAcesso, $dadosURI, $rotaEncontrada);
 
-    
+
     $validadoToken = validaUsuarioToken();
 
-    
-    $userdef= $_SESSION["userdef"];
-    if ($userdef === null)
-    {
+
+    $userdef = $_SESSION["userdef"];
+    if ($userdef === null) {
         $userValidado = false;
     } else {
         $userValidado = $userdef->Validado;
     }
-        
-    $rotaRequerLogon = !isset($rotaEncontrada["logon"]);    
-    
-    if (!$userValidado & ($rotaRequerLogon & !$validadoToken) ) {
+
+    $rotaRequerLogon = !isset($rotaEncontrada["logon"]);
+
+    if (!$userValidado & ($rotaRequerLogon & !$validadoToken)) {
         error_log("Rota requer autenticacao: $dadosURI " . var_export($rotaEncontrada, true));
         error_log("Dados Sessao: " . var_export($_SESSION, true));
         header("HTTP/1.0 402 Usuario nao autenticado");

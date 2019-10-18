@@ -1,5 +1,4 @@
 <?php
-
 /*
   Criação: Marcelo Mosczynski <mmoscz@gmail.com>
   Data Criação 01/06/2018

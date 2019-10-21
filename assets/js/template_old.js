@@ -24,7 +24,7 @@ function Template(larquivo) {
             if (!that.fields[match[1]]) // Inclui o Field se n�o incluido
             {
                 that.fields.push(match[0]); // Adiciona o Campo a Lista de Campos
-                Object.defineProperty(Template, match[1], {set: function (valor) {
+                Object.defineProperty(that, match[1], {set: function (valor) {
                         that[match[0]] = valor;
                     }});
             }

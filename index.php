@@ -6,7 +6,7 @@
   Sistema: Creditus
  */
 
-define("RELEASE_SCRIPT", "0046");
+define("RELEASE_SCRIPT", "0047");
 define("LOG_DATA", false);
 
 function iniciarPhpSession()
@@ -174,8 +174,19 @@ switch ($servidor) {
                 define("INSTANCENAME", 'DM Card');
                 define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS_TESTE");
                 define("configDB", "db-teste");
-                $BPMDB = "processteste";
-                $EXTERNALDB = 'processteste';
+                $BPMDB = "process-new";
+                $EXTERNALDB = 'process-new';
+                break;
+
+            case "securities_start":
+                define("TEMASISTEMA", "skin-red");
+                define("INSTANCENAME", 'Securities Start');
+                define("SITE_FOLDER", "/securities_start/");
+                define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS_TESTE");
+                define("PARCEIRONAME", 'Clicksign');
+                define("ARQUIVO_ERROR_LOG_PHP", "log_securities_start/PHP_errors.log");
+                $BPMDB = "securities_start";
+                $EXTERNALDB = 'securities_start';
                 break;
 
             default:
@@ -185,6 +196,7 @@ switch ($servidor) {
                 define("INSTANCENAME", 'Process Local');
                 define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS");
                 define("configDB", "localhost");
+                define("PARCEIRONAME", 'Default');
                 $BPMDB = "processteste";
                 $EXTERNALDB = "processteste";
                 break;
@@ -194,12 +206,13 @@ switch ($servidor) {
         define("SITE_FOLDER_COMPLEMENT", "");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("SERVER_ADDRESS", $servidor);
-        define("ARQUIVO_ERROR_LOG_PHP", "log_local/PHP_errors.log");
+        if (!defined("ARQUIVO_ERROR_LOG_PHP")) {
+            define("ARQUIVO_ERROR_LOG_PHP", "log_local/PHP_errors.log");
+        }
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", false);
         define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
         define("LOGO_PARCEIRO_TOP", "icone-certdox-final.jpg");
-        define("PARCEIRONAME", 'Certdox');
         define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
         define("URL_OWNER", "https://www.certdox.com.br");
         define("NAME_OWNER", "Cerdox");
@@ -227,7 +240,7 @@ switch ($servidor) {
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
         define("FILES_FOLDER", "/");
-        define("FILES_UPLOAD", "/storage/alicred");        
+        define("FILES_UPLOAD", "/storage/alicred");
         define("INSTANCENAME", 'Alicred');
         define("SITE_FOLDER", "/");
         define("SITE_FOLDER_COMPLEMENT", "");

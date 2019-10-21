@@ -281,7 +281,8 @@ function trataUrl()
 //        $url = substr($url, 0, $posicaoComercial);
 //    }
 
-    if (SITE_ALIAS != "/") {
+    $siteAlias = SITE_ALIAS;
+    if ($siteAlias != "/") {
         // Monta o Regex para substituir apenas a primira parte da URL que contem o nome da URL
         $siteFolder = "/" . str_replace("/", '\/', SITE_FOLDER) . "/i";
         $dadosUrl = preg_replace($siteFolder, "", $url, 1);

@@ -18,18 +18,22 @@ function Template(larquivo) {
         that.fields = [];
         while ((match = patern.exec(completo)))
         {
+
             if (!that.fields[match[1]]) // Inclui o Field se n�o incluido
             {
                 that.fields.push(match[0]); // Adiciona o Campo a Lista de Campos
-                if (!Template.hasOwnProperty(match[1]))
-                {
-                    Object.defineProperty(Template, match[1], {set: function (valor) {
-                            that[match[0]] = valor;
-                        }});
-                }
-//                Object.defineProperty(Template, match[1], {set: function (valor) {
-//                        that[match[0]] = valor;
-//                    }});
+//                if (!that.hasOwnProperty(match[1]))
+//                {
+//                    console.log("valor match", match);
+//                    campoPropriedade = match[1];
+//                    Object.defineProperty(that, match[1], {
+//                        set: function (valor) {
+//                                console.log("este", valor);
+//                                this[campoPropriedade] = valor;
+//                            }
+//                        }
+//                    );
+//                }
             }
             completo = completo.replace(new RegExp(match[0], 'g'), "");
             //completo = completo.replace(match[0], ""); // Retira a Referencia

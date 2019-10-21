@@ -22,7 +22,7 @@ function api_change_contract()
 {
     $dadosEntrada = apiTrataDadosEntrada();
 
-    error_log("Dados Alteração CCB \n" . var_export($dadosEntrada, true));
+//    error_log("Dados Alteração CCB \n" . var_export($dadosEntrada, true));
 
     $caseNum = $dadosEntrada["caseNum"];
 

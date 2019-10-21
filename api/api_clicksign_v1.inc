@@ -541,6 +541,7 @@ function callback_clicksign()
 //    $retorno["receivedData"] = $dadosRecebidos;
 
     if (mysqli_error($connect)) {
+        error_log("Erro webhook \n" . mysqli_error($connect));
         header("HTTP/1.0 500");
         return;
     }
@@ -571,11 +572,12 @@ function hook_queue()
     $listHooks = array();
     foreach ($dadosRetornados as $dados) {
         $item["hookId"] = $dados["hookId"];
+        $item["hookEvent"] = $dados["hookEvent"];
+        $item["hookStatus"] = $dados["hookStatus"];
+        $item["document_key"] = $dados["document_key"];
+        $item["hookDateTime"] = $dados["hookDateTime"];
         $item["data"] = json_decode($dados["hookdata"]);
         $item["headers"] = json_decode($dados["hookHeaders"]);
-        $item["hookEvent"] = $dados["hookEvent"];
-        $item["document_key"] = $dados["document_key"];
-        $item["hookStatus"] = $dados["hookStatus"];
         $listHooks[] = $item;
     }
     $retorno["numRec"] = count($dadosRetornados);

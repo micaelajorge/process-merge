@@ -71,6 +71,8 @@ function showlog()
 
 // Adiciona o css especifico da página
 
+    $nomeArquivoErro = FILES_ROOT . ARQUIVO_ERROR_LOG_PHP;
+
     $t_body->ARQUIVO_JS = "errorlog.js"; // Incicializacao DataTables
     $t_body->block("BLOCO_JAVASCRIPT");
 
@@ -117,7 +119,7 @@ function showlog()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Popula Navegacao">
 // Se estiver apenas visualizando, não mostra a navegação
-    $t_body->NAV_HEADER_TEXT = "Relatórios";
+    $t_body->NAV_HEADER_TEXT = $nomeArquivoErro;
     $t_body->NAV_HEADER_ICO = "fa fa-file-text-o";
     $t_body->NAV_HEADER_COLOR = "";
     $t_body->NAV_HEADER_CLASS = "text-primary";
@@ -141,7 +143,7 @@ function showlog()
     $t_body->TITULO_PAGE = "Log de Erros | Process";
 // </editor-fold>
 
-    $nomeArquivoErro = FILES_ROOT . ARQUIVO_ERROR_LOG_PHP;
+
     if (file_exists($nomeArquivoErro)) {
 
         $conteudoArquivoErro = file_get_contents($nomeArquivoErro);

@@ -306,6 +306,31 @@ function atualizaAssinaturaCessao()
 
 // </editor-fold>
 
+/**
+ * ROTA: getcessionclosedcontracts
+ */
+function getCessionContracts()
+{
+    global $connect;
+    $dadosEntrada = apiTrataDadosEntrada();
+    $cessionNumber = $dadosEntrada["cession_number"];
+    $account_key = $dadosEntrada["account_key"];
+    
+    $procId = PegaProcIdByCode("SEC_CCBS");
+    
+    
+    $SQL = "select campo12 from exportkeys where procId = $procId and Campo20 = $cessionNumber and campo14 = '$account_key'";
+    $query = mysqli_query($connect, $SQL);
+    $resultado = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+    $dados["resultado"] = $resultado;
+    $dados["SQL"] = $SQL;
+    $jDados = json_encode($resultado);
+    header('Content-Type: application/json');
+    echo $jDados;
+    
+}
+
 function atualizaStatusDocumentos($dadosDocumento)
 {
     $caseNumCCB = atualizaCCB($dadosDocumento);
@@ -491,7 +516,7 @@ function processa_cessao_resolucao($procCod)
 
             // Valida os dados de todos os Contratos
             $camposObrigatoriosContrato = ["ISSUER_CPF", "NUMBER"];
-            $camposExistentes = ["PARCELS", "NR_PARCELAS"];
+            $camposExistentes = ["PARCELS", "NR_PARCELS", "NR_PARCELAS"];
 
             foreach ($dadosEntrada["contracts"] as $contrato) {
                 $dadosProcessoValido = validaDadosEntrada($contrato, $camposObrigatoriosContrato, $camposExistentes);

@@ -15,6 +15,9 @@ var janelaAuxiliarWidth = 1000;
 var janelaAuxiliarheight = 550;
 var funcAfterLoadDataTable = null;
 
+var minPageNumRows = 10;
+var maxPageNumRows = 20;
+
 function jsRenderTemplate(data, type, row, meta)
 {
 
@@ -80,6 +83,7 @@ function jsParametrizacaoPadrao(url, colunas, colunasDefinicao, where, rowId, cr
         "rowId": rowId ? rowId : null,
         "initComplete": jsShowDivDataTableWrapper,
         "drawCallback": jsCalculaTamanhoBodyScrollDatatable,
+        "pageLength": ($(window).height() < 700) ? minPageNumRows : maxPageNumRows,
         "language": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de</span> _START_ até _END_ de _TOTAL_ registros",

@@ -20,6 +20,9 @@ var StepIdNovoCaso;
 var janelaAuxiliarWidth = 780;
 var janelaAuxiliarheight = 550;
 
+// Objeto para SCANNER
+var DWObject;
+
 if (typeof Validacao === "undefined")
 {
     var Validacao = new Object();
@@ -28,6 +31,133 @@ if (typeof Validacao === "undefined")
 var janelaImagemFormalizacao;
 var extendDataLoaded = false;
 
+function jsFieldFileAcquireImage() {
+    DWObject = Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
+    if (DWObject) {
+        DWObject.SelectSource(function () {
+            var OnAcquireImageFailure = function () {
+                DWObject.CloseSource();
+            };
+            var OnAcquireImageSuccess = function () {
+//              $("#btnSendScanFile").removeAttr("disabled");
+                $("#btnSendScanFile").removeAttr("disabled");
+                DWObject.CloseSource();
+            };
+            DWObject.OpenSource();
+            DWObject.IfDisableSourceAfterAcquire = true;
+            DWObject.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);
+        }, function () {
+            console.log('SelectSource failed!');
+        });
+    }
+}
+
+
+function jsCarregaFieldSelectFile(ProcId, CaseNum, FieldId, valueId, userId)
+{
+    $("#DivFolderFiles").hide();
+    $("#DivFolderSelFile").show();
+}
+
+/**
+ * 
+ * @returns {undefined}
+ */
+function jsMontaCamposFormularioEnvioScan()
+{
+    // Limpa o Formulario interno do Objeto TWAIN
+    DWObject.ClearAllHTTPFormField();
+    // Inclui Campo do ProcId
+    procIdPai = $("#procId").val();
+    DWObject.SetHTTPFormField("procId", procIdPai);
+    StepIdForm = $("#stepIdForm").val();
+    DWObject.SetHTTPFormField("stepIdForm", StepIdForm);
+    DWObject.SetHTTPFormField("procId", procId);
+    camposFormularioWebCapture = getFormValuesObjectList("formDataCaptura");
+    camposFormularioWebCapture.forEach(function (campo, indice) {
+        DWObject.SetHTTPFormField(campo["name"], campo["value"]);
+    });
+}
+
+function jsFileUploadScan(formSource, ProcId, StepId, CaseNum, FieldId, UserId) {
+    if (DWObject) {
+
+        //Monta o Formulário com dados para upload
+        DWObject.SetHTTPFormField("ProcId", ProcId);
+        DWObject.SetHTTPFormField("CaseNum", CaseNum);
+        DWObject.SetHTTPFormField("FieldId", FieldId);
+        DWObject.SetHTTPFormField("UserId", UserId);
+        
+        
+                
+        var strHTTPServer = location.hostname; //The name of the HTTP server. 
+        var CurrentPathName = unescape(location.pathname);
+        var CurrentPath = CurrentPathName.replace(/editcase.*/, "");
+        var strActionPage = CurrentPath + "foldersendfile";
+
+        DWObject.IfSSL = false; // Set whether SSL is used
+        DWObject.HTTPPort = location.port == "" ? 80 : location.port;
+//        DWObject.SelectedImagesCount = 3;
+        DWObject.GetSelectedImagesSize(4); // 4 - PDF format. Calculate the size of selected images in PDF format.
+
+//        // Upload the selected images to the server asynchronously
+//        DWObject.HTTPUploadThroughPostAsMultiPagePDF(
+//                strHTTPServer,
+//                strActionPage,
+//                "imageData.pdf",
+//                OnHttpUploadSuccess,
+//                OnHttpUploadFailure
+//                );
+        DWObject.HTTPUploadThroughPost(
+                strHTTPServer,
+                DWObject.CurrentImageIndexInBuffer,
+                strActionPage,
+                "imageData.pdf",
+                () => { 
+                    jsCarregaFolder(ProcId, StepId, CaseNum, FieldId, 0);
+                },
+                OnHttpUploadFailure
+                );
+    }
+}
+
+function OnHttpUploadFailure(errorCode, errorString, sHttpResponse) {
+    if (errorCode == -2003)
+    {
+        jsAtualizaDocsEditCase(sHttpResponse);
+    } else {
+        alert(errorString + sHttpResponse);
+    }
+    
+    
+}
+
+
+function jsCarregaFieldWebCaptura(ProcId, CaseNum, FieldId, valueId, userId)
+{
+    // Indica se a função deve carregar o modal, ou esperar o TWAIN ser carregado
+    mostraWebCapture = false;
+    if (typeof Dynamsoft === "undefined")
+    {
+        // carrega Scripts Webcaptura
+        url = "Resources/dynamsoft.webtwain.config.js";
+        $.ajax({
+            url: url,
+            dataType: "script"
+        });
+
+        // carrega Scripts Webcaptura
+        url = "Resources/dynamsoft.webtwain.initiate.js";
+        $.ajax({
+            url: url,
+            dataType: "script"
+        });
+    } else {
+        mostraWebCapture = true;
+    }
+    $("#DivFolderFiles").hide();
+    $("#DivFolderScanFile").show();
+}
 
 function jsExecutaRoleValidarFormulario(roleCode, callBack)
 {
@@ -186,14 +316,6 @@ function jsBackFromFiles()
 {
     $("#divOverlaySendFile").hide();
     $("#btnSelFiles").on("focus", null);
-}
-
-function jsIncluirArquivo(Campo)
-{
-    $("#DivFolderSelFile form")[0].reset();
-    $(".btn_executa_upload").attr("disabled", "true");
-    $("#DivFolderSelFile").show();
-    $("#DivFolderFiles").hide();
 }
 
 function jsArquivoSelecionado(idInputFile)
@@ -623,7 +745,7 @@ function jsViewFile(procId, caseNum, fieldId, fileNameStorage, fileName, fieldId
         fileNameStorage = dados.fileNameStorage;
         fileName = dados.fileName;
     }
-    
+
     janelaDestino = !!abrirNovaJanela;
     if (janelaDestino)
     {
@@ -1765,11 +1887,11 @@ function AbreArquivo_(ProcId, CaseNum, Source)
     WinSelect.focus();
 }
 
-function CancelaSelArquivo()
+function jsCancelaSelArquivo()
 {
     $("#DivFolderSelFile").hide();
+    $("#DivFolderScanFile").hide();
     $("#DivFolderFiles").show();
-//    $(".close").click();
 }
 
 function ApagarArquivo(Arquivo)

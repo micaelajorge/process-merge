@@ -5,7 +5,16 @@
  */
 
 require_once(FILES_ROOT . "include/resource01.php");
-$fileName = $_FILES['file']['name'];
+
+if (key_exists("RemoteFile", $_FILES))
+{
+    $nomeCampoArquivo = "RemoteFile";
+} else {
+    $nomeCampoArquivo = "file";
+}
+
+
+$fileName = $_FILES[$nomeCampoArquivo]['name'];
 $dirNameProc = formataCaseNum($ProcId, 6);
 $dirNameCaseNum = formataCaseNum($CaseNum, 10);
 $dirNameFolderId = formataCaseNum($FieldId, 6);
@@ -23,7 +32,7 @@ if (!empty($fileName)) {
     $extensaoArquivo = pathinfo($fileName, PATHINFO_EXTENSION);
     $fileNameStorage = $dirNameCaseNum . $fieldIdFileName . $valueIdFileName . "." . $extensaoArquivo;    
 
-    if (!move_uploaded_file($_FILES['file']['tmp_name'], "$dirName/$fileNameStorage")) {
+    if (!move_uploaded_file($_FILES[$nomeCampoArquivo]['tmp_name'], "$dirName/$fileNameStorage")) {
         echo "<span>Não foi possível enviar o arquivo.</span>";
     } else {
         echo "Arquivo enviado";

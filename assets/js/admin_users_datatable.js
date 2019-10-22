@@ -98,14 +98,14 @@ function jsInicializacaoPagina()
     allowSearch = true; // Seta que vai poder fazer Pesquisa
 
     extraPameters = {
-        "scrollX": true,
+        "scrollY": ($(window).width() < 700) ? "500px" : "700px",
         "searching": allowSearch
     };
         
     mobileParameters = {};
     if ($(window).width() < 500) {
         mobileParameters = {
-            "pageLength": ($(window).width() < 500) ? 5 : 10,
+            "pageLength": ($(window).width() < 500) ? minPageNumRows : maxPageNumRows,
             "oPaginate": {
                 "sNext": ">",
                 "sPrevious": "<",

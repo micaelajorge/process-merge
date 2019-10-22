@@ -94,13 +94,12 @@ colunas_CT = [
 ];
 
 extraPameters_Default = {
-    "scrollX": true,
+    "scrollY": ($(window).height() < 700) ? "400px" : "700px",
     "scrollXInner": true
 };
 
 extraPameters_less500_Default = {
-    "scrollX": true,
-    "pageLength": 5,
+    "scrollY": "400px",
     "oPaginate": {
         "sNext": ">",
         "sPrevious": "<",

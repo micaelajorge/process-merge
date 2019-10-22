@@ -358,6 +358,39 @@ switch ($servidor) {
     case "securities.com.br":
         define("ARQUIVOS_NOVA_JANELA", "true");
         switch ($aliasServidor) {
+            case "homolog_creditas_sorocred":
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("TEMASISTEMA", "skin-red");
+                /**
+                 *  Definições Banco de dados
+                 */
+                $BPMUSER = "process";
+                $BPMPWD = "cerberus";
+                $EXTERNALUSER = "process";
+                $EXTERNALPWD = "cerberus";
+                $EXTERNAL_USERNAME = "process";
+                $BPMDB = "homolog_creditas_sorocred";
+                $EXTERNALDB = 'homolog_creditas_sorocred';
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("SITE_ROOT", "http://$servidor");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("SERVER_ADDRESS", $servidor);
+                define("ARQUIVO_ERROR_LOG_PHP", "log_gateway_creditas_scd/PHP_errors.log");
+                define("_SECRET_KEY", "f9QsJ4Oufz");
+                define("ALLOW_SEARCH", FALSE);
+                define("FILES_FOLDER", "/");
+                define("FILES_UPLOAD", "/storage/gateway_creditas_scd");
+                define("INSTANCENAME", 'Homolog Creditas Sorocred');
+                define("SITE_FOLDER", "/gateway_creditas_scd/"); // Nome do Alias no APACHE
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+                define("PARCEIRONAME", 'Securities');
+                define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
+                define("URL_OWNER", "https://www.certdox.com.br");
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("NAME_OWNER", "Powered by Certdox");
+                break;
+            
             case "gateway_creditas_scd":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-blue-light");

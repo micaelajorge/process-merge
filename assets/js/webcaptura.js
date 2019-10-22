@@ -410,7 +410,7 @@ function jsUploadImage(editCase) {
         }
     }
     if (DWObject) {
-        jsMontaCamposFormularioEnvio();
+        jsMontaCamposFormularioEnvioScan();
         var strHTTPServer = location.hostname; //The name of the HTTP server. 
         var CurrentPathName = unescape(location.pathname);
         var CurrentPath = CurrentPathName.replace(/editcase.*/, "");
@@ -480,7 +480,7 @@ function jsMontaCamposFormularioEnvioEditCase()
  * 
  * @returns {undefined}
  */
-function jsMontaCamposFormularioEnvio()
+function jsMontaCamposFormularioEnvioScan()
 {
     // Limpa o Formulario interno do Objeto TWAIN
     DWObject.ClearAllHTTPFormField();

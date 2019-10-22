@@ -1,0 +1,70 @@
+<div class="modal-header">
+    <button type="button" class="close" onclick="CancelaSelArquivo()">×</button>
+    <h4 class="modal-title " id="myModalLabel">Selecionar Arquivo</h4>
+</div>
+<div class="modal-body">
+    <div class="box">
+        <div class="overlay" id="divOverlaySendFile" style="display: none">
+            <i class="fa fa-refresh fa-spin"></i>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1><span id="spanTextoEnvioArquivo">Enviando Arquivo</span> <span id="spanDadosArquivoUpload"></span></h1>
+                </div>
+            </div>               
+            <div class="progress">
+                <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" id="progressBarFolder" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                    <span class="sr-only"><span id="porcentagemValorFolder">%</span> Completo</span>
+                </div>
+            </div>
+        </div>
+        <form style="display:none"> 
+            <input class="form-control-file" multiple="" name="fileMultiple" type="file" size="40" id="fileMultiple" onchange="jsArquivoSelecionado('fileMultiple')">
+        </form>
+        <div class="box-body">
+            <form method="POST" enctype="multipart/form-data" name="formFD_SEL_{FIELDID}" id="formFD{FIELDID}">
+                <input type="file" name="file" class="hidden">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <label>Arquivo</label> <button class="btn btn-success btn-sm" id="btnSelFiles" type="button" onclick="jsSelectFiles()">Selecionar arquivos</button>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <span id="totalArquivosSel"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label>Descrição</label><input class="form-control input-sm" name="descricao" type="text" size="30" maxlength="30">
+                            </div>            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label>Versão</label><input class="form-control input-sm" name="versao" type="text" id="versao" size="10" maxlength="10">
+                            </div>            
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <canvas id="pdfPreviewFile" style="width: 100%;display:none"></canvas>
+                        <img style="width: 100%;display:none" id="imgPreviewFile"/>                            
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        Tamanho máximo do arquivo: {MAXFILESIZE}
+                    </div>            
+                </div>
+                <input type="hidden" value="{PROCID}" name="ProcId" id="ProcId">
+                <input type="hidden" value="{CASENUM}" name="CaseNum" id="CaseNum">
+                <input type="hidden" value="{FIELDID}" name="FieldId" id="FieldId"> 
+                <input type="hidden" value="{VALUEID}" name="valueId" id="valueId">
+                <input type="hidden" value="{USERID}" name="userId" id="userId">
+                <input type="hidden" value="{MULTIPLEFILES}" name="multipleFiles" id="multipleFiles">
+            </form>
+        </div>         
+        <div class="modal-footer" id="divBotoesAcao">
+            <button  name="btnSendScanFile" id="btnSendScanFile" class="btn btn-primary pull-left btn_executa_upload" type="button" onclick="jsFileUploadScan('formFD_SEL_{FIELDID}', {PROCID}, '{STEPID}', {CASENUM}, {FIELDID}, '{MULTIPLEFILES}')" disabled>Enviar</button>
+            <button name="btnCanceSendFile" class="btn btn-default" type="button"  onClick="CancelaSelArquivo()"><i class="fa fa-ban"></i> Cancelar</button>
+        </div>
+    </div>
+</div>

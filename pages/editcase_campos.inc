@@ -29,6 +29,7 @@ function MontaCampoGR($listaGrupos, $fieldId, $optional = "")
     return $retorno;
 }
 
+
 /**
  * 
  * @global type $connect
@@ -38,9 +39,10 @@ function MontaCampoGR($listaGrupos, $fieldId, $optional = "")
  * @param type $FieldId
  * @param type $ReadOnly
  * @param type $tipoFolderList
+ * @param type $multipleFiles
  * @return type
  */
-function ListaArquivosCampoImagem($ProcId, $CaseNum, $FieldId, $ReadOnly, $tipoFolderList = "", $multipleFiles)
+function ListaArquivosCampoImagem($ProcId, $CaseNum, $FieldId, $ReadOnly, $tipoFolderList = "", $multipleFiles = false)
 {
     global $connect, $userdef;
 

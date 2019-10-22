@@ -1,5 +1,21 @@
 {
     "rotas": {    
+        "api/v1/getcessionclosedcontracts": {
+                "page": "api/api_securities.inc",
+                "funcao": "getCessionContracts"                          
+        },
+        "fieldselfile": {
+            "POST": {
+                "page": "pages/editcase_select_file_field.inc",
+                "funcao": "fieldFileSelect"              
+            }                                    
+        },
+        "fieldscan": {
+            "POST": {
+                "page": "pages/editcase_select_file_field.inc",
+                "funcao": "fieldFileScan"              
+            }                                    
+        },
         "api/v1/queuedcessionsigners": {
             "GET": {
                 "page": "api/api_securities.inc",

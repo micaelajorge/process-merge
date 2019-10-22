@@ -27,9 +27,9 @@
             <tr> 
                 <td align="center">
                     <!-- <a target="_blank" href="BPMViewFile.php?ProcId={PROCID}&CaseNum={CASENUM}&Target={ARQUIVO_NOME}" class="MVHistorico"><i class="fa fa-eye" title="Abrir arquivo"></i></a> -->
-                    <a href="javascript:" onclick="jsViewFile({PROCID}, {CASENUM}, {FIELD_ID}, '{ARQUIVO_NOME_STORAGE}', '{ARQUIVO_NOME_JS}', null, {NOVA_JANELA | constant:ARQUIVOS_NOVA_JANELA})" title="Visualizar Arquivo"><i class="fa fa-file-archive-o"></i></a>                     
+                    <a href="javascript:" onclick="jsViewFile({PROCID}, {CASENUM}, {FIELD_ID}, '{ARQUIVO_NOME_STORAGE}', '{ARQUIVO_NOME_JS}', null, {NOVA_JANELA|constant:ARQUIVOS_NOVA_JANELA})" title="Visualizar Arquivo"><i class="fa fa-file-archive-o"></i></a>                     
                     <!-- BEGIN BLOCK_APAGAR_ARQUIVO -->
-                    <a href="javascript:" onclick="jsViewFile({PROCID}, {CASENUM}, {FIELD_ID}, '{ARQUIVO_NOME_STORAGE}', '{ARQUIVO_NOME_JS}', null, {NOVA_JANELA | constant:ARQUIVOS_NOVA_JANELA})" title="Remover Arquivo"><i class="fa fa-trash-o text-warning"></i></a>
+                    <a href="javascript:" onclick="jsViewFile({PROCID}, {CASENUM}, {FIELD_ID}, '{ARQUIVO_NOME_STORAGE}', '{ARQUIVO_NOME_JS}', null, {NOVA_JANELA|constant:ARQUIVOS_NOVA_JANELA})" title="Remover Arquivo"><i class="fa fa-trash-o text-warning"></i></a>
                     <!-- END BLOCK_APAGAR_ARQUIVO -->                    
                 </td>
                 <td align="center">{ARQUIVO_NOME}</td>
@@ -90,7 +90,7 @@
                 <input class="form-control-file" multiple="" name="fileMultiple" type="file" size="40" id="fileMultiple" onchange="jsArquivoSelecionado('fileMultiple')">
             </form>
             <div class="box-body">
-                <form method="POST" enctype="multipart/form-data" name="formFD_SEL_{FIELDID}" id="formFD{FIELDID}">
+                <form method="POST" enctype="multipart/form-data" name="formFD_SEL_{FIELDID}" id="formFD_SEL_{FIELDID}">
                     <input type="file" name="file" class="hidden">
                     <div class="row">
                         <div class="col-lg-6">
@@ -204,7 +204,7 @@
                 </form>
             </div>         
             <div class="modal-footer" id="divBotoesAcao">
-                <button  name="btnSendScanFile" id="btnSendScanFile" class="btn btn-primary pull-left btn_executa_upload" type="button" onclick="jsFileUploadScan('formFD_SCAN_{FIELDID}', '{PROCID}', '{STEPID}', '{CASENUM}', {FIELDID}, '{MULTIPLEFILES}')" disabled>Enviar</button>
+                <button  name="btnSendScanFile" id="btnSendScanFile" class="btn btn-primary pull-left btn_executa_upload" type="button" onclick="jsFileUploadScan('formFD_SCAN_{FIELDID}', '{PROCID}', '{STEPID}', '{CASENUM}', {FIELDID}, '{MULTIPLEFILES}')" >Enviar</button>
                 <button name="Input2" class="btn btn-default" type="button"  onClick="jsCancelaSelArquivo()"><i class="fa fa-ban"></i> Cancelar</button>
             </div>
         </div>

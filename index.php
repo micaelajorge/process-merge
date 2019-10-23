@@ -63,7 +63,7 @@ define("ALIAS_SERVIDOR", $aliasServidor);
 
 $PaginaLogon = "logon.inc";
 
-define("SYS_VERSION", "3.1.5");
+define("SYS_VERSION", "3.2.0");
 
 // </editor-fold>
 
@@ -218,6 +218,10 @@ switch ($servidor) {
         define("NAME_OWNER", "Cerdox");
         break;
     // </editor-fold>
+
+    case "ec2-3-81-252-70.compute-1.amazonaws.com":
+        include("config_intancias_securities.inc");
+        break;
 
     case "alicred.securities.com.br":
         define("ALINHAMENTO_LOGO", "float:left");
@@ -390,7 +394,7 @@ switch ($servidor) {
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("NAME_OWNER", "Powered by Certdox");
                 break;
-            
+
             case "gateway_creditas_scd":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-blue-light");

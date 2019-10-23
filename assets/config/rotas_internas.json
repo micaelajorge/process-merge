@@ -1,8 +1,10 @@
 {
     "rotas": {    
         "api/v1/getcessionclosedcontracts": {
+            "POST": {
                 "page": "api/api_securities.inc",
                 "funcao": "getCessionContracts"                          
+            }
         },
         "fieldselfile": {
             "POST": {
@@ -62,7 +64,8 @@
             "GET": {
                 "page": "pages\/gateway_view_files.inc",
                 "parametros": ["ProcId", "CaseNum"],
-                "funcao": "pegaArquivoOfertaRetorno"           }
+                "funcao": "pegaArquivoOfertaRetorno"
+            }
         },
         "gatewayupload": {
             "GET": {

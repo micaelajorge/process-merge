@@ -305,32 +305,6 @@ function atualizaAssinaturaCessao()
 }
 
 // </editor-fold>
-
-/**
- * ROTA: getcessionclosedcontracts
- */
-function getCessionContracts()
-{
-    global $connect;
-    $dadosEntrada = apiTrataDadosEntrada();
-    $cessionNumber = $dadosEntrada["cession_number"];
-    $account_key = $dadosEntrada["account_key"];
-    
-    $procId = PegaProcIdByCode("SEC_CCBS");
-    
-    
-    $SQL = "select campo12 from exportkeys where procId = $procId and Campo20 = $cessionNumber and campo14 = '$account_key'";
-    $query = mysqli_query($connect, $SQL);
-    $resultado = mysqli_fetch_all($query, MYSQLI_ASSOC);
-
-    $dados["resultado"] = $resultado;
-    $dados["SQL"] = $SQL;
-    $jDados = json_encode($resultado);
-    header('Content-Type: application/json');
-    echo $jDados;
-    
-}
-
 function atualizaStatusDocumentos($dadosDocumento)
 {
     $caseNumCCB = atualizaCCB($dadosDocumento);
@@ -1282,3 +1256,27 @@ function ListaCasosAguardandoAssinatura()
 }
 
 // </editor-fold>
+
+/**
+ * ROTA: api/v1/getcessionclosedcontracts
+ */
+function getCessionContracts()
+{
+    global $connect;
+    $dadosEntrada = apiTrataDadosEntrada();
+    $cessionNumber = $dadosEntrada["cession_number"];
+    $account_key = $dadosEntrada["account_key"];
+    
+    $procId = PegaProcIdByCode("SEC_CCBS");
+    
+    
+    $SQL = "select campo12 as document_key from exportkeys where procId = $procId and Campo20 = $cessionNumber and campo15 = '$account_key'";
+    $query = mysqli_query($connect, $SQL);
+    $resultado = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+    
+    $jDados = json_encode($resultado);
+    header('Content-Type: application/json');
+    echo $jDados;
+    
+}

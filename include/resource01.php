@@ -4257,7 +4257,7 @@ function PegaProximoCasoFila($ProcId, $StepId = "")
 
     $FiltrosTratados = array();
     if (is_array($filtro)) {
-        $FiltrosTratados = TrataFiltros($ProcId, $filtro);
+        $FiltrosTratados = TrataFiltros($filtro, $ProcId);
     }
 
     $FiltrosTratados[] = "lockedbyid = 0";

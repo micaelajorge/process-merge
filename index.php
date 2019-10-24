@@ -21,6 +21,10 @@ function iniciarPhpSession()
 //ini_set("error_reporting", E_ALL ^ E_NOTICE ^ E_WARNING);
 ini_set("error_reporting", E_ERROR);
 
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
+
 // <editor-fold defaultstate="collapsed" desc="Definições do Sistema">
 $currentDir = __DIR__;
 $enderecoServidor = filter_input(INPUT_SERVER, "HTTP_HOST");
@@ -70,6 +74,13 @@ define("SYS_VERSION", "3.2.0");
 $OrigemLogon = "ProcessLogon";
 
 switch ($servidor) {
+    
+    // Acesso para instancias SECURITIES.
+    case "clicksign-securities.com.br":
+    case "ec2-3-81-252-70.compute-1.amazonaws.com":
+        include("config_intancias_securities.inc");
+        break;
+
     // <editor-fold defaultstate="collapsed" desc="plena">
     case "process.plenainformatica.com":
         define("ALINHAMENTO_LOGO", "float:left");
@@ -218,10 +229,6 @@ switch ($servidor) {
         define("NAME_OWNER", "Cerdox");
         break;
     // </editor-fold>
-
-    case "ec2-3-81-252-70.compute-1.amazonaws.com":
-        include("config_intancias_securities.inc");
-        break;
 
     case "alicred.securities.com.br":
         define("ALINHAMENTO_LOGO", "float:left");

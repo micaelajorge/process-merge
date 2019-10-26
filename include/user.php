@@ -264,29 +264,35 @@ class userdef {
         }
         while ($result = mysqli_fetch_array($QUERY_USER)) {
             //error_log("Usuario Log: " . $result["UserName"]);
-            if (($result["UserName"] == $UserName) && ($result["UserPwd"] == $UserPwd)) {
-                $this->UserName = $result["UserName"];
-                $this->UserPwd = $result["UserPwd"];
-                $this->UserId = $result["UserId"];
-                $this->UserId_Process = $result["UserId"];
-                $this->UserLevel = $result["UserLevel"];
-                $this->UserDesc = $result["UserDesc"];
-                $this->Active = $result["Uactive"];
-                $this->EMail = $result["Email"];
-                $this->CustonGate = $result["CustonGate"];
-                $this->AdHoc = $result["AdHoc"];
-                $this->Origem = $result["Origem"];
-                $this->GruposProcess();
-                $this->Validado = true;
-                $this->Email = $result["Email"];
-                $this->lastlogon = (!empty($result["lastlogon"])) ? $result["lastlogon"] : '1901-01-01';
-                $this->lastnotification = (!empty($result["lastnotification"])) ? $result["lastnotification"] : '1901-01-01';
-                $this->lastmessages = (!empty($result["lastmessages"])) ? $result["lastmessages"] : '1901-01-01';
-                $this->SalvaDataLogon();
-                return;
+            if (($result["UserName"] !== $UserName)) {
+                continue;
             }
+            $dbUserPwd = $result["UserPwd"];
+            if (!password_verify($UserPwd, $dbUserPwd)) {
+                if (($dbUserPwd !== $UserPwd)) {
+                    return;
+                }
+            }
+            $this->UserName = $result["UserName"];
+//                $this->UserPwd = $result["UserPwd"];
+            $this->UserId = $result["UserId"];
+            $this->UserId_Process = $result["UserId"];
+            $this->UserLevel = $result["UserLevel"];
+            $this->UserDesc = $result["UserDesc"];
+            $this->Active = $result["Uactive"];
+            $this->EMail = $result["Email"];
+            $this->CustonGate = $result["CustonGate"];
+            $this->AdHoc = $result["AdHoc"];
+            $this->Origem = $result["Origem"];
+            $this->GruposProcess();
+            $this->Validado = true;
+            $this->Email = $result["Email"];
+            $this->lastlogon = (!empty($result["lastlogon"])) ? $result["lastlogon"] : '1901-01-01';
+            $this->lastnotification = (!empty($result["lastnotification"])) ? $result["lastnotification"] : '1901-01-01';
+            $this->lastmessages = (!empty($result["lastmessages"])) ? $result["lastmessages"] : '1901-01-01';
+            $this->SalvaDataLogon();
+            return;
         }
-        return;
     }
 
     function GruposProcess()

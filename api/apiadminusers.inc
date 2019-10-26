@@ -8,7 +8,9 @@ require_once("include/resource01.php");
 function salva_senha()
 {
     global $connect, $USUARIO_SENHA, $USUARIO_ID;
-    $SQL = "update userdef set UserPWD = '$USUARIO_SENHA' where userId = $USUARIO_ID";
+    
+    $senhaCript = password_hash($USUARIO_SENHA, PASSWORD_DEFAULT);
+    $SQL = "update userdef set UserPWD = '$senhaCript' where userId = $USUARIO_ID";
     $resultado = mysqli_query($connect, $SQL);
     if ($resultado) {
         header('HTTP/1.0 200 ok');

@@ -31,11 +31,13 @@ function Inicializacao_ext_tipo_assinatura($FieldId, $ReadOnly, $Valor_Campo, $d
 
     
     $valorCampo = htmlentities($Valor_Campo, ENT_QUOTES);
-    $template->FIELD_VALUE = $valorCampo;
     if ($Valor_Campo != "")
     {
         $tiposSelecionados = json_decode($Valor_Campo, true);
+    } else {
+        $valorCampo = "[]";
     }
+    $template->FIELD_VALUE = $valorCampo;
     
     // Verifica se o Campo é Somente Leitura
     if ($ReadOnly)

@@ -112,7 +112,7 @@ function criaCCB($dadosCCB)
 
 //     Se não tem CESSION_DOCUMENT_KEY é criação de CCB
     if ($dadosEntidade["CESSION_DOCUMENT_KEY"] !== "") {
-        header("HTTP/1.0 406 Accontkey not found");
+        header("HTTP/1.0 406 Accontkey not found, $ACCOUNT_KEY");
         return;
     }
 

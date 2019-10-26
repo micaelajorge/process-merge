@@ -1,5 +1,13 @@
 {
     "rotas": {    
+        "api/v1/statusautomato": {
+            "GET": {
+                "page": "api/api_status_automatos.inc",
+                "funcao": "buscaStatusAutomato",
+                "parametros": ["portaAutomato"],
+                "logon": false
+            }
+        },
         "api/v1/getcessionclosedcontracts": {
             "POST": {
                 "page": "api/api_securities.inc",
@@ -121,7 +129,6 @@
                 "logon": false
             }            
         },      
-
         "api/v1/getcasesbycession": {
             "POST": {
                 "page": "api/api_securities.inc",

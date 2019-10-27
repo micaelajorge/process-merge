@@ -99,6 +99,13 @@ function jsInicializacaoPagina()
         "searching": allowSearch
     };
         
+    // Torna o menu de oções aberto
+    if ($(window).width() > 1400)
+    {
+        $("body").removeClass("sidebar-collapse");
+    }
+        
+        
     mobileParameters = {};
     if ($(window).width() < 500) {
         mobileParameters = {

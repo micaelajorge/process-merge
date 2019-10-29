@@ -6,7 +6,7 @@
   Sistema: Creditus
  */
 
-define("RELEASE_SCRIPT", "0047");
+define("RELEASE_SCRIPT", "0048");
 define("LOG_DATA", false);
 
 function iniciarPhpSession()

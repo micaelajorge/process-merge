@@ -16,7 +16,7 @@ var janelaAuxiliarheight = 550;
 var funcAfterLoadDataTable = null;
 
 var minPageNumRows = 10;
-var maxPageNumRows = 20;
+var maxPageNumRows = 15;
 
 function jsRenderTemplate(data, type, row, meta)
 {

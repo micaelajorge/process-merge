@@ -530,11 +530,11 @@ function MontaCampoParaFormulario($templateFields, $ProcId, $CaseNum, $valoresCa
                 
                 $originalFileName = $aExtendData["fileName"];
                 
-                // Verifica se o arquivo já não foi carregado
-                if (in_array($originalFileName, $arquivosLidos))
-                {
-                    continue;
-                }
+//                // Verifica se o arquivo já não foi carregado
+//                if (in_array($originalFileName, $arquivosLidos))
+//                {
+//                    continue;
+//                }
                 
                 $arquivosLidos[] = $originalFileName;
                 $urlImagemBotao = "viewfile/$ProcId/$CaseNum/$FieldId/$fieldName";

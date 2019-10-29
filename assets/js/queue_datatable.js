@@ -359,7 +359,8 @@ function jsTrataAcoes(data, type, row, meta)
     {
         acessoCaso = '<a href="javascript:" title="' + row.lock.text + '" class="text-danger"><i class="fa fa-lock"></i></a>';
     } else {
-        acessoCaso = '<a href="javascript:" onclick="' + row.ACESSOCASO + '" title="Editar ' + row.instancename + '" class="primary"><i class="fa fa-edit"></i></a>';
+        acessoCaso = '<a href="javascript:" onclick="' + row.ACESSOCASO + '" title="Editar ' + row.instancename + '" class="btn btn-primary btn-sm">Editar</a>';
+//        acessoCaso = '<a href="javascript:" onclick="' + row.ACESSOCASO + '" title="Editar ' + row.instancename + '" class="primary"><i class="fa fa-edit"></i></a>';
     }
     fieldValue = acessoCaso;
     return fieldValue;

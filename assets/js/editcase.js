@@ -20,6 +20,11 @@ var StepIdNovoCaso;
 var janelaAuxiliarWidth = 780;
 var janelaAuxiliarheight = 550;
 
+function acaoAposUpload()
+{
+
+}
+
 // Objeto para SCANNER
 var DWObject;
 
@@ -87,9 +92,11 @@ function jsFileUploadScan(formSource, ProcId, StepId, CaseNum, FieldId, UserId) 
         DWObject.SetHTTPFormField("CaseNum", CaseNum);
         DWObject.SetHTTPFormField("FieldId", FieldId);
         DWObject.SetHTTPFormField("UserId", UserId);
-        
-        
-                
+
+
+
+
+
         var strHTTPServer = location.hostname; //The name of the HTTP server. 
         var CurrentPathName = unescape(location.pathname);
         var CurrentPath = CurrentPathName.replace(/editcase.*/, "");
@@ -97,39 +104,49 @@ function jsFileUploadScan(formSource, ProcId, StepId, CaseNum, FieldId, UserId) 
 
         DWObject.IfSSL = false; // Set whether SSL is used
         DWObject.HTTPPort = location.port == "" ? 80 : location.port;
-//        DWObject.SelectedImagesCount = 3;
+
+        totalPaginasScan = DWObject.HowManyImagesInBuffer
+        DWObject.SelectedImagesCount = totalPaginasScan;
+
+        for (i = 0; i < totalPaginasScan; i++)
+        {
+            DWObject.SetSelectedImageIndex(i, i);
+        }
         DWObject.GetSelectedImagesSize(4); // 4 - PDF format. Calculate the size of selected images in PDF format.
 
+        acaoAposUpload = () => {
+            jsCarregaFolder(ProcId, StepId, CaseNum, FieldId, 0);
+        };
+
+
 //        // Upload the selected images to the server asynchronously
-//        DWObject.HTTPUploadThroughPostAsMultiPagePDF(
-//                strHTTPServer,
-//                strActionPage,
-//                "imageData.pdf",
-//                OnHttpUploadSuccess,
-//                OnHttpUploadFailure
-//                );
-        DWObject.HTTPUploadThroughPost(
+        DWObject.HTTPUploadThroughPostAsMultiPagePDF(
                 strHTTPServer,
-                DWObject.CurrentImageIndexInBuffer,
                 strActionPage,
                 "imageData.pdf",
-                () => { 
-                    jsCarregaFolder(ProcId, StepId, CaseNum, FieldId, 0);
-                },
-                OnHttpUploadFailure
+                OnHttpUploadSuccess,
+                OnHttpUploadFailureFieldFiles
                 );
+//        DWObject.HTTPUploadThroughPost(
+//                strHTTPServer,
+//                DWObject.CurrentImageIndexInBuffer,
+//                strActionPage,
+//                "imageData.pdf",
+//                () => { 
+//                    jsCarregaFolder(ProcId, StepId, CaseNum, FieldId, 0);
+//                },
+//                OnHttpUploadFailure
+//                );
     }
 }
 
-function OnHttpUploadFailure(errorCode, errorString, sHttpResponse) {
+function OnHttpUploadFailureFieldFiles(errorCode, errorString, sHttpResponse) {
     if (errorCode == -2003)
     {
-        jsAtualizaDocsEditCase(sHttpResponse);
+        acaoAposUpload();
     } else {
         alert(errorString + sHttpResponse);
     }
-    
-    
 }
 
 
@@ -146,15 +163,14 @@ function jsCarregaFieldWebCaptura(ProcId, CaseNum, FieldId, valueId, userId)
             dataType: "script"
         });
 
-        // carrega Scripts Webcaptura
-        url = "Resources/dynamsoft.webtwain.initiate.js";
-        $.ajax({
-            url: url,
-            dataType: "script"
-        });
-    } else {
-        mostraWebCapture = true;
     }
+    // carrega Scripts Webcaptura
+    url = "Resources/dynamsoft.webtwain.initiate.js";
+    $.ajax({
+        url: url,
+        dataType: "script"
+    });
+
     $("#DivFolderFiles").hide();
     $("#DivFolderScanFile").show();
 }

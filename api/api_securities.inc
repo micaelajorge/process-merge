@@ -158,7 +158,10 @@ function criaCCB($dadosCCB)
         $camposEnvio[] = $campo;
 
         $campo["fieldCode"] = "CONTRATO";
-        $campo["fieldValue"] = preg_replace("/\D+/", "", $dadosTemplate["number"]);
+        
+        // Mudado para remover apenas PONTUAÇÃO e LETRAS
+//        $campo["fieldValue"] = preg_replace("/\D+/", "", $dadosTemplate["number"]);
+        $campo["fieldValue"] = preg_replace("/[^a-zA-Z0-9]/", "", $dadosTemplate["number"]);
         $camposEnvio[] = $campo;
 
         $dadosCaso["Fields"] = $camposEnvio;

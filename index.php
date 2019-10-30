@@ -23,17 +23,17 @@ ini_set("error_reporting", E_ERROR);
 
 $failRequireModules = false;
 if (!extension_loaded('gd')) {
-    echo "Modulo GD não carregado < /br>";
+    echo "Modulo GD não carregado <br/>";
     $failRequireModules = true;
 }
 
 if (!extension_loaded('mysqli')) {
-    echo "Modulo mysqli não carregado < /br>";
+    echo "Modulo mysqli não carregado <br/>";
     $failRequireModules = true;
 }
 
 if (!extension_loaded('curl')) {
-    echo "Modulo curl não carregado< /br>";
+    echo "Modulo curl não carregado<br/>";
     $failRequireModules = true;
 }
 

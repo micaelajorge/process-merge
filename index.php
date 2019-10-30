@@ -21,18 +21,24 @@ function iniciarPhpSession()
 //ini_set("error_reporting", E_ALL ^ E_NOTICE ^ E_WARNING);
 ini_set("error_reporting", E_ERROR);
 
+$failRequireModules = false;
 if (!extension_loaded('gd')) {
-    echo "Modulo GD não carregado";
-    die;
+    echo "Modulo GD não carregado < /br>";
+    $failRequireModules = true;
 }
 
 if (!extension_loaded('mysqli')) {
-    echo "Modulo mysqli não carregado";
-    die;
+    echo "Modulo mysqli não carregado < /br>";
+    $failRequireModules = true;
 }
 
 if (!extension_loaded('curl')) {
-    echo "Modulo curl não carregado";
+    echo "Modulo curl não carregado< /br>";
+    $failRequireModules = true;
+}
+
+if ($failRequireModules)
+{
     die;
 }
 

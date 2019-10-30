@@ -21,10 +21,24 @@ function iniciarPhpSession()
 //ini_set("error_reporting", E_ALL ^ E_NOTICE ^ E_WARNING);
 ini_set("error_reporting", E_ERROR);
 
+if (!extension_loaded('gd')) {
+    echo "Modulo GD não carregado";
+    die;
+}
+
+if (!extension_loaded('mysqli')) {
+    echo "Modulo mysqli não carregado";
+    die;
+}
+
+if (!extension_loaded('curl')) {
+    echo "Modulo curl não carregado";
+    die;
+}
+
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
-
 // <editor-fold defaultstate="collapsed" desc="Definições do Sistema">
 $currentDir = __DIR__;
 $enderecoServidor = filter_input(INPUT_SERVER, "HTTP_HOST");
@@ -74,7 +88,7 @@ define("SYS_VERSION", "3.2.0");
 $OrigemLogon = "ProcessLogon";
 
 switch ($servidor) {
-    
+
     // Acesso para instancias SECURITIES.
     case "clicksign-securities.com.br":
     case "ec2-3-81-252-70.compute-1.amazonaws.com":

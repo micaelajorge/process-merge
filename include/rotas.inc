@@ -48,7 +48,7 @@ function defineRotaPadrao($dadosURI)
     if (strpos($dadosURI, "api/") !== false) {
         $rotaEncontrada["page"] = "pages/naoencontradaapi.inc";
     } else {
-        if (key_exists(UserDef, $_SESSION)) {
+        if (key_exists("UserDef", $_SESSION)) {
             $rotaEncontrada["page"] = SITE_PRINCIPAL_PAGE;
         } else {
             $rotaEncontrada["page"] = "pages/logon.inc";

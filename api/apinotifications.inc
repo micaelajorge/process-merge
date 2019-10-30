@@ -86,7 +86,7 @@ function NotificacoesUsuario()
             $retorno["retorno"] = "Processo Não Encontrado";
         } else {
             $Query = NovosCasosUsuario($ProcId, $UsuarioAtual->Origem);
-            $Linha = mssql_fetch_array($Query, MSSQL_ASSOC);
+            $Linha = mssql_fetch_array($Query, MYSQLI_ASSOC);
             $retorno["total"] = $Linha["total"];
             $retorno["retorno"] = "Ok";
         }

@@ -1114,10 +1114,15 @@ function verificaCCB()
     $campoDocumentKey = PegaFieldIdByCode("SEC_CCBS", "DOCUMENT_KEY");
     $accountKey = $dadosEntrada["accountKey"];
 
+    $separador = "";
     if (is_array($dadosEntrada["contracts"])) {
-        $listaContratos = implode(",", $dadosEntrada["contracts"]);
+        foreach ($dadosEntrada["contracts"] as $contrato)
+        {
+            $listaContratos = "$separador'" . $contrato . "'";
+            $separador = ",";
+        }
     } else {
-        $listaContratos = $dadosEntrada["contracts"];
+        $listaContratos = "'" . $dadosEntrada["contracts"] . "'";
     }
 
 //    $SQL = "select caseNum, campo$campoStatusClickSign as status, campo$campoDocumentKey as documentKey from exportkeys where campo$campoAccountKey = '$accountKey' and campo$campoNumeroContrato in ($listaContratos)";

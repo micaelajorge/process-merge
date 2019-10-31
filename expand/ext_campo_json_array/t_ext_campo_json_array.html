@@ -1,0 +1,61 @@
+<div>
+    <input type="hidden" aria-code="{FIELDCODE}" aria-field-id="{FIELDID}" class="form-control" id="t{FIELDID}" name="t{FIELDID}" value="{VALOR_CAMPO}" >           
+    <input type="hidden" aria-code="{FIELDCODE}_DATA" aria-field-id="{FIELDID}" class="form-control" id="COLUNAS_{FIELDID}" name="COLUNAS_{FIELDID}" value="{DADOS_COLUNAS}" >           
+    <!-- BEGIN BLOCK_NEW_ITEM -->
+    <a href="javascript:" title="Criar Novo" onclick="js_ext_campo_json_array_edit({FIELDID}, -1)"><i class="fa fa-star"></i> Novo Item</a>
+    <!-- END BLOCK_NEW_ITEM -->
+    <table id="dataTable{FIELDID}" class="datatable datatable-dynamic table table-condensed">
+    </table>
+</div>
+</div>
+
+<!-- BEGIN BLOCO_MODAL_FIELD -->
+<div class="modal fade" id="DivModal{FIELDID}">
+    <div class="modal-dialog">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title " id="myModalLabel_Novo{FIELDID}">Novo Item</h4>
+                <h4 class="modal-title " id="myModalLabel_Editar{FIELDID}">Editar Item</h4>
+            </div>        
+            <div class="modal-body">
+                <!-- BEGIN BLOCK_MODAL_COLUNAS -->
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 form-group form-group-sm">
+                        <label>{MODAL_TITULO_COLUNA}</label>
+                        <input type="text" name="{MODAL_TITULO_COLUNA}" id="{MODAL_TITULO_COLUNA}" class="form-control" value="">                  
+                    </div>
+                </div>
+                <!-- END BLOCK_MODAL_COLUNAS -->
+            </div>
+            <input type="hidden" id="idItem{FIELDID}" name="idItem{FIELDID}">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm pull-left" title="Salvar" onClick="js_ext_campo_json_array_save({FIELDID})"><i class="fa fa-check"></i> Salvar</button>
+                <div class="pull-right">
+                    <button type="button" class="btn btn-warning btn-sm" title="Remover Item" onClick="js_ext_campo_json_array_delete({FIELDID})" id="btn_apagar{FIELDID}"><i class="fa fa-trash"></i> Apagar</button>
+                    <button type="button" class="btn btn-default btn-sm" title="Fechar" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-ban"></i> Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END BLOCO_MODAL_FIELD -->
+
+<!-- BEGIN BLOCO_JAVASCRIPT -->
+<script src="assets/js/{ARQUIVO_JS}?{RELEASE_SCRIPT|constant:RELEASE_SCRIPT}"></script>
+<!-- END BLOCO_JAVASCRIPT -->  
+
+<!-- BEGIN BLOCO_INICIA_TABELA -->
+<script>
+                        if (!Array.isArray(funcoes_final))
+                        {
+                            var funcoes_final = [];
+                        }
+
+                        funcao_final = () => {
+                            js_ext_campo_json_array_montaTabela({FIELDID});
+                        };
+                        funcoes_final.push(funcao_final);
+
+</script>
+<!-- END BLOCO_INICIA_TABELA -->

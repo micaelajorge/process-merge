@@ -1055,6 +1055,7 @@ function montaCampoSignatarios($fieldId, $fieldValue, $readOnly, $optional)
  */
 function montaCampoEX($FieldId, $Valor_Campo, $ReadOnly, $optional, $ExtendProps)
 {              
+    global $dadosCampo;
     // Pega o nome do arquivo de configurações do Campo
     $dadosCampo = json_decode($ExtendProps, true);
     $nomeArquivoExterno = $dadosCampo["arquivoExterno"];
@@ -1069,6 +1070,5 @@ function montaCampoEX($FieldId, $Valor_Campo, $ReadOnly, $optional, $ExtendProps
 
     // Executa a função de inicialização do campo
     $inicializacaoCampo = "inicializacao_$nomeArquivoExterno";
-    return $inicializacaoCampo($FieldId, $ReadOnly, $Valor_Campo, $dadosCampo);
-        
+    return $inicializacaoCampo($FieldId, $ReadOnly, $Valor_Campo, $dadosCampo);        
 }

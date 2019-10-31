@@ -1111,7 +1111,14 @@ function MontaCampoParaFormulario($templateFields, $ProcId, $CaseNum, $valoresCa
 
         case "EXT":
             $CampoExtendido = montaCampoEX($FieldId, $Valor_Campo, $ReadOnly, $optional, $ExtendProps);
-            $templateFields->CONTEUDO_CAMPO = $CampoExtendido;
+            
+            if (is_array($CampoExtendido))
+            {
+                $HTMLCampoExtendido = $CampoExtendido["html"];
+            } else {
+                $HTMLCampoExtendido = $CampoExtendido;
+            }
+            $templateFields->CONTEUDO_CAMPO = $HTMLCampoExtendido;
             $templateFields->block("BLOCK_CAMPO_PR");
             break;
     }

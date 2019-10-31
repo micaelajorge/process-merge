@@ -881,9 +881,12 @@ $t_body->ARQUIVO_JS = "posicionar.js";
 $t_body->block("BLOCO_JAVASCRIPT");
 $t_body->ARQUIVO_JS = "menu.js";
 $t_body->block("BLOCO_JAVASCRIPT");
+$t_body->ARQUIVO_JS = "executa_funcoes_final.js";
+$t_body->block("BLOCO_JAVASCRIPT");
 //$t_body->ARQUIVO_JS = "magnifier.js";
 //$t_body->block("BLOCO_JAVASCRIPT");
 // </editor-fold>
+
 
 $t_body->block("BLOCK_CONTENT");
 $t_body->show();

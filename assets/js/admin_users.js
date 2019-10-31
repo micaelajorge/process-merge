@@ -135,6 +135,3 @@ function jsSalvarSenhaUsuario(userId, userPassword)
         $("#crModalEditPassword").modal('hide');
     });
 }
-
-
-

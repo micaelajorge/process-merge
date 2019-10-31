@@ -158,7 +158,7 @@ function criaCCB($dadosCCB)
         $camposEnvio[] = $campo;
 
         $campo["fieldCode"] = "CONTRATO";
-        
+
         // Mudado para remover apenas PONTUAÇÃO e LETRAS
 //        $campo["fieldValue"] = preg_replace("/\D+/", "", $dadosTemplate["number"]);
         $campo["fieldValue"] = preg_replace("/[^a-zA-Z0-9]/", "", $dadosTemplate["number"]);
@@ -768,6 +768,18 @@ function api_get_cession_resolution_data($procCode)
 
     if ($caseNumEntidade) {
         $dadosRetorno["ASSIGNOR_DATA"] = pegaDadosCaso($procIdEntidades, $caseNumEntidade);
+
+        // Trata os TOKEN das contas
+        $tokens = $dadosRetorno["ASSIGNOR_DATA"]["ACCOUNT_TOKEN"];
+        $listaTokens = json_decode($tokens);
+        if (!is_array($listaTokens)) {
+            $listaTokens = array();
+            $accountKey = $dadosRetorno["ASSIGNOR_DATA"]["ACCOUNT_KEY"];
+            $itemTokens["ACCOUNT_KEY"] = $accountKey;
+            $itemTokens["ACCOUNT_TOKEN"] = $tokens;            
+            $listaTokens[] = $itemTokens;            
+        }
+        $dadosRetorno["ASSIGNOR_DATA"]["ACCOUNT_TOKEN"] = $listaTokens;
         $dadosRetorno["ASSIGNOR_DATA"]["ASSIGNERS"] = pegaListaAssigners($dadosRetorno["ASSIGNOR_DATA"]["ACCOUNT_KEY"], $procCode);
     }
 
@@ -877,7 +889,8 @@ function api_valida_contrato()
 
     $procId = PegaProcIdByCode("SEC_CCBS");
 
-    $ccbNumero = preg_replace("/\D+/", "", $dadosEntrada["contrato"]["number"]);
+//    $ccbNumero = preg_replace("/\D+/", "", $dadosEntrada["contrato"]["number"]);
+    $ccbNumero = preg_replace("/[^a-zA-Z0-9]/", "", $dadosEntrada["contrato"]["number"]);
 
     // <editor-fold defaultstate="collapsed" desc="Busca dados do caso da CCB">
     $caseNumCCB = pegaNumerCasoUnicoAberto($procId, $ccbNumero);
@@ -1116,8 +1129,7 @@ function verificaCCB()
 
     $separador = "";
     if (is_array($dadosEntrada["contracts"])) {
-        foreach ($dadosEntrada["contracts"] as $contrato)
-        {
+        foreach ($dadosEntrada["contracts"] as $contrato) {
             $listaContratos = "$separador'" . $contrato . "'";
             $separador = ",";
         }
@@ -1274,17 +1286,16 @@ function getCessionContracts()
     $dadosEntrada = apiTrataDadosEntrada();
     $cessionNumber = $dadosEntrada["cession_number"];
     $account_key = $dadosEntrada["account_key"];
-    
+
     $procId = PegaProcIdByCode("SEC_CCBS");
-    
-    
+
+
     $SQL = "select campo12 as document_key from exportkeys where procId = $procId and Campo20 = $cessionNumber and campo15 = '$account_key'";
     $query = mysqli_query($connect, $SQL);
     $resultado = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
-    
+
     $jDados = json_encode($resultado);
     header('Content-Type: application/json');
     echo $jDados;
-    
 }

@@ -20,6 +20,10 @@
         "valor": "legal_representative"
     },
     {
+        "descricao": "Parte",
+        "valor": "party"
+    },
+    {
         "descricao": "Cessionário",
         "valor": "transferee"
     }]

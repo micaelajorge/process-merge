@@ -318,39 +318,6 @@ switch ($servidor) {
         break;
 
 
-    case "bpc.securities.com.br":
-        define("ALINHAMENTO_LOGO", "float:left");
-        define("TEMASISTEMA", "skin-blue-light");
-        /**
-         *  Definições Banco de dados
-         */
-        $BPMUSER = "process";
-        $BPMPWD = "cerberus";
-        $EXTERNALUSER = "process";
-        $EXTERNALPWD = "cerberus";
-        $EXTERNAL_USERNAME = "process";
-        $BPMDB = "prod_bpc";
-        $EXTERNALDB = 'prod_bpc';
-        define("ALINHAMENTO_LOGO", "float:left");
-        define("SITE_ROOT", "http://$servidor");
-        define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-        define("SERVER_ADDRESS", $servidor);
-        define("ARQUIVO_ERROR_LOG_PHP", "log_bpc/PHP_errors.log");
-        define("_SECRET_KEY", "f9QsJ4Oufz");
-        define("ALLOW_SEARCH", FALSE);
-        define("FILES_FOLDER", "/");
-        define("FILES_UPLOAD", "/storage/bpc");
-        define("INSTANCENAME", 'BPC');
-        define("SITE_FOLDER", "/"); // Nome do Alias no APACHE
-        define("SITE_FOLDER_COMPLEMENT", "");
-        define("LOGO_PARCEIRO", "logo-clicksign.png");
-        define("PARCEIRONAME", 'Clicksign Securities');
-        define("ICONE_PARCEIRO", "icone_clicksign-mini.png");
-        define("URL_OWNER", "https://www.clicksign-securities.com");
-        define("ALINHAMENTO_LOGO", "float:left");
-        define("NAME_OWNER", "Powered by Certdox");
-        break;
-
     case "creditas-scd.securities.com.br":
     case "creditasscd.securities.com.br":
         define("ALINHAMENTO_LOGO", "float:left");
@@ -385,6 +352,39 @@ switch ($servidor) {
         define("NAME_OWNER", "Powered by Certdox");
         break;
     
+    case "bpc.securities.com.br":
+        define("ALINHAMENTO_LOGO", "float:left");
+        define("TEMASISTEMA", "skin-blue-light");
+        /**
+         *  Definições Banco de dados
+         */
+        $BPMUSER = "process";
+        $BPMPWD = "cerberus";
+        $EXTERNALUSER = "process";
+        $EXTERNALPWD = "cerberus";
+        $EXTERNAL_USERNAME = "process";
+        $BPMDB = "prod_bpc";
+        $EXTERNALDB = 'prod_bpc';
+        define("ALINHAMENTO_LOGO", "float:left");
+        define("SITE_ROOT", "http://$servidor");
+        define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+        define("SERVER_ADDRESS", $servidor);
+        define("ARQUIVO_ERROR_LOG_PHP", "log_bpc/PHP_errors.log");
+        define("_SECRET_KEY", "f9QsJ4Oufz");
+        define("ALLOW_SEARCH", FALSE);
+        define("FILES_FOLDER", "/");
+        define("FILES_UPLOAD", "/storage/bpc");
+        define("INSTANCENAME", 'BPC');
+        define("SITE_FOLDER", "/"); // Nome do Alias no APACHE
+        define("SITE_FOLDER_COMPLEMENT", "");
+        define("LOGO_PARCEIRO", "logo-clicksign.png");
+        define("PARCEIRONAME", 'Clicksign Securities');
+        define("ICONE_PARCEIRO", "icone_clicksign-mini.png");
+        define("URL_OWNER", "https://www.clicksign-securities.com");
+        define("ALINHAMENTO_LOGO", "float:left");
+        define("NAME_OWNER", "Powered by Certdox");
+        break;
+
     
     case "clicksign.certdox.com.br":
         define("ALINHAMENTO_LOGO", "float:left");

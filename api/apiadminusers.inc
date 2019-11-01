@@ -56,6 +56,11 @@ function salva_senha($USUARIO_SENHA)
     }        
 }
 
+/**
+ * ROTA: api/manager/savepassword
+ * 
+ * @global type $USUARIO_SENHA
+ */
 function salva_senha_troca()
 {
     global $USUARIO_SENHA;

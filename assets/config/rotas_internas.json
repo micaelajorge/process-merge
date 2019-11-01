@@ -3,7 +3,7 @@
         "removefile": {
           "GET": {
                 "page": "pages/folder_removefile.inc",
-                "parametros": ["caseNum", "fieldId", "valueId"]
+                "parametros": ["procId", "caseNum", "fieldId", "valueId", "fileName"]
           }  
         },
         "api/v1/statusautomato": {
@@ -1012,7 +1012,8 @@
         "api\/manager\/savepassword": {
             "POST": {
                 "page": "api\/apiadminusers.inc",
-                "funcao": "salva_senha_troca"
+                "funcao": "salva_senha_troca",
+                "logon":false
             }
         },
         "api\/manager\/savepasswordstart": {

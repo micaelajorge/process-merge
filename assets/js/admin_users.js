@@ -116,8 +116,26 @@ function jsEditarPassword(userId, userName)
     jsCarregaConteudoEmDiv(url, "ModalContent", "", "", "", '$("#crModalEditPassword").modal("show")');
 }
 
-
 function jsSalvarSenhaUsuario(userId, userPassword)
+{
+    senha = $("#USUARIO_SENHA").val();
+    if (senha.length < 8)
+    {
+        alert("Senha muito curta");
+        return;
+    }
+    url = "api/manager/savepassword";
+    dadosEnvio = jsGetDataFromForm("frmDadosPassword");
+    $.ajax({
+        url: url,
+        data: dadosEnvio,
+        method: "POST"
+    }).done(function () {
+        $("#crModalEditPassword").modal('hide');
+    });
+}
+
+function jsSalvarSenhaUsuarioRestart(userId, userPassword)
 {
     senha = $("#USUARIO_SENHA").val();
     if (senha.length < 8)

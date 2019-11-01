@@ -747,13 +747,13 @@ function jsFieldFileRemoveImages()
     }
 }
 
-function jsRemoveFile(procId, caseNum, fieldId, valueId)
+function jsRemoveFile(procId, caseNum, fieldId, valueId, fileName)
 {
     if (!confirm("Remover o arquivo?"))
     {
         return;
     }
-    urlExecutao = `removefile/${caseNum}/${fieldId}/${valueId}`;
+    urlExecutao = `removefile/${procId}/${caseNum}/${fieldId}/${valueId}/${fileName}`;
     $.ajax({
         xhrFields: {
             onprogress: function (e) {

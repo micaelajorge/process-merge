@@ -19,15 +19,15 @@ function FuncDeadTimeRelease($AuthUser, $Tipo)
 	switch ($Tipo)
 		{
 		case 'S':
-		$SQL .= "casequeue.DeadSoftDateTime < getdate() and DeadSoftExec = 1 ";
+		$SQL .= "casequeue.DeadSoftDateTime < now() and DeadSoftExec = 1 ";
 		$Acao = 3;
 		break;
 		case 'H':
-		$SQL .= "casequeue.DeadHardDateTime < getdate() and DeadHardExec = 1 ";
+		$SQL .= "casequeue.DeadHardDateTime < now() and DeadHardExec = 1 ";
 		$Acao = 4;
 		break;
 		case 'D':
-		$SQL .= "casequeue.DeadHardestDateTime < getdate() and DeadHardestExec = 1 ";
+		$SQL .= "casequeue.DeadHardestDateTime < now() and DeadHardestExec = 1 ";
 		$Acao = 5;
 		break;
 	}

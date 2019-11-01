@@ -52,8 +52,6 @@ foreach ($_audittrail as $audittrail) {
 		audittrail
 		where 
 		CaseNum = $CaseNum 
-		and
-		ProcId = $procdef->ProcId
 		";
     if ($Tipo != "Admin") {
         $SQL .= " and EventId in ($SShowEvents) ";

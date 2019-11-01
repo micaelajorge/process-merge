@@ -90,7 +90,7 @@ function PegaCasos($CountQueue = 10)
 		stepdef.AutoStepOffTime >= convert(datetime, '1900-01-01 $Hora')
 		)
 	)
-	order by stepdef.AutoStepOrder * 10 - datediff(mi, QueueDate, getdate()),
+	order by stepdef.AutoStepOrder * 10 - datediff(mi, QueueDate, now()),
 	stepdef.AutoStepOrder, casequeue.ProcId, CaseId";	
 	$Query = mysqli_query($connect, $SQL);	
 	return $Query;
@@ -142,7 +142,7 @@ function Funcautostepqueue($AuthUser, $CountQueue = 10)
 /*
 	if (!AuthenticateWs($AuthUser))
 		{
-		error_log('Falha Autenticação');
+		error_log('Falha Autenticaï¿½ï¿½o');
 		return;
 		} 
 		*/

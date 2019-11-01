@@ -2242,7 +2242,7 @@ function audittrail($EventId = 20, $Desc = "")
     } else {
         $StepName = PegaStepName($StepId, $ProcId);
     }
-    $SQL = "insert into audittrail (ProcId, CaseNum, StepId, UserId, EventId, EventDateTime, StepName, UserName, ActionDesc) values ($ProcId, $CaseNum, $StepId, $userdef->UserId, $EventId, getdate(), '$StepName', '$userdef->UserDesc','$Desc')";
+    $SQL = "insert into audittrail (ProcId, CaseNum, StepId, UserId, EventId, EventDateTime, StepName, UserName, ActionDesc) values ($ProcId, $CaseNum, $StepId, $userdef->UserId, $EventId, now(), '$StepName', '$userdef->UserDesc','$Desc')";
     mysqli_query($connect, $SQL);
 }
 
@@ -2283,11 +2283,15 @@ function insereEntradaAuditTrail($procId, $caseNum, $stepId, $userId, $userName,
             . "$stepId, "
             . "$userId, "
             . "$eventId, "
-            . "getdate(), "
+            . "now(), "
             . "'$StepName', "
             . "'$userName',"
             . "'$mensagemTratada')";
-    mysqli_query($connect, $SQL);
+    $query = mysqli_query($connect, $SQL);
+    if (mysqli_errno($connect))
+    {
+        error_log("Falha " . mysqli_error($connect));
+    }    
 }
 
 function PegaFieldIdByCode($ProcId, $FieldCode)
@@ -2743,7 +2747,7 @@ function Enteraudittrail($ProcId, $CaseNum, $StepId = 0, $Codigo = 0, $ActionDes
     $SQL .= " $CaseNum,  ";
     $SQL .= " $StepId,  ";
     $SQL .= " $Codigo,  ";
-    $SQL .= " getdate(),  ";
+    $SQL .= " now(),  ";
     $SQL .= " $userdef->UserId, ";
     $SQL .= " '$userdef->UserDesc', ";
     $SQL .= " '$StepName', ";

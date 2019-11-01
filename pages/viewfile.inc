@@ -82,6 +82,7 @@ function ViewFile($fileStorageName, $fileName, $diretorioArquivo = "")
 
 function serveArquivo()
 {
+    global $userdef;
     $dadosEntrada = apiTrataDadosEntrada();
 //    $ProcId = $dadosEntrada["ProcId"];
 //    $CaseNum = $dadosEntrada["CaseNum"];
@@ -108,8 +109,9 @@ function serveArquivo()
     $forceDownload = $GLOBALS["forceDownload"];
     $diretorio = FILES_UPLOAD . "/" . diretorioArquivoImagem($ProcId, $CaseNum, $fieldId);
 
+    insereEntradaAuditTrail($ProcId, $CaseNum, 0, $userdef->UserId, $userdef->UserDesc, 7, "$fileName");
     if ($forceDownload) {
-        DownloadFile($fileNameStorage, $fileName, $diretorio);
+        DownloadFile($fileNameStorage, $fileName, $diretorio);        
     } else {
         ViewFile($fileNameStorage, $fileName, $diretorio);
     }

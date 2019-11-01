@@ -5,6 +5,7 @@ $EventDesc[2] = "Caso Processado";
 $EventDesc[3] = "Caso Salvo";
 $EventDesc[4] = "<span class=\"PassoIniciado\">Passo Iniciado</span>";
 $EventDesc[6] = "<span class=\"PassoIniciado\">Passo Iniciado</span>";
+$EventDesc[7] = "Download Arquivo";
 $EventDesc[704] = "<span class=\"PassoIniciado\">Passo Iniciado</span>";
 $EventDesc[706] = "<span class=\"PassoIniciado\">Passo Iniciado</span>";
 $EventDesc[2000] = "<span class=\"PassoIniciado\">Macro Executada</span>";
@@ -74,6 +75,12 @@ function CriaEventDesc($ProcId, $CaseNum, $EventId, $StepName, $StepId, $StartSt
             } else {
                 $Evento .= $NomePasso;
             }
+            break;
+        case 7:
+            $Evento = "Download Arquivo - $ActionDesc";
+            break;
+        case 8:
+            $Evento = "Arquivo Apagado - $ActionDesc";
             break;
         case 704:
         case 706:
@@ -227,7 +234,7 @@ function CriaEventDesc($ProcId, $CaseNum, $EventId, $StepName, $StepId, $StartSt
             } else {
                 $Evento .= "\n$ActionDesc\nCaso não estava no Passo";
             }
-            break;
+            break;            
         default:
             if (empty($Evento)) {
                 $Evento = "Evento sem Descrição EventId: $EventId";
@@ -236,4 +243,3 @@ function CriaEventDesc($ProcId, $CaseNum, $EventId, $StepName, $StepId, $StartSt
     }
     return $Evento;
 }
-?> 

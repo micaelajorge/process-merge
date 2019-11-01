@@ -51,6 +51,7 @@ function jsFieldFileAcquireImage() {
             DWObject.OpenSource();
             DWObject.IfDisableSourceAfterAcquire = true;
             DWObject.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);
+            $("#btnRemoveScanFiles").removeAttr("disabled");
         }, function () {
             console.log('SelectSource failed!');
         });
@@ -734,6 +735,15 @@ function jsMudaStatusButtonBO(objeto, checkBoxAlvo)
             $(objeto).addClass("btn-success");
             $(objeto).html("Sim");
         }
+    }
+}
+
+
+function jsFieldFileRemoveImages()
+{
+    if (confirm('Descartar imagens'))
+    {
+        DWObject.RemoveAllImages();
     }
 }
 

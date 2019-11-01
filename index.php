@@ -6,7 +6,7 @@
   Sistema: Creditus
  */
 
-define("RELEASE_SCRIPT", "0049");
+define("RELEASE_SCRIPT", "0051");
 
 define("SYS_VERSION", "3.2.1");
 define("LOG_DATA", false);

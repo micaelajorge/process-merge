@@ -3,6 +3,8 @@
 Criação: Marcelo Mosczynski <mmoscz@gmail.com>
 Data Criação 19/09/2018
 Sistema: Process_XAMPP
+ * 
+ * ROTA: trocarsenha
 */
 
 use raelgc\view\Template;

@@ -86,6 +86,7 @@ function ListaArquivosCampoImagem($ProcId, $CaseNum, $FieldId, $ReadOnly, $tipoF
         $ValueId = $Linha["ValueId"];
         $t_body->Excluir = "BPMFolderSendFile.php?ProcId=$ProcId&StepId=$StepId&CaseNum=$CaseNum&FieldId=$FieldId&ValueId=$ValueId&Arquivo=" . str_replace(" ", '%20', $nomeArquivo);
         $t_body->ABRIR = $jsonExtendData["fileName"];
+        $t_body->VALUE_ID = $ValueId;
         $t_body->ARQUIVO_NOME = $jsonExtendData["fileName"];
         $t_body->ARQUIVO_NOME_JS = addslashes($jsonExtendData["fileName"]);
         $t_body->ARQUIVO_NOME_STORAGE = $jsonExtendData["fileNameStorage"];

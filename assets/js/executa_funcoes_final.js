@@ -6,6 +6,10 @@
 
 function jsExecutaFuncoesFinal()
 {
+    if (typeof funcoes_final === "undefined")
+    {
+        return;
+    }
     if (Array.isArray(funcoes_final))
     {
         for (let i = 0; i < funcoes_final.length; i++)

@@ -6,7 +6,7 @@
   Sistema: Creditus
  */
 
-define("RELEASE_SCRIPT", "0048");
+define("RELEASE_SCRIPT", "0049");
 
 define("SYS_VERSION", "3.2.1");
 define("LOG_DATA", false);
@@ -229,6 +229,8 @@ switch ($servidor) {
                 define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS");
                 define("configDB", "localhost");
                 define("PARCEIRONAME", 'Default');
+//                $BPMDB = "securities_start";
+//                $EXTERNALDB = "securities_start";
                 $BPMDB = "processteste";
                 $EXTERNALDB = "processteste";
                 break;

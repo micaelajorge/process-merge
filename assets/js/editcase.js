@@ -558,6 +558,7 @@ function getFormValuesObjectList(form)
 
 function jsCarregaFolder(ProcId, StepId, CaseNum, Campo, ReadOnly, multipleFiles)
 {
+    console.log("Carregando Folder");
     url = "folderlist";
     dadosChamada = {
         CaseNum: CaseNum,
@@ -734,6 +735,36 @@ function jsMudaStatusButtonBO(objeto, checkBoxAlvo)
             $(objeto).html("Sim");
         }
     }
+}
+
+function jsRemoveFile(procId, caseNum, fieldId, valueId)
+{
+    if (!confirm("Remover o arquivo?"))
+    {
+        return;
+    }
+    urlExecutao = `removefile/${caseNum}/${fieldId}/${valueId}`;
+    $.ajax({
+        xhrFields: {
+            onprogress: function (e) {
+                if (e.lengthComputable) {
+                    console.log("Loaded " + Number((e.loaded / e.total * 100)) + "%");
+                } else {
+                    console.log("Length not computable.");
+                }
+            }
+        },
+        url: urlExecutao,
+        type: "GET",
+        success: function (retorno) {
+            jsCarregaFolder(procId, '', caseNum, fieldId, 0, 0);
+        },
+        error: function (xhr, status, error) {
+            alert(status);
+        }
+    });
+    console.log(`${procId}, ${caseNum}, ${fieldId}, ${valueId}`);
+    
 }
 
 function jsViewFile(procId, caseNum, fieldId, fileNameStorage, fileName, fieldIdCase, abrirNovaJanela)

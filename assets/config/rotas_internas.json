@@ -1,5 +1,11 @@
 {
     "rotas": {    
+        "removefile": {
+          "GET": {
+                "page": "pages/folder_removefile.inc",
+                "parametros": ["caseNum", "fieldId", "valueId"]
+          }  
+        },
         "api/v1/statusautomato": {
             "GET": {
                 "page": "api/api_status_automatos.inc",
@@ -1006,7 +1012,13 @@
         "api\/manager\/savepassword": {
             "POST": {
                 "page": "api\/apiadminusers.inc",
-                "funcao": "salva_senha"
+                "funcao": "salva_senha_troca"
+            }
+        },
+        "api\/manager\/savepasswordstart": {
+            "POST": {
+                "page": "api\/apiadminusers.inc",
+                "funcao": "salva_senha_inicial"
             }
         },
         "api\/manager\/adicionausergrupo": {

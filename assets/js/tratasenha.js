@@ -1,46 +1,45 @@
+var limiteSenhaFraca = 20;
+var limiteSenhaJusta = 30;
+var limiteSenhaForte = 40;
+var minimoCaractetes = 8;
+
 function calcula_forca(campoSenha) {
     senha = $(campoSenha).val();
     forca = 0;
-    if ((senha.length >= 4) && (senha.length <= 7)) {
-        forca += 10;
+    if ((senha.length < minimoCaractetes)) {
+        forca = -1 * limiteSenhaForte;
     }
-//    } else if (senha.length > 7) {
-//        forca += 25;
-//    }
+
     if (senha.match(/[a-z]+/)) {
         forca += 10;
     }
     if (senha.match(/[A-Z]+/)) {
-        forca += 20;
+        forca += 10;
     }
     if (senha.match(/\d+/)) {
-        forca += 20;
+        forca += 10;
     }
     if (senha.match(/\W+/)) {
-        forca += 20;
+        forca += 10;
     }
     return forca;
 }
 
 function trataForcaSenha(campoSenha) {
+
     forcaSenha = calcula_forca(campoSenha);
+    $("#btnSalvarSenha")[0].disabled = true;
     $("#forcaSenha").removeClass();
-    if (forcaSenha < 30) {
+    if (forcaSenha < limiteSenhaJusta) {
         forcaSenhaTexto = "Fraca";
         forcaSenhaClass = "text-danger";
-        $("#btnSalvarSenha")[0].disabled = true;
-    } else if ((forcaSenha >= 30) && (forcaSenha < 60)) {
-        $("#btnSalvarSenha")[0].disabled = true;
+    } else if ((forcaSenha >= limiteSenhaJusta) && (forcaSenha < limiteSenhaForte)) {
         forcaSenhaClass = "text-warning";
         forcaSenhaTexto = "Justa";
-    } else if ((forcaSenha >= 75) && (forcaSenha < 85)) {
+    } else if (forcaSenha >= limiteSenhaForte) {
         $("#btnSalvarSenha")[0].disabled = false;
         forcaSenhaClass = "text-green";
         forcaSenhaTexto = "Forte";
-    } else {
-        $("#btnSalvarSenha")[0].disabled = false;
-        forcaSenhaClass = "text-primary";
-        forcaSenhaTexto = "Excelente";
     }
     $("#forcaSenha").html(forcaSenhaTexto);
     $("#forcaSenha").addClass(forcaSenhaClass);

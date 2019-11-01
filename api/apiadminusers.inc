@@ -5,10 +5,47 @@ require_once("include/resource01.php");
 
 //include("include/validacaoapi.php");
 
-function salva_senha()
+define("LIMITE_FORCA_SENHA", 40);
+
+function testaForcaSenha($senhaUsuario)
 {
-    global $connect, $USUARIO_SENHA, $USUARIO_ID;
-    
+    $forcaSenha = 0;
+    if (strlen($senhaUsuario) < 8)
+    {
+        return 0;
+    }
+    $retorno = preg_match('/(\W+)/m', $senhaUsuario);
+    if ($retorno !== false)
+    {
+        $forcaSenha+= 10;
+    }
+    $retorno = preg_match('/a-z]+/m', $senhaUsuario);
+    if ($retorno !== false)
+    {
+        $forcaSenha+= 10;
+    }
+    $retorno = preg_match('/A-Z]+/m', $senhaUsuario);
+    if ($retorno !== false)
+    {
+        $forcaSenha+= 10;
+    }
+    $retorno = preg_match('/0-9]+/m', $senhaUsuario);
+    if ($retorno !== false)
+    {
+        $forcaSenha+= 10;
+    }
+    return $forcaSenha;
+}
+
+function salva_senha_inicial()
+{
+    global $USUARIO_SENHA;
+    salva_senha($USUARIO_SENHA);
+}
+
+function salva_senha($USUARIO_SENHA)
+{
+    global $connect, $USUARIO_ID;
     $senhaCript = password_hash($USUARIO_SENHA, PASSWORD_DEFAULT);
     $SQL = "update userdef set UserPWD = '$senhaCript' where userId = $USUARIO_ID";
     $resultado = mysqli_query($connect, $SQL);
@@ -16,7 +53,20 @@ function salva_senha()
         header('HTTP/1.0 200 ok');
     } else {
         header('HTTP/1.0 403 ERRO');
+    }        
+}
+
+function salva_senha_troca()
+{
+    global $USUARIO_SENHA;
+
+    $forcaSenha = testaForcaSenha($USUARIO_SENHA);
+    if ($forcaSenha < LIMITE_FORCA_SENHA)
+    {
+        header('HTTP/1.0 403 ERRO');
+        die;
     }
+    salva_senha($USUARIO_SENHA);
 }
 
 function removeEntidade()

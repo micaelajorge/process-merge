@@ -125,7 +125,7 @@ function jsSalvarSenhaUsuario(userId, userPassword)
         alert("Senha muito curta");
         return;
     }
-    url = "api/manager/savepassword";
+    url = "api/manager/savepasswordstart";
     dadosEnvio = jsGetDataFromForm("frmDadosPassword");
     $.ajax({
         url: url,

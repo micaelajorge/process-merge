@@ -1130,7 +1130,7 @@ function verificaCCB()
     $separador = "";
     if (is_array($dadosEntrada["contracts"])) {
         foreach ($dadosEntrada["contracts"] as $contrato) {
-            $listaContratos = "$separador'" . $contrato . "'";
+            $listaContratos .= "$separador'" . $contrato . "'";
             $separador = ",";
         }
     } else {

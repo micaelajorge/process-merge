@@ -82,11 +82,11 @@ function salva_senha_troca()
 
 function removeEntidade()
 {
-    global $connect, $entidadeId, $grpFld;
+    global $connect, $entidadeId, $grpFld, $usuarioGrupo;
     if ($grpFld == "U") {
-        $sql = "delete from usergroup where userid = $entidadeId";
+        $sql = "delete from usergroup where userid = $entidadeId and groupId = $usuarioGrupo";
     } else {
-        $sql = "delete from usergroup where groupid = $entidadeId";
+        $sql = "delete from usergroup where groupid = $entidadeId and userId = $usuarioGrupo";
     }
     $resultado = mysqli_query($connect, $sql);
     return $resultado;
@@ -131,12 +131,22 @@ function gravaDadosUsuario()
     global $USUARIO_DESC, $USUARIO_EMAIL, $USUARIO_ATIVO, $USUARIO_ORIGEM, $USUARIO_ID, $USUARIO_NOME;
     $dadosEntrada = apiTrataDadosEntrada();
 
-    echo "$header.$payload.$signature";
 
+    $SQL = "select username from userdef where username = '$USUARIO_NOME' ";
+    $Query = mysqli_query($connect, $SQL);
+    
+    if (mysqli_num_rows($Query) > 0)
+    {
+        header('HTTP/1.0 422 ERRO');
+        echo "Usuário já existe";
+        return;
+    }
+
+    echo "$header.$payload.$signature";    
     $token = $dadosEntrada["token"];
     if (trim($token) == "") {
         $token = calculaToken($USUARIO_NOME, $USUARIO_EMAIL);
-    }
+    }       
 
     if ($dadosEntrada["USUARIO_ID"] > 0) {
         $SQL = "update "

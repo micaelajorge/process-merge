@@ -4,6 +4,8 @@
   Criação: Marcelo Mosczynski <mmoscz@gmail.com>
   Data Criação 19/09/2018
   Sistema: Process_XAMPP
+ * 
+ * ROTA: gruposusuario
  */
 
 include_once(FILES_ROOT . "include/common.php");
@@ -65,6 +67,7 @@ $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);
 $listaEntidades = array();
 foreach ($linhas as $linha) {
     //$listaEntidades[] = $linha["entidade_id"];
+    
     $t_body->ENTIDADE_ID = $linha["entidade_id"];
     $t_body->GRUPO_USUARIO = $linha["entidade_nome"];
     $t_body->DESCRICAO = $linha["entidade_desc"];
@@ -72,6 +75,7 @@ foreach ($linhas as $linha) {
     $t_body->block("BLOCO_ENTIDADES");
 }
 $_SESSION["listaEntidades"] = $listaEntidades;
+$t_body->ENTIDADE_ID = $entidade_id;
 $t_body->ENTIDADE = $entidade;
 $t_body->PROCID = $procId;
 $t_body->STEPID = $stepId;

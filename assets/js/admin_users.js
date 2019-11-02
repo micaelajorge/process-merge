@@ -18,9 +18,9 @@ function jsSalvarUsuario()
                 datatableUsuarios.ajax.reload();
                 $("#crModalEditUser").modal("hide");
             })
-            .fail(function (retorno) {
+            .fail(function (jqXHR, textStatus) {
                 // Falha ao gravar
-                alert(retorno);
+                alert(jqXHR.responseText);
             });
 }
 

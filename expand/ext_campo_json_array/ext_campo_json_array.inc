@@ -41,9 +41,6 @@ function inicializacao_ext_campo_json_array($FieldId, $ReadOnly, $Valor_Campo, $
         $t_body_field->block("BLOCO_MODAL_FIELD");
     }
 
-    $t_body_field->ARQUIVO_JS = 'ext_campo_json_array.js';
-    $t_body_field->block('BLOCO_JAVASCRIPT');
-
     $t_body_field->block('BLOCO_INICIA_TABELA');
 
     $retorno["html"] = $t_body_field->parse();

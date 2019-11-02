@@ -1368,6 +1368,10 @@ switch ($servidor) {
         break;
 }
 
+if (!defined("LIMITE_DIAS_ULTIMO_LOGON"))
+{
+    define("LIMITE_DIAS_ULTIMO_LOGON", 90);
+}
 
 // Define o texto para cabeçalho na fila para o coluna Nr Caso
 if (!defined("cabNumeroCaso")) {

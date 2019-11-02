@@ -198,6 +198,16 @@ class userdef {
         $this->Origem = '';
     }
 
+    function testaUltimoLogon($dataUltimoLogon)
+    {
+        $ultimologon = date_create($dataUltimoLogon);
+        
+        $dataAtual = new DateTime();
+        $interval = date_diff($dataAtual, $ultimologon);
+        $dias = $interval->format("%a");
+        return $dias < LIMITE_DIAS_ULTIMO_LOGON;
+    }
+
     function SalvaDataLogon()
     {
         $SQL = "update userdef set lastlogon = now() where userid = $this->UserId";
@@ -219,6 +229,9 @@ class userdef {
         while ($result = mysqli_fetch_array($QUERY_USER)) {
             //error_log("Usuario Log: " . $result["UserName"]);
             if ($result["token"] == $token) {
+                $validado = $result["Uactive"] == '1';
+                $validado = $validado && $this->testaUltimoLogon($result["lastlogon"]);
+                $this->Validado = $validado;
                 $this->UserName = $result["UserName"];
                 $this->UserPwd = $result["UserPwd"];
                 $this->UserId = $result["UserId"];
@@ -231,12 +244,14 @@ class userdef {
                 $this->AdHoc = $result["AdHoc"];
                 $this->Origem = $result["Origem"];
                 $this->GruposProcess();
-                $this->Validado = true;
+                $this->Active = $validado;
                 $this->Email = $result["Email"];
                 $this->lastlogon = (!empty($result["lastlogon"])) ? $result["lastlogon"] : '1901-01-01';
                 $this->lastnotification = (!empty($result["lastnotification"])) ? $result["lastnotification"] : '1901-01-01';
                 $this->lastmessages = (!empty($result["lastmessages"])) ? $result["lastmessages"] : '1901-01-01';
-                $this->SalvaDataLogon();
+                if ($validado) {
+                    $this->SalvaDataLogon();
+                }
                 return;
             }
         }
@@ -273,8 +288,11 @@ class userdef {
                     return;
                 }
             }
+            $validado = $result["Uactive"] == '1';
+            $validado = $validado && $this->testaUltimoLogon($result["lastlogon"]);
+            $this->Validado = $validado;
             $this->UserName = $result["UserName"];
-//                $this->UserPwd = $result["UserPwd"];
+            $this->UserPwd = $result["UserPwd"];
             $this->UserId = $result["UserId"];
             $this->UserId_Process = $result["UserId"];
             $this->UserLevel = $result["UserLevel"];
@@ -285,12 +303,15 @@ class userdef {
             $this->AdHoc = $result["AdHoc"];
             $this->Origem = $result["Origem"];
             $this->GruposProcess();
-            $this->Validado = true;
+            $this->Active = $validado;
             $this->Email = $result["Email"];
             $this->lastlogon = (!empty($result["lastlogon"])) ? $result["lastlogon"] : '1901-01-01';
             $this->lastnotification = (!empty($result["lastnotification"])) ? $result["lastnotification"] : '1901-01-01';
             $this->lastmessages = (!empty($result["lastmessages"])) ? $result["lastmessages"] : '1901-01-01';
-            $this->SalvaDataLogon();
+
+            if ($validado) {
+                $this->SalvaDataLogon();
+            }
             return;
         }
     }

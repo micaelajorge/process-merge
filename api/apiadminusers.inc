@@ -43,11 +43,17 @@ function salva_senha_inicial()
     salva_senha($USUARIO_SENHA);
 }
 
+/**
+ * 
+ * @global type $connect
+ * @global type $USUARIO_ID
+ * @param type $USUARIO_SENHA
+ */
 function salva_senha($USUARIO_SENHA)
 {
     global $connect, $USUARIO_ID;
     $senhaCript = password_hash($USUARIO_SENHA, PASSWORD_DEFAULT);
-    $SQL = "update userdef set UserPWD = '$senhaCript' where userId = $USUARIO_ID";
+    $SQL = "update userdef set UserPWD = '$senhaCript', lastlogon = Now() where userId = $USUARIO_ID";
     $resultado = mysqli_query($connect, $SQL);
     if ($resultado) {
         header('HTTP/1.0 200 ok');

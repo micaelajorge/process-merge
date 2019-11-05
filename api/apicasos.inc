@@ -269,6 +269,13 @@ function apicasestartuniqueprocessa_v1()
 
         $valorCampoUnique = buscaValorCampoUnique($procId, $fields, $fieldUnique);
 
+        if ($valorCampoUnique === false)
+        {
+            header("HTTP/1.0 422 Campo Unique não informado");            
+            header('Content-Type: application/json');                    
+            return;
+        }
+        
         $numeroCasoExiste = pegaNumerCasoUnicoAberto($procId, $valorCampoUnique);
 
         if ($numeroCasoExiste == 0) {

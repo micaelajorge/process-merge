@@ -14,7 +14,7 @@ define("LOG_DATA", false);
 function iniciarPhpSession()
 {
     $headers = getallheaders();
-    if (key_exists("token", $headers)) {
+    if (key_exists("token", $headers) || key_exists("Authorization", $headers)) {
         ini_set('session.use_cookies', 0);
     }
     session_start();
@@ -39,8 +39,7 @@ if (!extension_loaded('curl')) {
     $failRequireModules = true;
 }
 
-if ($failRequireModules)
-{
+if ($failRequireModules) {
     die;
 }
 
@@ -56,14 +55,17 @@ if (empty($enderecoServidor)) {
 
 $urlChamada = $_SERVER["REQUEST_URI"];
 
-$servidor = $_SERVER["HTTP_HOST"];
+$srvAccess = $_SERVER["HTTP_HOST"];
+$servidor = $srvAccess;
+
+define("SRCACCESS", $srvAccess);
 
 // Numero de Processos para mostrar na janela de Entrada
 define("NR_PROCESSOS_SHOW_ENTRADA", 15);
 
 define("APP_NAME", "Process");
 
-(LOG_DATA) ? error_log("Servidor: $servidor") : null;
+(LOG_DATA) ? error_log("Servidor: $srvAccess") : null;
 
 define("ARQUIVO_ROTAS", "rotas.json");
 
@@ -94,11 +96,11 @@ $PaginaLogon = "logon.inc";
 
 $OrigemLogon = "ProcessLogon";
 
-switch ($servidor) {
+switch ($srvAccess) {
 
     // Acesso para instancias SECURITIES.
     case "clicksign-securities.com.br":
-    case "ec2-3-81-252-70.compute-1.amazonaws.com":
+    case "ec2-3-88-59-18.compute-1.amazonaws.com":
         include("config_intancias_securities.inc");
         break;
 
@@ -116,10 +118,8 @@ switch ($servidor) {
         $BPMDB = "process_plena";
         $EXTERNALDB = 'process_plena';
         define("ALINHAMENTO_LOGO", "float:left");
-        define("SITE_ROOT", "http://$servidor");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("configDB", "localhost");
-        define("SERVER_ADDRESS", $servidor);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
@@ -151,9 +151,9 @@ switch ($servidor) {
         $BPMDB = "process_certdox_poc";
         $EXTERNALDB = 'process_certdox_poc';
         define("ALINHAMENTO_LOGO", "float:left");
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
@@ -236,10 +236,10 @@ switch ($servidor) {
                 break;
         }
         define("FILES_FOLDER", "\\");
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_FOLDER_COMPLEMENT", "");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         if (!defined("ARQUIVO_ERROR_LOG_PHP")) {
             define("ARQUIVO_ERROR_LOG_PHP", "log_local/PHP_errors.log");
         }
@@ -267,9 +267,9 @@ switch ($servidor) {
         $BPMDB = "prod_alicred";
         $EXTERNALDB = 'prod_alicred';
         define("ALINHAMENTO_LOGO", "float:left");
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log_alicred/PHP_errors.log");
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
@@ -300,9 +300,9 @@ switch ($servidor) {
         $BPMDB = "gateway_creditas_scd";
         $EXTERNALDB = 'gateway_creditas_scd';
         define("ALINHAMENTO_LOGO", "float:left");
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log_gateway_creditas_scd/PHP_errors.log");
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
@@ -335,9 +335,9 @@ switch ($servidor) {
         $BPMDB = "prod_creditas_scd";
         $EXTERNALDB = 'prod_creditas_scd';
         define("ALINHAMENTO_LOGO", "float:left");
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log_creditas_scd/PHP_errors.log");
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
@@ -353,7 +353,7 @@ switch ($servidor) {
         define("ALINHAMENTO_LOGO", "float:left");
         define("NAME_OWNER", "Powered by Certdox");
         break;
-    
+
     case "bpc.securities.com.br":
         define("ALINHAMENTO_LOGO", "float:left");
         define("TEMASISTEMA", "skin-blue-light");
@@ -368,9 +368,9 @@ switch ($servidor) {
         $BPMDB = "prod_bpc";
         $EXTERNALDB = 'prod_bpc';
         define("ALINHAMENTO_LOGO", "float:left");
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log_bpc/PHP_errors.log");
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
@@ -387,7 +387,7 @@ switch ($servidor) {
         define("NAME_OWNER", "Powered by Certdox");
         break;
 
-    
+
     case "clicksign.certdox.com.br":
         define("ALINHAMENTO_LOGO", "float:left");
         define("TEMASISTEMA", "skin-red");
@@ -402,9 +402,9 @@ switch ($servidor) {
         $BPMDB = "process_certdox_poc";
         $EXTERNALDB = 'process_certdox_poc';
         define("ALINHAMENTO_LOGO", "float:left");
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
@@ -426,6 +426,39 @@ switch ($servidor) {
     case "securities.com.br":
         define("ARQUIVOS_NOVA_JANELA", "true");
         switch ($aliasServidor) {
+            case "homolog_creditas_consignado":
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("TEMASISTEMA", "skin-red");
+                /**
+                 *  Definições Banco de dados
+                 */
+                $BPMUSER = "process";
+                $BPMPWD = "cerberus";
+                $EXTERNALUSER = "process";
+                $EXTERNALPWD = "cerberus";
+                $EXTERNAL_USERNAME = "process";
+                $BPMDB = "homolog_creditas_consignado";
+                $EXTERNALDB = 'homolog_creditas_consignado';
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("SITE_ROOT", "http://$srvAccess");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("SERVER_ADDRESS", $srvAccess);
+                define("ARQUIVO_ERROR_LOG_PHP", "log_homolog_creditas_consignado/PHP_errors.log");
+                define("_SECRET_KEY", "f9QsJ4Oufz");
+                define("ALLOW_SEARCH", FALSE);
+                define("FILES_FOLDER", "/");
+                define("FILES_UPLOAD", "/storage/gateway_creditas_scd");
+                define("INSTANCENAME", 'Homolog Creditas Consignado');
+                define("SITE_FOLDER", "/homolog_creditas_consignado/"); // Nome do Alias no APACHE
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+                define("PARCEIRONAME", 'Securities');
+                define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
+                define("URL_OWNER", "https://www.certdox.com.br");
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("NAME_OWNER", "Powered by Certdox");
+                break;
+
             case "homolog_creditas_sorocred":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
@@ -440,9 +473,9 @@ switch ($servidor) {
                 $BPMDB = "homolog_creditas_sorocred";
                 $EXTERNALDB = 'homolog_creditas_sorocred';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log_gateway_creditas_scd/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -473,9 +506,9 @@ switch ($servidor) {
                 $BPMDB = "prod_gateway_creditas_scd";
                 $EXTERNALDB = 'prod_gateway_creditas_scd';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log_gateway_creditas_scd/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -507,9 +540,9 @@ switch ($servidor) {
                 $BPMDB = "process_certdox_poc";
                 $EXTERNALDB = 'process_certdox_poc';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -540,9 +573,9 @@ switch ($servidor) {
                 $BPMDB = "homolog_bpc";
                 $EXTERNALDB = 'homolog_bpc';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log_bpc/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -572,9 +605,9 @@ switch ($servidor) {
                 $BPMDB = "process_idtrust";
                 $EXTERNALDB = 'process_idtrust';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -605,9 +638,9 @@ switch ($servidor) {
                 $BPMDB = "process_certdox_poc";
                 $EXTERNALDB = 'process_certdox_poc';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -638,9 +671,9 @@ switch ($servidor) {
                 $BPMDB = "process_certdox_poc";
                 $EXTERNALDB = 'process_certdox_poc';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -671,9 +704,9 @@ switch ($servidor) {
                 $BPMDB = "prod_geru";
                 $EXTERNALDB = 'prod_geru';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log_geru/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -704,9 +737,9 @@ switch ($servidor) {
                 $BPMDB = "homolog_gateway_creditas_scd";
                 $EXTERNALDB = 'gateway_creditas_scd';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log_gateway_creditas_scd/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -737,9 +770,9 @@ switch ($servidor) {
                 $BPMDB = "homolog_creditas_scd";
                 $EXTERNALDB = 'creditas_scd';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log_creditas_scd/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -770,9 +803,9 @@ switch ($servidor) {
                 $BPMDB = "creditas_scd";
                 $EXTERNALDB = 'creditas_scd';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log_creditas_scd/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -805,9 +838,9 @@ switch ($servidor) {
                 $EXTERNALDB = 'process_certdox_poc';
                 define("TEMPLATE_LOGON", "t_logon_logo_top.html");
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -839,9 +872,9 @@ switch ($servidor) {
                 $BPMDB = "process_certdox_geru";
                 $EXTERNALDB = 'process_certdox_geru';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -872,9 +905,9 @@ switch ($servidor) {
                 $BPMDB = "process_certdox_creditas";
                 $EXTERNALDB = 'process_certdox_creditas';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor/creditas/");
+                define("SITE_ROOT", "http://$srvAccess/creditas/");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -905,9 +938,9 @@ switch ($servidor) {
                 $BPMDB = "process_certdox_poc";
                 $EXTERNALDB = 'process_certdox_poc';
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
@@ -941,9 +974,9 @@ switch ($servidor) {
         $BPMDB = "process_certdox_poc";
         $EXTERNALDB = 'process_certdox_poc';
         define("ALINHAMENTO_LOGO", "float:left");
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
@@ -974,9 +1007,9 @@ switch ($servidor) {
         $BPMDB = "process_idtrust";
         $EXTERNALDB = 'process_idtrust';
         define("ALINHAMENTO_LOGO", "float:left");
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
@@ -1010,11 +1043,11 @@ switch ($servidor) {
                 define("TEMASISTEMA", "skin-purple-light");
                 define("FILES_FOLDER", "/");
                 define("SITE_FOLDER", "/poc_caruana/");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_FOLDER_COMPLEMENT", "");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
                 define("configDB", "localhost");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("FILES_UPLOAD", "/system/caruana/storage/files");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
@@ -1033,11 +1066,11 @@ switch ($servidor) {
                 define("TEMASISTEMA", "skin-blue");
                 define("FILES_FOLDER", "/");
                 define("SITE_FOLDER", "/");
-                define("SITE_ROOT", "http://$servidor");
+                define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_FOLDER_COMPLEMENT", "");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
                 define("configDB", "localhost");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("FILES_UPLOAD", "/system/transferwise/storage/files");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
@@ -1060,11 +1093,11 @@ switch ($servidor) {
 
         define("FILES_FOLDER", "/");
         define("SITE_FOLDER", "/");
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_FOLDER_COMPLEMENT", "");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("configDB", "localhost");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "error_log");
         define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS");
         define("_SECRET_KEY", "f9QsJ4Oufz");
@@ -1091,10 +1124,10 @@ switch ($servidor) {
         $OrigemLogon = "ProcessLogon";
         $BPMDB = "processteste";
         $EXTERNALDB = 'processteste';
-        define("SITE_ROOT", "http://$servidor");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("configDB", "localhost");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("_SECRET_KEY", "f9QsJ4Oufz");
         define("ALLOW_SEARCH", FALSE);
@@ -1181,11 +1214,11 @@ switch ($servidor) {
                 define("TEMASISTEMA", "skin-blue");
                 define("FILES_FOLDER", "/");
                 define("SITE_FOLDER", "");
-                define("SITE_ROOT", "https://$servidor/");
+                define("SITE_ROOT", "https://$srvAccess/");
                 define("SITE_FOLDER_COMPLEMENT", "/");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
                 define("configDB", "localhost");
-                define("SERVER_ADDRESS", $servidor);
+                define("SERVER_ADDRESS", $srvAccess);
                 define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
                 define("FILES_UPLOAD", "/system/transferwise/storage/files");
                 define("_SECRET_KEY", "cLWD;KCBgP?a1'(0m03W");
@@ -1198,11 +1231,11 @@ switch ($servidor) {
         }
 //        define("TEMASISTEMA", "skin-blue");
 //        define("FILES_FOLDER", "/");
-//        define("SITE_ROOT", "https://$servidor");
+//        define("SITE_ROOT", "https://$srvAccess");
 //        define("SITE_FOLDER_COMPLEMENT", "/");
 //        define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
 //        define("configDB", "localhost");
-//        define("SERVER_ADDRESS", $servidor);
+//        define("SERVER_ADDRESS", $srvAccess);
 //        define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
 //        define("FILES_UPLOAD", "/system/transferwise/storage/files");
 //        define("_SECRET_KEY", "cLWD;KCBgP?a1'(0m03W");
@@ -1225,11 +1258,11 @@ switch ($servidor) {
         define("TEMASISTEMA", "skin-blue");
         define("FILES_FOLDER", "/");
         define("SITE_FOLDER", "");
-        define("SITE_ROOT", "http://$servidor/");
+        define("SITE_ROOT", "http://$srvAccess/");
         define("SITE_FOLDER_COMPLEMENT", "/");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("configDB", "localhost");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("FILES_UPLOAD", "/system/caruana/storage/files");
         define("_SECRET_KEY", "cLWD;KCBgP?a1'(0m03W");
@@ -1256,11 +1289,11 @@ switch ($servidor) {
         define("TEMASISTEMA", "skin-blue");
         define("FILES_FOLDER", "/");
         define("SITE_FOLDER", "");
-        define("SITE_ROOT", "http://$servidor/");
+        define("SITE_ROOT", "http://$srvAccess/");
         define("SITE_FOLDER_COMPLEMENT", "/");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("configDB", "localhost");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("FILES_UPLOAD", "/system/tribanco/files");
         define("_SECRET_KEY", "cLWD;KCBgP?a1'(0m03W");
@@ -1286,11 +1319,11 @@ switch ($servidor) {
         define("TEMASISTEMA", "skin-blue");
         define("FILES_FOLDER", "/");
         define("SITE_FOLDER", "");
-        define("SITE_ROOT", "http://$servidor/");
+        define("SITE_ROOT", "http://$srvAccess/");
         define("SITE_FOLDER_COMPLEMENT", "/");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("configDB", "localhost");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("FILES_UPLOAD", "/system/master/storage/files");
         define("_SECRET_KEY", "cLWD;KCBgP?a1'(0m03W");
@@ -1318,11 +1351,11 @@ switch ($servidor) {
         define("TEMASISTEMA", "skin-purple-light");
         define("FILES_FOLDER", "/");
         define("SITE_FOLDER", "");
-        define("SITE_ROOT", "https://$servidor");
+        define("SITE_ROOT", "https://$srvAccess");
         define("SITE_FOLDER_COMPLEMENT", "/");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("configDB", "localhost");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("FILES_UPLOAD", "/system/caruana/storage/files");
         define("_SECRET_KEY", "cLWD;KCBgP?a1'(0m03W");
@@ -1348,11 +1381,11 @@ switch ($servidor) {
         define("TEMASISTEMA", "skin-red-light");
         define("FILES_FOLDER", "/");
         define("SITE_FOLDER", "");
-        define("SITE_ROOT", "https://$servidor");
+        define("SITE_ROOT", "https://$srvAccess");
         define("SITE_FOLDER_COMPLEMENT", "/");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("configDB", "localhost");
-        define("SERVER_ADDRESS", $servidor);
+        define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
         define("FILES_UPLOAD", "/system/caruana/storage/files");
         define("_SECRET_KEY", "cLWD;KCBgP?a1'(0m03W");
@@ -1364,12 +1397,21 @@ switch ($servidor) {
         break;
 
     default:
-        echo "Não Encontrado: '$servidor', Redirect '$redirectUrl'";
+        echo "Não Encontrado: '$srvAccess', Redirect '$redirectUrl'";
         break;
 }
 
-if (!defined("LIMITE_DIAS_ULTIMO_LOGON"))
+if (!defined("SITE_ROOT"))
 {
+    define("SITE_ROOT", "http://$srvAccess");
+}
+
+if (!defined("SERVER_ADDRESS"))
+{
+    define("SERVER_ADDRESS", $srvAccess);
+}
+
+if (!defined("LIMITE_DIAS_ULTIMO_LOGON")) {
     define("LIMITE_DIAS_ULTIMO_LOGON", 90);
 }
 

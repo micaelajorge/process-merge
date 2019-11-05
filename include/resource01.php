@@ -159,9 +159,9 @@ function validaUsuarioToken()
 {
     global $connect, $userdef;
     $headers = getallheaders();
-    if (key_exists("token", $headers)) {
-        $validadoToken = false;
-        $token = $headers["token"];
+    if (key_exists("token", $headers) || key_exists("Authorization", $headers)) {
+        $validadoToken = false;                
+        $token = (key_exists("token", $headers)) ? $headers["token"] : $headers["Authorization"];
         if ($token != "") {
             $userdef = new userdef;
             $userdef->Create('token', $connect, $token);
@@ -176,8 +176,10 @@ function validaUsuarioToken()
 
 function buscaValorCampoUnique($procId, $fields, $fieldUnique)
 {
+    $valorCampoUnique = false;
     foreach ($fields as $campo) {
-        $fieldId = PegaFieldIdByCode($procId, $campo["fieldCode"]);
+        $fieldCode = $campo["fieldCode"];
+        $fieldId = PegaFieldIdByCode($procId, $fieldCode);
         if ($fieldId == $fieldUnique) {
             $valorCampoUnique = $campo["fieldValue"];
             break;

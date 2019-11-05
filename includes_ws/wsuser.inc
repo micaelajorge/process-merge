@@ -7,9 +7,9 @@ function AuthenticateWs($AuthUser)
     include(FILES_ROOT . "include/config.config.php");
 
     $headers = getallheaders();
-    if (key_exists("token", $headers)) {
+    if (key_exists("token", $headers) | key_exists("Authorization", $headers)) {
         $validadoToken = false;
-        $token = $headers["token"];
+        $token = (key_exists("token", $headers)) ? $headers["token"] : $headers["Authorization"];
         if ($token != "") {
             $userdef = new userdef;
             $userdef->Create('token', $connect, $token);

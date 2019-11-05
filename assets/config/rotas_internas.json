@@ -1,5 +1,13 @@
 {
     "rotas": {    
+        "/api/v1/cessionstatuschange": {
+            "POST": {
+                "page": "api/api_gateway_certdox.inc",
+                "funcao": "CessionStatusChange",
+                "parametros": ["caseNum"],
+                "logon": false                
+            }
+        },
         "removefile": {
           "GET": {
                 "page": "pages/folder_removefile.inc",
@@ -234,13 +242,11 @@
         "api/v1/process": {
             "POST": {
                 "page": "api/api_securities.inc",
-                "funcao": "api_process_create",
-                "logon": false
+                "funcao": "api_process_create"
             },          
             "GET": {
                 "page": "api/api_securities.inc",
                 "funcao": "api_process_get",
-                "logon": false,
                 "parametros": ["cessionId"]                
             }            
         },        
@@ -260,13 +266,11 @@
         "api/v1/processes": {
             "POST": {
                 "page": "api/api_securities.inc",
-                "funcao": "api_process_create",
-                "logon": false
+                "funcao": "api_process_create"
             },          
             "GET": {
                 "page": "api/api_securities.inc",
                 "funcao": "api_process_get",
-                "logon": false,
                 "parametros": ["cessionUUID"]                
             }            
         },        

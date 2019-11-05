@@ -503,7 +503,6 @@ function processa_cessao_resolucao($procCod)
                 }
             }
 
-
             // Array com os campos a serem atualizados
             $cessionContracts = $dadosEntrada["contracts"];
             $campo["fieldCode"] = "CESSION_CONTRACTS_DATA";
@@ -544,10 +543,8 @@ function processa_cessao_resolucao($procCod)
         // Verfifica se é caso unico
         $numeroCasoExiste = pegaNumerCasoUnicoAberto($procId, $valorCampoUnique);
 
-        $userData["UserName"] = "mmoscz";
-        $userData["UserPassword"] = "cerberus";
-
-
+//        $userData["UserName"] = "mmoscz";
+//        $userData["UserPassword"] = "cerberus";
 
         if ($numeroCasoExiste == 0) {
             $numeroCaso = 0;

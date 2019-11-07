@@ -10,7 +10,7 @@ require_once(FILES_ROOT . "pages/viewfile.inc");
 
 function pegaArquivoOfertaRetorno()
 {
-    global $ProcId, $CaseNum;
+    global $ProcId, $CaseNum, $userdef;
 
     $procCode = PegaProcCode($ProcId);
 
@@ -35,6 +35,7 @@ function pegaArquivoOfertaRetorno()
     
     $diretorio = FILES_UPLOAD . "/" . diretorioArquivoImagem($ProcId, $CaseNum, $fieldCode);
     
+    insereEntradaAuditTrail($ProcId, $CaseNum, 0, $userdef->UserId, $userdef->UserDesc, 7, "$arquivoName");
     
     DownloadFile($arquivoStorage, $arquivoName, $diretorio);
 }

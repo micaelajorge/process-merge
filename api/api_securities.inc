@@ -52,8 +52,8 @@ function api_create_contract()
 
 //    error_log('Create Contract: ' .var_export($dadosEntrada, true));
 
-    $userData["UserName"] = "mmoscz";
-    $userData["UserPassword"] = "cerberus";
+//    $userData["UserName"] = "mmoscz";
+//    $userData["UserPassword"] = "cerberus";
 
     $nrContrato = $dadosEntrada["CONTRATO"];
 
@@ -73,7 +73,8 @@ function api_create_contract()
                     $camposEnvio[] = $campo;
 
                     // Remove a formatação do Campo
-                    $valor = preg_replace("/\D+/", "", $valor);
+//                    $valor = preg_replace("/\D+/", "", $valor);
+                    $valor = preg_replace("/[^a-zA-Z0-9]/", $valor);                    
                     break;
             }
             $campo["fieldCode"] = strtoupper($chave);
@@ -157,11 +158,11 @@ function criaCCB($dadosCCB)
         $campo["fieldValue"] = $dadosTemplate["number"];
         $camposEnvio[] = $campo;
 
-        $campo["fieldCode"] = "CONTRATO";
-
         // Mudado para remover apenas PONTUAÇÃO e LETRAS
+        $campo["fieldCode"] = "CONTRATO";
 //        $campo["fieldValue"] = preg_replace("/\D+/", "", $dadosTemplate["number"]);
-        $campo["fieldValue"] = preg_replace("/[^a-zA-Z0-9]/", "", $dadosTemplate["number"]);
+//        $campo["fieldValue"] = preg_replace("/[^a-zA-Z0-9]/", "", $dadosTemplate["number"]);
+        $campo["fieldValue"] = $dadosTemplate["number"];
         $camposEnvio[] = $campo;
 
         $dadosCaso["Fields"] = $camposEnvio;

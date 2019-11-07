@@ -524,6 +524,8 @@ switch ($srvAccess) {
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("NAME_OWNER", "Powered by Certdox");
                 break;
+            
+            
             case "gatewaydigital":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
@@ -557,6 +559,39 @@ switch ($srvAccess) {
                 define("URL_OWNER", "https://www.certdox.com.br");
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("NAME_OWNER", "Certdox");
+                break;
+
+            case "teste_securities":
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("TEMASISTEMA", "skin-blue");
+                /**
+                 *  Definições Banco de dados
+                 */
+                $BPMUSER = "process";
+                $BPMPWD = "cerberus";
+                $EXTERNALUSER = "process";
+                $EXTERNALPWD = "cerberus";
+                $EXTERNAL_USERNAME = "process";
+                $BPMDB = "teste_securities";
+                $EXTERNALDB = 'teste_securities';
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("SITE_ROOT", "http://$srvAccess");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("SERVER_ADDRESS", $srvAccess);
+                define("ARQUIVO_ERROR_LOG_PHP", "log/teste_securities/PHP_errors.log");
+                define("_SECRET_KEY", "f9QsJ4Oufz");
+                define("ALLOW_SEARCH", FALSE);
+                define("FILES_FOLDER", "/");
+                define("FILES_UPLOAD", "/storage/teste_securities");
+                define("INSTANCENAME", 'teste_securities');
+                define("SITE_FOLDER", "/teste_securities/");
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+                define("PARCEIRONAME", 'Teste Securities');
+                define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
+                define("URL_OWNER", "https://www.clicksign-securities.com");
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("NAME_OWNER", "Clicksign Securities");
                 break;
 
             case "homolog_bpc":

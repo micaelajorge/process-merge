@@ -165,6 +165,11 @@ function criaCCB($dadosCCB)
         $campo["fieldValue"] = $dadosTemplate["number"];
         $camposEnvio[] = $campo;
 
+        $campo["fieldCode"] = "CONTRATO_2";
+        $campo["fieldValue"] = $dadosTemplate["number"];
+        $camposEnvio[] = $campo;
+        
+        
         $dadosCaso["Fields"] = $camposEnvio;
 
         return FuncCaseSave($userData, "SEC_CCBS", 'START', 0, $dadosCaso, 0, 1);

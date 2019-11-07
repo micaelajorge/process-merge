@@ -172,7 +172,7 @@ function criaCCB($dadosCCB)
         
         $dadosCaso["Fields"] = $camposEnvio;
 
-        console.log("dados CCB" . var_export($dadosCaso, true));
+        error_log("dados CCB" . var_export($dadosCaso, true));
         
         return FuncCaseSave($userData, "SEC_CCBS", 'START', 0, $dadosCaso, 0, 1);
     } else {

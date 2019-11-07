@@ -1,10 +1,10 @@
 <?php
 
 /*
-Criação: Marcelo Mosczynski <mmoscz@gmail.com>
-Data Criação 26/06/2019
-Sistema: Process_XAMPP
-*/
+  Criação: Marcelo Mosczynski <mmoscz@gmail.com>
+  Data Criação 26/06/2019
+  Sistema: Process_XAMPP
+ */
 
 // <editor-fold defaultstate="collapsed" desc="Chamadas externas">
 require_once(FILES_ROOT . '/include/common.php');
@@ -75,11 +75,18 @@ $json_defs = json_encode($definicoesSistema["user"]);
 $arquivoDefs = FILES_ROOT . "defs-local.json";
 file_put_contents($arquivoDefs, $json_defs);
 
-foreach ($defKeysUser as $key)
-{
+// Definição do LOG setado
+
+$arquivo_log = ini_get("error_log");
+$t_body->DEF_NAME = "Arquivo LOG php INI";
+$t_body->DEF_VALUE = $arquivo_log;
+$t_body->block("BLOCK_DEF");
+
+
+foreach ($defKeysUser as $key) {
     $t_body->DEF_NAME = $key;
     $t_body->DEF_VALUE = $definicoesSistema["user"][$key];
-    $t_body->block("BLOCK_DEF");    
+    $t_body->block("BLOCK_DEF");
 }
 
 $t_body->block("BLOCK_CONTENT");

@@ -73,8 +73,8 @@ function api_create_contract()
                     $camposEnvio[] = $campo;
 
                     // Remove a formatação do Campo
-//                    $valor = preg_replace("/\D+/", "", $valor);
-                    $valor = preg_replace("/[^a-zA-Z0-9]/", $valor);                    
+                    $valor = preg_replace("/\W+/", "", $valor);
+//                    $valor = preg_replace("/[^a-zA-Z0-9]/", $valor);                    
                     break;
             }
             $campo["fieldCode"] = strtoupper($chave);
@@ -134,6 +134,18 @@ function criaCCB($dadosCCB)
             $dadosTemplate = $dadosCCB["data"]["document"]["template"]["data"]["document"]["template"]["data"];
         }
 
+        // Mudado para remover apenas PONTUAÇÃO e LETRAS
+//        $campo["fieldCode"] = "CONTRATO";
+////        $campo["fieldValue"] = preg_replace("/\D+/", "", $dadosTemplate["number"]);
+////        $campo["fieldValue"] = preg_replace("/[^a-zA-Z0-9]/", "", $dadosTemplate["number"]);
+//        $campo["fieldValue"] = $dadosTemplate["number"];
+////        $campo["fieldValue"] = $dadosTemplate["number"];;
+//        $camposEnvio[] = $campo;
+
+        $campo["fieldCode"] = "CONTRATO_2";
+        $campo["fieldValue"] = $dadosTemplate["number"];
+        $camposEnvio[] = $campo;
+
         $campo["fieldCode"] = "DOCUMENT_KEY";
         $campo["fieldValue"] = $dadosCCB["data"]["document"]["key"];
         $camposEnvio[] = $campo;
@@ -156,23 +168,12 @@ function criaCCB($dadosCCB)
 
         $campo["fieldCode"] = "NR_CONTRATO_TEMPLATE";
         $campo["fieldValue"] = $dadosTemplate["number"];
-        $camposEnvio[] = $campo;
 
-        // Mudado para remover apenas PONTUAÇÃO e LETRAS
         $campo["fieldCode"] = "CONTRATO";
-//        $campo["fieldValue"] = preg_replace("/\D+/", "", $dadosTemplate["number"]);
-//        $campo["fieldValue"] = preg_replace("/[^a-zA-Z0-9]/", "", $dadosTemplate["number"]);
         $campo["fieldValue"] = $dadosTemplate["number"];
-        $camposEnvio[] = $campo;
-
-        $campo["fieldCode"] = "CONTRATO_2";
-        $campo["fieldValue"] = $dadosTemplate["number"];
-        $camposEnvio[] = $campo;
+        $camposEnvio[] = $campo;       
         
-        
-        $dadosCaso["Fields"] = $camposEnvio;
-
-        error_log("dados CCB" . var_export($dadosCaso, true));
+        $dadosCaso["Fields"] = $camposEnvio;        
         
         return FuncCaseSave($userData, "SEC_CCBS", 'START', 0, $dadosCaso, 0, 1);
     } else {
@@ -557,7 +558,7 @@ function processa_cessao_resolucao($procCod)
         if ($numeroCasoExiste == 0) {
             $numeroCaso = 0;
             $caseNum = FuncCaseSave($userData, $procId, 'START', $numeroCaso, $dadosCaso, 0, 1);
-            if ($caseNum == 0) {
+            if ($caseNum === 0) {
                 header("HTTP/1.0 201 Created");
                 $novoCaseNum["process"] = $sessionUUID;
                 $novoCaseNum["error"] = array();
@@ -592,6 +593,9 @@ function api_process_get()
 
     $cessionId = $cessionId;
 
+    error_log("Pegando dados de Cessão: $cessionId");
+
+    
     $procId = PegaProcIdByCode("SEC_CESSOES");
     $fieldCessionUUID = PegaFieldIdByCode($procId, 'CESSION_UUID');
 
@@ -627,6 +631,7 @@ function api_process_get()
         $dadosRetorno["cession_contracts"] = json_decode($dadosRetorno["cession_contracts"]);
     }
 
+    
     $jDados = json_encode($dadosRetorno);
     header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
@@ -740,6 +745,7 @@ function api_get_cession_resolution_data($procCode)
     $procId = PegaProcIdByCode($procCode);
     $caseNumCession = pegaNumerCasoUnicoAberto($procId, $cessionUUID, "CESSION_UUID");
 
+    error_log("Pegando dados cessão: $cessionUUID");
     if ($caseNumCession == 0) {
         $jDados = json_encode($dadosRetorno);
         header("HTTP/1.0 400 falha - $procCode - $cessionUUID");

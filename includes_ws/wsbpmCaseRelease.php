@@ -39,7 +39,6 @@ function CaseRelease($AuthUser, $ProcCode, $StepCode, $CaseNum, $casedata)
 function FuncCaseRelease($AuthUser, $ProcId, $StepId, $CaseNum, $casedata)
 {
     global $connect, $userdef, $REMOTE_ADDR;
-    ;
     if (!AuthenticateWs($AuthUser)) {
         GeraErro(4);
         return 0;

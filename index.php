@@ -16,12 +16,15 @@ function iniciarPhpSession()
     $headers = getallheaders();
     if (key_exists("token", $headers) || key_exists("Authorization", $headers)) {
         ini_set('session.use_cookies', 0);
-    }
-    session_start();
+    }session_start();
 }
 
-//ini_set("error_reporting", E_ALL ^ E_NOTICE ^ E_WARNING);
+
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 ini_set("error_reporting", E_ERROR);
+
 
 $failRequireModules = false;
 if (!extension_loaded('gd')) {
@@ -43,9 +46,6 @@ if ($failRequireModules) {
     die;
 }
 
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
 // <editor-fold defaultstate="collapsed" desc="Definições do Sistema">
 $currentDir = __DIR__;
 $enderecoServidor = filter_input(INPUT_SERVER, "HTTP_HOST");
@@ -387,7 +387,6 @@ switch ($srvAccess) {
         define("NAME_OWNER", "Powered by Certdox");
         break;
 
-
     case "clicksign.certdox.com.br":
         define("ALINHAMENTO_LOGO", "float:left");
         define("TEMASISTEMA", "skin-red");
@@ -578,7 +577,7 @@ switch ($srvAccess) {
                 define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
                 define("SERVER_ADDRESS", $srvAccess);
-                define("ARQUIVO_ERROR_LOG_PHP", "log/teste_securities/PHP_errors.log");
+                define("ARQUIVO_ERROR_LOG_PHP", "log_teste_securities/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
                 define("FILES_FOLDER", "/");
@@ -1474,6 +1473,7 @@ if (defined("ARQUIVO_ERROR_LOG_PHP")) {
         mkdir(FILES_FOLDER + $nomeDirDestino);
     }
     ini_set('error_log', ARQUIVO_ERROR_LOG_PHP);
+//    echo ARQUIVO_ERROR_LOG_PHP;
 }
 
 if (!defined("ARQUIVOS_NOVA_JANELA")) {
@@ -1482,6 +1482,7 @@ if (!defined("ARQUIVOS_NOVA_JANELA")) {
 
 (LOG_DATA) ? error_log("FILES_ROOT: " . FILES_ROOT) : null;
 
+//error_log("Passou e setou o error Log");
 
 $dir = FILES_ROOT;
 

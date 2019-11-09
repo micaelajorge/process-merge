@@ -28,5 +28,6 @@ function AuthenticateWs($AuthUser)
         }
     }
     GeraErro(4, $OrigemLogon);
+    
     return false;
 }

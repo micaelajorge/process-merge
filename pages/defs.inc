@@ -77,6 +77,8 @@ file_put_contents($arquivoDefs, $json_defs);
 
 // Definição do LOG setado
 
+error_log("Abrindo DEFS");
+
 $arquivo_log = ini_get("error_log");
 $t_body->DEF_NAME = "Arquivo LOG php INI";
 $t_body->DEF_VALUE = $arquivo_log;

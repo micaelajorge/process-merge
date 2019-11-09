@@ -1,4 +1,5 @@
 <?php
+
 /*
   Criação: Marcelo Mosczynski <mmoscz@gmail.com>
   Data Criação 01/06/2018
@@ -31,15 +32,35 @@ function incluiRotasArquivo($listaArquivosRotas)
 function carregaArrayRotas($arquivoRotas = ARQUIVO_ROTAS)
 {
     $arquivoRotasNome = FILES_ROOT . "assets/config/" . $arquivoRotas;
+    $rotas_retorno = array();
+
+    // Verifica se a rota existe
+    if (!file_exists($arquivoRotasNome)) {
+        return $rotas_retorno;
+    }
+
     $conteudoArquivoRotas = file_get_contents($arquivoRotasNome);
     $rotasLidas = json_decode($conteudoArquivoRotas, true);
 
+    // Verifica se o arquivo conseguiu ser parceado
+    if (json_last_error()) {
+        return $rotas_retorno;
+    }
+    
+    // Verifica se é um array
+    if (!is_array($rotasLidas))
+    {
+        return $rotasLidas;
+    }
+    
+    // 
     if (key_exists("rotas", $rotasLidas)) {
         $rotas_retorno = $rotasLidas["rotas"];
     }
     if (key_exists("arquivos", $rotasLidas)) {
         $rotas_retorno = incluiRotasArquivo($rotasLidas["arquivos"]);
     }
+
     return $rotas_retorno;
 }
 
@@ -201,9 +222,7 @@ function defineRota($p_dadosURI, $methodHTTP)
     // Gera os parametros através dos dados recebidos da URL
     geraParametrosRecebidosURL($paginaAcesso, $dadosURI, $rotaEncontrada);
 
-
     $validadoToken = validaUsuarioToken();
-
 
     $userdef = $_SESSION["userdef"];
     if ($userdef === null) {

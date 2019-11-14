@@ -6,10 +6,9 @@
   Sistema: Process_XAMPP
  */
 
-use raelgc\view\Template;
-
 require FILES_ROOT . '/vendor/autoload.php';
 
+use raelgc\view\Template;
 use Spipu\Html2Pdf\Html2Pdf;
 
 function geraHTML()

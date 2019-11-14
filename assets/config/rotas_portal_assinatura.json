@@ -1,0 +1,12 @@
+{
+    "rotas": {    
+        "psigninicio": {
+            "GET": {
+                "page": "pages/portal_inicio.inc",
+                "funcao": "",
+                "parametros": ["documento"],
+                "logon": false                
+            }
+        }
+    }
+}

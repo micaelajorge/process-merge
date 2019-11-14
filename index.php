@@ -458,6 +458,39 @@ switch ($srvAccess) {
                 define("NAME_OWNER", "Powered by Certdox");
                 break;
 
+            case "creditas_consignado":
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("TEMASISTEMA", "skin-red");
+                /**
+                 *  Definições Banco de dados
+                 */
+                $BPMUSER = "process";
+                $BPMPWD = "cerberus";
+                $EXTERNALUSER = "process";
+                $EXTERNALPWD = "cerberus";
+                $EXTERNAL_USERNAME = "process";
+                $BPMDB = "prod_creditas_consignado";
+                $EXTERNALDB = 'prod_creditas_consignado';
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("SITE_ROOT", "http://$srvAccess");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("SERVER_ADDRESS", $srvAccess);
+                define("ARQUIVO_ERROR_LOG_PHP", "log_prod_creditas_consignado/PHP_errors.log");
+                define("_SECRET_KEY", "f9QsJ4Oufz");
+                define("ALLOW_SEARCH", FALSE);
+                define("FILES_FOLDER", "/");
+                define("FILES_UPLOAD", "/storage/prod_creditas_consignado");
+                define("INSTANCENAME", 'Creditas Consignado');
+                define("SITE_FOLDER", "/creditas_consignado/"); // Nome do Alias no APACHE
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+                define("PARCEIRONAME", 'Securities');
+                define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
+                define("URL_OWNER", "https://www.certdox.com.br");
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("NAME_OWNER", "Powered by Certdox");
+                break;
+
             case "homolog_creditas_sorocred":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");

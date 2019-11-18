@@ -5,6 +5,6 @@
   Data Criação 12/11/2018
   Sistema: Process_XAMPP
  */
-$retorno["Erro"] = "Erro";
-header('Content-Type: application/json');
-echo json_encode($retorno);
+//$retorno["Erro"] = "Erro";
+//header('Content-Type: application/json');
+//echo json_encode($retorno);

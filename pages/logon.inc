@@ -18,7 +18,7 @@ $t_body = new Template(FILES_ROOT . "assets/templates/$templateLogon");
 //$t_body->block("BLOCK_HEADER");
 //$t_body->block("BLOCK_FOOTER");
 //$t_body->MSGBOASVINDAS = "Bem vindo ao Process";
-//$t_body->SITE_LOCATION = SITE_LOCATION;
+$t_body->SITE_LOCATION = SITE_LOCATION;
 
 if (!defined("INSTANCENAME")) {
     define("INSTANCENAME", "Instancia sem Nome");

@@ -613,3 +613,88 @@
 )
 [11-Nov-2019 14:26:29 America/Sao_Paulo] Dados Sessao: array (
 )
+[15-Nov-2019 12:22:39 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[15-Nov-2019 12:22:39 America/Sao_Paulo] Dados Sessao: array (
+)
+[15-Nov-2019 12:22:40 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[15-Nov-2019 12:22:40 America/Sao_Paulo] Dados Sessao: array (
+)
+[17-Nov-2019 23:30:56 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[17-Nov-2019 23:30:56 America/Sao_Paulo] Dados Sessao: array (
+)
+[17-Nov-2019 23:32:38 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
+  'page' => 'api/checkstatus.inc',
+)
+[17-Nov-2019 23:32:38 America/Sao_Paulo] Dados Sessao: array (
+)
+[17-Nov-2019 23:37:38 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
+  'page' => 'api/checkstatus.inc',
+)
+[17-Nov-2019 23:37:38 America/Sao_Paulo] Dados Sessao: array (
+)
+[17-Nov-2019 23:40:24 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[17-Nov-2019 23:40:24 America/Sao_Paulo] Dados Sessao: array (
+)
+[18-Nov-2019 11:33:58 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[18-Nov-2019 11:33:58 America/Sao_Paulo] Dados Sessao: array (
+)
+[18-Nov-2019 11:34:30 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[18-Nov-2019 11:34:30 America/Sao_Paulo] Dados Sessao: array (
+)
+[18-Nov-2019 11:34:35 America/Sao_Paulo] Rota requer autenticacao: queue/75 array (
+  'page' => 'pages/queue.inc',
+  'funcao' => '',
+  'parametros' => 
+  array (
+    0 => 'ProcId',
+    1 => 'StepId',
+  ),
+)
+[18-Nov-2019 11:34:35 America/Sao_Paulo] Dados Sessao: array (
+)
+[18-Nov-2019 11:34:49 America/Sao_Paulo] Rota requer autenticacao: queue/75 array (
+  'page' => 'pages/queue.inc',
+  'funcao' => '',
+  'parametros' => 
+  array (
+    0 => 'ProcId',
+    1 => 'StepId',
+  ),
+)
+[18-Nov-2019 11:34:49 America/Sao_Paulo] Dados Sessao: array (
+)
+[18-Nov-2019 11:36:08 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[18-Nov-2019 11:36:08 America/Sao_Paulo] Dados Sessao: array (
+)
+[18-Nov-2019 11:36:18 America/Sao_Paulo] Rota requer autenticacao: queue/116 array (
+  'page' => 'pages/queue.inc',
+  'funcao' => '',
+  'parametros' => 
+  array (
+    0 => 'ProcId',
+    1 => 'StepId',
+  ),
+)
+[18-Nov-2019 11:36:18 America/Sao_Paulo] Dados Sessao: array (
+)

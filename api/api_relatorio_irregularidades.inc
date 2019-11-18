@@ -86,18 +86,26 @@ function MontaCuboIrregularidades()
     $dadosRetorno = array();
 
     $totalCasos = 0;
-    foreach ($dadosQuery as $irregularidade)
-    {
-        $totalCasos += $irregularidade["total"]; 
-    }
-    
-    
     foreach ($dadosQuery as $irregularidade) {
-        
+        $totalCasos += $irregularidade["total"];
+    }
+
+
+    foreach ($dadosQuery as $irregularidade) {
+
         $irregularidade["porcent"] = number_format($irregularidade["total"] / $totalCasos * 100, 2);
         $irregularidade["total_acerto"] = $totalCasos;
         $dadosRetorno[] = $irregularidade;
     }
+
+    function ordenacaoArray($a, $b)
+    {
+        return strcmp($a["porcent"], $b["porcent"]);
+    }
+
+    usort($dadosRetorno, "ordenacaoArray");
+    
+    $dadosRetorno = array_reverse($dadosRetorno);
 
 
     $dadosComIdRow = insereTdDetalhe($dadosRetorno);

@@ -78,7 +78,6 @@ $cabecalhoTabela = array(
     "% Eficiência Regulares",
     "Irregulares ",
     "% Eficiência Irregulares",
-    ""
 );
 
 foreach ($cabecalhoTabela as $cabecalho) {

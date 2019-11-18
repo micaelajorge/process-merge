@@ -12,7 +12,7 @@
 //    {"data": "desvioTotal", className: "text-center"}    
 //];
 
-var colunasCubo_ = [
+var colunasCuboMeses = [
     {"data": "periodo", className: "text-left"},
     {"data": "totalCasos", className: "text-center"},
     {"data": "SEM IMAGEM", className: "text-center"},    
@@ -22,7 +22,9 @@ var colunasCubo_ = [
     {"data": "REGULAR", className: "text-center"},
     {"data": "eficiencia_regulares", className: "text-center"},
     {"data": "IRREGULAR", className: "text-center"},
-    {"data": "eficiencia_iregulares", className: "text-center"}   
+    {"data": "eficiencia_iregulares", className: "text-center"},
+    {"data": "dentroSLA", className: "text-center"},
+    {"data": "foraSLA", className: "text-center"}   
 ];
 
 var colunasCubo = [
@@ -35,8 +37,9 @@ var colunasCubo = [
     {"data": "REGULAR", className: "text-center"},
     {"data": "eficiencia_regulares", className: "text-center"},
     {"data": "IRREGULAR", className: "text-center"},
-    {"data": "eficiencia_iregulares", className: "text-center"}   
+    {"data": "eficiencia_iregulares", className: "text-center"}
 ];
+
 
 var colunasIrregularidade = [
     {"data": "Irregularidade", className: "text-left"},

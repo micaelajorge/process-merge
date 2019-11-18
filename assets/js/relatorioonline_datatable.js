@@ -156,10 +156,11 @@ var dadosLinha;
 
 
 
-function jsCriaDataTable_Dimensao(dataTableSelecionado, parametrosRota)
+function jsCriaDataTable_Dimensao(dataTableSelecionado, parametrosRota, colunasParaCubo)
 {
     let endApi = SITE_LOCATION + "api/v1/relatorioonline";
-    jsCriaDataTable(dataTableSelecionado, parametrosRota, colunasCubo, columnDefs_, endApi);
+    colunasParaCubo = (colunasParaCubo === undefined) ? colunasCubo : colunasParaCubo;
+    jsCriaDataTable(dataTableSelecionado, parametrosRota, colunasParaCubo, columnDefs_, endApi);
 }
 
 function jsCriaDataTable_Irregularidades(dataTableSelecionado, parametrosRota, colunasDatatable, colunasDef)
@@ -221,7 +222,7 @@ function jsCriaDataTable(dataTableSelecionado, parametrosRota, colunasDatatable,
 function jsInicializacaoPagina()
 {
     funcAfterLoadDataTable = jsSetaSelectRow;
-    jsCriaDataTable_Dimensao('tableData');
+    jsCriaDataTable_Dimensao('tableData', undefined, colunasCuboMeses);
 }
 
 function jsDepoisDeCarregarDataTable(dataTable)

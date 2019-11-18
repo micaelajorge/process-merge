@@ -48,6 +48,8 @@ if (isset($_SESSION["mobileMode"])) {
     $mobileMode = $_SESSION["mobileMode"];
 }
 
+
+
 $t_body = new Template(FILES_ROOT . "assets/templates/master/t_master.html");
 $t_body->addFile("PAGEHEADER", FILES_ROOT . "assets/templates/master/t_header.html");
 $t_body->addFile("PAGEMENULEFT", FILES_ROOT . "assets/templates/master/t_menu.html");
@@ -56,6 +58,8 @@ $t_body->addFile("TOOLBAR_TOP", FILES_ROOT . "assets/templates/master/t_toolbar_
 // Adiciona o template de DATATABLE
 $t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/master/t_relatorio_online.html");
 $t_body->addFile("DATA_TABLE_CONTENT", FILES_ROOT . "assets/templates/master/t_relatorio_online_datatable.html");
+
+$t_body->BODY_STYLE = "overflow: scroll";
 
 // <editor-fold defaultstate="collapsed" desc="Cabecalho da Tabela">
 $cabecalhoTabela = array(
@@ -68,7 +72,9 @@ $cabecalhoTabela = array(
     "Regulares",
     "% Eficiência Regulares",
     "Irregulares",
-    "% Eficiência Irregulares"
+    "% Eficiência Irregulares",
+    "Dentro SLA",
+    "Fora SLA"
 );
 
 //foreach ($cabecalhoTabela as $cabecalho) {

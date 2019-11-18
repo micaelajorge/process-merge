@@ -17,9 +17,41 @@ function insereTdDetalhe($aDados)
     return $aDados;
 }
 
+function pegaDadosSLA($mes, $ano)
+{
+    global $connect;
+    $mes = str_pad($mes, 2, '0', STR_PAD_LEFT);
+    if ($mes == 12) {
+        $proximoMes = '01';
+        $proximoAno = $ano + 1;
+    } else {
+        $proximoMes = str_pad($mes + 1, 2, '0', STR_PAD_LEFT);
+        $proximoAno = $ano;
+    }
+
+    $whereSLA = "date(campo15) >= '$ano/$mes/01' and date(campo15) < '$proximoAno/$proximoMes/01'";
+    $SQL = "select datediff(campo17, campo36) > 0 as sla, count(*) as total from exportkeys where procid = 75 and $whereSLA group by sla";
+    $Query = mysqli_query($connect, $SQL);
+    $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+
+    foreach ($linhas as $itemSLA) {
+        switch ($itemSLA["sla"]) {
+            case 0:
+                $retorno["dentroSLA"] = $itemSLA["total"];
+                break;
+            case 1:
+                $retorno["foraSLA"] = $itemSLA["total"];
+                break;
+        }
+    }
+
+    return $retorno;
+}
+
 function geraDetalhes($dados, $expanded, $endApi, $dimension = 1)
 {
     $detalhe_old = "";
+    $retorno = "";
     foreach ($dados as $detalhe) {
         if ($detalhe_old != $detalhe["agrupamento"]) {
             if ($detalhe_old !== "") {
@@ -61,7 +93,7 @@ function montaEnderecoApi($parametros, $agrupamento)
     foreach ($parametros as $parametro) {
         $endApi .= "/" . $parametro;
     }
-    $endApi .= "/" . str_replace('/', "&frasl;",  trim($agrupamento));
+    $endApi .= "/" . str_replace('/', "&frasl;", trim($agrupamento));
     return $endApi;
 }
 
@@ -107,6 +139,12 @@ function MontaCuboDimensao($parametros)
             $filtroCaption = "/ - " . urldecode($parametros[3]);
             $dimensaoExpandivel = 0;
             break;
+        case 5:
+            $where .= " and campo14 = '" . urldecode($parametros[3]) . "'";
+            $SQL = " select upper(campo34) as campo34, campo7 as agrupamento, count(*) as total from exportkeys where procid = 75 $where group by campo13, campo34 order by campo7";
+            $filtroCaption = "/ - " . urldecode($parametros[3]);
+            $dimensaoExpandivel = 0;
+            break;
     }
 
 
@@ -145,6 +183,8 @@ function MontaCuboDimensao($parametros)
             $retorno["endApiComplemento"] = montaEnderecoApi($parametros, trim($dadoOld["agrupamento"]));
             $retorno["caption"] = "Periodo $mes/$ano" . "/ - " . $dadoOld["agrupamento"];
 
+
+
             $retorno["analisadas"] = $retorno["IRREGULAR"] + $retorno["REGULAR"];
 
             if ($totalCasos == 0) {
@@ -162,7 +202,7 @@ function MontaCuboDimensao($parametros)
             }
 
             $retorno["totalCasos"] = $totalCasos;
-            
+
             $retorno["AGUARDANDO ANÁLISE"] = $retorno["totalCasos"] - $retorno["analisadas"];
 
             $registros[] = $retorno;
@@ -208,20 +248,33 @@ function MontaCuboDimensao($parametros)
 function MontaCuboMeses()
 {
     global $connect;
-    
+
     $SQL = "update exportkeys set campo13 = 'Não Localizado' where procid = 75 and campo13 = '' or campo13 = '#N/D' or campo13 is null";
     $query = mysqli_query($connect, $SQL);
-    
+
     $SQL = "update exportkeys set campo14 = 'Não Localizado' where procid = 75 and campo14 = '' or campo14 = '#N/D' or campo14 is null";
     $query = mysqli_query($connect, $SQL);
 
     $SQL = "update exportkeys set campo12 = 'Não Localizado' where procid = 75 and campo12 = '' or campo12 = '#N/D' or campo12 is null";
     $query = mysqli_query($connect, $SQL);
-    
+
+    $SQL = "update exportkeys set campo13 = replace(campo13, '/', ' ') where procid = 75 and campo13 like '%/%' ";
+    $query = mysqli_query($connect, $SQL);
+
+    $SQL = "update exportkeys set campo12 = replace(campo12, '/', ' ') where procid = 75 and campo12 like '%/%'";
+    $query = mysqli_query($connect, $SQL);
+
+    $SQL = "update exportkeys set campo14 = replace(campo14, '/', ' ') where procid = 75 and campo14 like '%/%' ";
+    $query = mysqli_query($connect, $SQL);
+
+    $SQL = "update exportkeys set campo15 = replace(campo15, '/', ' ') where procid = 75 and campo15 like '%/%' ";
+    $query = mysqli_query($connect, $SQL);
+
 
     $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null group by periodo, mes, ano, campo34 order by ano, mes";
 //    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null and campo15 >= '2019-07-01' group by periodo, mes, ano, campo34 order by periodo";
     $query = mysqli_query($connect, $SQL);
+
     $dados = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
     $registros = array();
@@ -250,6 +303,11 @@ function MontaCuboMeses()
             $status = $dadoOld["campo34"];
             $retorno[$status] = $dadoOld["total"];
             $retorno["periodo"] = str_pad($dadoOld["mes"], 2, '0', STR_PAD_LEFT) . "/" . $dadoOld["ano"];
+
+            $slaCalculado = pegaDadosSLA($dadoOld["mes"], $dadoOld["ano"]);
+            $retorno["dentroSLA"] = $slaCalculado["dentroSLA"] . ' (' . round($slaCalculado["dentroSLA"] / $totalCasos * 100, 2) . '%)';
+            $retorno["foraSLA"] = $slaCalculado["foraSLA"] . ' (' . round($slaCalculado["foraSLA"] / $totalCasos * 100, 2) . '%)';
+
             $retorno["periodoSel"] = array();
             $retorno["periodoSel"]["inicio"] = $dadoOld["ano"] . "-" . str_pad($dadoOld["mes"], 2, '0', STR_PAD_LEFT) . '-01';
             $retorno["endApiComplemento"] = "/" . $dadoOld["ano"] . "/" . $dadoOld["mes"];
@@ -300,6 +358,11 @@ function MontaCuboMeses()
     $retorno["periodoSel"] = array();
     $retorno["periodoSel"]["inicio"] = $dadoOld["ano"] . "-" . str_pad($dadoOld["mes"], 2, '0', STR_PAD_LEFT) . '-01';
     $retorno["endApiComplemento"] = "/" . $dadoOld["ano"] . "/" . $dadoOld["mes"];
+
+    $slaCalculado = pegaDadosSLA($dadoOld["mes"], $dadoOld["ano"]);
+    $retorno["dentroSLA"] = $slaCalculado["dentroSLA"] . ' (' . round($slaCalculado["dentroSLA"] / $totalCasos * 100, 2) . '%)';
+    $retorno["foraSLA"] = $slaCalculado["foraSLA"] . ' (' . round($slaCalculado["foraSLA"] / $totalCasos * 100, 2) . '%)';
+
 
     $mes = str_pad($dadoOld["mes"], 2, '0', STR_PAD_LEFT);
     $ano = $dadoOld["ano"];

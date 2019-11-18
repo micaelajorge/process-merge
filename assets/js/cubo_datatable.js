@@ -126,7 +126,7 @@ function jsInicializacaoPagina()
         };
     }
     $("#divMedidas").html($(window).width() + " ");
-    dataTablePrincipal = tableInit(tabelaDados, endApi, colunasCubo, columnDefs, where, sort, 0, 'DT_RowId', extraParameters);
+    dataTablePrincipal = tableInit(tabelaDados, endApi, colunasCuboMeses, columnDefs, where, sort, 0, 'DT_RowId', extraParameters);
 }
 
 var dataTablePrincipal;

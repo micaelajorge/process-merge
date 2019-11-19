@@ -73,7 +73,7 @@ function api_create_contract()
                     $camposEnvio[] = $campo;
 
                     // Remove a formatação do Campo
-                    $valor = preg_replace("/\W+/", "", $valor);
+//                    $valor = preg_replace("/\W+/", "", $valor);
 //                    $valor = preg_replace("/[^a-zA-Z0-9]/", $valor);                    
                     break;
             }

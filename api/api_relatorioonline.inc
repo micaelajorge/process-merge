@@ -247,7 +247,7 @@ function MontaCuboDimensao($parametros)
 
 function MontaCuboMeses()
 {
-    global $connect;
+    global $connect, $mes_selecionado, $ano_selecionado;
 
     $SQL = "update exportkeys set campo13 = 'Não Localizado' where procid = 75 and campo13 = '' or campo13 = '#N/D' or campo13 is null";
     $query = mysqli_query($connect, $SQL);
@@ -270,8 +270,34 @@ function MontaCuboMeses()
     $SQL = "update exportkeys set campo15 = replace(campo15, '/', ' ') where procid = 75 and campo15 like '%/%' ";
     $query = mysqli_query($connect, $SQL);
 
+    $totalMesesAnteriores = 3;
+    
+    // Trata se é inicio do ANO para pegar meses do ano anterior
+    if ($mes_selecionado - $totalMesesAnteriores - 1 <= 0)
+    {
+        $ano_inicio = $ano_selecionado - 1;
+        $mes_inicio = 12 + 1 - $mes_selecionado;        
+    } else {
+        $mes_inicio = $mes_selecionado - $totalMesesAnteriores + 1;
+        $ano_inicio = $ano_selecionado;
+    }
 
-    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null group by periodo, mes, ano, campo34 order by ano, mes";
+    // Pega o primeiro dia do Proximo Mês
+    if ($mes_selecionado == 12)
+    {
+        $ano_fim = $ano_selecionado + 1;
+    } else {
+        $mes_fim = $mes_selecionado + 1;
+        $ano_fim = $ano_selecionado;        
+    }
+    
+    $dataInicio = $ano_inicio . "/" . str_pad($mes_inicio, 2, '0', STR_PAD_LEFT) . '/01';
+    $dataFim = $ano_fim . "/" . str_pad($mes_fim, 2, '0', STR_PAD_LEFT) . '/01';
+    
+    $whereData = "date(Campo15) >= '$dataInicio' and date(Campo15) < '$dataFim'";
+            
+    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null and $whereData group by periodo, mes, ano, campo34 order by ano, mes";
+//    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null group by periodo, mes, ano, campo34 order by ano, mes";
 //    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null and campo15 >= '2019-07-01' group by periodo, mes, ano, campo34 order by periodo";
     $query = mysqli_query($connect, $SQL);
 

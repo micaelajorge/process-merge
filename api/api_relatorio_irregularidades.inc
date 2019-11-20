@@ -100,7 +100,7 @@ function MontaCuboIrregularidades()
 
     function ordenacaoArray($a, $b)
     {
-        return strcmp($a["porcent"], $b["porcent"]);
+        return floatval($a["porcent"]) > floatval($b["porcent"]);
     }
 
     usort($dadosRetorno, "ordenacaoArray");

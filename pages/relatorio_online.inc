@@ -57,9 +57,28 @@ $t_body->addFile("TOOLBAR_TOP", FILES_ROOT . "assets/templates/master/t_toolbar_
 
 // Adiciona o template de DATATABLE
 $t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/master/t_relatorio_online.html");
+$t_body->addFile("FILTROS", FILES_ROOT . "assets/templates/t_relatorio_online_filtro.html");                
 $t_body->addFile("DATA_TABLE_CONTENT", FILES_ROOT . "assets/templates/master/t_relatorio_online_datatable.html");
 
 $t_body->BODY_STYLE = "overflow: scroll";
+
+// Cria lista de mes/ano para filtro
+
+$SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano from exportkeys where procid = 75 group by ano, mes order by ano desc, mes desc";
+$Query = mysqli_query($connect, $SQL);
+
+$listaMeses = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+
+foreach ($listaMeses as $mesAno)
+{
+    $t_body->MES_ANO_SELECAO = str_pad($mesAno["mes"], 2, '0', STR_PAD_LEFT) . "/" . $mesAno["ano"];
+    $t_body->block("BLOCK_MES_ANO_SELECAO");
+}
+
+$ultimoMes = $listaMeses[0];
+
+// Usado para definir o Ultimo mês a ser mostrado na lista da dimensão de meses
+$mesAnoInicial = str_pad($ultimoMes["mes"], 2, '0', STR_PAD_LEFT) . "/" . $ultimoMes["ano"];
 
 // <editor-fold defaultstate="collapsed" desc="Cabecalho da Tabela">
 $cabecalhoTabela = array(
@@ -168,6 +187,11 @@ $t_body->USER_EMAIL = $userdef->Email;
 // Insere o ProcId para tratamento no Datatable
 $t_body->SCRIPT_DATA = "var ProcId = '$ProcId';";
 $t_body->block("BLOCO_JAVASCRIPT_INSERTS");
+
+// Define o ultimo mes a ser mostrado na dimensão de Meses
+$t_body->SCRIPT_DATA = "var mesAnoInicial = '/$mesAnoInicial';";
+$t_body->block("BLOCO_JAVASCRIPT_INSERTS");
+
 
 // Inclusão Javascript da Página
 $t_body->ARQUIVO_JS = "dataTables.init.js"; // Incicializacao DataTables

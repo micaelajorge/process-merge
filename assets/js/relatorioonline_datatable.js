@@ -222,7 +222,12 @@ function jsCriaDataTable(dataTableSelecionado, parametrosRota, colunasDatatable,
 function jsInicializacaoPagina()
 {
     funcAfterLoadDataTable = jsSetaSelectRow;
-    jsCriaDataTable_Dimensao('tableData', undefined, colunasCuboMeses);
+    jsCriaDataTable_Dimensao('tableData', mesAnoInicial, colunasCuboMeses);
+}
+
+function jsMudaAnoMesFiltro(mesAnoSelecao)
+{
+    jsCriaDataTable_Dimensao('tableData', mesAnoSelecao, colunasCuboMeses);
 }
 
 function jsDepoisDeCarregarDataTable(dataTable)

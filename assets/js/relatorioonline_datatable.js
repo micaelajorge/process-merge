@@ -225,8 +225,9 @@ function jsInicializacaoPagina()
     jsCriaDataTable_Dimensao('tableData', mesAnoInicial, colunasCuboMeses);
 }
 
-function jsMudaAnoMesFiltro(mesAnoSelecao)
+function jsMudaAnoMesFiltro()
 {
+    mesAnoSelecao = '/' + $("#FILTRO_MES_ANO").val();
     jsCriaDataTable_Dimensao('tableData', mesAnoSelecao, colunasCuboMeses);
 }
 

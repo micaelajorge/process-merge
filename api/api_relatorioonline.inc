@@ -296,7 +296,7 @@ function MontaCuboMeses()
     
     $whereData = "date(Campo15) >= '$dataInicio' and date(Campo15) < '$dataFim'";
             
-    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null and $whereData group by periodo, mes, ano, campo34 order by ano, mes";
+    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null and $whereData group by periodo, mes, ano, campo34 order by ano desc , mes desc";
 //    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null group by periodo, mes, ano, campo34 order by ano, mes";
 //    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null and campo15 >= '2019-07-01' group by periodo, mes, ano, campo34 order by periodo";
     $query = mysqli_query($connect, $SQL);
@@ -307,6 +307,7 @@ function MontaCuboMeses()
 
     $retorno = array();
 
+    $retorno["whereDATA"] = $whereData;
     $periodoOld = "";
     $totalCasos = 0;
 

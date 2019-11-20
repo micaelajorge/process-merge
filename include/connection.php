@@ -7,7 +7,7 @@ function AtivaDBExterno($SelDb = True)
     if (!$connectDBExterno) {
         error_log("Erro acesso ao DB " . mysqli_error($connectDBExterno));
         error_log("Erro de Conexao: " . mysqli_connect_errno() . ' - ' . mysqli_connect_error());
-        header('Content-Type: application/json');
+//        header('Content-Type: application/json');
         header("HTTP/1.0 501 db Externo");                
     }
     mysqli_query($connectDBExterno, "SET NAMES 'utf8'");
@@ -27,7 +27,7 @@ function AtivaDBProcess($SelDb = True)
     if (!$connect) {
         error_log("Erro acesso ao DB " . mysqli_error($connect));
         error_log("Erro de Conexao: " . mysqli_connect_errno() . ' - ' . mysqli_connect_error());
-        header('Content-Type: application/json');
+//        header('Content-Type: application/json');
         header("HTTP/1.0 501 db Externo");        
     }
 

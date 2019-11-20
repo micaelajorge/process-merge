@@ -236,7 +236,7 @@ function defineRota($p_dadosURI, $methodHTTP)
     if (!$userValidado & ($rotaRequerLogon & !$validadoToken)) {
         error_log("Rota requer autenticacao: $dadosURI " . var_export($rotaEncontrada, true));
         error_log("Dados Sessao: " . var_export($_SESSION, true));
-        header("HTTP/1.0 402 Usuario nao autenticado");
+        header("HTTP/1.0 402 Usuario sem permissão ou não autenticado");
         return $rotaPadrao;
     }
 
@@ -311,8 +311,6 @@ function trataUrl()
     if ($dadosUrl[0] == "/") {
         $dadosUrl = substr($dadosUrl, 1);
     }
-
-
     return $dadosUrl;
 }
 

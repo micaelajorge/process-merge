@@ -421,7 +421,8 @@
         "relatorioonline": {
             "GET": {
                 "page": "pages/relatorio_online.inc",
-                "funcao": ""
+                "funcao": "",
+                "parametros": ["mes", "ano"]
             }            
         },
         "relatorioonlinedimensao": {
@@ -469,7 +470,7 @@
             "POST": {
                 "page": "api/api_relatorioonline.inc",
                 "funcao": "MontaCuboOne",
-                "parametros": []
+                "parametros": ["mes_selecionado", "ano_selecionado"]
             }                                    
         },        
         "api/v1/rule": {

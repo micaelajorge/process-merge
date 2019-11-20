@@ -19,7 +19,6 @@ function iniciarPhpSession()
     }session_start();
 }
 
-
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
@@ -170,7 +169,45 @@ switch ($srvAccess) {
         define("NAME_OWNER", "Certdox");
         break;
 // </editor-fold>
-    // <editor-fold defaultstate="collapsed" desc="Local host">
+
+    case "teste.localhost":
+        define("ARQUIVOS_NOVA_JANELA", "true");
+        define("ALINHAMENTO_LOGO", "float:left");
+//define("TEMPLATE_LOGON", "t_logon_agiliza.html");
+        /**
+         *  Definições Banco de dados
+         */
+        $BPMUSER = "root";
+        $BPMPWD = "";
+        $EXTERNALUSER = "root";
+        $EXTERNALPWD = "";
+        $EXTERNAL_USERNAME = "root";
+        define("TEMASISTEMA", "skin-red");
+        define("INSTANCENAME", 'Process Teste');
+        define("SITE_FOLDER", "/");
+        define("INSTANCENAME", 'Process Teste');
+        define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS_TESTE");
+        define("configDB", "db-teste");
+        $BPMDB = "processteste";
+        $EXTERNALDB = 'processteste';
+        define("FILES_FOLDER", "\\");
+        define("SITE_ROOT", "http://$srvAccess");
+        define("SITE_FOLDER_COMPLEMENT", "");
+        define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+        define("SERVER_ADDRESS", $srvAccess);
+        if (!defined("ARQUIVO_ERROR_LOG_PHP")) {
+            define("ARQUIVO_ERROR_LOG_PHP", "log_local/PHP_errors.log");
+        }
+        define("_SECRET_KEY", "f9QsJ4Oufz");
+        define("ALLOW_SEARCH", false);
+        define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+        define("LOGO_PARCEIRO_TOP", "icone-certdox-final.jpg");
+        define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
+        define("URL_OWNER", "https://www.certdox.com.br");
+        define("NAME_OWNER", "Cerdox");
+        break;
+
+// <editor-fold defaultstate="collapsed" desc="Local host">
     case "localhost":
     case "192.168.42.193":
     case "127.0.0.1":
@@ -196,6 +233,17 @@ switch ($srvAccess) {
                 define("configDB", "db-teste");
                 $BPMDB = "tribanco_teste";
                 $EXTERNALDB = 'tribanco_teste';
+                break;
+
+            case "teste":
+                define("TEMASISTEMA", "skin-red");
+                define("INSTANCENAME", 'Process Teste');
+                define("SITE_FOLDER", "/teste/");
+                define("INSTANCENAME", 'Process Teste');
+                define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS_TESTE");
+                define("configDB", "db-teste");
+                $BPMDB = "processteste";
+                $EXTERNALDB = 'processteste';
                 break;
 
             case "dmcard":
@@ -556,8 +604,8 @@ switch ($srvAccess) {
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("NAME_OWNER", "Powered by Certdox");
                 break;
-            
-            
+
+
             case "gatewaydigital":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
@@ -1468,13 +1516,11 @@ switch ($srvAccess) {
         break;
 }
 
-if (!defined("SITE_ROOT"))
-{
+if (!defined("SITE_ROOT")) {
     define("SITE_ROOT", "http://$srvAccess");
 }
 
-if (!defined("SERVER_ADDRESS"))
-{
+if (!defined("SERVER_ADDRESS")) {
     define("SERVER_ADDRESS", $srvAccess);
 }
 

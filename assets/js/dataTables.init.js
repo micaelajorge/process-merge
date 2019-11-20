@@ -60,7 +60,7 @@ function jsParametrizacaoPadrao(url, colunas, colunasDefinicao, where, rowId, cr
     } else {
         tablecolumns = null;
     }
-       
+
     var filterServerSide = url ? true : false;
     var filterWhere = (where) ? where : null;
     var options = {'where': filterWhere};
@@ -70,7 +70,8 @@ function jsParametrizacaoPadrao(url, colunas, colunasDefinicao, where, rowId, cr
      * "rowId": 'auto_sequencial',
      */
     parametrosPadraoDataTable = {
-        "order" : (sort) ? sort : null,
+        "destroy": true,
+        "order": (sort) ? sort : null,
         "searching": false,
         "processing": filterServerSide,
         "serverSide": filterServerSide,
@@ -373,14 +374,14 @@ function jsValidaIntervaloData(objDataInicio, objDataFim, campoDB, descCampo, co
                 parametro = {
                     filtro: {
                         campo: campoDB,
-                        valor: [ dtInicio, dtFim ],
+                        valor: [dtInicio, dtFim],
                         tipo: "DT",
                         nome: descCampo
                     }
-                };                
-            }            
+                };
+            }
         }
-        
+
     }
     return (!retornarDataInicio & !retornarDataFim) ? true : parametro; ///< Se não houve nenhuma data inserida retorna false
 }

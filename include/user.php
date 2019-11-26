@@ -199,9 +199,8 @@ class userdef {
     }
 
     function testaUltimoLogon($dataUltimoLogon)
-    {
+    {       
         $ultimologon = date_create($dataUltimoLogon);
-        
         $dataAtual = new DateTime();
         $interval = date_diff($dataAtual, $ultimologon);
         $dias = $interval->format("%a");

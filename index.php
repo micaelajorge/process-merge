@@ -188,8 +188,8 @@ switch ($srvAccess) {
         define("INSTANCENAME", 'Process Teste');
         define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS_TESTE");
         define("configDB", "db-teste");
-        $BPMDB = "processteste";
-        $EXTERNALDB = 'processteste';
+        $BPMDB = "creditas_consignado";
+        $EXTERNALDB = 'creditas_consignado';
         define("FILES_FOLDER", "\\");
         define("SITE_ROOT", "http://$srvAccess");
         define("SITE_FOLDER_COMPLEMENT", "");
@@ -269,6 +269,17 @@ switch ($srvAccess) {
                 $EXTERNALDB = 'securities_start';
                 break;
 
+            case "creditas_scd":
+                define("TEMASISTEMA", "skin-red");
+                define("INSTANCENAME", 'Creditas SCD');
+                define("SITE_FOLDER", "/creditas_scd/");
+                define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS_TESTE");
+                define("PARCEIRONAME", 'Clicksign');
+                define("ARQUIVO_ERROR_LOG_PHP", "log_creditas_scd/PHP_errors.log");
+                $BPMDB = "creditas_scd";
+                $EXTERNALDB = 'creditas_scd';
+                break;            
+            
             default:
                 setcookie("XDEBUG_SESSION", "netbeans-xdebug");
                 define("INSTANCENAME", 'Process Desenv');
@@ -366,7 +377,6 @@ switch ($srvAccess) {
         define("ALINHAMENTO_LOGO", "float:left");
         define("NAME_OWNER", "Powered by Certdox");
         break;
-
 
     case "creditas-scd.securities.com.br":
     case "creditasscd.securities.com.br":
@@ -508,7 +518,7 @@ switch ($srvAccess) {
 
             case "creditas_consignado":
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("TEMASISTEMA", "skin-red");
+                define("TEMASISTEMA", "skin-blue-light");
                 /**
                  *  Definições Banco de dados
                  */

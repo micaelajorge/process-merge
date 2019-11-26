@@ -473,6 +473,13 @@
                 "parametros": ["mes_selecionado", "ano_selecionado"]
             }                                    
         },        
+        "api\/v1\/dimensao": {
+            "POST": {
+                "page": "api/api_relatorioonline.inc",
+                "funcao": "MontaCuboOne",
+                "parametros": []
+            }                                    
+        },        
         "api/v1/rule": {
             "POST": {
                 "page": "api/api_rules_v1.inc",

@@ -7,6 +7,20 @@
                 "parametros": ["documento"],
                 "logon": false                
             }
+        },
+        "api/v1/mergetemplate": {
+            "POST": {
+                "page": "api/api_docx_template.inc",
+                "funcao": "api_mergeTemplate",
+                "logon": false                
+            }
+        },
+        "api/v1/gettemplatedata": {
+            "POST": {
+                "page": "api/api_docx_template.inc",
+                "funcao": "api_getTemplateData",
+                "logon": false                
+            }
         }
     }
 }

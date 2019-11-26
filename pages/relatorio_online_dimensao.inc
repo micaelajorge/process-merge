@@ -66,6 +66,9 @@ switch ($PARAMETROS_ROTA[0])
     case 3:
         $cargo = "Gerente Comercial";
         break;
+    case 4:
+        $cargo = "Loja";
+        break;
 }
 $cabecalhoTabela = array(
     $cargo,

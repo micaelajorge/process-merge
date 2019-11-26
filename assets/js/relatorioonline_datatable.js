@@ -152,16 +152,20 @@ function jsCreatedRow(row, data, dataIndex)
 
 var dadosLinha;
 
-
-
-
-
 function jsCriaDataTable_Dimensao(dataTableSelecionado, parametrosRota, colunasParaCubo)
+{
+    let endApi = SITE_LOCATION + "api/v1/dimensao";
+    colunasParaCubo = (colunasParaCubo === undefined) ? colunasCubo : colunasParaCubo;
+    jsCriaDataTable(dataTableSelecionado, parametrosRota, colunasParaCubo, columnDefs_, endApi);
+}
+
+function jsCriaDataTable_Meses(dataTableSelecionado, parametrosRota, colunasParaCubo)
 {
     let endApi = SITE_LOCATION + "api/v1/relatorioonline";
     colunasParaCubo = (colunasParaCubo === undefined) ? colunasCubo : colunasParaCubo;
     jsCriaDataTable(dataTableSelecionado, parametrosRota, colunasParaCubo, columnDefs_, endApi);
 }
+
 
 function jsCriaDataTable_Irregularidades(dataTableSelecionado, parametrosRota, colunasDatatable, colunasDef)
 {
@@ -222,13 +226,13 @@ function jsCriaDataTable(dataTableSelecionado, parametrosRota, colunasDatatable,
 function jsInicializacaoPagina()
 {
     funcAfterLoadDataTable = jsSetaSelectRow;
-    jsCriaDataTable_Dimensao('tableData', mesAnoInicial, colunasCuboMeses);
+    jsCriaDataTable_Meses('tableData', mesAnoInicial, colunasCuboMeses);
 }
 
 function jsMudaAnoMesFiltro()
 {
     mesAnoSelecao = '/' + $("#FILTRO_MES_ANO").val();
-    jsCriaDataTable_Dimensao('tableData', mesAnoSelecao, colunasCuboMeses);
+    jsCriaDataTable_Meses('tableData', mesAnoSelecao, colunasCuboMeses);
 }
 
 function jsDepoisDeCarregarDataTable(dataTable)

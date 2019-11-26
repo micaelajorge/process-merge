@@ -289,6 +289,26 @@ function atualizaStatusCessao($dadosTermo, $tipoDocumento)
  * 
  * @return type
  */
+
+function buscaChaveAssinanteTermo($jsonAssinantes, $chaveSignatario, $codigoCampo)
+{
+    $campo = array();
+        $assinantesAssignor = json_decode($jsonAssinantes, true);
+        
+        $chavesSignatario = array_column($assinantesAssignor, "CHAVE_ASSINATURA");
+        
+        $posicaoAssinante = array_search($chaveSignatario, $chavesSignatario);
+        if ($posicaoAssinante !== false)
+        {
+            $assinantesAssignor[$posicaoAssinante]["ASSINADO"] = true;
+            $campo["fieldCode"] = $codigoCampo;
+            $campo["fieldValue"] = json_encode($assinantesAssignor);            
+            return $campo;
+        }       
+        return false;
+}
+
+
 function atualizaAssinaturaCessao()
 {
     $dadosEntrada = apiTrataDadosEntrada();
@@ -301,8 +321,27 @@ function atualizaAssinaturaCessao()
 
     $documentKey = $dadosEntrada["document_key"];
     $caseNumCCB = pegaNumerCasoUnicoAberto($procId, $documentKey, $fieldId);
+    
 
     if ($caseNumCCB != 0) {
+        $camposEnvio = array();
+        
+        // Pega o Valor de Campo de Assinantes Assingor
+        $jsonAssinantesAssignor = PegaValorCampo($procId, $caseNumCCB, "SIGNATARIOS_ENDORSEE");
+        $retornoBuscaSignatario = buscaChaveAssinanteTermo($jsonAssinantesAssignor, $dadosEntrada["signer"], "SIGNATARIOS_ENDORSEE");
+        if ($retornoBuscaSignatario !== false)
+        {
+            $camposEnvio[] = $retornoBuscaSignatario;    
+        }
+                
+         // Pega o Valor de Campo de Assinantes Transferre
+        $jsonAcampoAssinantesTransferee = PegaValorCampo($procId, $caseNumCCB, "SIGNATARIOS_TRANSFEREE");
+        $retornoBuscaSignatario = buscaChaveAssinanteTermo($jsonAcampoAssinantesTransferee, $dadosEntrada["signer"], "SIGNATARIOS_TRANSFEREE");
+        if ($retornoBuscaSignatario !== false)
+        {
+            $camposEnvio[] = $retornoBuscaSignatario;    
+        }
+                
         $campo["fieldCode"] = "ASSINANTES_TERMO";
         $campo["fieldValue"] = $dadosEntrada["signer"];
         $camposEnvio[] = $campo;
@@ -1049,7 +1088,7 @@ function getAccountToken()
 }
 
 // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="singers">
+// <editor-fold defaultstate="collapsed" desc="signers">
 /**
  *  ROTA: api/v1/signers
  */

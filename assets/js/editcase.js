@@ -96,15 +96,14 @@ function jsFileUploadScan(formSource, ProcId, StepId, CaseNum, FieldId, UserId) 
 
 
 
-
-
         var strHTTPServer = location.hostname; //The name of the HTTP server. 
         var CurrentPathName = unescape(location.pathname);
         var CurrentPath = CurrentPathName.replace(/editcase.*/, "");
         var strActionPage = CurrentPath + "foldersendfile";
 
-        DWObject.IfSSL = false; // Set whether SSL is used
-        DWObject.HTTPPort = location.port == "" ? 80 : location.port;
+
+        DWObject.IfSSL = location.protocol === 'https' // Set whether SSL is used
+//        DWObject.HTTPPort = location.port == "" ? 80 : location.port;
 
         totalPaginasScan = DWObject.HowManyImagesInBuffer
         DWObject.SelectedImagesCount = totalPaginasScan;
@@ -158,7 +157,7 @@ function jsCarregaFieldWebCaptura(ProcId, CaseNum, FieldId, valueId, userId)
     if (typeof Dynamsoft === "undefined")
     {
         // carrega Scripts Webcaptura
-        url = "Resources/dynamsoft.webtwain.config.js";
+        url = "Resources/" + dynamic_twain_config;
         $.ajax({
             url: url,
             dataType: "script"
@@ -166,6 +165,8 @@ function jsCarregaFieldWebCaptura(ProcId, CaseNum, FieldId, valueId, userId)
 
     }
     // carrega Scripts Webcaptura
+    // carrega Scripts Webcaptura
+
     url = "Resources/dynamsoft.webtwain.initiate.js";
     $.ajax({
         url: url,
@@ -774,7 +775,7 @@ function jsRemoveFile(procId, caseNum, fieldId, valueId, fileName)
         }
     });
     console.log(`${procId}, ${caseNum}, ${fieldId}, ${valueId}`);
-    
+
 }
 
 function jsViewFile(procId, caseNum, fieldId, fileNameStorage, fileName, fieldIdCase, abrirNovaJanela)

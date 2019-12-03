@@ -597,7 +597,7 @@ switch ($tipoFormulario) {
         DefineMenu();
         break;
     case "P":
-    case "T":
+    case "U":
         if ($NovoCaso) {
             $StepIdBuscaCampos = $StepId;
             $Menu = MENU_ROTEAR_NOVO_PROCESSO;
@@ -698,6 +698,7 @@ $t_body->TITULO_PAGE = "$procdef->ProcName | " . INSTANCENAME;
 // Trata o Campo IMAGEM E FOLDER se For Formulario de Formalizacao
 switch ($tipoFormulario) {
     case "O":
+        $Campos = CamposFormulario($ProcId, $StepId);
         $CamposOriginal = $Campos;
         $Campos = array();
         for ($indiceImagem = 0; $indiceImagem < count($CamposOriginal); $indiceImagem++) {
@@ -732,7 +733,7 @@ $t_body->MAIN_FOOTER_HIDEN = "hidden";
 // Trata o Campo IMAGEM E FOLDER se For Formulario de FOrmalizacao
 switch ($tipoFormulario) {
     case "0":
-        $Campos = CamposFormulario($ProcId, $StepIdBuscaCampos);
+//        $Campos = CamposFormulario($ProcId, $StepIdBuscaCampos);
         $retorno = CriaFormularioFluxoWF($t_body, $ProcId, $StepId, $CaseNum, $Campos, $Action);
 
         $t_body->CONTEUDO_FIELDS = $retorno["CONTEUDO"];
@@ -800,7 +801,7 @@ switch ($tipoFormulario) {
 
 // Pasta de Documentos
     case "P":
-    case "T":
+    case "U":
         $Campos = CamposFormulario($ProcId, $StepIdBuscaCampos);
         $retorno = CriaFormularioFluxoCT($t_body, $ProcId, $StepIdBuscaCampos, $CaseNum, $Campos, $Action, $NovoCaso, $tipoFormulario);
         break;
@@ -843,6 +844,10 @@ $t_body->ARQUIVO_JS = "ler_pdf_process.js?006";
 $t_body->block("BLOCO_JAVASCRIPT");
 
 $t_body->INCLUDE_JAVASCRIPT = $retorno["VALIDACAO_JAVASCRIPT"];
+$t_body->block("BLOCO_INCLUDE_JAVASCRIPT");
+
+// Define a configuração para o Dynamic Twain
+$t_body->INCLUDE_JAVASCRIPT = "var dynamic_twain_config = '" . DINAMIC_TWAIN_CONFIG . "'";
 $t_body->block("BLOCO_INCLUDE_JAVASCRIPT");
 
 // Faz a verificação 

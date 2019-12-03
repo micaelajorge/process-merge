@@ -1,712 +1,2285 @@
-[07-Nov-2019 16:17:10 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:17:10 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:17:10 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:04 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:08 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:09 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:09 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:10 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:10 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:10 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:12 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:12 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:12 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:18:47 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:20:13 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:20:13 America/Sao_Paulo] Pegando dados cessão: 4b4d2775-ed11-4abc-8bd7-8e23233e3729
-[07-Nov-2019 16:20:16 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:20:16 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:20:16 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:25:17 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:25:17 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:30:18 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:30:18 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:34:17 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:34:17 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 16:34:17 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 19:02:01 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 19:02:01 America/Sao_Paulo] Rota requer autenticacao: api/v1/processes array (
-  'page' => 'api/api_securities.inc',
-  'funcao' => 'api_process_create',
+[30-Nov-2019 14:11:18 America/Sao_Paulo] PHP Fatal error:  Uncaught InvalidArgumentException: file E:\desenvolvimento\PHPSistemas\Process\assets/templates//t_securities_dashboard.html does not exist in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:195
+Stack trace:
+#0 E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php(124): raelgc\view\Template->loadfile('PAGECONTENT', 'E:\\desenvolvime...')
+#1 E:\desenvolvimento\PHPSistemas\Process\pages\securities_dashboard.inc(22): raelgc\view\Template->addFile('PAGECONTENT', 'E:\\desenvolvime...')
+#2 E:\desenvolvimento\PHPSistemas\Process\index.php(1646): include('E:\\desenvolvime...')
+#3 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 195
+[30-Nov-2019 18:02:36 America/Sao_Paulo] PHP Fatal error:  Uncaught UnexpectedValueException: duplicated block: BLOCK_ENTIDADE in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:326
+Stack trace:
+#0 E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php(210): raelgc\view\Template->createBlocks(Array)
+#1 E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php(111): raelgc\view\Template->loadfile('.', 'E:\\desenvolvime...')
+#2 E:\desenvolvimento\PHPSistemas\Process\pages\securities\securities_session_signers.inc(19): raelgc\view\Template->__construct('E:\\desenvolvime...')
+#3 E:\desenvolvimento\PHPSistemas\Process\index.php(1646): include('E:\\desenvolvime...')
+#4 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 326
+[30-Nov-2019 18:02:54 America/Sao_Paulo] PHP Fatal error:  Uncaught UnexpectedValueException: mal-formed block BLOCK_ENTIDADE in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:355
+Stack trace:
+#0 E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php(328): raelgc\view\Template->setBlock('.', 'BLOCK_ENTIDADE')
+#1 E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php(210): raelgc\view\Template->createBlocks(Array)
+#2 E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php(111): raelgc\view\Template->loadfile('.', 'E:\\desenvolvime...')
+#3 E:\desenvolvimento\PHPSistemas\Process\pages\securities\securities_session_signers.inc(19): raelgc\view\Template->__construct('E:\\desenvolvime...')
+#4 E:\desenvolvimento\PHPSistemas\Process\index.php(1646): include('E:\\desenvolvime...')
+#5 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 355
+[30-Nov-2019 18:20:28 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
+  'page' => 'api/checkstatus.inc',
 )
-[07-Nov-2019 19:02:01 America/Sao_Paulo] Dados Sessao: array (
-  'userdef' => 
-  userdef::__set_state(array(
-     'UserId' => NULL,
-     'UserName' => NULL,
-     'UserDesc' => NULL,
-     'usergroups' => NULL,
-     'UserId_Process' => -1,
-     'Admin' => NULL,
-     'Active' => NULL,
-     'Validado' => false,
-     'connect' => 
-    mysqli::__set_state(array(
-       'affected_rows' => NULL,
-       'client_info' => NULL,
-       'client_version' => NULL,
-       'connect_errno' => NULL,
-       'connect_error' => NULL,
-       'errno' => NULL,
-       'error' => NULL,
-       'error_list' => NULL,
-       'field_count' => NULL,
-       'host_info' => NULL,
-       'info' => NULL,
-       'insert_id' => NULL,
-       'server_info' => NULL,
-       'server_version' => NULL,
-       'stat' => NULL,
-       'sqlstate' => NULL,
-       'protocol_version' => NULL,
-       'thread_id' => NULL,
-       'warning_count' => NULL,
-    )),
-     'AdHoc' => NULL,
-     'Ausergroups' => NULL,
-     'UserLevel' => 1,
-     'Origem' => NULL,
-     'Direto' => NULL,
-     'ASP_session' => NULL,
-     'AGrupos' => NULL,
-     'CriarSessionIntegration' => false,
-     'lastlogon' => NULL,
-     'lastnofification' => NULL,
-     'lastmessages' => NULL,
-     'Email' => NULL,
-  )),
+[30-Nov-2019 18:20:28 America/Sao_Paulo] Dados Sessao: array (
 )
-[07-Nov-2019 20:50:28 America/Sao_Paulo] Passou e setou o error Log
-[07-Nov-2019 21:09:51 America/Sao_Paulo] Rota requer autenticacao: api/v1/process array (
-  'page' => 'api/api_securities.inc',
-  'funcao' => 'api_process_create',
+[30-Nov-2019 18:20:29 America/Sao_Paulo] Rota requer autenticacao: securities/dashboard array (
+  'page' => 'pages/securities/securities_dashboard.inc',
 )
-[07-Nov-2019 21:09:51 America/Sao_Paulo] Dados Sessao: array (
-  'userdef' => 
-  userdef::__set_state(array(
-     'UserId' => NULL,
-     'UserName' => NULL,
-     'UserDesc' => NULL,
-     'usergroups' => NULL,
-     'UserId_Process' => -1,
-     'Admin' => NULL,
-     'Active' => NULL,
-     'Validado' => false,
-     'connect' => 
-    mysqli::__set_state(array(
-       'affected_rows' => NULL,
-       'client_info' => NULL,
-       'client_version' => NULL,
-       'connect_errno' => NULL,
-       'connect_error' => NULL,
-       'errno' => NULL,
-       'error' => NULL,
-       'error_list' => NULL,
-       'field_count' => NULL,
-       'host_info' => NULL,
-       'info' => NULL,
-       'insert_id' => NULL,
-       'server_info' => NULL,
-       'server_version' => NULL,
-       'stat' => NULL,
-       'sqlstate' => NULL,
-       'protocol_version' => NULL,
-       'thread_id' => NULL,
-       'warning_count' => NULL,
-    )),
-     'AdHoc' => NULL,
-     'Ausergroups' => NULL,
-     'UserLevel' => 1,
-     'Origem' => NULL,
-     'Direto' => NULL,
-     'ASP_session' => NULL,
-     'AGrupos' => NULL,
-     'CriarSessionIntegration' => false,
-     'lastlogon' => NULL,
-     'lastnofification' => NULL,
-     'lastmessages' => NULL,
-     'Email' => NULL,
-  )),
+[30-Nov-2019 18:20:29 America/Sao_Paulo] Dados Sessao: array (
 )
-[07-Nov-2019 21:11:02 America/Sao_Paulo] Rota requer autenticacao: index.php?XDEBUG_SESSION_START=netbeans-xdebug array (
-  'page' => 'pages/logon.inc',
-  'funcao' => '',
+[30-Nov-2019 18:20:35 America/Sao_Paulo] Rota requer autenticacao: securities/dashboard array (
+  'page' => 'pages/securities/securities_dashboard.inc',
 )
-[07-Nov-2019 21:11:02 America/Sao_Paulo] Dados Sessao: array (
+[30-Nov-2019 18:20:35 America/Sao_Paulo] Dados Sessao: array (
 )
-[07-Nov-2019 21:11:16 America/Sao_Paulo] Rota requer autenticacao: api/v1/process array (
-  'page' => 'api/api_securities.inc',
-  'funcao' => 'api_process_create',
+[30-Nov-2019 18:20:40 America/Sao_Paulo] Rota requer autenticacao: securities/dashboard array (
+  'page' => 'pages/securities/securities_dashboard.inc',
 )
-[07-Nov-2019 21:11:16 America/Sao_Paulo] Dados Sessao: array (
-  'userdef' => 
-  userdef::__set_state(array(
-     'UserId' => NULL,
-     'UserName' => NULL,
-     'UserDesc' => NULL,
-     'usergroups' => NULL,
-     'UserId_Process' => -1,
-     'Admin' => NULL,
-     'Active' => NULL,
-     'Validado' => false,
-     'connect' => 
-    mysqli::__set_state(array(
-       'affected_rows' => NULL,
-       'client_info' => NULL,
-       'client_version' => NULL,
-       'connect_errno' => NULL,
-       'connect_error' => NULL,
-       'errno' => NULL,
-       'error' => NULL,
-       'error_list' => NULL,
-       'field_count' => NULL,
-       'host_info' => NULL,
-       'info' => NULL,
-       'insert_id' => NULL,
-       'server_info' => NULL,
-       'server_version' => NULL,
-       'stat' => NULL,
-       'sqlstate' => NULL,
-       'protocol_version' => NULL,
-       'thread_id' => NULL,
-       'warning_count' => NULL,
-    )),
-     'AdHoc' => NULL,
-     'Ausergroups' => NULL,
-     'UserLevel' => 1,
-     'Origem' => NULL,
-     'Direto' => NULL,
-     'ASP_session' => NULL,
-     'AGrupos' => NULL,
-     'CriarSessionIntegration' => false,
-     'lastlogon' => NULL,
-     'lastnofification' => NULL,
-     'lastmessages' => NULL,
-     'Email' => NULL,
-  )),
+[30-Nov-2019 18:20:40 America/Sao_Paulo] Dados Sessao: array (
 )
-[07-Nov-2019 21:11:57 America/Sao_Paulo] Rota requer autenticacao: api/v1/process array (
-  'page' => 'api/api_securities.inc',
-  'funcao' => 'api_process_create',
+[01-Dec-2019 14:01:17 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
+  'page' => 'api/checkstatus.inc',
 )
-[07-Nov-2019 21:11:57 America/Sao_Paulo] Dados Sessao: array (
-  'userdef' => 
-  userdef::__set_state(array(
-     'UserId' => NULL,
-     'UserName' => NULL,
-     'UserDesc' => NULL,
-     'usergroups' => NULL,
-     'UserId_Process' => -1,
-     'Admin' => NULL,
-     'Active' => NULL,
-     'Validado' => false,
-     'connect' => 
-    mysqli::__set_state(array(
-       'affected_rows' => NULL,
-       'client_info' => NULL,
-       'client_version' => NULL,
-       'connect_errno' => NULL,
-       'connect_error' => NULL,
-       'errno' => NULL,
-       'error' => NULL,
-       'error_list' => NULL,
-       'field_count' => NULL,
-       'host_info' => NULL,
-       'info' => NULL,
-       'insert_id' => NULL,
-       'server_info' => NULL,
-       'server_version' => NULL,
-       'stat' => NULL,
-       'sqlstate' => NULL,
-       'protocol_version' => NULL,
-       'thread_id' => NULL,
-       'warning_count' => NULL,
-    )),
-     'AdHoc' => NULL,
-     'Ausergroups' => NULL,
-     'UserLevel' => 1,
-     'Origem' => NULL,
-     'Direto' => NULL,
-     'ASP_session' => NULL,
-     'AGrupos' => NULL,
-     'CriarSessionIntegration' => false,
-     'lastlogon' => NULL,
-     'lastnofification' => NULL,
-     'lastmessages' => NULL,
-     'Email' => NULL,
-  )),
+[01-Dec-2019 14:01:17 America/Sao_Paulo] Dados Sessao: array (
 )
-[07-Nov-2019 21:12:31 America/Sao_Paulo] Rota requer autenticacao: api/v1/process array (
-  'page' => 'api/api_securities.inc',
-  'funcao' => 'api_process_create',
+[01-Dec-2019 14:02:08 America/Sao_Paulo] Rota requer autenticacao: securities/dashboard array (
+  'page' => 'pages/securities/securities_dashboard.inc',
 )
-[07-Nov-2019 21:12:31 America/Sao_Paulo] Dados Sessao: array (
-  'userdef' => 
-  userdef::__set_state(array(
-     'UserId' => NULL,
-     'UserName' => NULL,
-     'UserDesc' => NULL,
-     'usergroups' => NULL,
-     'UserId_Process' => -1,
-     'Admin' => NULL,
-     'Active' => NULL,
-     'Validado' => false,
-     'connect' => 
-    mysqli::__set_state(array(
-       'affected_rows' => NULL,
-       'client_info' => NULL,
-       'client_version' => NULL,
-       'connect_errno' => NULL,
-       'connect_error' => NULL,
-       'errno' => NULL,
-       'error' => NULL,
-       'error_list' => NULL,
-       'field_count' => NULL,
-       'host_info' => NULL,
-       'info' => NULL,
-       'insert_id' => NULL,
-       'server_info' => NULL,
-       'server_version' => NULL,
-       'stat' => NULL,
-       'sqlstate' => NULL,
-       'protocol_version' => NULL,
-       'thread_id' => NULL,
-       'warning_count' => NULL,
-    )),
-     'AdHoc' => NULL,
-     'Ausergroups' => NULL,
-     'UserLevel' => 1,
-     'Origem' => NULL,
-     'Direto' => NULL,
-     'ASP_session' => NULL,
-     'AGrupos' => NULL,
-     'CriarSessionIntegration' => false,
-     'lastlogon' => NULL,
-     'lastnofification' => NULL,
-     'lastmessages' => NULL,
-     'Email' => NULL,
-  )),
+[01-Dec-2019 14:02:08 America/Sao_Paulo] Dados Sessao: array (
 )
-[07-Nov-2019 22:00:00 America/Sao_Paulo] Rota requer autenticacao:  array (
+[01-Dec-2019 14:02:21 America/Sao_Paulo] Falha ao pegar campos referência: select * from exportkeysdisplay where CaseNum in (145705,145705,145709,145709,145740) and ProcId = SEC_CESSOES
+[01-Dec-2019 14:32:32 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:34 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:34 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:35 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:37 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:38 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:39 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:39 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:45 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:47 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:48 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:48 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:48 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:49 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:50 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:50 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:51 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:51 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:52 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:52 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:32:53 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:14 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:25 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:34 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:40 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:41 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:42 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:43 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:43 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:45 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:52 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:33:55 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:02 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:03 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:05 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:05 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:06 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:06 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:07 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:08 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:08 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:09 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:15 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:27 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:28 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:29 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:30 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:30 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[01-Dec-2019 14:34:32 America/Sao_Paulo] erro parse arquivo rotas_securities.json, erro: 4 Descricao: Syntax error
+[02-Dec-2019 12:23:35 America/Sao_Paulo] Rota requer autenticacao:  array (
   'page' => 'pages/log.inc',
   'funcao' => '',
 )
-[07-Nov-2019 22:00:00 America/Sao_Paulo] Dados Sessao: array (
+[02-Dec-2019 12:23:35 America/Sao_Paulo] Dados Sessao: array (
 )
-[07-Nov-2019 22:00:06 America/Sao_Paulo] Rota requer autenticacao:  array (
+[02-Dec-2019 12:35:26 America/Sao_Paulo] erro parse arquivo rotas_internas.json, erro: 4 Descricao: Syntax error
+[02-Dec-2019 12:56:46 America/Sao_Paulo] erro parse arquivo rotas_internas.json, erro: 4 Descricao: Syntax error
+[02-Dec-2019 18:28:42 America/Sao_Paulo] Rota requer autenticacao:  array (
   'page' => 'pages/log.inc',
   'funcao' => '',
 )
-[07-Nov-2019 22:00:06 America/Sao_Paulo] Dados Sessao: array (
+[02-Dec-2019 18:28:42 America/Sao_Paulo] Dados Sessao: array (
 )
-[08-Nov-2019 10:51:12 America/Sao_Paulo] Rota requer autenticacao: api/v1/processes array (
-  'page' => 'api/api_securities.inc',
-  'funcao' => 'api_process_create',
-)
-[08-Nov-2019 10:51:12 America/Sao_Paulo] Dados Sessao: array (
-  'userdef' => 
-  userdef::__set_state(array(
-     'UserId' => NULL,
-     'UserName' => NULL,
-     'UserDesc' => NULL,
-     'usergroups' => NULL,
-     'UserId_Process' => -1,
-     'Admin' => NULL,
-     'Active' => NULL,
-     'Validado' => false,
-     'connect' => 
-    mysqli::__set_state(array(
-       'affected_rows' => NULL,
-       'client_info' => NULL,
-       'client_version' => NULL,
-       'connect_errno' => NULL,
-       'connect_error' => NULL,
-       'errno' => NULL,
-       'error' => NULL,
-       'error_list' => NULL,
-       'field_count' => NULL,
-       'host_info' => NULL,
-       'info' => NULL,
-       'insert_id' => NULL,
-       'server_info' => NULL,
-       'server_version' => NULL,
-       'stat' => NULL,
-       'sqlstate' => NULL,
-       'protocol_version' => NULL,
-       'thread_id' => NULL,
-       'warning_count' => NULL,
-    )),
-     'AdHoc' => NULL,
-     'Ausergroups' => NULL,
-     'UserLevel' => 1,
-     'Origem' => NULL,
-     'Direto' => NULL,
-     'ASP_session' => NULL,
-     'AGrupos' => NULL,
-     'CriarSessionIntegration' => false,
-     'lastlogon' => NULL,
-     'lastnofification' => NULL,
-     'lastmessages' => NULL,
-     'Email' => NULL,
-  )),
-)
-[08-Nov-2019 14:25:13 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[08-Nov-2019 14:25:13 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 14:30:13 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[08-Nov-2019 14:30:13 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 14:35:14 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[08-Nov-2019 14:35:14 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 14:40:14 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[08-Nov-2019 14:40:14 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 14:45:15 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[08-Nov-2019 14:45:15 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 14:50:15 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[08-Nov-2019 14:50:15 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 14:55:15 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[08-Nov-2019 14:55:15 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 15:00:15 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[08-Nov-2019 15:00:15 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 15:05:16 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[08-Nov-2019 15:05:16 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 15:10:16 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[08-Nov-2019 15:10:16 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 15:11:00 America/Sao_Paulo] Rota requer autenticacao: entrada array (
-  'page' => 'pages/entrada.inc',
-  'funcao' => '',
-)
-[08-Nov-2019 15:11:00 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 18:06:31 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[08-Nov-2019 18:06:31 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 18:06:32 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[08-Nov-2019 18:06:32 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 18:06:49 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[08-Nov-2019 18:06:49 America/Sao_Paulo] Dados Sessao: array (
-)
-[08-Nov-2019 18:27:05 America/Sao_Paulo] Retorno Campo: TAC - Ilegível / Cortado
-[08-Nov-2019 18:27:05 America/Sao_Paulo] Retorno Campo: TAC - Não Preenchida Corretamente/Dados divergentes do Documento
-[08-Nov-2019 18:27:05 America/Sao_Paulo] Retorno Campo: TAC - Ilegível / Cortado | TAC - Não Preenchida Corretamente/Dados divergentes do Documento
-[08-Nov-2019 18:27:05 America/Sao_Paulo] Retorno Campo: 
-[08-Nov-2019 19:59:15 America/Sao_Paulo] Dados Erro: Erro no WebService: 13 - Processo não encontrado ou Id Inválido- 0Arquivo:  Função: FuncCaseSave End. Remoto: ::1
-[08-Nov-2019 19:59:15 America/Sao_Paulo] Entrada Dadosarray (
+[02-Dec-2019 18:29:25 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => '7',
-      'fieldValue' => 'Array',
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'SCD_CERC_42.REM',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 0,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'IMAGENS_INT',
+      'fieldValue' => '{"fileNameStorage":"0000146404000801.rem","fileName":"SCD_CERC_42.REM","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:29:25"}',
     ),
   ),
 )
-[09-Nov-2019 14:16:14 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[09-Nov-2019 14:16:14 America/Sao_Paulo] Dados Sessao: array (
-)
-[09-Nov-2019 16:45:44 America/Sao_Paulo] Rota requer autenticacao: logon array (
-  'page' => 'pages/logon.inc',
-  'funcao' => '',
-)
-[09-Nov-2019 16:45:44 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 12:47:24 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 12:47:24 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 12:52:25 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 12:52:25 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 12:57:25 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 12:57:25 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 12:58:51 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[10-Nov-2019 12:58:51 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:02:26 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:02:26 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:07:26 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:07:26 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:12:26 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:12:26 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:17:26 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:17:26 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:22:26 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:22:26 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:27:26 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:27:26 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:32:27 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:32:27 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:37:27 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:37:27 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:42:27 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:42:27 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:47:27 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:47:27 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:52:27 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:52:27 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 13:57:28 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 13:57:28 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:02:28 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:02:28 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:07:29 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:07:29 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:12:29 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:12:29 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:17:29 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:17:29 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:22:30 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:22:30 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:27:30 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:27:30 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:32:31 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:32:31 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:37:31 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:37:31 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:42:31 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:42:31 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:47:32 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:47:32 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:52:32 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:52:32 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 14:57:33 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 14:57:33 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 15:02:33 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 15:02:33 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 15:07:34 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 15:07:34 America/Sao_Paulo] Dados Sessao: array (
-)
-[10-Nov-2019 15:12:34 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[10-Nov-2019 15:12:34 America/Sao_Paulo] Dados Sessao: array (
-)
-[11-Nov-2019 14:26:29 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[11-Nov-2019 14:26:29 America/Sao_Paulo] Dados Sessao: array (
-)
-[15-Nov-2019 12:22:39 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[15-Nov-2019 12:22:39 America/Sao_Paulo] Dados Sessao: array (
-)
-[15-Nov-2019 12:22:40 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[15-Nov-2019 12:22:40 America/Sao_Paulo] Dados Sessao: array (
-)
-[17-Nov-2019 23:30:56 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[17-Nov-2019 23:30:56 America/Sao_Paulo] Dados Sessao: array (
-)
-[17-Nov-2019 23:32:38 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[17-Nov-2019 23:32:38 America/Sao_Paulo] Dados Sessao: array (
-)
-[17-Nov-2019 23:37:38 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[17-Nov-2019 23:37:38 America/Sao_Paulo] Dados Sessao: array (
-)
-[17-Nov-2019 23:40:24 America/Sao_Paulo] Rota requer autenticacao: logon array (
-  'page' => 'pages/logon.inc',
-  'funcao' => '',
-)
-[17-Nov-2019 23:40:24 America/Sao_Paulo] Dados Sessao: array (
-)
-[18-Nov-2019 11:33:58 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[18-Nov-2019 11:33:58 America/Sao_Paulo] Dados Sessao: array (
-)
-[18-Nov-2019 11:34:30 America/Sao_Paulo] Rota requer autenticacao: logon array (
-  'page' => 'pages/logon.inc',
-  'funcao' => '',
-)
-[18-Nov-2019 11:34:30 America/Sao_Paulo] Dados Sessao: array (
-)
-[18-Nov-2019 11:34:35 America/Sao_Paulo] Rota requer autenticacao: queue/75 array (
-  'page' => 'pages/queue.inc',
-  'funcao' => '',
-  'parametros' => 
+[02-Dec-2019 18:29:56 America/Sao_Paulo] Pegando dados cessão: e0372ecc-a58a-4da7-9136-2eae7dec76ea
+[02-Dec-2019 18:29:57 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
   array (
-    0 => 'ProcId',
-    1 => 'StepId',
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146132',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'queued',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
   ),
 )
-[18-Nov-2019 11:34:35 America/Sao_Paulo] Dados Sessao: array (
-)
-[18-Nov-2019 11:34:49 America/Sao_Paulo] Rota requer autenticacao: queue/75 array (
-  'page' => 'pages/queue.inc',
-  'funcao' => '',
-  'parametros' => 
+[02-Dec-2019 18:30:08 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
   array (
-    0 => 'ProcId',
-    1 => 'StepId',
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Arquivo Recebido do Gateway',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'SCD_CERC_42.REM',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146405001001.rem","fileName":"SCD_CERC_42.REM","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:30:07"}',
+    ),
   ),
 )
-[18-Nov-2019 11:34:49 America/Sao_Paulo] Dados Sessao: array (
-)
-[18-Nov-2019 11:36:08 America/Sao_Paulo] Rota requer autenticacao: logon array (
-  'page' => 'pages/logon.inc',
-  'funcao' => '',
-)
-[18-Nov-2019 11:36:08 America/Sao_Paulo] Dados Sessao: array (
-)
-[18-Nov-2019 11:36:18 America/Sao_Paulo] Rota requer autenticacao: queue/116 array (
-  'page' => 'pages/queue.inc',
-  'funcao' => '',
-  'parametros' => 
+[02-Dec-2019 18:32:08 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
   array (
-    0 => 'ProcId',
-    1 => 'StepId',
+    0 => 
+    array (
+      'fieldCode' => 'originador_cnpj',
+      'fieldValue' => 6912389,
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_OPERACAO',
+      'fieldValue' => 'RETORNO',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'codigo_termo_cessao',
+      'fieldValue' => 88051,
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'cession_number',
+      'fieldValue' => 88051,
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'data_cessao',
+      'fieldValue' => '',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'nr_contratos',
+      'fieldValue' => 1,
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'DISPONIBILIDADE_CESSAO',
+      'fieldValue' => '',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'BANCO_CREDITO',
+      'fieldValue' => 'OLIVEIRA TRUST',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'AGENCIA_CREDITO',
+      'fieldValue' => '900',
+    ),
+    9 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'CB6051101.RET',
+    ),
+    10 => 
+    array (
+      'fieldCode' => 'recusados',
+      'fieldValue' => 
+      array (
+      ),
+    ),
+    11 => 
+    array (
+      'fieldCode' => 'JSON_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146126002401.json","fileName":"146126-CB6051101.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:32:08"}',
+    ),
   ),
 )
-[18-Nov-2019 11:36:18 America/Sao_Paulo] Dados Sessao: array (
+[02-Dec-2019 18:32:16 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Arquivo CNAB Enviado para Gateway',
+    ),
+  ),
 )
-[18-Nov-2019 11:43:07 America/Sao_Paulo] Rota requer autenticacao: logon array (
+[02-Dec-2019 18:32:18 America/Sao_Paulo] Pegando dados cessão: e0372ecc-a58a-4da7-9136-2eae7dec76ea
+[02-Dec-2019 18:32:19 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:32:19"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:32:22 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146132',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:32:23 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:34:54 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146132',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:34:55 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:34:56 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'originador_cnpj',
+      'fieldValue' => 6912389,
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_OPERACAO',
+      'fieldValue' => 'RETORNO',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'codigo_termo_cessao',
+      'fieldValue' => 91061,
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'cession_number',
+      'fieldValue' => 91061,
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'data_cessao',
+      'fieldValue' => '',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'nr_contratos',
+      'fieldValue' => 1,
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'DISPONIBILIDADE_CESSAO',
+      'fieldValue' => '',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'BANCO_CREDITO',
+      'fieldValue' => 'OLIVEIRA TRUST',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'AGENCIA_CREDITO',
+      'fieldValue' => '900',
+    ),
+    9 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'CB6061101.RET',
+    ),
+    10 => 
+    array (
+      'fieldCode' => 'recusados',
+      'fieldValue' => 
+      array (
+      ),
+    ),
+    11 => 
+    array (
+      'fieldCode' => 'JSON_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146128002401.json","fileName":"146128-CB6061101.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:34:56"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:34:59 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146132',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:36:52 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146132',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:36:54 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146132',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Falha Tratando CCBS 
+ Contrato:3070732519 Mensagem:Contrato não encontrado Contrato:3071248419 Mensagem:Contrato não encontrado
+ Contrato:3071271919 Mensagem:Contrato não encontrado
+ Contrato:3071375419 Mensagem:Contrato não encontrado
+ Contrato:3071417619 Mensagem:Contrato não encontrado
+ Contrato:3071553819 Mensagem:Contrato não encontrado
+ Contrato:3071555619 Mensagem:Contrato não encontrado
+ Contrato:3071556119 Mensagem:Contrato não encontrado
+ Contrato:3071583419 Mensagem:Contrato não encontrado
+ Contrato:3071584619 Mensagem:Contrato não encontrado
+ Contrato:3071585419 Mensagem:Contrato não encontrado
+ Contrato:3071585619 Mensagem:Contrato não encontrado
+ Contrato:3071586119 Mensagem:Contrato não encontrado
+ Contrato:3071586319 Mensagem:Contrato não encontrado
+ Contrato:3071623419 Mensagem:Contrato não encontrado
+ Contrato:3071623919 Mensagem:Contrato não encontrado
+ Contrato:3071624919 Mensagem:Contrato não encontrado
+ Contrato:3071625419 Mensagem:Contrato não encontrado
+ Contrato:3071625719 Mensagem:Contrato não encontrado
+ Contrato:3071626119 Mensagem:Contrato não encontrado
+ Contrato:3071626419 Mensagem:Contrato não encontrado
+ Contrato:3071634519 Mensagem:Contrato não encontrado
+ Contrato:3071637019 Mensagem:Contrato não encontrado
+ Contrato:3071662619 Mensagem:Contrato não encontrado
+ Contrato:3071662819 Mensagem:Contrato não encontrado
+ Contrato:3071662919 Mensagem:Contrato não encontrado
+ Contrato:3071663219 Mensagem:Contrato não encontrado
+ Contrato:3071663719 Mensagem:Contrato não encontrado
+ Contrato:3071663919 Mensagem:Contrato não encontrado
+ Contrato:3071666019 Mensagem:Contrato não encontrado
+ Contrato:3071666119 Mensagem:Contrato não encontrado
+ Contrato:3071666219 Mensagem:Contrato não encontrado
+ Contrato:3071666419 Mensagem:Contrato não encontrado
+ Contrato:3071666719 Mensagem:Contrato não encontrado
+ Contrato:3071666919 Mensagem:Contrato não encontrado
+ Contrato:3071667019 Mensagem:Contrato não encontrado
+ Contrato:3071667119 Mensagem:Contrato não encontrado
+ Contrato:3071667219 Mensagem:Contrato não encontrado
+ Contrato:3071667619 Mensagem:Contrato não encontrado
+ Contrato:3071668019 Mensagem:Contrato não encontrado
+ Contrato:3071668319 Mensagem:Contrato não encontrado
+ Contrato:3071668619 Mensagem:Contrato não encontrado
+ Contrato:3071669019 Mensagem:Contrato não encontrado
+ Contrato:3071669119 Mensagem:Contrato não encontrado
+ Contrato:3071669219 Mensagem:Contrato não encontrado
+ Contrato:3071669419 Mensagem:Contrato não encontrado
+ Contrato:3071669819 Mensagem:Contrato não encontrado
+ Contrato:3071670219 Mensagem:Contrato não encontrado
+ Contrato:3071670319 Mensagem:Contrato não encontrado
+ Contrato:3071670419 Mensagem:Contrato não encontrado
+ Contrato:3071670519 Mensagem:Contrato não encontrado
+ Contrato:3071671019 Mensagem:Contrato não encontrado
+ Contrato:3071672319 Mensagem:Contrato não encontrado
+ Contrato:3071689119 Mensagem:Contrato não encontrado
+ Contrato:3071691619 Mensagem:Contrato não encontrado
+ Contrato:3071698019 Mensagem:Contrato não encontrado
+ Contrato:3071698319 Mensagem:Contrato não encontrado
+ Contrato:3071698419 Mensagem:Contrato não encontrado
+ Contrato:3071698519 Mensagem:Contrato não encontrado
+ Contrato:3071698719 Mensagem:Contrato não encontrado
+ Contrato:3071699219 Mensagem:Contrato não encontrado
+ Contrato:3071699319 Mensagem:Contrato não encontrado
+ Contrato:3071699419 Mensagem:Contrato não encontrado
+ Contrato:3071699819 Mensagem:Contrato não encontrado
+ Contrato:3071701419 Mensagem:Contrato não encontrado
+ Contrato:3071701519 Mensagem:Contrato não encontrado
+ Contrato:3071701619 Mensagem:Contrato não encontrado
+ Contrato:3071701819 Mensagem:Contrato não encontrado
+ Contrato:3071702119 Mensagem:Contrato não encontrado
+ Contrato:3071702219 Mensagem:Contrato não encontrado
+ Contrato:3071702319 Mensagem:Contrato não encontrado
+ Contrato:3071702419 Mensagem:Contrato não encontrado
+ Contrato:3071702519 Mensagem:Contrato não encontrado
+ Contrato:3071709919 Mensagem:Contrato não encontrado
+ Contrato:3071721719 Mensagem:Contrato não encontrado
+ Contrato:3071725819 Mensagem:Contrato não encontrado
+ Contrato:3071725919 Mensagem:Contrato não encontrado
+ Contrato:3071726119 Mensagem:Contrato não encontrado
+ Contrato:3071726319 Mensagem:Contrato não encontrado
+ Contrato:3071726619 Mensagem:Contrato não encontrado
+ Contrato:3071731419 Mensagem:Contrato não encontrado
+ Contrato:3071731519 Mensagem:Contrato não encontrado
+ Contrato:3071731719 Mensagem:Contrato não encontrado
+ Contrato:3071732019 Mensagem:Contrato não encontrado
+ Contrato:3071733719 Mensagem:Contrato não encontrado
+ Contrato:3071733819 Mensagem:Contrato não encontrado
+ Contrato:3071734819 Mensagem:Contrato não encontrado
+ Contrato:3071734919 Mensagem:Contrato não encontrado
+ Contrato:3071735019 Mensagem:Contrato não encontrado
+ Contrato:3071735319 Mensagem:Contrato não encontrado
+ Contrato:3071735419 Mensagem:Contrato não encontrado
+ Contrato:3071735519 Mensagem:Contrato não encontrado
+ Contrato:3071735719 Mensagem:Contrato não encontrado
+ Contrato:3071735919 Mensagem:Contrato não encontrado
+ Contrato:3071736319 Mensagem:Contrato não encontrado
+ Contrato:3071736419 Mensagem:Contrato não encontrado
+ Contrato:3071736519 Mensagem:Contrato não encontrado
+ Contrato:3071737619 Mensagem:Contrato não encontrado
+ Contrato:3071737719 Mensagem:Contrato não encontrado
+ Contrato:3071737819 Mensagem:Contrato não encontrado
+ Contrato:3071737919 Mensagem:Contrato não encontrado
+ Contrato:3071738219 Mensagem:Contrato não encontrado
+ Contrato:3071738519 Mensagem:Contrato não encontrado
+ Contrato:3071738619 Mensagem:Contrato não encontrado
+ Contrato:3071738819 Mensagem:Contrato não encontrado
+ Contrato:3071738919 Mensagem:Contrato não encontrado
+ Contrato:3071739219 Mensagem:Contrato não encontrado
+ Contrato:3071739419 Mensagem:Contrato não encontrado
+ Contrato:3071739719 Mensagem:Contrato não encontrado
+ Contrato:3071740819 Mensagem:Contrato não encontrado
+ Contrato:3071741119 Mensagem:Contrato não encontrado
+ Contrato:3071741319 Mensagem:Contrato não encontrado
+ Contrato:3071741419 Mensagem:Contrato não encontrado
+ Contrato:3071742319 Mensagem:Contrato não encontrado
+ Contrato:3071743619 Mensagem:Contrato não encontrado
+ Contrato:3071784519 Mensagem:Contrato não encontrado
+ Contrato:3071787319 Mensagem:Contrato não encontrado
+ Contrato:3071788619 Mensagem:Contrato não encontrado
+ Contrato:3071789819 Mensagem:Contrato não encontrado
+ Contrato:3071789919 Mensagem:Contrato não encontrado
+ Contrato:3071790019 Mensagem:Contrato não encontrado
+ Contrato:3071790219 Mensagem:Contrato não encontrado
+ Contrato:3071790319 Mensagem:Contrato não encontrado
+ Contrato:3071790519 Mensagem:Contrato não encontrado
+ Contrato:3071791519 Mensagem:Contrato não encontrado
+ Contrato:3071791619 Mensagem:Contrato não encontrado
+ Contrato:3071791819 Mensagem:Contrato não encontrado
+ Contrato:3071792119 Mensagem:Contrato não encontrado
+ Contrato:3071792319 Mensagem:Contrato não encontrado
+ Contrato:3071792619 Mensagem:Contrato não encontrado
+ Contrato:3071792719 Mensagem:Contrato não encontrado
+ Contrato:3071793319 Mensagem:Contrato não encontrado
+ Contrato:3071793419 Mensagem:Contrato não encontrado
+ Contrato:3071793619 Mensagem:Contrato não encontrado
+ Contrato:3071793719 Mensagem:Contrato não encontrado
+ Contrato:3071793819 Mensagem:Contrato não encontrado
+ Contrato:3071793919 Mensagem:Contrato não encontrado
+ Contrato:3071835519 Mensagem:Contrato não encontrado
+ Contrato:3071835619 Mensagem:Contrato não encontrado
+ Contrato:3071835819 Mensagem:Contrato não encontrado
+ Contrato:3071836219 Mensagem:Contrato não encontrado
+ Contrato:3071836319 Mensagem:Contrato não encontrado
+ Contrato:3071836419 Mensagem:Contrato não encontrado
+ Contrato:3071836519 Mensagem:Contrato não encontrado
+ Contrato:3071836619 Mensagem:Contrato não encontrado
+ Contrato:3071836719 Mensagem:Contrato não encontrado
+ Contrato:3071836819 Mensagem:Contrato não encontrado
+ Contrato:3071837019 Mensagem:Contrato não encontrado
+ Contrato:3071843219 Mensagem:Contrato não encontrado
+ Contrato:3071843319 Mensagem:Contrato não encontrado
+ Contrato:3071843519 Mensagem:Contrato não encontrado
+ Contrato:3071843619 Mensagem:Contrato não encontrado
+ Contrato:3071843719 Mensagem:Contrato não encontrado
+ Contrato:3071844619 Mensagem:Contrato não encontrado
+ Contrato:3071846919 Mensagem:Contrato não encontrado
+ Contrato:3071847319 Mensagem:Contrato não encontrado
+ Contrato:3071847519 Mensagem:Contrato não encontrado
+ Contrato:3071847619 Mensagem:Contrato não encontrado
+ Contrato:3071847719 Mensagem:Contrato não encontrado
+ Contrato:3071847819 Mensagem:Contrato não encontrado
+ Contrato:3071847919 Mensagem:Contrato não encontrado
+ Contrato:3071848619 Mensagem:Contrato não encontrado
+ Contrato:3071848919 Mensagem:Contrato não encontrado
+ Contrato:3071849019 Mensagem:Contrato não encontrado
+ Contrato:3071849119 Mensagem:Contrato não encontrado
+ Contrato:3071849319 Mensagem:Contrato não encontrado
+ Contrato:3071849519 Mensagem:Contrato não encontrado
+ Contrato:3071849719 Mensagem:Contrato não encontrado
+ Contrato:3071849819 Mensagem:Contrato não encontrado
+ Contrato:3071850119 Mensagem:Contrato não encontrado
+ Contrato:3071850219 Mensagem:Contrato não encontrado
+ Contrato:3071850319 Mensagem:Contrato não encontrado
+ Contrato:3071851119 Mensagem:Contrato não encontrado
+ Contrato:3071851519 Mensagem:Contrato não encontrado
+ Contrato:3071852619 Mensagem:Contrato não encontrado
+ Contrato:3071863019 Mensagem:Contrato não encontrado
+ Contrato:3071863119 Mensagem:Contrato não encontrado
+ Contrato:3071873419 Mensagem:Contrato não encontrado
+ Contrato:3071874219 Mensagem:Contrato não encontrado
+ Contrato:3071874419 Mensagem:Contrato não encontrado
+ Contrato:3071875319 Mensagem:Contrato não encontrado
+ Contrato:3071875419 Mensagem:Contrato não encontrado
+ Contrato:3071875519 Mensagem:Contrato não encontrado
+ Contrato:3071875619 Mensagem:Contrato não encontrado
+ Contrato:3071875719 Mensagem:Contrato não encontrado
+ Contrato:3071875919 Mensagem:Contrato não encontrado
+ Contrato:3071876419 Mensagem:Contrato não encontrado
+ Contrato:3071876619 Mensagem:Contrato não encontrado
+ Contrato:3071876919 Mensagem:Contrato não encontrado
+ Contrato:3071877019 Mensagem:Contrato não encontrado
+ Contrato:3071877819 Mensagem:Contrato não encontrado
+ Contrato:3071878019 Mensagem:Contrato não encontrado
+ Contrato:3071885619 Mensagem:Contrato não encontrado
+ Contrato:3071892619 Mensagem:Contrato não encontrado
+ Contrato:3071899619 Mensagem:Contrato não encontrado
+ Contrato:3071900019 Mensagem:Contrato não encontrado
+ Contrato:3071900219 Mensagem:Contrato não encontrado
+ Contrato:3071900519 Mensagem:Contrato não encontrado
+ Contrato:3071900619 Mensagem:Contrato não encontrado
+ Contrato:3071904919 Mensagem:Contrato não encontrado
+ Contrato:3071905419 Mensagem:Contrato não encontrado
+ Contrato:3071907519 Mensagem:Contrato não encontrado
+ Contrato:3071907619 Mensagem:Contrato não encontrado
+ Contrato:3071907719 Mensagem:Contrato não encontrado
+ Contrato:3071907819 Mensagem:Contrato não encontrado
+ Contrato:3071907919 Mensagem:Contrato não encontrado
+ Contrato:3071908419 Mensagem:Contrato não encontrado
+ Contrato:3071908619 Mensagem:Contrato não encontrado
+ Contrato:3071908719 Mensagem:Contrato não encontrado
+ Contrato:3071908919 Mensagem:Contrato não encontrado
+ Contrato:3071909019 Mensagem:Contrato não encontrado
+ Contrato:3071909419 Mensagem:Contrato não encontrado
+ Contrato:3071910919 Mensagem:Contrato não encontrado
+ Contrato:3071911119 Mensagem:Contrato não encontrado
+ Contrato:3071911619 Mensagem:Contrato não encontrado
+',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Falha Tratando CCBS',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'RETORNO_CALLBACK',
+      'fieldValue' => '',
+    ),
+    9 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:36:59 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Total Contratos Aceitos',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'NR_CONTRATOS',
+      'fieldValue' => 1,
+    ),
+  ),
+)
+[02-Dec-2019 18:37:01 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_SECURITIES',
+      'fieldValue' => '{"fileNameStorage":"0000146126002801.json","fileName":"cessao_146126-CB6051101.json.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:37:01"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:03 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Criado arquivo de cessão Securities',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:05 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146126002701.json","fileName":"dadosCerc_146126-CB6051101.json.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:37:05"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:06 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'TIPO_OPERACAO',
+      'fieldValue' => 'REMESSA',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'originador_cnpj',
+      'fieldValue' => '00000032997490000139',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'cession_number',
+      'fieldValue' => 42,
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'data_cessao',
+      'fieldValue' => '',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'nr_contratos',
+      'fieldValue' => 11,
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'SCD_CERC_42.REM',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'recusados',
+      'fieldValue' => 
+      array (
+      ),
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'JSON_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146405002401.json","fileName":"146405-SCD_CERC_42.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:37:05"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:09 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Criado arquivo com parcelas para consulta na Cerc',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:10 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Não há contratos rejeitados',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:11 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Arquivo Processado e conciliado',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:14 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Total Contratos Aceitos',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'NR_CONTRATOS',
+      'fieldValue' => 1,
+    ),
+  ),
+)
+[02-Dec-2019 18:37:15 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_SECURITIES',
+      'fieldValue' => '{"fileNameStorage":"0000146128002801.json","fileName":"cessao_146128-CB6061101.json.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:37:15"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:16 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Criado arquivo de cessão Securities',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:18 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146128002701.json","fileName":"dadosCerc_146128-CB6061101.json.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:37:18"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:19 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Criado arquivo com parcelas para consulta na Cerc',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:20 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Não há contratos rejeitados',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:22 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Arquivo Processado e conciliado',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:33 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:37:33"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:37:34 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:37:35 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:38:24 America/Sao_Paulo] Pegando dados cessão: ac0e22fb-fc5d-4df2-84c9-a42b5150d47e
+[02-Dec-2019 18:38:25 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146134',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'queued',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:38:29 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Não há cessão',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'EXISTE_BUCKET',
+      'fieldValue' => false,
+    ),
+  ),
+)
+[02-Dec-2019 18:38:40 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Uploaded data stream to /process/sftp_homolog_gateway_creditas_scd/oferta//SCD_CERC_42.REM',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'FALHA_ENVIO',
+      'fieldValue' => false,
+    ),
+  ),
+)
+[02-Dec-2019 18:38:45 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:38:45"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:38:46 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:38:47 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:43:42 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'SCD_CERC_42_4.REM',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 0,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'IMAGENS_INT',
+      'fieldValue' => '{"fileNameStorage":"0000146406000801.rem","fileName":"SCD_CERC_42_4.REM","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:43:42"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:46:30 America/Sao_Paulo] Pegando dados cessão: ac0e22fb-fc5d-4df2-84c9-a42b5150d47e
+[02-Dec-2019 18:46:30 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146134',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:46:32 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146134',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:46:34 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146134',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:46:35 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146134',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:46:38 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146134',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Falha Tratando CCBS 
+ Contrato:AR00000094 Mensagem:Contrato não encontrado',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Falha Tratando CCBS',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'RETORNO_CALLBACK',
+      'fieldValue' => '',
+    ),
+    9 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[02-Dec-2019 18:46:47 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Arquivo Recebido do Gateway',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'SCD_CERC_42_4.REM',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146407001001.rem","fileName":"SCD_CERC_42_4.REM","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:46:47"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:46:51 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Arquivo CNAB Enviado para Gateway',
+    ),
+  ),
+)
+[02-Dec-2019 18:46:54 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:46:54"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:46:55 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:46:56 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:47:52 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'TIPO_OPERACAO',
+      'fieldValue' => 'REMESSA',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'originador_cnpj',
+      'fieldValue' => '00000032997490000139',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'cession_number',
+      'fieldValue' => 42,
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'data_cessao',
+      'fieldValue' => '',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'nr_contratos',
+      'fieldValue' => 11,
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'SCD_CERC_42_4.REM',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'recusados',
+      'fieldValue' => 
+      array (
+      ),
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'JSON_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146407002401.json","fileName":"146407-SCD_CERC_42_4.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:47:52"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:48:02 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:48:02"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:48:04 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:48:05 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:48:51 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Não há cessão',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'EXISTE_BUCKET',
+      'fieldValue' => false,
+    ),
+  ),
+)
+[02-Dec-2019 18:49:03 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Uploaded data stream to /process/sftp_homolog_gateway_creditas_scd/oferta//SCD_CERC_42_4.REM',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'FALHA_ENVIO',
+      'fieldValue' => false,
+    ),
+  ),
+)
+[02-Dec-2019 18:49:15 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:49:15"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:49:16 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:49:17 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:50:21 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:50:20"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:50:22 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:50:23 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:51:24 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:51:24"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:51:25 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:51:26 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:52:36 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:52:36"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:52:39 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:52:40 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:53:33 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:53:33"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:53:34 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:53:35 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:54:45 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:54:45"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:54:46 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:54:47 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:55:45 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:55:44"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:55:46 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:55:47 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:56:50 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:56:50"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:56:51 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:56:52 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:57:56 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:57:56"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:57:57 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:57:59 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:59:01 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 18:59:01"}',
+    ),
+  ),
+)
+[02-Dec-2019 18:59:02 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 18:59:04 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 19:00:03 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 19:00:03"}',
+    ),
+  ),
+)
+[02-Dec-2019 19:00:04 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 19:00:05 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 19:01:09 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 19:01:09"}',
+    ),
+  ),
+)
+[02-Dec-2019 19:01:10 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 19:01:11 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => 0,
+    ),
+  ),
+)
+[02-Dec-2019 19:02:18 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2019-12-02 19:02:18"}',
+    ),
+  ),
+)
+[02-Dec-2019 19:29:06 America/Sao_Paulo] Rota requer autenticacao: api/v1/secconfig array (
+  'page' => 'api.inc',
+)
+[02-Dec-2019 19:29:06 America/Sao_Paulo] Dados Sessao: array (
+)
+[02-Dec-2019 22:56:43 America/Sao_Paulo] Rota requer autenticacao: logon array (
   'page' => 'pages/logon.inc',
   'funcao' => '',
 )
-[18-Nov-2019 11:43:07 America/Sao_Paulo] Dados Sessao: array (
+[02-Dec-2019 22:56:43 America/Sao_Paulo] Dados Sessao: array (
 )
-[18-Nov-2019 12:25:21 America/Sao_Paulo] Rota requer autenticacao: logon array (
+[02-Dec-2019 22:56:53 America/Sao_Paulo] Rota requer autenticacao: logon array (
   'page' => 'pages/logon.inc',
   'funcao' => '',
 )
-[18-Nov-2019 12:25:21 America/Sao_Paulo] Dados Sessao: array (
+[02-Dec-2019 22:56:53 America/Sao_Paulo] Dados Sessao: array (
+)
+[02-Dec-2019 22:57:07 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[02-Dec-2019 22:57:07 America/Sao_Paulo] Dados Sessao: array (
+)
+[02-Dec-2019 23:24:24 America/Sao_Paulo] Rota requer autenticacao: recuperarsenha array (
+  'page' => 'pages/recuperar_senha.inc',
+)
+[02-Dec-2019 23:24:24 America/Sao_Paulo] Dados Sessao: array (
+)
+[02-Dec-2019 23:24:45 America/Sao_Paulo] Rota requer autenticacao: recuperarsenha array (
+  'page' => 'pages/recuperar_senha.inc',
+)
+[02-Dec-2019 23:24:45 America/Sao_Paulo] Dados Sessao: array (
+)
+[02-Dec-2019 23:25:35 America/Sao_Paulo] Rota requer autenticacao: recuperarsenha array (
+  'page' => 'pages/recuperar_senha.inc',
+)
+[02-Dec-2019 23:25:35 America/Sao_Paulo] Dados Sessao: array (
+)
+[02-Dec-2019 23:25:47 America/Sao_Paulo] Rota requer autenticacao: recuperarsenha array (
+  'page' => 'pages/recuperar_senha.inc',
+)
+[02-Dec-2019 23:25:47 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 00:01:53 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[03-Dec-2019 00:01:53 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 00:01:58 America/Sao_Paulo] PHP Fatal error:  Uncaught Error: Call to undefined function ProcessLogon_BuscaUsuario() in E:\desenvolvimento\PHPSistemas\Process\include\user.php:300
+Stack trace:
+#0 E:\desenvolvimento\PHPSistemas\Process\include\user.php(94): userdef->ProcessLogon(Array)
+#1 E:\desenvolvimento\PHPSistemas\Process\pages\log.inc(53): userdef->Create('ProcessLogon', Object(mysqli), Array, NULL)
+#2 E:\desenvolvimento\PHPSistemas\Process\index.php(1646): include('E:\\desenvolvime...')
+#3 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\include\user.php on line 300
+[03-Dec-2019 00:06:51 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[03-Dec-2019 00:06:51 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 00:10:01 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[03-Dec-2019 00:10:01 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 00:12:04 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[03-Dec-2019 00:12:04 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 00:17:29 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[03-Dec-2019 00:17:29 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 00:38:14 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[03-Dec-2019 00:38:14 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 00:49:37 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[03-Dec-2019 00:49:37 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 12:45:09 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[03-Dec-2019 12:45:09 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 12:45:10 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[03-Dec-2019 12:45:10 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 12:58:28 America/Sao_Paulo] Rota requer autenticacao: api/v1/configs array (
+  'page' => 'api/api_config.inc',
+  'funcao' => 'getConfig',
+)
+[03-Dec-2019 12:58:28 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 12:58:51 America/Sao_Paulo] Rota requer autenticacao: api/v1/configs?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJsb2NhbGhvc3RcL3Byb2Nlc3NcL2FwaVwvbWFuYWdlclwvc2FsdmFyZGFkb3N1c3VhcmlvIiwibmFtZSI6bnVsbCwiZW1haWwiOiIifQ==.8+fihEnzr3j+kKCQqKf7RY6ghYdE4q77V9BIF2zubIg= array (
+  'page' => 'api/api_config.inc',
+  'funcao' => 'getConfig',
+)
+[03-Dec-2019 12:58:51 America/Sao_Paulo] Dados Sessao: array (
+)
+[03-Dec-2019 12:59:07 America/Sao_Paulo] Rota requer autenticacao: api/v1/configs?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJsb2NhbGhvc3RcL3Byb2Nlc3NcL2FwaVwvbWFuYWdlclwvc2FsdmFyZGFkb3N1c3VhcmlvIiwibmFtZSI6bnVsbCwiZW1haWwiOiIifQ==.8+fihEnzr3j+kKCQqKf7RY6ghYdE4q77V9BIF2zubIg= array (
+  'page' => 'api/api_config.inc',
+  'funcao' => 'getConfig',
+)
+[03-Dec-2019 12:59:07 America/Sao_Paulo] Dados Sessao: array (
 )

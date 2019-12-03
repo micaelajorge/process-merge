@@ -1,5 +1,6 @@
 var listaCanvasPdf = undefined;
 var contadorPaginas = 0;
+
 function jsCarregaControlesImagem(totalImagensPdf, id_imagem)
 {
     return new Promise((resolv, reject) => {
@@ -57,6 +58,14 @@ function jsGeraPagiansPdf()
 //    });
 }
 
+async function jsGetPDF(url)
+{
+    return $.ajax({
+        url: url
+    });
+}
+
+
 /**
  * 
  * @param {type} objetoPdf
@@ -65,11 +74,19 @@ function jsGeraPagiansPdf()
  */
 async function jsGeraPaginaPdf(objetoPdf, canvas)
 {
+//    arquivoPdf = await jsGetPDF(objetoPdf.url);
+
     return new Promise((resolv, reject) => {
+//        var loadingTask = pdfjsLib.getDocument(objetoPdf.url);
+
+        var progressCallback = function (progress) {
+            console.log(progress);
+        };
+//        var loadingTask = pdfjsLib.getDocument({data : atob(arquivoPdf)});
         var loadingTask = pdfjsLib.getDocument(objetoPdf.url);
+        loadingTask.onProgress = progressCallback;
         loadingTask.promise.then(async function (pdf) {
             var numPages = pdf.numPages;
-            console.log(numPages);
             await jsCarregaControlesImagem(numPages, objetoPdf.objImagem);
             for (var i = 1; i <= numPages; i++)
             {

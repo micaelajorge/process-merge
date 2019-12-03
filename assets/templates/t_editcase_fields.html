@@ -81,16 +81,16 @@
             <div class="col-lg-12">  
                 <div class="col-lg-11">                    
                     {CONTROLES_IMAGEM}
-                    <!-- BEGIN BLOCO_BOTOES_DOCUMENTOS -->                    
+                    <!-- BEGIN BLOCO_BOTOES_DOCUMENTOS -->                                        
                     <!--                        
                     <img src="" id="IMG{NRDOCUMENTO}" nome="IMG{NRDOCUMENTO}" {IMAGE_ONLOAD} aria-imagem-formalizacao="{URL_IMAGEM_BOTAO}" style="width:50px; height: 50px" class="hidden"/>                    
                     <button type="button" class="btn {CLASSE_BOTAO}" disabled onclick="jsMudaImagemBotao(this, 'IMG{NRDOCUMENTO}')" aria-nr-imagem="{NRDOCUMENTO}" aria-code="button-sel-image">{NRDOCUMENTO}</button>-->
                     <!-- BEGIN BLOCO_JS_IMAGEM_PDF_IF -->
-                    <div class="pull-left" id="IMG{NRDOCUMENTO}" style="margin-right: 6px"></div>
+                    <div class="pull-left" id="IMG{NRDOCUMENTO}" style="margin-right: 6px"><i class="fa fa-refresh fa-spin fa-2x"></i></div>
                     <script>
                         dadosImagem = {url: "{URL_PDF}", objImagem: "IMG{NRDOCUMENTO}"};
                         listaImagensPDF.push(dadosImagem);
-                    </script>                    
+                    </script>      
                     <!-- END BLOCO_JS_IMAGEM_PDF_IF -->
                     <!-- END BLOCO_BOTOES_DOCUMENTOS -->
                 </div>

@@ -52,7 +52,7 @@ function JSBuscaListaUsersGroups(userId)
 {
     TXFiltro = document.getElementById('Filtrar').value;
     TXtipoFiltro = document.getElementById('TIPOFILTRO').value;
-    
+
     procId = $("#PROCID").val();
 
     //url = "include/BPMSelUserAjax.php?TipoFiltro=" + TipoFiltro + "&Filtrar=" + TXFiltro + "&Origem=" + Origem + "&Grupo=" + GrupoFiltro;
@@ -130,9 +130,13 @@ function jsSalvarSenhaUsuario(userId, userPassword)
         url: url,
         data: dadosEnvio,
         method: "POST"
-    }).done(function () {
-        $("#crModalEditPassword").modal('hide');
-    });
+    })
+            .done(function () {
+                $("#crModalEditPassword").modal('hide');
+            })
+            .fail(function () {
+                $("#alertfalhaalteracao").show();
+            });
 }
 
 function jsSalvarSenhaUsuarioRestart(userId, userPassword)

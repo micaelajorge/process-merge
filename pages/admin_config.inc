@@ -82,10 +82,13 @@ foreach ($configs as $config)
 
 $t_body->MAX_FALHA_LOGON = $maxFalhaLogon;
 $t_body->MESES_INATIVIDADE = $mesesInatividade;
+$t_body->DIAS_TROCA_SENHA = $diasTrocaSenha;
+
 $t_body->EMAIL_NOTIFICATION_PASSWORD = $emailNotificationPassword;
 $t_body->EMAIL_NOTIFICATION_NAME = $emailNotificationUser;
 $t_body->EMAIL_NOTIFICATION_SERVER = $emailNotificationServer;
 $t_body->EMAIL_NOTIFICATION_PORT = $emailNotificationPort;
+
 
 $t_body->ARQUIVO_JS = "admin_config.js"; // Incicializacao DataTables
 $t_body->block("BLOCO_JAVASCRIPT");

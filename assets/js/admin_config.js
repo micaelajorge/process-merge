@@ -13,7 +13,8 @@ function jsSalvaConfigSeguranca()
         emailNotificationUser: $("#email_notification_user").val(),
         emailNotificationPassword: $("#email_notification_password").val(),
         emailNotificationPort: $("#email_notification_port").val(),
-        emailNotificationServer: $("#email_notification_server").val()
+        emailNotificationServer: $("#email_notification_server").val(),
+        diasTrocaSenha: $("#dias_troca_senha").val()
     };
     url = "api/v1/secconfig";
     $.post(url, dadosEnvio);

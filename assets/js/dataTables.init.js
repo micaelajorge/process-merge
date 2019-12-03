@@ -73,6 +73,7 @@ function jsParametrizacaoPadrao(url, colunas, colunasDefinicao, where, rowId, cr
         "destroy": true,
         "order": (sort) ? sort : null,
         "searching": false,
+//        "aoColumnDefs": [{ "bSortable": false, "aTargets": [ "_all" ] }],
         "processing": filterServerSide,
         "serverSide": filterServerSide,
         "ajax": filterAjax,
@@ -571,6 +572,16 @@ function jsTrataParametrosExtra(parametrosInicio, parametrosExtra)
 //        parametros.aaSorting = sort;
 //    }
 //
+    if (parametrosExtra.initComplete !== undefined)
+    {
+        parametrosInicio.initComplete = parametrosExtra.initComplete
+    }
+
+    if (parametrosExtra.pageLength !== undefined)
+    {
+        parametrosInicio.pageLength = parametrosExtra.pageLength;
+    }    
+
     if (parametrosExtra.scrollCollapse !== undefined)
     {
         parametrosInicio.scrollCollapse = parametrosExtra.scrollCollapse;
@@ -674,6 +685,20 @@ function jsTrataParametrosExtra(parametrosInicio, parametrosExtra)
     return parametrosInicio;
 }
 
+function jsValidaTabelaDatatable(tabelaId, colunas, columnDefs)
+{
+    if (!Array.isArray(colunas))
+    {
+        console.log("Parametro colunas, deve ser um array");
+        return false;
+    }
+    if (!Array.isArray(columnDefs))
+    {
+        console.log("Parametro columnDefs, deve ser um array");
+        return false;
+    }
+    return true;
+}
 
 /**
  * Inicializa uma tabela com Datatables
@@ -690,6 +715,10 @@ function jsTrataParametrosExtra(parametrosInicio, parametrosExtra)
  * @returns void
  */
 function tableInit(tabelaId, url, colunas, columnDefs, where, sort, createdRow, rowId, _extraParameters) {
+    if (!jsValidaTabelaDatatable(tabelaId, colunas, columnDefs))
+    {
+        return;
+    }
     parametros = jsParametrizacaoPadrao(url, colunas, columnDefs, where, rowId, createdRow, sort);
     // Trata os Parametros Especificos para o Datatable a ser criado
     parametros = jsTrataParametrosExtra(parametrosPadraoDataTable, _extraParameters);

@@ -1,0 +1,15 @@
+{
+    "rotas": {    
+        "securities/dashboard": {
+            "GET": {
+                "page": "pages/securities/securities_dashboard.inc"
+            }
+        },
+        "securities/cession_signors": {
+            "GET": {
+                "page": "pages/securities/securities_session_signers.inc",
+                "parametros": ["sessionUUID"]
+            }
+        }
+    }
+}

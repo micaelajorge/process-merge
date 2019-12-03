@@ -1,5 +1,4 @@
 <?php
-
 // <editor-fold defaultstate="collapsed" desc="Chamadas externas">
 require_once(FILES_ROOT . '/include/common.php');
 require_once(FILES_ROOT . '/include/ldap.php');

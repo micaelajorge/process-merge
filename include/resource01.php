@@ -3233,8 +3233,20 @@ function PegaNomeCampoReferencia($Campo)
 function PegaCamposReferenciaProcesso($ProcId)
 {
     global $connect, $S_procdef;
+    
+    if (!is_numeric($ProcId))
+    {
+        $ProcId = PegaProcIdByCode($ProcId);
+    }
+    
     if ($S_procdef["ProcId"] == $ProcId) {
-        return;
+        if (is_array($S_procdef["Referencias"]))
+        {
+            if (count($S_procdef["Referencias"]) > 0)
+            {
+                return;
+            }
+        }
     }
     $_SESSION["S_procdef"] = $S_procdef;
     $S_procdef["ProcId"] = $ProcId;
@@ -3323,6 +3335,12 @@ function PegaReferencias($ProcId, $CaseNum, $inArray = 0, $ExportKey = 0, $StepC
 function PegaArrayReferencias($ProcId, $ACaseNum, $retornarComoArray = 0, $ExportKey = 0, $StepCode = 0, $retornarFuncaoValorCampo = true)
 {
     global $connect, $S_procdef, $AReferencias;
+    
+    if (!is_numeric($ProcId))
+    {
+        $ProcId = PegaProcIdByCode($ProcId);
+    }  
+    
     if (count($ACaseNum) == 0) {
         return;
     }
@@ -3346,7 +3364,7 @@ function PegaArrayReferencias($ProcId, $ACaseNum, $retornarComoArray = 0, $Expor
     }
 
 
-    if (!$Qryvalores | $Qryvalore->numrows == 0) {
+    if (!$Qryvalores | $Qryvalores->numrows == 0) {
         $SQL = "select * from exportkeysdisplay where CaseNum in ($SCaseNum) and ProcId = $ProcId";
         $Qryvalores = mysqli_query($connect, $SQL);
     }

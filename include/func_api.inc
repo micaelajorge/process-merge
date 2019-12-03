@@ -50,17 +50,16 @@ function registrosPesquisa($tabela, $filtro)
  * Trata os Dados de Entrada para requisições GET / POST usando REST API (Json)
  * @return type]
  */
-function apiTrataDadosEntrada()
+function apiTrataDadosEntrada($retornarRota = true)
 {
     $entityBody = file_get_contents('php://input');
 
-    if (is_object($entityBody))
-    {
+    if (is_object($entityBody)) {
         $dados = (array) $entityBody;
     } else {
         $dados = json_decode($entityBody, true);
     }
-    
+
 
     $get = filter_input_array(INPUT_GET);
 
@@ -77,6 +76,16 @@ function apiTrataDadosEntrada()
     if (!is_array($get)) {
         $get = explode("=", $get);
         //$get = array();
+    } else {
+        // Remove o Elemento do GET se não for para trazer a rota
+        if (!$retornarRota) {
+            if (count($get) > 1)
+            {
+            $get = array_pop($get);
+            } else {
+                $get = array();
+            }
+        }        
     }
 
     $dadosEntrada = array_merge($dados, $post, $get);
@@ -96,7 +105,7 @@ function TrataWhereColumns($where)
 function TrataWhereSQL($where)
 {
     $and = " where ";
-    foreach($where as $key => $val){
+    foreach ($where as $key => $val) {
         $where .= $and;
         $where .= "$key '$val'";
         $and = " and ";
@@ -105,7 +114,7 @@ function TrataWhereSQL($where)
 
 function TrataWhereGlobal($where)
 {
-    foreach($where as $key => $val){
+    foreach ($where as $key => $val) {
         if ($key != "global") {
             $GLOBALS[$key] = $val;
         }
@@ -154,14 +163,13 @@ function apiTrataCampos($dados, $completeData = true)
                     TrataWhereGlobal($dados["where"]);
                 }
                 if (array_key_exists("sql", $dados["where"])) {
-                    $where = TrataWhereSQL($dados["where"]);                                            
+                    $where = TrataWhereSQL($dados["where"]);
                 }
                 if (array_key_exists("columns", $dados["where"])) {
-                    $where = TrataWhereColumns($dados["where"]["columns"]);                                            
-                }                
+                    $where = TrataWhereColumns($dados["where"]["columns"]);
+                }
             } else {
-                if ($dados["where"] == "clearFilter")
-                {
+                if ($dados["where"] == "clearFilter") {
                     $where = "clearFilter";
                 }
             }
@@ -235,5 +243,5 @@ function apiAllowCors()
     header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
     header('Access-Control-Max-Age: 1000');
     header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token , Authorization');
-    header('Access-Control-Allow-Headers: x-requested-with, Content-Type, origin, authorization, accept, client-security-token');    
+    header('Access-Control-Allow-Headers: x-requested-with, Content-Type, origin, authorization, accept, client-security-token');
 }

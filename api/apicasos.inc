@@ -12,12 +12,12 @@ include_once(FILES_ROOT . "includes_ws/wscasestart.inc");
 include_once(FILES_ROOT . "includes_ws/wserror.inc");
 include_once(FILES_ROOT . "includes_ws/wscasesave.inc");
 
+// <editor-fold defaultstate="collapsed" desc="apicaseprocess">
 /**
  *  Rota: api/v1/apicaseprocess
  */
 function apicaseprocess_v1()
 {
-
     $dadosEntrada = apiTrataDadosEntrada();
 
     //error_log("dados Recebidos" . var_export($dadosEntrada, true));
@@ -51,6 +51,12 @@ function apicaseprocess_v1()
         $dadosEntrada["userData"] = $dadosEntrada["userdata"];
     }
 
+    if (!key_exists("caseNum", $dadosEntrada))
+    {
+        header("HTTP/1.0 422 Error");
+        return;        
+    }
+    
     /**
      *  Acao Padrão no Caso
      */
@@ -58,7 +64,6 @@ function apicaseprocess_v1()
     if (key_exists("salvarCaso", $dadosEntrada)) {
         $acaoCaso = $dadosEntrada["salvarCaso"];
     }
-
 
     $Fields = converteFieldsParaCaseData($dadosEntrada["caseData"]);
 
@@ -93,8 +98,9 @@ function apicaseprocess_v1()
     echo $jDados;
 }
 
-// ROTA "api/v1/casestartunique"
+// </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="apicasestartunique_v1">
+// ROTA "api/v1/casestartunique"
 function apicasestartunique_v1()
 {
     global $OrigemLogon, $connect;
@@ -148,12 +154,12 @@ function apicasestartunique_v1()
             }
 
             $numeroCaso = GetNewCase($procId, $userdef);
-            
+
             $dadosCaso = array();
             $dadosCaso["Fields"] = array();
 
             $Fields = converteFieldsParaCaseData($dadosEntrada["caseData"]);
-            
+
             foreach ($Fields as $campo) {
                 if (!is_array($campo["fieldValue"])) {
                     $dadosCaso["Fields"][] = $campo;
@@ -161,7 +167,7 @@ function apicasestartunique_v1()
                     $camposArquivo[] = $campo;
                 }
             }
-            
+
             $dadosImagens = criarArquivosEmCampo($procId, $numeroCaso, $camposArquivo);
 
             $dadosCaso["Fields"] = array_merge($dadosCaso["Fields"], $dadosImagens);
@@ -191,8 +197,8 @@ function apicasestartunique_v1()
 }
 
 // </editor-fold>
-// ROTA "api/casestartuniqueprocessa"
 // <editor-fold defaultstate="collapsed" desc="apicasestartuniqueprocessa">
+// ROTA "api/casestartuniqueprocessa"
 function apicasestartuniqueprocessa()
 {
     try {
@@ -213,7 +219,7 @@ function apicasestartuniqueprocessa()
         $numeroCasoExiste = pegaNumerCasoUnicoAberto($procId, $valorCampoUnique);
 
         if ($numeroCasoExiste == 0) {
-            
+
             $Fields = converteFieldsParaCaseData($dadosEntrada["caseData"]);
 
             $dadosCaso = array();
@@ -232,7 +238,7 @@ function apicasestartuniqueprocessa()
             $Fields = array_merge($dadosCaso["Fields"], $dadosImagens);
 
             $dadosEntrada["caseData"]["Fields"] = $Fields;
-            
+
             $novoCaseNum = CaseStart($dadosEntrada["userData"], $dadosEntrada["procCode"], $dadosEntrada["stepCode"], $dadosEntrada["caseData"], $dadosEntrada["acao"]);
         } else {
             $novoCaseNum = CaseSave($dadosEntrada["userData"], $dadosEntrada["procCode"], $dadosEntrada["stepCode"], $numeroCasoExiste, $dadosEntrada["caseData"], 0);
@@ -269,13 +275,12 @@ function apicasestartuniqueprocessa_v1()
 
         $valorCampoUnique = buscaValorCampoUnique($procId, $fields, $fieldUnique);
 
-        if ($valorCampoUnique === false)
-        {
-            header("HTTP/1.0 422 Campo Unique não informado");            
-            header('Content-Type: application/json');                    
+        if ($valorCampoUnique === false) {
+            header("HTTP/1.0 422 Campo Unique não informado");
+            header('Content-Type: application/json');
             return;
         }
-        
+
         $numeroCasoExiste = pegaNumerCasoUnicoAberto($procId, $valorCampoUnique);
 
         if ($numeroCasoExiste == 0) {
@@ -476,13 +481,13 @@ function apiDataHora()
  * @global type $connect
  * @global type $OrigemLogon
  * @return string
+ * 
+ * ROTA: api/v1/createcase
  */
 function apicasestart_V1()
 {
     global $connect, $OrigemLogon;
     $dadosEntrada = apiTrataDadosEntrada();
-
-
 
     $procId = PegaProcIdByCode($dadosEntrada["procCode"]);
 
@@ -490,20 +495,27 @@ function apicasestart_V1()
     $userdef = new userdef;
     $userdef->Create($OrigemLogon, $connect, $authUser);
 
+
+    $CaseNum = GetNewCase($procId, $userdef);
+
+    $Fields = converteFieldsParaCaseData($dadosEntrada["caseData"]);
+
+    $dadosCaso = array();
     $dadosCaso["Fields"] = array();
-    $camposArquivo = array();
-    foreach ($dadosEntrada["caseData"] as $campo) {
+
+    foreach ($Fields as $campo) {
         if (!is_array($campo["fieldValue"])) {
             $dadosCaso["Fields"][] = $campo;
         } else {
             $camposArquivo[] = $campo;
         }
     }
-    $CaseNum = GetNewCase($procId, $userdef);
 
-    $dadosImagens = criarArquivosEmCampo($procId, $CaseNum, $camposArquivo);
+    $dadosImagens = criarArquivosEmCampo($procId, $dadosEntrada["caseNum"], $camposArquivo);
 
-    $dadosCaso["Fields"] = array_merge($dadosCaso["Fields"], $dadosImagens);
+    $Fields = array_merge($dadosCaso["Fields"], $dadosImagens);
+
+    $dadosEntrada["caseData"]["Fields"] = $Fields;
 
     $novoCaseNum = FuncCaseSave($dadosEntrada["userData"], $procId, $dadosEntrada["stepCode"], $CaseNum, $dadosCaso, 0, 1);
 
@@ -551,7 +563,8 @@ function apicasestartunique()
 }
 
 // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="outros">
+// <editor-fold defaultstate="collapsed" desc="apicasestart">
+
 /**
  * ROTA: "api/apicasestart"
  */
@@ -569,6 +582,9 @@ function apicasestart()
     header('Content-Type: application/json');
     echo $jDados;
 }
+
+// </editor-fold>
+
 
 function apicasedeadtime()
 {
@@ -623,14 +639,12 @@ function converteFieldsParaCaseData($fields)
     }
     $campos = array();
     foreach ($fields as $fieldCode => $fieldValue) {
-        if (is_array($fieldValue))
-        {
-            if (key_exists("fieldCode", $fieldValue))
-            {
+        if (is_array($fieldValue)) {
+            if (key_exists("fieldCode", $fieldValue)) {
                 $fieldCode = $fieldValue["fieldCode"];
                 $fieldValue = $fieldValue["fieldValue"];
             }
-        } 
+        }
         $campo["fieldCode"] = $fieldCode;
         $campo["fieldValue"] = $fieldValue;
         array_push($campos, $campo);
@@ -644,4 +658,49 @@ function apiValidado()
     $dados["validado"] = "ok";
     header('Content-Type: application/json');
     echo json_encode($dados);
+}
+
+// ROTA "api/v1/casestart"
+function casestart_v1()
+{
+    try {
+//        error_log("Inicia apicasestartuniqueprocessa_v1");
+        $dadosEntrada = apiTrataDadosEntrada();
+
+        $dadosEntrada = padronizaDadosEntrada($dadosEntrada);
+
+        $procId = PegaProcIdByCode($dadosEntrada["procCode"]);
+
+        $Fields = converteFieldsParaCaseData($dadosEntrada["caseData"]);
+
+        $dadosCaso = array();
+        $dadosCaso["Fields"] = array();
+
+        foreach ($Fields as $campo) {
+            if (!is_array($campo["fieldValue"])) {
+                $dadosCaso["Fields"][] = $campo;
+            } else {
+                $camposArquivo[] = $campo;
+            }
+        }
+
+        $dadosImagens = criarArquivosEmCampo($procId, $dadosEntrada["caseNum"], $camposArquivo);
+
+        $Fields = array_merge($dadosCaso["Fields"], $dadosImagens);
+
+        $dadosEntrada["caseData"]["Fields"] = $Fields;
+
+
+        $novoCaseNum = CaseStart($dadosEntrada["userData"], $dadosEntrada["procCode"], $dadosEntrada["stepCode"], $dadosEntrada["caseData"], $dadosEntrada["acao"]);
+        $dadosRetorno = $novoCaseNum;
+        $jDados = json_encode($dadosRetorno);
+        if (json_last_error() > 0) {
+            $erroJSON = json_last_error() . " " . json_last_error_msg();
+            error_log("Json erro: " . $erroJSON);
+        }
+    } catch (Exception $ex) {
+        $jDados = json_encode($ex);
+    }
+    header('Content-Type: application/json');
+    echo $jDados;
 }

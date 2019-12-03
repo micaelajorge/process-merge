@@ -1,4 +1,5 @@
 var promptDlgWidth = 550,
+	reconnectTime = 0,
 	imagesInBase64 = {
 		icn_download: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAgCAYAAAAMq2gFAAABOklEQVRIie2WTW6DMBCFH4h1l22VqmqPVUEvEJa9gRt6FDhDpfx0FdJj+Arx3nldhEjEdchgWlaM9CSwMZ/fzMgQvX0TwvA+ePOpIsniRIwZGIl/n/8AGs3RWKB4JA4STjUKBo1EivLtGakEkP7Ru6vbpcpONzFxPFsazQloZyxEmkDepsYk0JIhkZGwzngfWRKvd0u1Pwf93k1NoBjg5uN+pbZuHn0gEFgQ2AVAdgTefQVzU9e2nzaplKbMkEhnK2W9oAOAC9IHIO+Yd5U/rJX2QbocnVSSqARuqse1Ki9BumrUp+U1gXkXRAoyBDIC1jNnCWRPG2Wug2SFrkkUnvHieaPqaxCpo3bL104rLySQviDbpNA0Sgl4W9kXfU9vjWPho+ZaHCHfo6r/kumfYUBEL1/jeJpqFBw/d5aBU2kHOMQAAAAASUVORK5CYII=',
 		icn_install: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAA+klEQVRIid2SMWoCQRiFv3GnW7BII6ZPqeAlorewtBELsZdFOz2Q0VYkXQ6QA9iaIqU+mx2Y3QRd12WKffCY4WdmPt5jzPRT5PQOfOSHnky6/rnoqd/cJFt/0FB6I3UkWOVmZbz+GcyjLEjgeSjRzc3KuCMxzIC8fQwsbtTxqJan/jz+r7qZ4LWC2pzbgpkDmclBAG3gO011T0U+g9Mv8PayTY4u0UIQV5jGORYsAcz4oA7wBWR+SUWJAM5Az17E6gFIGUXA2goGJR8wAK1dUuiwVdECnpQZ7cOggiWy5zCcgIkCcbCX2iUKB6pfdfVLFAwUiNS4f6QaXQHE5K75dPBEiQAAAABJRU5ErkJggg==',
@@ -26,12 +27,60 @@ function dwt_change_install_url(url) {
 		install.href = url;
 }
 
-function DCP_DWT_onclickInstallButton(el) {
-	if (el)
-		el.style.display = 'none';
-	var install = document.getElementById('dwt-install-url-div');
-	if (install)
-		install.style.display = 'none';
+function DWT_Reconnect () {
+	if(((new Date() - reconnectTime) / 1000) > 30) {
+		// change prompt
+		var el = document.getElementById('dwt-btn-install');
+		if (el) {
+			el.innerHTML = 'Failed to connect to the service, have you run the setup?<br />If not, please run the setup and <a href="javascript:void(0)" onclick="DCP_DWT_onclickInstallButton()">click here to connect again</a>.';
+		}
+		return;
+	}
+	
+	Dynamsoft.WebTwainEnv.CheckConnectToTheService(function(){
+		Dynamsoft.WebTwainEnv.ConnectToTheService();
+	}, function(){
+		setTimeout(DWT_Reconnect, 500);
+	});
+}
+
+function DCP_DWT_onclickInstallButton(evt) {
+
+	var btnInstall = document.getElementById('dwt-btn-install');
+	if (btnInstall) {
+
+		setTimeout(function(){
+			var install = document.getElementById('dwt-install-url-div');
+			if (install)
+				install.style.display = 'none';
+			
+			var el = document.getElementById('dwt-btn-install');
+			if (el && el.getAttribute("html5") == "1") {
+				
+				var pel = el.parentNode,
+					newDiv = document.createElement('div');
+
+				newDiv.id = 'dwt-btn-install';
+				newDiv.style.textAlign = "center";
+				newDiv.style.paddingBottom='15px';
+				newDiv.innerHTML = 'Connecting to the service...';
+				newDiv.setAttribute("html5", "1");
+				
+				pel.removeChild(el);
+				pel.appendChild(newDiv);
+				reconnectTime = new Date();
+				setTimeout(DWT_Reconnect, 10);
+			} else {
+				
+				var pel = el.parentNode;
+				pel.removeChild(el);
+				
+			}
+			
+		}, 10);
+
+	}
+	return true;
 }
 
 function _show_install_dialog(ProductName, objInstallerUrl, bHTML5, iPlatform, bIE, bSafari, bSSL, strIEVersion) {
@@ -65,9 +114,16 @@ function _show_install_dialog(ProductName, objInstallerUrl, bHTML5, iPlatform, b
 		ObjString.push('<div style="margin:10px 0 0 60px;"><div id="dwt-install-url-div"><div><input id="dwt-install-url-deb" name="dwt-install-url" type="radio" onclick="dwt_change_install_url(\'' + objInstallerUrl.deb + '\')" checked="checked" /><label for="dwt-install-url-deb">64 bit .deb (For Ubuntu/Debian)</label></div>');
 		ObjString.push('<div><input id="dwt-install-url-rpm" name="dwt-install-url" type="radio" onclick="dwt_change_install_url(\'' + objInstallerUrl.rpm + '\')" /><label for="dwt-install-url-rpm">64 bit .rpm (For Fedora)</label></div></div></div>');
 	}
-	ObjString.push('<a id="dwt-btn-install" target="_blank" href="');
+	ObjString.push('<div><a id="dwt-btn-install" target="_blank" href="');
 	ObjString.push(objInstallerUrl['default']);
-	ObjString.push('" onclick="DCP_DWT_onclickInstallButton(this)"><div class="dynamsoft-dwt-dlg-button">Download</div></a>');
+	ObjString.push('"');
+	if (bHTML5) {
+		ObjString.push(' html5="1"');
+	} else {
+		ObjString.push(' html5="0"');
+	}
+	
+	ObjString.push(' onclick="DCP_DWT_onclickInstallButton(this)"><div class="dynamsoft-dwt-dlg-button">Download</div></a></div>');
 	if (bHTML5) {
 		if (bIE) {
 			ObjString.push('<div class="dynamsoft-dwt-dlg-tail" style="text-align:left; padding-left: 80px">');
@@ -78,16 +134,13 @@ function _show_install_dialog(ProductName, objInstallerUrl, bHTML5, iPlatform, b
 			ObjString.push('</div>');
 
 		} else {
-			ObjString.push('<div class="dynamsoft-dwt-dlg-tail">');
-			ObjString.push('<div class="dynamsoft-dwt-dlg-red">After the installation, please <strong>' + browserActionNeeded + '</strong>  your browser.</div>');
-			ObjString.push('</div>');
 		}
 
 	} else {
 		ObjString.push('<div class="dynamsoft-dwt-dlg-tail" style="text-align:left; padding-left: 80px">');
 		if (bIE) {
 			ObjString.push('After the installation, please<br />');
-			ObjString.push('1. Refresh the browser<br />');
+			ObjString.push('1. Restart the browser<br />');
 			ObjString.push('2. Allow "DynamicWebTWAIN" add-on to run by right clicking on the Information Bar in the browser.');
 		} else {
 			ObjString.push('<div class="dynamsoft-dwt-dlg-red">After installation, please <strong>REFRESH</strong> your browser.</div>');
@@ -174,23 +227,20 @@ function OnWebTwainNeedUpgradeCallback(ProductName, objInstallerUrl, bHTML5, iPl
 		ObjString.push('<div class="dynamsoft-dwt-dlg-red">Please EXIT Internet Explorer before you install the new version.</div>');
 	}
 	else if (bPlugin) {
-		ObjString.push('<div class="dynamsoft-dwt-dlg-red">After the installation, please RESTART your browser.</div>');
 	}
 	else {
 		ObjString.push('A newer version of the scan service is available on this page. <br /> Please download and update now.');
-		ObjString.push('<div class="dynamsoft-dwt-dlg-red">After the installation, please <strong>' + browserActionNeeded + '</strong>  your browser.</div>');
 	}
 	ObjString.push('</div>');
 	Dynamsoft.WebTwainEnv.ShowDialog(promptDlgWidth, 0, ObjString.join(''), false, bForceUpgrade);
 }
 
 function OnWebTwainPreExecuteCallback() {
-	Dynamsoft.WebTwainEnv.OnWebTwainPreExecute();        
+	Dynamsoft.WebTwainEnv.OnWebTwainPreExecute();
 }
 
 function OnWebTwainPostExecuteCallback() {
 	Dynamsoft.WebTwainEnv.OnWebTwainPostExecute();
-        $("#capturaModal").modal("show");
 }
 
 function OnRemoteWebTwainNotFoundCallback(ProductName, ip, port, bSSL) {

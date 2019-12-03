@@ -1,10 +1,10 @@
-//
+﻿//
 // Dynamsoft JavaScript Library for Basic Initiation of Dynamic Web TWAIN
 // More info on DWT: http://www.dynamsoft.com/Products/WebTWAIN_Overview.aspx
 //
-// Copyright 2018, Dynamsoft Corporation 
+// Copyright 2019, Dynamsoft Corporation 
 // Author: Dynamsoft Team
-// Version: 14.3
+// Version: 15.2
 //
 /// <reference path="dynamsoft.webtwain.initiate.js" />
 var Dynamsoft = Dynamsoft || { WebTwainEnv: {} };
@@ -25,11 +25,10 @@ Dynamsoft.WebTwainEnv.Containers = [{ContainerId:'dwtcontrolContainer', Width:27
 /////////////////////////////////////////////////////////////////////////////////////
 /// If you need to use multiple keys on the same server, you can combine keys and write like this 
 /// Dynamsoft.WebTwainEnv.ProductKey = 'key1;key2;key3';
-//Dynamsoft.WebTwainEnv.ProductKey = 'f0068NQAAAKWvMvVqpIkwxjeR3eZYZALpbRseSElwolaWtyUQNMV29qT1yJAdDbkhkwFgP8NCB9rxXzVs7mKOvESruRkUKbk=';
-Dynamsoft.WebTwainEnv.ProductKey = 't0136TQMAAEox2tBlon/bIyWz6R2WUhZo/O6PM0nzQIPr9wD2SP5sXYqCfZnsJy4Vus8KLAeZ4JJhdJTWxzmamSXg87a9XO6ezDoEf5sFU5nDiZHor2UY/2NW/tmLgzk640S5kYLx3FCaRxDtbsgzX0YKxnNDaZ5C5qMZGi4YKRh/NkamTZQ/0ZWn1w==';
+Dynamsoft.WebTwainEnv.ProductKey = 'f0068NQAAAKWvMvVqpIkwxjeR3eZYZALpbRseSElwolaWtyUQNMV29qT1yJAdDbkhkwFgP8NCB9rxXzVs7mKOvESruRkUKbk=';
 
 ///
-Dynamsoft.WebTwainEnv.Trial = true;
+Dynamsoft.WebTwainEnv.Trial = false;
 
 ///
 // Dynamsoft.WebTwainEnv.ResourcesPath = 'Resources';
@@ -40,8 +39,6 @@ Dynamsoft.WebTwainEnv.IfAddMD5InUploadHeader = false;
 ///
 Dynamsoft.WebTwainEnv.IfConfineMaskWithinTheViewer = false;
 
-///
-//Dynamsoft.WebTwainEnv.IfCheck64bitServiceFirst = true;
 
 ///
 /*Dynamsoft.WebTwainEnv.CustomizableDisplayInfo = {
@@ -138,7 +135,7 @@ Dynamsoft.WebTwainEnv.IfConfineMaskWithinTheViewer = false;
             'fit': true, 'fitw': true, 'fith': true,
             'hand': true, 'rectselect': true, 'zoom': true
         }
-    },
+	},
 	
     dialogText: {
         dlgRotateAnyAngle: ['Angle :', 'Interpolation:', 'Keep size', '  OK  ', 'Cancel'],

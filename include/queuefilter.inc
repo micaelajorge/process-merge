@@ -50,6 +50,7 @@ foreach ($camposFiltro as $campo) {
         case "DT":
             $valorCampo = $valorCampo[0];
             $valorCampo = ConvDate($valorCampo);
+//            $nomeBlocoCampo = criaCampoFiltroInput_DT($t_body, $valorCampo);
             $nomeBlocoCampo = criaCampoFiltroInput($t_body, $valorCampo);
             break;
         default:
@@ -66,6 +67,13 @@ function criaCampoFiltroInput($t_body, $valorCampo)
     $t_body->CAMPO_VALOR = $valorCampo;
     return "BLOCO_CAMPO_FILTRO";
 }
+
+function criaCampoFiltroInput_DT($t_body, $valorCampo)
+{
+    $t_body->CAMPO_VALOR = $valorCampo;
+    return "BLOCO_CAMPO_FILTRO_DT";
+}
+
 
 function criaCampoFiltroTL($t_body, $valorCampo, $valoresDispCampo)
 {

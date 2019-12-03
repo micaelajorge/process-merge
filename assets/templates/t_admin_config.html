@@ -1,0 +1,58 @@
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="box box-primary">
+                <div class="box-header">
+                    Configuração logon usuários
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-12 form-group">
+                            <label>Maximo número tentativas de Logon</label>
+                            <input type="number" class="form-control" id="max_falha_logon" name="max_falha_logon" min="0" value="{MAX_FALHA_LOGON}">
+                        </div>                    
+                        <div class="col-lg-12 form-group">
+                            <label>Período de Inatividade do Usuário para Desativação</label> (dias)
+                            <input type="number" class="form-control" id="meses_iniatividade" min="30" value="{MESES_INATIVIDADE}">
+                        </div>                    
+                    </div>    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="box box-primary">
+                <div class="box-header">
+                    E-mail usado para notificações
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-12 form-group">
+                            <label>Usuário</label>
+                            <input type="text" class="form-control" id="email_notification_user" value="{EMAIL_NOTIFICATION_NAME}">
+                        </div>                    
+                        <div class="col-lg-12 form-group">
+                            <label>Senha</label>
+                            <input type="text" class="form-control" id="email_notification_password" value="{EMAIL_NOTIFICATION_PASSWORD}">
+                        </div>                    
+                        <div class="col-lg-12 form-group">
+                            <label>Servidor E-mail</label>
+                            <input type="text" class="form-control" id="email_notification_server" value="{EMAIL_NOTIFICATION_SERVER}">
+                        </div>                    
+                        <div class="col-lg-12 form-group">
+                            <label>Porta de conexão</label>
+                            <input type="text" class="form-control" id="email_notification_port" value="{EMAIL_NOTIFICATION_PORT}">
+                        </div>                    
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 form-group">
+            <button type="button" class="btn btn-sm btn-primary" onclick="jsSalvaConfigSeguranca()"><i class="fa fa-save"></i> Salvar</button>
+        </div>
+    </div>
+    <!-- /.box -->
+</section>

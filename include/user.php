@@ -199,7 +199,7 @@ class userdef {
     }
 
     function testaUltimoLogon($dataUltimoLogon)
-    {       
+    {
         $ultimologon = date_create($dataUltimoLogon);
         $dataAtual = new DateTime();
         $interval = date_diff($dataAtual, $ultimologon);
@@ -257,6 +257,39 @@ class userdef {
         return;
     }
 
+    function ProcessLogon_BuscaUsuario($userName, $password, $connect = false)
+    {
+
+        $SQL = "SELECT UserId, UserName, UserPwd, UserLevel, UserDesc, Email, Uactive, CustonGate, AdHoc, Origem, lastlogon, lastnotification, lastmessages 
+		from userdef where UActive=1";
+        //error_log($SQL);
+        
+        if (!$connect)
+        {
+            $connect = $this->connect;
+        }
+        $QUERY_USER = mysqli_query($connect, $SQL);
+        if (!$QUERY_USER) {
+            $this->Validado = false;
+            return;
+        }
+
+        while ($result = mysqli_fetch_array($QUERY_USER)) {
+            //error_log("Usuario Log: " . $result["UserName"]);
+            if (($result["UserName"] !== $userName)) {
+                continue;
+            }
+            $dbUserPwd = $result["UserPwd"];
+            if (!password_verify($password, $dbUserPwd)) {
+                if (($password !== $dbUserPwd)) {
+                    return false;
+                }
+            }
+            return $result;
+        }
+        return false;
+    }
+
     function ProcessLogon($AuthUser)
     {
         global $_POST;
@@ -268,25 +301,9 @@ class userdef {
             return; // Se não tiver nome, invalida o usuário
         }
 
-        $SQL = "SELECT UserId, UserName, UserPwd, UserLevel, UserDesc, Email, Uactive, CustonGate, AdHoc, Origem, lastlogon, lastnotification, lastmessages 
-		from userdef where UActive=1";
-        //error_log($SQL);
-        $QUERY_USER = mysqli_query($this->connect, $SQL);
-        if (!$QUERY_USER) {
-            $this->Validado = false;
-            return;
-        }
-        while ($result = mysqli_fetch_array($QUERY_USER)) {
-            //error_log("Usuario Log: " . $result["UserName"]);
-            if (($result["UserName"] !== $UserName)) {
-                continue;
-            }
-            $dbUserPwd = $result["UserPwd"];
-            if (!password_verify($UserPwd, $dbUserPwd)) {
-                if (($dbUserPwd !== $UserPwd)) {
-                    return;
-                }
-            }
+        $result = $this->ProcessLogon_BuscaUsuario($UserName, $UserPwd);
+
+        if ($result) {
             $validado = $result["Uactive"] == '1';
             $validado = $validado && $this->testaUltimoLogon($result["lastlogon"]);
             $this->Validado = $validado;
@@ -311,7 +328,6 @@ class userdef {
             if ($validado) {
                 $this->SalvaDataLogon();
             }
-            return;
         }
     }
 

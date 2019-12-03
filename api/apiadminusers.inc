@@ -69,7 +69,7 @@ function salva_senha($USUARIO_SENHA)
  */
 function salva_senha_troca()
 {
-    global $USUARIO_SENHA;
+    global $USUARIO_SENHA, $connect, $USUARIO_SENHA_ATUAL;
 
     $forcaSenha = testaForcaSenha($USUARIO_SENHA);
     if ($forcaSenha < LIMITE_FORCA_SENHA)
@@ -77,6 +77,18 @@ function salva_senha_troca()
         header('HTTP/1.0 403 ERRO');
         die;
     }
+    
+    $userDef = $_SESSION["userdef"];
+    
+    $userTeste = new userdef;    
+    $resultadoSenha = $userTeste->ProcessLogon_BuscaUsuario($userDef->UserName, $USUARIO_SENHA_ATUAL, $connect);
+
+    if (!$resultadoSenha)
+    {
+        header('HTTP/1.0 403 ERRO');
+        die;
+    }
+    
     salva_senha($USUARIO_SENHA);
 }
 

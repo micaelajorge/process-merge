@@ -6,9 +6,9 @@
   Sistema: Creditus
  */
 
-define("RELEASE_SCRIPT", "0052");
+define("RELEASE_SCRIPT", "0053");
 
-define("SYS_VERSION", "3.2.1");
+define("SYS_VERSION", "3.2.2");
 define("LOG_DATA", false);
 
 function iniciarPhpSession()
@@ -1383,7 +1383,7 @@ switch ($srvAccess) {
         define("TEMASISTEMA", "skin-blue");
         define("FILES_FOLDER", "/");
         define("SITE_FOLDER", "");
-        define("SITE_ROOT", "http://$srvAccess/");
+        define("SITE_ROOT", "https://$srvAccess/");
         define("SITE_FOLDER_COMPLEMENT", "/");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("configDB", "localhost");
@@ -1398,6 +1398,9 @@ switch ($srvAccess) {
         define("ICONE_PARCEIRO", "logo-agiliza-mini.png");
         define("LOGO_CLIENTE", "caruna-logo.jpeg");
         define("ALINHAMENTO_LOGO_CLIENTE", "align:right");
+        
+        // Definição do COnfig de Dynamic Twain
+        define("DINAMIC_TWAIN_CONFIG", "dynamsoft.webtwain.config.agiliza.js");
         break;
 
     case "tribanco.agilizaonline.com.br":
@@ -1525,6 +1528,11 @@ switch ($srvAccess) {
         echo "Não Encontrado: '$srvAccess', Redirect '$redirectUrl'";
         break;
 }
+
+if (!defined("DINAMIC_TWAIN_CONFIG")){
+    define("DINAMIC_TWAIN_CONFIG", "dynamsoft.webtwain.config.js");
+}
+    
 
 if (!defined("SITE_ROOT")) {
     define("SITE_ROOT", "http://$srvAccess");

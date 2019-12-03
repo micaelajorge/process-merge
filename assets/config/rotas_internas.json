@@ -1,12 +1,34 @@
 {
     "rotas": {    
-        "/api/v1/cessionstatuschange": {
+        "recuperarsenha": {
+          "GET": {
+                "page": "pages/recuperar_senha.inc"
+          }              
+        },
+        "api/v1/cessionstatuschange": {
             "POST": {
                 "page": "api/api_gateway_certdox.inc",
                 "funcao": "CessionStatusChange",
                 "parametros": ["caseNum"],
                 "logon": false                
             }
+        },
+        "api/v1/configs": {
+            "GET": {
+                "page": "api/api_config.inc",
+                "funcao": "getConfig"
+            }
+        },
+        "api/v1/secconfig": {
+            "POST": {
+                "page": "api/api_config.inc",
+                "funcao": "salvaConfig"
+            }
+        },
+        "adminconfig": {
+          "GET": {
+                "page": "pages/admin_config.inc"
+          }  
         },
         "removefile": {
           "GET": {
@@ -84,7 +106,7 @@
         },
         "gateway_viewfile": {
             "GET": {
-                "page": "pages\/gateway_view_files.inc",
+                "page": "pages/gateway_view_files.inc",
                 "parametros": ["ProcId", "CaseNum"],
                 "funcao": "pegaArquivoOfertaRetorno"
             }
@@ -466,14 +488,14 @@
                 "parametros": ["document_key"]
             }                                    
         },        
-        "api\/v1\/relatorioonline": {
+        "api/v1/relatorioonline": {
             "POST": {
                 "page": "api/api_relatorioonline.inc",
                 "funcao": "MontaCuboOne",
                 "parametros": ["mes_selecionado", "ano_selecionado"]
             }                                    
         },        
-        "api\/v1\/dimensao": {
+        "api/v1/dimensao": {
             "POST": {
                 "page": "api/api_relatorioonline.inc",
                 "funcao": "MontaCuboOne",
@@ -808,7 +830,7 @@
         },
         "api/automatocheck": {
             "GET": {
-                "page": "api\/api_automato.inc",
+                "page": "api/api_automato.inc",
                 "funcao": "automatoCheckData",
                 "logon": false
             }   
@@ -896,210 +918,236 @@
         },
         "api/automatomudastatus": {
             "POST": {
-                "page": "api\/api_automato.inc",
+                "page": "api/api_automato.inc",
                 "funcao": "automatoMudaStatusOperacao",
                 "logon": false
             },   
             "GET": {
-                "page": "api\/api_automato.inc",
+                "page": "api/api_automato.inc",
                 "funcao": "automatoMudaStatusOperacao",
                 "logon": false
             }   
         },
-        "api\/apicasestart": {
+        "api/apicasestart": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "logon": false,
                 "funcao": "apicasestart"
             }
         },        
-        "api\/casestartunique": {
+        "api/v1/apicasestart": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
+                "logon": false,
+                "funcao": "apicasestart"
+            }
+        },                
+        "api/casestartunique": {
+            "POST": {
+                "page": "api/apicasos.inc",
                 "logon": false,
                 "funcao": "apicasestartunique"
             },
             "GET": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "logon": false,
                 "funcao": "apicasestartunique"
             }
         },        
-        "api\/v1\/casestartunique": {
+        "api/v1/casestartunique": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "logon": false,
                 "funcao": "apicasestartunique_v1"
             },
             "GET": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "logon": false,
                 "funcao": "apicasestartunique_v1"
             }
         },        
-        "api\/casestartuniqueprocessa": {
+        "api/casestartuniqueprocessa": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "logon": false,
                 "funcao": "apicasestartuniqueprocessa"
             },
             "GET": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "logon": false,
                 "funcao": "apicasestartuniqueprocessa"
             }
         },
         "api/v1/casestartuniqueprocessa": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "logon": false,
                 "funcao": "apicasestartuniqueprocessa_v1"
             },
             "GET": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "logon": false,
                 "funcao": "apicasestartuniqueprocessa_v1"
             }
         },
+        "api/v1/casestart": {
+            "POST": {
+                "page": "api/apicasos.inc",
+                "logon": false,
+                "funcao": "apicasestart_v1"
+            },
+            "GET": {
+                "page": "api/apicasos.inc",
+                "logon": false,
+                "funcao": "apicasestart_v1"
+            }
+        },
         "queuefilters": {
             "POST": {
-                "page": "include\/queuefilter.inc",
+                "page": "include/queuefilter.inc",
                 "parametros": ["procId"]
             }
         },
         "queuefilter": {
             "POST": {
-                "page": "include\/queuefilter.inc"
+                "page": "include/queuefilter.inc"
             }
         },
-        "api\/webcapture_anexar": {
+        "api/webcapture_anexar": {
             "POST": {
-                "page": "api\/api_webcapture.inc",
+                "page": "api/api_webcapture.inc",
                 "funcao": "webcature_anexaDocumento"
             }
         },
-        "api\/busca_resultado": {
+        "api/busca_resultado": {
             "POST": {
-                "page": "api\/api_busca_resultado.inc"
+                "page": "api/api_busca_resultado.inc"
             }
         },
-        "webcapture\/selecionaprocesso": {
+        "webcapture/selecionaprocesso": {
             "POST": {
-                "page": "pages\/webcaptura_seleciona_processo.inc"
+                "page": "pages/webcaptura_seleciona_processo.inc"
             }
         },
-        "api\/deadtimes": {
+        "api/deadtimes": {
             "POST": {
-                "page": "api\/api_deadtimes.inc",
+                "page": "api/api_deadtimes.inc",
                 "logon": false
             },
             "GET": {
-                "page": "api\/api_deadtimes.inc",
+                "page": "api/api_deadtimes.inc",
                 "logon": false
             }
         },
-        "api\/processadeadtime": {
+        "api/processadeadtime": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "funcao": "apicasedeadtime",
                 "logon": false
             }
         },
         "relatorio_yamaha": {
             "POST": {
-                "page": "pages\/relatorio_yamaha.inc"
+                "page": "pages/relatorio_yamaha.inc"
             }
         },
         "relatorio_transferwise": {
             "POST": {
-                "page": "pages\/relatorio_transferwise.inc",
+                "page": "pages/relatorio_transferwise.inc",
                 "logon": false
             }
         },
         "relatorio_tribanco": {
             "POST": {
-                "page": "pages\/relatorio_tribanco.inc"
+                "page": "pages/relatorio_tribanco.inc"
             }
         },
-        "api\/manager\/savepassword": {
+        "api/manager/savepassword": {
             "POST": {
-                "page": "api\/apiadminusers.inc",
+                "page": "api/apiadminusers.inc",
                 "funcao": "salva_senha_troca",
                 "logon":false
             }
         },
-        "api\/manager\/savepasswordstart": {
+        "api/manager/changepassword": {
             "POST": {
-                "page": "api\/apiadminusers.inc",
+                "page": "api/apiadminusers.inc",
+                "funcao": "salva_senha_troca",
+                "logon":false
+            }
+        },
+        "api/manager/savepasswordstart": {
+            "POST": {
+                "page": "api/apiadminusers.inc",
                 "funcao": "salva_senha_inicial"
             }
         },
-        "api\/manager\/adicionausergrupo": {
+        "api/manager/adicionausergrupo": {
             "POST": {
-                "page": "api\/apiadminusers.inc",
+                "page": "api/apiadminusers.inc",
                 "funcao": "adicionaentidade"
             }
         },
-        "api\/manager\/removeusergrupo": {
+        "api/manager/removeusergrupo": {
             "POST": {
-                "page": "api\/apiadminusers.inc",
+                "page": "api/apiadminusers.inc",
                 "funcao": "removeentidade"
             }
         },
-        "api\/permissoes\/entidade": {
+        "api/permissoes/entidade": {
             "POST": {
-                "page": "api\/api_permissoes.inc",
+                "page": "api/api_permissoes.inc",
                 "funcao": "permissoes_salvapermissoes"
             }
         },
-        "api\/permissoes\/proc": {
+        "api/permissoes/proc": {
             "POST": {
-                "page": "api\/api_permissoes.inc",
+                "page": "api/api_permissoes.inc",
                 "funcao": "permissoes_listaSteps"
             }
         },
-        "api\/permissoes\/procs": {
+        "api/permissoes/procs": {
             "POST": {
-                "page": "api\/api_permissoes.inc",
+                "page": "api/api_permissoes.inc",
                 "funcao": "permissoes_listaProcessos"
             },
             "GET": {
-                "page": "api\/api_permissoes.inc",
+                "page": "api/api_permissoes.inc",
                 "funcao": "permissoes_listaProcessos"
             }
         },
-        "api\/tribanco\/criacasoproposta\/": {
+        "api/tribanco/criacasoproposta/": {
             "POST": {
-                "page": "api\/api_tribanco.inc",
+                "page": "api/api_tribanco.inc",
                 "funcao": "tribanco_criaCasoPelaProposta",
                 "logon": false
             }
         },
-        "api\/tribanco\/getfile": {
+        "api/tribanco/getfile": {
             "POST": {
-                "page": "pages\/viewfile.inc",
+                "page": "pages/viewfile.inc",
                 "funcao": "serveArquivo",
                 "logon": false
             },
             "GET": {
-                "page": "pages\/viewfile.inc",
+                "page": "pages/viewfile.inc",
                 "funcao": "serveArquivo",
                 "logon": false
             }
         },
-        "api\/tribanco\/verificaarquivoscarga\/": {
+        "api/tribanco/verificaarquivoscarga/": {
             "POST": {
-                "page": "api\/api_tribanco.inc",
+                "page": "api/api_tribanco.inc",
                 "funcao": "tribanco_buscaDadosCarga",
                 "logon": false
             },
             "GET": {
-                "page": "api\/api_tribanco.inc",
+                "page": "api/api_tribanco.inc",
                 "funcao": "tribanco_buscaDadosCarga",
                 "logon": false
             }
         },
-        "api\/getfile": {
+        "api/getfile": {
             "POST": {
                 "page": "pages/viewfile.inc",
                 "funcao": "serveArquivo",
@@ -1112,54 +1160,54 @@
                 "funcao": "apigetfile"
             }
         },
-        "api\/tribanco\/pegaarquivo": {
+        "api/tribanco/pegaarquivo": {
             "POST": {
-                "page": "api\/api_tribanco.inc",
+                "page": "api/api_tribanco.inc",
                 "funcao": "tribanco_buscaArquivos",
                 "logon": false
             }
         },
-        "api\/tribanco\/enviaarquivospropostas": {
+        "api/tribanco/enviaarquivospropostas": {
             "POST": {
-                "page": "api\/api_tribanco.inc",
+                "page": "api/api_tribanco.inc",
                 "funcao": "tribanco_receberarquivosproposta",
                 "logon": false
             }
         },
         "dimensao": {
             "POST": {
-                "page": "pages\/cubo_dimensao_z.inc"
+                "page": "pages/cubo_dimensao_z.inc"
             }
         },
-        "api\/dimensao": {
+        "api/dimensao": {
             "POST": {
-                "page": "api\/api_cubo_detalhe.inc",
+                "page": "api/api_cubo_detalhe.inc",
                 "parametros": ["filtro"]
             }
         },
-        "api\/cubo": {
+        "api/cubo": {
             "POST": {
-                "page": "api\/api_cubo.inc",
+                "page": "api/api_cubo.inc",
                 "funcao": "MontaCuboOne",
                 "parametros": ["dim2", "dim3", "dim4"]
             }
         },
         "cubo": {
             "GET": {
-                "page": "pages\/cubo.inc",
+                "page": "pages/cubo.inc",
                 "parametros": ["ProcId"]
             }
         },
-        "api\/casobloqueado\/": {
+        "api/casobloqueado/": {
             "POST": {
-                "page": "api\/apinotifications.inc",
+                "page": "api/apinotifications.inc",
                 "funcao": "casoBloqueado",
                 "logon": false
             }
         },
         "api/respostatransferwise/": {
             "POST": {
-                "page": "api\/apitransferwise.inc",
+                "page": "api/apitransferwise.inc",
                 "funcao": "respostaTransferwise",
                 "logon": false
             }
@@ -1169,47 +1217,54 @@
                 "page": "api.inc"
             }
         },
-        "api\/apicaseprocess": {
+        "api/apicaseprocess": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "funcao": "apicaseprocess",
                 "logon": false
             }
         },
-        "api\/v1\/apicaseprocess": {
+        "api/v1/apicaseprocess": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "funcao": "apicaseprocess_v1",
                 "logon": false
             }
         },
-        "api\/removelocks\/": {
+        "api/v1/caseprocess": {
             "POST": {
-                "page": "api\/api_automato.inc",
+                "page": "api/apicasos.inc",
+                "funcao": "apicaseprocess_v1",
+                "logon": false
+            }
+        },
+        "api/removelocks/": {
+            "POST": {
+                "page": "api/api_automato.inc",
                 "funcao": "automatoRemoveLocks",
                 "logon": false
             },
             "GET": {
-                "page": "api\/api_automato.inc",
+                "page": "api/api_automato.inc",
                 "funcao": "automatoRemoveLocks",
                 "logon": false
             }
         },
-        "api\/removelogin\/": {
+        "api/removelogin/": {
             "POST": {
-                "page": "api\/api_automato.inc",
+                "page": "api/api_automato.inc",
                 "funcao": "automatoRemoveLogins",
                 "logon": false
             }
         },
-        "api\/automato\/autosteps\/": {
+        "api/automato/autosteps/": {
             "POST": {
-                "page": "api\/api_automato.inc",
+                "page": "api/api_automato.inc",
                 "funcao": "pegaCasosAutoStep",
                 "logon": false
             },
             "GET": {
-                "page": "api\/api_automato.inc",
+                "page": "api/api_automato.inc",
                 "funcao": "pegaCasosAutoStep",
                 "logon": false
             }
@@ -1244,208 +1299,208 @@
         },
         "api/sendfile/": {
             "POST": {
-                "page": "api\/apitransferwise.inc",
+                "page": "api/apitransferwise.inc",
                 "funcao": "sendfile",
                 "logon": false
             }
         },
         "fetchdata.php": {
             "POST": {
-                "page": "pages\/fetchdata.inc"
+                "page": "pages/fetchdata.inc"
             }
         },
         "bpmcriarnovo.php": {
             "POST": {
-                "page": "pages\/criarnovocaso.inc"
+                "page": "pages/criarnovocaso.inc"
             },
             "GET": {
-                "page": "pages\/criarnovocaso.inc"
+                "page": "pages/criarnovocaso.inc"
             }
         },
         "queuelist": {
             "POST": {
-                "page": "api\/apiqueuelist.inc",
+                "page": "api/apiqueuelist.inc",
                 "funcao": "",
                 "parametros": ["ProcId", "StepId"]
             },
             "GET": {
-                "page": "api\/apiqueuelist.inc",
+                "page": "api/apiqueuelist.inc",
                 "funcao": "",
                 "parametros": ["ProcId", "StepId"]
             }
         },        
         "log.php": {
             "POST": {
-                "page": "pages\/log.inc",
+                "page": "pages/log.inc",
                 "funcao": "",
                 "logon": false
             }
         },        
         "logon": {
             "POST": {
-                "page": "pages\/log.inc",
+                "page": "pages/log.inc",
                 "funcao": "",
                 "logon": false
             }
         },
         "formalizacao": {
             "POST": {
-                "page": "pages\/editcase.inc",
+                "page": "pages/editcase.inc",
                 "funcao": ""
             }
         },
         "editcase": {
             "POST": {
-                "page": "pages\/editcase.inc",
+                "page": "pages/editcase.inc",
                 "funcao": ""
             },
             "GET": {
-                "page": "pages\/editcase.inc",
+                "page": "pages/editcase.inc",
                 "funcao": ""
             }
         },
         "gdedit": {
             "POST": {
-                "page": "pages\/gd_editcase.inc",
+                "page": "pages/gd_editcase.inc",
                 "funcao": ""
             },
             "GET": {
-                "page": "pages\/editcase.inc",
+                "page": "pages/editcase.inc",
                 "funcao": ""
             }
         },
-        "queue\/editcase": {
+        "queue/editcase": {
             "POST": {
-                "page": "pages\/editcase.inc",
+                "page": "pages/editcase.inc",
                 "funcao": ""
             }
         },
         "viewcase": {
             "POST": {
-                "page": "pages\/editcase.inc",
+                "page": "pages/editcase.inc",
                 "funcao": ""
             }
         },
         "selcasocampodc": {
             "POST": {
-                "page": "pages\/selcasocampodc.inc",
+                "page": "pages/selcasocampodc.inc",
                 "funcao": ""
             }
         },
         "apicaselist": {
             "POST": {
-                "page": "api\/apicaselist.inc",
+                "page": "api/apicaselist.inc",
                 "funcao": "apiPegaListaCasos"
             },
             "GET": {
-                "page": "api\/apicaselist.inc",
+                "page": "api/apicaselist.inc",
                 "funcao": "apiPegaListaCasos"
             }
         },
         "api/v1/apicaselist": {
             "POST": {
-                "page": "api\/apicaselist.inc",
+                "page": "api/apicaselist.inc",
                 "funcao": "apiPegaListaCasos"
             },
             "GET": {
-                "page": "api\/apicaselist.inc",
+                "page": "api/apicaselist.inc",
                 "funcao": "apiPegaListaCasos"
             }
         },
         "casestart": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "funcao": "casestart"
             }
         },
         "casestartunique": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "funcao": "casestartunique"
             }
         },
         "casestartuniqueprocessa": {
             "POST": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "funcao": "casestartuniqueprocessa"
             }
         },
         "authuser": {
             "POST": {
-                "page": "api\/apiuser.inc",
+                "page": "api/apiuser.inc",
                 "funcao": "autenticausuario"
             },
             "GET": {
-                "page": "api\/apiuser.inc",
+                "page": "api/apiuser.inc",
                 "funcao": "autenticausuario"
             }
         },
         "api/v1/authuser": {
             "POST": {
-                "page": "api\/apiuser.inc",
+                "page": "api/apiuser.inc",
                 "funcao": "api_authUser"
             },
             "GET": {
-                "page": "api\/apiuser.inc",
+                "page": "api/apiuser.inc",
                 "funcao": "api_authUser"
             }
         },
         "getmobileprocs": {
             "POST": {
-                "page": "api\/apimobileprocs.inc",
+                "page": "api/apimobileprocs.inc",
                 "funcao": "pegaProcessosUsuario"
             }
         },
         "folderlist": {
             "POST": {
-                "page": "pages\/lista_arquivos_campo_fd.inc",
+                "page": "pages/lista_arquivos_campo_fd.inc",
                 "funcao": ""
             }
         },
         "fileupload": {
             "POST": {
-                "page": "include\/fileupload.inc",
+                "page": "include/fileupload.inc",
                 "funcao": ""
             }
         },
         "foldersendfile": {
             "POST": {
-                "page": "pages\/foldersendfile.inc",
+                "page": "pages/foldersendfile.inc",
                 "funcao": ""
             }
         },
         "sendfiletodir": {
             "POST": {
-                "page": "pages\/sendfiletodir.inc",
+                "page": "pages/sendfiletodir.inc",
                 "funcao": ""
             }
         },        
         "fileattachupload": {
             "POST": {
-                "page": "pages\/fileattachupload.inc",
+                "page": "pages/fileattachupload.inc",
                 "funcao": ""
             }
         },
         "viewfile": {
             "POST": {
-                "page": "pages\/viewfile.inc",
+                "page": "pages/viewfile.inc",
                 "funcao": "serveArquivo",
                 "logon": false
             },
             "GET": {
-                "page": "pages\/viewfile.inc",
+                "page": "pages/viewfile.inc",
                 "parametros": ["ProcId", "CaseNum", "fieldId", "fileNameStorage", "utf8"],
                 "funcao": "serveArquivo",
                 "logon": false
             }
         },
-        "api\/manager\/users": {
+        "api/manager/users": {
             "POST": {
-                "page": "api\/apiadminusers.inc",
+                "page": "api/apiadminusers.inc",
                 "funcao": "api_pegarUsuarios"
             },
             "GET": {
-                "page": "api\/apiadminusers.inc",
+                "page": "api/apiadminusers.inc",
                 "funcao": ""
             }
         },
@@ -1459,27 +1514,27 @@
                 "funcao": "apiValidado"
             }
         },
-        "api\/manager\/salvardadosgrupo": {
+        "api/manager/salvardadosgrupo": {
             "POST": {
-                "page": "api\/apiadminusers.inc",
+                "page": "api/apiadminusers.inc",
                 "funcao": "gravaDadosGrupo"
             }
         },
-        "api\/manager\/salvardadosusuario": {
+        "api/manager/salvardadosusuario": {
             "POST": {
-                "page": "api\/apiadminusers.inc",
+                "page": "api/apiadminusers.inc",
                 "funcao": "gravaDadosUsuario"
             }
         },
-        "api\/manager\/groups": {
+        "api/manager/groups": {
             "POST": {
-                "page": "api\/apiadminusers.inc",
+                "page": "api/apiadminusers.inc",
                 "funcao": "api_pegaGrupos"
             }
         },
-        "api\/manager\/origens": {
+        "api/manager/origens": {
             "POST": {
-                "page": "api\/apiadminorigemdominio.inc",
+                "page": "api/apiadminorigemdominio.inc",
                 "funcao": ""
             }
         },
@@ -1497,38 +1552,38 @@
         },
         "": {
             "GET": {
-                "page": "pages\/log.inc",
+                "page": "pages/log.inc",
                 "funcao": ""
             }
         },
         "usuarios": {
             "GET": {
-                "page": "pages\/admin_users.inc",
+                "page": "pages/admin_users.inc",
                 "funcao": ""
             }
         },
         "grupos": {
             "GET": {
-                "page": "pages\/admin_groups.inc",
+                "page": "pages/admin_groups.inc",
                 "funcao": ""
             }
         },
         "origemdominio": {
             "GET": {
-                "page": "pages\/admin_origens.inc",
+                "page": "pages/admin_origens.inc",
                 "funcao": ""
             }
         },
         "queue": {
             "GET": {
-                "page": "pages\/queue.inc",
+                "page": "pages/queue.inc",
                 "funcao": "",
                 "parametros": ["ProcId", "StepId"]
             }
         },
         "notificacoes": {
             "GET": {
-                "page": "api\/apinotifications.inc",
+                "page": "api/apinotifications.inc",
                 "funcao": "NotificacoesUsuario",
                 "parametros": ["ProcCode", "UserName", "UserPassword"],
                 "obrigatorio-parametros": false,
@@ -1537,7 +1592,7 @@
         },
         "notificacoeslidas": {
             "GET": {
-                "page": "api\/apinotifications.inc",
+                "page": "api/apinotifications.inc",
                 "funcao": "notificacoesLidas"
             }
         },
@@ -1562,7 +1617,7 @@
         },
         "logoff": {
             "GET": {
-                "page": "pages\/logoff.inc",
+                "page": "pages/logoff.inc",
                 "funcao": ""
             }
         },
@@ -1580,31 +1635,31 @@
         },
         "entrada.php": {
             "GET": {
-                "page": "pages\/entrada.inc",
+                "page": "pages/entrada.inc",
                 "funcao": ""
             }
         },
         "entrada": {
             "GET": {
-                "page": "pages\/entrada.inc",
+                "page": "pages/entrada.inc",
                 "funcao": ""
             }
         },
         "apiadmproclist": {
             "GET": {
-                "page": "api\/apiadmproclist.inc",
+                "page": "api/apiadmproclist.inc",
                 "funcao": ""
             }
         },
-        "api\/casestart": {
+        "api/casestart": {
             "GET": {
-                "page": "api\/apicasos.inc",
+                "page": "api/apicasos.inc",
                 "funcao": "CaseStart"
             }
         },
         "entradamobile": {
             "GET": {
-                "page": "pages\/entradamobile.inc",
+                "page": "pages/entradamobile.inc",
                 "funcao": ""
             }
         },
@@ -1622,204 +1677,204 @@
         },
         "callajax.php": {
             "GET": {
-                "page": "pages\/callajax.inc",
+                "page": "pages/callajax.inc",
                 "funcao": ""
             }
         },
         "callajax.inc": {
             "GET": {
-                "page": "pages\/callajax.inc",
+                "page": "pages/callajax.inc",
                 "funcao": ""
             }
         },
         "fileattachsel": {
             "GET": {
-                "page": "pages\/fileattachsel.inc",
+                "page": "pages/fileattachsel.inc",
                 "funcao": ""
             }
         },
         "eventlist": {
             "GET": {
-                "page": "pages\/eventlist.inc",
+                "page": "pages/eventlist.inc",
                 "funcao": "",
                 "parametros": ["CaseNum"]
             }
         },
         "selectuser": {
             "GET": {
-                "page": "include\/seluserajax.php",
+                "page": "include/seluserajax.php",
                 "funcao": "",
                 "parametros": ["TipoFiltro", "Filtrar", "Origem", "Grupo"]
             }
         },
         "viewformalizacao": {
             "GET": {
-                "page": "pages\/view_image_formalizacao.inc"
+                "page": "pages/view_image_formalizacao.inc"
             }
         },
         "edituser": {
             "GET": {
-                "page": "pages\/admin_users_edit.inc",
+                "page": "pages/admin_users_edit.inc",
                 "parametros": ["userId"]
             }
         },
         "editgroup": {
             "GET": {
-                "page": "pages\/admin_groups_edit.inc",
+                "page": "pages/admin_groups_edit.inc",
                 "parametros": ["groupId"]
             }
         },
-        "api\/autosteps": {
+        "api/autosteps": {
             "GET": {
-                "page": "api\/api_automato.inc",
+                "page": "api/api_automato.inc",
                 "funcao": "pegaCasosAutoStep",
                 "logon": false
             }
         },
-        "api\/automato\/alive": {
+        "api/automato/alive": {
             "GET": {
-                "page": "api\/api_automato.inc",
+                "page": "api/api_automato.inc",
                 "funcao": "automatoAlive",
                 "logon": false
             }
         },
-        "api\/tribanco\/listacasoscargaimportacao\/": {
+        "api/tribanco/listacasoscargaimportacao/": {
             "GET": {
-                "page": "api\/api_tribanco.inc",
+                "page": "api/api_tribanco.inc",
                 "funcao": "tribancoListaCasosCargaParaImportacao",
                 "logon": false
             }
         },
-        "api\/tribanco\/listacasoscalculosla\/": {
+        "api/tribanco/listacasoscalculosla/": {
             "GET": {
-                "page": "api\/api_tribanco.inc",
+                "page": "api/api_tribanco.inc",
                 "funcao": "tribancoListaCasosCargaSLA",
                 "logon": false
             }
         },
-        "api\/tribanco\/cargasemarquivo": {
+        "api/tribanco/cargasemarquivo": {
             "GET": {
-                "page": "api\/api_tribanco.inc",
+                "page": "api/api_tribanco.inc",
                 "funcao": "tribanco_CargasSemArquivo",
                 "logon": false
             }
         },
-        "api\/v1\/countbyfield": {
+        "api/v1/countbyfield": {
             "GET": {
-                "page": "api\/apinotifications.inc",
+                "page": "api/apinotifications.inc",
                 "funcao": "ContaCasosPorCampo",
                 "logon": false,
                 "parametros": ["ProcId", "fieldId"]                
             },
             "POST": {
-                "page": "api\/apinotifications.inc",
+                "page": "api/apinotifications.inc",
                 "funcao": "ContaCasosPorCampo",
                 "logon": false,
                 "parametros": ["ProcId", "fieldId"]                
             }
         },
-        "api\/tribanco\/propostassemarquivo\/": {
+        "api/tribanco/propostassemarquivo/": {
             "GET": {
-                "page": "api\/api_tribanco.inc",
+                "page": "api/api_tribanco.inc",
                 "funcao": "tribanco_listaPropostasSemArquivo",
                 "logon": false
             }
         },
         "permissoes": {
             "GET": {
-                "page": "pages\/admin_permissoes.inc"
+                "page": "pages/admin_permissoes.inc"
             }
         },
         "permissoesprocesso": {
             "GET": {
-                "page": "pages\/admin_permissoes_processo.inc",
+                "page": "pages/admin_permissoes_processo.inc",
                 "parametros": ["procId"]
             }
         },
-        "permissoes\/relatorio": {
+        "permissoes/relatorio": {
             "GET": {
-                "page": "include\/relatorio_permissoes.inc",
+                "page": "include/relatorio_permissoes.inc",
                 "parametros": ["procId"]
             }
         },
-        "permissao\/processo": {
+        "permissao/processo": {
             "GET": {
-                "page": "pages\/admin_permissoes_entidade.inc",
+                "page": "pages/admin_permissoes_entidade.inc",
                 "parametros": ["procId", "stepId", "groupId", "grpFld", "entidade", "stepName"]
             }
         },
-        "permissao\/processo\/adicionar": {
+        "permissao/processo/adicionar": {
             "GET": {
-                "page": "pages\/admin_permissoes_entidade.inc",
+                "page": "pages/admin_permissoes_entidade.inc",
                 "parametros": ["procId", "stepId", "stepName", "grpFld"]
             }
         },
         "subform": {
             "GET": {
-                "page": "include\/subform.inc",
+                "page": "include/subform.inc",
                 "parametros": ["ProcId", "StepId", "CaseNum", "Action", "Formulario", "FormsPai", "CampoForm", "FieldName", "classeSubstituta"]
             }
         },
         "gruposusuario": {
             "GET": {
-                "page": "pages\/admin_usuarios_grupos.inc",
+                "page": "pages/admin_usuarios_grupos.inc",
                 "parametros": ["GrpFld", "entidade_id", "entidade", "reload"]
             }
         },
         "selgruposuser": {
             "GET": {
-                "page": "include\/selusersgroups.inc",
+                "page": "include/selusersgroups.inc",
                 "parametros": ["GrpFld", "entidade_id", "entidade", "tipo_pesquisa", "procId"]
             }
         },
         "selusersgroup": {
             "GET": {
-                "page": "include\/selusersgroups.inc",
+                "page": "include/selusersgroups.inc",
                 "parametros": ["GrpFld", "entidade_id", "entidade", "tipo_pesquisa"]
             }
         },
         "selectusersgroups": {
             "GET": {
-                "page": "include\/selusersgroups.inc",
+                "page": "include/selusersgroups.inc",
                 "funcao": "",
                 "parametros": ["tipoPesquisa", "Filtrar", "Origem", "Grupo"]
             }
         },
         "busca": {
             "GET": {
-                "page": "pages\/busca.inc"
+                "page": "pages/busca.inc"
             }
         },
         "userpassword": {
             "GET": {
-                "page": "pages\/admin_user_password.inc",
+                "page": "pages/admin_user_password.inc",
                 "parametros": ["userId", "userName"]
             }
         },
         "relatorios": {
             "GET": {
-                "page": "pages\/relatorios.inc"
+                "page": "pages/relatorios.inc"
             }
         },
         "webcaptura": {
             "GET": {
-                "page": "pages\/webcaptura.inc"
+                "page": "pages/webcaptura.inc"
             }
         },
         "multivalueajax": {
             "GET": {
-                "page": "include\/multivalueajax.php",
+                "page": "include/multivalueajax.php",
                 "parametros": ["ProcId", "FieldId", "CaseNum"]
             }
         },
         "trocarsenha": {
             "GET": {
-                "page": "pages\/user_change_password.inc"
+                "page": "pages/user_change_password.inc"
             }
         },
         "adm_entrada": {
             "GET": {
-                "page": "pages\/adm_entrada.inc"
+                "page": "pages/adm_entrada.inc"
             }
         }
     }

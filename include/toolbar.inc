@@ -100,7 +100,7 @@ function TextosToolBar001()
     global $SalvarDoc, $ProcessarDoc, $NovaMsg, $SalvarMsg, $EnviarMsg;
     global $PrintDoc, $Rascunhos, $SairPesq, $ReturnPesq, $FilterPesq;
     global $FiltroQueue, $LogOff, $NovoNota, $NovoAnexo, $AdHocButton, $InserirNaFila, $capturarImagem, $mostrarProcessos;
-    global $EncerraAdHocButton, $TxRedirecionaAdHoc, $Historico, $EditarDados, $SalvarBloquear, $Relatorio, $permissoesProcessos;
+    global $EncerraAdHocButton, $TxRedirecionaAdHoc, $Historico, $EditarDados, $SalvarBloquear, $Relatorio, $permissoesProcessos, $configseguranca;
     global $GerarRelatorio, $OperacaoLote, $_msgFechar, $EditarUsuarios, $EditarGrupos, $textos_origemdominio, $CriarUsuarios, $CriarGrupo;
 
     $mostrarProcessos[0] = "Soluçoes";
@@ -214,6 +214,9 @@ function TextosToolBar001()
 
     $EditarGrupos[0] = "Edição de Grupos";
     $EditarGrupos[1] = "Edição de Grupos";
+    
+    $configseguranca[0] = "Configurações Segurança";
+    $configseguranca[1] = "Configurações Segurança";
 }
 
 // </editor-fold>
@@ -226,7 +229,7 @@ function definicaoToolBar($Menu)
     global $PrintDoc, $Rascunhos, $SairPesq, $ReturnPesq, $FilterPesq, $capturarImagem, $mostrarProcessos;
     global $FiltroQueue, $LogOff, $NovoNota, $NovoAnexo, $AdHocButton, $InserirNaFila;
     global $EncerraAdHocButton, $TxRedirecionaAdHoc, $Historico, $EditarDados, $SalvarBloquear, $Relatorio;
-    global $GerarRelatorio, $OperacaoLote, $_msgFechar, $MostrarBotoes, $permissoesProcessos;
+    global $GerarRelatorio, $OperacaoLote, $_msgFechar, $MostrarBotoes, $permissoesProcessos, $configseguranca;
     global $CaseNum, $EditarUsuarios, $EditarGrupos, $textos_origemdominio, $CriarUsuarios, $CriarGrupo;
     global $opcoesMenu, $processosEscondidos, $S_Processos, $userdef, $TipoBotao;
 
@@ -1233,24 +1236,30 @@ function definicaoToolBar($Menu)
             $class_Icon[0] = "fa fa-plus text-green";
             $TipoBotao[0] = "Collapse";
                                     
-            $acao[2] = "document.location = 'grupos'";
-            $texto[2] = $EditarGrupos[0];
-            $textoDesc[2] = $EditarGrupos[1];
+            $acao[1] = "document.location = 'grupos'";
+            $texto[1] = $EditarGrupos[0];
+            $textoDesc[1] = $EditarGrupos[1];
+            $AcionaMenu[1] = 1;
+            $class_Icon[1] = "fa fa-users";
+
+            $acao[2] = "document.location = 'origemdominio'";
+            $texto[2] = $textos_origemdominio[0];
+            $textoDesc[2] = $textos_origemdominio[1];
             $AcionaMenu[2] = 1;
-            $class_Icon[2] = "fa fa-users";
+            $class_Icon[2] = "fa fa-sitemap";
 
-            $acao[3] = "document.location = 'origemdominio'";
-            $texto[3] = $textos_origemdominio[0];
-            $textoDesc[3] = $textos_origemdominio[1];
+            $acao[3] = "document.location = 'permissoes'";
+            $texto[3] = $permissoesProcessos[0];
+            $textoDesc[3] = $permissoesProcessos[1];
             $AcionaMenu[3] = 1;
-            $class_Icon[3] = "fa fa-sitemap";
-
-            $acao[4] = "document.location = 'permissoes'";
-            $texto[4] = $permissoesProcessos[0];
-            $textoDesc[4] = $permissoesProcessos[1];
+            $class_Icon[3] = "fa fa-gears";
+            
+            $acao[4] = "document.location = 'adminconfig'";
+            $texto[4] = $configseguranca[0];
+            $textoDesc[4] = $configseguranca[1];
             $AcionaMenu[4] = 1;
-            $class_Icon[4] = "fa fa-gears";
-
+            $class_Icon[4] = "fa fa-lock";
+            
             $acao[5] = "document.location = '$entrada'";
             $texto[5] = $Anterior[0];
             $textoDesc[5] = $Anterior[1];
@@ -1264,31 +1273,31 @@ function definicaoToolBar($Menu)
             $textoDesc[0] = $CriarGrupo[1];
             $AcionaMenu[0] = 1;
             $class_Icon[0] = "fa fa-plus text-green";
-
-            $acao[1] = "document.location = 'usuarios'";
-            $texto[1] = $EditarUsuarios[0];
-            $textoDesc[1] = $EditarUsuarios[1];
+           
+            $acao[1] = "document.location = 'grupos'";
+            $texto[1] = $EditarGrupos[0];
+            $textoDesc[1] = $EditarGrupos[1];
             $AcionaMenu[1] = 1;
-            $class_Icon[1] = "fa fa-user";
+            $class_Icon[1] = "fa fa-users";
             
-            $acao[2] = "document.location = 'grupos'";
-            $texto[2] = $EditarGrupos[0];
-            $textoDesc[2] = $EditarGrupos[1];
+            $acao[2] = "document.location = 'origemdominio'";
+            $texto[2] = $textos_origemdominio[0];
+            $textoDesc[2] = $textos_origemdominio[1];
             $AcionaMenu[2] = 1;
-            $class_Icon[2] = "fa fa-users";
-            
-            $acao[3] = "document.location = 'origemdominio'";
-            $texto[3] = $textos_origemdominio[0];
-            $textoDesc[3] = $textos_origemdominio[1];
+            $class_Icon[2] = "fa fa-sitemap";
+
+            $acao[3] = "document.location = 'permissoes'";
+            $texto[3] = $permissoesProcessos[0];
+            $textoDesc[3] = $permissoesProcessos[1];
             $AcionaMenu[3] = 1;
-            $class_Icon[3] = "fa fa-sitemap";
+            $class_Icon[3] = "fa fa-gears";
 
-            $acao[4] = "document.location = 'permissoes'";
-            $texto[4] = $permissoesProcessos[0];
-            $textoDesc[4] = $permissoesProcessos[1];
+            $acao[4] = "document.location = 'adminconfig'";
+            $texto[4] = $configseguranca[0];
+            $textoDesc[4] = $configseguranca[1];
             $AcionaMenu[4] = 1;
-            $class_Icon[4] = "fa fa-gears";
-
+            $class_Icon[4] = "fa fa-lock";
+            
             $acao[5] = "document.location = '$entrada'";
             $texto[5] = $Anterior[0];
             $textoDesc[5] = $Anterior[1];
@@ -1320,6 +1329,12 @@ function definicaoToolBar($Menu)
             $textoDesc[3] = $permissoesProcessos[1];
             $AcionaMenu[3] = 1;
             $class_Icon[3] = "fa fa-gears";
+            
+            $acao[4] = "document.location = 'adminconfig'";
+            $texto[4] = $configseguranca[0];
+            $textoDesc[4] = $configseguranca[1];
+            $AcionaMenu[4] = 1;
+            $class_Icon[4] = "fa fa-lock";            
 
             $acao[5] = "document.location = 'permissoes'";
             $texto[5] = "Lista Soluções";
@@ -1328,6 +1343,33 @@ function definicaoToolBar($Menu)
             $class_Icon[5] = "fa fa-arrow-circle-o-right";
             break;
 
+        case "config_seguranca":
+            $acao[1] = "document.location = 'usuarios'";
+            $texto[1] = $EditarUsuarios[0];
+            $textoDesc[1] = $EditarUsuarios[1];
+            $AcionaMenu[1] = 1;
+            $class_Icon[1] = "fa fa-user";
+
+            $acao[2] = "document.location = 'origemdominio'";
+            $texto[2] = $textos_origemdominio[0];
+            $textoDesc[2] = $textos_origemdominio[1];
+            $AcionaMenu[2] = 1;
+            $class_Icon[2] = "fa fa-sitemap";
+
+            $acao[3] = "document.location = 'permissoes'";
+            $texto[3] = $permissoesProcessos[0];
+            $textoDesc[3] = $permissoesProcessos[1];
+            $AcionaMenu[3] = 1;
+            $class_Icon[3] = "fa fa-gears";
+            
+            $acao[5] = "document.location = '$entrada'";
+            $texto[5] = $Anterior[0];
+            $textoDesc[5] = $Anterior[1];
+            $AcionaMenu[5] = 1;
+            $class_Icon[5] = "fa fa-arrow-circle-o-right";
+            break;
+        
+        
         case 56:
             $acao[0] = "jsOpenEditGroup()";
             $texto[0] = $CriarGrupo[0];
@@ -1352,6 +1394,12 @@ function definicaoToolBar($Menu)
             $textoDesc[3] = $permissoesProcessos[1];
             $AcionaMenu[3] = 1;
             $class_Icon[3] = "fa fa-gears";
+
+            $acao[4] = "document.location = 'adminconfig'";
+            $texto[4] = $configseguranca[0];
+            $textoDesc[4] = $configseguranca[1];
+            $AcionaMenu[4] = 1;
+            $class_Icon[4] = "fa fa-lock";
 
             $acao[5] = "document.location = '$entrada'";
             $texto[5] = $Anterior[0];
@@ -1392,11 +1440,17 @@ function definicaoToolBar($Menu)
             $AcionaMenu[2] = 1;
             $class_Icon[2] = "fa fa-users";
 
-            $acao[4] = "document.location = 'permissoes'";
+            $acao[3] = "document.location = 'permissoes'";
+            $texto[3] = $permissoesProcessos[0];
+            $textoDesc[3] = $permissoesProcessos[1];
+            $AcionaMenu[3] = 1;
+            $class_Icon[3] = "fa fa-gears";
+            
+            $acao[4] = "document.location = 'adminconfig'";
             $texto[4] = $permissoesProcessos[0];
             $textoDesc[4] = $permissoesProcessos[1];
             $AcionaMenu[4] = 1;
-            $class_Icon[4] = "fa fa-gears";
+            $class_Icon[4] = "fa fa-lock";            
 
             $acao[5] = "document.location = '$entrada'";
             $texto[5] = $Anterior[0];

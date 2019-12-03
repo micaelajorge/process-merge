@@ -93,8 +93,8 @@ function api_create_contract()
 }
 
 // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="api_trataWebHook">
 
+// <editor-fold defaultstate="collapsed" desc="api_trataWebHook">
 /**
  * 
  * @param type $dadosCCB

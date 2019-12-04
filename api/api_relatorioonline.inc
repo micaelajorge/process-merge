@@ -20,6 +20,9 @@ function insereTdDetalhe($aDados)
 function pegaDadosSLA($mes, $ano)
 {
     global $connect;
+    
+    $procId = PegaProcIdByCode("TRIBANCO");
+    
     $mes = str_pad($mes, 2, '0', STR_PAD_LEFT);
     if ($mes == 12) {
         $proximoMes = '01';
@@ -30,7 +33,7 @@ function pegaDadosSLA($mes, $ano)
     }
 
     $whereSLA = "date(campo15) >= '$ano/$mes/01' and date(campo15) < '$proximoAno/$proximoMes/01'";
-    $SQL = "select datediff(campo17, campo36) > 0 as sla, count(*) as total from exportkeys where procid = 75 and $whereSLA group by sla";
+    $SQL = "select datediff(campo17, campo36) > 0 as sla, count(*) as total from exportkeys where procid = $procId and $whereSLA group by sla";
     $Query = mysqli_query($connect, $SQL);
     $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);
 
@@ -103,6 +106,8 @@ function MontaCuboDimensao($parametros)
 
     // Calcula a Dimensao
     $numeroDimensao = count($parametros);
+    
+    $procId = PegaProcIdByCode("TRIBANCO");
 
     $mes = str_pad($parametros[1], 2, '0', STR_PAD_LEFT);
     $ano = $parametros[0];
@@ -120,28 +125,28 @@ function MontaCuboDimensao($parametros)
 
     switch ($numeroDimensao) {
         case 0:
-            $SQL = "select concat(month(campo15), '/', year(campo15)) as agrupamento, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null group by mes, ano, agrupamento order by agrupamento";
+            $SQL = "select concat(month(campo15), '/', year(campo15)) as agrupamento, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = $procId and not campo15 is null group by mes, ano, agrupamento order by agrupamento";
             $dimensaoExpandivel = 1;
             break;
         case 2:
-            $SQL = " select upper(campo34) as campo34, campo12 as agrupamento, count(*) as total from exportkeys where procid = 75 $where group by campo12, campo34 order by campo12";
+            $SQL = " select upper(campo34) as campo34, campo12 as agrupamento, count(*) as total from exportkeys where procid = $procId $where group by campo12, campo34 order by campo12";
             $dimensaoExpandivel = 1;
             break;
         case 3:
             $where .= " and campo12 = '" . urldecode($parametros[2]) . "'";
-            $SQL = " select upper(campo34) as campo34, campo14 as agrupamento, count(*) as total from exportkeys where procid = 75 $where group by campo14, campo34 order by campo14";
+            $SQL = " select upper(campo34) as campo34, campo14 as agrupamento, count(*) as total from exportkeys where procid = $procId $where group by campo14, campo34 order by campo14";
             $filtroCaption = "/ - " . urldecode($parametros[2]);
             $dimensaoExpandivel = 1;
             break;
         case 4:
             $where .= " and campo14 = '" . urldecode($parametros[3]) . "'";
-            $SQL = " select upper(campo34) as campo34, campo13 as agrupamento, count(*) as total from exportkeys where procid = 75 $where group by campo13, campo34 order by campo13";
+            $SQL = " select upper(campo34) as campo34, campo13 as agrupamento, count(*) as total from exportkeys where procid = $procId $where group by campo13, campo34 order by campo13";
             $filtroCaption = "/ - " . urldecode($parametros[3]);
             $dimensaoExpandivel = 0;
             break;
         case 5:
             $where .= " and campo14 = '" . urldecode($parametros[3]) . "'";
-            $SQL = " select upper(campo34) as campo34, campo7 as agrupamento, count(*) as total from exportkeys where procid = 75 $where group by campo13, campo34 order by campo7";
+            $SQL = " select upper(campo34) as campo34, campo7 as agrupamento, count(*) as total from exportkeys where procid = $procId $where group by campo13, campo34 order by campo7";
             $filtroCaption = "/ - " . urldecode($parametros[3]);
             $dimensaoExpandivel = 0;
             break;
@@ -248,26 +253,28 @@ function MontaCuboDimensao($parametros)
 function MontaCuboMeses()
 {
     global $connect, $mes_selecionado, $ano_selecionado;
+    
+    $procId = PegaProcIdByCode("TRIBANCO");
 
-    $SQL = "update exportkeys set campo13 = 'Não Localizado' where procid = 75 and campo13 = '' or campo13 = '#N/D' or campo13 is null";
+    $SQL = "update exportkeys set campo13 = 'Não Localizado' where procid = $procId and campo13 = '' or campo13 = '#N/D' or campo13 is null";
     $query = mysqli_query($connect, $SQL);
 
-    $SQL = "update exportkeys set campo14 = 'Não Localizado' where procid = 75 and campo14 = '' or campo14 = '#N/D' or campo14 is null";
+    $SQL = "update exportkeys set campo14 = 'Não Localizado' where procid = $procId and campo14 = '' or campo14 = '#N/D' or campo14 is null";
     $query = mysqli_query($connect, $SQL);
 
-    $SQL = "update exportkeys set campo12 = 'Não Localizado' where procid = 75 and campo12 = '' or campo12 = '#N/D' or campo12 is null";
+    $SQL = "update exportkeys set campo12 = 'Não Localizado' where procid = $procId and campo12 = '' or campo12 = '#N/D' or campo12 is null";
     $query = mysqli_query($connect, $SQL);
 
-    $SQL = "update exportkeys set campo13 = replace(campo13, '/', ' ') where procid = 75 and campo13 like '%/%' ";
+    $SQL = "update exportkeys set campo13 = replace(campo13, '/', ' ') where procid = $procId and campo13 like '%/%' ";
     $query = mysqli_query($connect, $SQL);
 
-    $SQL = "update exportkeys set campo12 = replace(campo12, '/', ' ') where procid = 75 and campo12 like '%/%'";
+    $SQL = "update exportkeys set campo12 = replace(campo12, '/', ' ') where procid = $procId and campo12 like '%/%'";
     $query = mysqli_query($connect, $SQL);
 
-    $SQL = "update exportkeys set campo14 = replace(campo14, '/', ' ') where procid = 75 and campo14 like '%/%' ";
+    $SQL = "update exportkeys set campo14 = replace(campo14, '/', ' ') where procid = $procId and campo14 like '%/%' ";
     $query = mysqli_query($connect, $SQL);
 
-    $SQL = "update exportkeys set campo15 = replace(campo15, '/', ' ') where procid = 75 and campo15 like '%/%' ";
+    $SQL = "update exportkeys set campo15 = replace(campo15, '/', ' ') where procid = $procId and campo15 like '%/%' ";
     $query = mysqli_query($connect, $SQL);
 
     $totalMesesAnteriores = 3;
@@ -296,9 +303,9 @@ function MontaCuboMeses()
     
     $whereData = "date(Campo15) >= '$dataInicio' and date(Campo15) < '$dataFim'";
             
-    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null and $whereData group by periodo, mes, ano, campo34 order by ano desc , mes desc";
-//    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null group by periodo, mes, ano, campo34 order by ano, mes";
-//    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = 75 and not campo15 is null and campo15 >= '2019-07-01' group by periodo, mes, ano, campo34 order by periodo";
+    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = $procId and not campo15 is null and $whereData group by periodo, mes, ano, campo34 order by ano desc , mes desc";
+//    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = $procId and not campo15 is null group by periodo, mes, ano, campo34 order by ano, mes";
+//    $SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano,  upper(Campo34) as campo34, count(*) as total from exportkeys where procid = $procId and not campo15 is null and campo15 >= '2019-07-01' group by periodo, mes, ano, campo34 order by periodo";
     $query = mysqli_query($connect, $SQL);
 
     $dados = mysqli_fetch_all($query, MYSQLI_ASSOC);

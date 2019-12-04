@@ -48,6 +48,7 @@ if (isset($_SESSION["mobileMode"])) {
     $mobileMode = $_SESSION["mobileMode"];
 }
 
+$procId = PegaProcIdByCode("TRIBANCO");
 
 
 $t_body = new Template(FILES_ROOT . "assets/templates/master/t_master.html");
@@ -64,7 +65,7 @@ $t_body->BODY_STYLE = "overflow: scroll";
 
 // Cria lista de mes/ano para filtro
 
-$SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano from exportkeys where procid = 75 group by ano, mes order by ano desc, mes desc";
+$SQL = "select concat(month(campo15), '/', year(campo15)) as periodo, month(campo15) as mes, year(campo15) as ano from exportkeys where procid = $procId group by ano, mes order by ano desc, mes desc";
 $Query = mysqli_query($connect, $SQL);
 
 $listaMeses = mysqli_fetch_all($Query, MYSQLI_ASSOC);

@@ -10,7 +10,7 @@
 use raelgc\view\Template;
 use Spipu\Html2Pdf\Html2Pdf;
 
-require FILES_ROOT . '/vendor/autoload.php';
+require_once FILES_ROOT . '/vendor/autoload.php';
 
 function geraHTML()
 {
@@ -25,9 +25,10 @@ function geraPDF()
     $html2pdf->output();
 }
 
-function criaHtmlTemplate($template, $dadosTemplate)
+function criaHtmlTemplate($template, $dadosTemplate, $baseTemplate = 'assets/templates/')
 {
-    $nomeArquivo = FILES_ROOT . "assets/templates/$template";
+    
+    $nomeArquivo = FILES_ROOT . "$baseTemplate" . "$template";
     
     if (!file_exists($nomeArquivo)) {
         $nomeArquivo = FILES_ROOT . "$template";

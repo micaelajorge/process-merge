@@ -6,7 +6,7 @@
 
 function jsInicializacaoPagina()
 {
-    $.get("queuefilters/tribanco/t_consultabasica_form.html/t_queue_filter_custon_1.html", (dadosRetornados) =>
+    $.get("queuefilters/GATEWAY_DIGITAL/t_consultabasica_form.html/t_queue_filter_custon_1.html", (dadosRetornados) =>
     {
         $("#camposConsulta").html(dadosRetornados);
     });

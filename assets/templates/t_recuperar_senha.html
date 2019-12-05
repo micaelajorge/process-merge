@@ -83,57 +83,6 @@
 
     </head>
     <body class="hold-transition">
-        <!-- BEGIN BLOCO_LOGON -->
-        <div class="login-box box-default">
-            <!-- /.login-logo -->
-            <div class="login-box-body">
-                <form role="form"  name="logon_fake" onSubmit="return AbrePagina()" autocomplete="false">
-                    <div class="form-group has-feedback">
-                        <input type="text" class="form-control input-sm" placeholder="e-mail" name="email" id="email" autofocus autocomplete="off" />
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    </div>                    
-                    <div class="row">
-                        <!-- /.col -->
-                        <div class="col-xs-6">
-                        </div>
-                        <div class="col-xs-6">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Enviar</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-                <!-- /.social-auth-links -->
-
-                <!--<form method="post" name="logon1" id="logon1" action="log">-->            
-                <form method="post" name="logon1" id="logon1" action="log.php">            
-                    <fieldset>
-                        <input name="UserName2" id="UserName2" type="hidden">
-                        <input name="UserPwd2" id="UserPwd2" type="hidden">
-                        <input name="StepId" type="hidden" value="{StepId}">
-                        <input name="ProcId" type="hidden" value="{ProcId}">
-                        <input name="Action" type="hidden" value="{Action}">
-                        <input name="CaseNum" type="hidden" value="{CaseNum}">
-                        <input name="AdHoc" type="hidden" value="{AdHoc}">    
-                        <input name="mobileMode" type="hidden" value="0" id="mobileMode">    
-                        <input name="PageSelect" type="hidden" value="{PageSelect}">
-                    </fieldset>
-                </form>                
-                <div class="hidden-xs {LOGO_DOWN_HIDE|constant:LOGO_DOWN_HIDE}" style="margin-top: 20px">
-                    <div>
-                        <div class="text-left col-lg-6">
-                            <img src="images/{LOGO_PARCEIRO}" style="{alinhamentoLogo|constant:ALINHAMENTO_LOGO};width:100%"></a>
-                        </div>
-                        <!-- BEGIN BLOCO_LOGO_CLIENTE -->
-                        <div class="text-right">
-                            <img src="images/{LOGO_CLIENTE}" style="{alinhamentoLogo|constant:ALINHAMENTO_LOGO_CLIENTE};width:30%"></a>
-                        </div>
-                        <!-- END BLOCO_LOGO_CLIENTE -->
-                    </div>
-                </div>
-            </div>   
-            <!-- /.login-box-body -->
-        </div>
-        <!-- END BLOCO_LOGON -->
         <!-- BEGIN BLOCO_RECUPERAR -->
         <div class="login-box box-default">
             <!--            <div class="login-logo">
@@ -142,9 +91,10 @@
             <!-- /.login-logo -->
             <div class="login-box-body">
                 <div class="alert alert-warning text-center">
+                    <i class="fa fa-user-secret fa-2x"></i><br />
                     Informe seu e-mail, para receber as intruções para recuperação de senha
                 </div>                
-                <form role="form"  name="logon_fake" onSubmit="return AbrePagina()">
+                <form role="form" method="post" action="enviorecuperarsenha" name="logon_fake" >
                     <div class="form-group has-feedback">                        
                         <input type="text" class="form-control input-sm" placeholder="e-mail" name="email" id="email" autofocus/>
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -162,6 +112,21 @@
             <!-- /.login-box-body -->
         </div>
         <!-- END BLOCO_RECUPERAR -->
+        <!-- BEGIN BLOCO_ENVIADO_EMAIL -->
+        <div class="login-box box-default">
+            <!--            <div class="login-logo">
+                            <img src="images/logo-souzalima.png" />              
+                        </div>-->
+            <!-- /.login-logo -->
+            <div class="login-box-body">
+                <div class="alert alert-sucess text-center">                    
+                    <i class="fa fa-envelope-o fa-3x"></i><br /> Enviado e-mail com informações para recuperacao da senha
+                </div>                
+                <!-- /.social-auth-links -->
+            </div>            
+            <!-- /.login-box-body -->
+        </div>
+        <!-- END BLOCO_ENVIADO_EMAIL -->
         <!-- /.login-box -->
         <div class="visible-xs">
             <div style="position: relative; top: 120px;right:0px;margin-bottom: 20px;margin-right: 20px">
@@ -189,17 +154,17 @@
         <script src="vendor/js/bootstrap.min.js"></script>
         <!-- iCheck -->
         <script>
-                    function jsInicializacaoPagina()
-                    {
-                        if ($(window).width() < 640)
-                        {
-                            $("#mobileMode").val("1");
-                        }
-                    }
+            function jsInicializacaoPagina()
+            {
+                if ($(window).width() < 640)
+                {
+                    $("#mobileMode").val("1");
+                }
+            }
 
-                    $(document).ready(function () {
-                        jsInicializacaoPagina();
-                    });
+            $(document).ready(function () {
+                jsInicializacaoPagina();
+            });
         </script>
     </body>
 </html>

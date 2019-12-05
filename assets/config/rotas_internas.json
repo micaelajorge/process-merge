@@ -3,7 +3,16 @@
         "recuperarsenha": {
           "GET": {
                 "page": "pages/recuperar_senha.inc",
-                "logon": false
+                "logon": false,
+                "parametros": ["emailEnviado"]
+          }              
+        },
+        "rp": {
+          "GET": {
+                "page": "api/api_admin_users.inc",
+                "funcao": "RecuperarSenha",
+                "logon": false,
+                "parametros": ["chaveRecuperacao"]
           }              
         },
         "api/v1/cessionstatuschange": {
@@ -11,6 +20,13 @@
                 "page": "api/api_gateway_certdox.inc",
                 "funcao": "CessionStatusChange",
                 "parametros": ["caseNum"],
+                "logon": false                
+            }
+        },
+        "enviorecuperarsenha": {
+            "POST": {
+                "page": "api/api_admin_users.inc",
+                "funcao": "EnvioEmailRecuperacao",
                 "logon": false                
             }
         },

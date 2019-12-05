@@ -7,32 +7,131 @@ require_once("include/resource01.php");
 
 define("LIMITE_FORCA_SENHA", 40);
 
+/**
+ * ROTA: api/manager/salvasenharecuparacao
+ * 
+ * @global type $USUARIO_SENHA
+ */
+function salva_senha_recuperacao()
+{
+    global $connect;
+
+    $dadosEntrada = apiTrataDadosEntrada();
+
+    $forcaSenha = testaForcaSenha($dadosEntrada['USUARIO_SENHA']);
+    if ($forcaSenha < LIMITE_FORCA_SENHA) {
+        header('HTTP/1.0 403 ERRO');
+        die;
+    }
+
+    $chaveBusca = filter_var($dadosEntrada['chaveRecuperacao'], FILTER_SANITIZE_STRING);
+    
+    $SQL = "select * from UserDef where tokenEmail = '$chaveBusca'";
+    $Query = mysqli_query($connect, $SQL);
+    
+    $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+    
+    if (count($linhas) == 0)
+    {
+        header('HTTP/1.0 403 ERRO');
+        die;
+    }
+
+    salva_senha($dadosEntrada["USUARIO_SENHA"]);
+    header('HTTP/1.0 200');
+}
+
+/**
+ * ROTA: enviorecuperarsenha
+ * @global type $connect
+ */
+function EnvioEmailRecuperacao()
+{
+    global $connect;
+    $dadosEntrada = apiTrataDadosEntrada();
+
+    $emailBusca = filter_var($dadosEntrada["email"], FILTER_SANITIZE_EMAIL);
+
+    $SQL = "select * from UserDef where email = '$emailBusca'";
+    $Query = mysqli_query($connect, $SQL);
+
+    $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+
+    if (count($linhas) == 0) {
+        return;
+    }
+
+    $tokenRecuperacao = calculaToken("recuperacao", $emailBusca, false, true);
+
+    if (!key_exists("tokenEmail", $linhas[0])) {
+        $SQL = "alter table userdef add column tokenEmail varchar(255)";
+        $Query = mysqli_query($connect, $SQL);
+    }
+
+    $SQL = "update userdef set tokenEmail = '$tokenRecuperacao' where userId = {$linhas[0]["UserId"]}";
+    $Query = mysqli_query($connect, $SQL);
+    
+    require FILES_ROOT . "include/envio_email.inc";
+    
+    $emailFrom["address"] = "mmoscz@gmail.com";
+    $emailFrom["nome"] = "mmoscz@gmail.com";
+    
+    $emailAddress["address"] = "mmoscz@gmail.com";
+    $emailAddress["nome"] = "mmoscz@gmail.com";
+    
+    $emailSubject = "Troca de Senha";
+    
+    $bodyMessage = "<b>Recuparação Senha</b>";
+    
+    EnviarEmail($emailFrom, $emailAddress, $emailSubject, $bodyMessage);
+    
+    header('Location: recuperarsenha/enviado');
+}
+
+/**
+ * ROTA: api/v1/rp
+ * @global type $connect
+ */
+function RecuperarSenha()
+{
+    global $connect, $chaveRecuperacao;
+
+    $chaveBusca = filter_var($chaveRecuperacao, FILTER_SANITIZE_STRING);
+    $SQL = "select * from UserDef where tokenEmail = '$chaveBusca'";
+    $Query = mysqli_query($connect, $SQL);
+
+    $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+
+    if (count($linhas) == 0) {
+        $_SESSION = array();
+        $erro_logon = true;
+        $MsgLogon = 'token de autenticação inválido';
+        include(FILES_ROOT . "pages/logon.inc");
+        exit;
+    }
+}
+
 function testaForcaSenha($senhaUsuario)
 {
     $forcaSenha = 0;
-    if (strlen($senhaUsuario) < 8)
-    {
+    if (strlen($senhaUsuario) < 8) {
         return 0;
     }
     $retorno = preg_match('/(\W+)/m', $senhaUsuario);
-    if ($retorno !== false)
-    {
-        $forcaSenha+= 10;
+    if ($retorno !== false) {
+        $forcaSenha += 10;
     }
     $retorno = preg_match('/a-z]+/m', $senhaUsuario);
-    if ($retorno !== false)
-    {
-        $forcaSenha+= 10;
+    if ($retorno !== false) {
+        $forcaSenha += 10;
     }
     $retorno = preg_match('/A-Z]+/m', $senhaUsuario);
-    if ($retorno !== false)
-    {
-        $forcaSenha+= 10;
+    if ($retorno !== false) {
+        $forcaSenha += 10;
     }
     $retorno = preg_match('/0-9]+/m', $senhaUsuario);
-    if ($retorno !== false)
-    {
-        $forcaSenha+= 10;
+    if ($retorno !== false) {
+        $forcaSenha += 10;
     }
     return $forcaSenha;
 }
@@ -45,13 +144,24 @@ function salva_senha_inicial()
 
 /**
  * 
- * @global type $connect
  * @global type $USUARIO_ID
  * @param type $USUARIO_SENHA
  */
 function salva_senha($USUARIO_SENHA)
 {
-    global $connect, $USUARIO_ID;
+    global $USUARIO_ID;
+    salvar_senha($USUARIO_ID, $USUARIO_SENHA);
+}
+
+/**
+ * 
+ * @global type $connect
+ * @param type $USUARIO_ID
+ * @param type $USUARIO_SENHA
+ */
+function salvar_senha($USUARIO_ID, $USUARIO_SENHA)
+{
+    global $connect;
     $senhaCript = password_hash($USUARIO_SENHA, PASSWORD_DEFAULT);
     $SQL = "update userdef set UserPWD = '$senhaCript', lastlogon = Now() where userId = $USUARIO_ID";
     $resultado = mysqli_query($connect, $SQL);
@@ -59,7 +169,7 @@ function salva_senha($USUARIO_SENHA)
         header('HTTP/1.0 200 ok');
     } else {
         header('HTTP/1.0 403 ERRO');
-    }        
+    }
 }
 
 /**
@@ -72,23 +182,21 @@ function salva_senha_troca()
     global $USUARIO_SENHA, $connect, $USUARIO_SENHA_ATUAL;
 
     $forcaSenha = testaForcaSenha($USUARIO_SENHA);
-    if ($forcaSenha < LIMITE_FORCA_SENHA)
-    {
+    if ($forcaSenha < LIMITE_FORCA_SENHA) {
         header('HTTP/1.0 403 ERRO');
         die;
     }
-    
+
     $userDef = $_SESSION["userdef"];
-    
-    $userTeste = new userdef;    
+
+    $userTeste = new userdef;
     $resultadoSenha = $userTeste->ProcessLogon_BuscaUsuario($userDef->UserName, $USUARIO_SENHA_ATUAL, $connect);
 
-    if (!$resultadoSenha)
-    {
+    if (!$resultadoSenha) {
         header('HTTP/1.0 403 ERRO');
         die;
     }
-    
+
     salva_senha($USUARIO_SENHA);
 }
 
@@ -146,19 +254,18 @@ function gravaDadosUsuario()
 
     $SQL = "select username from userdef where username = '$USUARIO_NOME' ";
     $Query = mysqli_query($connect, $SQL);
-    
-    if (mysqli_num_rows($Query) > 0)
-    {
+
+    if (mysqli_num_rows($Query) > 0) {
         header('HTTP/1.0 422 ERRO');
         echo "Usuário já existe";
         return;
     }
 
-    echo "$header.$payload.$signature";    
+    echo "$header.$payload.$signature";
     $token = $dadosEntrada["token"];
     if (trim($token) == "") {
         $token = calculaToken($USUARIO_NOME, $USUARIO_EMAIL);
-    }       
+    }
 
     if ($dadosEntrada["USUARIO_ID"] > 0) {
         $SQL = "update "

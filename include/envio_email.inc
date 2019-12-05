@@ -12,23 +12,6 @@ use PHPMailer\PHPMailer\SMTP;
 
 require FILES_ROOT . 'vendor/autoload.php';
 
-function pegaDadosServidorEmail()
-{
-    global $connect;
-
-    $SQL = "select * from config";
-    $Query = mysqli_query($connect, $SQL);
-
-    $retornoConfigs = mysqli_fetch_all($Query, MYSQLI_ASSOC);
-
-    $configs = array();
-    foreach ($retornoConfigs as $parametro) {
-        $configs[$parametro['Funcao']] = $parametro["Valor"];
-    }
-
-    return $configs;
-}
-
 /**
  * 
  * @param type $emailFrom

@@ -1,5 +1,4 @@
 <?php
-
 //error_log("Entrando LOG");
 
 if (!isset($_POST["UserName2"]) & !isset($_POST["ASP_session"]) & isset($_POST["SessionID"])) {
@@ -66,9 +65,10 @@ $config = Carregaconfig();
 $paginaEntrada = $paginaInicialPreferencial;
 $_SESSION["entrada"] = $paginaEntrada;
 
-if (isset($PageSelect))
-{
-    $paginaEntrada = $PageSelect;
+if (isset($PageSelect)) {
+    if ($PageSelect !== "" && $PageSelect !== "logon" && $PageSelect !== "log.php" && $PageSelect !== "log_php") {
+        $paginaEntrada = $PageSelect;
+    }
 }
 
 $CaseNum = "";
@@ -104,36 +104,29 @@ if (count($S_Processos) > 1) {
 
         $procId_EntradaUnico = null;
         $totalProcessosView = 0;
-        for ($i =0; $i < count($S_Processos); $i++)
-        {            
-            if ($S_Processos[$i]["HideEntrada"] == 0)
-            {
+        for ($i = 0; $i < count($S_Processos); $i++) {
+            if ($S_Processos[$i]["HideEntrada"] == 0) {
                 $indiceProcesso = $i;
                 $totalProcessosView++;
             }
         }
-        
-        if ($totalProcessosView > 1)
-        {
+
+        if ($totalProcessosView > 1) {
             $indiceProcesso = false;
         }
-        
+
         // Verifica se o Codigo existe na lista de Processos do usuário
-        if ($indiceProcesso > -1)
-        {
+        if ($indiceProcesso > -1) {
             $paginaAcao = $S_Processos[$indiceProcesso]["PageAction"];
-            if ($paginaAcao !== "")
-            {
+            if ($paginaAcao !== "") {
                 $paginaEntrada = $paginaAcao;
-            }
-            else {
+            } else {
                 $paginaEntrada = "queue/" . $S_Processos[$indiceProcesso]["ProcId"];
-            }                
+            }
         } else {
             $listPageAcitons = array_column($S_Processos, "PageAction");
             $indiceProcesso = array_search($ProcId, $listPageAcitons);
-            if ($indiceProcesso > -1)
-            {
+            if ($indiceProcesso > -1) {
                 $paginaEntrada = $ProcId;
             }
         }
@@ -161,7 +154,7 @@ if (count($S_Processos) > 1) {
         }
     } else {
         $_SESSION["S_Processos"] = $S_Processos;
-    }    
+    }
     echo "<html><body><script>document.location = \"$paginaEntrada\"</script></body></html>";
     exit();
 }
@@ -209,8 +202,7 @@ if ($CaseNum != "") {
                 $entrada = $paginaInicialPreferencial;
             } else {
                 $paginaEntrada = $S_Processos[0]["PageAction"];
-                if ($paginaEntrada == "")
-                {
+                if ($paginaEntrada == "") {
                     $paginaEntrada = "queue/%PROCID%";
                 }
                 $paginaEntrada = str_replace("%ASP_SESSION%", $userdef->ASP_session, $paginaEntrada);

@@ -13,7 +13,21 @@ require_once(FILES_ROOT . "include/resource01.php");
 
 use raelgc\view\Template;
 
-$t_body = new Template(FILES_ROOT . "assets/templates/t_queue_filter.html");
+if ($templateFilter == "")
+{
+    $templateFilter = "t_queue_filter.html";
+}
+
+if ($templateFields == "")
+{
+    $templateFields = "t_queue_filter_form.html";
+}
+
+
+$t_body = new Template(FILES_ROOT . "assets/templates/$templateFilter");
+$t_body->addFile("FORM_FIELDS", FILES_ROOT . "assets/templates/$templateFields");
+
+$procId = PegaProcIdByCode($procId);
 
 $SQL = "select *, FieldRazaoOrder + FieldName as order_sort from procfieldsdef where ProcId = $procId and FieldKey = 1 and FieldSpecial = 0 order by order_sort";
 $Query = mysqli_query($connect, $SQL);
@@ -50,8 +64,8 @@ foreach ($camposFiltro as $campo) {
         case "DT":
             $valorCampo = $valorCampo[0];
             $valorCampo = ConvDate($valorCampo);
-//            $nomeBlocoCampo = criaCampoFiltroInput_DT($t_body, $valorCampo);
-            $nomeBlocoCampo = criaCampoFiltroInput($t_body, $valorCampo);
+            $nomeBlocoCampo = criaCampoFiltroInput_DT($t_body, $valorCampo);
+//            $nomeBlocoCampo = criaCampoFiltroInput($t_body, $valorCampo);
             break;
         default:
             $valorCampo = $valorCampo;

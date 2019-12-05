@@ -24,21 +24,10 @@ function salvaConfig()
 
 /**
  * ROTA: api/v1/configs
- * @global type $connect
  */
 function getConfig()
 {
-    global $connect;
-
-    $SQL = "select * from config";
-    $Query = mysqli_query($connect, $SQL);
-
-    $retornoConfigs = mysqli_fetch_all($Query, MYSQLI_ASSOC);
-
-    $configs = array();
-    foreach ($retornoConfigs as $parametro) {
-        $configs[$parametro['Funcao']] = $parametro["Valor"];
-    }
+    $configs = pegaDadosConfig();
     
     $dadosRetorno = json_encode($configs);
     

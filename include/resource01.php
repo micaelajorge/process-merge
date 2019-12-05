@@ -78,6 +78,29 @@ function pegaDadosCaso($procId, $caseNum, $camposSelecionados = "")
 
 // </editor-fold>
 
+/**
+ * 
+ * @global type $connect
+ * @return type
+ */
+function pegaDadosConfig()
+{
+    global $connect;
+
+    $SQL = "select * from config";
+    $Query = mysqli_query($connect, $SQL);
+
+    $retornoConfigs = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+
+    $configs = array();
+    foreach ($retornoConfigs as $parametro) {
+        $configs[$parametro['Funcao']] = $parametro["Valor"];
+    }
+
+    return $configs;
+}
+
+
 function validaTokenEnvio($token)
 {
     $_password = "ui39%r3##73&DBOA";

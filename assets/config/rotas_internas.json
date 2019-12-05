@@ -1005,13 +1005,12 @@
         "queuefilters": {
             "POST": {
                 "page": "include/queuefilter.inc",
-                "parametros": ["procId"]
-            }
-        },
-        "queuefilter": {
-            "POST": {
-                "page": "include/queuefilter.inc"
-            }
+                "parametros": ["procId", "templateFilter"]
+            },
+            "GET": {
+                "page": "include/queuefilter.inc",
+                "parametros": ["procId", "templateFilter", "templateFields"]
+            }            
         },
         "api/webcapture_anexar": {
             "POST": {

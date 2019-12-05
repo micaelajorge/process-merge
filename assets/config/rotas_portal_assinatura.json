@@ -21,6 +21,12 @@
                 "funcao": "api_getTemplateData",
                 "logon": false                
             }
+        },
+        "consultabasica": {
+            "GET": {
+                "page": "pages/consultabasica.inc",
+                "parametros": "[procCode]"
+            }
         }
     }
 }

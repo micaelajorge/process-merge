@@ -66,6 +66,11 @@ $config = Carregaconfig();
 $paginaEntrada = $paginaInicialPreferencial;
 $_SESSION["entrada"] = $paginaEntrada;
 
+if (isset($PageSelect))
+{
+    $paginaEntrada = $PageSelect;
+}
+
 $CaseNum = "";
 if (isset($_POST["CaseNum"])) {
     $CaseNum = $_POST["CaseNum"];

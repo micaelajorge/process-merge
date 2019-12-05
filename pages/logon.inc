@@ -38,6 +38,11 @@ if ($redirectQueryString != "") {
     $t_body->ProcId = $redirectQueryString;
 }
 
+
+$keyGET = array_keys($_GET);
+$pageSelect = array_pop($keyGET);
+$t_body->PageSelect = "$pageSelect";
+
 if (!isset($TIPO_ALERTA_LOGON)) {
     $TIPO_ALERTA_LOGON = "alert-warning";
 }

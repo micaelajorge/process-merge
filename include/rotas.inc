@@ -192,8 +192,9 @@ function geraParametrosRecebidosURL($paginaAcesso, $dadosURI, $rotaEncontrada)
 }
 
 function defineRota($p_dadosURI, $methodHTTP)
-{
-    global $connect;
+{    
+    global $_SERVER;
+    
     // Rota usada quando não for encontrada uma rota definida
     $rotaPadrao = defineRotaPadrao($p_dadosURI);
 
@@ -242,6 +243,8 @@ function defineRota($p_dadosURI, $methodHTTP)
         return $rotaPadrao;
     }
 
+    
+    
     return $rotaEncontrada;
 }
 

@@ -38,7 +38,8 @@ function salva_senha_recuperacao()
     }
 
     salva_senha($dadosEntrada["USUARIO_SENHA"]);
-    header('HTTP/1.0 200');
+
+    include('recuperarsenha/enviado');
 }
 
 /**
@@ -61,17 +62,18 @@ function EnvioEmailRecuperacao()
         return;
     }
 
-    $tokenRecuperacao = calculaToken("recuperacao", $emailBusca, false, true);
+    $tokenRecuperacao = uniqid();
 
     if (!key_exists("tokenEmail", $linhas[0])) {
         $SQL = "alter table userdef add column tokenEmail varchar(255)";
         $Query = mysqli_query($connect, $SQL);
     }
-
+       
     $SQL = "update userdef set tokenEmail = '$tokenRecuperacao' where userId = {$linhas[0]["UserId"]}";
     $Query = mysqli_query($connect, $SQL);
     
-    require FILES_ROOT . "include/envio_email.inc";
+    require_once FILES_ROOT . "include/envio_email.inc";
+    require_once FILES_ROOT . "pages/gerar_arquivo_template.inc";
     
     $emailFrom["address"] = "mmoscz@gmail.com";
     $emailFrom["nome"] = "mmoscz@gmail.com";
@@ -81,7 +83,10 @@ function EnvioEmailRecuperacao()
     
     $emailSubject = "Troca de Senha";
     
-    $bodyMessage = "<b>Recuparação Senha</b>";
+    $variaveisTemplate["token"] = $tokenRecuperacao;
+    $variaveisTemplate["URL_SERVER"] = URL_SERVER;
+    
+    $bodyMessage = criaHtmlTemplate('email_recuperacao_senha.html', $variaveisTemplate, 'assets/notificacoes/');
     
     EnviarEmail($emailFrom, $emailAddress, $emailSubject, $bodyMessage);
     
@@ -96,7 +101,7 @@ function RecuperarSenha()
 {
     global $connect, $chaveRecuperacao;
 
-    $chaveBusca = filter_var($chaveRecuperacao, FILTER_SANITIZE_STRING);
+    $chaveBusca = filter_var($chaveRecuperacao, FILTER_SANITIZE_EMAIL);
     $SQL = "select * from UserDef where tokenEmail = '$chaveBusca'";
     $Query = mysqli_query($connect, $SQL);
 

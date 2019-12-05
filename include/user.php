@@ -209,7 +209,7 @@ class userdef {
 
     function SalvaDataLogon()
     {
-        $SQL = "update userdef set lastlogon = now() where userid = $this->UserId";
+        $SQL = "update userdef set lastlogon = now(), loginsFailed = 0 where userid = $this->UserId";
         $QUERY_USER = mysqli_query($this->connect, $SQL);
     }
 
@@ -279,7 +279,8 @@ class userdef {
             return true;
         }
     }
-
+    
+    
     function AcrescentaTentativasLogon($userId)
     {
         $SQL = "SHOW COLUMNS FROM `userdef` LIKE 'loginsFailed' int default 0";

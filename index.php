@@ -11,6 +11,8 @@ define("RELEASE_SCRIPT", "0054");
 define("SYS_VERSION", "3.2.2");
 define("LOG_DATA", false);
 
+
+
 function iniciarPhpSession()
 {
     $headers = getallheaders();
@@ -1534,6 +1536,7 @@ if (!defined("DINAMIC_TWAIN_CONFIG")){
     define("DINAMIC_TWAIN_CONFIG", "dynamsoft.webtwain.config.js");
 }
     
+define("DEFAULT_MAX_FALHAS_LOGON", 3);
 
 if (!defined("SITE_ROOT")) {
     define("SITE_ROOT", "http://$srvAccess");

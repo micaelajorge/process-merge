@@ -1,0 +1,35 @@
+<form name="frmQueueFilter" id="frmQueueFilter">
+    <div class="row">
+        <!-- BEGIN BLOCO_CAMPO_FILTRO -->
+        <div class="col-lg-2 form-group form-group-sm">
+            <label>{CAMPO_NOME}</label>
+            <input class="form-control input-sm" type="text" name="Campo{CAMPO_ID}" id="Campo{CAMPO_ID}" aria-field-name="{CAMPO_NOME}" aria-field-id="{CAMPO_ID}" aria-field-type="{CAMPO_TIPO}" value="{CAMPO_VALOR}" >                            
+        </div>
+        <!-- END BLOCO_CAMPO_FILTRO -->
+        <!-- BEGIN BLOCO_CAMPO_FILTRO_DT -->
+        <div class="col-lg-2">
+            <label>{CAMPO_NOME}</label>
+            <div>                
+                <div class="col-lg-6 form-group form-group-sm">
+                    <input class="form-control input-sm" type="text" name="Campo{CAMPO_ID}" id="Campo{CAMPO_ID}" placeholder="Data Inicio" aria-field-name="{CAMPO_NOME}" aria-field-id="{CAMPO_ID}" aria-field-type="{CAMPO_TIPO}" value="{CAMPO_VALOR}" >                            
+                </div>
+                <div class="col-lg-6 form-group form-group-sm">
+                    <input class="form-control input-sm" type="text" name="Campo{CAMPO_ID}" id="Campo{CAMPO_ID}" placeholder="Data Fim" aria-field-name="{CAMPO_NOME}" aria-field-id="{CAMPO_ID}" aria-field-type="{CAMPO_TIPO}" value="{CAMPO_VALOR}" >                            
+                </div>
+            </div>
+        </div>
+        <!-- END BLOCO_CAMPO_FILTRO_DT -->
+        <!-- BEGIN BLOCO_CAMPO_FILTRO_LT -->
+        <div class="col-lg-2 form-group form-group-sm">
+            <label>{CAMPO_NOME}</label>
+            <select class="form-control input-sm" name="Campo{CAMPO_ID}" id="Campo{CAMPO_ID}" aria-field-name="{CAMPO_NOME}" aria-field-id="{CAMPO_ID}" aria-field-type="{CAMPO_TIPO}">
+                <option></option>
+                <!-- BEGIN BLOCO_OPCAO_LT -->
+                <option value="{OPT_VALOR}" {OPT_SELECTED}>{OPT_DESC}</option>
+                <!-- END BLOCO_OPCAO_LT -->
+            </select>
+        </div>
+        <!-- END BLOCO_CAMPO_FILTRO_LT -->
+    </div>
+    <input type="hidden" value="{USUARIO_ID}" name="USUARIO_ID" id="USUARIO_ID">
+</form>

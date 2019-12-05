@@ -116,7 +116,7 @@ function tokenUpload($usuario, $email)
     $signature = base64_encode($signature);
 }
 
-function calculaToken($usuario, $email, $todosDados = true)
+function calculaToken($usuario, $email, $todosDados = true, $recuparacaoSenha = false)
 {
     $_password = "ui39%r3##73&DBOA";
 
@@ -133,6 +133,8 @@ function calculaToken($usuario, $email, $todosDados = true)
         'typ' => 'JWT'
     ];
 
+    
+    
     $header = json_encode($header);
     $header = base64_encode($header);
 
@@ -142,6 +144,12 @@ function calculaToken($usuario, $email, $todosDados = true)
         'email' => $email,
         'data_inicio' => date("Y-m-d H:i")
     ];
+    
+    if ($recuparacaoSenha)
+    {
+        $payload["recuparacao_senha"] = true;
+    }
+    
     $payload = json_encode($payload);
     $payload = base64_encode($payload);
 

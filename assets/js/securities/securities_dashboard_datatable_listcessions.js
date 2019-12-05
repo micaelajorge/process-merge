@@ -7,7 +7,7 @@
 
 var dashboardSecuritesListaCessoes_Colunas = [
     {
-        "data": null,
+        "data": "casenum",
         "orderable": false
     },
     {
@@ -22,7 +22,8 @@ var dashboardSecuritesListaCessoes_columnsDefs = [
         render: (data, type, row, meta) => {
             return jsDashboardSecurities_SelecionaCessao(row);         
         },     
-        "width": "120px"
+        "width": "120px",
+        "orderable": false        
     },
     {
         targets: 1,
@@ -33,12 +34,19 @@ var dashboardSecuritesListaCessoes_columnsDefs = [
     }
 ];
 
+//extraPameters = {
+//    "scrollX": false,
+//    "scrollXInner": false,
+//    "pageLength": 5,
+//    "initComplete": jsDashboardSecurities_RenderizaCompletada,
+//    "ordering": false
+//};
+
 extraPameters = {
     "scrollX": false,
     "scrollXInner": false,
     "pageLength": 5,
-    "initComplete": jsDashboardSecurities_RenderizaCompletada,
-    "ordering": false
+    "initComplete": jsDashboardSecurities_RenderizaCompletada
 };
 
 var sort = [0, "desc"];

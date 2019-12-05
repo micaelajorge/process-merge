@@ -6,10 +6,11 @@
   Sistema: Process_XAMPP
  */
 
-require FILES_ROOT . '/vendor/autoload.php';
 
 use raelgc\view\Template;
 use Spipu\Html2Pdf\Html2Pdf;
+
+require FILES_ROOT . '/vendor/autoload.php';
 
 function geraHTML()
 {
@@ -24,14 +25,10 @@ function geraPDF()
     $html2pdf->output();
 }
 
-
-function htmlTemplate()
+function criaHtmlTemplate($template, $dadosTemplate)
 {
-    $dadosEntrada = apiTrataDadosEntrada();
-
-    $template = $dadosEntrada["template"];
-
     $nomeArquivo = FILES_ROOT . "assets/templates/$template";
+    
     if (!file_exists($nomeArquivo)) {
         $nomeArquivo = FILES_ROOT . "$template";
         if (!file_exists($nomeArquivo)) {
@@ -42,14 +39,26 @@ function htmlTemplate()
 
     $t_body = new Template($nomeArquivo);
 
-    $listaVariaveisEnviadas = array_keys($dadosEntrada);
+    $listaVariaveisEnviadas = array_keys($dadosTemplate);
 
     foreach ($listaVariaveisEnviadas as $variavelEnviada) {
         $dadoTemplate = strtoupper($variavelEnviada);
-        $t_body->$dadoTemplate = $dadosEntrada[$variavelEnviada];
+        $t_body->$dadoTemplate = $dadosTemplate[$variavelEnviada];
     }
 
     $htmlGerado = $t_body->parse();
+    
+    return $htmlGerado;    
+}
+
+function htmlTemplate()
+{
+    $dadosEntrada = apiTrataDadosEntrada();
+
+    $template = $dadosEntrada["template"];
+    
+    $htmlGerado = criaHtmlTemplate($template, $dadosEntrada);
+
     return $htmlGerado;
 }
 //echo $htmlGerado;

@@ -257,15 +257,53 @@ class userdef {
         return;
     }
 
+    function verificaTotalTentativasLogon($userId, $userName)
+    {
+        $SQL = "select loginsFailed from userdef where userId = $userId";
+        $Query = mysqli_query($this->connect, $SQL);
+        $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+
+
+        $configs = pegaDadosConfig();
+
+        $max_falhas_logon = ($configs["maxFalhaLogon"]) ? $configs["maxFalhaLogon"] : DEFAULT_MAX_FALHAS_LOGON;
+
+
+        if ($linhas[0]["loginsFailed"] > $max_falhas_logon) {
+            $SQL = "update userdef set active = 0 where userId = $userId and loginsFailed = 0";
+            $Query = mysqli_query($this->connect, $SQL);
+            insereEntradaAuditTrail(0, 0, 0, $userId, $userName, 904, 'Usuário desativado por excesso de tentativas de logon');
+            return false;
+        } else {
+            insereEntradaAuditTrail(0, 0, 0, $userId, $userName, 901, 'Tentativa de logon sem sucesso');
+            return true;
+        }
+    }
+
+    function AcrescentaTentativasLogon($userId)
+    {
+        $SQL = "SHOW COLUMNS FROM `userdef` LIKE 'loginsFailed' int default 0";
+        $Query = mysqli_query($this->connect, $SQL);
+
+        $Lista = mysqli_fetch_all($Query);
+
+        if (count($Lista === 0)) {
+            $SQL = "alter table `userdef` add column loginsFailed int ";
+            $Query = mysqli_query($this->connect, $SQL);
+        }
+
+        $SQL = "update userdef set loginsFailed = loginsFailed + 1 where userId = $userId";
+        $Query = mysqli_query($this->connect, $SQL);
+    }
+
     function ProcessLogon_BuscaUsuario($userName, $password, $connect = false)
     {
 
         $SQL = "SELECT UserId, UserName, UserPwd, UserLevel, UserDesc, Email, Uactive, CustonGate, AdHoc, Origem, lastlogon, lastnotification, lastmessages 
 		from userdef where UActive=1";
         //error_log($SQL);
-        
-        if (!$connect)
-        {
+
+        if (!$connect) {
             $connect = $this->connect;
         }
         $QUERY_USER = mysqli_query($connect, $SQL);
@@ -280,13 +318,23 @@ class userdef {
                 continue;
             }
             $dbUserPwd = $result["UserPwd"];
+
+            // Verifica a senha criptografada
             if (!password_verify($password, $dbUserPwd)) {
+
+                // Verifica a senha em plain text
                 if (($password !== $dbUserPwd)) {
+
+                    // Acrescenta um erro ao Login                    
+                    $this->AcrescentaTentativasLogon($result["UserId"]);
+
+                    $this->verificaTotalTentativasLogon($result["UserId"], $userName);
                     return false;
                 }
             }
             return $result;
         }
+        insereEntradaAuditTrail(0, 0, 0, 0, $userName, 902, "Tentativa de logon do usuário $userName");
         return false;
     }
 
@@ -325,6 +373,7 @@ class userdef {
             $this->lastnotification = (!empty($result["lastnotification"])) ? $result["lastnotification"] : '1901-01-01';
             $this->lastmessages = (!empty($result["lastmessages"])) ? $result["lastmessages"] : '1901-01-01';
 
+            insereEntradaAuditTrail(0, 0, 0, $result["UserId"], $UserName, 900, "Logon efetuado para $UserName");
             if ($validado) {
                 $this->SalvaDataLogon();
             }

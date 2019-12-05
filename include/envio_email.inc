@@ -48,7 +48,8 @@ function EnviarEmail($emailFrom, $emailAddress, $emailSubject, $bodyMessage)
     // SMTP::DEBUG_OFF = off (for production use)
     // SMTP::DEBUG_CLIENT = client messages
     // SMTP::DEBUG_SERVER = client and server messages
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+//    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    $mail->SMTPDebug = SMTP::DEBUG_OFF;
     $mail->Host = $dadosServidor["emailNotificationServer"];
 
     $mail->Port = $dadosServidor["emailNotificationPort"];

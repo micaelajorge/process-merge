@@ -223,6 +223,7 @@ switch ($srvAccess) {
         $EXTERNALUSER = "root";
         $EXTERNALPWD = "";
         $EXTERNAL_USERNAME = "root";
+        define("SITE_ROOT", "http://localhost/");
         switch ($aliasServidor) {
             case "process-teste":
                 define("TEMASISTEMA", "skin-red");
@@ -1627,6 +1628,11 @@ try {
     $methodHTTP = $_SERVER["REQUEST_METHOD"];
     $rotaDefinida = defineRota($rota, $methodHTTP);
 
+    // Define a URL do Server
+    
+    $urlServer = SITE_ROOT . $aliasServidor;
+    define("URL_SERVER", $urlServer);    
+    
     $LOGAR_ROTA = LOG_DATA | LOGAR_ROTA;
 
     ($LOGAR_ROTA) ? error_log("Dados URI: '$rota'") : null;

@@ -1064,33 +1064,33 @@
         },
         "api/manager/savepassword": {
             "POST": {
-                "page": "api/apiadminusers.inc",
+                "page": "api/api_admin_users.inc",
                 "funcao": "salva_senha_troca",
                 "logon":false
             }
         },
         "api/manager/changepassword": {
             "POST": {
-                "page": "api/apiadminusers.inc",
+                "page": "api/api_admin_users.inc",
                 "funcao": "salva_senha_troca",
                 "logon":false
             }
         },
         "api/manager/savepasswordstart": {
             "POST": {
-                "page": "api/apiadminusers.inc",
+                "page": "api/api_admin_users.inc",
                 "funcao": "salva_senha_inicial"
             }
         },
         "api/manager/adicionausergrupo": {
             "POST": {
-                "page": "api/apiadminusers.inc",
+                "page": "api/api_admin_users.inc",
                 "funcao": "adicionaentidade"
             }
         },
         "api/manager/removeusergrupo": {
             "POST": {
-                "page": "api/apiadminusers.inc",
+                "page": "api/api_admin_users.inc",
                 "funcao": "removeentidade"
             }
         },
@@ -1496,11 +1496,11 @@
         },
         "api/manager/users": {
             "POST": {
-                "page": "api/apiadminusers.inc",
+                "page": "api/api_admin_users.inc",
                 "funcao": "api_pegarUsuarios"
             },
             "GET": {
-                "page": "api/apiadminusers.inc",
+                "page": "api/api_admin_users.inc",
                 "funcao": ""
             }
         },
@@ -1516,19 +1516,19 @@
         },
         "api/manager/salvardadosgrupo": {
             "POST": {
-                "page": "api/apiadminusers.inc",
+                "page": "api/api_admin_users.inc",
                 "funcao": "gravaDadosGrupo"
             }
         },
         "api/manager/salvardadosusuario": {
             "POST": {
-                "page": "api/apiadminusers.inc",
+                "page": "api/api_admin_users.inc",
                 "funcao": "gravaDadosUsuario"
             }
         },
         "api/manager/groups": {
             "POST": {
-                "page": "api/apiadminusers.inc",
+                "page": "api/api_admin_users.inc",
                 "funcao": "api_pegaGrupos"
             }
         },

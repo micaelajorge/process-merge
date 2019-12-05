@@ -2,7 +2,8 @@
     "rotas": {    
         "recuperarsenha": {
           "GET": {
-                "page": "pages/recuperar_senha.inc"
+                "page": "pages/recuperar_senha.inc",
+                "logon": false
           }              
         },
         "api/v1/cessionstatuschange": {

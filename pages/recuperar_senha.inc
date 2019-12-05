@@ -2,7 +2,7 @@
 require_once(FILES_ROOT . "include/resource01.php");
 use raelgc\view\Template;
 
-$t_body = new Template(FILES_ROOT . "assets/templates/t_newlogon.html");
+$t_body = new Template(FILES_ROOT . "assets/templates/t_recuperar_senha.html");
 
 //$t_body->block("BLOCK_HEADER");
 //$t_body->block("BLOCK_FOOTER");
@@ -14,10 +14,15 @@ if (isset($MsgLogon))
     $t_body->MSGLOGON = $MsgLogon;
     $t_body->block("BLOCO_ALERTA_ERRO");
     }
+       
     
-    
-$t_body->LOGO_PARCEIRO = "logo-agiliza.png";
-$t_body->LOGO_CLIENTE = "logo-souzalima.png";
+$t_body->TITULO_PAGE = PARCEIRONAME . " | " . INSTANCENAME;
+$t_body->ICONE_PARCEIRO = SITE_FOLDER . "images/" . ICONE_PARCEIRO;    
+
+if (defined("LOGO_CLIENTE")) {
+    $t_body->LOGO_CLIENTE = LOGO_CLIENTE;
+    $t_body->block("BLOCO_LOGO_CLIENTE");
+}
+
 
 $Valor = $t_body->show();
-echo str_replace("\n", "", $Valor);

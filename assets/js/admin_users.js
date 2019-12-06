@@ -134,8 +134,56 @@ function jsSalvarSenhaUsuario(userId, userPassword)
             .done(function () {
                 $("#crModalEditPassword").modal('hide');
             })
-            .fail(function () {
-                $("#alertfalhaalteracao").show();
+           .fail(function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status === 422)
+                {
+                    $("#alertsenharepetida").show();
+                } else {
+                    $("#alertfalhaalteracao").show();
+                }
+            });
+}
+
+function jsResetSenhaUsuario(tokenEmail, userPassword)
+{
+    senha = $("#USUARIO_SENHA").val();
+    tokenEmail = $("#tokenEmail").val();
+    if (senha.length < 8)
+    {
+        alert("Senha muito curta");
+        return;
+    }
+    url = "api/manager/salvasenharecuparacao";
+    dadosEnvio = {
+        USUARIO_SENHA: senha,
+        chaveRecuperacao: tokenEmail
+    };
+    $.ajax({
+        url: url,
+        data: dadosEnvio,
+        method: "POST"
+    })
+            .done(function () {
+                $("USUARIO_SENHA").val('');
+                $("USUARIO_SENHA_2").val('');
+                $("#divFormSenhas").hide();
+                $("#alertfsucessoalteracao").show();
+                $("#alerttrocarsenha").hide();
+                setTimeout(() => {
+                    window.location = "";
+                }, 5000);
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                if (jqXHR.status === 422)
+                {
+                    $("#alertsenharepetida").show();
+                    $("#alerttrocarsenha").hide();
+                } else {
+                    $("#alertfalhaalteracao").show();
+                    $("#alerttrocarsenha").hide();
+                }
+                $("#USUARIO_SENHA").val('');
+                $("#USUARIO_SENHA_2").val('');
             });
 }
 

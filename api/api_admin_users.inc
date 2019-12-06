@@ -25,21 +25,19 @@ function salva_senha_recuperacao()
     }
 
     $chaveBusca = filter_var($dadosEntrada['chaveRecuperacao'], FILTER_SANITIZE_STRING);
-    
+
     $SQL = "select * from UserDef where tokenEmail = '$chaveBusca'";
     $Query = mysqli_query($connect, $SQL);
-    
+
     $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);
-    
-    if (count($linhas) == 0)
-    {
+
+    if (count($linhas) == 0) {
         header('HTTP/1.0 403 ERRO');
         die;
     }
 
-    salva_senha($dadosEntrada["USUARIO_SENHA"]);
-
-    include('recuperarsenha/enviado');
+    $userId = $linhas[0]["UserId"];
+    salvar_senha($userId, $dadosEntrada["USUARIO_SENHA"]);
 }
 
 /**
@@ -68,28 +66,30 @@ function EnvioEmailRecuperacao()
         $SQL = "alter table userdef add column tokenEmail varchar(255)";
         $Query = mysqli_query($connect, $SQL);
     }
-       
+
     $SQL = "update userdef set tokenEmail = '$tokenRecuperacao' where userId = {$linhas[0]["UserId"]}";
     $Query = mysqli_query($connect, $SQL);
-    
+
     require_once FILES_ROOT . "include/envio_email.inc";
     require_once FILES_ROOT . "pages/gerar_arquivo_template.inc";
-    
-    $emailFrom["address"] = "mmoscz@gmail.com";
-    $emailFrom["nome"] = "mmoscz@gmail.com";
-    
-    $emailAddress["address"] = "mmoscz@gmail.com";
-    $emailAddress["nome"] = "mmoscz@gmail.com";
-    
+
+    $dadosConfig = pegaDadosConfig();
+
+    $emailFrom["address"] = $dadosConfig["emailNotificationUser"];
+    $emailFrom["nome"] = $dadosConfig["emailNotificationDesc"];
+
+    $emailAddress["address"] = $linhas[0]["Email"];
+    $emailAddress["nome"] = $linhas[0]["UserDesc"];
+
     $emailSubject = "Troca de Senha";
-    
+
     $variaveisTemplate["token"] = $tokenRecuperacao;
     $variaveisTemplate["URL_SERVER"] = URL_SERVER;
-    
+
     $bodyMessage = criaHtmlTemplate('email_recuperacao_senha.html', $variaveisTemplate, 'assets/notificacoes/');
-    
+
     EnviarEmail($emailFrom, $emailAddress, $emailSubject, $bodyMessage);
-    
+
     header('Location: recuperarsenha/enviado');
 }
 
@@ -114,6 +114,8 @@ function RecuperarSenha()
         include(FILES_ROOT . "pages/logon.inc");
         exit;
     }
+
+    include(FILES_ROOT . "pages/user_reset_password.inc");
 }
 
 function testaForcaSenha($senhaUsuario)
@@ -141,10 +143,11 @@ function testaForcaSenha($senhaUsuario)
     return $forcaSenha;
 }
 
+// ROTA: api/manager/savepasswordstart
 function salva_senha_inicial()
 {
     global $USUARIO_SENHA;
-    salva_senha($USUARIO_SENHA);
+    salva_senha($USUARIO_SENHA, true);
 }
 
 /**
@@ -152,10 +155,47 @@ function salva_senha_inicial()
  * @global type $USUARIO_ID
  * @param type $USUARIO_SENHA
  */
-function salva_senha($USUARIO_SENHA)
+function salva_senha($USUARIO_SENHA, $senhaStart = false)
 {
     global $USUARIO_ID;
-    salvar_senha($USUARIO_ID, $USUARIO_SENHA);
+    salvar_senha($USUARIO_ID, $USUARIO_SENHA, $senhaStart);
+}
+
+function verificaSenhas($senhaUsuario, $historicoSenhas)
+{
+    foreach ($historicoSenhas as $senha) {
+        if (password_verify($senhaUsuario, $senha)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function verificaHistoriocSenhas($USUARIO_ID, $SENHA, $senhaCript)
+{
+    global $connect;
+    $SQL = "select lastpasswords from userdef where userId = $USUARIO_ID";
+    $query = mysqli_query($connect, $SQL);
+
+    $linhas = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+    $json_historicoSenhas = $linhas[0]["lastpasswords"];
+
+    if ($json_historicoSenhas == "" | $json_historicoSenhas == 'null' | $json_historicoSenhas == NULL) {
+        $json_historicoSenhas = '[]';
+    }
+    $historicoSenhas = json_decode($json_historicoSenhas, true);
+
+    if (verificaSenhas($SENHA, $historicoSenhas)) {
+        return false;
+    }
+
+    array_push($historicoSenhas, $senhaCript);
+
+    $json_AtualizarHistorico = json_encode($historicoSenhas);
+    $SQL = "update userdef set lastpasswords = '$json_AtualizarHistorico' where userId = $USUARIO_ID";
+    $query = mysqli_query($connect, $SQL);
+    return true;
 }
 
 /**
@@ -164,16 +204,32 @@ function salva_senha($USUARIO_SENHA)
  * @param type $USUARIO_ID
  * @param type $USUARIO_SENHA
  */
-function salvar_senha($USUARIO_ID, $USUARIO_SENHA)
+function salvar_senha($USUARIO_ID, $USUARIO_SENHA, $senhaStart = false)
 {
     global $connect;
+
     $senhaCript = password_hash($USUARIO_SENHA, PASSWORD_DEFAULT);
-    $SQL = "update userdef set UserPWD = '$senhaCript', lastlogon = Now() where userId = $USUARIO_ID";
+
+    if (!$senhaStart) {
+        $senhaValida = verificaHistoriocSenhas($USUARIO_ID, $USUARIO_SENHA, $senhaCript);
+        $tokenEmail = "";
+    } else {
+        $senhaValida = true;
+        $tokenEmail = uniqid();
+    }
+
+    // Se a senha já está no histórico retorna outro erro
+    if (!$senhaValida) {
+        header('HTTP/1.0 422 falha');
+        return;
+    }
+
+    $SQL = "update userdef set UserPWD = '$senhaCript', tokenEmail='$tokenEmail'  where userId = $USUARIO_ID";
     $resultado = mysqli_query($connect, $SQL);
     if ($resultado) {
         header('HTTP/1.0 200 ok');
     } else {
-        header('HTTP/1.0 403 ERRO');
+        header('HTTP/1.0 403 falha');
     }
 }
 
@@ -253,7 +309,7 @@ function DesconectaUsuario($userId)
 function gravaDadosUsuario()
 {
     global $connect;
-    global $USUARIO_DESC, $USUARIO_EMAIL, $USUARIO_ATIVO, $USUARIO_ORIGEM, $USUARIO_ID, $USUARIO_NOME;
+    global $USUARIO_DESC, $USUARIO_EMAIL, $USUARIO_ATIVO, $USUARIO_ORIGEM, $USUARIO_ID, $USUARIO_NOME, $USUARIO_CUSTONGATE;
     $dadosEntrada = apiTrataDadosEntrada();
 
 
@@ -280,6 +336,7 @@ function gravaDadosUsuario()
                 . "Email =  '$USUARIO_EMAIL', "
                 . "UActive = $USUARIO_ATIVO, "
                 . "Origem = '$USUARIO_ORIGEM',"
+                . "CustonGate = '$USUARIO_CUSTONGATE',"
                 . "token = '$token' "
                 . "where "
                 . "UserId = $USUARIO_ID";

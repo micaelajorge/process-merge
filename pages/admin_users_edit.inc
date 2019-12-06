@@ -23,6 +23,7 @@ $t_body->USUARIO_ID = $linha["UserId"];
 $t_body->USUARIO_NAME = $linha["UserName"];
 $t_body->USUARIO_DESC = $linha["UserDesc"];
 $t_body->USUARIO_EMAIL = $linha["Email"];
+$t_body->USUARIO_CUSTONGATE = $linha["CustonGate"];
 $t_body->JWT_USER = $linha["token"];
 $Uactive = $linha["UActive"];
 

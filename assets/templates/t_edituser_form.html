@@ -24,6 +24,10 @@
                                 <input class="form-control input-sm" type="text" name="USUARIO_EMAIL" id="USUARIO_EMAIL" value="{USUARIO_EMAIL}">                            
                             </div>
                             <div class="col-lg-12 form-group form-group-sm">
+                                Entrada Especial (usuário será direcionado diretamente para essa página)
+                                <input class="form-control input-sm" type="text" name="USUARIO_CUSTONGATE" id="USUARIO_CUSTONGATE" value="{USUARIO_CUSTONGATE}">                            
+                            </div>
+                            <div class="col-lg-12 form-group form-group-sm">
                                 Status Usuário
                                 <select name="USUARIO_ATIVO" class="form-control input-sm">
                                     <option value="1" {USUARIO_ATIVO}>Ativo</option>
@@ -36,6 +40,7 @@
                                 {CAMPO_ORIGEM}
                                 <small class="text-danger"><i class="fa fa-warning"></i> Apenas origem de documento estão disponiveis para seleção</small>
                             </div>
+                            
                             <div class="col-lg-12 form-group form-group-sm">
                                 Token
                                 <textarea readonly="" class="form-control input-sm" name="token" id="token" rows="5">{JWT_USER}</textarea>

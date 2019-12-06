@@ -49,7 +49,8 @@ if (isset($_POST['UserPwd2'])) {
 }
 AtivaDBProcess();
 
-$userdef->Create($OrigemLogon, $connect, $AuthUser, $CriarSessionIntegration);
+$userdef->Create($OrigemLogon, $connect, $AuthUser, CRIA_SESSION_INTEGRATION);
+
 
 if (!$userdef->Validado) {
 //	error_log("não validou - " . $AuthUser['UserName'],0);
@@ -61,6 +62,12 @@ if (!$userdef->Validado) {
 }
 
 $_SESSION["userdef"] = $userdef;
+
+if ($userdef->startLogon) {
+    header("location: rp/" . $userdef->tokenEmail);
+    die();
+}
+
 $config = Carregaconfig();
 $paginaEntrada = $paginaInicialPreferencial;
 $_SESSION["entrada"] = $paginaEntrada;
@@ -82,7 +89,6 @@ if (isset($_POST["ProcId"])) {
 }
 
 $S_Processos = PegaProcessosUsuario($userdef->UserId, $userdef->Origem);
-
 
 if ($userdef->Admin) {
     $Item["ProcName"] = "Administração";
@@ -155,6 +161,12 @@ if (count($S_Processos) > 1) {
     } else {
         $_SESSION["S_Processos"] = $S_Processos;
     }
+
+    // Verifica se o usuário tem uma página padrão de entrada
+    if (!empty($userdef->CustonGate)) {
+        $paginaEntrada = $userdef->CustonGate;
+    }
+
     echo "<html><body><script>document.location = \"$paginaEntrada\"</script></body></html>";
     exit();
 }
@@ -220,6 +232,7 @@ if ($CaseNum != "") {
 if ($ForcarSelecaoProcesso) {
     $paginaEntrada = $paginaInicialPreferencial;
 }
+
 include("cargafooter.html");
 $_SESSION["S_Processos"] = $S_Processos;
 ?>

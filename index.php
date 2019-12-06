@@ -8,10 +8,8 @@
 
 define("RELEASE_SCRIPT", "0054");
 
-define("SYS_VERSION", "3.2.2");
+define("SYS_VERSION", "3.2.3");
 define("LOG_DATA", false);
-
-
 
 function iniciarPhpSession()
 {
@@ -227,6 +225,17 @@ switch ($srvAccess) {
         $EXTERNAL_USERNAME = "root";
         define("SITE_ROOT", "http://localhost/");
         switch ($aliasServidor) {
+            case "caruana":
+                define("TEMASISTEMA", "skin-red");
+                define("INSTANCENAME", 'Process Caruana');
+                define("SITE_FOLDER", "/caruana/");
+                define("INSTANCENAME", 'Process Caruana');
+                define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS_TESTE");
+                define("configDB", "db-teste");
+                $BPMDB = "poc_caruana";
+                $EXTERNALDB = 'poc_caruana';
+                break;
+
             case "process-teste":
                 define("TEMASISTEMA", "skin-red");
                 define("INSTANCENAME", 'Process Teste');
@@ -1538,6 +1547,11 @@ if (!defined("DINAMIC_TWAIN_CONFIG")){
     
 define("DEFAULT_MAX_FALHAS_LOGON", 3);
 
+if (!defined("CRIA_SESSION_INTEGRATION"))
+{
+    define("CRIA_SESSION_INTEGRATION", false);
+}
+
 if (!defined("SITE_ROOT")) {
     define("SITE_ROOT", "http://$srvAccess");
 }
@@ -1608,11 +1622,11 @@ if (isset($_SESSION["userdef"])) {
 
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Trata dados de GET e POST">
-while (list($key, $value) = each($_POST)) {
+foreach ($_POST as $key => $value) {
     $_POST[$key] = preg_replace('/([\x00-\x08,\x0b-\x0c,\x0e-\x19,<,>])/', '', $value);
     $$key = $value;
 }
-while (list($key, $value) = each($_GET)) {
+foreach ($_GET as $key => $value) {
     $value = preg_replace('/([\x00-\x08,\x0b-\x0c,\x0e-\x19,<,>])/', '', $value);
     $_GET[$key] = $value;
     $$key = $value;
@@ -1636,6 +1650,10 @@ try {
     $urlServer = SITE_ROOT . $aliasServidor;
     define("URL_SERVER", $urlServer);    
     
+    if (!defined("LOGAR_ROTA"))
+    {
+        define("LOGAR_ROTA", false);
+    }
     $LOGAR_ROTA = LOG_DATA | LOGAR_ROTA;
 
     ($LOGAR_ROTA) ? error_log("Dados URI: '$rota'") : null;

@@ -1,19 +1,19 @@
 {
     "rotas": {    
         "recuperarsenha": {
-          "GET": {
+            "GET": {
                 "page": "pages/recuperar_senha.inc",
                 "logon": false,
                 "parametros": ["emailEnviado"]
-          }              
+            }              
         },
         "rp": {
-          "GET": {
+            "GET": {
                 "page": "api/api_admin_users.inc",
                 "funcao": "RecuperarSenha",
                 "logon": false,
                 "parametros": ["chaveRecuperacao"]
-          }              
+            }              
         },
         "api/v1/cessionstatuschange": {
             "POST": {
@@ -43,15 +43,15 @@
             }
         },
         "adminconfig": {
-          "GET": {
+            "GET": {
                 "page": "pages/admin_config.inc"
-          }  
+            }  
         },
         "removefile": {
-          "GET": {
+            "GET": {
                 "page": "pages/folder_removefile.inc",
                 "parametros": ["procId", "caseNum", "fieldId", "valueId", "fileName"]
-          }  
+            }  
         },
         "api/v1/statusautomato": {
             "GET": {
@@ -1078,18 +1078,25 @@
                 "page": "pages/relatorio_tribanco.inc"
             }
         },
+        "api/manager/salvasenharecuparacao": {
+            "POST": {
+                "page": "api/api_admin_users.inc",
+                "funcao": "salva_senha_recuperacao",
+                "logon": false
+            }            
+        },
         "api/manager/savepassword": {
             "POST": {
                 "page": "api/api_admin_users.inc",
                 "funcao": "salva_senha_troca",
-                "logon":false
+                "logon": false
             }
         },
         "api/manager/changepassword": {
             "POST": {
                 "page": "api/api_admin_users.inc",
                 "funcao": "salva_senha_troca",
-                "logon":false
+                "logon": false
             }
         },
         "api/manager/savepasswordstart": {

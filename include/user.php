@@ -219,7 +219,7 @@ class userdef {
         $this->Validado = false;
 
         $SQL = "SELECT UserId, UserName, UserPwd, UserLevel, UserDesc, Email, Uactive, CustonGate, AdHoc, Origem, lastlogon, lastnotification, lastmessages, token 
-		from userdef where UActive=1";
+		from userdef where UActive = 1";
         $QUERY_USER = mysqli_query($this->connect, $SQL);
         if (!$QUERY_USER) {
             $this->Validado = false;
@@ -229,7 +229,9 @@ class userdef {
             //error_log("Usuario Log: " . $result["UserName"]);
             if ($result["token"] == $token) {
                 $validado = $result["Uactive"] == '1';
-                $validado = $validado && $this->testaUltimoLogon($result["lastlogon"]);
+                
+                // Desativado teste de ultimo logon para não travar o automato
+//                $validado = $validado && $this->testaUltimoLogon($result["lastlogon"]);
                 $this->Validado = $validado;
                 $this->UserName = $result["UserName"];
                 $this->UserPwd = $result["UserPwd"];
@@ -279,8 +281,7 @@ class userdef {
             return true;
         }
     }
-    
-    
+
     function AcrescentaTentativasLogon($userId)
     {
         $SQL = "SHOW COLUMNS FROM `userdef` LIKE 'loginsFailed' int default 0";
@@ -300,8 +301,9 @@ class userdef {
     function ProcessLogon_BuscaUsuario($userName, $password, $connect = false)
     {
 
-        $SQL = "SELECT UserId, UserName, UserPwd, UserLevel, UserDesc, Email, Uactive, CustonGate, AdHoc, Origem, lastlogon, lastnotification, lastmessages 
-		from userdef where UActive=1";
+        $SQL = "SELECT * from userdef where UActive=1";
+//        $SQL = "SELECT UserId, UserName, UserPwd, UserLevel, UserDesc, Email, Uactive, CustonGate, AdHoc, Origem, lastlogon, lastnotification, lastmessages, lastpasswords, tokenEmail 
+//		from userdef where UActive=1";
         //error_log($SQL);
 
         if (!$connect) {
@@ -309,6 +311,7 @@ class userdef {
         }
         $QUERY_USER = mysqli_query($connect, $SQL);
         if (!$QUERY_USER) {
+            console.log("Erro na busca de usuários:" . mysqli_error($connect));
             $this->Validado = false;
             return;
         }
@@ -330,6 +333,7 @@ class userdef {
                     $this->AcrescentaTentativasLogon($result["UserId"]);
 
                     $this->verificaTotalTentativasLogon($result["UserId"], $userName);
+                    error_log("Falha Logon $userName");
                     return false;
                 }
             }
@@ -353,8 +357,11 @@ class userdef {
         $result = $this->ProcessLogon_BuscaUsuario($UserName, $UserPwd);
 
         if ($result) {
-            $validado = $result["Uactive"] == '1';
-            $validado = $validado && $this->testaUltimoLogon($result["lastlogon"]);
+            $usuarioAtivo = $result["UActive"] == '1';
+            
+            $ultimoLogonOK = $this->testaUltimoLogon($result["lastlogon"]);
+            $validado = $usuarioAtivo && $ultimoLogonOK;
+            
             $this->Validado = $validado;
             $this->UserName = $result["UserName"];
             $this->UserPwd = $result["UserPwd"];
@@ -362,7 +369,7 @@ class userdef {
             $this->UserId_Process = $result["UserId"];
             $this->UserLevel = $result["UserLevel"];
             $this->UserDesc = $result["UserDesc"];
-            $this->Active = $result["Uactive"];
+            $this->Active = $result["UActive"];
             $this->EMail = $result["Email"];
             $this->CustonGate = $result["CustonGate"];
             $this->AdHoc = $result["AdHoc"];
@@ -373,12 +380,23 @@ class userdef {
             $this->lastlogon = (!empty($result["lastlogon"])) ? $result["lastlogon"] : '1901-01-01';
             $this->lastnotification = (!empty($result["lastnotification"])) ? $result["lastnotification"] : '1901-01-01';
             $this->lastmessages = (!empty($result["lastmessages"])) ? $result["lastmessages"] : '1901-01-01';
-
+            $this->startLogon = $this->testaStartLogon($result["lastpasswords"]);
+            $this->tokenEmail = $result["tokenEmail"];
             insereEntradaAuditTrail(0, 0, 0, $result["UserId"], $UserName, 900, "Logon efetuado para $UserName");
             if ($validado) {
                 $this->SalvaDataLogon();
             }
         }
+    }
+
+    function testaStartLogon($json_historicoSenhas)
+    {
+        if ($json_historicoSenhas == "" | $json_historicoSenhas == 'null' | $json_historicoSenhas == NULL) {
+            $json_historicoSenhas = '[]';
+        }
+        $historicoSenhas = json_decode($json_historicoSenhas, true);
+        
+        return count($historicoSenhas) == 1;
     }
 
     function GruposProcess()

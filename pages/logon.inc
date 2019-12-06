@@ -47,9 +47,11 @@ if (!isset($TIPO_ALERTA_LOGON)) {
     $TIPO_ALERTA_LOGON = "alert-warning";
 }
 if (isset($MsgLogon)) {
-    $t_body->TIPO_ALERTA_LOGON = $TIPO_ALERTA_LOGON;
-    $t_body->MSGLOGON = $MsgLogon;
-    $t_body->block("BLOCO_ALERTA_ERRO");
+    if ($MsgLogon !== "") {
+        $t_body->TIPO_ALERTA_LOGON = $TIPO_ALERTA_LOGON;
+        $t_body->MSGLOGON = $MsgLogon;
+        $t_body->block("BLOCO_ALERTA_ERRO");
+    }
 }
 
 $t_body->LOGO_PARCEIRO = LOGO_PARCEIRO;

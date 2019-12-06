@@ -62,9 +62,20 @@ function jsMostraTrocarSenha()
 
 function jsTrocaSenha()
 {
-    if ($("#USUARIO_SENHA").val() !== $("#USUARIO_SENHA").val())
+    if ($("#USUARIO_SENHA").val() !== $("#USUARIO_SENHA_2").val())
     {
-        alert("Senhas não correspondem");
+        alert("Senhas não conferem");
+        return;
     }
     jsSalvarSenhaUsuario();
+}
+
+function jsResetEmailSenha()
+{
+    if ($("#USUARIO_SENHA").val() !== $("#USUARIO_SENHA_2").val())
+    {
+        alert("Senhas não conferem");
+        return;
+    }
+    jsResetSenhaUsuario();
 }

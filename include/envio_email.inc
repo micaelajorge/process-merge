@@ -22,7 +22,7 @@ require FILES_ROOT . 'vendor/autoload.php';
 function EnviarEmail($emailFrom, $emailAddress, $emailSubject, $bodyMessage)
 {
 
-    $dadosServidor = pegaDadosServidorEmail();
+    $dadosServidor = pegaDadosConfig();
 
     $mail = new PHPMailer;
     $mail->isSMTP();

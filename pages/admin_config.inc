@@ -86,6 +86,7 @@ $t_body->DIAS_TROCA_SENHA = $diasTrocaSenha;
 
 $t_body->EMAIL_NOTIFICATION_PASSWORD = $emailNotificationPassword;
 $t_body->EMAIL_NOTIFICATION_NAME = $emailNotificationUser;
+$t_body->EMAIL_NOTIFICATION_DESC = $emailNotificationDesc;
 $t_body->EMAIL_NOTIFICATION_SERVER = $emailNotificationServer;
 $t_body->EMAIL_NOTIFICATION_PORT = $emailNotificationPort;
 

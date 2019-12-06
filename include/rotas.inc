@@ -227,7 +227,12 @@ function defineRota($p_dadosURI, $methodHTTP)
 
     $validadoToken = validaUsuarioToken();
 
-    $userdef = $_SESSION["userdef"];
+    $userdef = null;
+    if (isset($_SESSION["userdef"]))
+    {
+        $userdef = $_SESSION["userdef"];
+    }
+    
     if ($userdef === null) {
         $userValidado = false;
     } else {
@@ -242,9 +247,7 @@ function defineRota($p_dadosURI, $methodHTTP)
         header("HTTP/1.0 402 Usuario sem permissão ou não autenticado");
         return $rotaPadrao;
     }
-
-    
-    
+   
     return $rotaEncontrada;
 }
 

@@ -4,12 +4,19 @@
  Sistema: auto_securities
  */
 
-function jsInicializacaoPagina()
+
+function jsCarregaFiltrosConsultaBasica()
 {
-    $.get("queuefilters/GATEWAY_DIGITAL/t_consultabasica_form.html/t_queue_filter_custon_1.html", (dadosRetornados) =>
+   procCode = location.href.replace($("base")[0].baseURI + "consultabasica/", "");
+    $.get("queuefilters/" + procCode + "/t_consultabasica_form.html/t_queue_filter_custon_1.html", (dadosRetornados) =>
     {
         $("#camposConsulta").html(dadosRetornados);
     });
+}
+
+function jsInicializacaoPagina()
+{
+    jsCarregaFiltrosConsultaBasica();
 }
 
 $(document).ready(function () {

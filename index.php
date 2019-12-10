@@ -1647,7 +1647,7 @@ try {
 
     // Define a URL do Server
     
-    $urlServer = SITE_ROOT . $aliasServidor;
+    $urlServer = SITE_ROOT . "/" . $aliasServidor;
     define("URL_SERVER", $urlServer);    
     
     if (!defined("LOGAR_ROTA"))

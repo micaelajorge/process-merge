@@ -26,17 +26,18 @@ $t_body->addFile("DATA_TABLE", FILES_ROOT . "assets/templates/master/t_datatable
 
 $t_body->SITE_LOCATION = SITE_LOCATION;
 
-$listaTitulosTabela = [
-  "Campo1", "Campo2", "Campo3"  
-];
+$procId = PegaProcIdByCode($procCode);
 
-foreach ($listaTitulosTabela as $titulo)
-{
-    $t_body->TEXTO_CABECALHO = $titulo;
+$SQL = "select *, FieldRazaoOrder + FieldName as order_sort from procfieldsdef where ProcId = $procId and FieldKey = 1 and FieldSpecial = 0 order by order_sort";
+$Query = mysqli_query($connect, $SQL);
+$camposFiltro = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+$procdef = $_SESSION["procdef"];
+$filtros = $procdef->filterQueue;
+
+foreach ($camposFiltro as $campo) {
+    $t_body->TEXTO_CABECALHO = $campo["FieldName"];
     $t_body->block("BLOCK_CABECALHO_TABELA");
 }
-
-
 
 $t_body->block("BLOCK_CONTENT");
 

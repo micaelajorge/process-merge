@@ -4175,9 +4175,12 @@ function pegaListaCasosNaFila($ProcId, $StepId = '-1', $HideQueue = 1, $CampoOrd
     $CampoOrdem = TrataCampoOrdem($CampoOrdenacao);
     $SQL = MontaSQLCasosNaFila($ProcId, $StepId, $HideQueue, $CampoOrdem, $Ordem, $Origem, $Filtros, $ViewQueue, $CamposSQL);
     $retorno = mysqli_query($connect, $SQL);
-//        $error = "Casos na Fila " . mysqli_error($connect);
-//        error_log($error);
-//    error_log("SQL casos na fila: $SQL");
+    if (mysqli_error($connect))
+    {
+        $error = "Casos na Fila " . mysqli_error($connect);
+        error_log($error);
+        error_log("SQL casos na fila: $SQL");
+    }
     return $retorno;
 }
 

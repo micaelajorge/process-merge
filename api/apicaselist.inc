@@ -37,10 +37,10 @@ function apiPegaListaCasos()
     }
     $ProcSource = ($dadosEntrada["ProcCode"]) ? $dadosEntrada["ProcCode"] : $dadosEntrada["procCode"];
 
-    if (!(key_exists("StepCode", $dadosEntrada) | key_exists("stepCode", $dadosEntrada))) {
-        header("HTTP/1.0 402 Falta Parametros");
-        return;
-    }
+//    if (!(key_exists("StepCode", $dadosEntrada) | key_exists("stepCode", $dadosEntrada))) {
+//        header("HTTP/1.0 402 Falta Parametros");
+//        return;
+//    }
     
     $StepCode = ($dadosEntrada["StepCode"]) ? $dadosEntrada["StepCode"] : $dadosEntrada["stepCode"];
 
@@ -59,7 +59,7 @@ function apiPegaListaCasos()
         $filtrosTratados[] = $filtroTratado;
     }
     
-    $listaCasos = listaCasos($ProcSource, $StepCode, $filtrosTratados);
+    $listaCasos = listaCasosApi($ProcSource, $StepCode, $filtrosTratados);
 
     if ($listaCasos === null)
     {
@@ -75,10 +75,11 @@ function apiPegaListaCasos()
     echo $jDados;
 }
 
-function listaCasos($ProcSource, $StepId, $Filtros = "")
+function listaCasosApi($ProcSource, $StepId, $Filtros = "")
 {
     global $userdef;
     $Query = pegaListaCasosNaFila($ProcSource, $StepId, 1, "CaseNum", "", $userdef->Origem, $Filtros, 1, false);
     $retorno = mysqli_fetch_all($Query, MYSQLI_ASSOC);
     return $retorno;
 }
+

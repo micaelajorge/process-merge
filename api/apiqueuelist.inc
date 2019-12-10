@@ -171,8 +171,6 @@ if (!isset($StepFiltro)) {
     $StepFiltro = "";
 }
 
-
-
 if (is_array($filtros)) {
     if (is_array($filtros["order"])) {
         $ordenacaoCasos = $filtros["order"]["ordem"];

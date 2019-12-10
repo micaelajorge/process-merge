@@ -11,6 +11,8 @@ define("RELEASE_SCRIPT", "0054");
 define("SYS_VERSION", "3.2.3");
 define("LOG_DATA", false);
 
+
+
 function iniciarPhpSession()
 {
     $headers = getallheaders();

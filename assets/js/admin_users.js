@@ -52,7 +52,7 @@ function JSBuscaListaUsersGroups(userId)
 {
     TXFiltro = document.getElementById('Filtrar').value;
     TXtipoFiltro = document.getElementById('TIPOFILTRO').value;
-
+    
     procId = $("#PROCID").val();
 
     //url = "include/BPMSelUserAjax.php?TipoFiltro=" + TipoFiltro + "&Filtrar=" + TXFiltro + "&Origem=" + Origem + "&Grupo=" + GrupoFiltro;

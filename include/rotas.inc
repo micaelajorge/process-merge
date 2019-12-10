@@ -43,9 +43,7 @@ function carregaArrayRotas($arquivoRotas = ARQUIVO_ROTAS)
     $rotasLidas = json_decode($conteudoArquivoRotas, true);
 
     // Verifica se o arquivo conseguiu ser parceado
-    $erroParseArquivo = json_last_error();
-    if ($erroParseArquivo) {
-        error_log("erro parse arquivo $arquivoRotas, erro: " . $erroParseArquivo . " Descricao: " . json_last_error_msg());
+    if (json_last_error()) {
         return $rotas_retorno;
     }
 

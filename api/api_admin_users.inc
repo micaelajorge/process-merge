@@ -26,7 +26,7 @@ function salva_senha_recuperacao()
 
     $chaveBusca = filter_var($dadosEntrada['chaveRecuperacao'], FILTER_SANITIZE_STRING);
 
-    $SQL = "select * from UserDef where tokenEmail = '$chaveBusca'";
+    $SQL = "select * from userdef where tokenEmail = '$chaveBusca'";
     $Query = mysqli_query($connect, $SQL);
 
     $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);
@@ -51,12 +51,14 @@ function EnvioEmailRecuperacao()
 
     $emailBusca = filter_var($dadosEntrada["email"], FILTER_SANITIZE_EMAIL);
 
-    $SQL = "select * from UserDef where email = '$emailBusca'";
+    $SQL = "select * from userdef where email = '$emailBusca'";
     $Query = mysqli_query($connect, $SQL);
 
     $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);
 
     if (count($linhas) == 0) {
+        error_log("Usuário não encontrado - " . $emailBusca);
+        header('Location: recuperarsenha/enviado');
         return;
     }
 
@@ -102,7 +104,7 @@ function RecuperarSenha()
     global $connect, $chaveRecuperacao;
 
     $chaveBusca = filter_var($chaveRecuperacao, FILTER_SANITIZE_EMAIL);
-    $SQL = "select * from UserDef where tokenEmail = '$chaveBusca'";
+    $SQL = "select * from userdef where tokenEmail = '$chaveBusca'";
     $Query = mysqli_query($connect, $SQL);
 
     $linhas = mysqli_fetch_all($Query, MYSQLI_ASSOC);

@@ -527,4 +527,50 @@ function SQLCasosAdHoc($ProcId, $CamposSQL, $StepId = "-1", $HideQueue = 1, $Cam
     return $SQL;
 }
 
+function MockCreditasGridConsulta()
+{
+    $SQL .= "Select ";
+    $SQL .="1 as '#', ";
+    $SQL .="'' as '', ";
+    $SQL .="'teste' as Pedido, ";
+    $SQL .="'01/01/2019' as DataCadastro, ";
+    $SQL .="'Finalizado' as Status, ";
+    $SQL .="'Registro' as Natureza, ";
+    $SQL .="'Cartorio' as Tipo, ";
+    $SQL .="'Pessoa Sobrenome' as Solicitante, ";
+    $SQL .="'ExtraJudicial' as Notificacao ";
+    $SQL .="from processteste.casosdousuario LIMIT 1";
+    return $SQL;
+}
+
+function MockCreditasGridDetalhe()
+{
+    $SQL .= "Select ";
+    $SQL .="1 as '#', ";
+    $SQL .="'' as '', ";
+    $SQL .="'teste' as Pedido, ";
+    $SQL .="'01/01/2019' as DataCadastro, ";
+    $SQL .="'Finalizado' as Status, ";
+    $SQL .="'Registro' as Natureza, ";
+    $SQL .="'Cartorio' as Tipo, ";
+    $SQL .="'Pessoa Sobrenome' as Solicitante, ";
+    $SQL .="'ExtraJudicial' as Notificacao, ";
+    $SQL .="'' as '', ";
+    $SQL .="from processteste.casosdousuario LIMIT 1";
+    return $SQL;
+}
+
+function BuscaEstados()
+{
+    $SQL .= "Select Nome, Sigla from estados";   
+    return $SQL;
+}
+
+function BuscaMunicipios($estado)
+{
+    $SQL .= "Select Nome, Codigo  from municipio where Sigla_Estado = '$estado'";
+   
+    return $SQL;
+}
+
 ?>

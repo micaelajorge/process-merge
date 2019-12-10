@@ -1,0 +1,45 @@
+{
+    "rotas": {    
+        "pedidos": {
+            "GET": {
+                "page": "pages\/pedidos.inc",
+                "funcao": ""
+            }
+        },
+        "mockcreditas": {
+            "GET": {
+                "page": "api\/apimockcreditas.inc",
+                "funcao": "MockCreditas"
+            }, 
+            "POST": {
+                "page": "api\/apimockcreditas.inc",
+                "funcao": "MockCreditas"
+            }
+        },
+         "mockcreditas_estado": {
+            "GET": {
+                "page": "api\/apimockcreditas.inc",
+                "funcao": "MockEstados"
+            }
+        },
+         "mockcreditas_municipio": {
+            "GET": {
+                "page": "api\/apimockcreditas.inc",
+                "funcao": "MockMunicipio",
+                "parametros": ["estado"]
+            }
+        },
+        "pedidos_detalhe": {
+            "GET": {
+                "page": "pages\/pedidos_detalhe.inc",
+                "funcao": ""
+            }
+        },
+        "bilhetagem": {
+            "GET": {
+                "page": "pages\/bilhetagem.inc",
+                "funcao": ""
+            }
+        }
+    }
+}

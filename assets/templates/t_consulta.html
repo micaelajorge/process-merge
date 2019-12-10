@@ -1,0 +1,177 @@
+<div id="pedidos" class="box hidden"> <!-- TODO: BOOTSTRAP: TAMANHO DA PAGINA QDO CARREGA -->                
+    <div class="box-body">                          
+        <div >                       
+            <div >
+                <!-- /.box-header -->
+                <div class="box-body" style="">
+                    <form name="formConsulta" id="formConsulta" method="POST">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6">
+                                <div class="row">
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Nome do Notificado
+                                        <input type="text" name="data_inicio" id="formConsulta_data_inicio" class="form-control input-sm"  value="{DATA_INICIO}">
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Tipo de Data
+                                        <select id="formConsulta_data_fim" class="form-control input-sm">
+                                            <option value="{DATA_FIM}">Data Cadastro Pedido</option>  
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Data Início
+                                        <input type="date" name="data_inicio" id="formConsulta_data_inicio" class="form-control input-sm">
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Data Fim
+                                        <input type="date" name="data_fim" id="formConsulta_data_fim" class="form-control input-sm">
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        CPF/CNPJ do Notificado
+                                        <input type="text" name="data_fim" id="formConsulta_data_fim" class="form-control input-sm" value="{DATA_FIM}">
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Cod. Pedido
+                                        <input type="text" name="data_fim" id="formConsulta_data_fim" class="form-control input-sm" value="{DATA_FIM}">
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Natureza
+                                        <select name="Selecione" id="formConsulta_data_fim" class="form-control input-sm">
+                                            <option value="{DATA_FIM}">TODOS</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Empresa
+                                        <select name="Selecione" id="formConsulta_data_fim" class="form-control input-sm">
+                                            <option value="{DATA_FIM}">CREDITAS</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        UF
+                                        <select name="Selecione" id="formConsulta_data_fim" class="form-control input-sm">
+                                            <option value="{DATA_FIM}">TODOS</option>
+                                        </select>
+                                    </div>     
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Cidade
+                                        <select name="Selecione" id="formConsulta_data_fim" class="form-control input-sm">
+                                            <option value="{DATA_FIM}">TODOS</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Nome Cartório
+                                        <select name="Selecione" id="formConsulta_data_fim" class="form-control input-sm">
+                                            <option value="{DATA_FIM}">TODOS</option>
+                                        </select>
+                                    </div>     
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Nome do Solicitante
+                                        <input type="text" name="data_fim" id="formConsulta_data_fim" class="form-control input-sm" value="{DATA_FIM}">
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Status
+                                        <select multiple  id="formConsulta_data_fim" class="form-control input-sm">
+                                            <option value="{DATA_FIM}">Cancelado</option>
+                                            <option value="{DATA_FIM}">Em Andamento</option>
+                                            <option value="{DATA_FIM}">Finalizado</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                    <input type="hidden" name="pesquisar" value="search">
+                                    <div class="col-lg-12 col-sm-6 col-md-6">
+                                        <div class="btn-group pull-right">
+                                            <button name="btnPesquisar" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Pesquisar</button>                                    
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="tipoArquivo" value="excel">
+                                    <!--<div class="col-lg-12 col-sm-6 col-md-6">
+                                        <br>
+                                        <div class="btn-group pull-right">
+                                            <button type="button" class="btn btn-primary btn-sm" onclick="jsGeraXSL('formRelat_{PROCCOD}_{STEPCOD}')" id="formRelat_{PROCCOD}_{STEPCOD}"><i class="fa fa-file-excel-o"></i> Arquivo Excel</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Opções</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="javascript:" onclick="jsGeraRelatorio('formConsulta', '{PAGINA_RELATORIO}', '{PROCNAME} - {STEPNAME}')"><i class="fa fa-file-pdf-o"></i> Arquivo Pdf</a></li>
+                                                <li><a href="javascript:" onclick="jsGeraCSV('formConsulta')" id="formConsulta_CSV"><i class="fa fa-file-pdf-o"></i> Arquivo CSV</a></li>
+                                                <li><button type="button" ><i class="fa fa-file-pdf-o"></i>excel</button></li>
+                                            </ul>
+                                        </div>                                        
+                                    </div>!-->
+                                </div>                                        
+                            </div>
+                    </form>
+                </div>
+            </div>                
+        </div>                                          
+        <!-- /.box-body -->
+        <!-- /.box-body -->
+        <div class="box-footer hide">
+        </div>
+        <!-- /.box-footer-->
+        <!-- /.box -->
+    </div>
+</div>
+<div id="bilhetagem" class="box hidden"> <!-- TODO: BOOTSTRAP: TAMANHO DA PAGINA QDO CARREGA -->                
+    <div class="box-body">                          
+        <div >                       
+            <div >
+                <!-- /.box-header -->
+                <div class="box-body" style="">
+                    <form name="formConsulta" id="formConsulta" method="POST">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6">
+                                <div class="row">
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Empresa
+                                        <select name="Selecione" id="formConsulta_data_fim" class="form-control input-sm">
+                                            <option value="{DATA_FIM}">CREDITAS</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Data Início
+                                        <input type="date" name="data_inicio" id="formConsulta_data_inicio" class="form-control input-sm">
+                                    </div>
+                                    <div class="col-lg-3 col-sm-6 col-md-6 form-group">
+                                        Data Fim
+                                        <input type="date" name="data_fim" id="formConsulta_data_fim" class="form-control input-sm">
+                                    </div>
+                                </div>
+                                    <input type="hidden" name="pesquisar" value="search">
+                                    <div class="col-lg-12 col-sm-6 col-md-6">
+                                        <div class="btn-group pull-right">
+                                            <button name="btnPesquisar" type="button" class="btn btn-primary btn-sm"><i class="fa fa-search"></i> Pesquisar</button>                                    
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="tipoArquivo" value="excel">
+                                    <!--<div class="col-lg-12 col-sm-6 col-md-6">
+                                        <br>
+                                        <div class="btn-group pull-right">
+                                            <button type="button" class="btn btn-primary btn-sm" onclick="jsGeraXSL('formRelat_{PROCCOD}_{STEPCOD}')" id="formRelat_{PROCCOD}_{STEPCOD}"><i class="fa fa-file-excel-o"></i> Arquivo Excel</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-expanded="false">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Opções</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="javascript:" onclick="jsGeraRelatorio('formConsulta', '{PAGINA_RELATORIO}', '{PROCNAME} - {STEPNAME}')"><i class="fa fa-file-pdf-o"></i> Arquivo Pdf</a></li>
+                                                <li><a href="javascript:" onclick="jsGeraCSV('formConsulta')" id="formConsulta_CSV"><i class="fa fa-file-pdf-o"></i> Arquivo CSV</a></li>
+                                                <li><button type="button" ><i class="fa fa-file-pdf-o"></i>excel</button></li>
+                                            </ul>
+                                        </div>                                        
+                                    </div>!-->
+                                </div>                                        
+                            </div>
+                    </form>
+                </div>
+            </div>                
+        </div>                                          
+        <!-- /.box-body -->
+        <!-- /.box-body -->
+        <div class="box-footer hide">
+        </div>
+        <!-- /.box-footer-->
+        <!-- /.box -->
+    </div>
+</div>
+<!-- BPMAdHoc -->

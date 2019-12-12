@@ -222,6 +222,11 @@ switch ($srvAccess) {
         $EXTERNALUSER = "root";
         $EXTERNALPWD = "";
         $EXTERNAL_USERNAME = "root";
+        
+        // Ignora politicas de segurança
+        define("APLICAR_POLITICAS_SEGURANCA", false);
+        
+        
         define("SITE_ROOT", "http://localhost/");
         switch ($aliasServidor) {
             case "caruana":
@@ -1194,6 +1199,9 @@ switch ($srvAccess) {
                 define("ICONE_PARCEIRO", "logo-agiliza-mini.png");
                 define("URL_OWNER", "https://www.agilizaonline.com.br");
                 define("NAME_OWNER", "Agiliza");
+                
+                define("APLICAR_POLITICAS_SEGURANCA", true);
+                
                 $BPMDB = "process_poc_caruana";
                 $EXTERNALDB = 'process_poc_caruana';
                 break;
@@ -1490,7 +1498,7 @@ switch ($srvAccess) {
         define("TEMASISTEMA", "skin-purple-light");
         define("FILES_FOLDER", "/");
         define("SITE_FOLDER", "");
-        define("SITE_ROOT", "https://$srvAccess");
+        define("SITE_ROOT", "http://$srvAccess");
         define("SITE_FOLDER_COMPLEMENT", "/");
         define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
         define("configDB", "localhost");
@@ -1503,6 +1511,7 @@ switch ($srvAccess) {
         define("LOGO_PARCEIRO", "logo-agiliza.png");
         define("PARCEIRONAME", 'Agiliza');
         define("ICONE_PARCEIRO", "logo-agiliza-mini.png");
+        define("APLICAR_POLITICAS_SEGURANCA", true);
         break;
 
     case "caruana.agilizaonline.com.br":
@@ -1581,6 +1590,11 @@ if (!defined("SITE_ALIAS")) {
     define("SITE_ALIAS", SITE_FOLDER);
 }
 
+if (defined("APLICAR_POLITICAS_SEGURANCA"))
+{
+    define("APLICAR_POLITICAS_SEGURANCA", false);
+}
+
 define("FILES_ROOT", $currentDir . FILES_FOLDER);
 if (!defined("TEMASISTEMA")) {
     define("TEMASISTEMA", "skin-blue-light");
@@ -1649,13 +1663,20 @@ try {
     $methodHTTP = $_SERVER["REQUEST_METHOD"];
     $rotaDefinida = defineRota($rota, $methodHTTP);
 
-    // Define a URL do Server
-    $concat = "";
-    if (substr(SITE_ROOT, -1))
+// Define a URL do Server
+    $concatServer = "/";
+    if (substr(SITE_ROOT, -1) === "/")
     {
-        $concat = "/";
+        $concatServer = "";
+    } 
+
+    $concatAlias = "";
+    if ($aliasServidor !== "")
+    {
+        $concatAlias = "/";
     }
-    $urlServer = SITE_ROOT . $concat . $aliasServidor;
+    
+    $urlServer = SITE_ROOT . $concatServer . $aliasServidor . $concatAlias;
     define("URL_SERVER", $urlServer);    
     
     if (!defined("LOGAR_ROTA"))

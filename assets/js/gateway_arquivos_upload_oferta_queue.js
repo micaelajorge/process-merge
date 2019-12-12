@@ -68,6 +68,14 @@ function jsCarregaListaArquivosOferta()
 function jsCarregaListaArquivosRecusados()
 {
     let divDestino = 'divArquivosRecusados';
+    
+    // Testa se existe a div de Arquivos Recusados
+    if (!!$("#divArquivosRecusados").length)
+    {
+        return;
+    }
+    
+    
     let templateView = 'assets/templates/t_gateway_lista_arquivos_retorno.html';
     
     endApiLotes = 'queuelist/ENVIO_CNAB_ACEITE/';

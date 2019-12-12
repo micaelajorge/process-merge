@@ -7,11 +7,8 @@
  */
 
 define("RELEASE_SCRIPT", "0054");
-
 define("SYS_VERSION", "3.2.3");
 define("LOG_DATA", false);
-
-
 
 function iniciarPhpSession()
 {
@@ -1562,8 +1559,13 @@ if (!defined("SERVER_ADDRESS")) {
     define("SERVER_ADDRESS", $srvAccess);
 }
 
-if (!defined("LIMITE_DIAS_ULTIMO_LOGON")) {
+if (!defined("LIMITE_DIAS_ULTIMO_LOGON")) {   
     define("LIMITE_DIAS_ULTIMO_LOGON", 90);
+}
+
+if (!defined("LIMITE_DIAS_TROCA_SENHA"))
+{
+    define("LIMITE_DIAS_ULTIMO_LOGON", 300);
 }
 
 // Define o texto para cabeçalho na fila para o coluna Nr Caso
@@ -1648,8 +1650,12 @@ try {
     $rotaDefinida = defineRota($rota, $methodHTTP);
 
     // Define a URL do Server
-    
-    $urlServer = SITE_ROOT . "/" . $aliasServidor;
+    $concat = "";
+    if (substr(SITE_ROOT, -1))
+    {
+        $concat = "/";
+    }
+    $urlServer = SITE_ROOT . $concat . $aliasServidor;
     define("URL_SERVER", $urlServer);    
     
     if (!defined("LOGAR_ROTA"))

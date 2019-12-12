@@ -230,7 +230,10 @@ function salvar_senha($USUARIO_ID, $USUARIO_SENHA, $senhaStart = false)
         return;
     }
 
-    $SQL = "update userdef set UserPWD = '$senhaCript', tokenEmail='$tokenEmail', lastAlterPassword = '$dataUltimaTroca'  where userId = $USUARIO_ID";
+    $SQL = "update userdef set lastAlterPassword = '$dataUltimaTroca', tokenEmail='$tokenEmail'  where userId = $USUARIO_ID";
+    $resultado = mysqli_query($connect, $SQL);
+    
+    $SQL = "update userdef set UserPWD = '$senhaCript'  where userId = $USUARIO_ID";
     
     insereEntradaAuditTrail(0, 0, 0, $USUARIO_ID, '', 988, "Aleração de Senha ");
     

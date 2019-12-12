@@ -207,44 +207,45 @@ class userdef {
      */
     function testaStartLogon($dataUltimaTroca)
     {
-        if ($dataUltimaTroca == null)
-        {
-            return true;
+        if ($dataUltimaTroca == null) {
+            return true & APLICAR_POLITICAS_SEGURANCA;
         }
 
         $dataUltimaTroca = date_create($dataUltimaTroca);
         $dataAtual = new DateTime();
         $interval = date_diff($dataAtual, $dataUltimaTroca);
         $diasDecorridos = $interval->format("%a");
-        
-        
         $configPoliticasSeguranca = pegaDadosConfig();
-        if (key_exists("diasTrocaSenha", $configPoliticasSeguranca))
-        {
+        if (key_exists("diasTrocaSenha", $configPoliticasSeguranca)) {
             $diasTrocaSenha = $configPoliticasSeguranca["diasTrocaSenha"];
         } else {
             $diasTrocaSenha = LIMITE_DIAS_TROCA_SENHA;
-        }        
-        return $diasDecorridos > $diasTrocaSenha;
+        }
+
+        $exigeTrocaSenha = $diasDecorridos > $diasTrocaSenha;
+        $exigeTrocaSenha = $exigeTrocaSenha & APLICAR_POLITICAS_SEGURANCA;
+
+        return $exigeTrocaSenha;
     }
-    
-    
+
     function testaUltimoLogon($dataUltimoLogon)
     {
         $ultimologon = date_create($dataUltimoLogon);
         $dataAtual = new DateTime();
         $interval = date_diff($dataAtual, $ultimologon);
         $diasDecorridos = $interval->format("%a");
-        
+
         $configPoliticasSeguranca = pegaDadosConfig();
-        if (key_exists("mesesInatividade", $configPoliticasSeguranca))
-        {
+        if (key_exists("mesesInatividade", $configPoliticasSeguranca)) {
             $mesesInatividade = $configPoliticasSeguranca["mesesInatividade"];
         } else {
             $mesesInatividade = LIMITE_DIAS_ULTIMO_LOGON;
         }
+
+        $usuarioDesabilitadoPorInatividade = $diasDecorridos < $mesesInatividade;
+        $usuarioDesabilitadoPorInatividade = $usuarioDesabilitadoPorInatividade & APLICAR_POLITICAS_SEGURANCA;
         
-        return $diasDecorridos < $mesesInatividade;
+        return $usuarioDesabilitadoPorInatividade;
     }
 
     function SalvaDataLogon()
@@ -439,9 +440,9 @@ class userdef {
 
             if (!$this->systemUser) {
                 // Verifica se é a primeira senha, ou se o tempo para expiração de troca de senha ocorreu
-                
-                $trocarSenhaPrimeiroLogon = $this->testaStartLogon($result["lastAlterPassword"]);                
-                $this->startLogon =  $trocarSenhaPrimeiroLogon & $campoEmailTokenExiste;
+
+                $trocarSenhaPrimeiroLogon = $this->testaStartLogon($result["lastAlterPassword"]);
+                $this->startLogon = $trocarSenhaPrimeiroLogon & $campoEmailTokenExiste;
                 if ($this->startLogon) {
                     $tokenRecuperacao = uniqid();
                     $SQL = "update userdef set tokenEmail = '$tokenRecuperacao' where userId = {$result["UserId"]}";

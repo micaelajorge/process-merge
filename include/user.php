@@ -23,6 +23,7 @@ class userdef {
     var $lastnofification;
     var $lastmessages;
     var $Email;
+    var $startLogon;
 
     // Cria o Usuario
 
@@ -198,13 +199,52 @@ class userdef {
         $this->Origem = '';
     }
 
+    /**
+     * Verifica se o usuário deve fazer a troca de senha
+     * 
+     * @param type $dataUltimaTroca
+     * @return boolean
+     */
+    function testaStartLogon($dataUltimaTroca)
+    {
+        if ($dataUltimaTroca == null)
+        {
+            return true;
+        }
+
+        $dataUltimaTroca = date_create($dataUltimaTroca);
+        $dataAtual = new DateTime();
+        $interval = date_diff($dataAtual, $dataUltimaTroca);
+        $diasDecorridos = $interval->format("%a");
+        
+        
+        $configPoliticasSeguranca = pegaDadosConfig();
+        if (key_exists("diasTrocaSenha", $configPoliticasSeguranca))
+        {
+            $diasTrocaSenha = $configPoliticasSeguranca["diasTrocaSenha"];
+        } else {
+            $diasTrocaSenha = LIMITE_DIAS_TROCA_SENHA;
+        }        
+        return $diasDecorridos > $diasTrocaSenha;
+    }
+    
+    
     function testaUltimoLogon($dataUltimoLogon)
     {
         $ultimologon = date_create($dataUltimoLogon);
         $dataAtual = new DateTime();
         $interval = date_diff($dataAtual, $ultimologon);
-        $dias = $interval->format("%a");
-        return $dias < LIMITE_DIAS_ULTIMO_LOGON;
+        $diasDecorridos = $interval->format("%a");
+        
+        $configPoliticasSeguranca = pegaDadosConfig();
+        if (key_exists("mesesInatividade", $configPoliticasSeguranca))
+        {
+            $mesesInatividade = $configPoliticasSeguranca["mesesInatividade"];
+        } else {
+            $mesesInatividade = LIMITE_DIAS_ULTIMO_LOGON;
+        }
+        
+        return $diasDecorridos < $mesesInatividade;
     }
 
     function SalvaDataLogon()
@@ -229,7 +269,7 @@ class userdef {
             //error_log("Usuario Log: " . $result["UserName"]);
             if ($result["token"] == $token) {
                 $validado = $result["Uactive"] == '1';
-                
+
                 // Desativado teste de ultimo logon para não travar o automato
 //                $validado = $validado && $this->testaUltimoLogon($result["lastlogon"]);
                 $this->Validado = $validado;
@@ -311,7 +351,7 @@ class userdef {
         }
         $QUERY_USER = mysqli_query($connect, $SQL);
         if (!$QUERY_USER) {
-            console.log("Erro na busca de usuários:" . mysqli_error($connect));
+            console . log("Erro na busca de usuários:" . mysqli_error($connect));
             $this->Validado = false;
             return;
         }
@@ -358,11 +398,8 @@ class userdef {
 
         if ($result) {
             $usuarioAtivo = $result["UActive"] == '1';
-            
-            $ultimoLogonOK = $this->testaUltimoLogon($result["lastlogon"]);
-            $validado = $usuarioAtivo && $ultimoLogonOK;
-            
-            $this->Validado = $validado;
+
+
             $this->UserName = $result["UserName"];
             $this->UserPwd = $result["UserPwd"];
             $this->UserId = $result["UserId"];
@@ -380,23 +417,44 @@ class userdef {
             $this->lastlogon = (!empty($result["lastlogon"])) ? $result["lastlogon"] : '1901-01-01';
             $this->lastnotification = (!empty($result["lastnotification"])) ? $result["lastnotification"] : '1901-01-01';
             $this->lastmessages = (!empty($result["lastmessages"])) ? $result["lastmessages"] : '1901-01-01';
-            $this->startLogon = $this->testaStartLogon($result["lastpasswords"]);
-            $this->tokenEmail = $result["tokenEmail"];
+
+            // Verifica se o usuário é um usuário de sistema
+            if (key_exists("systemuser", $result)) {
+                $this->systemUser = $result["systemuser"];
+            } else {
+                $this->systemUser = true;
+            }
+
+            // Se não for usuário de sistema, faz os testes de logon
+            if (!$this->systemUser) {
+                $ultimoLogonOK = $this->testaUltimoLogon($result["lastlogon"]);
+                $validado = $usuarioAtivo && $ultimoLogonOK;
+            } else {
+                $validado = $usuarioAtivo;
+            }
+            $this->Validado = $validado;
+
+            // Verifica se o campo de Email Token Existe
+            $campoEmailTokenExiste = key_exists("tokenEmail", $result);
+
+            if (!$this->systemUser) {
+                // Verifica se é a primeira senha, ou se o tempo para expiração de troca de senha ocorreu
+                
+                $trocarSenhaPrimeiroLogon = $this->testaStartLogon($result["lastAlterPassword"]);                
+                $this->startLogon =  $trocarSenhaPrimeiroLogon & $campoEmailTokenExiste;
+                if ($this->startLogon) {
+                    $tokenRecuperacao = uniqid();
+                    $SQL = "update userdef set tokenEmail = '$tokenRecuperacao' where userId = {$result["UserId"]}";
+                    $Query = mysqli_query($this->connect, $SQL);
+
+                    $this->tokenEmail = $tokenRecuperacao;
+                }
+            }
             insereEntradaAuditTrail(0, 0, 0, $result["UserId"], $UserName, 900, "Logon efetuado para $UserName");
             if ($validado) {
                 $this->SalvaDataLogon();
             }
         }
-    }
-
-    function testaStartLogon($json_historicoSenhas)
-    {
-        if ($json_historicoSenhas == "" | $json_historicoSenhas == 'null' | $json_historicoSenhas == NULL) {
-            $json_historicoSenhas = '[]';
-        }
-        $historicoSenhas = json_decode($json_historicoSenhas, true);
-        
-        return count($historicoSenhas) == 1;
     }
 
     function GruposProcess()

@@ -40,6 +40,8 @@ function salva_senha_recuperacao()
     salvar_senha($userId, $dadosEntrada["USUARIO_SENHA"]);
 }
 
+
+
 /**
  * ROTA: enviorecuperarsenha
  * @global type $connect
@@ -62,13 +64,13 @@ function EnvioEmailRecuperacao()
         return;
     }
 
-    $tokenRecuperacao = uniqid();
 
     if (!key_exists("tokenEmail", $linhas[0])) {
         $SQL = "alter table userdef add column tokenEmail varchar(255)";
         $Query = mysqli_query($connect, $SQL);
     }
 
+    $tokenRecuperacao = uniqid();
     $SQL = "update userdef set tokenEmail = '$tokenRecuperacao' where userId = {$linhas[0]["UserId"]}";
     $Query = mysqli_query($connect, $SQL);
 
@@ -209,15 +211,17 @@ function verificaHistoriocSenhas($USUARIO_ID, $SENHA, $senhaCript)
 function salvar_senha($USUARIO_ID, $USUARIO_SENHA, $senhaStart = false)
 {
     global $connect;
-
+    
     $senhaCript = password_hash($USUARIO_SENHA, PASSWORD_DEFAULT);
 
-    if (!$senhaStart) {
-        $senhaValida = verificaHistoriocSenhas($USUARIO_ID, $USUARIO_SENHA, $senhaCript);
-        $tokenEmail = "";
-    } else {
+    if ($senhaStart) {
         $senhaValida = true;
         $tokenEmail = uniqid();
+        $dataUltimaTroca = '1974-01-01';
+    } else {
+        $senhaValida = verificaHistoriocSenhas($USUARIO_ID, $USUARIO_SENHA, $senhaCript);
+        $tokenEmail = "";        
+        $dataUltimaTroca = date('Y-m-d');
     }
 
     // Se a senha já está no histórico retorna outro erro
@@ -226,7 +230,11 @@ function salvar_senha($USUARIO_ID, $USUARIO_SENHA, $senhaStart = false)
         return;
     }
 
-    $SQL = "update userdef set UserPWD = '$senhaCript', tokenEmail='$tokenEmail'  where userId = $USUARIO_ID";
+    $SQL = "update userdef set UserPWD = '$senhaCript', tokenEmail='$tokenEmail', lastAlterPassword = '$dataUltimaTroca'  where userId = $USUARIO_ID";
+    
+    insereEntradaAuditTrail(0, 0, 0, $USUARIO_ID, '', 988, "Aleração de Senha ");
+    
+    // TODO: Inserir LOGg de troca de senha ou criação de usuário
     $resultado = mysqli_query($connect, $SQL);
     if ($resultado) {
         header('HTTP/1.0 200 ok');

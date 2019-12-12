@@ -10,6 +10,12 @@
                 "page": "pages/securities/securities_session_signers.inc",
                 "parametros": ["sessionUUID"]
             }
+        },
+        "securities/envioarquivooferta": {
+            "GET": {
+                "page": "pages/securities/securities_upload_cnab_oferta.inc",
+                "parametros": ["sessionUUID"]
+            }
         }
     }
 }

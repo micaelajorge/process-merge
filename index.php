@@ -1690,17 +1690,14 @@ try {
     ($LOGAR_ROTA) ? error_log("Dados Url 1: " . var_export($dadosURL, true)) : null;
     ($LOGAR_ROTA) ? error_log("REQUEST_METHOD: " . $methodHTTP) : null;
     ($LOGAR_ROTA) ? error_log("SITE_ALIAS: '" . SITE_ALIAS . "'") : null;
-    //(LOG_DATA) ? error_log("HEADERS:" . var_export(getallheaders(), true) ) : null;
     ($LOGAR_ROTA) ? error_log(var_export($rotaDefinida, true)) : null;
 
     $arquivoRota = FILES_ROOT . $rotaDefinida["page"];
-    //$arquivoRota = FILES_ROOT . "/" . $rotaDefinida["page"];
 
     (LOG_DATA) ? error_log("Arquivo ROTA" . $arquivoRota) : null;
 
     if (file_exists($arquivoRota)) {
         include(FILES_ROOT . $rotaDefinida["page"]);
-//        include(FILES_ROOT . "/" . $rotaDefinida["page"]);
     } else {
         header("HTTP/1.0 404 Not Found");
         exit;

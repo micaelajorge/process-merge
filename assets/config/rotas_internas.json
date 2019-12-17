@@ -1610,8 +1610,7 @@
                 "funcao": "NotificacoesUsuario",
                 "parametros": ["ProcCode", "UserName", "UserPassword"],
                 "obrigatorio-parametros": false,
-                "logon": false
-            }
+                "logon": false            
         },
         "notificacoeslidas": {
             "GET": {

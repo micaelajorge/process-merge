@@ -134,7 +134,7 @@ function jsSalvarSenhaUsuario(userId, userPassword)
             .done(function () {
                 $("#crModalEditPassword").modal('hide');
             })
-           .fail(function (jqXHR, textStatus, errorThrown) {
+            .fail(function (jqXHR, textStatus, errorThrown) {
                 if (jqXHR.status === 422)
                 {
                     $("#alertsenharepetida").show();
@@ -142,6 +142,20 @@ function jsSalvarSenhaUsuario(userId, userPassword)
                     $("#alertfalhaalteracao").show();
                 }
             });
+}
+
+function jsTemporizadorRetornoPaginaLogon()
+{
+    segundosRestantesRetornoPagina--;
+    if (segundosRestantesRetornoPagina === 1)
+    {
+        window.location = "";
+    }
+    $("#tempoRetornoPaginaLogon").html(segundosRestantesRetornoPagina);
+    $("#tempoRetornoPaginaLogonAguardaTroca").html(segundosRestantesRetornoPagina);
+    setTimeout(() => {
+        jsTemporizadorRetornoPaginaLogon();
+    }, 1000);
 }
 
 function jsResetSenhaUsuario(tokenEmail, userPassword)
@@ -167,11 +181,14 @@ function jsResetSenhaUsuario(tokenEmail, userPassword)
                 $("USUARIO_SENHA").val('');
                 $("USUARIO_SENHA_2").val('');
                 $("#divFormSenhas").hide();
-                $("#alertfsucessoalteracao").show();
+                $("#alertsucessoalteracao").show();
+                $("#alertsenharepetida").hide();
                 $("#alerttrocarsenha").hide();
-                setTimeout(() => {
-                    window.location = "";
-                }, 5000);
+                
+                // Inicia o  temporizador para retornar para página de logon
+                
+                segundosRestantesRetornoPagina = 5;
+                jsTemporizadorRetornoPaginaLogon();
             })
             .fail(function (jqXHR, textStatus, errorThrown) {
                 if (jqXHR.status === 422)

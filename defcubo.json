@@ -1,0 +1,55 @@
+{
+    "procCode": "CUBO",
+    "desc": "Cubo Básico",
+    "dimensions": [{
+            "dimensionId": 1,
+            "fieldSource": "DATA",
+            "type": "date",
+            "displayType": "monthYear",
+            "dimensionName": "mes_ano",
+            "dimensionDesc": "Mês/Ano",
+            "columns": [
+                {
+                    "fieldSource": "TOTAL_ITENS",                    
+                    "operation": "sum",
+                    "desc": "Total 1"
+                },{
+                    "fieldSource": "TOTAL_ITENS_2",
+                    "operation": "sum",
+                    "desc": "Total 2"
+                },
+                {
+                    "desc": "Total Itens",
+                    "fieldSource": "ARRANJO",
+                    "operation": "count"
+                }
+            ]
+        }, {
+            "dimensionId": 2,
+            "fieldSource": "ARRANJO",
+            "dimensionName": "arranjo",
+            "dimensionDesc": "Arranjo",
+            "displayType": "text",
+            "columns": [
+                {
+                    "fieldSource": "TOTAL_ITENS",
+                    "operation": "sum"
+                },{
+                    "fieldSource": "TOTAL_ITENS_2",
+                    "operation": "sum"
+                }
+            ]            
+        }
+    ],
+    "camposDisplay": [{
+            "desc": "Operacao",
+            "fieldSource": "nrOperacao"
+        }, {
+            "desc": "Total CCbs",
+            "fieldSource": "TOTAL_ITENS"
+        }, {
+            "desc": "Total Parcelas",
+            "fieldSource": "TOTAL_ITENS_2"
+        }
+    ]
+}

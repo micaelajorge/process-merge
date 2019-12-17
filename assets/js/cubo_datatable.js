@@ -84,11 +84,16 @@ function jsTrataValorCampos(data, type, row, meta)
     return retorno;
 }
 
+var colunasCubo = [];    
+
+var columnDefs = [];
+
 function jsInicializacaoPagina()
 {
 //    endApi = SITE_LOCATION + "api/cubo" + "/" + ProcId;
-    endApi = SITE_LOCATION + "api/cubo/";
+    endApi = "api/v1/cubo/";
     tabelaDados = 'tableData';
+    sort = null;
     where = null;
 //    if (ProcId !== undefined)
 //    {
@@ -126,7 +131,7 @@ function jsInicializacaoPagina()
         };
     }
     $("#divMedidas").html($(window).width() + " ");
-    dataTablePrincipal = tableInit(tabelaDados, endApi, colunasCuboMeses, columnDefs, where, sort, 0, 'DT_RowId', extraParameters);
+    dataTablePrincipal = tableInit(tabelaDados, endApi, colunasCubo, columnDefs, where, sort, 0, 'DT_RowId', extraParameters);
 }
 
 var dataTablePrincipal;

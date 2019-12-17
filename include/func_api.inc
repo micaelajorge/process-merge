@@ -6,6 +6,18 @@
   Sistema: Creditus
  */
 
+function insereItemArray(&$item, $key)
+{
+    $item["DT_RowId"] = "row_" . $key;
+}
+
+function insereTdDetalhe($aDados)
+{
+    array_walk($aDados, "insereItemArray");
+    return $aDados;
+}
+
+
 /**
  * 
  * @param type $tabela
@@ -90,7 +102,7 @@ function apiTrataDadosEntrada($retornarRota = true)
 
     $dadosEntrada = array_merge($dados, $post, $get);
 
-    while (list($chave, $valor) = each($dadosEntrada)) {
+    foreach ($dadosEntrada as $chave => $valor) {
         $GLOBALS[$chave] = $valor;
     }
 

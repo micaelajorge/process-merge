@@ -76,7 +76,7 @@ function defineRotaPadrao($dadosURI)
         } else {
             $rotaEncontrada["page"] = "pages/logon.inc";
         }
-    }
+    }    
     return $rotaEncontrada;
 }
 
@@ -155,7 +155,12 @@ function geraParametrosRecebidosURL($paginaAcesso, $dadosURI, $rotaEncontrada)
     // se tem barra, trata os parâmetros
     $regexPaginaAcesso = "/" . str_replace("/", '\/', $paginaAcesso) . "/";
     $parametros = preg_replace($regexPaginaAcesso, "", $dadosURI, 1);
-    $aParametrosURL = explode("/", $parametros);
+    if ($parametros != "/")
+    {
+        $aParametrosURL = explode("/", $parametros);        
+    } else {
+        $aParametrosURL = array();
+    }
     $posicaoInterrogacao = strpos($dadosURI, "?");
     if ($posicaoInterrogacao) {
         $itensURL = explode("?", $dadosURI);
@@ -184,7 +189,7 @@ function geraParametrosRecebidosURL($paginaAcesso, $dadosURI, $rotaEncontrada)
             // Parametros da Rota não foram entrados, vai para rota default
             $rotaEncontrada = $rotaPadrao;
         } else {
-            TrataParametrosRoda($aParametrosURL, $parametrosRota);
+            TrataParametrosRota($aParametrosURL, $parametrosRota);
         }
     }
 
@@ -257,7 +262,7 @@ function defineRota($p_dadosURI, $methodHTTP)
  * @param type $aParametrosURL - Array de Parametros vindos da URL
  * @param type $aParametrosRota - Array de Parametros definidos na Rota
  */
-function TrataParametrosRoda($aParametrosURL, $aParametrosRota)
+function TrataParametrosRota($aParametrosURL, $aParametrosRota)
 {
     if (count($aParametrosRota) == 0) {
         if (count($aParametrosURL) == 1) {
@@ -267,7 +272,7 @@ function TrataParametrosRoda($aParametrosURL, $aParametrosRota)
         $aParametrosURL = array_values($aParametrosURL);
         $GLOBALS["PARAMETROS_ROTA"] = $aParametrosURL;
     } else {
-        while (list($nomeParametroRota, $valorParametroRota) = each($aParametrosRota)) {
+        foreach ($aParametrosRota as $nomeParametroRota => $valorParametroRota) {
             if (is_integer($nomeParametroRota)) {
                 $valorParametro = $aParametrosURL[$nomeParametroRota + 1];
                 $nomeParametro = $valorParametroRota;
@@ -322,125 +327,125 @@ function trataUrl()
     return $dadosUrl;
 }
 
-// <editor-fold defaultstate="collapsed" desc="Desatualizado">
-/**
- * 
- * @param type $dadosURI - URL completa 
- * @param type $action - GET / POST
- * @return type definição da Página definida na rota
- */
-function _defineRota($p_dadosURI, $methodHTTP)
-{
-
-    // Rota usada quando não for encontrada uma rota definida
-    $rotaPadrao = defineRotaPadrao($p_dadosURI);
-
-    $rotas = carregaArrayRotas();
-
-    if ($rotas == null) {
-        echo "Erro - R001";
-        header("HTTP/1.0 404 End Point Nao Encontrado");
-        die();
-    }
-
-    $dadosURI = strtolower($p_dadosURI);
-    $rotaDefinida = true;
-
-    $posicaoPrimeiraBarra = strpos($dadosURI, "/");
-    $posicaoInterrogacao = strpos($dadosURI, "?");
-
-    $paginaAcesso = $dadosURI;
-
-    // Verifica se é uma rota direta
-    // Pega a URL Total
-    $posicaoUltimaBarra = strlen($dadosURI);
-    while ($posicaoUltimaBarra) {
-        $paginaAcesso = substr($dadosURI, 0, $posicaoUltimaBarra);
-        if (key_exists($paginaAcesso, $rotas[$methodHTTP])) {
-            $rotaDefinida = true;
-            break;
-        }
-        $posicaoUltimaBarra = strripos($paginaAcesso, "/");
-    }
-
-    // Verifica se é uma URL amigavel    
-    $parametrosURL = array();
-    if (!$posicaoPrimeiraBarra && !$posicaoInterrogacao && !$rotaDefinida) {
-        $paginaAcesso = $dadosURI;
-    } else {
-        // se tem barra, trata os parâmetros
-        if ($posicaoPrimeiraBarra) {
-
-            $regexPaginaAcesso = "/" . str_replace("/", '\/', $paginaAcesso) . "/";
-            $parametros = preg_replace($regexPaginaAcesso, "", $dadosURI, 1);
-            $aParametrosURL = explode("/", $parametros);
-            if (!$rotaDefinida) {
-                $paginaAcesso = $parametrosURL[0];
-            }
-        }
-        if ($posicaoInterrogacao) {
-            $itensURL = explode("?", $dadosURI);
-            $paginaAcesso = $itensURL[0];
-            if (count($itensURL) == 2) {
-                $aParametrosURLTemporario = explode("&", $itensURL[1]);
-            }
-            // Remove os nomes dos valores vindos da URL
-            for ($i = 0; $i < count($aParametrosURLTemporario); $i++) {
-                $posIgual = strpos($aParametrosURLTemporario[$i], "=");
-                $aParametrosURLTemporario[$i] = substr($aParametrosURLTemporario[$i], $posIgual + 1);
-            }
-
-            $aParametrosURL = array_merge(array($paginaAcesso), $aParametrosURLTemporario);
-        }
-    }
-
-    if (!key_exists($paginaAcesso, $rotas[$methodHTTP])) {
-//        error_log("Não Encontrada: $paginaAcesso");
-//        error_log("Rota Padrão " . var_export($rotaPadrao, true));
-        $rotaEncontrada = $rotaPadrao;
-        return $rotaEncontrada;
-    } else {
-        $rotaEncontrada = $rotas[$methodHTTP][$paginaAcesso];
-    }
-
-
-    if (key_exists("parametros", $rotaEncontrada)) {
-        $parametrosRota = $rotaEncontrada["parametros"];
-
-        $parametrosObrigatorios = true;
-        if (key_exists("obrigatorio-parametros", $rotaEncontrada)) {
-            $parametrosObrigatorios = $rotaEncontrada["obrigatorio-parametros"];
-        }
-
-        // Se não for parametros com valor default
-        // Verifica se os parametros necessários na Rota foram passados
-        if (isset($parametrosRota[0]) & count($aParametrosURL) == 0 & $parametrosObrigatorios) {
-            // Parametros da Rota não foram entrados, vai para rota default
-            $rotaEncontrada = $rotaPadrao;
-        } else {
-            TrataParametrosRoda($aParametrosURL, $parametrosRota);
-        }
-    }
-
-// Verifica se a rota definida exige logon
-    if (!isset($_SESSION["userdef"]) & !isset($rotaEncontrada["logon"]) & $methodHTTP != "POST") {
-        $rotaEncontrada = array("page" => DEFAULT_PAGE, "funcao" => "");
-        return $rotaEncontrada;
-    }
-
-// Verifica se o tipo do usuário logado tem acesso a Rota encontrada 
-    if (isset($_SESSION["entidade"])) {
-        $tipoUsuario = $_SESSION["entidade"]["entidade_tipo"];
-
-        if (isset($rotaEncontrada["permissao"])) {
-            $permissaoAcessoRota = $rotaEncontrada["permissao"];
-            if ($tipoUsuario != $permissaoAcessoRota) {
-                $rotaEncontrada = $rotaPadrao;
-                return $rotaEncontrada;
-            }
-        }
-    }
-    return $rotaEncontrada;
-}
+//// <editor-fold defaultstate="collapsed" desc="Desatualizado">
+///**
+// * 
+// * @param type $dadosURI - URL completa 
+// * @param type $action - GET / POST
+// * @return type definição da Página definida na rota
+// */
+//function _defineRota($p_dadosURI, $methodHTTP)
+//{
+//
+//    // Rota usada quando não for encontrada uma rota definida
+//    $rotaPadrao = defineRotaPadrao($p_dadosURI);
+//
+//    $rotas = carregaArrayRotas();
+//
+//    if ($rotas == null) {
+//        echo "Erro - R001";
+//        header("HTTP/1.0 404 End Point Nao Encontrado");
+//        die();
+//    }
+//
+//    $dadosURI = strtolower($p_dadosURI);
+//    $rotaDefinida = true;
+//
+//    $posicaoPrimeiraBarra = strpos($dadosURI, "/");
+//    $posicaoInterrogacao = strpos($dadosURI, "?");
+//
+//    $paginaAcesso = $dadosURI;
+//
+//    // Verifica se é uma rota direta
+//    // Pega a URL Total
+//    $posicaoUltimaBarra = strlen($dadosURI);
+//    while ($posicaoUltimaBarra) {
+//        $paginaAcesso = substr($dadosURI, 0, $posicaoUltimaBarra);
+//        if (key_exists($paginaAcesso, $rotas[$methodHTTP])) {
+//            $rotaDefinida = true;
+//            break;
+//        }
+//        $posicaoUltimaBarra = strripos($paginaAcesso, "/");
+//    }
+//
+//    // Verifica se é uma URL amigavel    
+//    $parametrosURL = array();
+//    if (!$posicaoPrimeiraBarra && !$posicaoInterrogacao && !$rotaDefinida) {
+//        $paginaAcesso = $dadosURI;
+//    } else {
+//        // se tem barra, trata os parâmetros
+//        if ($posicaoPrimeiraBarra) {
+//
+//            $regexPaginaAcesso = "/" . str_replace("/", '\/', $paginaAcesso) . "/";
+//            $parametros = preg_replace($regexPaginaAcesso, "", $dadosURI, 1);
+//            $aParametrosURL = explode("/", $parametros);
+//            if (!$rotaDefinida) {
+//                $paginaAcesso = $parametrosURL[0];
+//            }
+//        }
+//        if ($posicaoInterrogacao) {
+//            $itensURL = explode("?", $dadosURI);
+//            $paginaAcesso = $itensURL[0];
+//            if (count($itensURL) == 2) {
+//                $aParametrosURLTemporario = explode("&", $itensURL[1]);
+//            }
+//            // Remove os nomes dos valores vindos da URL
+//            for ($i = 0; $i < count($aParametrosURLTemporario); $i++) {
+//                $posIgual = strpos($aParametrosURLTemporario[$i], "=");
+//                $aParametrosURLTemporario[$i] = substr($aParametrosURLTemporario[$i], $posIgual + 1);
+//            }
+//
+//            $aParametrosURL = array_merge(array($paginaAcesso), $aParametrosURLTemporario);
+//        }
+//    }
+//
+//    if (!key_exists($paginaAcesso, $rotas[$methodHTTP])) {
+////        error_log("Não Encontrada: $paginaAcesso");
+////        error_log("Rota Padrão " . var_export($rotaPadrao, true));
+//        $rotaEncontrada = $rotaPadrao;
+//        return $rotaEncontrada;
+//    } else {
+//        $rotaEncontrada = $rotas[$methodHTTP][$paginaAcesso];
+//    }
+//
+//
+//    if (key_exists("parametros", $rotaEncontrada)) {
+//        $parametrosRota = $rotaEncontrada["parametros"];
+//
+//        $parametrosObrigatorios = true;
+//        if (key_exists("obrigatorio-parametros", $rotaEncontrada)) {
+//            $parametrosObrigatorios = $rotaEncontrada["obrigatorio-parametros"];
+//        }
+//
+//        // Se não for parametros com valor default
+//        // Verifica se os parametros necessários na Rota foram passados
+//        if (isset($parametrosRota[0]) & count($aParametrosURL) == 0 & $parametrosObrigatorios) {
+//            // Parametros da Rota não foram entrados, vai para rota default
+//            $rotaEncontrada = $rotaPadrao;
+//        } else {
+//            TrataParametrosRoda($aParametrosURL, $parametrosRota);
+//        }
+//    }
+//
+//// Verifica se a rota definida exige logon
+//    if (!isset($_SESSION["userdef"]) & !isset($rotaEncontrada["logon"]) & $methodHTTP != "POST") {
+//        $rotaEncontrada = array("page" => DEFAULT_PAGE, "funcao" => "");
+//        return $rotaEncontrada;
+//    }
+//
+//// Verifica se o tipo do usuário logado tem acesso a Rota encontrada 
+//    if (isset($_SESSION["entidade"])) {
+//        $tipoUsuario = $_SESSION["entidade"]["entidade_tipo"];
+//
+//        if (isset($rotaEncontrada["permissao"])) {
+//            $permissaoAcessoRota = $rotaEncontrada["permissao"];
+//            if ($tipoUsuario != $permissaoAcessoRota) {
+//                $rotaEncontrada = $rotaPadrao;
+//                return $rotaEncontrada;
+//            }
+//        }
+//    }
+//    return $rotaEncontrada;
+//}
 
 // </editor-fold>

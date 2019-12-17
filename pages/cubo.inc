@@ -51,27 +51,34 @@ $t_body->addFile("TOOLBAR_TOP", FILES_ROOT . "assets/templates/master/t_toolbar_
 // Adiciona o template de DATATABLE
 $t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/master/t_cube_datatable2.html");
 
-// <editor-fold defaultstate="collapsed" desc="Cabecalho da Tabela de casos">
-$cabecalhoTabela = array(
-    "",
-    "Período",
-    "PeródoSel",
-    "Produção",
-    "Não Digitalizado",
-    "Em Análise",
-    "% Desvio Prod Pendente",
-    "Analisadas",
-    "Regulares",
-    "Irregulares",
-    "% Desvio Analizados",
-    "Total Erros",
-    "% Desvio Total"
-);
+$json_cubo = file_get_contents("defcubo.json");
 
-//foreach ($cabecalhoTabela as $cabecalho) {
-//    $t_body->TEXTO_CABECALHO = $cabecalho;
-//    $t_body->block("BLOCK_CABECALHO_TABELA");
-//}
+$defCubo = json_decode($json_cubo, true);
+
+
+function pegaDimensaoSelecionada($defCubo, $dimensionIdSel = 1)
+{
+    foreach ($defCubo["dimensions"] as $item) {
+        if ($item["dimensionId"] == $dimensionIdSel) {
+            $dimensionSel = $item;
+            break;
+        }
+    }
+    return $dimensionSel;
+}
+
+
+// <editor-fold defaultstate="collapsed" desc="Cabecalho da Tabela de casos">
+
+$dimensionSel = pegaDimensaoSelecionada($defCubo, $dimensionIdSel = 1);
+
+$cabecalhoTabela = array();
+
+$cabecalhoTabela[] = $dimensionSel["dimensionDesc"];
+foreach ($dimensionSel["columns"] as $column)
+{
+    $cabecalhoTabela[] = $column["desc"];
+}
 
 foreach ($cabecalhoTabela as $cabecalho) {
     $t_body->TEXTO_CABECALHO = $cabecalho;
@@ -119,16 +126,16 @@ $t_body->ARQUIVO_CSS = "cubo.css";
 $t_body->block("BLOCO_CSS");
 
 $t_body->SITE_LOCATION = SITE_LOCATION;
-$t_body->TITULO_PAGE = "Relatórios $procdef->ProcName | Process";
+$t_body->TITULO_PAGE = "{$defCubo["desc"]} | Process";
 $t_body->HEADER_TEXT = "$procdef->ProcName";
-$t_body->HEADER_SMALL_TEXT = "Relatórios";
+$t_body->HEADER_SMALL_TEXT = "{$defCubo["desc"]}";
 $t_body->HEADER_ICO = "fa fa-cube";
 $t_body->HEADER_COLOR = "$procdef->ProcColor";
 
-$t_body->NAV_HEADER_TEXT = "$procdef->ProcName";
-$t_body->NAV_HEADER_ICO = "fa $procdef->ProcIcon";
+$t_body->NAV_HEADER_TEXT = "{$defCubo["desc"]}";
+$t_body->NAV_HEADER_ICO = "fa fa-cube";
 $t_body->NAV_HEADER_CLASS = "text-primary";
-$t_body->NAV_HEADER_COLOR = "$procdef->ProcColor";
+$t_body->NAV_HEADER_COLOR = "text-primary";
 
 $t_body->NAGEVAGAO_LINK = "javascript:";
 
@@ -183,10 +190,6 @@ $t_body->block("BLOCO_JAVASCRIPT_VENDOR");
 $t_body->ARQUIVO_JS = "cubo_datatable.js"; // Incicializacao DataTables
 $t_body->block("BLOCO_JAVASCRIPT");
 $t_body->ARQUIVO_JS = "cubo.js"; // Incicializacao DataTables
-$t_body->block("BLOCO_JAVASCRIPT");
-
-
-$t_body->ARQUIVO_JS = "cubo_tribanco.js"; // Incicializacao DataTables
 $t_body->block("BLOCO_JAVASCRIPT");
 
 $t_body->INCLUDE_JAVASCRIPT = "jsAcoesCuboRelatorio();";

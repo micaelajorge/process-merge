@@ -6,17 +6,6 @@
   Sistema: Process_XAMPP
  */
 
-function insereItemArray(&$item, $key)
-{
-    $item["DT_RowId"] = "row_" . $key;
-}
-
-function insereTdDetalhe($aDados)
-{
-    array_walk($aDados, "insereItemArray");
-    return $aDados;
-}
-
 function geraDetalhes($dados, $expanded, $endApi, $dimension = 1)
 {
     $detalhe_old = "";

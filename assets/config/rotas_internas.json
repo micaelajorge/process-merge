@@ -7,6 +7,12 @@
                 "parametros": ["emailEnviado"]
             }              
         },
+        "relusuarios": {
+            "GET": {
+                "page": "pages/relatorio_usuarios.inc",
+                "funcao": "relatorioXLS"
+            }              
+        },
         "rp": {
             "GET": {
                 "page": "api/api_admin_users.inc",
@@ -242,6 +248,12 @@
                 "page": "api/api_clicksign_v1.inc",
                 "funcao": "hook_get_data",
                 "logon": false
+            }
+        },
+        "api/v1/hookgetdata": {
+            "POST": {
+                "page": "api/api_clicksign_v1.inc",
+                "funcao": "hook_get_data"
             }
         },
         "api/v1/changecontract": {
@@ -1212,7 +1224,28 @@
             "POST": {
                 "page": "api/api_cubo.inc",
                 "funcao": "MontaCuboOne",
-                "parametros": ["dim2", "dim3", "dim4"]
+                "parametros": ["dim2", "dim3", "dim4"],
+                "logon": false
+            },
+            "GET": {
+                "page": "api/api_cubo.inc",
+                "funcao": "MontaCuboOne",
+                "parametros": ["dim2", "dim3", "dim4"],
+                "logon": false
+            }
+        },
+        "api/v1/cubo": {
+            "POST": {
+                "page": "api/api_cubo.inc",
+                "funcao": "busca_dados_dimensao",
+                "parametros": ["dim2", "dim3", "dim4"],
+                "logon": false
+            },
+            "GET": {
+                "page": "api/api_cubo.inc",
+                "funcao": "busca_dados_dimensao",
+                "parametros": [],
+                "logon": false
             }
         },
         "cubo": {

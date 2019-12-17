@@ -6,17 +6,6 @@
   Sistema: Process_XAMPP
  */
 
-function insereItemArray(&$item, $key)
-{
-    $item["DT_RowId"] = "row_" . $key;
-}
-
-function insereTdDetalhe($aDados)
-{
-    array_walk($aDados, "insereItemArray");
-    return $aDados;
-}
-
 function MontaCuboIrregularidades()
 {
     global $connect, $PARAMETROS_ROTA;

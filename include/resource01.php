@@ -4003,6 +4003,10 @@ function TrataCampoOrdem($Campo)
         return '';
     }
     $key = str_replace("Campo", "", $Campo);
+    if (!is_array($S_procdef["Referencias"]))
+    {
+        $S_procdef["Referencias"] = [];
+    }
     for ($i = 0; $i < count($S_procdef["Referencias"]); $i++) {
         if ($S_procdef["Referencias"][$i]["FieldId"] == $key) {
             if ($S_procdef["Referencias"][$i]["FieldType"] == 'DT') {

@@ -898,11 +898,13 @@ switch ($srvAccess) {
                 break;
 
             case "homolog_creditas_scd":
-                define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
                 /**
                  *  Definições Banco de dados
                  */
+                
+                define("LOGAR_ROTA", true);
+                error_reporting(E_ALL);
                 $BPMUSER = "process";
                 $BPMPWD = "cerberus";
                 $EXTERNALUSER = "process";
@@ -914,7 +916,7 @@ switch ($srvAccess) {
                 define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
                 define("SERVER_ADDRESS", $srvAccess);
-                define("ARQUIVO_ERROR_LOG_PHP", "log_creditas_scd/PHP_errors.log");
+                define("ARQUIVO_ERROR_LOG_PHP", "log_homolog_creditas_scd/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
                 define("FILES_FOLDER", "/");
@@ -1574,7 +1576,7 @@ if (!defined("LIMITE_DIAS_ULTIMO_LOGON")) {
 
 if (!defined("LIMITE_DIAS_TROCA_SENHA"))
 {
-    define("LIMITE_DIAS_ULTIMO_LOGON", 300);
+    define("LIMITE_DIAS_TROCA_SENHA", 300);
 }
 
 // Define o texto para cabeçalho na fila para o coluna Nr Caso

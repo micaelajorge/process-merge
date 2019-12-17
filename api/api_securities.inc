@@ -455,6 +455,7 @@ function get_cession_resolution_queue($procCod)
  */
 function api_process_create()
 {
+    error_log("Entrando em cessões");
     $procCod = 'SEC_CESSOES';
     processa_cessao_resolucao($procCod);
 }
@@ -497,7 +498,7 @@ function validaDadosEntrada($dadosRecebidos, $listaCamposObrigatorios, $camposCo
 
 function processa_cessao_resolucao($procCod)
 {
-    try {
+    try {        
         $dadosEntrada = apiTrataDadosEntrada();
 
         $chavesRecebidas = array_keys($dadosEntrada);
@@ -507,7 +508,7 @@ function processa_cessao_resolucao($procCod)
         $dadosProcessoValido = validaDadosEntrada($dadosEntrada, $camposObrigatoriosCessao);
         if (!$dadosProcessoValido) {
             header("HTTP/1.0 400 Dados Insuficientes");
-            return;
+            return "dadosInsuficientes";
         }
 
         $camposEnvio = array();
@@ -615,6 +616,9 @@ function processa_cessao_resolucao($procCod)
         }
     } catch (Exception $ex) {
         $jDados = json_encode($ex);
+        header("Access-Control-Allow-Origin: *");
+        header('Content-Type: application/json');
+        echo $jDados;       
     }
     header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');

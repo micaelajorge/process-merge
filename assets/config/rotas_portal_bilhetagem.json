@@ -1,43 +1,50 @@
 {
     "rotas": {    
-        "pedidos": {
+        "billing": {
             "GET": {
-                "page": "pages\/pedidos.inc",
+                "page": "pages\/billing\/pedidos.inc",
                 "funcao": ""
             }
         },
         "mockcreditas": {
             "GET": {
-                "page": "api\/apimockcreditas.inc",
+                "page": "api\/billing\/apimockcreditas.inc",
                 "funcao": "MockCreditas"
             }, 
             "POST": {
-                "page": "api\/apimockcreditas.inc",
+                "page": "api\/billing\/apimockcreditas.inc",
                 "funcao": "MockCreditas"
             }
         },
+        "relatoriod1": {
+            "POST": {
+                "page": "api\/billing\/api_relatorioonline.inc",
+                "funcao": "MontaCuboOne",
+                "parametros": ["mes_selecionado", "ano_selecionado"]
+            }                                    
+        },     
          "mockcreditas_estado": {
             "GET": {
-                "page": "api\/apimockcreditas.inc",
+                "page": "api\/billing\/apimockcreditas.inc",
                 "funcao": "MockEstados"
             }
         },
          "mockcreditas_municipio": {
             "GET": {
-                "page": "api\/apimockcreditas.inc",
+                "page": "api\/billing\/apimockcreditas.inc",
                 "funcao": "MockMunicipio",
                 "parametros": ["estado"]
             }
         },
         "pedidos_detalhe": {
             "GET": {
-                "page": "pages\/pedidos_detalhe.inc",
+                "page": "pages\/billing\/pedidos_detalhe.inc",
                 "funcao": ""
             }
         },
         "bilhetagem": {
             "GET": {
-                "page": "pages\/bilhetagem.inc",
+                "page": "pages\/billing\/bilhetagem.inc",
                 "funcao": ""
             }
         }

@@ -1,0 +1,62 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Gerenciamento de Protestos",
+		"version": "1.0.0"
+	},
+	"servers": [
+		{
+			"url": "http://localhost/process/protesto",
+			"description": "Current host server"
+		},
+		{
+			"url": "http://localhost/process/protesto",
+			"description": "Prod server"
+		}
+	],
+	"paths": {
+		"/protesto_envio": {
+			"post": {
+				"summary": "Envia os protestos listados para os cartórios",
+				"description": "Search for an object, if found return it!",
+				"requestBody": {
+					"description": "Client side search object",
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ClientSearchObject"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"404": {
+						"description": "Resource Not Found"
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"ClientSearchObject": {
+				"type": "object",
+				"required": [
+					"typeName"
+				],
+				"properties": {
+					"typeName": {
+						"type": "string"
+					},
+					"query": {
+						"type": "string"
+					}
+				}
+			}
+		}
+	}
+}

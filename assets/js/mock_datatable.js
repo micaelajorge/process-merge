@@ -120,5 +120,4 @@ function jsInicializacaoPagina()
 
 $(document).ready(function () {
     jsInicializacaoPagina();
-    $('#pedidos').removeClass('hidden');
 });

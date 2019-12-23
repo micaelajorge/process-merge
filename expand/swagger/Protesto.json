@@ -1,0 +1,12 @@
+{
+    "Protesto": {
+    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"},            
+    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"}, 
+    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"}, 
+    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"}, 
+    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"}, 
+    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"}, 
+    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"} 
+    }
+}
+

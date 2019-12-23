@@ -1,11 +1,7 @@
 {
     "rotas": {    
-        "protesto": {
+        "swagger": {
             "GET": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": ""
-            }, 
-            "POST": {
                 "page": "api\/protesto\/apiprotesto.php",
                 "funcao": ""
             }

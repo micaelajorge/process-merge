@@ -27,7 +27,7 @@
             <tr> 
                 <td align="center">
                     <!-- <a target="_blank" href="BPMViewFile.php?ProcId={PROCID}&CaseNum={CASENUM}&Target={ARQUIVO_NOME}" class="MVHistorico"><i class="fa fa-eye" title="Abrir arquivo"></i></a> -->
-                    <a href="javascript:" onclick="jsViewFile({PROCID}, {CASENUM}, {FIELD_ID}, '{ARQUIVO_NOME_STORAGE}', '{ARQUIVO_NOME_JS}', null, {NOVA_JANELA|constant:ARQUIVOS_NOVA_JANELA})" title="Visualizar Arquivo"><i class="fa fa-file-archive-o"></i></a>                     
+                    <a href="javascript:" onclick="jsViewFile({PROCID}, {CASENUM}, {FIELD_ID}, '{ARQUIVO_NOME_STORAGE}', '{ARQUIVO_NOME_JS}', null, {NOVA_JANELA | constant:ARQUIVOS_NOVA_JANELA})" title="Visualizar Arquivo"><i class="fa fa-file-archive-o"></i></a>                     
                     <!-- BEGIN BLOCK_APAGAR_ARQUIVO -->
                     <a href="javascript:" onclick="jsRemoveFile({PROCID}, {CASENUM}, {FIELD_ID}, {VALUE_ID}, '{ARQUIVO_NOME_JS}')" title="Remover Arquivo"><i class="fa fa-trash-o text-warning"></i></a>
                     <!-- END BLOCK_APAGAR_ARQUIVO -->                    
@@ -182,11 +182,26 @@
                                 </div>            
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div id="dwtcontrolContainer" ></div>
-                            <div class="form-group">
-                                <button class="btn btn-success btn-sm pull-left" id="btnSelFiles" type="button" onclick="jsFieldFileAcquireImage()"><i class="fa fa-camera"></i> Capturar</button>
-                                <button class="btn btn-warning btn-sm pull-right" disabled id="btnRemoveScanFiles" type="button" onclick="jsFieldFileRemoveImages()"><i class="fa fa-ban"></i> Remover</button>
+                        <div class="col-lg-6">  
+                            <div class="row">                               
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <div class="col-lg-12">
+                                        <div id="dwtcontrolContainer"></div>
+                                    </div>
+                                    <div class="row">                                    
+                                        <div class="col-lg-12 form-group">
+                                            <button class="btn btn-primary btn-sm pull-left" disabled id="btnImagePrev" type="button" title="Imagem Anterior" onclick="jsFieldFileAcquireImage()"><i class="fa fa-chevron-left"></i></button>
+                                            <button class="btn btn-primary btn-sm pull-left" disabled id="btnImageNext" type="button" title="Proxima Imagem" onclick="jsFieldFileAcquireImage()"><i class="fa fa-chevron-right"></i></button>
+                                            <button class="btn btn-danger btn-sm pull-right" disabled id="btnImageRemove" type="button" title="Remover Imagem" onclick="jsFieldFileAcquireImage()"><i class="fa fa-ban"></i></button>
+                                        </div>           
+                                    </div>
+                                    <div class="row">                                    
+                                        <div class="col-lg-12 form-group">
+                                            <button class="btn btn-success btn-sm pull-left" id="btnSelFiles" type="button" onclick="jsFieldFileAcquireImage()"><i class="fa fa-camera"></i> Capturar</button>
+                                            <button class="btn btn-warning btn-sm pull-right" disabled id="btnRemoveScanFiles" type="button" onclick="jsFieldFileRemoveImages()"><i class="fa fa-ban"></i> Remover</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

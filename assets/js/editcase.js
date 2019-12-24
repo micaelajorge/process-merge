@@ -742,7 +742,7 @@ function jsMudaStatusButtonBO(objeto, checkBoxAlvo)
 
 function jsFieldFileRemoveImages()
 {
-    if (confirm('Descartar imagens'))
+    if (confirm('Descartar Todas as imagens?'))
     {
         DWObject.RemoveAllImages();
     }

@@ -222,22 +222,22 @@ switch ($srvAccess) {
         $EXTERNALUSER = "root";
         $EXTERNALPWD = "";
         $EXTERNAL_USERNAME = "root";
-        
+
         // Ignora politicas de segurança
         define("APLICAR_POLITICAS_SEGURANCA", false);
-        
-        
+
+
         define("SITE_ROOT", "http://localhost/");
         switch ($aliasServidor) {
-            case "caruana":
+            case "mmoscz":
                 define("TEMASISTEMA", "skin-red");
-                define("INSTANCENAME", 'Process Caruana');
-                define("SITE_FOLDER", "/caruana/");
-                define("INSTANCENAME", 'Process Caruana');
+                define("INSTANCENAME", 'Process moscz');
+                define("SITE_FOLDER", "/mmoscz/");
+                define("INSTANCENAME", 'Process mmoscz');
                 define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS_TESTE");
                 define("configDB", "db-teste");
-                $BPMDB = "poc_caruana";
-                $EXTERNALDB = 'poc_caruana';
+                $BPMDB = "mmoscz_git";
+                $EXTERNALDB = 'mmoscz_git';
                 break;
 
             case "process-teste":
@@ -294,8 +294,8 @@ switch ($srvAccess) {
                 define("ARQUIVO_ERROR_LOG_PHP", "log_creditas_scd/PHP_errors.log");
                 $BPMDB = "creditas_scd";
                 $EXTERNALDB = 'creditas_scd';
-                break;            
-            
+                break;
+
             default:
                 setcookie("XDEBUG_SESSION", "netbeans-xdebug");
                 define("INSTANCENAME", 'Process Desenv');
@@ -308,6 +308,8 @@ switch ($srvAccess) {
 //                $EXTERNALDB = "securities_start";
                 $BPMDB = "processteste";
                 $EXTERNALDB = "processteste";
+//                $BPMDB = "process-new";
+//                $EXTERNALDB = "process-new";
                 break;
         }
         define("FILES_FOLDER", "\\");
@@ -498,7 +500,46 @@ switch ($srvAccess) {
     case "40.114.46.89":
     case "securities.com.br":
         define("ARQUIVOS_NOVA_JANELA", "true");
+
         switch ($aliasServidor) {
+            case "mmoscz":
+                ini_set('display_errors', 1);
+                ini_set('display_startup_errors', 1);                
+                ini_set("error_reporting", E_ALL);
+
+
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("TEMASISTEMA", "skin-red");
+                /**
+                 *  Definições Banco de dados
+                 */
+                $BPMUSER = "process";
+                $BPMPWD = "cerberus";
+                $EXTERNALUSER = "process";
+                $EXTERNALPWD = "cerberus";
+                $EXTERNAL_USERNAME = "process";
+                $BPMDB = "git_mmoscz";
+                $EXTERNALDB = 'git_mmoscz';
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("SITE_ROOT", "http://$srvAccess");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("SERVER_ADDRESS", $srvAccess);
+                define("ARQUIVO_ERROR_LOG_PHP", "log_homolog_creditas_consignado/PHP_errors.log");
+                define("_SECRET_KEY", "f9QsJ4Oufz");
+                define("ALLOW_SEARCH", FALSE);
+                define("FILES_FOLDER", "/");
+                define("FILES_UPLOAD", "/storage/gateway_creditas_scd");
+                define("INSTANCENAME", 'Git mmoscz');
+                define("SITE_FOLDER", "/mmoscz/"); // Nome do Alias no APACHE
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+                define("PARCEIRONAME", 'Certdox');
+                define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
+                define("URL_OWNER", "https://www.certdox.com.br");
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("NAME_OWNER", "Powered by Certdox");
+                break;
+
             case "homolog_creditas_consignado":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
@@ -661,6 +702,41 @@ switch ($srvAccess) {
                 define("SITE_FOLDER_COMPLEMENT", "");
                 define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
                 define("PARCEIRONAME", 'DM Card Certdox');
+                define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
+                define("URL_OWNER", "https://www.certdox.com.br");
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("NAME_OWNER", "Certdox");
+                break;
+
+            case "protestos_poc":
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("TEMASISTEMA", "skin-red");
+                define("TEMPLATE_LOGON", "t_logon_dmcard.html");
+
+                /**
+                 *  Definições Banco de dados
+                 */
+                $BPMUSER = "process";
+                $BPMPWD = "cerberus";
+                $EXTERNALUSER = "process";
+                $EXTERNALPWD = "cerberus";
+                $EXTERNAL_USERNAME = "process";
+                $BPMDB = "protestos_poc";
+                $EXTERNALDB = 'protestos_poc';
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("SITE_ROOT", "http://$srvAccess");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("SERVER_ADDRESS", $srvAccess);
+                define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
+                define("_SECRET_KEY", "f9QsJ4Oufz");
+                define("ALLOW_SEARCH", FALSE);
+                define("FILES_FOLDER", "/");
+                define("FILES_UPLOAD", "/storage/protestos_poc");
+                define("INSTANCENAME", 'Protestos POC');
+                define("SITE_FOLDER", "/protestos_poc/");
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+                define("PARCEIRONAME", 'Certdox');
                 define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
                 define("URL_OWNER", "https://www.certdox.com.br");
                 define("ALINHAMENTO_LOGO", "float:left");
@@ -902,7 +978,6 @@ switch ($srvAccess) {
                 /**
                  *  Definições Banco de dados
                  */
-                
                 define("LOGAR_ROTA", true);
                 error_reporting(E_ALL);
                 $BPMUSER = "process";
@@ -1201,9 +1276,9 @@ switch ($srvAccess) {
                 define("ICONE_PARCEIRO", "logo-agiliza-mini.png");
                 define("URL_OWNER", "https://www.agilizaonline.com.br");
                 define("NAME_OWNER", "Agiliza");
-                
+
                 define("APLICAR_POLITICAS_SEGURANCA", true);
-                
+
                 $BPMDB = "process_poc_caruana";
                 $EXTERNALDB = 'process_poc_caruana';
                 break;
@@ -1419,7 +1494,7 @@ switch ($srvAccess) {
         define("ICONE_PARCEIRO", "logo-agiliza-mini.png");
         define("LOGO_CLIENTE", "caruna-logo.jpeg");
         define("ALINHAMENTO_LOGO_CLIENTE", "align:right");
-        
+
         // Definição do COnfig de Dynamic Twain
         define("DINAMIC_TWAIN_CONFIG", "dynamsoft.webtwain.config.agiliza.js");
         break;
@@ -1551,14 +1626,13 @@ switch ($srvAccess) {
         break;
 }
 
-if (!defined("DINAMIC_TWAIN_CONFIG")){
+if (!defined("DINAMIC_TWAIN_CONFIG")) {
     define("DINAMIC_TWAIN_CONFIG", "dynamsoft.webtwain.config.js");
 }
-    
+
 define("DEFAULT_MAX_FALHAS_LOGON", 3);
 
-if (!defined("CRIA_SESSION_INTEGRATION"))
-{
+if (!defined("CRIA_SESSION_INTEGRATION")) {
     define("CRIA_SESSION_INTEGRATION", false);
 }
 
@@ -1570,12 +1644,11 @@ if (!defined("SERVER_ADDRESS")) {
     define("SERVER_ADDRESS", $srvAccess);
 }
 
-if (!defined("LIMITE_DIAS_ULTIMO_LOGON")) {   
+if (!defined("LIMITE_DIAS_ULTIMO_LOGON")) {
     define("LIMITE_DIAS_ULTIMO_LOGON", 90);
 }
 
-if (!defined("LIMITE_DIAS_TROCA_SENHA"))
-{
+if (!defined("LIMITE_DIAS_TROCA_SENHA")) {
     define("LIMITE_DIAS_TROCA_SENHA", 300);
 }
 
@@ -1592,8 +1665,7 @@ if (!defined("SITE_ALIAS")) {
     define("SITE_ALIAS", SITE_FOLDER);
 }
 
-if (defined("APLICAR_POLITICAS_SEGURANCA"))
-{
+if (defined("APLICAR_POLITICAS_SEGURANCA")) {
     define("APLICAR_POLITICAS_SEGURANCA", false);
 }
 
@@ -1667,22 +1739,19 @@ try {
 
 // Define a URL do Server
     $concatServer = "/";
-    if (substr(SITE_ROOT, -1) === "/")
-    {
+    if (substr(SITE_ROOT, -1) === "/") {
         $concatServer = "";
-    } 
+    }
 
     $concatAlias = "";
-    if ($aliasServidor !== "")
-    {
+    if ($aliasServidor !== "") {
         $concatAlias = "/";
     }
-    
+
     $urlServer = SITE_ROOT . $concatServer . $aliasServidor . $concatAlias;
-    define("URL_SERVER", $urlServer);    
-    
-    if (!defined("LOGAR_ROTA"))
-    {
+    define("URL_SERVER", $urlServer);
+
+    if (!defined("LOGAR_ROTA")) {
         define("LOGAR_ROTA", false);
     }
     $LOGAR_ROTA = LOG_DATA | LOGAR_ROTA;

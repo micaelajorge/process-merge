@@ -13,6 +13,11 @@
                 "funcao": "relatorioXLS"
             }              
         },
+        "releventos": {
+            "GET": {
+                "page": "pages/relatorio_eventos.inc"
+            }              
+        },
         "rp": {
             "GET": {
                 "page": "api/api_admin_users.inc",

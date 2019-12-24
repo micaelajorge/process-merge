@@ -1,0 +1,47 @@
+{
+    "Devedor": {
+            "type":"object",
+            "properties":{        
+              "controle_devedores":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Número de Controle do(s) Devedor(es)"
+           },
+           "nome_devedor":{
+              "type":"string",
+              "title":"Nome do Devedor"
+           },
+           "tipo_identificacao_devedor":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Tipo de Identificação do Devedor"
+           },
+           "doc_devedor":{
+              "type":"string",
+              "title":"Documento do Devedor"
+           },
+           "end_devedor":{
+              "type":"string",
+              "title":"Endereço do Devedor "
+           },
+           "cep_devedor":{
+              "type":"integer",
+              "format":"int64",
+              "title":"CEP do Devedor"
+           },
+           "cidade_devedor":{
+              "type":"string",
+              "title":"Cidade do Devedor"
+           },
+           "uf_devedor":{
+              "type":"string",
+              "title":"UF do Devedor"
+           },
+            "bairro_devedor":{
+              "type":"string",
+              "title":"Bairro do Devedor "
+           }
+        }
+    
+    }
+}

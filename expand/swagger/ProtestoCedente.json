@@ -1,0 +1,15 @@
+{
+    "Cedente":{
+        "type":"object",
+            "properties":{
+               "cod_cedente":{
+               "type":"string",
+               "title":"Agência / Código do Cedente"
+               },
+               "nome_cedente":{
+               "type":"string",
+               "title":"Nome do Cedente/Favorecido"
+               }
+            }
+    }
+}

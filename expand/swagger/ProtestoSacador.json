@@ -1,0 +1,34 @@
+{
+        "Sacador":{
+        "type":"object",
+            "properties":{
+           "nome_sacador":{
+              "type":"string",
+              "title":"Nome do Sacador/Vendedor"
+           },
+           "doc_sacador":{
+              "type":"string",
+              "title":"Documento do Sacador"
+           },
+           "end_sacador":{
+              "type":"string",
+              "title":"Endereço do Sacador/Vendedor"
+           },
+           "cep_sacador":{
+              "type":"integer",
+              "format":"int64",
+              "title":"CEP do Sacador/Vendedor"
+           },
+           "cidade_sacador":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Cidade do Sacador/Vendedor"
+           },
+           "uf_sacador":{
+              "type":"integer",
+              "format":"int64",
+              "title":"UF do Sacador/Vendedor"
+           }
+       }
+    }
+}

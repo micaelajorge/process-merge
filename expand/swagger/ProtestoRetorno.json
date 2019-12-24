@@ -1,0 +1,42 @@
+{
+    "Cedente":{
+        "type":"object",
+            "properties":{
+                "cod_cartorio":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Código do Cartório"
+           },
+           "numero_protocolo":{
+              "type":"string",
+              "title":"Número do Protocolo do Cartório "
+           },
+           "tipo_ocorrencia":{
+              "type":"string",
+              "title":"Tipo de Ocorrência "
+           },
+           "data_protocolo":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Data do Protocolo"
+           },
+           "custas_cartorio":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Valor das Custas do Cartório"
+           },
+           "declaracao_portador":{
+              "type":"string",
+              "title":"Declaração do Portador "
+           },
+           "data_ocorrencia":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Data da Ocorrência "
+           },
+           "cod_irregularidade":{
+              "type":"string",
+              "title":"Código de Irregularidade "
+           }
+            }
+    }

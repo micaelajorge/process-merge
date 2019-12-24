@@ -2,18 +2,106 @@
 "Protesto": {
         "type":"object",
         "properties":{
+           "id_registro":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Identificação do Registro"
+           },
+           "cod_portador":{
+              "type":"string",
+               "title":"Número do Código do Portador "
+           },                      
            "nosso_numero":{
               "type":"string",
               "example":"X00000000000002",
-              "title":"Número interno (Nosso Número)"
+              "title":"Número interno (Nosso Número)",
+              "desc":"Utilizado para conciliação de pagamentos e retorno"
+           },          
+           "praca":{
+              "type":"string",
+              "example":"3550308",
+              "title":"Praça de Protesto"
            },
-           "type":{
-              "type":"string"
+           "tipo_endosso":{
+              "type":"string",
+              "title":"Tipo de Endosso"
            },
-           "message":{
-              "type":"string"
-           }                     
+           "info_aceite":{
+              "type":"string",
+              "title":"Informação sobre Aceite"
+           },                              
+           "custas_distribuidor":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Valor das Custas do Cartório Distribuidor "
+           },
+           "reg_distribuicao":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Registro de Distribuição "
+           },
+           "valor_despesas":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Valor da gravação eletrônica e demais despesas "
+           },
+           "numero_operacao":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Número da Operação do Banco "
+           },
+           "numero_contrato":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Número do Contrato do Banco "
+           },
+           "numero_parcela_contrato":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Número da Parcela do Contrato "
+           },
+           "tipo_letra_cambio":{
+              "type":"string",
+              "title":"Tipo da Letra de Câmbio"
+           },
+           "complemento_cod_irregularidade":{
+              "type":"string",
+              "title":"Complemento Código de Irregularidade "
+           },
+           "motivo_falencia":{
+              "type":"string",
+              "title":"Protesto por Motivo de Falência "
+           },
+           "instrumento_protesto":{
+              "type":"string",
+              "title":"Instrumento de Protesto "
+           },
+           "valor_despesas":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Valor das demais despesas "
+           },
+           "complemento_registro":{
+              "type":"string",
+              "format":"int64",
+              "title":"Complemento do Registro "
+           },
+           "numero_registro":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Número Seqüencial do Registro no Arquivo"
+           },
+           "Titulo":{"$ref":"#/definitions/Titulo"},
+           "Cedente":{"$ref":"#/definitions/Cedente"},
+           "Devedor":{"$ref":"#/definitions/Devedor"},
+           "Sacador":{"$ref":"#/definitions/Sacador"}
         } 
-}
+},
+    "definitions":{
+        "Titulo":{"$ref":"/expand/swagger/ProtestoTitulo.json#Titulo"},
+        "Cedente":{"$ref":"/expand/swagger/ProtestoCedente.json#Cedente"},
+        "Devedor":{"$ref":"/expand/swagger/ProtestoDevedor.json#Devedor"},
+        "Sacador":{"$ref":"/expand/swagger/ProtestoSacador.json#Sacador"}
+    }
 }
 

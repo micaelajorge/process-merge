@@ -3,7 +3,8 @@
         "swagger": {
             "GET": {
                 "page": "api\/protesto\/apiprotesto.php",
-                "funcao": ""
+                "funcao": "",
+                "logon": false  
             }
         }      
     }

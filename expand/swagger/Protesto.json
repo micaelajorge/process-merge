@@ -1,12 +1,19 @@
 {
-    "Protesto": {
-    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"},            
-    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"}, 
-    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"}, 
-    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"}, 
-    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"}, 
-    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"}, 
-    "nosso_numero":{"type":"string", "name":"Número interno (Nosso Número)", "example":"Teste"} 
-    }
+"Protesto": {
+        "type":"object",
+        "properties":{
+           "nosso_numero":{
+              "type":"string",
+              "example":"X00000000000002",
+              "title":"Número interno (Nosso Número)"
+           },
+           "type":{
+              "type":"string"
+           },
+           "message":{
+              "type":"string"
+           }                     
+        } 
+}
 }
 

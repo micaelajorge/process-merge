@@ -33,20 +33,11 @@
           "201": {
             "description": "Recebido"
           }
-        },
-        "security":[
-               {
-                  "petstore_auth":[
-                     "write:Protesto",
-                     "read:Protesto"
-                  ]
-               }
-            ]
+        }
       }
     }
   },
-  "definitions":
-  {
-      "Protesto":{"$ref":"/expand/swagger/Protesto.json#Protesto"}            
-  }
+    "definitions":{
+        "Protesto":{"$ref":"/expand/swagger/Protesto.json#Protesto"}
+    }
 }

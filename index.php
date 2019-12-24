@@ -15,13 +15,14 @@ function iniciarPhpSession()
     $headers = getallheaders();
     if (key_exists("token", $headers) || key_exists("Authorization", $headers)) {
         ini_set('session.use_cookies', 0);
-    }session_start();
+    }
+    session_start();
 }
 
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
-//ini_set("error_reporting", E_ERROR);
+ini_set("error_reporting", E_ERROR);
 
 
 $failRequireModules = false;
@@ -525,7 +526,7 @@ switch ($srvAccess) {
                 define("ARQUIVO_ERROR_LOG_PHP", "log_homolog_creditas_consignado/PHP_errors.log");
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
-                define("FILES_FOLDER", "/mmoscz/");
+                define("FILES_FOLDER", "/");
                 define("FILES_UPLOAD", "/storage/gateway_creditas_scd");
                 define("INSTANCENAME", 'Git mmoscz');
                 define("SITE_FOLDER", "/mmoscz/"); // Nome do Alias no APACHE

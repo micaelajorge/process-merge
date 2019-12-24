@@ -510,7 +510,7 @@ switch ($srvAccess) {
 
 
                 define("ALINHAMENTO_LOGO", "float:left");
-                define("TEMASISTEMA", "skin-red");
+                define("TEMASISTEMA", "skin-green-ligth");
                 //  Definições Banco de dados
                 $BPMUSER = "process";
                 $BPMPWD = "cerberus";

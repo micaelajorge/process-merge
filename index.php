@@ -518,8 +518,8 @@ switch ($srvAccess) {
                 $EXTERNALUSER = "process";
                 $EXTERNALPWD = "cerberus";
                 $EXTERNAL_USERNAME = "process";
-                $BPMDB = "git_mmoscz";
-                $EXTERNALDB = 'git_mmoscz';
+                $BPMDB = "mmoscz_git";
+                $EXTERNALDB = 'mmoscz_git';
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");

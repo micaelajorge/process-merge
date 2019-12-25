@@ -1,5 +1,12 @@
 {
     "rotas": {    
+        "swagger": {
+            "GET": {
+                "page": "pages/swagger.inc",
+                "logon": false,
+                "parametros": ["nome_projeto", "versao_api"]
+            }                          
+        },
         "recuperarsenha": {
             "GET": {
                 "page": "pages/recuperar_senha.inc",

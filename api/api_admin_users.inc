@@ -191,7 +191,7 @@ function verificaHistoriocSenhas($USUARIO_ID, $SENHA, $senhaCript)
     $historicoSenhas = json_decode($json_historicoSenhas, true);
 
     if (verificaSenhas($SENHA, $historicoSenhas)) {
-        return false;
+        return false | !APLICAR_POLITICAS_SEGURANCA;
     }
 
     array_push($historicoSenhas, $senhaCript);

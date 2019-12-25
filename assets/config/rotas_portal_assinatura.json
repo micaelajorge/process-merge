@@ -25,7 +25,9 @@
         "consultabasica": {
             "GET": {
                 "page": "pages/consultabasica.inc",
-                "parametros": ["procCode"]
+                "parametros": [{
+                        "procCod": "SEC_CESSOES"
+                    }]
             }
         }
     }

@@ -1,0 +1,117 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Gerenciamento de Protestos",
+    "contact": {
+      "name": "CertDox",
+      "email": "contato@certdox.com.br"
+    }
+  },
+  "host": "127.0.0.1:8080",
+  "basePath": "/datasnap/rest/TServerMethods1/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "api/v1/envio_protesto": {
+      "post": {         
+        "tags":["protesto"],
+        "description": "",
+        "consumes":["application/json"],
+        "produces":["application/json"],
+        "parameters": [
+          {
+            "in":"body",
+            "name": "Protestos",      
+            "description": "",
+            "required": true,
+            "type": "array",
+            "schema": {
+                 "type":"array",
+                     "items":{
+                    "$ref":"#/definitions/Protesto"}}
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Recebido"
+          }
+        }
+      }
+    }
+    ,
+    "api/v1/cancelamento_protesto": {
+      "post": {         
+        "tags":["protesto"],
+        "description": "",
+        "consumes":["application/json"],
+        "produces":["application/json"],
+        "parameters": [
+          {
+            "in":"body",
+            "name": "Protestos",      
+            "description": "",
+            "required": true,
+            "type": "array",
+            "schema": {"$ref":"#/definitions/Protesto"}
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Recebido"
+          }
+        }
+      }
+    }
+    ,
+    "api/v1/desistencia_protesto": {
+      "post": {         
+        "tags":["protesto"],
+        "description": "",
+        "consumes":["application/json"],
+        "produces":["application/json"],
+        "parameters": [
+          {
+            "in":"body",
+            "name": "Protestos",      
+            "description": "",
+            "required": true,
+            "type": "array",
+            "schema": {"$ref":"#/definitions/Protesto"}
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Recebido"
+          }
+        }
+      }
+    }
+    ,
+    "api/v1/status_protesto":{
+    "get": {     
+        "parameters": [
+          {
+            "in":"query",
+            "name": "Identificação do Protesto",      
+            "description": "",
+            "required": true,
+            "type": "string"
+          }],
+        "responses": {
+              "200": {
+              "description": "Concluído"
+          }
+        }
+    }
+    }
+  },
+    "definitions":{
+        "Protesto":{"$ref":"/expand/swagger/Protesto.json#Protesto"},
+        "Titulo":{"$ref":"/expand/swagger/Protesto.json#ProtestoTitulo"},
+        "Cedente":{"$ref":"/expand/swagger/ProtestoCedente.json#Cedente"},
+        "Devedor":{"$ref":"/expand/swagger/ProtestoDevedor.json#Devedor"},
+        "Sacador":{"$ref":"/expand/swagger/ProtestoSacador.json#Sacador"}
+    }
+}

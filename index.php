@@ -227,7 +227,7 @@ switch ($srvAccess) {
         // Ignora politicas de segurança
         define("APLICAR_POLITICAS_SEGURANCA", false);
 
-
+        define("INSTANCE_APIS", ["protestos.json"]);
         define("SITE_ROOT", "http://localhost/");
         switch ($aliasServidor) {
             case "mmoscz":
@@ -519,6 +519,8 @@ switch ($srvAccess) {
                 $EXTERNAL_USERNAME = "process";
                 $BPMDB = "mmoscz_git";
                 $EXTERNALDB = 'mmoscz_git';
+                
+                define("INSTANCE_APIS", ["protestos.json"]);
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");

@@ -8,7 +8,9 @@ $t_body = new Template(FILES_ROOT . "assets/templates/t_swagger.html");
 $t_body->SITE_LOCATION = SITE_LOCATION;
 
 $nomeArquivoJsonSwagger = $nome_projeto . "_" . $versao_api . ".json";
-$apisDisp = ["protestos.json"];
+
+// Pega a lista de APIS disponibilizadas para a Instância.
+$apisDisp = INSTANCE_APIS;
 
 if (!file_exists(FILES_ROOT . "assets/swagger/" . $nomeArquivoJsonSwagger))
 {

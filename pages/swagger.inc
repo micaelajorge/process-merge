@@ -17,8 +17,9 @@ if (!file_exists(FILES_ROOT . "assets/swagger/" . $nomeArquivoJsonSwagger))
     {
         $json_defApi = file_get_contents("assets/swagger/${fileDef}");
         $defApi = json_decode($json_defApi, true);
+        $t_body->END_POINT_GROUP_DESC = $defApi["description"];
         
-        foreach ($defApi as $item)
+        foreach ($defApi["endPoints"] as $item)
         {
             $t_body->ENDPOINT_DESC = $item["description"];
             $t_body->ENDPOINT_URL = $item["url"];

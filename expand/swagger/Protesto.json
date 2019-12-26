@@ -98,10 +98,10 @@
         } 
 },
     "definitions":{
-        "Titulo":{"$ref":"/expand/swagger/ProtestoTitulo.json#Titulo"},
-        "Cedente":{"$ref":"/expand/swagger/ProtestoCedente.json#Cedente"},
-        "Devedor":{"$ref":"/expand/swagger/ProtestoDevedor.json#Devedor"},
-        "Sacador":{"$ref":"/expand/swagger/ProtestoSacador.json#Sacador"}
+        "Titulo":{"$ref":"protestos_poc/expand/swagger/ProtestoTitulo.json#Titulo"},
+        "Cedente":{"$ref":"protestos_poc/expand/swagger/ProtestoCedente.json#Cedente"},
+        "Devedor":{"$ref":"protestos_poc/expand/swagger/ProtestoDevedor.json#Devedor"},
+        "Sacador":{"$ref":"protestos_poc/expand/swagger/ProtestoSacador.json#Sacador"} 
     }
 }
 

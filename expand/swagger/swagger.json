@@ -88,12 +88,30 @@
         }
       }
     }
+    ,
+    "/status_protesto":{
+    "get": {     
+        "parameters": [
+          {
+            "in":"query",
+            "name": "Identificação do Protesto",      
+            "description": "",
+            "required": true,
+            "type": "string"
+          }],
+        "responses": {
+              "200": {
+              "description": "Concluído"
+          }
+        }
+    }
+    }
   },
     "definitions":{
-        "Protesto":{"$ref":"protestos_poc/expand/swagger/Protesto.json#Protesto"},
+        "Protesto":{"$ref":"/protestos_poc/expand/swagger/Protesto.json#Protesto"},
         "Titulo":{"$ref":"/protestos_poc/expand/swagger/Protesto.json#ProtestoTitulo"},
         "Cedente":{"$ref":"/protestos_poc/expand/swagger/ProtestoCedente.json#Cedente"},
-        "Devedor":{"$ref":"protestos_poc/expand/swagger/ProtestoDevedor.json#Devedor"},
-        "Sacador":{"$ref":"protestos_poc/expand/swagger/ProtestoSacador.json#Sacador"}
+        "Devedor":{"$ref":"/protestos_poc/expand/swagger/ProtestoDevedor.json#Devedor"},
+        "Sacador":{"$ref":"/protestos_poc/expand/swagger/ProtestoSacador.json#Sacador"}
     }
 }

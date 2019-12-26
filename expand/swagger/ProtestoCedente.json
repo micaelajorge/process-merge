@@ -4,11 +4,15 @@
             "properties":{
                "cod_cedente":{
                "type":"string",
-               "title":"Agência / Código do Cedente"
+               "title":"Agência / Código do Cedente",
+                "desc":"Identificar a Agência e Código do Cedente do Título/Cliente. Limite 15 caracteres",
+                "example":"ABCDE1234567890"
                },
                "nome_cedente":{
                "type":"string",
-               "title":"Nome do Cedente/Favorecido"
+               "title":"Nome do Cedente/Favorecido",
+                "desc":"Limite 45 caracteres",
+                "example":"ANTONIO COUTINHO"
                }
             }
     }

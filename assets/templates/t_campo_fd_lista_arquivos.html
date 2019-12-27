@@ -188,11 +188,16 @@
                                     <div class="col-lg-12">
                                         <div id="dwtcontrolContainer"></div>
                                     </div>
-                                    <div class="row">                                    
-                                        <div class="col-lg-12 form-group">
-                                            <button class="btn btn-primary btn-sm pull-left" disabled id="btnImagePrev" type="button" title="Imagem Anterior" onclick="jsFieldFileAcquireImage()"><i class="fa fa-chevron-left"></i></button>
-                                            <button class="btn btn-primary btn-sm pull-left" disabled id="btnImageNext" type="button" title="Proxima Imagem" onclick="jsFieldFileAcquireImage()"><i class="fa fa-chevron-right"></i></button>
-                                            <button class="btn btn-danger btn-sm pull-right" disabled id="btnImageRemove" type="button" title="Remover Imagem" onclick="jsFieldFileAcquireImage()"><i class="fa fa-ban"></i></button>
+                                    <div class="row form-group">                                    
+                                        <div class="col-lg-4">
+                                            <button class="btn btn-sm btn-primary pull-left" disabled id="btnImagePrevScan" type="button" title="Imagem Anterior" onclick="jsScanPrevImage()"><i class="fa fa-chevron-left"></i></button>
+                                            <button class="btn btn-sm btn-primary pull-left" disabled id="btnImageNextScan" type="button" title="Proxima Imagem" onclick="jsScanNextImage()"><i class="fa fa-chevron-right"></i></button>
+                                        </div>           
+                                        <div class="col-lg-4 text-center">
+                                            <span id="scandadosImagens">0</span>
+                                        </div>           
+                                        <div class="col-lg-4 ">
+                                            <button class="btn btn-danger btn-sm pull-right" disabled id="btnImageRemoveScan" type="button" title="Remover Imagem" onclick="jsScanRemoveImage()"><i class="fa fa-ban"></i></button>
                                         </div>           
                                     </div>
                                     <div class="row">                                    

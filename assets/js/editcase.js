@@ -36,6 +36,61 @@ if (typeof Validacao === "undefined")
 var janelaImagemFormalizacao;
 var extendDataLoaded = false;
 
+function jsScanNextImage()
+{
+    let imagenScanAtual = DWObject.CurrentImageIndexInBuffer;
+    DWObject.CurrentImageIndexInBuffer = imagenScanAtual + 1;    
+    jsAcquireImageHabilitaBotoes();
+}
+
+function jsScanPrevImage()
+{
+    let imagenScanAtual = DWObject.CurrentImageIndexInBuffer;
+    DWObject.CurrentImageIndexInBuffer = imagenScanAtual - 1;        
+    jsAcquireImageHabilitaBotoes();
+}
+
+function jsScanRemoveImage()
+{
+    let imagenScanAtual = DWObject.CurrentImageIndexInBuffer;
+    DWObject.RemoveImage(imagenScanAtual);
+    jsAcquireImageHabilitaBotoes();
+}
+
+
+function jsAcquireImageHabilitaBotoes()
+{
+    let imagensScanTotal = DWObject.HowManyImagesInBuffer;
+    let imagenScanAtual = DWObject.CurrentImageIndexInBuffer + 1;
+    
+    $("#scandadosImagens").html(`${imagenScanAtual} de ${imagensScanTotal}`);
+   
+    if (imagensScanTotal > 0)
+    {
+        $("#btnRemoveScanFiles").removeAttr("disabled");
+        $("#btnImageRemoveScan").removeAttr("disabled");
+        if (imagenScanAtual === 1)
+        {
+            $("#btnImagePrevScan").attr("disabled", true);
+            if (imagensScanTotal > 1)
+            {
+                $("#btnImageNextScan").removeAttr("disabled");
+            }
+        } else {
+            $("#btnImagePrevScan").removeAttr("disabled");
+            if (imagenScanAtual === (imagensScanTotal))
+            {
+                $("#btnImageNextScan").attr("disabled", true);
+            }
+        }
+    } else {
+        $("#btnRemoveScanFiles").attr("disabled", true);
+        $("#btnImagePrevScan").attr("disabled", true);
+        $("#btnImageNextScan").attr("disabled", true);
+        $("#btnImageRemoveScan").attr("disabled", true);
+    }
+}
+
 function jsFieldFileAcquireImage() {
     DWObject = Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
     if (DWObject) {
@@ -44,14 +99,14 @@ function jsFieldFileAcquireImage() {
                 DWObject.CloseSource();
             };
             var OnAcquireImageSuccess = function () {
-//              $("#btnSendScanFile").removeAttr("disabled");
                 $("#btnSendScanFile").removeAttr("disabled");
+                jsAcquireImageHabilitaBotoes();
                 DWObject.CloseSource();
             };
             DWObject.OpenSource();
             DWObject.IfDisableSourceAfterAcquire = true;
-            DWObject.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);
-            $("#btnRemoveScanFiles").removeAttr("disabled");
+            DWObject.AcquireImage(OnAcquireImageSuccess, OnAcquireImageFailure);            
+            $("#btnSendScanFile").attr("disabled", "true");
         }, function () {
             console.log('SelectSource failed!');
         });

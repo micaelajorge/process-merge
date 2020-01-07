@@ -91,7 +91,7 @@ function CriaEventDesc($ProcId, $CaseNum, $EventId, $StepName, $StepId, $StartSt
             if ($html) {
                 $Evento .= "<br><span class=\"PassoIniciadoNome\">" . htmlentities($NomePasso) . "</span><br />Caso já estava no passo";
             } else {
-                $Evento .= "$NomePasso\nCaso já estava no passo";
+                $Evento .= "$NomePasso \n Caso já estava no passo";
             }
             break;
 
@@ -110,7 +110,7 @@ function CriaEventDesc($ProcId, $CaseNum, $EventId, $StepName, $StepId, $StartSt
                 if ($html) {
                     $Evento = "Inserido pela Condição " . htmlentities($NomeCondicao) . "\n" . $Evento;
                 } else {
-                    $Evento = "Inserido pela Condição $NomeCondicao\n$Evento";
+                    $Evento = "Inserido pela Condição $NomeCondicao \n $Evento";
                 }
             }
             break;
@@ -124,7 +124,7 @@ function CriaEventDesc($ProcId, $CaseNum, $EventId, $StepName, $StepId, $StartSt
             if ($html) {
                 $Evento = "Avaliação da condição<br>" . htmlentities($NomeCondicao) . "\nResultado: <span class=\"text-green\">Verdadeiro</span>";
             } else {
-                $Evento = "Avaliação da condição\n$NomeCondicao\nResultado: <span class=\"text-green\">Verdadeiro<span>";
+                $Evento = "Avaliação da condição \n $NomeCondicao \n Resultado: Verdadeiro";
             }
             break;
         case 7:
@@ -136,7 +136,7 @@ function CriaEventDesc($ProcId, $CaseNum, $EventId, $StepName, $StepId, $StartSt
             if ($html) {
                 $Evento = "Avaliação da condição<br>" . htmlentities($NomeCondicao) . "\n<span class=\"text-warning\">Resultado: Falso</span>";
             } else {
-                $Evento = "Avaliação da condição\n$NomeCondicao\nCondicaoFalse\nResultado: Falso";
+                $Evento = "Avaliação da condição \n$NomeCondicao\n CondicaoFalse\n Resultado: Falso";
             }
             break;
 
@@ -174,7 +174,7 @@ function CriaEventDesc($ProcId, $CaseNum, $EventId, $StepName, $StepId, $StartSt
             if ($html) {
                 $Evento = $EventDesc[$EventId] . " <b>$ConditionName</b>\n $ActionDesc";
             } else {
-                $Evento = $EventDesc[$EventId] . " <b>$ConditionName</b>\n$ActionDesc";
+                $Evento = $EventDesc[$EventId] . " $ConditionName \n$ActionDesc";
             }
             break;
 
@@ -186,7 +186,7 @@ function CriaEventDesc($ProcId, $CaseNum, $EventId, $StepName, $StepId, $StartSt
             if ($html) {
                 $Evento = "Condição: <b>$ConditionName</b>\n" . htmlentities($ActionDesc);
             } else {
-                $Evento = "Condição: <b>$ConditionName</b>\n$ActionDesc";
+                $Evento = "Condição: $ConditionName \n $ActionDesc";
             }
             break;
 
@@ -195,7 +195,7 @@ function CriaEventDesc($ProcId, $CaseNum, $EventId, $StepName, $StepId, $StartSt
             if ($html) {
                 $Evento .= "\n" . htmlentities($ActionDesc);
             } else {
-                $Evento .= "\n$ActionDesc";
+                $Evento .= "\n $ActionDesc";
             }
             break;
         case 502:

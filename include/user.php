@@ -1,5 +1,4 @@
 <?php
-
 class userdef {
 
     var $UserId;
@@ -29,7 +28,7 @@ class userdef {
 
     function CriaSessionIntegration()
     {
-        include(FILES_ROOT . "include/config.config.php");
+//        include(FILES_ROOT . "include/config.config.php");
         $session_id = session_id();
         $phpSession = md5($session_id);
 
@@ -52,14 +51,19 @@ class userdef {
         /**
          *  Remove a Sess�o se Existe na Tabela
          */
-        $SQL = " delete from $_TABLE_userlogins where UserId = $this->UserId or token = '$this->ASP_session' or SessionId = $phpSession";
-        $Result = mysqli_query($connect, $SQL);
+        $SQL = " delete from $_TABLE_userlogins where UserId = $this->UserId or token = '$this->ASP_session' or SessionId = '$phpSession'";
+        $ResultDelete = mysqli_query($connect, $SQL);
 
+        if (!$ResultDelete) {
+            error_log("Erro Gravando session\n" . $SQL . " \nErro: " . mysqli_error($connect) . "\n" . var_export($connect, true));
+        }
+        
+        
         /**
          *  Cria o registro da Sess�o
          */
         $IP = $_SERVER['REMOTE_ADDR'];
-        $Hora = date('Y-m-d g:i:s');
+        $Hora = date('Y-m-d H:i:s');
         $SQL = " insert into $_TABLE_userlogins
 		(SessionId, UserId, IpAddress, LogonTimeStamp, token) 
 		values 
@@ -418,7 +422,8 @@ class userdef {
             $this->lastlogon = (!empty($result["lastlogon"])) ? $result["lastlogon"] : '1901-01-01';
             $this->lastnotification = (!empty($result["lastnotification"])) ? $result["lastnotification"] : '1901-01-01';
             $this->lastmessages = (!empty($result["lastmessages"])) ? $result["lastmessages"] : '1901-01-01';
-
+            $this->CriarSessionIntegration = true;
+                        
             // Verifica se o usuário é um usuário de sistema
             if (key_exists("systemuser", $result)) {
                 $this->systemUser = $result["systemuser"];
@@ -551,7 +556,7 @@ class userdef {
         }
 
         if (empty($UserId)) {
-            //error_log("Usu�rio n�o autenticado: $UserName", 0);
+            //error_log("Usuário não autenticado: $UserName", 0);
             $this->Validado = false;
             AtivaDBProcess();
             return;
@@ -623,5 +628,3 @@ class userdef {
     }
 
 }
-
-?>

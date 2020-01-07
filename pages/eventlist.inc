@@ -94,4 +94,3 @@ while ($Result = mysqli_fetch_array($Query)) {
     $template->block("BLOCO_EVENTO");
 }
 $template->show();
-?>

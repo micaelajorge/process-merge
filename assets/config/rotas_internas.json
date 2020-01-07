@@ -857,6 +857,18 @@
                 "funcao": "relatorioXLS"
             }               
         },
+        "relatorio_geral_xls": {
+            "GET": {
+                "page": "pages/relatorio_geral.inc",
+                "logon": false,
+                "funcao": "relatorioXLS"
+            },               
+            "POST": {
+                "page": "pages/relatorio_geral.inc",
+                "logon": false,
+                "funcao": "relatorioXLS"
+            }               
+        },
         "relatorio_geral_csv": {
             "GET": {
                 "page": "pages/relatorio_geral.inc",
@@ -1766,6 +1778,18 @@
                 "page": "pages/eventlist.inc",
                 "funcao": "",
                 "parametros": ["CaseNum"]
+            }
+        },
+        "relevents_xls": {
+            "POST": {
+                "page": "pages/relevents.inc",
+                "funcao": ""
+            }
+        },
+        "relevents_csv": {
+            "POST": {
+                "page": "pages/relevents.inc",
+                "funcao": ""
             }
         },
         "selectuser": {

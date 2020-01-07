@@ -6,7 +6,7 @@
 
 
 
-function jsGeraRelatorio(formulario, urlRelatorio, nomeRelatorio)
+function jsGeraRelatorioPDF(formulario, urlRelatorio, nomeRelatorio)
 {
     dadosEnvio = getFormValues(formulario);
     
@@ -27,16 +27,10 @@ function jsGeraRelatorio(formulario, urlRelatorio, nomeRelatorio)
     });
 }
 
-function jsGeraXSL(formSubmit)
-{    
-    $("#" + formSubmit).attr('action', 'relatorio_geral');
-    $("#" + formSubmit).submit();
-}
-
-function jsGeraCSV(formSubmit)
-{    
-    $("#" + formSubmit).attr('action', 'relatorio_geral_csv');
-    $("#" + formSubmit).submit();
+function jsGerarRelatorioCsvXls(formSubmit, type, formAction)
+{
+    $("#" + formSubmit).attr('action', formAction + "_" + type);     
+    $("#" + formSubmit).submit();    
 }
 
 function jsGeraPdf(nomeRelatorio)

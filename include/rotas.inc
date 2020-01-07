@@ -241,7 +241,8 @@ function defineRota($p_dadosURI, $methodHTTP)
     if ($userdef === null) {
         $userValidado = false;
     } else {
-        $userValidado = $userdef->Validado;
+        $userValidado = validaSessaoUsuario();
+//        $userValidado = $userdef->Validado;
     }
 
     $rotaRequerLogon = !isset($rotaEncontrada["logon"]);

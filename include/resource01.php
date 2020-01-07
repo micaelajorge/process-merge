@@ -186,6 +186,20 @@ function calculaToken($usuario, $email, $todosDados = true, $recuparacaoSenha = 
     }
 }
 
+function validaSessaoUsuario()
+{
+    global $connect;
+    
+    $SessionId = md5(session_id());
+    
+    
+    $SQL = "select * from userlogins where sessionid = '$SessionId'";
+    $query = mysqli_query($connect, $SQL);
+    
+    return $query->num_rows > 0;
+    
+}
+
 function validaUsuarioToken()
 {
     global $connect, $userdef;

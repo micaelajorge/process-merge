@@ -117,6 +117,9 @@ function relatorioCSV()
     $t_body->DATA_FIM = $data_fim;
     $t_body->STEPNAME = $STEPNAME;
     $t_body->PROCNAME = $PROCNAME;
+    
+    
+    $relFileName = $STEPNAME;
 
 //Define se haverá totalização no Relatorio
     $totalizarDados = false;
@@ -245,7 +248,7 @@ function relatorioCSV()
 // <editor-fold defaultstate="collapsed" desc="Envio dados BROWSER">
     $dadosArquivo = $t_body->parse();
 
-    EnviaArquivoBrowser("$STEPNAME.txt", "$STEPNAME", $dadosArquivo, 'txt');
+    EnviaArquivoBrowser("$relFileName.txt", "$STEPNAME", $dadosArquivo, 'txt');
     // </editor-fold>
 }
 
@@ -265,7 +268,7 @@ function relatorioCSV()
  */
 function relatorioXLS()
 {
-    global $connect, $FIELDSELECTION, $data_inicio, $data_fim, $PROCCOD, $STEPCOD, $nomerelatorio, $STEPNAME, $PROCNAME, $tipoArquivo;
+    global $connect, $FIELDSELECTION, $data_inicio, $data_fim, $PROCCOD, $STEPCOD, $nomerelatorio, $STEPNAME, $PROCNAME, $tipoArquivo, $relFileName;
     $t_body = new Template(FILES_ROOT . "assets/templates/t_relatorio_campos.html");
 
 //$CAMPO_SELECAO = "data_preenchimento";
@@ -287,7 +290,6 @@ function relatorioXLS()
 //Define se haverá totalização no Relatorio
     $totalizarDados = false;
 
-// </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Seleção dos Campos do Relatorio">
     $SQL_CAMPOS = "select "
             . "procfieldsdef.fieldId, "
@@ -450,7 +452,4 @@ function relatorioXLS()
     }
     // </editor-fold>
 }
-
-// <editor-fold defaultstate="collapsed" desc="Preenche Template">
-
 

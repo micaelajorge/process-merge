@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- t_newlogon.html Ow -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <base href="{SITE_LOCATION}" /> 
+
+        <link rel="shortcut icon" href="{ICONE_PARCEIRO}" />
+
+        <title>Sessão Encerrada</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="vendor/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="vendor/css/ionicons.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="vendor/css/AdminLTE.min.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Google Font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">      
+    </head>
+    <body class="hold-transition">
+        <!-- BEGIN BLOCO_LOGON -->
+        <div class="login-box box-default">
+            <!-- /.login-logo -->
+            <div class="login-box-body">
+                <form role="form"  name="logon_fake" onSubmit="return AbrePagina()" autocomplete="false">
+                    <div class="form-group has-feedback">
+                        <input readonly type="text" class="form-control input-sm" placeholder="Usuário" name="UserName" id="UserName" autofocus autocomplete="off" onfocus="this.removeAttribute('readonly');"/>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="test" class="form-control input-sm" placeholder="Senha" name="UserPwd" id="UserPwd" autocomplete="off" onfocus="$(this).attr('type', 'password');$(this).val('')"  autocomplete="new-password"/>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                </form>
+                <!-- /.social-auth-links -->
+
+                <!--<form method="post" name="logon1" id="logon1" action="log">-->            
+                <form method="post" name="logon1" id="logon1" action="log.php">            
+                    <fieldset>
+                        <input name="UserName2" id="UserName2" type="hidden">
+                        <input name="UserPwd2" id="UserPwd2" type="hidden">
+                        <input name="StepId" type="hidden" value="{StepId}">
+                        <input name="ProcId" type="hidden" value="{ProcId}">
+                        <input name="Action" type="hidden" value="{Action}">
+                        <input name="CaseNum" type="hidden" value="{CaseNum}">
+                        <input name="AdHoc" type="hidden" value="{AdHoc}">    
+                        <input name="mobileMode" type="hidden" value="0" id="mobileMode">    
+                        <input name="PageSelect" type="hidden" value="{PageSelect}">
+                    </fieldset>
+                </form>                
+                <div class="hidden-xs {LOGO_DOWN_HIDE|constant:LOGO_DOWN_HIDE}" style="margin-top: 20px">
+                    <div>
+                        <div class="text-left col-lg-6">
+                            <img src="images/{LOGO_PARCEIRO}" style="{alinhamentoLogo|constant:ALINHAMENTO_LOGO};width:100%"></a>
+                        </div>
+                        <!-- BEGIN BLOCO_LOGO_CLIENTE -->
+                        <div class="text-right">
+                            <img src="images/{LOGO_CLIENTE}" style="{alinhamentoLogo|constant:ALINHAMENTO_LOGO_CLIENTE};width:30%"></a>
+                        </div>
+                        <!-- END BLOCO_LOGO_CLIENTE -->
+                    </div>
+                </div>
+            </div>   
+            <!-- /.login-box-body -->
+        </div>
+        <!-- END BLOCO_LOGON -->
+        <!-- /.login-box -->
+        <div class="visible-xs">
+            <div style="position: relative; top: 120px;right:0px;margin-bottom: 20px;margin-right: 20px">
+                <div class="text-right" >
+                    <!-- IMAGEM LOGO -->
+                    <img src="images/{LOGO_PARCEIRO}" style="{alinhamentoLogo|constant:ALINHAMENTO_LOGO};width:50%"></a>
+                </div>
+            </div>
+        </div>
+        <!-- BEGIN BLOCO_ALERTA_ERRO -->
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-xs-4"></div>
+            <div class="col-lg-4 col-md-4 col-xs-4">
+                <div class="alert {TIPO_ALERTA_LOGON} alert-dismissible text-center">
+                    <h4><i class="icon fa fa-warning"></i></h4>
+                    {MSGLOGON}
+                </div>        
+            </div>
+        </div>
+        <!-- END  BLOCO_ALERTA_ERRO -->
+
+        <!-- jQuery 3 -->
+        <script src="vendor/js/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.7 -->
+        <script src="vendor/js/bootstrap.min.js"></script>
+        <!-- iCheck -->
+        <script>
+                    function jsInicializacaoPagina()
+                    {
+                        if ($(window).width() < 640)
+                        {
+                            $("#mobileMode").val("1");
+                        }
+                    }
+
+                    $(document).ready(function () {
+                        jsInicializacaoPagina();
+                    });
+        </script>
+    </body>
+</html>

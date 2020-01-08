@@ -94,6 +94,53 @@ function api_create_contract()
 
 // </editor-fold>
 
+// <editor-fold defaultstate="collapsed" desc="Cancela CCB">
+/**
+ * ROTA: api/v1/cancelccb
+ */
+function cancelaCCB()
+{
+    $dadosCCB = apiTrataDadosEntrada();
+    $userData["UserName"] = "mmoscz";
+    $userData["UserPassword"] = "cerberus";
+
+    $fieldId = PegaFieldIdByCode("SEC_CCBS", "DOCUMENT_KEY");
+
+    $documentKey = $dadosCCB["document_key"];
+    $caseNumCCB = pegaNumerCasoUnicoAberto("SEC_CCBS", $documentKey, $fieldId);
+
+    $camposEnvio = array();
+//    error_log("document_key $documentKey");
+
+    if ($caseNumCCB != 0) {
+        $numeroCCB = PegaValorCampo("SEC_CCBS", $caseNumCCB, "CONTRATO");
+        
+        $campo["fieldCode"] = "CONTRATO";
+        $campo["fieldValue"] = "C-$numeroCCB";
+        $camposEnvio[] = $campo;
+                
+        $campo["fieldCode"] = "STATUS_CLICKSIGN";
+        $campo["fieldValue"] = "cancelada";
+        $camposEnvio[] = $campo;
+
+        $campo["fieldCode"] = "CCB_CEDIDA";
+        $campo["fieldValue"] = "1";
+        $camposEnvio[] = $campo;
+                
+//        error_log("camposEnvio " . var_export($camposEnvio, true));
+
+        $dadosCaso["Fields"] = $camposEnvio;
+
+        FuncCaseSave($userData, "SEC_CCBS", 'START', $caseNumCCB, $dadosCaso, 0, 0);
+    }
+    return $caseNumCCB;
+    
+}
+
+
+// </editor-fold>
+
+
 // <editor-fold defaultstate="collapsed" desc="api_trataWebHook">
 /**
  * 

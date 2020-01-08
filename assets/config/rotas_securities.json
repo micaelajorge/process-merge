@@ -16,6 +16,12 @@
                 "page": "pages/securities/securities_upload_cnab_oferta.inc",
                 "parametros": ["sessionUUID"]
             }
+        },
+        "api/v1/cancelccb": {
+            "POST": {
+                "page": "api/api_securities.inc",
+                "funcao": "cancelaCCB"
+            }
         }
     }
 }

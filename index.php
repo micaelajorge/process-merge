@@ -6,8 +6,8 @@
   Sistema: Creditus
  */
 
-define("RELEASE_SCRIPT", "0055");
-define("SYS_VERSION", "3.2.3");
+define("RELEASE_SCRIPT", "0056");
+define("SYS_VERSION", "3.3.0");
 define("LOG_DATA", false);
 
 function iniciarPhpSession()
@@ -505,7 +505,7 @@ switch ($srvAccess) {
         switch ($aliasServidor) {
             case "mmoscz":
                 ini_set('display_errors', 1);
-                ini_set('display_startup_errors', 1);                
+                ini_set('display_startup_errors', 1);
                 ini_set("error_reporting", E_ERROR);
 
 
@@ -519,7 +519,7 @@ switch ($srvAccess) {
                 $EXTERNAL_USERNAME = "process";
                 $BPMDB = "mmoscz_git";
                 $EXTERNALDB = 'mmoscz_git';
-                
+
                 define("INSTANCE_APIS", ["protestos.json"]);
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("SITE_ROOT", "http://$srvAccess");
@@ -1397,13 +1397,8 @@ switch ($srvAccess) {
     case "40.121.135.140":
     case "orion.app.agilizaonline.com.br":
         // define("LOG_DATA", true);
-        define("TEMPLATE_LOGON", "t_logon_agiliza.html");
         switch ($aliasServidor) {
             case "caruana":
-                define("INSTANCENAME", 'Agiliza Flow - Caruana');
-                define("LOGO_PARCEIRO", "logo-agiliza.png");
-                define("PARCEIRONAME", 'Agiliza');
-                define("SITE_FOLDER", "/caruana/");
                 $BPMUSER = "process";
                 $BPMPWD = "cerberus";
                 $EXTERNALUSER = "process";
@@ -1411,8 +1406,28 @@ switch ($srvAccess) {
                 $EXTERNAL_USERNAME = "process";
                 $BPMDB = "caruana";
                 $EXTERNALDB = 'caruana';
+//        define("TEMPLATE_LOGON", "t_logon_agiliza.html");
+                define("TEMASISTEMA", "skin-blue");
+                define("FILES_FOLDER", "/");
+                define("SITE_FOLDER", "/caruana/");
+                define("SITE_ROOT", "https://$srvAccess/");
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("configDB", "localhost");
+                define("SERVER_ADDRESS", $srvAccess);
+                define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
+                define("FILES_UPLOAD", "/system/caruana/storage/files");
+                define("_SECRET_KEY", "cLWD;KCBgP?a1'(0m03W");
+                define("ALLOW_SEARCH", false);
+                define("INSTANCENAME", 'Caruana');
+                define("LOGO_PARCEIRO", "logo-agiliza.png");
+                define("PARCEIRONAME", 'Agiliza');
+                define("ICONE_PARCEIRO", "logo-agiliza-mini.png");
                 define("LOGO_CLIENTE", "caruna-logo.jpeg");
                 define("ALINHAMENTO_LOGO_CLIENTE", "align:right");
+
+                // Definição do COnfig de Dynamic Twain
+                define("DINAMIC_TWAIN_CONFIG", "dynamsoft.webtwain.config.agiliza.js");
                 break;
             default:
 //                define("INSTANCENAME", 'Agiliza Flow');
@@ -1426,6 +1441,7 @@ switch ($srvAccess) {
 //                $EXTERNAL_USERNAME = "process";
 //                $BPMDB = "processteste";
 //                $EXTERNALDB = 'processteste';
+                define("TEMPLATE_LOGON", "t_logon_agiliza.html");
                 $BPMUSER = "process";
                 $BPMPWD = "cerberus";
                 $EXTERNALUSER = "process";

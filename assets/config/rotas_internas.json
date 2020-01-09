@@ -1,5 +1,19 @@
 {
     "rotas": {    
+        "cessaoduplicada": {
+            "GET": {
+                "page": "pages/operacaocessao.inc",
+                "logon": false,        
+                "funcao": "paginaDuplicada"
+            }
+        },
+        "cessaoalterada": {
+            "GET": {
+                "page": "pages/operacaocessao.inc",
+                "logon": false,        
+                "funcao": "cessaoAlterada"
+            }
+        },
         "swagger": {
             "GET": {
                 "page": "pages/swagger.inc",

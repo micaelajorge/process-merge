@@ -241,19 +241,25 @@ function defineRota($p_dadosURI, $methodHTTP)
     if ($userdef === null) {
         $userValidado = false;
     } else {
-        $userValidado = validaSessaoUsuario();
-//        $userValidado = $userdef->Validado;
+        $sessaoModificada = validaSessaoUsuario();
+        $userValidado = $userdef->Validado;
     }
 
+    if ($userValidado && $sessaoModificada && $dadosURI !== "")
+    {
+        $rota = array();
+        $rota["page"] = "pages/operacaocessao.inc";
+        $rota["funcao"] = "cessaoAlterada";
+        return $rota;
+    }
+    
     $rotaRequerLogon = !isset($rotaEncontrada["logon"]);
-
     if (!$userValidado & ($rotaRequerLogon & !$validadoToken)) {
         error_log("Rota requer autenticacao: $dadosURI " . var_export($rotaEncontrada, true));
         error_log("Dados Sessao: " . var_export($_SESSION, true));
         header("HTTP/1.0 402 Usuario sem permissão ou não autenticado");
         return $rotaPadrao;
-    }
-   
+    }   
     return $rotaEncontrada;
 }
 

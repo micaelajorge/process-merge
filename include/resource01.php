@@ -196,7 +196,7 @@ function validaSessaoUsuario()
     $SQL = "select * from userlogins where sessionid = '$SessionId'";
     $query = mysqli_query($connect, $SQL);
     
-    return $query->num_rows > 0;
+    return $query->num_rows == 0;
     
 }
 

@@ -150,10 +150,11 @@ $(document).ready(function () {
         {
             jsAcaoPaginaDuplicada();
         } else {
-            $('#modalDuplicado').on('hide.bs.modal', function () {
-                return false;
-            });
-            $("#modalDuplicado").modal();
+//            $('#modalDuplicado').on('hide.bs.modal', function () {
+//                return false;
+//            });
+//            $("#modalDuplicado").modal();
+            window.location = "cessaoduplicada";
         }
     }
 });

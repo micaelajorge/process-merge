@@ -7,7 +7,8 @@
 
         <base href="{SITE_LOCATION}" /> 
 
-        <link rel="shortcut icon" href="{ICONE_PARCEIRO}" />
+        <link rel="shortcut icon" href="images/{ICONE_PARCEIRO|constant:ICONE_PARCEIRO}" />
+        <link rel="icon"href="images/{ICONE_PARCEIRO|constant:ICONE_PARCEIRO}" />
 
         <title>Sessão Encerrada</title>
         <!-- Tell the browser to be responsive to screen width -->
@@ -32,90 +33,37 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">      
     </head>
     <body class="hold-transition">
-        <!-- BEGIN BLOCO_LOGON -->
-        <div class="login-box box-default">
-            <!-- /.login-logo -->
-            <div class="login-box-body">
-                <form role="form"  name="logon_fake" onSubmit="return AbrePagina()" autocomplete="false">
-                    <div class="form-group has-feedback">
-                        <input readonly type="text" class="form-control input-sm" placeholder="Usuário" name="UserName" id="UserName" autofocus autocomplete="off" onfocus="this.removeAttribute('readonly');"/>
-                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input type="test" class="form-control input-sm" placeholder="Senha" name="UserPwd" id="UserPwd" autocomplete="off" onfocus="$(this).attr('type', 'password');$(this).val('')"  autocomplete="new-password"/>
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    </div>
-                </form>
-                <!-- /.social-auth-links -->
-
-                <!--<form method="post" name="logon1" id="logon1" action="log">-->            
-                <form method="post" name="logon1" id="logon1" action="log.php">            
-                    <fieldset>
-                        <input name="UserName2" id="UserName2" type="hidden">
-                        <input name="UserPwd2" id="UserPwd2" type="hidden">
-                        <input name="StepId" type="hidden" value="{StepId}">
-                        <input name="ProcId" type="hidden" value="{ProcId}">
-                        <input name="Action" type="hidden" value="{Action}">
-                        <input name="CaseNum" type="hidden" value="{CaseNum}">
-                        <input name="AdHoc" type="hidden" value="{AdHoc}">    
-                        <input name="mobileMode" type="hidden" value="0" id="mobileMode">    
-                        <input name="PageSelect" type="hidden" value="{PageSelect}">
-                    </fieldset>
-                </form>                
-                <div class="hidden-xs {LOGO_DOWN_HIDE|constant:LOGO_DOWN_HIDE}" style="margin-top: 20px">
-                    <div>
-                        <div class="text-left col-lg-6">
-                            <img src="images/{LOGO_PARCEIRO}" style="{alinhamentoLogo|constant:ALINHAMENTO_LOGO};width:100%"></a>
-                        </div>
-                        <!-- BEGIN BLOCO_LOGO_CLIENTE -->
-                        <div class="text-right">
-                            <img src="images/{LOGO_CLIENTE}" style="{alinhamentoLogo|constant:ALINHAMENTO_LOGO_CLIENTE};width:30%"></a>
-                        </div>
-                        <!-- END BLOCO_LOGO_CLIENTE -->
-                    </div>
+        <div class="modal modal-danger in" id="modalDuplicado" style="display: block; padding-right: 17px;">
+            <div class="modal-dialog">
+                <div class="modal-header text-center">
+                    <i class="fa fa-exclamation-circle fa-2x pull-left"></i> 
+                    <h3 class="modal-title">
+                        <!-- BEGIN BLOCK_SESSAO_DUPLICADA_TITULO -->
+                        Detectada a duplicação da página
+                        <!-- END BLOCK_SESSAO_DUPLICADA_TITULO -->
+                        <!-- BEGIN BLOCK_SESSAO_MODIFICADA_TITULO -->
+                        Detectado logon em outro dispositivo
+                        <!-- END BLOCK_SESSAO_MODIFICADA_TITULO -->
+                    </h3>
                 </div>
-            </div>   
-            <!-- /.login-box-body -->
-        </div>
-        <!-- END BLOCO_LOGON -->
-        <!-- /.login-box -->
-        <div class="visible-xs">
-            <div style="position: relative; top: 120px;right:0px;margin-bottom: 20px;margin-right: 20px">
-                <div class="text-right" >
-                    <!-- IMAGEM LOGO -->
-                    <img src="images/{LOGO_PARCEIRO}" style="{alinhamentoLogo|constant:ALINHAMENTO_LOGO};width:50%"></a>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <!-- BEGIN BLOCK_SESSAO_DUPLICADA_TEXTO_AUXILIAR -->
+                        Esta aba ou janela deve ser fechada
+                        <!-- END BLOCK_SESSAO_DUPLICADA_TEXTO_AUXILIAR -->
+                        <!-- BEGIN BLOCK_SESSAO_MODIFICADA_TEXTO_AUXILIAR -->                        
+                        Foi detectado o logon com seu usuário em outro dispositivo.
+                        Se não foi você, troque a senha e informe os responsáveis pelo sistema.
+                        <!-- END BLOCK_SESSAO_MODIFICADA_TEXTO_AUXILIAR -->                        
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- BEGIN BLOCO_ALERTA_ERRO -->
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-xs-4"></div>
-            <div class="col-lg-4 col-md-4 col-xs-4">
-                <div class="alert {TIPO_ALERTA_LOGON} alert-dismissible text-center">
-                    <h4><i class="icon fa fa-warning"></i></h4>
-                    {MSGLOGON}
-                </div>        
-            </div>
-        </div>
-        <!-- END  BLOCO_ALERTA_ERRO -->
 
         <!-- jQuery 3 -->
         <script src="vendor/js/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="vendor/js/bootstrap.min.js"></script>
         <!-- iCheck -->
-        <script>
-                    function jsInicializacaoPagina()
-                    {
-                        if ($(window).width() < 640)
-                        {
-                            $("#mobileMode").val("1");
-                        }
-                    }
-
-                    $(document).ready(function () {
-                        jsInicializacaoPagina();
-                    });
-        </script>
     </body>
 </html>

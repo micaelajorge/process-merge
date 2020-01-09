@@ -8,13 +8,13 @@
       "email": "contato@certdox.com.br"
     }
   },
-  "host": "127.0.0.1:8080",
-  "basePath": "/datasnap/rest/TServerMethods1/",
+  "host": "process.certdox.com.br",
+  "basePath": "/protestos_poc",
   "schemes": [
     "http"
   ],
   "paths": {
-    "/envio_protesto": {
+    "/protesto/envio_protesto": {
       "post": {         
         "tags":["protesto"],
         "description": "",
@@ -36,13 +36,25 @@
         "responses": {
           "201": {
             "description": "Recebido"
+          },
+          "400": {
+            "description": "Requisição Incorreta. "
+          },
+          "401": {
+            "description": "Token inválido para a requisição solicitada."
+          },
+          "404": {
+            "description": "Requisição não encontrada."
+          },
+          "500": {
+            "description": "Erro interno."
           }
         }
       }
-    }
+    }   
     ,
     "/cancelamento_protesto": {
-      "post": {         
+      "post": {          
         "tags":["protesto"],
         "description": "",
         "consumes":["application/json"],
@@ -50,16 +62,28 @@
         "parameters": [
           {
             "in":"body",
-            "name": "Protestos",      
+            "name": "Titulos",      
             "description": "",
             "required": true,
             "type": "array",
-            "schema": {"$ref":"#/definitions/Protesto"}
+            "schema": {"type": "array", "items":{ "$ref":"#/definitions/Titulo"}}
           }
         ],
         "responses": {
           "201": {
             "description": "Recebido"
+          },
+          "400": {
+            "description": "Requisição Incorreta. "
+          },
+          "401": {
+            "description": "Token inválido para a requisição solicitada."
+          },
+          "404": {
+            "description": "Requisição não encontrada."
+          },
+          "500": {
+            "description": "Erro interno."
           }
         }
       }
@@ -74,16 +98,28 @@
         "parameters": [
           {
             "in":"body",
-            "name": "Protestos",      
+            "name": "Titulos",      
             "description": "",
             "required": true,
             "type": "array",
-            "schema": {"$ref":"#/definitions/Protesto"}
+            "schema": {"type": "array", "items":{ "$ref":"#/definitions/Titulo"}}
           }
         ],
         "responses": {
           "201": {
             "description": "Recebido"
+          },
+          "400": {
+            "description": "Requisição Incorreta. "
+          },
+          "401": {
+            "description": "Token inválido para a requisição solicitada."
+          },
+          "404": {
+            "description": "Requisição não encontrada."
+          },
+          "500": {
+            "description": "Erro interno."
           }
         }
       }
@@ -91,11 +127,12 @@
     ,
     "/status_protesto":{
     "get": {     
+        "tags":["protesto"],
         "parameters": [
           {
             "in":"query",
-            "name": "Identificação do Protesto",      
-            "description": "",
+            "name": "Id",      
+            "description": "Identificação do Protesto",
             "required": true,
             "type": "string"
           }],
@@ -109,9 +146,9 @@
   },
     "definitions":{
         "Protesto":{"$ref":"/protestos_poc/expand/swagger/Protesto.json#Protesto"},
-        "Titulo":{"$ref":"/protestos_poc/expand/swagger/Protesto.json#ProtestoTitulo"},
+        "Titulo":{"$ref":"/protestos_poc/expand/swagger/ProtestoTitulo.json#Titulo"},
         "Cedente":{"$ref":"/protestos_poc/expand/swagger/ProtestoCedente.json#Cedente"},
         "Devedor":{"$ref":"/protestos_poc/expand/swagger/ProtestoDevedor.json#Devedor"},
-        "Sacador":{"$ref":"/protestos_poc/expand/swagger/ProtestoSacador.json#Sacador"}
-    }
+        "Credor":{"$ref":"/protestos_poc/expand/swagger/ProtestoCredor.json#Credor"} 
+    } 
 }

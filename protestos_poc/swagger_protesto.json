@@ -14,7 +14,7 @@
     "http"
   ],
   "paths": {
-    "/protesto/envio_protesto": {
+    "/envio_protesto": {
       "post": {         
         "tags":["protesto"],
         "description": "",
@@ -133,7 +133,14 @@
             "in":"query",
             "name": "Id",      
             "description": "Identificação do Protesto",
-            "required": true,
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in":"query",
+            "name": "nosso_numero",      
+            "description": "Número de identificação do cliente",
+            "required": false,
             "type": "string"
           }],
         "responses": {

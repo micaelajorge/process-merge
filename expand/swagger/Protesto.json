@@ -1,107 +1,56 @@
 {
 "Protesto": {
         "type":"object",
-        "properties":{
-           "id_registro":{
-              "type":"integer",
-              "format":"int64",
-              "title":"Identificação do Registro"
-           },
-           "cod_portador":{
-              "type":"string",
-               "title":"Número do Código do Portador "
-           },                      
+        "properties":{                              
            "nosso_numero":{
-              "type":"string",
-              "example":"X00000000000002",
+              "type":"string",              
               "title":"Número interno (Nosso Número)",
-              "desc":"Utilizado para conciliação de pagamentos e retorno"
-           },          
-           "praca":{
+              "desc":"Utilizado para conciliação de pagamentos e retorno. Limite 15 caracteres",
+              "example":"X00000000000002"
+           },       
+           "tipo_protesto ":{
               "type":"string",
-              "example":"3550308",
-              "title":"Praça de Protesto"
+              "title":"Tipo de Protesto",
+              "desc":"C - Comum , F - Falimentar. Limite 1 caracter. OBRIGATÓRIO",
+              "example":"C"
            },
-           "tipo_endosso":{
+           "praca_protesto_ibge":{
               "type":"string",
-              "title":"Tipo de Endosso"
+              "title":"Praça de Protesto",
+              "desc":". Limite 7 caracteres",
+              "example":"03550308"
            },
-           "info_aceite":{
+           "tipo_divida_CDA":{
               "type":"string",
-              "title":"Informação sobre Aceite"
-           },                              
-           "custas_distribuidor":{
-              "type":"integer",
-              "format":"int64",
-              "title":"Valor das Custas do Cartório Distribuidor "
+              "title":"Tipo da dívida da certidão de dívida ativa.",
+              "desc":"Tipo da dívida da certidão de dívida ativa SOMENTE PARA ESPÉCIE CDA. Limite 10 caracteres",
+              "example":"MULTA"
            },
-           "reg_distribuicao":{
-              "type":"integer",
-              "format":"int64",
-              "title":"Registro de Distribuição "
-           },
-           "valor_despesas":{
-              "type":"integer",
-              "format":"int64",
-              "title":"Valor da gravação eletrônica e demais despesas "
-           },
-           "numero_operacao":{
-              "type":"integer",
-              "format":"int64",
-              "title":"Número da Operação do Banco "
-           },
-           "numero_contrato":{
-              "type":"integer",
-              "format":"int64",
-              "title":"Número do Contrato do Banco "
-           },
-           "numero_parcela_contrato":{
-              "type":"integer",
-              "format":"int64",
-              "title":"Número da Parcela do Contrato "
-           },
-           "tipo_letra_cambio":{
+           "identificacao_divida_CDA":{
               "type":"string",
-              "title":"Tipo da Letra de Câmbio"
+              "title":"Tipo da dívida da certidão de dívida ativa.",
+              "desc":"Tipo da dívida da certidão de dívida ativa SOMENTE PARA ESPÉCIE CDA. Limite 30 caracteres",
+              "example":"MULTA"
            },
-           "complemento_cod_irregularidade":{
+            "CCB_emitida_por_CBI":{
               "type":"string",
-              "title":"Complemento Código de Irregularidade "
-           },
-           "motivo_falencia":{
-              "type":"string",
-              "title":"Protesto por Motivo de Falência "
-           },
-           "instrumento_protesto":{
-              "type":"string",
-              "title":"Instrumento de Protesto "
-           },
-           "valor_despesas":{
-              "type":"integer",
-              "format":"int64",
-              "title":"Valor das demais despesas "
-           },
-           "complemento_registro":{
-              "type":"string",
-              "format":"int64",
-              "title":"Complemento do Registro "
-           },
-           "numero_registro":{
-              "type":"integer",
-              "format":"int64",
-              "title":"Número Seqüencial do Registro no Arquivo"
+              "title":"Nome do banco emitente da CCB com CNPJ.",
+              "desc":"Nome do banco emitente da CCB com CNPJ. SOMENTE PARA ESPÉCIE CBI. Limite 45 caracteres",
+              "example":"CCB EMITIDA POR BRADESCO FINAN-07207996000150"
            },
            "Titulo":{"$ref":"#/definitions/Titulo"},
            "Cedente":{"$ref":"#/definitions/Cedente"},
-           "Devedor":{"$ref":"#/definitions/Devedor"},
-           "Sacador":{"$ref":"#/definitions/Sacador"}
+           "Devedor":{
+                     "type":"array",
+                     "items":{ "$ref":"#/definitions/Devedor"}},
+           "Credor":{"$ref":"#/definitions/Credor"}
         } 
 },
     "definitions":{
-        "Titulo":{"$ref":"protestos_poc/expand/swagger/ProtestoTitulo.json#Titulo"},
-        "Cedente":{"$ref":"protestos_poc/expand/swagger/ProtestoCedente.json#Cedente"},
-        "Devedor":{"$ref":"protestos_poc/expand/swagger/ProtestoDevedor.json#Devedor"},
-        "Sacador":{"$ref":"protestos_poc/expand/swagger/ProtestoSacador.json#Sacador"} 
+        "Titulo":{"$ref":"/protestos_poc/expand/swagger/ProtestoTitulo.json#Titulo"},
+        "Cedente":{"$ref":"/protestos_poc/expand/swagger/ProtestoCedente.json#Cedente"},
+        "Devedor":{"$ref":"/protestos_poc/expand/swagger/ProtestoDevedor.json#Devedor"},
+        "Credor":{"$ref":"/protestos_poc/expand/swagger/ProtestoCredor.json#Credor"} 
     }
 }
 

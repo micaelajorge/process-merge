@@ -2,11 +2,18 @@
     "Cedente":{
         "type":"object",
             "properties":{
-               "cod_cedente":{
+                "tp_doc_cedente":{
+                  "type":"integer",
+                  "format":"Int32",
+                  "title":"Tipo de documento do cedente ",
+                   "desc":"1 – CNPJ, 2 - CPF. OBRIGATÓRIO.",
+                   "example":"1"
+               },
+               "doc_cedente":{
                "type":"string",
-               "title":"Agência / Código do Cedente",
-                "desc":"Identificar a Agência e Código do Cedente do Título/Cliente. Limite 15 caracteres",
-                "example":"ABCDE1234567890"
+               "title":"Número do documento do cedente",
+                "desc":"Número do documento do cedente. Limite 14 caracteres",
+                "example":"12345678900"
                },
                "nome_cedente":{
                "type":"string",

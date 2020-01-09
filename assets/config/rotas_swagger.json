@@ -2,7 +2,7 @@
     "rotas": {    
         "swagger": {
             "GET": {
-                "page": "api\/protesto\/apiprotesto.php",
+                "page": "api\/swagger\/swagger.php",
                 "logon": false  
             }
         }      

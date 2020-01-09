@@ -4,42 +4,42 @@
             "properties":{
                     "especie_titulo":{
                     "type":"string",
-                    "example":"CBI",
                     "title":"Espécie do Título",
-                    "desc":"DMI - Duplicata de Venda Mercantil por Indicação"
+                    "desc":"DMI - Duplicata de Venda Mercantil por Indicação. Limite 3 caracteres. OBRIGATÓRIO.",
+                    "example":"CBI"
                  },
-                 "numero_titulo":{
+                 "num_titulo":{
                     "type":"string",
-                    "example":"CBI999991",
-                    "title":"Número do Título"
+                    "title":"Número do Título",
+                    "desc":"Número do Título. Limite 11 caracteres. OBRIGATÓRIO.",
+                    "example":"CBI999991"
+                
                  },
                  "data_emissao":{
-                    "type":"integer",
-                    "format":"int64",
-                    "example":"20190210",
-                    "title":"Data da Emissão do Título"
+                    "type":"string",
+                    "title":"Data da Emissão do Título.",
+                    "desc":"Formato YYYYMMDD. OBRIGATÓRIO.",
+                    "example":"20190210"
                  },
                  "data_vencimento":{
-                    "type":"integer",
-                    "format":"int64",
-                    "example":"20190219",
-                    "title":"Data de Vencimento do Título "
-                 },
-                 "tipo_moeda":{
-                    "type":"integer",
-                    "format":"int64",
-                    "title":"Tipo de Moeda"
+                    "type":"string",
+                    "title":"Data de Vencimento do Título.",
+                    "desc":"Formato YYYYMMDD. Nos casos de vencimento á vista preencher com “99999999”. OBRIGATÓRIO.",
+                    "example":"20190219"
                  },
                  "valor_titulo":{
                     "type":"integer",
                     "format":"int64",
-                    "example":"2000.45",
-                    "title":"Valor do Título"
+                    "title":"Valor original do Título",
+                    "desc":"Valor original do Título no formato: 999999999999,99. OBRIGATÓRIO.",
+                    "example":"2000,45"
                  },
-                 "saldo_titulo":{
+                 "valor_protestado":{
                     "type":"integer",
                     "format":"int64",
-                    "title":"Saldo do Título"
+                    "title":"Valor Protestado",
+                    "desc":"Valor protestado no formato: 999999999999,99. OBRIGATÓRIO.",
+                    "example":"2000,45"
                  }
             }
     }

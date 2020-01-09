@@ -29,30 +29,20 @@ $t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/master/t_datatabl
 
 // <editor-fold defaultstate="collapsed" desc="Cabecalho da Tabela de casos">
 $cabecalhoTabela = array(
-    "webhooks / exportkeys",
-    "Cliente",
-    "Origem",
-    "Qtde Recebido - soma",
-    "Qtde Aceitos - upload",
-    "Qtde Cancelado - cancel",
-    "Qtde Assinado - sign",
-    "Qtde Finalizado - auto_close",
-    "Campo23",
-    "Campo20"
+    "Identificacão do Protesto",
+    "Nosso Número",
+    "Status"
 );
 
-$t_body->addFile("FILTROS", FILES_ROOT . "assets/templates/t_busca.html");
+foreach ($cabecalhoTabela as $cabecalho) {
+    $t_body->TEXTO_CABECALHO = $cabecalho;
+    $t_body->block("BLOCK_CABECALHO_TABELA");
+}
+
+//$t_body->addFile("FILTROS", FILES_ROOT . "assets/templates/t_busca.html");
 
 //$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/billing/t_busca.html");
 $t_body->CLASS_BOX_HIDE = " ";
-$t_body->block("BLOCK_CONTENT");
-
-// Cria lista de mes/ano para filtro
-//$t_body->MES_ANO_SELECAO = "11/2019";
-//$t_body->block("BLOCK_MES_ANO_SELECAO");
-//$t_body->MES_ANO_SELECAO = "12/2019";
-//$t_body->block("BLOCK_MES_ANO_SELECAO");
-
 $t_body->block("BLOCK_CONTENT");
 
 $t_body->SIDE_BAR_SIZE = "sidebar-mini sidebar-collapse";
@@ -76,7 +66,7 @@ $t_body->HEADER_SMALL_TEXT = "Consulta de Protestos";
 $t_body->HEADER_ICO = "fa fa fa-tasks";
 $t_body->HEADER_COLOR = "#3c8dbc";
 
-$t_body->NAV_HEADER_TEXT = "Billing";
+$t_body->NAV_HEADER_TEXT = "Protestos";
 $t_body->NAV_HEADER_ICO = "fa fa fa-tasks";
 $t_body->NAV_HEADER_CLASS = "text-primary";
 $t_body->NAV_HEADER_COLOR = "";
@@ -88,8 +78,8 @@ $t_body->block("BLOCO_MOSTRAR_NAVEGACAO");
 $t_body->PROCID = $ProcId;
 $t_body->PROCNAME = $procdef->ProcName;
 
-//$Menu = "voltar";
-//populaToolBarTemplate($t_body, $Menu);
+$Menu = "1";
+populaToolBarTemplate($t_body, $Menu);
 
 $t_body->show();
 

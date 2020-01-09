@@ -13,7 +13,11 @@ require_once(FILES_ROOT . "includes_ws/wsuser.inc");
 
 function enviaProtesto()
 {
-    insereDadosRecebidos();
+    //insereDadosRecebidos();
+    header("HTTP/1.0 201 Created");
+    header("Access-Control-Allow-Origin: *");
+    header('Content-Type: application/json');
+    echo $jDados;
 }
 
 /**
@@ -33,11 +37,10 @@ function enviaProtesto()
 
 function cancelaProtesto()
 {
-    $jRetorno = json_encode("{code: 201, message: Recebido}"); 
-    
+    header("HTTP/1.0 201 Created");
+    header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
-    echo $jRetorno;
-    
+    echo $jDados;
 }
 
 /**
@@ -56,11 +59,10 @@ function cancelaProtesto()
  */
 function desistenciaProtesto()
 {
-    
-     $jRetorno = json_encode("{code: 201, message: Recebido}"); 
-    
+    header("HTTP/1.0 201 Created");
+    header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
-    echo $jRetorno;
+    echo $jDados;
 }
 
 function statusById()

@@ -154,6 +154,12 @@ function betterEval($code)
     return $resultadoAvaliacao;
 }
 
+/**
+ * 
+ * @global type $ruleCode
+ * 
+ * ROTA: api/v1/rules
+ */
 function avaliaRegra_v1()
 {
     global $ruleCode;

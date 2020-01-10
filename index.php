@@ -7,7 +7,7 @@
  */
 
 define("RELEASE_SCRIPT", "0056");
-define("SYS_VERSION", "3.3.0");
+define("SYS_VERSION", "3.3.1");
 define("LOG_DATA", false);
 
 function iniciarPhpSession()

@@ -4,7 +4,7 @@
     "version": "1.0",
     "title": "Gerenciamento de Protestos",
     "contact": {
-      "name": "CertDox",
+      "name": "CertDox - Contato",
       "email": "contato@certdox.com.br"
     }
   },
@@ -156,6 +156,7 @@
         "Titulo":{"$ref":"/protestos_poc/expand/swagger/ProtestoTitulo.json#Titulo"},
         "Cedente":{"$ref":"/protestos_poc/expand/swagger/ProtestoCedente.json#Cedente"},
         "Devedor":{"$ref":"/protestos_poc/expand/swagger/ProtestoDevedor.json#Devedor"},
-        "Credor":{"$ref":"/protestos_poc/expand/swagger/ProtestoCredor.json#Credor"} 
+        "Credor":{"$ref":"/protestos_poc/expand/swagger/ProtestoCredor.json#Credor"},
+        "CertDox":{"$ref":"/protestos_poc/expand/swagger/ProtestoCertDox.json#CertDox"} 
     } 
 }

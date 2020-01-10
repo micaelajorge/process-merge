@@ -13,7 +13,8 @@ require_once(FILES_ROOT . "includes_ws/wsuser.inc");
 
 function enviaProtesto()
 {
-    //insereDadosRecebidos();
+    $tipoProtesto = 1;
+    InsereDadosRecebidos($tipoProtesto);
     header("HTTP/1.0 201 Created");
     header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
@@ -68,43 +69,48 @@ function desistenciaProtesto()
 function statusById()
 {
     
-        $jRetorno = json_encode(""); 
-    
+    header("HTTP/1.0 200 OK");
+    header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
-    echo $jRetorno;
+    echo $jDados;
 }
 
 
-function insereDadosRecebidos()
+function insereDadosRecebidos($tipoProtesto)
 {
     try {
         global $connect;        
-        $procCod = "PROTESTO";
+        $procCod = "LOTE_PROTESTO";
         $dadosEntrada = file_get_contents('php://input');
 
         // Cria o campo unico da CESSAO = NUMERO CESSAO + BUCKET ORIGEM + BUCKET DESTINO
-        $sessionUUID = get_guid();
+        $id = get_guid();
 
-        $campo["fieldCode"] = "CESSION_UUID";
-        $campo["fieldValue"] = $sessionUUID;
+        $campo["fieldCode"] = "IDENTIFICADOR_REMESSA_PROTESTO";
+        $campo["fieldValue"] = $id;
         $camposEnvio[] = $campo;
 
-       // if (key_exists("Protesto", $dadosEntrada)) {
-
-            // Valida os dados de todos os Contratos
-
-            // Array com os campos a serem atualizados
-            $protestos = $dadosEntrada;
-            $campo["fieldCode"] = "PROTESTO";
-            $campo["fieldValue"] = json_encode($protestos);
-            $camposEnvio[] = $campo;
-       // }
+        $campo["fieldCode"] = "TIPO_PROTESTO";
+        $campo["fieldValue"] = $tipoProtesto;
+        $camposEnvio[] = $campo;
+        
+        // Array com os campos a serem atualizados
+        $protestos = $dadosEntrada;
+        $campo["fieldCode"] = "DADOS_REQUISICAO";
+        $campo["fieldValue"] = json_encode($protestos);
+        $camposEnvio[] = $campo;
         $dadosCaso["Fields"] = $camposEnvio;
+        
+        $log = $dadosEntrada;
+        $campo["fieldCode"] = "DOCUMENTO_REQUISICAO";
+        $campo["fieldValue"] = array();
+        $campo["fieldValue"][0]["fileName"] = "dados_request.json";
+        $campo["fieldValue"][0]["fileData"] = base64_encode($log);
+        $camposEnvio[] = $campo;
+        $dadosCaso["Fields"] = $camposEnvio;
+                
         // Pega o ProcId do Caso
         $procId = PegaProcIdByCode($procCod);
-
-        // Busca o Campo UNIQUE
-        //$camposUniqueClose = PegaCampoUniqueClose($procId);
 
         // Pega o campo unique do Caso
         $fieldUnique = $camposUniqueClose["FieldUnique"];
@@ -112,17 +118,17 @@ function insereDadosRecebidos()
         // Verfifica o valor Enviado do campo unique
         $valorCampoUnique = buscaValorCampoUnique($procId, $camposEnvio, $fieldUnique);
 
-
         // Verfifica se é caso unico
         $numeroCasoExiste = pegaNumerCasoUnicoAberto($procId, $valorCampoUnique);
 
         if ($numeroCasoExiste == 0) {
             $numeroCaso = 0;
-           // function FuncCaseSave($AuthUser, $ProcCode, $StepCode, $CaseNum, $dadosDoCaso, $Acao, $NovoCaso, $GravarEntrada = false)
+           
             $caseNum = FuncCaseSave($userData, $procId, 'INICIO', $numeroCaso, $dadosCaso, 0, 1);
+            
             if ($caseNum === 0) {
                 header("HTTP/1.0 201 Created");
-                $novoCaseNum["process"] = $sessionUUID;
+                $novoCaseNum["process"] = $id;
                 $novoCaseNum["error"] = array();
             }
         } else {
@@ -130,6 +136,7 @@ function insereDadosRecebidos()
             $novoCaseNum["process"] = "";
             $novoCaseNum["Error"] = "";
         }
+        
         $dadosRetorno = $novoCaseNum;
         $jDados = json_encode($dadosRetorno);
         if (json_last_error() > 0) {
@@ -139,6 +146,7 @@ function insereDadosRecebidos()
     } catch (Exception $ex) {
         $jDados = json_encode($ex);
     }
+    //$jDados = json_encode($caseNum);
     header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
     echo $jDados;

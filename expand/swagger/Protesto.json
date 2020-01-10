@@ -1,12 +1,13 @@
 {
 "Protesto": {
         "type":"object",
-        "properties":{                              
+        "properties":{   
+           "CertDox":{"$ref":"#/definitions/CertDox"},
            "nosso_numero":{
               "type":"string",              
               "title":"Número interno (Nosso Número)",
               "desc":"Utilizado para conciliação de pagamentos e retorno. Limite 15 caracteres",
-              "example":"X00000000000002"
+              "example":"X00000000000001"
            },       
            "tipo_protesto ":{
               "type":"string",
@@ -50,7 +51,8 @@
         "Titulo":{"$ref":"/protestos_poc/expand/swagger/ProtestoTitulo.json#Titulo"},
         "Cedente":{"$ref":"/protestos_poc/expand/swagger/ProtestoCedente.json#Cedente"},
         "Devedor":{"$ref":"/protestos_poc/expand/swagger/ProtestoDevedor.json#Devedor"},
-        "Credor":{"$ref":"/protestos_poc/expand/swagger/ProtestoCredor.json#Credor"} 
+        "Credor":{"$ref":"/protestos_poc/expand/swagger/ProtestoCredor.json#Credor"},
+        "CertDox":{"$ref":"/protestos_poc/expand/swagger/ProtestoCertDox.json#CertDox"} 
     }
 }
 

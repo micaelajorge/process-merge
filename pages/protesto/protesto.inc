@@ -4,7 +4,7 @@ Criação: Micaela Fernanda
 Data Criação 26/12/2019
 Sistema: Process_XAMPP
  * 
- * ROTA: billing
+ * ROTA: protesto
 */
 
 include_once(FILES_ROOT . "include/common.php");
@@ -29,9 +29,11 @@ $t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/master/t_datatabl
 
 // <editor-fold defaultstate="collapsed" desc="Cabecalho da Tabela de casos">
 $cabecalhoTabela = array(
-    "Identificacão do Protesto",
-    "Nosso Número",
-    "Status"
+    "#",
+    "",
+    "Status",
+    "",
+    "Referências"
 );
 
 foreach ($cabecalhoTabela as $cabecalho) {
@@ -39,9 +41,6 @@ foreach ($cabecalhoTabela as $cabecalho) {
     $t_body->block("BLOCK_CABECALHO_TABELA");
 }
 
-//$t_body->addFile("FILTROS", FILES_ROOT . "assets/templates/t_busca.html");
-
-//$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/billing/t_busca.html");
 $t_body->CLASS_BOX_HIDE = " ";
 $t_body->block("BLOCK_CONTENT");
 

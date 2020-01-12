@@ -6,7 +6,7 @@ define("MENU_PROCESSAR_PROXIMO", 55);
 define("MENU_ROTEAR_PROCESSO", 58);
 define("MENU_ROTEAR_NOVO_PROCESSO", 59);
 
-function populaToolBarTemplate(Template $t_body, $menu)
+function populaToolBarTemplate(Template $t_body, $menu, $optionsMenu = array())
 {
     $botoesToolbar = definicaoToolBar($menu);
 
@@ -1581,8 +1581,14 @@ function definicaoToolBar($Menu)
             $AcionaMenu[3] = 1;
             $tipoBotao[3] = "DROPDOWN_ITENS";
             $class_Icon[3] = "fa fa-eye";
-            break;
 
+//            $acao[4] = " ";
+//            $texto[4] = "Workplaces";
+//            $testoDesc[4] = $mostrarProcessos[1];
+//            $AcionaMenu[4] = 1;
+//            $tipoBotao[4] = "DROPDOWN_ITENS";
+//            $class_Icon[4] = "fa fa-th-large";
+            break;
 
         case 99:
             $acao[1] = "EnviaDadosAjax()";

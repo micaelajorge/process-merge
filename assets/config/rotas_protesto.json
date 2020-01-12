@@ -1,0 +1,18 @@
+{
+    "rotas": {    
+        "api/v1/envia_protesto": {
+            "POST": {
+                "page": "api/protesto/api_protesto.inc",
+                "logon": false,        
+                "funcao": "envia_lote_protesto_v1"
+            }
+        },
+        "api/v1/envia_protesto_certdox": {
+            "POST": {
+                "page": "api/protesto/api_protesto.inc",
+                "logon": false,        
+                "funcao": "protesto_entrada_protesto_v1"
+            }
+        }
+    }
+}

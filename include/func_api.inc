@@ -6,6 +6,71 @@
   Sistema: Creditus
  */
 
+/**
+ * 
+ * @param type $dadosOrigem
+ * @param type $camposBusca
+ * @return type
+ */
+function api_busca_dados_campo($dadosOrigem, $camposBusca, $retornaFalha = false)
+{
+    $keys_source = array_keys($dadosOrigem);
+    
+    // Verifica se é um array
+    if (!is_array($camposBusca))
+    {
+        $campoExistente = $camposBusca;
+        $camposBusca = array();
+        $camposBusca[] = $campoExistente;
+    }
+    foreach ($keys_source as $key)
+    {
+        foreach ($camposBusca as $campo)
+        {
+            if (strtolower($key) == strtolower($campo))
+            {
+                return $dadosOrigem[$key];
+            }
+        }
+    }
+        
+    if ($retornaFalha)
+    {
+        api_send_falta_parametros();
+    }
+    return false;
+}
+
+/**
+ * 
+ */
+function api_send_falta_parametros()
+{
+    header('Content-Type: application/json');
+    header("HTTP/1.0 422 Dados Insuficientes");
+    echo '{"return": "Dados Insuficientes"}';
+    die();
+}
+
+function validaDadosEntrada($dadosRecebidos, $listaCamposObrigatorios, $camposComAlias = array())
+{
+
+    $keysEntrada = array_map("strtoupper", array_keys($dadosRecebidos));
+
+    $temAlgum = count($camposComAlias) == 0;
+    foreach ($camposComAlias as $chave) {
+        $temAlgum = $temAlgum || in_array($chave, $keysEntrada);
+    }
+
+    $retorno = true && $temAlgum;
+
+    foreach ($listaCamposObrigatorios as $chave) {
+        $chaveExiste = in_array($chave, $keysEntrada);
+        $retorno = $retorno && $chaveExiste;
+    }
+    return true;
+}
+
 function insereItemArray(&$item, $key)
 {
     $item["DT_RowId"] = "row_" . $key;
@@ -16,7 +81,6 @@ function insereTdDetalhe($aDados)
     array_walk($aDados, "insereItemArray");
     return $aDados;
 }
-
 
 /**
  * 
@@ -59,22 +123,36 @@ function registrosPesquisa($tabela, $filtro)
 }
 
 /**
- * Trata os Dados de Entrada para requisições GET / POST usando REST API (Json)
+ * 
+ * @return type
+ */
+function get_request_body()
+{
+    // Pega todos dos dados do BODY da REQUISICAO
+    $entityBody = file_get_contents('php://input');
+    if (is_object($entityBody)) {
+        $dadosBody = (array) $entityBody;
+    } else {
+        $dadosBody = json_decode($entityBody, true);
+    }
+    return $dadosBody;
+}
+
+/**
+ * Trata os Dados de Entrada para requisições 
+ * GET / POST usando REST API (Json)
  * @return type]
  */
 function apiTrataDadosEntrada($retornarRota = true)
 {
-    $entityBody = file_get_contents('php://input');
 
-    if (is_object($entityBody)) {
-        $dados = (array) $entityBody;
-    } else {
-        $dados = json_decode($entityBody, true);
-    }
+    // Pega os dados do BODY REQUEST quando os dados vem em json
+    $dados = get_request_body();
 
-
+    // Pega dados do Get
     $get = filter_input_array(INPUT_GET);
 
+    // Pega dados do Post
     $post = filter_input_array(INPUT_POST);
 
     if (!is_array($dados)) {
@@ -91,13 +169,12 @@ function apiTrataDadosEntrada($retornarRota = true)
     } else {
         // Remove o Elemento do GET se não for para trazer a rota
         if (!$retornarRota) {
-            if (count($get) > 1)
-            {
-            $get = array_pop($get);
+            if (count($get) > 1) {
+                $get = array_pop($get);
             } else {
                 $get = array();
             }
-        }        
+        }
     }
 
     $dadosEntrada = array_merge($dados, $post, $get);

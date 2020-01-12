@@ -373,16 +373,47 @@ function apigetfile()
             return;
         }
     }
-    $procId = $dadosEntrada["procId"];
+
+    /**
+     *  Verifica o procId
+     */
+    if (key_exists("procId", $dadosEntrada))
+    {
+        $procId = $dadosEntrada["procId"];        
+    } else {
+        if (!key_exists("procCode", $dadosEntrada))
+        {
+            api_send_falta_parametros();
+        }
+        $procCode = $dadosEntrada["procCode"];
+        $procId = PegaProcIdByCode($procCode);
+    }
+    
+    /**
+     *  Verifica o fieldId
+     */
+    if (key_exists("fieldId", $dadosEntrada))
+    {
+        $fieldId = $dadosEntrada["fieldId"];        
+    } else {
+        if (!key_exists("fieldCode", $dadosEntrada))
+        {
+            api_send_falta_parametros();
+        }
+        $fieldCode = $dadosEntrada["fieldCode"];
+        $fieldId = PegaFieldIdByCode($procId, $fieldCode);
+    }
+
+    
     $caseNum = $dadosEntrada["caseNum"];
-    $fieldId = $dadosEntrada["fieldId"];
-    $fileName = $dadosEntrada["fileName"];
+    
 
     $diretorioArquivo = diretorioArquivoImagem($procId, $caseNum, $fieldId);
 
     $arquivoLeitura = FILES_UPLOAD . "/" . $diretorioArquivo . $fileName;
 
-    if (!file_exists($arquivoLeitura)) {
+    $arquivoEncontrado = file_exists($arquivoEncontrado);
+    if (!$arquivoEncontrado) {
         header("HTTP/1.0 403 File not found");
         return;
     }
@@ -392,7 +423,6 @@ function apigetfile()
 /*
  *  ROTA api/getfileslist
  */
-
 function apiGetFilesList()
 {
     global $connect;

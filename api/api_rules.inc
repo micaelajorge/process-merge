@@ -83,7 +83,7 @@ function testarRegra()
     $rule = $dadosEntrada["rules"];
     $resultadoAvaliacao = avaliaRegra($rule["regras"], $parametros);
     $dadosRetorno["resultado"] = trataRetornos($resultadoAvaliacao);
-    $dadosRetorno["dados"] = $resultadoAvaliacao;
+    $dadosRetorno["resultadosTratamento"] = $resultadoAvaliacao;
     $dadosRetorno["dadosRecebidos"] = $parametros;
     $dadosRetorno["retornoMensagem"] = $rule["retornoMensagem"];
     if (!is_array($dadosRetorno)) {

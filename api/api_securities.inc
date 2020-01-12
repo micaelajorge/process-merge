@@ -524,24 +524,6 @@ function api_resolution_create()
 
 
 
-function validaDadosEntrada($dadosRecebidos, $listaCamposObrigatorios, $camposComAlias = array())
-{
-
-    $keysEntrada = array_map("strtoupper", array_keys($dadosRecebidos));
-
-    $temAlgum = count($camposComAlias) == 0;
-    foreach ($camposComAlias as $chave) {
-        $temAlgum = $temAlgum || in_array($chave, $keysEntrada);
-    }
-
-    $retorno = true && $temAlgum;
-
-    foreach ($listaCamposObrigatorios as $chave) {
-        $chaveExiste = in_array($chave, $keysEntrada);
-        $retorno = $retorno && $chaveExiste;
-    }
-    return true;
-}
 
 function processa_cessao_resolucao($procCod)
 {

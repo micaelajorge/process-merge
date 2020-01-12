@@ -7,6 +7,13 @@
                 "funcao": "paginaDuplicada"
             }
         },
+        "cessaoencerrada": {
+            "GET": {
+                "page": "pages/operacaocessao.inc",
+                "logon": false,        
+                "funcao": "paginaEncerrada"
+            }
+        },
         "cessaoalterada": {
             "GET": {
                 "page": "pages/operacaocessao.inc",

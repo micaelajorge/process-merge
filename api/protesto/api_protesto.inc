@@ -155,7 +155,6 @@ function trataCamposCredor($dadosCredor)
 {
     $camposEnvio[] = array();
 
-    $identificacao_devedor = 0;
     $chavesRecebidas = array_keys($dadosCredor);
     foreach ($chavesRecebidas as $chave) {
         // Salta o valor se for um array
@@ -166,7 +165,7 @@ function trataCamposCredor($dadosCredor)
         if (!is_string($fieldValue)) {
             $fieldValue = (string) $fieldValue;
         }
-        $campo["fieldCode"] = strtoupper($chave) . "_" . $identificacao_devedor;
+        $campo["fieldCode"] = strtoupper($chave);
         $campo["fieldValue"] = $fieldValue;
         $camposEnvio[] = $campo;
     }
@@ -178,20 +177,33 @@ function trataCamposDevedores($dadosDevedores)
     $camposEnvio[] = array();
 
     $identificacao_devedor = 0;
-    $chavesRecebidas = array_keys($dadosDevedores);
-    foreach ($chavesRecebidas as $chave) {
-        // Salta o valor se for um array
-        if (is_array($dadosDevedores[$chave])) {
-            continue;
-        }
-        $fieldValue = $dadosDevedores[$chave];
-        if (!is_string($fieldValue)) {
-            $fieldValue = (string) $fieldValue;
-        }
-        $campo["fieldCode"] = strtoupper($chave) . "_" . $identificacao_devedor;
-        $campo["fieldValue"] = $fieldValue;
-        $camposEnvio[] = $campo;
+    
+    // Trata se o $devedores não é array
+    if (!is_array($dadosDevedores))
+    {
+        $dadosDevedor = $dadosDevedores;
+        $dadosDevedores = array();
+        $dadosDevedores[] = $dadosDevedor;
     }
+    
+    foreach ($dadosDevedores as $dadoDevedor) {
+        $chavesRecebidas = array_keys($dadoDevedor);
+        foreach ($chavesRecebidas as $chave) {
+            // Salta o valor se for um array
+            if (is_array($dadoDevedor[$chave])) {
+                continue;
+            }
+            $fieldValue = $dadoDevedor[$chave];
+            if (!is_string($fieldValue)) {
+                $fieldValue = (string) $fieldValue;
+            }
+            $campo["fieldCode"] = strtoupper($chave) . "_" . $identificacao_devedor;
+            $campo["fieldValue"] = $fieldValue;
+            $camposEnvio[] = $campo;
+        }
+        $identificacao_devedor++;
+    }
+
     return $camposEnvio;
 }
 
@@ -199,7 +211,6 @@ function trataCamposCertdox($dadosDevedores)
 {
     $camposEnvio[] = array();
 
-    $identificacao_devedor = 0;
     $chavesRecebidas = array_keys($dadosDevedores);
     foreach ($chavesRecebidas as $chave) {
         // Salta o valor se for um array
@@ -210,7 +221,7 @@ function trataCamposCertdox($dadosDevedores)
         if (!is_string($fieldValue)) {
             $fieldValue = (string) $fieldValue;
         }
-        $campo["fieldCode"] = strtoupper($chave) . "_" . $identificacao_devedor;
+        $campo["fieldCode"] = strtoupper($chave);
         $campo["fieldValue"] = $fieldValue;
         $camposEnvio[] = $campo;
     }
@@ -254,6 +265,14 @@ function protesto_entrada_protesto_v1()
         // Pega os campos Credor
         $camposCredor = trataCamposCredor($dadosEntrada["Credor"]);
         $camposEnvio = array_merge($camposEnvio, $camposCredor);
+
+        // Pega os campos Cedente
+        $camposCedente = trataCamposCredor($dadosEntrada["Cedente"]);
+        $camposEnvio = array_merge($camposEnvio, $camposCedente);
+
+        // Pega os campos Titulo
+        $camposTitulo = trataCamposCredor($dadosEntrada["Titulo"]);
+        $camposEnvio = array_merge($camposEnvio, $camposTitulo);
 
         // Pega os campos Certdox
         $camposCertdox = trataCamposCertdox($dadosEntrada["Certdox"]);

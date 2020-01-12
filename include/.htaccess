@@ -1,0 +1,11 @@
+# Bloqueia a listagem de diretórios.
+
+Options All -Indexes
+
+<FilesMatch "(.*)$">
+Order allow,deny
+</FilesMatch> 
+
+# Mensagem de erro personalizada.
+
+ErrorDocument 403 "Desculpe! acesso nao permitido!

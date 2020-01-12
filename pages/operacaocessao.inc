@@ -34,3 +34,13 @@ function cessaoAlterada()
     $t_body->show();
 // </editor-fold>            
 }
+
+function paginaEncerrada()
+{
+    $t_body = iniciaScript();
+    $t_body->block("BLOCK_SESSAO_ENCERRADA_TITULO");
+    $t_body->block("BLOCK_SESSAO_ENCERRADA_TEXTO_AUXILIAR");
+/// <editor-fold defaultstate="collapsed" desc="Envia dados para o Browser">
+    $t_body->show();
+// </editor-fold>            
+}

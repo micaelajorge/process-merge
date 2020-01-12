@@ -136,7 +136,17 @@ function trataLogicaSimples($regra, $dadosAvaliacao)
 {
     $valorCampo = $dadosAvaliacao[$regra["campo"]];
     $comparador = $regra["comparador"];
-    $valorComparar = $regra["valor"];
+        
+    if (isset($regra["valor"]))
+    {
+        $valorComparar = $regra["valor"];
+    }
+
+    if (isset($regra["logicaCampo"]))
+    {
+        $valorComparar = $dadosAvaliacao[$regra["logicaCampo"]];
+    }
+    
     $dadosRegra = "'$valorCampo' $comparador '$valorComparar'";
     return $dadosRegra;
 }

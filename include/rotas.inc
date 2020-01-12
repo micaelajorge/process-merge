@@ -245,7 +245,7 @@ function defineRota($p_dadosURI, $methodHTTP)
         $userValidado = $userdef->Validado;
     }
 
-    if ($userValidado && $sessaoModificada && $dadosURI !== "")
+    if ($userValidado && $sessaoModificada && $dadosURI !== "" && !$validadoToken)
     {
         $rota = array();
         $rota["page"] = "pages/operacaocessao.inc";

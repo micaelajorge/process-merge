@@ -66,7 +66,7 @@ function ViewFile($fileStorageName, $fileName, $diretorioArquivo = "")
     // Check filename     
 
     if (empty($fileStorageName) || !file_exists($diretorioArquivo . $fileStorageName)) {
-        header("HTTP/1.0 400 Arquivo Nao Encontrado");
+        header("HTTP/1.0 422 Arquivo Nao Encontrado");
         echo "Dados Post: " . var_export($_POST, true);
         echo "$diretorioArquivo$fileStorageName";
         return FALSE;
@@ -84,6 +84,8 @@ function serveArquivo()
 {
     global $userdef;
     $dadosEntrada = apiTrataDadosEntrada();
+    
+    
 //    $ProcId = $dadosEntrada["ProcId"];
 //    $CaseNum = $dadosEntrada["CaseNum"];
 //    $fileName = $dadosEntrada["fileName"];
@@ -91,11 +93,26 @@ function serveArquivo()
 //    $fileNameStorage = $dadosEntrada["fileNameStorage"];
 //    $forceDownload = $dadosEntrada["forceDownload"];
 
-    $ProcId = $GLOBALS["ProcId"];
-    $CaseNum = $GLOBALS["CaseNum"];
-    $fileName = $GLOBALS["fileName"];
-    $fieldId = $GLOBALS["fieldId"];
+    
+    
+    if (key_exists("ProcId", $GLOBALS))
+    {
+        $ProcId = $GLOBALS["ProcId"];
+    } else {
+        if (key_exists("procId", $GLOBALS))
+        {
+            $ProcId = $GLOBALS["procId"];
+        }
+    }
 
+
+    $ProcId =  api_busca_dados_campo($GLOBALS, ["procId", "procCode"], true);
+    $CaseNum = api_busca_dados_campo($GLOBALS, "CaseNum", true);
+    $fieldId = api_busca_dados_campo($GLOBALS, ["fieldId", "fieldCode"], true);
+    $fileNameStorage = api_busca_dados_campo($GLOBALS, "fileNameStorage", true);
+    $fileName = api_busca_dados_campo($GLOBALS, ["fieldId", "fileName"], false);
+    $forceDownload = api_busca_dados_campo($GLOBALS, "forceDownload", false);
+   
     if (!is_numeric($ProcId)) {
         $ProcId = PegaProcIdByCode($ProcId);
     }
@@ -103,10 +120,14 @@ function serveArquivo()
     if (!is_numeric($fieldId)) {
         $fieldId = PegaFieldIdByCode($ProcId, $fieldId);
     }
-
-
-    $fileNameStorage = $GLOBALS["fileNameStorage"];
+    
+    if (!$fileName)
+    {
+        $fileName = $fileNameStorage;
+    }
+    
     $forceDownload = $GLOBALS["forceDownload"];
+    
     $diretorio = FILES_UPLOAD . "/" . diretorioArquivoImagem($ProcId, $CaseNum, $fieldId);
 
     insereEntradaAuditTrail($ProcId, $CaseNum, 0, $userdef->UserId, $userdef->UserDesc, 7, "$fileName");

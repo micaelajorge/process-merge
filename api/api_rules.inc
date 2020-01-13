@@ -8,18 +8,25 @@
 
 include_once(FILES_ROOT . "include/resource01.php");
 
-function avaliaRegra($regras, $parametros)
+function avaliaExpressoes($expressoes, $parametros)
 {
     $dadosRetorno = array();
-    for ($i = 0; $i < count($regras); $i++) {
-        $dadosRetorno[] = trataRegra($regras[$i], $parametros);
+    foreach ($expressoes as $expressaoAvaliada) {
+        
+        //Verifica se deve avaliar a expressão
+        if ($expressaoAvaliada["evaluate_expression"] === "false")
+        {
+            continue;
+        }
+        
+        $dadosRetorno[] = trataExpressao($expressaoAvaliada, $parametros);
     }
     return $dadosRetorno;
 }
 
-function trataRegra($listaOperadores, $dadosAvaliacao)
+function trataExpressao($listaOperadores, $dadosAvaliacao)
 {
-    $codigoAvaliacao = "";
+    $codigoAvaliacao_Regra = "";
     foreach ($listaOperadores["operacoes"] as $regra) {
         $logic = "";
         $bracktOpen = "";
@@ -56,7 +63,7 @@ function trataRegra($listaOperadores, $dadosAvaliacao)
     $resultadoAvaliacao = false;
 
     // Se a avaliação está em branco retorna erro
-    if ($codigoAvaliacao === "") {
+    if ($codigoAvaliacao_Regra === "") {
         $resultadoAvaliacao = "false";
     } else {
         $codigoAvaliacao = '$resultadoAvaliacao' . " = ($codigoAvaliacao_Regra) ? 'true' : 'false';";
@@ -69,12 +76,27 @@ function trataRegra($listaOperadores, $dadosAvaliacao)
     }
 
     if ($resultadoAvaliacao !== "false") {
-        $resultadoOperacao = $listaOperadores["resultado"]['true'];
+        $resultadoOperacao = $listaOperadores["resultado"]['true'];                
     } else {
         $resultadoOperacao = $listaOperadores["resultado"]['false'];
     }
 
-    $retorno = array_merge(["operacao" => $listaOperadores["operacao"]], $resultadoOperacao);
+    if (key_exists("AVALIAR_REGRA", $resultadoOperacao))
+    {
+        $resultadoRegra = avaliaRegraSelecionada($resultadoOperacao["AVALIAR_REGRA"], $dadosAvaliacao);
+        $retorno = $resultadoRegra["dados"];
+//        if (!isset($resultadoOperacao["dados"]))
+//        {
+//            $resultadoOperacao["dados"] = array();
+//        }
+//        $dadosRegra = $resultadoRegra["dados"];
+//        $resultadoOperacao["dados"] = array_merge($resultadoOperacao["dados"], $dadosRegra);
+    }
+    else {
+        $retorno = array_merge(["operacao" => $listaOperadores["operacao"]], $resultadoOperacao);
+    } 
+        
+    
     return $retorno;
 }
 
@@ -83,7 +105,7 @@ function testarRegra()
     $dadosEntrada = apiTrataDadosEntrada();
     $parametros = $dadosEntrada["inputData"];
     $rule = $dadosEntrada["rules"];
-    $resultadoAvaliacao = avaliaRegra($rule["regras"], $parametros);
+    $resultadoAvaliacao = avaliaExpressoes($rule["regras"], $parametros);
     $dadosRetorno["resultado"] = trataRetornos($resultadoAvaliacao);
     $dadosRetorno["resultadosTratamento"] = $resultadoAvaliacao;
     $dadosRetorno["dadosRecebidos"] = $parametros;
@@ -194,6 +216,19 @@ function betterEval($code)
     return $resultadoAvaliacao;
 }
 
+function avaliaRegraSelecionada($ruleCode, $dadosEntrada)
+{
+    $json_regras = buscaDadosRegra($ruleCode);
+    $json_regras = str_replace("\\\\", "\\", $json_regras);
+    $rule = json_decode($json_regras, true);
+    $resultadoAvaliacao = avaliaExpressoes($rule["regras"], $dadosEntrada);
+    $dadosRetorno["resultado"] = trataRetornos($resultadoAvaliacao);
+    $dadosRetorno["dados"] = $resultadoAvaliacao;
+    $dadosRetorno["retornoMensagem"] = $rule["retornoMensagem"];    
+    return $dadosRetorno;
+}
+
+
 /**
  * 
  * @global type $ruleCode
@@ -204,14 +239,8 @@ function avaliaRegra_v1()
 {
     global $ruleCode;
     $dadosEntrada = apiTrataDadosEntrada();
-    $json_regras = buscaDadosRegra($ruleCode);
-
-    $json_regras = str_replace("\\\\", "\\", $json_regras);
-    $rule = json_decode($json_regras, true);
-    $resultadoAvaliacao = avaliaRegra($rule["regras"], $dadosEntrada);
-    $dadosRetorno["resultado"] = trataRetornos($resultadoAvaliacao);
-    $dadosRetorno["dados"] = $resultadoAvaliacao;
-    $dadosRetorno["retornoMensagem"] = $rule["retornoMensagem"];
+    
+    $dadosRetorno = avaliaRegraSelecionada($ruleCode, $dadosEntrada);
     if (!is_array($dadosRetorno)) {
         $dadosRetorno["resultado"] = false;
     }
@@ -282,7 +311,7 @@ function _avaliaRegra_v1()
 function buscaDadosRegra($ruleCode)
 {
     global $connect;
-    $SQL = "select rule_operations from rules where rule_code = '$ruleCode'";
+    $SQL = "select rule_operations from rules where UCASE(rule_code) = UCASE('$ruleCode')";
     $query = mysqli_query($connect, $SQL);
     $retorno = mysqli_fetch_all($query, MYSQLI_ASSOC);
     return $retorno[0]["rule_operations"];

@@ -1,0 +1,26 @@
+{
+    "Cedente":{
+        "type":"object",
+            "properties":{
+                "tp_doc_cedente":{
+                  "type":"integer",
+                  "format":"Int32",
+                  "title":"Tipo de documento do cedente ",
+                   "desc":"1 – CNPJ, 2 - CPF. OBRIGATÓRIO.",
+                   "example":"1"
+               },
+               "doc_cedente":{
+               "type":"string",
+               "title":"Número do documento do cedente",
+                "desc":"Número do documento do cedente. Limite 14 caracteres",
+                "example":"12345678900"
+               },
+               "nome_cedente":{
+               "type":"string",
+               "title":"Nome do Cedente/Favorecido",
+                "desc":"Limite 45 caracteres",
+                "example":"ANTONIO COUTINHO"
+               }
+            }
+    }
+}

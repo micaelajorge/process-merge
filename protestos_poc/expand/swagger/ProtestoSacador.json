@@ -1,0 +1,46 @@
+{
+        "Credor":{
+        "type":"object",
+            "properties":{
+           "nome_sacador":{
+              "type":"string",
+              "title":"Nome do Sacador/Vendedor",
+               "desc":"Repetir o nome do cedente se não houver sacador. Limite 45 caracteres",
+               "example":"ANTONIO COUTINHO"
+           },
+           "doc_sacador":{
+              "type":"string",
+              "title":"Documento do Sacador",
+                "desc":"Informar o número do documento do cedente, se não houver sacador. Limite 14 caracteres",
+                "example":"12345678900"
+           },
+           "end_sacador":{
+              "type":"string",
+              "title":"Endereço do Sacador/Vendedor",
+                "desc":". Limite 15 caracteres",
+                "example":""
+           },
+           "cep_sacador":{
+              "type":"integer",
+              "format":"int64",
+              "title":"CEP do Sacador/Vendedor",
+                "desc":". Limite 15 caracteres",
+                "example":""
+           },
+           "cidade_sacador":{
+              "type":"integer",
+              "format":"int64",
+              "title":"Cidade do Sacador/Vendedor",
+               "desc":". Limite 15 caracteres",
+               "example":""
+           },
+           "uf_sacador":{
+              "type":"integer",
+              "format":"int64",
+              "title":"UF do Sacador/Vendedor",
+               "desc":". Limite 15 caracteres",
+               "example":""
+           }
+       }
+    }
+}

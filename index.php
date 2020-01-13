@@ -1544,6 +1544,40 @@ switch ($srvAccess) {
         define("ICONE_PARCEIRO", "logo-agiliza-mini.png");
         break;
 
+    case "protestos_poc":
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("TEMASISTEMA", "skin-red");
+                define("TEMPLATE_LOGON", "t_logon_dmcard.html");
+
+                /**
+                 *  Definições Banco de dados
+                 */
+                $BPMUSER = "process";
+                $BPMPWD = "cerberus";
+                $EXTERNALUSER = "process";
+                $EXTERNALPWD = "cerberus";
+                $EXTERNAL_USERNAME = "process";
+                $BPMDB = "protestos_poc";
+                $EXTERNALDB = 'protestos_poc';
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("SITE_ROOT", "http://$srvAccess");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("SERVER_ADDRESS", $srvAccess);
+                define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
+                define("_SECRET_KEY", "f9QsJ4Oufz");
+                define("ALLOW_SEARCH", FALSE);
+                define("FILES_FOLDER", "/");
+                define("FILES_UPLOAD", "/storage/protestos_poc");
+                define("INSTANCENAME", 'Protestos POC');
+                define("SITE_FOLDER", "/protestos_poc/");
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+                define("PARCEIRONAME", 'Certdox');
+                define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
+                define("URL_OWNER", "https://www.certdox.com.br");
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("NAME_OWNER", "Certdox");
+                break;
     default:
         echo "Não Encontrado: '$srvAccess', Redirect '$redirectUrl'";
         break;

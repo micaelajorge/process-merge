@@ -17,10 +17,10 @@ function avaliaRegra($regras, $parametros)
     return $dadosRetorno;
 }
 
-function trataRegra($listaRegras, $dadosAvaliacao)
+function trataRegra($listaOperadores, $dadosAvaliacao)
 {
     $codigoAvaliacao = "";
-    foreach ($listaRegras["operacoes"] as $regra) {
+    foreach ($listaOperadores["operacoes"] as $regra) {
         $logic = "";
         $bracktOpen = "";
         $bracktClose = "";
@@ -39,26 +39,27 @@ function trataRegra($listaRegras, $dadosAvaliacao)
         }
         switch ($typeOperation) {
             case "funcao":
-                $dadosRegra = trataLogicaFuncao($regra, $dadosAvaliacao);
+                $dadosOperador = trataLogicaFuncao($regra, $dadosAvaliacao);
                 break;
             case "comparar":
             default:
-                $dadosRegra = trataLogicaSimples($regra, $dadosAvaliacao);
+                $dadosOperador = trataLogicaSimples($regra, $dadosAvaliacao);
                 break;
         }
 
         if (key_exists("logic", $regra)) {
             $logic = $regra["logic"];
         }
-        $codigoAvaliacao .= "$bracktOpen $logic $dadosRegra $bracktClose";
+
+        $codigoAvaliacao_Regra .= "$bracktOpen $logic $dadosOperador $bracktClose";
     }
     $resultadoAvaliacao = false;
-    
+
     // Se a avaliação está em branco retorna erro
     if ($codigoAvaliacao === "") {
         $resultadoAvaliacao = "false";
     } else {
-        $codigoAvaliacao = '$resultadoAvaliacao' . " = ($codigoAvaliacao) ? 'true' : 'false';";
+        $codigoAvaliacao = '$resultadoAvaliacao' . " = ($codigoAvaliacao_Regra) ? 'true' : 'false';";
         try {
 //        $test = eval($string);
             eval($codigoAvaliacao);
@@ -66,15 +67,16 @@ function trataRegra($listaRegras, $dadosAvaliacao)
             
         }
     }
+
     if ($resultadoAvaliacao !== "false") {
-        $retorno = $listaRegras["resultado"]['true'];
+        $resultadoOperacao = $listaOperadores["resultado"]['true'];
     } else {
-        $retorno = $listaRegras["resultado"]['false'];
+        $resultadoOperacao = $listaOperadores["resultado"]['false'];
     }
 
+    $retorno = array_merge(["operacao" => $listaOperadores["operacao"]], $resultadoOperacao);
     return $retorno;
 }
-
 
 function testarRegra()
 {
@@ -93,7 +95,6 @@ function testarRegra()
     header('Content-Type: application/json');
     echo $jDados;
 }
-
 
 function verificaFuncaoExiste($funcao)
 {
@@ -116,19 +117,41 @@ function verificaFuncaoExiste($funcao)
 function trataLogicaFuncao($regra, $dadosAvaliacao)
 {
     $funcao = $regra["funcao"];
-    $matches = array();
-    $regex = "/!%(.*)?!%/m";
-//    $regex = "/!{(.*?)}/m";
-    $total = preg_match($regex, $funcao, $matches);
-    $NOME_CAMPO = $matches[1];
+    $matches_campos = array();
+    $matches_funcao = array();
+
+    /*
+     * PEGA o campo para macro substituição
+     */
+    $regex_CAMPO = "/!%(.*)?!%/m";
+    preg_match($regex_CAMPO, $funcao, $matches_campos);
+
+    /*
+     * PEGA o NOME da FUNÇÃO
+     */
+    $regex_FUNCAO = "/(^.*)\(/m";
+    preg_match($regex_FUNCAO, $funcao, $matches_funcao);
+
+    if (!function_exists($matches_funcao[1])) {
+        $retorno["falha"] = "Função " . $matches_funcao[1] . " não encontrada";
+        $json_retorno = json_encode($retorno);
+        header("HTTP/1.0 422 Falha tratamento Regra");
+        header('Content-Type: application/json');
+        echo $json_retorno;
+        die();
+    }
+
+    $NOME_CAMPO = $matches_campos[1];
     $comparador = "";
     if (key_exists("comparador", $regra)) {
-        $comparador = $regra["comparador"];
+        if ($comparador != "") {
+            $comparador = $regra["comparador"];
+            if (key_exists("comparador", $regra)) {
+                $valorComparar = "'" . $regra["valor"] . "'";
+            }
+        }
     }
-    if (key_exists("comparador", $regra)) {
-        $valorComparar = "'" . $regra["valor"] . "'";
-    }
-    $dadosRegra = str_replace($matches[0], $dadosAvaliacao[$NOME_CAMPO], $funcao) . $comparador . $valorComparar;
+    $dadosRegra = str_replace($matches_campos[0], $dadosAvaliacao[$NOME_CAMPO], $funcao) . $comparador . $valorComparar;
     return $dadosRegra;
 }
 
@@ -136,17 +159,24 @@ function trataLogicaSimples($regra, $dadosAvaliacao)
 {
     $valorCampo = $dadosAvaliacao[$regra["campo"]];
     $comparador = $regra["comparador"];
-        
-    if (isset($regra["valor"]))
-    {
+
+    if (isset($regra["valor"])) {
         $valorComparar = $regra["valor"];
     }
 
-    if (isset($regra["logicaCampo"]))
-    {
+    if (isset($regra["logicaCampo"])) {
         $valorComparar = $dadosAvaliacao[$regra["logicaCampo"]];
     }
-    
+
+    if (isset($regra["logicaFuncao"])) {
+        switch ($regra["logicaFuncao"]) {
+            case "DATA_ATUAL":
+                $valorComparar = date("Y-m-d");
+                break;
+        }
+    }
+
+
     $dadosRegra = "'$valorCampo' $comparador '$valorComparar'";
     return $dadosRegra;
 }

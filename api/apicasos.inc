@@ -615,7 +615,6 @@ function apicasestart()
 
 // </editor-fold>
 
-
 function apicasedeadtime()
 {
     $dadosEntrada = apiTrataDadosEntrada();

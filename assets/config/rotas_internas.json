@@ -757,6 +757,13 @@
                 "funcao": "apigetcasedata_v1"
             }                        
         },
+        "api/v1/getcasedata": {
+            "POST": {
+                "page": "api/api_casedata.inc",
+                "funcao": "apigetcasedata_v1",
+                "parametros": ["torule"]
+            }                        
+        },
         "api/datahora": {
             "POST": {
                 "page": "api/apicasos.inc",

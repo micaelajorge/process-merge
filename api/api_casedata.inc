@@ -86,8 +86,9 @@ function apigetcase()
 
 /**
  * ROTA: "api/apigetcasedata"
+ * ROTA: "api/v1/getcasedata"
  */
-function apigetcasedata()
+function apigetcasedata_v2()
 {
     global $connect;
     $dadosCaso = array();
@@ -95,11 +96,7 @@ function apigetcasedata()
     $dadosEntrada = apiTrataDadosEntrada();
 
     if (!isset($dadosEntrada["caseNum"])) {
-        header('Content-Type: application/json');
-        $dados["err"] = -1;
-        $dados["err_desc"] = "Nao informado 'caseNum'";
-        $jDados = json_encode($dadosCaso);
-        echo $jDados;
+        api_send_falta_parametros();
         return;
     }
 
@@ -134,6 +131,7 @@ function apigetcasedata()
 
 /**
  * ROTA: "api/v1/apigetcasedata"
+ * ROTA: "api/v1/getcasedata"
  */
 function apigetcasedata_v1()
 {

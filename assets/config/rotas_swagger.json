@@ -1,0 +1,10 @@
+{
+    "rotas": {    
+        "swagger": {
+            "GET": {
+                "page": "api\/swagger\/swagger.php",
+                "logon": false  
+            }
+        }      
+    }
+}

@@ -115,7 +115,6 @@ function jsVerficaNotificacoesUsuario()
     }).done(function (data) {
         jsAtualizaNotificacoes(data);
     }).fail(function (data) {
-        $("#modalSessaoExpirada").show();
     });
     
     if (typeof jsbuscaBloqueioCaso === 'function')

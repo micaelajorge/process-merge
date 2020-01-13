@@ -1,0 +1,26 @@
+{
+        "Credor":{
+        "type":"object",
+            "properties":{
+           "tp_doc_credor":{
+              "type":"integer",
+              "format":"Int32",
+              "title":"Tipo de documento do credor ",
+               "desc":"1 – CNPJ, 2 - CPF. OBRIGATÓRIO.",
+               "example":"1"
+           },
+           "doc_credor":{
+              "type":"string",
+              "title":"Número do documento do credor",
+                "desc":"Informar o número do documento do credor. Limite 14 caracteres. OBRIGATÓRIO.",
+                "example":"12345678900"
+           },
+           "nome_credor":{
+              "type":"string",
+              "title":"Nome do credor",
+               "desc":"Limite 45 caracteres. OBRIGATÓRIO.",
+               "example":"ANTONIO COUTINHO"
+           }
+        }
+    }
+}

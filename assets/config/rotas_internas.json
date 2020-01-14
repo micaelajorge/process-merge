@@ -1508,11 +1508,13 @@
         "api/v1/apicaselist": {
             "POST": {
                 "page": "api/apicaselist.inc",
-                "funcao": "apiPegaListaCasos"
+                "funcao": "apiPegaListaCasos",
+                "logon": false                
             },
             "GET": {
                 "page": "api/apicaselist.inc",
-                "funcao": "apiPegaListaCasos"
+                "funcao": "apiPegaListaCasos",
+                "logon": false                
             }
         },
         "casestart": {

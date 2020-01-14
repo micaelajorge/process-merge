@@ -3059,3 +3059,65 @@
     ),
   ),
 )
+[14-Jan-2020 12:24:58 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[14-Jan-2020 12:24:58 America/Sao_Paulo] Dados Sessao: array (
+)
+[14-Jan-2020 12:42:18 America/Sao_Paulo] PHP Fatal error:  Uncaught InvalidArgumentException: block BLOCK_END_POINT does not exist in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:544
+Stack trace:
+#0 E:\desenvolvimento\PHPSistemas\Process\pages\swagger.inc(28): raelgc\view\Template->block('BLOCK_END_POINT')
+#1 E:\desenvolvimento\PHPSistemas\Process\index.php(1805): include('E:\\desenvolvime...')
+#2 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 544
+[14-Jan-2020 13:06:46 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[14-Jan-2020 13:06:46 America/Sao_Paulo] Dados Sessao: array (
+)
+[14-Jan-2020 13:06:52 America/Sao_Paulo] PHP Fatal error:  Uncaught InvalidArgumentException: block BLOCK_END_POINT does not exist in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:544
+Stack trace:
+#0 E:\desenvolvimento\PHPSistemas\Process\pages\swagger.inc(28): raelgc\view\Template->block('BLOCK_END_POINT')
+#1 E:\desenvolvimento\PHPSistemas\Process\index.php(1805): include('E:\\desenvolvime...')
+#2 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 544
+[14-Jan-2020 13:18:56 America/Sao_Paulo] Rota requer autenticacao: Process array (
+  'page' => 'logon.php',
+  'funcao' => '',
+)
+[14-Jan-2020 13:18:56 America/Sao_Paulo] Dados Sessao: array (
+)
+[14-Jan-2020 14:54:27 America/Sao_Paulo] Erro acesso ao DB 
+[14-Jan-2020 14:54:27 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+
+[14-Jan-2020 14:54:27 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[14-Jan-2020 14:54:27 America/Sao_Paulo] Dados Sessao: array (
+)
+[14-Jan-2020 14:54:33 America/Sao_Paulo] Erro acesso ao DB 
+[14-Jan-2020 14:54:33 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+
+[14-Jan-2020 14:54:34 America/Sao_Paulo] Erro acesso ao DB 
+[14-Jan-2020 14:54:34 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+
+[14-Jan-2020 14:55:27 America/Sao_Paulo] Erro acesso ao DB 
+[14-Jan-2020 14:55:28 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+
+[14-Jan-2020 14:55:39 America/Sao_Paulo] Erro acesso ao DB 
+[14-Jan-2020 14:55:39 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+
+[14-Jan-2020 14:55:57 America/Sao_Paulo] Erro acesso ao DB 
+[14-Jan-2020 14:55:57 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+
+[14-Jan-2020 14:56:53 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
+  'page' => 'api/checkstatus.inc',
+)
+[14-Jan-2020 14:56:53 America/Sao_Paulo] Dados Sessao: array (
+)
+[14-Jan-2020 15:25:45 America/Sao_Paulo] Erro acesso ao DB 
+[14-Jan-2020 15:25:45 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
+

@@ -29,6 +29,7 @@ function AtivaDBProcess($SelDb = True)
         error_log("Erro de Conexao: " . mysqli_connect_errno() . ' - ' . mysqli_connect_error());
 //        header('Content-Type: application/json');
         header("HTTP/1.0 501 db Externo");        
+        die();
     }
 
     mysqli_query($connect, "SET NAMES 'utf8'");

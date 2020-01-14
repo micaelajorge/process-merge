@@ -3,7 +3,7 @@
 //use OpenApi\Annotations as OA;
 use raelgc\view\Template;
 
-$t_body = new Template(FILES_ROOT . "assets/templates/t_swagger.html");
+$t_body = new Template(FILES_ROOT . "assets/templates/t_swagger_2.html");
 
 $t_body->SITE_LOCATION = SITE_LOCATION;
 

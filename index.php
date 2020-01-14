@@ -263,6 +263,23 @@ switch ($srvAccess) {
                 $EXTERNALDB = 'processteste';
                 break;
 
+            case "protestos_poc":
+                ini_set('display_errors', 1);
+                ini_set('display_startup_errors', 1);
+                error_reporting(E_ALL);
+
+                define("TEMASISTEMA", "skin-red");
+                define("INSTANCENAME", 'Process Teste');
+                define("SITE_FOLDER", "/protestos_poc/");
+                define("INSTANCENAME", 'Process Teste');
+                define("FILES_UPLOAD", "E:/developer/STORAGE_PROCESS_TESTE");
+                define("configDB", "db-teste");
+                $BPMDB = "protestos_poc";
+                $EXTERNALDB = 'protestos_poc';
+                $BPMSERVER = "10.0.0.4";
+                break;
+
+
             case "dmcard":
                 define("TEMASISTEMA", "skin-red");
                 define("TEMPLATE_LOGON", "t_logon_dmcard.html");
@@ -727,6 +744,47 @@ switch ($srvAccess) {
                 define("NAME_OWNER", "Certdox");
                 break;
 
+            case "protestos_poc_2":
+//                ini_set('display_errors', 1);
+//                ini_set('display_startup_errors', 1);
+//                error_reporting(E_ALL);
+
+                define("LOGAR_ROTA", true);
+                define("APLICAR_POLITICAS_SEGURANCA", false);
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("TEMASISTEMA", "skin-red");
+                define("TEMPLATE_LOGON", "t_logon_dmcard.html");
+
+                /**
+                 *  Definições Banco de dados
+                 */
+                $BPMUSER = "process";
+                $BPMPWD = "cerberus";
+                $EXTERNALUSER = "process";
+                $EXTERNALPWD = "cerberus";
+                $EXTERNAL_USERNAME = "process";
+                $BPMDB = "protestos_poc";
+                $EXTERNALDB = 'protestos_poc';
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("SITE_ROOT", "http://$srvAccess");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("SERVER_ADDRESS", $srvAccess);
+                define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
+                define("_SECRET_KEY", "f9QsJ4Oufz");
+                define("ALLOW_SEARCH", FALSE);
+                define("FILES_FOLDER", "/");
+                define("FILES_UPLOAD", "/storage/protestos_poc");
+                define("INSTANCENAME", 'Protestos POC');
+                define("SITE_FOLDER", "/protestos_poc_2/");
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+                define("PARCEIRONAME", 'Certdox');
+                define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
+                define("URL_OWNER", "https://www.certdox.com.br");
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("NAME_OWNER", "Certdox");
+                break;
+
             case "teste_securities":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-blue");
@@ -1125,41 +1183,41 @@ switch ($srvAccess) {
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("NAME_OWNER", "Clicksign Securities");
                 break;
-			
-								 
-														 
-												  
-																
 
-				   
-											   
-				   
-									 
-									 
-										  
-										  
-											   
-										 
-											  
-														 
-														 
-																   
-													 
-																	  
-													
-											  
-											
-																 
-														
-														 
-													 
-																  
-												  
-																	
-																  
-														 
-												
-					  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             default:
                 define("ALINHAMENTO_LOGO", "float:left");
@@ -1812,7 +1870,7 @@ try {
         if ($rotaDefinida["funcao"] != '') {
             $funcao = $rotaDefinida["funcao"];
             $funcao();
-        } 
+        }
     }
 } catch (ErrorException $e) {
     error_log("Rota Definida:" . var_export($rotaDefinida, true));

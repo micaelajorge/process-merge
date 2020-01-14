@@ -31,15 +31,10 @@ function apiPegaListaCasos()
     $userdef = $_SESSION["userdef"];
 
     if (!(key_exists("ProcCode", $dadosEntrada) | key_exists("procCode", $dadosEntrada))) {
-        header("HTTP/1.0 402 Falta Parametros");
+        api_send_falta_parametros();
         return;
     }
     $ProcSource = ($dadosEntrada["ProcCode"]) ? $dadosEntrada["ProcCode"] : $dadosEntrada["procCode"];
-
-//    if (!(key_exists("StepCode", $dadosEntrada) | key_exists("stepCode", $dadosEntrada))) {
-//        header("HTTP/1.0 402 Falta Parametros");
-//        return;
-//    }
 
     $StepCode = ($dadosEntrada["StepCode"]) ? $dadosEntrada["StepCode"] : $dadosEntrada["stepCode"];
 
@@ -69,7 +64,7 @@ function apiPegaListaCasos()
     $listaCasos = listaCasosApi($ProcSource, $StepCode, $filtrosTratados);
 
     if ($listaCasos === null) {
-        header("HTTP/1.0 403 Falha Buscando dados");
+        header("HTTP/1.0 422 Falha Buscando dados");
         header('Content-Type: application/json');
         echo "{}";
         return;

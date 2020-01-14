@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <base href="{SITE_LOCATION}" />
+        <link rel="shortcut icon" href="images/{ICONE_PARCEIRO|constant:ICONE_PARCEIRO}" />
+        <link rel="icon"href="images/{ICONE_PARCEIRO|constant:ICONE_PARCEIRO}" />    
+        <title>{nome_projeto} - Swagger</title>
+        <link rel="stylesheet" type="text/css" href="vendor/swagger/swagger-ui.css" >
+        <style>
+            html
+            {
+                box-sizing: border-box;
+                overflow: -moz-scrollbars-vertical;
+                overflow-y: scroll;
+            }
+            *,
+            *:before,
+            *:after
+            {
+                box-sizing: inherit;
+            }
+
+            body
+            {
+                margin:0;
+                background: #fafafa;
+            }
+        </style>
+    </head>
+
+    <section id="pageContent" >
+        <!-- BEGIN BLOCK_SWAGGER_DEF -->
+        <div id="swagger-ui"></div>
+        <script src="https://unpkg.com/swagger-ui-dist@3.12.1/swagger-ui-standalone-preset.js"></script>
+        <script src="https://unpkg.com/swagger-ui-dist@3.12.1/swagger-ui-bundle.js"></script>
+        <script>
+            window.onload = function () {
+                // Begin Swagger UI call region
+                const ui = SwaggerUIBundle({
+                    url: "assets/swagger/{json_swagger}",
+                    dom_id: '#swagger-ui',
+                    deepLinking: true,
+                    presets: [
+                        SwaggerUIBundle.presets.apis
+                    ]
+                });
+                // End Swagger UI call region
+                window.ui = ui;
+            };
+        </script>
+        <!-- END BLOCK_SWAGGER_DEF -->
+        <!-- BEGIN BLOCK_LIST_API -->
+        <div id="swagger-ui"><div data-reactroot="" class="swagger-ui">
+                <div><!-- react-empty: 5 -->
+                    <div class="information-container wrapper">
+                        <section class="block col-12">
+                            <div class="info">
+                                <hgroup class="main">
+                                    <h2 class="title">
+                                        <!-- react-text: 18 -->Endpoints Disponibilizados<!-- /react-text -->
+                                    </h2>
+                                </hgroup>
+                                <div>
+                                    <a href="mailto:contato@certdox.com.br">Contact CertDox</a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="wrapper">
+                        <section class="block col-12 block-desktop col-12-desktop">
+                            <div>
+                                <h4>{END_POINT_GROUP_DESC}</h4>
+                                <!-- BEGIN BLOCK_END_POINT -->
+                                {ENDPOINT_DESC}: <a href="swagger/{ENDPOINT_URL}">{ENDPOINT_URL}</a><br />
+                                <!-- END BLOCK_END_POINT -->
+                            </div>
+                        </section>
+                    </div>
+                    <div class="wrapper">
+                        <section class="block col-12 block-desktop col-12-desktop"><!-- react-empty: 14 -->
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <!-- END BLOCK_LIST_API -->
+    </section> 
+</html>

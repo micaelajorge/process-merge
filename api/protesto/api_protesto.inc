@@ -11,7 +11,7 @@ require_once(FILES_ROOT . "includes_ws/wserror.inc");
 // </editor-fold>
 
 
-$camposObrigatoriosProtesto = ["nosso_numero"];
+//$camposObrigatoriosProtesto = ["nosso_numero"];
 
 /**
  * ROTA: api/v1/envia_protesto
@@ -29,10 +29,10 @@ function envia_lote_protesto_v1()
 
         $chavesRecebidas = array_keys($dadosEntrada);
 
-        $dadosProcessoValido = validaDadosEntrada($dadosEntrada, $camposObrigatoriosProtesto);
-        if (!$dadosProcessoValido) {
-            api_send_falta_parametros();
-        }
+//        $dadosProcessoValido = validaDadosEntrada($dadosEntrada, $camposObrigatoriosProtesto);
+//        if (!$dadosProcessoValido) {
+//            api_send_falta_parametros();
+//        }
 
         $camposEnvio = array();
         foreach ($chavesRecebidas as $chave) {

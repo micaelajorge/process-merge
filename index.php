@@ -508,10 +508,6 @@ switch ($srvAccess) {
                 ini_set('display_startup_errors', 1);
                 ini_set("error_reporting", E_ERROR);
 
-
-                define("ALINHAMENTO_LOGO", "float:left");
-                define("TEMASISTEMA", "skin-green-light");
-                //  Definições Banco de dados
                 $BPMUSER = "process";
                 $BPMPWD = "cerberus";
                 $EXTERNALUSER = "process";
@@ -525,20 +521,7 @@ switch ($srvAccess) {
                 define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
                 define("SERVER_ADDRESS", $srvAccess);
-                define("ARQUIVO_ERROR_LOG_PHP", "log_homolog_creditas_consignado/PHP_errors.log");
-                define("_SECRET_KEY", "f9QsJ4Oufz");
-                define("ALLOW_SEARCH", FALSE);
-                define("FILES_FOLDER", "/");
-                define("FILES_UPLOAD", "/storage/gateway_creditas_scd");
-                define("INSTANCENAME", 'Git mmoscz');
-                define("SITE_FOLDER", "/mmoscz/"); // Nome do Alias no APACHE
-                define("SITE_FOLDER_COMPLEMENT", "");
-                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
-                define("PARCEIRONAME", 'Certdox');
-                define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
-                define("URL_OWNER", "https://www.certdox.com.br");
-                define("ALINHAMENTO_LOGO", "float:left");
-                define("NAME_OWNER", "Powered by Certdox");
+
                 break;
 
             case "homolog_creditas_consignado":
@@ -1142,7 +1125,41 @@ switch ($srvAccess) {
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("NAME_OWNER", "Clicksign Securities");
                 break;
+			
+								 
+														 
+												  
+																
 
+				   
+											   
+				   
+									 
+									 
+										  
+										  
+											   
+										 
+											  
+														 
+														 
+																   
+													 
+																	  
+													
+											  
+											
+																 
+														
+														 
+													 
+																  
+												  
+																	
+																  
+														 
+												
+					  
 
             default:
                 define("ALINHAMENTO_LOGO", "float:left");
@@ -1795,7 +1812,7 @@ try {
         if ($rotaDefinida["funcao"] != '') {
             $funcao = $rotaDefinida["funcao"];
             $funcao();
-        }
+        } 
     }
 } catch (ErrorException $e) {
     error_log("Rota Definida:" . var_export($rotaDefinida, true));

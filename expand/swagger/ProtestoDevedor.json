@@ -1,0 +1,70 @@
+{
+    "Devedor": {
+            "type":"object",
+            "properties":{
+            "tp_doc_devedor":{
+              "type":"integer",
+              "format":"Int32",
+              "title":"Tipo de documento do credor ",
+               "desc":"1 – CNPJ, 2 - CPF. OBRIGATÓRIO.",
+               "example":"1"
+           },
+           "doc_devedor":{
+              "type":"string",
+              "title":"Documento do Devedor",
+               "desc":"Limite 14 caracteres. OBRIGATÓRIO.",
+               "example":"12345678900"
+           },
+              "nome_devedor":{
+              "type":"string",
+              "title":"Nome do Devedor",
+               "desc":"Limite 45 caracteres. OBRIGATÓRIO.",
+               "example":"ANTONIO COUTINHO"
+           },
+           "cep_devedor":{
+              "type":"integer",
+              "format":"int64",
+              "title":"CEP do Devedor",
+               "desc":"Limite 8 caracteres. OBRIGATÓRIO.",
+               "example":"03345000"
+           },          
+           "endereco_devedor":{
+              "type":"string",
+              "title":"Endereço do Devedor",
+               "desc":"Limite 45 caracteres. OBRIGATÓRIO.",
+               "example":"AVENIDA PAULISTA"
+           },
+           "numero_endereco_devedor":{
+              "type":"string",
+              "title":"Número do endereço do Devedor ",
+               "desc":"Limite 5 caracteres. OBRIGATÓRIO.",
+               "example":"1200"
+           },
+           "complem_end_devedor":{
+              "type":"string",
+              "title":"Compemento do endereço do Devedor ",
+               "desc":"Limite 20 caracteres.",
+               "example":"APTO 10"
+           },
+            "bairro_devedor":{
+              "type":"string",
+              "title":"Bairro do Devedor ",
+               "desc":"Limite 20 caracteres. OBRIGATÓRIO.",
+               "example":"CENTRO"
+           },
+           "cidade_ibge":{
+              "type":"string",
+              "title":"Código do IBGE da cidade do Devedor",
+               "desc":"Limite 7 caracteres. OBRIGATÓRIO.",
+               "example":"3550308"
+           },
+           "uf_devedor":{
+              "type":"string",
+              "title":"UF do Devedor",
+               "desc":"Limite 2 caracteres. OBRIGATÓRIO.",
+               "example":"SP"
+           }
+        }
+    
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "CertDox":{
+        "type":"object",
+            "properties":{
+                    "numero_protesto":{
+                    "type":"string",
+                    "title":"Número interno Protesto",
+                    "desc":"Número interno que identifica unicamente o Protesto para o cliente.",
+                    "example":"GRAF00001"
+                 }
+             }
+    }
+}

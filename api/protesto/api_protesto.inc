@@ -207,17 +207,17 @@ function trataCamposDevedores($dadosDevedores)
     return $camposEnvio;
 }
 
-function trataCamposCertdox($dadosDevedores)
+function trataCamposCertdox($dadosCertdox)
 {
     $camposEnvio[] = array();
 
-    $chavesRecebidas = array_keys($dadosDevedores);
+    $chavesRecebidas = array_keys($dadosCertdox);
     foreach ($chavesRecebidas as $chave) {
         // Salta o valor se for um array
-        if (is_array($dadosDevedores[$chave])) {
+        if (is_array($dadosCertdox[$chave])) {
             continue;
         }
-        $fieldValue = $dadosDevedores[$chave];
+        $fieldValue = $dadosCertdox[$chave];
         if (!is_string($fieldValue)) {
             $fieldValue = (string) $fieldValue;
         }
@@ -230,7 +230,7 @@ function trataCamposCertdox($dadosDevedores)
 
 /**
  * 
- * 
+ * ROTA: api/v1/envia_protesto_certdox
  * @return type
  */
 function protesto_entrada_protesto_v1()
@@ -275,7 +275,7 @@ function protesto_entrada_protesto_v1()
         $camposEnvio = array_merge($camposEnvio, $camposTitulo);
 
         // Pega os campos Certdox
-        $camposCertdox = trataCamposCertdox($dadosEntrada["Certdox"]);
+        $camposCertdox = trataCamposCertdox($dadosEntrada["CertDox"]);
         $camposEnvio = array_merge($camposEnvio, $camposCertdox);
 
         $procId = PegaProcIdByCode($procCod);

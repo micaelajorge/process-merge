@@ -35,6 +35,10 @@ function apicaseprocess_v1()
         $dadosEntrada["procCode"] = $dadosEntrada["proccode"];
     }
 
+    if (key_exists("procCode", $dadosEntrada)) {
+        $dadosEntrada["procCode"] = $dadosEntrada["procCode"];
+    }
+
     if (key_exists("stepid", $dadosEntrada)) {
         $dadosEntrada["StepCode"] = $dadosEntrada["stepid"];
     }
@@ -42,7 +46,10 @@ function apicaseprocess_v1()
     if (key_exists("stepcode", $dadosEntrada)) {
         $dadosEntrada["stepCode"] = $dadosEntrada["stepcode"];
     }
-
+    if (key_exists("stepcode", $dadosEntrada)) {
+        $dadosEntrada["stepCode"] = $dadosEntrada["stepcode"];
+    }
+    
     if (key_exists("casenum", $dadosEntrada)) {
         $dadosEntrada["caseNum"] = $dadosEntrada["casenum"];
     }
@@ -51,12 +58,11 @@ function apicaseprocess_v1()
         $dadosEntrada["userData"] = $dadosEntrada["userdata"];
     }
 
-    if (!key_exists("caseNum", $dadosEntrada))
-    {
+    if (!key_exists("caseNum", $dadosEntrada)) {
         header("HTTP/1.0 422 Error");
-        return;        
+        return;
     }
-    
+
     /**
      *  Acao Padrão no Caso
      */
@@ -377,42 +383,38 @@ function apigetfile()
     /**
      *  Verifica o procId
      */
-    if (key_exists("procId", $dadosEntrada))
-    {
-        $procId = $dadosEntrada["procId"];        
+    if (key_exists("procId", $dadosEntrada)) {
+        $procId = $dadosEntrada["procId"];
     } else {
-        if (!key_exists("procCode", $dadosEntrada))
-        {
+        if (!key_exists("procCode", $dadosEntrada)) {
             api_send_falta_parametros();
         }
         $procCode = $dadosEntrada["procCode"];
         $procId = PegaProcIdByCode($procCode);
     }
-    
+
     /**
      *  Verifica o fieldId
      */
-    if (key_exists("fieldId", $dadosEntrada))
-    {
-        $fieldId = $dadosEntrada["fieldId"];        
+    if (key_exists("fieldId", $dadosEntrada)) {
+        $fieldId = $dadosEntrada["fieldId"];
     } else {
-        if (!key_exists("fieldCode", $dadosEntrada))
-        {
+        if (!key_exists("fieldCode", $dadosEntrada)) {
             api_send_falta_parametros();
         }
         $fieldCode = $dadosEntrada["fieldCode"];
         $fieldId = PegaFieldIdByCode($procId, $fieldCode);
     }
 
-    
+
     $caseNum = $dadosEntrada["caseNum"];
-    
+    $fileName = $dadosEntrada["fileName"];
 
     $diretorioArquivo = diretorioArquivoImagem($procId, $caseNum, $fieldId);
 
     $arquivoLeitura = FILES_UPLOAD . "/" . $diretorioArquivo . $fileName;
 
-    $arquivoEncontrado = file_exists($arquivoEncontrado);
+    $arquivoEncontrado = file_exists($arquivoLeitura);
     if (!$arquivoEncontrado) {
         header("HTTP/1.0 403 File not found");
         return;
@@ -423,6 +425,7 @@ function apigetfile()
 /*
  *  ROTA api/getfileslist
  */
+
 function apiGetFilesList()
 {
     global $connect;
@@ -663,7 +666,8 @@ function padronizaDadosEntrada($dadosEntrada)
 function converteFieldsParaCaseData($fields)
 {
     $keys = array_keys($fields);
-    if (count($keys) == 1 & $keys[0] == "Fields") {
+    
+    if (count($keys) == 1 & $keys[0] === "Fields") {
         $fields = $fields["Fields"];
     }
     $campos = array();

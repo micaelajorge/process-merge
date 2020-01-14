@@ -78,9 +78,14 @@
     {
         let idItem = $("#idItem" + fieldId).val();
         let valorCampo = $("#t" + fieldId).val();
+        
+        if (valorCampo === "")
+        {
+            valorCampo = "[]";
+        }
         let dataSet = JSON.parse(valorCampo);
 
-        listaCamposEdicao = $("#DivModal206").find("input:text");
+        listaCamposEdicao = $("#DivModal" + fieldId).find("input:text");
 
         dadoEditado = {};
 
@@ -154,6 +159,10 @@
 
         colunasTabela = colunasEdit.concat(colunasView);
 
+        if (valorCampo == "")
+        {
+            valorCampo = "[]";
+        }
         let dataSet = JSON.parse(valorCampo);
 
         dataSet = dataSet.map((item, index) => {

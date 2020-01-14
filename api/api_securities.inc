@@ -180,7 +180,7 @@ function criaCCB($dadosCCB)
         } else {
             $dadosTemplate = $dadosCCB["data"]["document"]["template"]["data"]["document"]["template"]["data"];
         }
-
+        
         // Mudado para remover apenas PONTUAÇÃO e LETRAS
 //        $campo["fieldCode"] = "CONTRATO";
 ////        $campo["fieldValue"] = preg_replace("/\D+/", "", $dadosTemplate["number"]);
@@ -213,11 +213,14 @@ function criaCCB($dadosCCB)
         $campo["fieldValue"] = $dadosTemplate["maturity"];
         $camposEnvio[] = $campo;
 
+        
         $campo["fieldCode"] = "NR_CONTRATO_TEMPLATE";
         $campo["fieldValue"] = $dadosTemplate["number"];
-
+        $camposEnvio[] = $campo; 
+        
         $campo["fieldCode"] = "CONTRATO";
-        $campo["fieldValue"] = $dadosTemplate["number"];
+        $campo["fieldValue"] = preg_replace("/[^a-zA-Z0-9]/", "", $dadosTemplate["number"]);
+//        $campo["fieldValue"] = $dadosTemplate["number"];
         $camposEnvio[] = $campo;       
         
         $dadosCaso["Fields"] = $camposEnvio;        

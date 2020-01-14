@@ -134,6 +134,7 @@ function get_request_body()
         $dadosBody = (array) $entityBody;
     } else {
         $dadosBody = json_decode($entityBody, true);
+//        error_log("body " . $entityBody);
     }
     return $dadosBody;
 }

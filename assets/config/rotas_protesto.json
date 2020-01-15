@@ -57,11 +57,32 @@
                 "logon": false  
             }
         },
+        "api/v1/envio_protesto": {
+            "POST": {
+                "page": "api/protesto/api_protesto.inc",
+                "logon": false,        
+                "funcao": "envia_lote_protesto_v1"
+            }
+        },
         "api/v1/envia_protesto": {
             "POST": {
                 "page": "api/protesto/api_protesto.inc",
                 "logon": false,        
                 "funcao": "envia_lote_protesto_v1"
+            }
+        },
+        "api/v1/desistencia_protesto": {
+            "POST": {
+                "page": "api/protesto/api_protesto.inc",
+                "logon": false,        
+                "funcao": "envio_lote_desistencia_v1"
+            }
+        },
+        "api/v1/cancelamento_protesto": {
+            "POST": {
+                "page": "api/protesto/api_protesto.inc",
+                "logon": false,        
+                "funcao": "envio_lote_cancelamento_v1"
             }
         },
         "api/v1/envia_protesto_certdox": {

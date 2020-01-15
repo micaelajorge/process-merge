@@ -15,10 +15,37 @@ require_once(FILES_ROOT . "includes_ws/wserror.inc");
 
 /**
  * ROTA: api/v1/envia_protesto
- * 
- * @global array $camposObrigatoriosProtesto
+ * ROTA: api/v1/envio_protesto
+ *  Envio de Lote de Protestos
  */
 function envia_lote_protesto_v1()
+{
+    grava_lote_protesto_v1("1");
+}
+
+/**
+ * ROTA: api/v1/cancelamento_protesto
+ * 
+ *  Envio de lotes de Cancelamento
+ */
+function envio_lote_cancelamento_v1()
+{
+    envia_lote_protesto_v1("3");
+}
+
+/**
+ *  ROTA: api/v1/desistencia_protesto
+ *  Envio de lotes de desistencia
+ */
+function envio_lote_desistencia_v1()
+{
+    envia_lote_protesto_v1("2");
+}
+
+/** 
+ * @global array $camposObrigatoriosProtesto
+ */
+function grava_lote_protesto_v1($tipo_operacao)
 {
     global $camposObrigatoriosProtesto;
 
@@ -53,6 +80,8 @@ function envia_lote_protesto_v1()
 
         $dadosLote["LOTE_UUID"] = $loteUUID;
 
+        $dadosBody = get_request_body();
+        
 
         /**
          * Dados do Request
@@ -74,7 +103,6 @@ function envia_lote_protesto_v1()
         // Inicializacao do Campo
         $campo["fieldCode"] = "REQUEST_DATA";
         $campo["fieldValue"] = array();
-
         $arquivoDados["fileName"] = "request_data.$loteUUID.json";
         $arquivoDados["fileData"] = $request_json_base64;
         $campo["fieldValue"][] = $arquivoDados;
@@ -103,6 +131,10 @@ function envia_lote_protesto_v1()
 
         $campo["fieldCode"] = "LOTE_UUID";
         $campo["fieldValue"] = $loteUUID;
+        $camposEnvio[] = $campo;
+
+        $campo["fieldCode"] = "TIPO_OPERACAO";
+        $campo["fieldValue"] = $tipo_operacao;
         $camposEnvio[] = $campo;
 
         // Pega o ProcId do Caso

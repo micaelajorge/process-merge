@@ -45,7 +45,7 @@ function envio_lote_desistencia_v1()
 /** 
  * @global array $camposObrigatoriosProtesto
  */
-function grava_lote_protesto_v1($tipo_operacao)
+function grava_lote_protesto_v1($tipoOperacaoEntrada)
 {
     global $camposObrigatoriosProtesto;
 
@@ -134,7 +134,7 @@ function grava_lote_protesto_v1($tipo_operacao)
         $camposEnvio[] = $campo;
 
         $campo["fieldCode"] = "TIPO_OPERACAO";
-        $campo["fieldValue"] = $tipo_operacao;
+        $campo["fieldValue"] = $tipoOperacaoEntrada;
         $camposEnvio[] = $campo;
 
         // Pega o ProcId do Caso

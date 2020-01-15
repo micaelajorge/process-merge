@@ -51,6 +51,7 @@ function apiPegaListaCasos()
                 $retorno = array();
                 $retorno[] = "fieldCode:  $fieldCode, não encontrado";
                 $json_retorno = json_encode($retorno);
+                echo $json_retorno;
                 return;
             }
             $filtroTratado["campo"] = $idField;

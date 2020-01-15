@@ -17,8 +17,7 @@ function avaliaExpressoes($expressoes, $parametros)
         if ($expressaoAvaliada["evaluate_expression"] === "false")
         {
             continue;
-        }
-        
+        }        
         $dadosRetorno[] = trataExpressao($expressaoAvaliada, $parametros);
     }
     return $dadosRetorno;
@@ -84,19 +83,28 @@ function trataExpressao($listaOperadores, $dadosAvaliacao)
     if (key_exists("AVALIAR_REGRA", $resultadoOperacao))
     {
         $resultadoRegra = avaliaRegraSelecionada($resultadoOperacao["AVALIAR_REGRA"], $dadosAvaliacao);
-        $retorno = $resultadoRegra["dados"];
+        
+        $dadosRetorno = $resultadoRegra["dados"];
+        
+        $retorno = array();
+        
+        foreach($dadosRetorno as $dadoRetornado)
+        {
+            $retorno[] = $dadoRetornado;
+        }        
 //        if (!isset($resultadoOperacao["dados"]))
 //        {
 //            $resultadoOperacao["dados"] = array();
 //        }
 //        $dadosRegra = $resultadoRegra["dados"];
 //        $resultadoOperacao["dados"] = array_merge($resultadoOperacao["dados"], $dadosRegra);
+        
+        
     }
     else {
         $retorno = array_merge(["operacao" => $listaOperadores["operacao"]], $resultadoOperacao);
     } 
-        
-    
+            
     return $retorno;
 }
 
@@ -198,7 +206,6 @@ function trataLogicaSimples($regra, $dadosAvaliacao)
         }
     }
 
-
     $dadosRegra = "'$valorCampo' $comparador '$valorComparar'";
     return $dadosRegra;
 }
@@ -227,7 +234,6 @@ function avaliaRegraSelecionada($ruleCode, $dadosEntrada)
     $dadosRetorno["retornoMensagem"] = $rule["retornoMensagem"];    
     return $dadosRetorno;
 }
-
 
 /**
  * 
@@ -325,9 +331,9 @@ function trataRetornos($dadosRetorno)
             $resultado = false;
             break;
         }
-        if (!key_exists("resultado", $retorno)) {
-            $resultado = false;
-            break;
+                
+        if (!key_exists("resultado", $retorno)) {                                   
+            $retorno["resultado"] = trataRetornos($retorno);
         }
         // Trata se foi definido como BOOLEANO ou como TEXTO "true" / "false"
         $valorRetorno = (is_bool($retorno["resultado"])) ? $retorno["resultado"] : $retorno["resultado"] == "true";
@@ -338,3 +344,26 @@ function trataRetornos($dadosRetorno)
     }
     return $resultado;
 }
+
+//function trataRetornos($dadosRetorno)
+//{
+//    $resultado = true;
+//    foreach ($dadosRetorno as $retorno) {
+//        if (!is_array($retorno)) {
+//            $resultado = false;
+//            break;
+//        }
+//                
+//        if (!key_exists("resultado", $retorno)) {                                   
+//            $resultado = false;
+//            break;
+//        }
+//        // Trata se foi definido como BOOLEANO ou como TEXTO "true" / "false"
+//        $valorRetorno = (is_bool($retorno["resultado"])) ? $retorno["resultado"] : $retorno["resultado"] == "true";
+//        $resultado = $resultado && $valorRetorno;
+//        if (!$resultado) {
+//            break;
+//        }
+//    }
+//    return $resultado;
+//}

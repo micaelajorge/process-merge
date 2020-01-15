@@ -48,13 +48,12 @@ function carregaArrayRotas($arquivoRotas = ARQUIVO_ROTAS)
         error_log("erro parse arquivo $arquivoRotas, erro: " . $erroParseArquivo . " Descricao: " . json_last_error_msg());
         return $rotas_retorno;
     }
-    
+
     // Verifica se é um array
-    if (!is_array($rotasLidas))
-    {
+    if (!is_array($rotasLidas)) {
         return $rotasLidas;
     }
-    
+
     // 
     if (key_exists("rotas", $rotasLidas)) {
         $rotas_retorno = $rotasLidas["rotas"];
@@ -76,7 +75,7 @@ function defineRotaPadrao($dadosURI)
         } else {
             $rotaEncontrada["page"] = "pages/logon.inc";
         }
-    }    
+    }
     return $rotaEncontrada;
 }
 
@@ -155,9 +154,8 @@ function geraParametrosRecebidosURL($paginaAcesso, $dadosURI, $rotaEncontrada)
     // se tem barra, trata os parâmetros
     $regexPaginaAcesso = "/" . str_replace("/", '\/', $paginaAcesso) . "/";
     $parametros = preg_replace($regexPaginaAcesso, "", $dadosURI, 1);
-    if ($parametros != "/")
-    {
-        $aParametrosURL = explode("/", $parametros);        
+    if ($parametros != "/") {
+        $aParametrosURL = explode("/", $parametros);
     } else {
         $aParametrosURL = array();
     }
@@ -197,9 +195,9 @@ function geraParametrosRecebidosURL($paginaAcesso, $dadosURI, $rotaEncontrada)
 }
 
 function defineRota($p_dadosURI, $methodHTTP)
-{    
+{
     global $_SERVER;
-    
+
     // Rota usada quando não for encontrada uma rota definida
     $rotaPadrao = defineRotaPadrao($p_dadosURI);
 
@@ -233,11 +231,10 @@ function defineRota($p_dadosURI, $methodHTTP)
     $validadoToken = validaUsuarioToken();
 
     $userdef = null;
-    if (isset($_SESSION["userdef"]))
-    {
+    if (isset($_SESSION["userdef"])) {
         $userdef = $_SESSION["userdef"];
     }
-    
+
     if ($userdef === null) {
         $userValidado = false;
     } else {
@@ -245,14 +242,15 @@ function defineRota($p_dadosURI, $methodHTTP)
         $userValidado = $userdef->Validado;
     }
 
-    if ($userValidado && $sessaoModificada && $dadosURI !== "" && !$validadoToken)
-    {
-        $rota = array();
-        $rota["page"] = "pages/operacaocessao.inc";
-        $rota["funcao"] = "cessaoAlterada";
-        return $rota;
+    if ($userValidado && $sessaoModificada && $dadosURI !== "" && !$validadoToken) {
+        if (APLICAR_POLITICAS_SEGURANCA) {
+            $rota = array();
+            $rota["page"] = "pages/operacaocessao.inc";
+            $rota["funcao"] = "cessaoAlterada";
+            return $rota;
+        }
     }
-    
+
     $rotaRequerLogon = !isset($rotaEncontrada["logon"]);
     if (!$userValidado & ($rotaRequerLogon & !$validadoToken)) {
         error_log("Rota requer autenticacao: $dadosURI " . var_export($rotaEncontrada, true));
@@ -260,7 +258,7 @@ function defineRota($p_dadosURI, $methodHTTP)
         header("HTTP/1.0 402 Falha autenticacao");
 //        header("HTTP/1.0 402 Usuario sem permissão ou não autenticado ($userValidado | $rotaRequerLogon | $validadoToken)");
         return $rotaPadrao;
-    }   
+    }
     return $rotaEncontrada;
 }
 

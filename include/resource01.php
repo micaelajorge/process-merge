@@ -890,7 +890,7 @@ function quebraPaginasArquivosPdf($arquivosRecebidos, $dirName)
  * @param type $numeroCaso
  * @return boolean|array
  */
-function criarArquivosEmCampoFolder($arquivosRecebidos, $procId, $numeroCaso, $codigoCampo, $quebrarPDF = true)
+function criarArquivosEmCampoFolder($arquivosRecebidos, $procId, $numeroCaso, $codigoCampo, $quebrarPDF = false)
 {
     $fieldIdImagem = PegaFieldIdByCode($procId, $codigoCampo);
     $nr_Imagem = contaNumeroArquivos($procId, $numeroCaso, $fieldIdImagem) + 1;
@@ -988,7 +988,7 @@ function trataCamposEmArray($dados, $nomeArray = "")
         if (is_array($valorCampo)) {
             $dadosArray = trataCamposEmArray($valorCampo, $nomeCampo);
             $retorno = array_merge($retorno, $dadosArray);
-        } else {
+        } else {            
             $campo["fieldCode"] = $nomeArray . $nomeCampo;
             $campo["fieldValue"] = $valorCampo;
             array_push($retorno, $campo);

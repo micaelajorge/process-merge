@@ -42,10 +42,13 @@ function api_gateway_registro_envio_documento_registro_v1()
 
     $dadosCampoDocumento = criarArquivosEmCampoFolder($campoArquivo, $procId, $caseNum, "IMAGENS_INT");
 //    $dadosCampoDocumento = array();
-    
+
     $camposExcluirEnvio = array("fileName", "fileData");
 
     $dadosCaso["Fields"] = array();
+    
+    // Cria dados unicos para o caso
+    $uniqueId = uniqid();
 
     $campoCaso["fieldCode"] = "ORIGEM";
     $campoCaso["fieldValue"] = $dadosEntrada["cpf_cnpj"];
@@ -54,7 +57,7 @@ function api_gateway_registro_envio_documento_registro_v1()
     $campoCaso["fieldCode"] = "cpf_cnph";
     $campoCaso["fieldValue"] = $dadosEntrada["cpf_cnpj"];
     $dadosCaso["Fields"][] = $campoCaso;
-            
+
     $campoCaso["fieldCode"] = "FLG_INTEGRACAO_API";
     $campoCaso["fieldValue"] = "1";
     $dadosCaso["Fields"][] = $campoCaso;
@@ -74,12 +77,24 @@ function api_gateway_registro_envio_documento_registro_v1()
 
     $dadosCaso["Fields"] = array_merge($dadosCaso["Fields"], $dadosCampoDocumento);
 
-    $dadosRetorno = FuncCaseSave("", $procId, $stepCode, $caseNum, $dadosCaso, WS_PROCESSAR, 1);
-
-    header("Access-Control-Allow-Origin: *");
-    header('Content-Type: application/json');
-    header("HTTP/1.0 201 Created");
+    $retornoGravacao = FuncCaseSave("", $procId, $stepCode, $caseNum, $dadosCaso, WS_PROCESSAR, 1);
     
-    $jDados = json_encode($dadosRetorno);
+    $retornoEnvio["caseNum"] = $caseNum;
+    $retornoEnvio["uuid"] = $uniqueId;
+
+    if ($retornoGravacao < 0) {
+        header("Access-Control-Allow-Origin: *");
+        header('Content-Type: application/json');
+        header("HTTP/1.0 422 falha");
+        $retornoEnvio = array();
+        $retornoEnvio["desc"] = "falha no processamento";
+        $retornoEnvio["error"] = $retornoGravacao;
+    } else {
+        header("Access-Control-Allow-Origin: *");
+        header('Content-Type: application/json');
+        header("HTTP/1.0 422 falha");        
+    }
+
+    $jDados = json_encode($retornoEnvio);
     echo $jDados;
 }

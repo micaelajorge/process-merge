@@ -51,12 +51,8 @@ function api_gateway_registro_envio_documento_registro_v1()
     $campoCaso["fieldValue"] = $dadosEntrada["cpf_cnpj"];
     $dadosCaso["Fields"][] = $campoCaso;
 
-    $campoCaso["fieldCode"] = "NOME_DO_LOTE";
+    $campoCaso["fieldCode"] = "cpf_cnph";
     $campoCaso["fieldValue"] = $dadosEntrada["cpf_cnpj"];
-    $dadosCaso["Fields"][] = $campoCaso;
-
-    $campoCaso["fieldCode"] = "ESTADO";
-    $campoCaso["fieldValue"] = $dadosEntrada["estado"];
     $dadosCaso["Fields"][] = $campoCaso;
             
     $campoCaso["fieldCode"] = "FLG_INTEGRACAO_API";

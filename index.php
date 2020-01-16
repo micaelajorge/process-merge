@@ -543,7 +543,8 @@ switch ($srvAccess) {
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red-light");
                 define("TEMPLATE_LOGON", "t_logon_dmcard.html");
-
+                
+                define("INSTANCE_APIS", ["gateway_registros.json"]);
                 /**
                  *  Definições Banco de dados
                  */

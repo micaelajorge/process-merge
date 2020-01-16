@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <!--<base href="{SITE_LOCATION}" />-->
         <link rel="shortcut icon" href="images/{ICONE_PARCEIRO|constant:ICONE_PARCEIRO}" />
         <link rel="icon"href="images/{ICONE_PARCEIRO|constant:ICONE_PARCEIRO}" />    
         <title>{nome_projeto} - Swagger</title>
@@ -72,7 +71,7 @@
                             <div>
                                 <h4>{END_POINT_GROUP_DESC}</h4>
                                 <!-- BEGIN BLOCK_END_POINT -->
-                                {ENDPOINT_DESC}: <a href="{ENDPOINT_URL}">{ENDPOINT_URL}</a><br />
+                                {ENDPOINT_DESC}: <a href="{ENDPOINT_URL}">{SITE_LOCATION}  = {ENDPOINT_URL}</a><br />
 <!--                                {ENDPOINT_DESC}: <a href="swagger/{ENDPOINT_URL}">{ENDPOINT_URL}</a><br />-->
                                 <!-- END BLOCK_END_POINT -->
                             </div>

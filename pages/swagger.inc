@@ -7,6 +7,8 @@ $t_body = new Template(FILES_ROOT . "assets/templates/t_swagger_2.html");
 
 $t_body->SITE_LOCATION = SITE_LOCATION;
 
+$siteLocation = SITE_LOCATION;
+
 $nomeArquivoJsonSwagger = $nome_projeto . "_" . $versao_api . ".json";
 
 // Pega a lista de APIS disponibilizadas para a Instância.
@@ -27,8 +29,7 @@ if (!file_exists(FILES_ROOT . "assets/swagger/" . $nomeArquivoJsonSwagger))
             $t_body->ENDPOINT_URL = $item["url"];
             $t_body->block("BLOCK_END_POINT");
         }
-    }
-        
+    }        
     $t_body->block("BLOCK_LIST_API");
 } else {
     $t_body->nome_projeto = $nome_projeto;

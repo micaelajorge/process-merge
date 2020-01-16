@@ -1,0 +1,11 @@
+{
+    "rotas": {
+        "api/v1/envio_documento_registro": {
+            "POST": {
+                "page": "api/gateway_registro/api_gateway_registro.inc",
+                "logon": false,        
+                "funcao": "api_gateway_registro_envio_documento_registro_v1"
+            }
+        }
+    }
+}

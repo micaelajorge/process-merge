@@ -378,10 +378,10 @@ function funct_sendfile()
 
     $procId = PegaProcIdByCode(TRANSFERWISE_CODE_PROCESSO);
 
-
+    
     $userdef = new userdef;
     $userdef->Create($OrigemLogon, $connect, $authUser);
-
+    
     $batchId = $dadosEntrada["batchId"];
 
     $camposCaso["batch_id"] = $batch_id;

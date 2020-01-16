@@ -227,7 +227,7 @@ switch ($srvAccess) {
         // Ignora politicas de segurança
         define("APLICAR_POLITICAS_SEGURANCA", false);
 
-        define("INSTANCE_APIS", ["protestos.json"]);
+        define("INSTANCE_APIS", ["protestos.json", "gateway_registros.json"]);
         define("SITE_ROOT", "http://localhost/");
         switch ($aliasServidor) {
             case "mmoscz":
@@ -1820,7 +1820,6 @@ foreach ($_GET as $key => $value) {
 
 $comDB = AtivaDBProcess();
 // </editor-fold>
-// <editor-fold defaultstate="collapsed" desc="Definição de Rota">
 
 try {
     header('Access-Control-Allow-Headers: x-requested-with, Content-Type, origin, authorization, accept, client-security-token');
@@ -1876,4 +1875,3 @@ try {
     error_log("Rota Definida:" . var_export($rotaDefinida, true));
     error_log("Erro " . $e->getMessage());
 }
-// </editor-fold>

@@ -1,0 +1,10 @@
+{
+    "description": "End Points Gateway Registro",
+    "endPoints":
+            [
+                {
+                    "description": "Gateway Registro v1",
+                    "url": "gateway_registros/v1/"
+                }
+            ]
+}

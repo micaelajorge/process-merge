@@ -1,0 +1,118 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "Gateway de Registros",
+        "contact": {
+            "name": "CertDox",
+            "email": "contato@certdox.com.br"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://development.gigantic-server.com/v1",
+            "description": "Development server"
+        },
+        {
+            "url": "https://staging.gigantic-server.com/v1",
+            "description": "Staging server"
+        },
+        {
+            "url": "https://api.gigantic-server.com/v1",
+            "description": "Production server"
+        }
+    ],    
+    "host": ["http://registros.certdox.com.br"],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/v1/envio_documento_registro": {
+            "post": {         
+                "tags": ["Envio de documento para Registro"],
+                "description": "",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "Documento Registro",      
+                        "description": "Dados do documento e arquivo para envio de registro",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/Documento Registro"
+                        }
+                    }, {
+                        "in": "header",
+                        "name": "Header",      
+                        "description": "token de autenticação",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/token"
+                        }                        
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "token": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "example": "f3fad34sddresesss"
+                }
+            }
+        },
+        "Documento Registro": {
+            "type": "object",
+            "properties": {
+                "lote": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": "123"
+                },
+                "nome_cliente": {
+                    "type": "string",
+                    "example": "Acme Corp"                    
+                },
+                "cidade": {
+                    "type": "string",
+                    "example": "São Paulo"                    
+                },
+                "estado": {
+                    "type": "string",
+                    "example": "SP"                    
+                },
+                "cpf_cnpj": {
+                    "type": "string",
+                    "example": "343234343"                    
+                },
+                "descricao": {
+                    "type": "string",
+                    "size": "50",
+                    "example": "Contrato para Registro"                    
+                },
+                "fileName": {
+                    "type": "string",
+                    "example": "contrato.p7s"                    
+                },
+                "fileData": {
+                    "type": "Arquivo base64",
+                    "example": "JVBERi0xLjQKJcOkw7zDtsOfCjIgMCBvYmoKPDwvTGVuZ3RoIDMgMCBSL0ZpbHRlci9GbGF0ZURlY29kZ..."                    
+                }       
+            },
+            "xml": {
+                "name": "Category"
+            }
+        }    
+    }
+}

@@ -1,0 +1,17 @@
+[
+    {
+        "fieldSource": "ESTADO",
+        "fieldTarget": "ESTADOS",
+        "root": "registro"        
+    },
+    {
+        "fieldSource": "cpfCnpj",
+        "fieldTarget": "cpfCnpj",
+        "root": "registro"        
+    },
+    {
+        "fieldSource": "nome_cliente",
+        "fieldTarget": "nome_cliente",
+        "root": "registro"        
+    },
+]

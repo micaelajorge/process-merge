@@ -1,0 +1,54 @@
+{
+"Protesto": {
+        "type":"object",
+        "properties":{   
+           "CertDox":{"$ref":"#/definitions/CertDox"},
+           "nosso_numero":{
+              "type":"string",              
+              "title":"Número interno (Nosso Número)",
+              "desc":"Utilizado para conciliação de pagamentos e retorno. Limite 15 caracteres",
+              "example":"X00000000000001"
+           },       
+           "tipo_protesto ":{
+              "type":"string",
+              "title":"Tipo de Protesto",
+              "desc":"C - Comum , F - Falimentar. Limite 1 caracter. OBRIGATÓRIO",
+              "example":"C"
+           },
+           "praca_protesto_ibge":{
+              "type":"string",
+              "title":"Praça de Protesto",
+              "desc":". Limite 7 caracteres",
+              "example":"03550308"
+           },
+           "tipo_divida_CDA":{
+              "type":"string",
+              "title":"Tipo da dívida da certidão de dívida ativa.",
+              "desc":"Tipo da dívida da certidão de dívida ativa SOMENTE PARA ESPÉCIE CDA. Limite 10 caracteres",
+              "example":"MULTA"
+           },
+           "identificacao_divida_CDA":{
+              "type":"string",
+              "title":"Tipo da dívida da certidão de dívida ativa.",
+              "desc":"Tipo da dívida da certidão de dívida ativa SOMENTE PARA ESPÉCIE CDA. Limite 30 caracteres",
+              "example":"MULTA"
+           },
+            "CCB_emitida_por_CBI":{
+              "type":"string",
+              "title":"Nome do banco emitente da CCB com CNPJ.",
+              "desc":"Nome do banco emitente da CCB com CNPJ. SOMENTE PARA ESPÉCIE CBI. Limite 45 caracteres",
+              "example":"CCB EMITIDA POR BRADESCO FINAN-07207996000150"
+           },
+           "Titulo":{"$ref":"#/definitions/Titulo"},
+           "Cedente":{"$ref":"#/definitions/Cedente"},
+           "Devedor":{
+                     "type":"array",
+                     "items":{ "$ref":"#/definitions/Devedor"}},
+           "Credor":{"$ref":"#/definitions/Credor"}
+        } 
+},
+    "definitions":{
+        "$ref": "documento_registro.json#Protesto",
+    }
+}
+

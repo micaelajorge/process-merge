@@ -201,6 +201,7 @@ function defineRota($p_dadosURI, $methodHTTP)
     // Rota usada quando não for encontrada uma rota definida
     $rotaPadrao = defineRotaPadrao($p_dadosURI);
 
+    // Carrega a lista de Rotas do sistema
     $rotas = carregaArrayRotas();
     if ($rotas == null) {
         echo "Erro - R001";

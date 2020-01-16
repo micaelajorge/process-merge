@@ -54,6 +54,10 @@ function api_gateway_registro_envio_documento_registro_v1()
     $campoCaso["fieldValue"] = $dadosEntrada["cpf_cnpj"];
     $dadosCaso["Fields"][] = $campoCaso;
 
+    $campoCaso["fieldCode"] = "UUID";
+    $campoCaso["fieldValue"] = $uniqueId;
+    $dadosCaso["Fields"][] = $campoCaso;
+
     $campoCaso["fieldCode"] = "cpf_cnph";
     $campoCaso["fieldValue"] = $dadosEntrada["cpf_cnpj"];
     $dadosCaso["Fields"][] = $campoCaso;
@@ -92,7 +96,7 @@ function api_gateway_registro_envio_documento_registro_v1()
     } else {
         header("Access-Control-Allow-Origin: *");
         header('Content-Type: application/json');
-        header("HTTP/1.0 422 falha");        
+        header("HTTP/1.0 201 created");        
     }
 
     $jDados = json_encode($retornoEnvio);

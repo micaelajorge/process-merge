@@ -565,7 +565,7 @@ switch ($srvAccess) {
                 define("FILES_FOLDER", "/");
                 define("FILES_UPLOAD", "/storage/homolog_registros");
                 define("INSTANCENAME", 'Homolog Gateway Registros');
-                define("SITE_FOLDER", "/");
+                define("SITE_FOLDER", "/homolog_registros/");
                 define("SITE_FOLDER_COMPLEMENT", "");
                 define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
                 define("PARCEIRONAME", 'Homolog Gateway Registros');

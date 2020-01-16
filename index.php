@@ -516,7 +516,6 @@ switch ($srvAccess) {
 
     case "process.certdox.com.br":
     case "40.114.46.89":
-    case "securities.com.br":
         define("ARQUIVOS_NOVA_JANELA", "true");
 
         switch ($aliasServidor) {

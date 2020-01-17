@@ -30,7 +30,7 @@ function envia_lote_protesto_v1()
  */
 function envio_lote_cancelamento_v1()
 {
-    envia_lote_protesto_v1("3");
+    grava_lote_protesto_v1("3");
 }
 
 /**
@@ -39,7 +39,7 @@ function envio_lote_cancelamento_v1()
  */
 function envio_lote_desistencia_v1()
 {
-    envia_lote_protesto_v1("2");
+    grava_lote_protesto_v1("2");
 }
 
 /** 

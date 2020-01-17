@@ -90,7 +90,6 @@
                 "page": "api/protesto/api_protesto.inc",
                 "logon": false,        
                 "funcao": "protesto_entrada_protesto_v1"
-            }
         }
     }
 }

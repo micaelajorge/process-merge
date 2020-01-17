@@ -78,6 +78,49 @@ function pegaDadosCaso($procId, $caseNum, $camposSelecionados = "")
 
 // </editor-fold>
 
+function cria_dominio_api($novoDominio)
+{
+    global $connect;
+    $sql = "select count(*) as total from origem_dominio where origem_user = '$novoDominio'";
+    $query = mysqli_query($connect, $sql);
+    $retorno = mysqli_fetch_all($query);
+
+    // Se já existe o dominio sai
+    if ($retorno["total"] > 0) {
+        return;
+    }
+
+    $json_dominiosMaster = file_get_contents(FILES_ROOT . "/assets/config/origem_dominio_automatico.json");
+    $dominiosMaster = json_decode($json_dominiosMaster, true);
+
+    // Verifica se existe o servidor
+    if (!is_array($dominiosMaster[SRCACCESS])) {
+        return;
+    }
+
+    // Verifica se está em um alias de servidor
+    if (ALIAS_SERVIDOR != "") {
+        // Verifica se existe a instância
+        if (!is_array($dominiosMaster[SRCACCESS][ALIAS_SERVIDOR]["dominiosMaster"])) {
+            return;
+        }
+        $dominiosMaster = $dominiosMaster[SRCACCESS][ALIAS_SERVIDOR]["dominiosMaster"];
+    } else {
+        $dominiosMaster = $dominiosMaster[SRCACCESS]["dominiosMaster"];
+    }
+
+    
+    // Insere o novo dominio
+    $sql = "insert into origem_dominio (origem_user, origem_doc) values ('$novoDominio', '$novoDominio')";
+    mysqli_query($connect, $sql);
+
+    // Insere o novo dominio sobre os dominios master
+    foreach ($dominiosMaster as $dominioUsuarios) {
+        $sql = "insert into origem_dominio (origem_user, origem_doc) values ('$dominioUsuarios', '$novoDominio')";
+        mysqli_query($connect, $sql);
+    }
+}
+
 /**
  * 
  * @global type $connect
@@ -99,7 +142,6 @@ function pegaDadosConfig()
 
     return $configs;
 }
-
 
 function validaTokenEnvio($token)
 {
@@ -156,8 +198,8 @@ function calculaToken($usuario, $email, $todosDados = true, $recuparacaoSenha = 
         'typ' => 'JWT'
     ];
 
-    
-    
+
+
     $header = json_encode($header);
     $header = base64_encode($header);
 
@@ -167,12 +209,11 @@ function calculaToken($usuario, $email, $todosDados = true, $recuparacaoSenha = 
         'email' => $email,
         'data_inicio' => date("Y-m-d H:i")
     ];
-    
-    if ($recuparacaoSenha)
-    {
+
+    if ($recuparacaoSenha) {
         $payload["recuparacao_senha"] = true;
     }
-    
+
     $payload = json_encode($payload);
     $payload = base64_encode($payload);
 
@@ -189,15 +230,14 @@ function calculaToken($usuario, $email, $todosDados = true, $recuparacaoSenha = 
 function validaSessaoUsuario()
 {
     global $connect;
-    
+
     $SessionId = md5(session_id());
-    
-    
+
+
     $SQL = "select * from userlogins where sessionid = '$SessionId'";
     $query = mysqli_query($connect, $SQL);
-    
+
     return $query->num_rows == 0;
-    
 }
 
 function validaUsuarioToken()
@@ -205,7 +245,7 @@ function validaUsuarioToken()
     global $connect, $userdef;
     $headers = getallheaders();
     if (key_exists("token", $headers) || key_exists("Authorization", $headers)) {
-        $validadoToken = false;                
+        $validadoToken = false;
         $token = (key_exists("token", $headers)) ? $headers["token"] : $headers["Authorization"];
         if ($token != "") {
             $userdef = new userdef;
@@ -245,72 +285,71 @@ function valida_CPF_CNPJ($cpfCNPJ)
 {
     $cpf_valido = valida_CPF($cpfCNPJ);
     $cnpj_valido = valida_CNPJ($cpfCNPJ);
-    
+
     $retorno = $cpf_valido | $cnpj_valido;
     return $retorno;
 }
 
-function valida_CNPJ($cnpj = null) {
+function valida_CNPJ($cnpj = null)
+{
 
-	// Verifica se um número foi informado
-	if(empty($cnpj)) {
-		return false;
-	}
+    // Verifica se um número foi informado
+    if (empty($cnpj)) {
+        return false;
+    }
 
-	// Elimina possivel mascara
-	$cnpj = preg_replace("/[^0-9]/", "", $cnpj);
-	$cnpj = str_pad($cnpj, 14, '0', STR_PAD_LEFT);
-	
-	// Verifica se o numero de digitos informados é igual a 11 
-	if (strlen($cnpj) != 14) {
-		return false;
-	}
-	
-	// Verifica se nenhuma das sequências invalidas abaixo 
-	// foi digitada. Caso afirmativo, retorna falso
-	else if ($cnpj == '00000000000000' || 
-		$cnpj == '11111111111111' || 
-		$cnpj == '22222222222222' || 
-		$cnpj == '33333333333333' || 
-		$cnpj == '44444444444444' || 
-		$cnpj == '55555555555555' || 
-		$cnpj == '66666666666666' || 
-		$cnpj == '77777777777777' || 
-		$cnpj == '88888888888888' || 
-		$cnpj == '99999999999999') {
-		return false;
-		
-	 // Calcula os digitos verificadores para verificar se o
-	 // CPF é válido
-	 } else {   
-	 
-		$j = 5;
-		$k = 6;
-		$soma1 = "";
-		$soma2 = "";
+    // Elimina possivel mascara
+    $cnpj = preg_replace("/[^0-9]/", "", $cnpj);
+    $cnpj = str_pad($cnpj, 14, '0', STR_PAD_LEFT);
 
-		for ($i = 0; $i < 13; $i++) {
+    // Verifica se o numero de digitos informados é igual a 11 
+    if (strlen($cnpj) != 14) {
+        return false;
+    }
 
-			$j = $j == 1 ? 9 : $j;
-			$k = $k == 1 ? 9 : $k;
+    // Verifica se nenhuma das sequências invalidas abaixo 
+    // foi digitada. Caso afirmativo, retorna falso
+    else if ($cnpj == '00000000000000' ||
+            $cnpj == '11111111111111' ||
+            $cnpj == '22222222222222' ||
+            $cnpj == '33333333333333' ||
+            $cnpj == '44444444444444' ||
+            $cnpj == '55555555555555' ||
+            $cnpj == '66666666666666' ||
+            $cnpj == '77777777777777' ||
+            $cnpj == '88888888888888' ||
+            $cnpj == '99999999999999') {
+        return false;
 
-			$soma2 += ($cnpj{$i} * $k);
+        // Calcula os digitos verificadores para verificar se o
+        // CPF é válido
+    } else {
 
-			if ($i < 12) {
-				$soma1 += ($cnpj{$i} * $j);
-			}
+        $j = 5;
+        $k = 6;
+        $soma1 = "";
+        $soma2 = "";
 
-			$k--;
-			$j--;
+        for ($i = 0; $i < 13; $i++) {
 
-		}
+            $j = $j == 1 ? 9 : $j;
+            $k = $k == 1 ? 9 : $k;
 
-		$digito1 = $soma1 % 11 < 2 ? 0 : 11 - $soma1 % 11;
-		$digito2 = $soma2 % 11 < 2 ? 0 : 11 - $soma2 % 11;
+            $soma2 += ($cnpj{$i} * $k);
 
-		return (($cnpj{12} == $digito1) and ($cnpj{13} == $digito2));
-	 
-	}
+            if ($i < 12) {
+                $soma1 += ($cnpj{$i} * $j);
+            }
+
+            $k--;
+            $j--;
+        }
+
+        $digito1 = $soma1 % 11 < 2 ? 0 : 11 - $soma1 % 11;
+        $digito2 = $soma2 % 11 < 2 ? 0 : 11 - $soma2 % 11;
+
+        return (($cnpj{12} == $digito1) and ( $cnpj{13} == $digito2));
+    }
 }
 
 function valida_CPF($cpf)
@@ -988,7 +1027,7 @@ function trataCamposEmArray($dados, $nomeArray = "")
         if (is_array($valorCampo)) {
             $dadosArray = trataCamposEmArray($valorCampo, $nomeCampo);
             $retorno = array_merge($retorno, $dadosArray);
-        } else {            
+        } else {
             $campo["fieldCode"] = $nomeArray . $nomeCampo;
             $campo["fieldValue"] = $valorCampo;
             array_push($retorno, $campo);
@@ -2407,10 +2446,9 @@ function insereEntradaAuditTrail($procId, $caseNum, $stepId, $userId, $userName,
             . "'$userName',"
             . "'$mensagemTratada')";
     $query = mysqli_query($connect, $SQL);
-    if (mysqli_errno($connect))
-    {
+    if (mysqli_errno($connect)) {
         error_log("Falha " . mysqli_error($connect));
-    }    
+    }
 }
 
 function PegaFieldIdByCode($ProcId, $FieldCode)
@@ -2769,7 +2807,7 @@ function CabecalhoReferencias($ProcId, $Campo = '', $Ordem = '', $Action = '')
             $ImagemRef = "ordem_inativa.png";
         ?>
         <td><table width="100%"><td class="LinhaTitulo">
-        <?= $CamposRef[$i]["Nome"] ?>
+                    <?= $CamposRef[$i]["Nome"] ?>
                 </td><td align="right">
                     <a href="<?= $Action ?>Campo=<?= $CamposRef[$i]["Campo"] ?>&Ordem=<?= $Ordem ?>"><img src="images/<?= $ImagemRef ?>" border="0" ></a></td></table></td>	
         <?php
@@ -2801,7 +2839,7 @@ function CabecalhoReferenciasSimples($ProcId, $paraTemplate = false, $numRef = 0
         for ($i = 0; $i < count($CamposRef); $i++) {
             ?>
             <td class="Referencia">
-            <?= htmlentities($CamposRef[$i]["Nome"]) ?>
+                <?= htmlentities($CamposRef[$i]["Nome"]) ?>
             </td>	
             <?php
         }
@@ -3350,17 +3388,14 @@ function PegaNomeCampoReferencia($Campo)
 function PegaCamposReferenciaProcesso($ProcId)
 {
     global $connect, $S_procdef;
-    
-    if (!is_numeric($ProcId))
-    {
+
+    if (!is_numeric($ProcId)) {
         $ProcId = PegaProcIdByCode($ProcId);
     }
-    
+
     if ($S_procdef["ProcId"] == $ProcId) {
-        if (is_array($S_procdef["Referencias"]))
-        {
-            if (count($S_procdef["Referencias"]) > 0)
-            {
+        if (is_array($S_procdef["Referencias"])) {
+            if (count($S_procdef["Referencias"]) > 0) {
                 return;
             }
         }
@@ -3452,12 +3487,11 @@ function PegaReferencias($ProcId, $CaseNum, $inArray = 0, $ExportKey = 0, $StepC
 function PegaArrayReferencias($ProcId, $ACaseNum, $retornarComoArray = 0, $ExportKey = 0, $StepCode = 0, $retornarFuncaoValorCampo = true)
 {
     global $connect, $S_procdef, $AReferencias;
-    
-    if (!is_numeric($ProcId))
-    {
+
+    if (!is_numeric($ProcId)) {
         $ProcId = PegaProcIdByCode($ProcId);
-    }  
-    
+    }
+
     if (count($ACaseNum) == 0) {
         return;
     }
@@ -4089,8 +4123,7 @@ function TrataCampoOrdem($Campo)
         return '';
     }
     $key = str_replace("Campo", "", $Campo);
-    if (!is_array($S_procdef["Referencias"]))
-    {
+    if (!is_array($S_procdef["Referencias"])) {
         $S_procdef["Referencias"] = [];
     }
     for ($i = 0; $i < count($S_procdef["Referencias"]); $i++) {
@@ -4265,8 +4298,7 @@ function pegaListaCasosNaFila($ProcId, $StepId = '-1', $HideQueue = 1, $CampoOrd
     $CampoOrdem = TrataCampoOrdem($CampoOrdenacao);
     $SQL = MontaSQLCasosNaFila($ProcId, $StepId, $HideQueue, $CampoOrdem, $Ordem, $Origem, $Filtros, $ViewQueue, $CamposSQL);
     $retorno = mysqli_query($connect, $SQL);
-    if (mysqli_error($connect))
-    {
+    if (mysqli_error($connect)) {
         $error = "Casos na Fila " . mysqli_error($connect);
         error_log($error);
         error_log("SQL casos na fila: $SQL");

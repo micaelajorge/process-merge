@@ -26,6 +26,12 @@ function api_gateway_registro_envio_documento_registro_v1()
     $procCode = "GATEWAY_DIGITAL";
     $stepCode = "INICIO";
 
+    $camposObrigatoriosProtesto = ["cpf_cnpj", "estado", "lote", "nome_cliente", "fileName", "fileData"];
+    $dadosProcessoValido = validaDadosEntrada($dadosEntrada, $camposObrigatoriosProtesto);
+    if (!$dadosProcessoValido) {
+        api_send_falta_parametros($camposObrigatoriosProtesto);
+    }
+
     $procId = PegaProcIdByCode($procCode);
 
     $campoArquivoDocumentoData = "fileData";
@@ -46,7 +52,7 @@ function api_gateway_registro_envio_documento_registro_v1()
     $camposExcluirEnvio = array("fileName", "fileData");
 
     $dadosCaso["Fields"] = array();
-    
+
     // Cria dados unicos para o caso
     $uniqueId = uniqid();
 
@@ -66,7 +72,7 @@ function api_gateway_registro_envio_documento_registro_v1()
     $campoCaso["fieldValue"] = "1";
     $dadosCaso["Fields"][] = $campoCaso;
 
-    $campoCaso["fieldCode"] = "NOME_DO_LOTE";
+    $campoCaso["fieldCode"] = "nome_do_lote";
     $campoCaso["fieldValue"] = $dadosEntrada["lote"];
     $dadosCaso["Fields"][] = $campoCaso;
 
@@ -79,10 +85,13 @@ function api_gateway_registro_envio_documento_registro_v1()
         $dadosCaso["Fields"][] = $campoCaso;
     }
 
+    // Cria o dominio para o CNPJ enviado.
+    cria_dominio_api($dadosEntrada["cpf_cnpj"]);
+
     $dadosCaso["Fields"] = array_merge($dadosCaso["Fields"], $dadosCampoDocumento);
 
     $retornoGravacao = FuncCaseSave("", $procId, $stepCode, $caseNum, $dadosCaso, WS_PROCESSAR, 1);
-    
+
     $retornoEnvio["caseNum"] = $caseNum;
     $retornoEnvio["uuid"] = $uniqueId;
 
@@ -96,7 +105,7 @@ function api_gateway_registro_envio_documento_registro_v1()
     } else {
         header("Access-Control-Allow-Origin: *");
         header('Content-Type: application/json');
-        header("HTTP/1.0 201 created");        
+        header("HTTP/1.0 201 created");
     }
 
     $jDados = json_encode($retornoEnvio);

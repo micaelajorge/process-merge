@@ -1,0 +1,7 @@
+{
+    "localhost": {
+        "process": {
+            "dominiosMaster": ["teste1", "gatewaydigital"]
+        }
+    }
+}

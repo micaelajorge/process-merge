@@ -44,11 +44,18 @@ function api_busca_dados_campo($dadosOrigem, $camposBusca, $retornaFalha = false
 /**
  * 
  */
-function api_send_falta_parametros()
+function api_send_falta_parametros($listaParametros = "")
 {
     header('Content-Type: application/json');
     header("HTTP/1.0 422 Dados Insuficientes");
-    echo '{"return": "Dados Insuficientes"}';
+    
+    $retorno["err"] ="Dados Insuficientes";
+    if ($listaParametros != "")
+    {
+        $retorno["campos minimos"] = $listaParametros;
+    }
+    $json_retorno = json_encode($retorno);
+    echo $json_retorno;
     die();
 }
 
@@ -56,6 +63,7 @@ function validaDadosEntrada($dadosRecebidos, $listaCamposObrigatorios, $camposCo
 {
 
     $keysEntrada = array_map("strtoupper", array_keys($dadosRecebidos));
+    $listaCamposObrigatorios = array_map("strtoupper", $listaCamposObrigatorios);
 
     $temAlgum = count($camposComAlias) == 0;
     foreach ($camposComAlias as $chave) {
@@ -68,7 +76,7 @@ function validaDadosEntrada($dadosRecebidos, $listaCamposObrigatorios, $camposCo
         $chaveExiste = in_array($chave, $keysEntrada);
         $retorno = $retorno && $chaveExiste;
     }
-    return true;
+    return $retorno;
 }
 
 function insereItemArray(&$item, $key)

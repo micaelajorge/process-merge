@@ -57,6 +57,7 @@ $urlChamada = $_SERVER["REQUEST_URI"];
 $srvAccess = $_SERVER["HTTP_HOST"];
 $servidor = $srvAccess;
 
+// Servidor
 define("SRCACCESS", $srvAccess);
 
 // Numero de Processos para mostrar na janela de Entrada

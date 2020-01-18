@@ -60,17 +60,18 @@
         <!-- END BLOCK_BOTAO_RIGHT -->
         <!-- BEGIN BLOCK_BOTAO_DROPDOWN_ITENS -->
         <li>
-            <a href="javascript:" {BUTTON_ACTION} class="dropdown-toggle" data-toggle="dropdown" title="{BUTTON_TITLE}">  
+            <a href="javascript:" {BUTTON_ACTION} class="dropdown-toggle" data-toggle="dropdown" title="{BUTTON_TITLE}" id="{TOOLBAR_BUTTON_ID}">  
                 <!-- BEGIN BLOCK_BOTAO_ICON_DROPDOWN_ITENS -->
                 <i class="{BUTTON_ICON}"></i>
                 <!-- END BLOCK_BOTAO_ICON_DROPDOWN_ITENS -->
-                <span class="hidden-xs" >{BUTTON_TEXT}</span>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    {TOOLBAR_DROPDOWN}
-                </li>
-            </ul>
+                <span class="hidden-xs toolbar-button-text" >{BUTTON_TEXT}<span class="toolbar-button-text-complement"></span></span>
+            </a>            
+            <!-- BEGIN BLOCK_TOOLBAR_PROCESSOS -->
+            {TOOLBAR_DROPDOWN_PROCESSOS}
+            <!-- END BLOCK_TOOLBAR_PROCESSOS -->
+            <!-- BEGIN BLOCK_TOOLBAR_WORKSPACES -->
+            {TOOLBAR_DROPDOWN_WORKSPACES}
+            <!-- END BLOCK_TOOLBAR_WORKSPACES -->
         </li>
         <!-- END BLOCK_BOTAO_DROPDOWN_ITENS -->                
         <!-- END BLOCK_TOOLBAR -->

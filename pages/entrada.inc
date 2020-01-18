@@ -1,4 +1,5 @@
 <?php
+
 // <editor-fold defaultstate="collapsed" desc="Chamadas externas">
 require_once(FILES_ROOT . '/include/common.php');
 require_once(FILES_ROOT . '/include/ldap.php');
@@ -19,7 +20,8 @@ $t_body->addFile("PAGEFOOTER", FILES_ROOT . "assets/templates/master/t_footer.ht
 $t_body->addFile("PAGEMENULEFT", FILES_ROOT . "assets/templates/master/t_menu.html");
 $t_body->addFile("TOOLBAR_TOP", FILES_ROOT . "assets/templates/master/t_toolbar_top.html");
 $t_body->addFile("CAPTURA_DOCUMENTOS", FILES_ROOT . "assets/templates/t_webcaptura.html");
-$t_body->addFile("TOOLBAR_DROPDOWN", FILES_ROOT . "assets/templates/t_processos_dropdown.html");
+$t_body->addFile("TOOLBAR_DROPDOWN_PROCESSOS", FILES_ROOT . "assets/templates/t_processos_dropdown.html");
+$t_body->addFile("TOOLBAR_DROPDOWN_WORKSPACES", FILES_ROOT . "assets/templates/t_toolbar_top_workspaces.html");
 
 $t_body->ARQUIVO_CSS = "entrada.css";
 $t_body->block("BLOCO_CSS");
@@ -82,6 +84,8 @@ $S_Processos = $_SESSION["S_Processos"];
 
 $CorPadrao = "b9def0";
 
+// Seleciona o Workspace
+$workSpaceSelByUser = $_COOKIE["workSpace"];
 
 // <editor-fold defaultstate="collapsed" desc="Processos Especiais">
 $_ProcessosEspeciais = array();
@@ -177,7 +181,7 @@ if ($userdef->Admin | $userdef->UserId == 1) {
     $ProcessoEspecial["Especial"] = "true";
     $ProcessoEspecial["ProcIcon"] = "fa-database";
     $ProcessoEspecial["TotalCasos"] = 0;
-    $ProcessoEspecial["ProcName"] = "<span title=\"Diretorio Arquivos: ". FILES_UPLOAD. "\">Ocupado: " . HumanSize($totalOcupado) . " (" . $porcentagemOcupado . "%)</span>";
+    $ProcessoEspecial["ProcName"] = "<span title=\"Diretorio Arquivos: " . FILES_UPLOAD . "\">Ocupado: " . HumanSize($totalOcupado) . " (" . $porcentagemOcupado . "%)</span>";
     $ProcessoEspecial["HideQueue"] = true;
     array_push($_ProcessosEspeciais, $ProcessoEspecial);
 // </editor-fold>
@@ -202,21 +206,19 @@ $totalProcessos = 0;
 // Determina se os processos sem casos ativos vão aparecer ou não na Tela de Entrada
 $VisualizarProcessosVazios = "hidden";
 
-if (count($S_Processos) < NR_PROCESSOS_SHOW_ENTRADA)
-{
+if (count($S_Processos) < NR_PROCESSOS_SHOW_ENTRADA) {
     $VisualizarProcessosVazios = "";
 }
-if (key_exists("mostrarTodosProcessos", $_COOKIE))
-{
-    if ($_COOKIE["mostrarTodosProcessos"] == "true")
-    {
+if (key_exists("mostrarTodosProcessos", $_COOKIE)) {
+    if ($_COOKIE["mostrarTodosProcessos"] == "true") {
         $VisualizarProcessosVazios = "";
     }
-} 
+}
+
+$listaWorkSpaces = array();
 
 foreach ($_ProcessosLista as $Processo) {
-    if ($Processo["HideEntrada"] == 1)
-    {
+    if ($Processo["HideEntrada"] == 1) {
         continue;
     }
     switch ($Processo["TipoProc"]) {
@@ -225,11 +227,10 @@ foreach ($_ProcessosLista as $Processo) {
             break;
         default:
             $paginaDestinoStep = $Processo["PageAction"];
-            if ($paginaDestinoStep == "")
-            {
+            if ($paginaDestinoStep == "") {
                 $paginaDestinoStep = "queue/%PROCID%";
             }
-            
+
             if (strpos(strtolower($paginaDestinoStep), "queue") === false) {
                 $t_body->ICON_QUEUE = "fa-arrow-circle-o-up";
                 $t_body->TEXT_QUEUE = "Abrir";
@@ -295,6 +296,22 @@ foreach ($_ProcessosLista as $Processo) {
     $t_body->PAGE_TARGET = $Processo["PageTarget"];
     $t_body->PROCNAMELOWERCASE = strtolower($Processo["ProcName"]);
 
+    $showProcesso = false;
+    $t_body->WORKSPACE_CLASS = "";
+    if ($Processo["workSpace"] != "") {
+        $workSpaceName = str_replace(" ", "-", $Processo["workSpace"]);
+        $t_body->WORKSPACE_CLASS = $workSpaceName;
+        if (!in_array($Processo["workSpace"], $listaWorkSpaces)) {
+            $listaWorkSpaces[] = $Processo["workSpace"];
+        }
+    }
+
+    // Verifica se deve mostrar o Processo para o Workspace no cookie
+    $t_body->DISPLAY_PROCESSO = "";
+    if ($workSpaceSelByUser != "" & $workSpaceSelByUser != $Processo["workSpace"]) {
+        $t_body->DISPLAY_PROCESSO = "display:none";
+    }
+
     if ($Processo["TotalCasos"] > 0) {
         $totalProcessos++;
         $t_body->block("BLOCK_PROCESSO_LARGE");
@@ -312,10 +329,21 @@ foreach ($_ProcessosLista as $Processo) {
     if (!$Processo["ProcEspecial"]) {
         $t_body->block("BLOCO_SHORTCUT_PROCESSOS");
     }
+
+
     unset($Processo);
 }
 $t_body->block("BLOCK_SEL_PROCESSOS");
+$t_body->block("BLOCK_TOOLBAR_PROCESSOS");
 $t_body->block("BLOCK_GRUPO_PROCESSOS");
+
+if (count($listaWorkSpaces) > 0) {
+    foreach ($listaWorkSpaces as $workSpace) {
+        $t_body->WORKSPACE = $workSpace;
+        $t_body->block("BLOCK_WORKSPACE");
+    }
+}
+
 // </editor-fold>
 
 $Menu = 96;
@@ -355,7 +383,6 @@ $t_body->block("BLOCO_JAVASCRIPT");
 $t_body->block("BLOCK_CONTENT");
 
 // <editor-fold defaultstate="collapsed" desc="Envio do Template preeencido">
-
 // !!! Importante !!!! Prepara a toolbar aqui para incluir os atalhos para os Processos do Usuário
 populaToolBarTemplate($t_body, $Menu);
 echo $t_body->parse();

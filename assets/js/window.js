@@ -2,6 +2,13 @@ var PopUpAtivo;
 var PopUps;
 var TableProgress;
 
+function setCookie(name, value, duration) {
+        var cookie = name + "=" + escape(value) +
+        ((duration) ? "; duration=" + duration.toGMTString() : "");
+ 
+        document.cookie = cookie;
+}
+
 function JSCriaIdInputs()
 {
     return;

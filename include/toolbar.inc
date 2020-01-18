@@ -7,7 +7,7 @@ define("MENU_ROTEAR_PROCESSO", 58);
 define("MENU_ROTEAR_NOVO_PROCESSO", 59);
 
 function populaToolBarTemplate(Template $t_body, $menu, $optionsMenu = array())
-{
+{    
     $botoesToolbar = definicaoToolBar($menu);
 
     $t_body->Menu = "Menu - $menu";
@@ -41,15 +41,15 @@ function populaToolBarTemplate(Template $t_body, $menu, $optionsMenu = array())
             case "Collapse":
                 $tipoBotao = "COLLAPSE";
                 break;
-            
+
             case "showModal":
                 $tipoBotao = "MODAL";
                 break;
-            
+
             case "DROPDOWN_ITENS":
                 $tipoBotao = "DROPDOWN_ITENS";
                 break;
-            
+
             default:
                 $tipoBotao = "LEFT";
                 break;
@@ -69,6 +69,10 @@ function populaToolBarTemplate(Template $t_body, $menu, $optionsMenu = array())
             }
             $t_body->block("BLOCK_MENU_TREE");
         }
+        if ($botaoToolbar["make_block"] != "") {
+            $t_body->block($botaoToolbar["make_block"]);
+        }
+        $t_body->TOOLBAR_BUTTON_ID = $botaoToolbar["button_id"];
         $t_body->block("BLOCK_BOTAO_$tipoBotao");
     }
 
@@ -214,7 +218,7 @@ function TextosToolBar001()
 
     $EditarGrupos[0] = "Edição de Grupos";
     $EditarGrupos[1] = "Edição de Grupos";
-    
+
     $configseguranca[0] = "Configurações Segurança";
     $configseguranca[1] = "Configurações Segurança";
 }
@@ -231,7 +235,7 @@ function definicaoToolBar($Menu)
     global $EncerraAdHocButton, $TxRedirecionaAdHoc, $Historico, $EditarDados, $SalvarBloquear, $Relatorio;
     global $GerarRelatorio, $OperacaoLote, $_msgFechar, $MostrarBotoes, $permissoesProcessos, $configseguranca;
     global $CaseNum, $EditarUsuarios, $EditarGrupos, $textos_origemdominio, $CriarUsuarios, $CriarGrupo;
-    global $opcoesMenu, $processosEscondidos, $S_Processos, $userdef, $TipoBotao;
+    global $opcoesMenu, $processosEscondidos, $S_Processos, $userdef, $TipoBotao, $make_block, $button_id, $workSpaceSelByUser;
 
     TextosToolBar001();
 
@@ -325,7 +329,7 @@ function definicaoToolBar($Menu)
             $Imagem[5] = "images/seta_voltar.gif";
             $class_Icon[5] = "fa fa-arrow-circle-o-right";
             break;
-        
+
 
 
         /** Botoes para Novo Caso
@@ -1227,7 +1231,7 @@ function definicaoToolBar($Menu)
             $AcionaMenu[5] = 1;
             break;
 
-        case 54:            
+        case 54:
         case "admin_users":
             $acao[0] = "jsOpenEditUser()";
             $texto[0] = $CriarUsuarios[0];
@@ -1235,7 +1239,7 @@ function definicaoToolBar($Menu)
             $AcionaMenu[0] = 1;
             $class_Icon[0] = "fa fa-plus text-green";
             $TipoBotao[0] = "Collapse";
-                                    
+
             $acao[1] = "document.location = 'grupos'";
             $texto[1] = $EditarGrupos[0];
             $textoDesc[1] = $EditarGrupos[1];
@@ -1253,13 +1257,13 @@ function definicaoToolBar($Menu)
             $textoDesc[3] = $permissoesProcessos[1];
             $AcionaMenu[3] = 1;
             $class_Icon[3] = "fa fa-gears";
-            
+
             $acao[4] = "document.location = 'adminconfig'";
             $texto[4] = $configseguranca[0];
             $textoDesc[4] = $configseguranca[1];
             $AcionaMenu[4] = 1;
             $class_Icon[4] = "fa fa-lock";
-            
+
             $acao[5] = "document.location = '$entrada'";
             $texto[5] = $Anterior[0];
             $textoDesc[5] = $Anterior[1];
@@ -1273,13 +1277,13 @@ function definicaoToolBar($Menu)
             $textoDesc[0] = $CriarGrupo[1];
             $AcionaMenu[0] = 1;
             $class_Icon[0] = "fa fa-plus text-green";
-           
+
             $acao[1] = "document.location = 'grupos'";
             $texto[1] = $EditarGrupos[0];
             $textoDesc[1] = $EditarGrupos[1];
             $AcionaMenu[1] = 1;
             $class_Icon[1] = "fa fa-users";
-            
+
             $acao[2] = "document.location = 'origemdominio'";
             $texto[2] = $textos_origemdominio[0];
             $textoDesc[2] = $textos_origemdominio[1];
@@ -1297,7 +1301,7 @@ function definicaoToolBar($Menu)
             $textoDesc[4] = $configseguranca[1];
             $AcionaMenu[4] = 1;
             $class_Icon[4] = "fa fa-lock";
-            
+
             $acao[5] = "document.location = '$entrada'";
             $texto[5] = $Anterior[0];
             $textoDesc[5] = $Anterior[1];
@@ -1329,12 +1333,12 @@ function definicaoToolBar($Menu)
             $textoDesc[3] = $permissoesProcessos[1];
             $AcionaMenu[3] = 1;
             $class_Icon[3] = "fa fa-gears";
-            
+
             $acao[4] = "document.location = 'adminconfig'";
             $texto[4] = $configseguranca[0];
             $textoDesc[4] = $configseguranca[1];
             $AcionaMenu[4] = 1;
-            $class_Icon[4] = "fa fa-lock";            
+            $class_Icon[4] = "fa fa-lock";
 
             $acao[5] = "document.location = 'permissoes'";
             $texto[5] = "Lista Soluções";
@@ -1361,15 +1365,15 @@ function definicaoToolBar($Menu)
             $textoDesc[3] = $permissoesProcessos[1];
             $AcionaMenu[3] = 1;
             $class_Icon[3] = "fa fa-gears";
-            
+
             $acao[5] = "document.location = '$entrada'";
             $texto[5] = $Anterior[0];
             $textoDesc[5] = $Anterior[1];
             $AcionaMenu[5] = 1;
             $class_Icon[5] = "fa fa-arrow-circle-o-right";
             break;
-        
-        
+
+
         case 56:
             $acao[0] = "jsOpenEditGroup()";
             $texto[0] = $CriarGrupo[0];
@@ -1407,10 +1411,10 @@ function definicaoToolBar($Menu)
             $AcionaMenu[5] = 1;
             $class_Icon[5] = "fa fa-arrow-circle-o-right";
             break;
-        
-        
+
+
         // Edição de Origem Dominio
-        case 61:           
+        case 61:
         case "admin_origem_dominio":
             $acao[0] = " ";
             $texto[0] = "Adicionar";
@@ -1418,16 +1422,16 @@ function definicaoToolBar($Menu)
             $AcionaMenu[0] = 1;
             $class_Icon[0] = "fa fa-plus text-green";
             $TipoBotao[0] = "Collapse";
-            
-            $opcoes = array();            
+
+            $opcoes = array();
             $opcaoMenu["icone"] = "fa fa-plus text-primary";
             $opcaoMenu["class"] = "text-primary";
             $opcaoMenu["texto"] = "Dominio";
             $opcoes[] = $opcaoMenu;
             $opcaoMenu["texto"] = "Origem";
-            $opcoes[] = $opcaoMenu;    
+            $opcoes[] = $opcaoMenu;
             $opcoesMenu[0] = $opcoes;
-                        
+
             $acao[1] = "document.location = 'usuarios'";
             $texto[1] = $EditarUsuarios[0];
             $textoDesc[1] = $EditarUsuarios[1];
@@ -1445,12 +1449,12 @@ function definicaoToolBar($Menu)
             $textoDesc[3] = $permissoesProcessos[1];
             $AcionaMenu[3] = 1;
             $class_Icon[3] = "fa fa-gears";
-            
+
             $acao[4] = "document.location = 'adminconfig'";
             $texto[4] = $permissoesProcessos[0];
             $textoDesc[4] = $permissoesProcessos[1];
             $AcionaMenu[4] = 1;
-            $class_Icon[4] = "fa fa-lock";            
+            $class_Icon[4] = "fa fa-lock";
 
             $acao[5] = "document.location = '$entrada'";
             $texto[5] = $Anterior[0];
@@ -1458,8 +1462,8 @@ function definicaoToolBar($Menu)
             $AcionaMenu[5] = 1;
             $class_Icon[5] = "fa fa-arrow-circle-o-right";
             break;
-        
-        
+
+
         /** Botoes para Novo Caso
          * 
          */
@@ -1562,12 +1566,11 @@ function definicaoToolBar($Menu)
             break;
 
         case 98:
-            $acao[5] = "document.location = 'busca'";
-            $texto[5] = $ReturnPesq[0];
-            $testoDesc[5] = $ReturnPesq[1];
-            $AcionaMenu[5] = 1;
-            
-            $class_Icon[5] = "fa fa-search";
+            $acao[1] = "document.location = 'busca'";
+            $texto[1] = $ReturnPesq[0];
+            $testoDesc[1] = $ReturnPesq[1];
+            $AcionaMenu[1] = 1;
+            $class_Icon[1] = "fa fa-search";
 
             $acao[2] = "jsCarregaWebCaptura()";
             $texto[2] = $capturarImagem[0];
@@ -1580,14 +1583,26 @@ function definicaoToolBar($Menu)
             $testoDesc[3] = $mostrarProcessos[1];
             $AcionaMenu[3] = 1;
             $tipoBotao[3] = "DROPDOWN_ITENS";
-            $class_Icon[3] = "fa fa-eye";
+            $class_Icon[3] = "fa fa-list";
+            $make_block[3] = "BLOCK_TOOLBAR_PROCESSOS";
 
-//            $acao[4] = " ";
-//            $texto[4] = "Workplaces";
-//            $testoDesc[4] = $mostrarProcessos[1];
-//            $AcionaMenu[4] = 1;
-//            $tipoBotao[4] = "DROPDOWN_ITENS";
-//            $class_Icon[4] = "fa fa-th-large";
+            $acao[4] = " ";
+            $texto[4] = ($workSpaceSelByUser == "") ? "Workplaces" : "Workplace -" . $workSpaceSelByUser;
+            $testoDesc[4] = $mostrarProcessos[1];
+            $AcionaMenu[4] = 1;
+            $tipoBotao[4] = "DROPDOWN_ITENS";
+            $class_Icon[4] = "fa fa-th-large";
+            $make_block[4] = "BLOCK_TOOLBAR_WORKSPACES";
+            $button_id[4] = "TOOLBAR-BUTTON-WORKSPACES";
+
+//            $acao[5] = " ";
+//            $texto[5] = "Administração";
+//            $testoDesc[5] = $mostrarProcessos[1];
+//            $AcionaMenu[5] = 1;
+//            $tipoBotao[5] = "DROPDOWN_ITENS";
+//            $class_Icon[5] = "fa fa-gears";
+//            $make_block[5] = "BLOCK_TOOLBAR_ADMINISTRACAO";
+//            $button_id[5] = "TOOLBAR-BUTTON-ADMINISTRACAO";
             break;
 
         case 99:
@@ -1632,6 +1647,8 @@ function definicaoToolBar($Menu)
             $itemBotao["TipoBotao"] = $tipoBotao[$i];
             $itemBotao["Target"] = $Target[$i];
             $itemBotao["opcoesMenu"] = $opcoesMenu[$i];
+            $itemBotao["make_block"] = $make_block[$i];
+            $itemBotao["button_id"] = $button_id[$i];            
             array_push($listaBotoes, $itemBotao);
         }
     }

@@ -264,7 +264,7 @@ function PegaProcessosUsuario()
 {
     global $connect, $userdef;
     $S_Processos = array();
-    $SQL = "select ProcName, ProcDesc, ProcDef.PageAction, procdef.ProcId, ProcIcon, ProcColor, count(*) as TotalCasos, TipoProc, ProcCod from "
+    $SQL = "select ProcName, ProcDesc, ProcDef.PageAction, procdef.ProcId, ProcIcon, ProcColor, count(*) as TotalCasos, TipoProc, ProcCod, extendPropsProc from "
             . "procdef, "
             . "casosdousuario, "
             . "stepdef "
@@ -286,7 +286,7 @@ function PegaProcessosUsuario()
             . "ProcColor, "
             . "TipoProc, "
             . "ProcCod ";
-    
+
     $Query = mysqli_query($connect, $SQL);
     //echo $SQL;
     $i = 0;
@@ -322,6 +322,14 @@ function PegaProcessosUsuario()
             $PageAction = "";
         }
         $S_Processos[$i]["PageAction"] = $PageAction;
+
+        $extendProps = json_decode($result["extendPropsProc"], true);
+
+        $S_Processos[$i]["workSpace"] = "";
+        if (is_array($extendProps)) {
+            $S_Processos[$i]["workSpace"] = $extendProps["procWorkplace"];
+        }
+
         $i++;
     }
 

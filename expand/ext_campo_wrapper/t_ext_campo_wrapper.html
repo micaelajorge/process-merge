@@ -1,0 +1,27 @@
+<div aria_code="{FIELDCODE}">
+</div>
+
+<script>
+
+
+    function moveCampoParaWrap(campoWrap, listaCamposWrap)
+    {
+        listaCamposWrap.forEach((campoMover) => {
+            $("[field_wrap_code='" + campoMover + "']").detach().appendTo("[aria_code='" + campoWrap + "']");
+        });
+        $("[field_wrap_code='" + campoWrap + "']").removeClass('col-lg-6');
+        $("[field_wrap_code='" + campoWrap + "']").addClass('col-lg-12');
+    }
+
+
+    funcao_final = () => {
+        moveCampoParaWrap('{FIELDCODE}', {LISTA_CAMPOS_WRAPP});
+    };
+
+    if (!Array.isArray(funcoes_final))
+    {
+        var funcoes_final = [];
+    }
+
+    funcoes_final.push(funcao_final);
+</script>

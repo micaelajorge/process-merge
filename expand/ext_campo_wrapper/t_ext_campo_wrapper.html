@@ -1,30 +1,46 @@
 <div aria_code="{FIELDCODE}">
-    <!-- 
+
     <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        <button type="button" class="btn btn-box-tool" id="button-collapse-button-trigger_{FIELDCODE}"><i class="fa {BOX_TOOL_SIGNAL}"></i>
         </button>
     </div>
-    -->
+
 </div>
 <script>
 
-
-
     function moveCampoParaWrap(campoWrap, listaCamposWrap)
     {
-        objectHeader = $("[field_wrap_code='" + campoWrap + "']").find(".LABEL-FIELD");
+        
+        // Pega o DIV que será o HEADER do BOX
+        objectHeader = $("[field_wrap_code='" + campoWrap + "']").find(".LABEL-FIELD");        
         $(objectHeader).addClass("box-header");
-//        $("[field_wrap_code='" + campoWrap + "']").find(".box-tools").detach().appendTo(objectHeader);
+        
+        // Pega o BOX DE colapse do BOX
+        $("[field_wrap_code='" + campoWrap + "']").find(".box-tools").detach().appendTo(objectHeader);
         $("[field_wrap_code='" + campoWrap + "']").find(".STATUS-FIELD").addClass("box-body");
+//        $("[field_wrap_code='" + campoWrap + "']").find(".STATUS-FIELD").css("display: none");
+        
+        // Remove a determinação de largura em colunas CAMPO
         $("[field_wrap_code='" + campoWrap + "']").removeClass('col-lg-6');
+        
+        // Remove a altura do campo
+        $("[field_wrap_code='" + campoWrap + "']").css('min-height', '');
         listaCamposWrap.forEach((campoMover) => {
             $("[field_wrap_code='" + campoMover + "']").detach().appendTo("[aria_code='" + campoWrap + "']");
         });
-//        $("[field_wrap_code='" + campoWrap + "']").addClass('col-lg-12');
-        $("[field_wrap_code='" + campoWrap + "']").addClass("box box-primary box-solid");
-
-//        $("[aria_code='" + campoWrap + "']").addClass("box-body");        
+        
+        // Norna o Wrap do CAMPO em BOX
+        $("[field_wrap_code='" + campoWrap + "']").addClass("box box-primary box-solid {BOX_COLAPSED}");
+    
+        // Adiciona para o acionamento do Botão
+        $("[field_wrap_code='" + campoWrap + "']").boxWidget({
+            animationSpeed: 500,
+            collapseTrigger: '#button-collapse-button-trigger_{FIELDCODE}',
+            collapseIcon: 'fa-minus',
+            expandIcon: 'fa-plus'
+        });
     }
+
 
 
     funcao_final = () => {

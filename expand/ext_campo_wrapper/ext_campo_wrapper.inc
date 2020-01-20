@@ -37,6 +37,16 @@ function inicializacao_ext_campo_wrapper($FieldId, $ReadOnly, $Valor_Campo, $dad
         $listaCampos = pegaListaCamposWrapp($dadosCampo["StepCode"]);
     }
     
+    $t_body_field->BOX_TOOL_SIGNAL = "fa-minus";
+    if (key_exists("box_type", $dadosCampo))
+    {
+        if ($dadosCampo["box_type"] === "box-collapsed")
+        {
+         $t_body_field->BOX_COLAPSED = "collapsed-box";        
+         $t_body_field->BOX_TOOL_SIGNAL = "fa-plus";
+        }
+    }
+    
     $separador = '';
     foreach ($listaCampos as $campo)
     {

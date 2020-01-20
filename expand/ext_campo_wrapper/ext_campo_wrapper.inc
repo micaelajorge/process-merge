@@ -8,6 +8,19 @@
 
 use raelgc\view\Template;
 
+function pegaListaCamposWrapp($StepCode)
+{
+    global $ProcId, $connect;
+    
+    $stepId = PegaStepIdByCode($ProcId, $StepCode);
+    
+    $sql = "select fieldCod from procfieldsdef, stepfieldsdef where procfieldsdef.procid = $ProcId and stepfieldsdef.ProcId = procfieldsdef.procid and stepid = $stepId and procfieldsdef.fieldid = stepfieldsdef.FieldId";
+    $query = mysqli_query($connect, $sql);
+    $resultado = mysqli_fetch_all($query);
+    
+    return $resultado;
+}
+
 function inicializacao_ext_campo_wrapper($FieldId, $ReadOnly, $Valor_Campo, $dadosCampo)
 {
     global $dadosCampo, $FieldCod;
@@ -17,16 +30,25 @@ function inicializacao_ext_campo_wrapper($FieldId, $ReadOnly, $Valor_Campo, $dad
     $t_body_field->FIELD_ID = $FieldId;
     $t_body_field->VALOR_CAMPO = htmlentities($Valor_Campo);
     
-    $listaCampos = "[";
-    $separador = '';
-    foreach ($dadosCampo["listaCampos"] as $campo)
+    if (key_exists("listaCampos", $dadosCampo))
     {
-        $listaCampos .= "$separador '$campo'";
+        $listaCampos = $dadosCampo["listaCampos"];
+    } else {
+        $listaCampos = pegaListaCamposWrapp($dadosCampo["StepCode"]);
+    }
+    
+    $separador = '';
+    foreach ($listaCampos as $campo)
+    {
+        if (is_array($campo))
+        {
+          $campo = $campo[0];   
+        }    
+        $listaCamposWrap .= "$separador '$campo'";
         $separador = ', ';
     }
-    $listaCampos .= "]";
     
-    $t_body_field->LISTA_CAMPOS_WRAPP = $listaCampos;
+    $t_body_field->LISTA_CAMPOS_WRAPP = $listaCamposWrap;
     $retorno["html"] = $t_body_field->parse();
     return $retorno;
 }

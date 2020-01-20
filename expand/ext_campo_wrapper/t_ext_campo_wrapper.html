@@ -12,14 +12,14 @@
         });
         $("[field_wrap_code='" + campoWrap + "']").removeClass('col-lg-6');
         $("[field_wrap_code='" + campoWrap + "']").addClass('col-lg-12');
-        $("[field_wrap_code='" + campoWrap + "']").addClass("box box-primary box-solid");
-        $("[field_wrap_code='" + campoWrap + "']").find("#STATUS_FIELD").addClass("box-header");        
-        $("[aria_code='" + campoWrap + "']").addClass("box-body");        
+//        $("[field_wrap_code='" + campoWrap + "']").addClass("box box-primary box-solid");
+//        $("[field_wrap_code='" + campoWrap + "']").find("#STATUS_FIELD").addClass("box-header");        
+//        $("[aria_code='" + campoWrap + "']").addClass("box-body");        
     }
 
 
     funcao_final = () => {
-        moveCampoParaWrap('{FIELDCODE}', {LISTA_CAMPOS_WRAPP});
+        moveCampoParaWrap('{FIELDCODE}', [{LISTA_CAMPOS_WRAPP}]);
     };
 
     if (!Array.isArray(funcoes_final))

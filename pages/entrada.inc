@@ -333,8 +333,8 @@ foreach ($_ProcessosLista as $Processo) {
 
     unset($Processo);
 }
-$t_body->block("BLOCK_SEL_PROCESSOS");
-$t_body->block("BLOCK_TOOLBAR_PROCESSOS");
+//$t_body->block("BLOCK_SEL_PROCESSOS");
+//$t_body->block("BLOCK_TOOLBAR_PROCESSOS");
 $t_body->block("BLOCK_GRUPO_PROCESSOS");
 
 if (count($listaWorkSpaces) > 0) {

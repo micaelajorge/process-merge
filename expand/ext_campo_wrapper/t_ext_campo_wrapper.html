@@ -1,19 +1,28 @@
 <div aria_code="{FIELDCODE}">
+    <!-- 
+    <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+    </div>
+    -->
 </div>
-
 <script>
 
 
 
     function moveCampoParaWrap(campoWrap, listaCamposWrap)
     {
+        objectHeader = $("[field_wrap_code='" + campoWrap + "']").find(".LABEL-FIELD");
+        $(objectHeader).addClass("box-header");
+//        $("[field_wrap_code='" + campoWrap + "']").find(".box-tools").detach().appendTo(objectHeader);
+        $("[field_wrap_code='" + campoWrap + "']").find(".STATUS-FIELD").addClass("box-body");
+        $("[field_wrap_code='" + campoWrap + "']").removeClass('col-lg-6');
         listaCamposWrap.forEach((campoMover) => {
             $("[field_wrap_code='" + campoMover + "']").detach().appendTo("[aria_code='" + campoWrap + "']");
         });
-        $("[field_wrap_code='" + campoWrap + "']").removeClass('col-lg-6');
-        $("[field_wrap_code='" + campoWrap + "']").addClass('col-lg-12');
-//        $("[field_wrap_code='" + campoWrap + "']").addClass("box box-primary box-solid");
-//        $("[field_wrap_code='" + campoWrap + "']").find("#STATUS_FIELD").addClass("box-header");        
+//        $("[field_wrap_code='" + campoWrap + "']").addClass('col-lg-12');
+        $("[field_wrap_code='" + campoWrap + "']").addClass("box box-primary box-solid");
+
 //        $("[aria_code='" + campoWrap + "']").addClass("box-body");        
     }
 

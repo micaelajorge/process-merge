@@ -1,8 +1,11 @@
 <?php
 // //Versao 1.0.0 /Versao
-include("include/common.php");
+include(FILES_ROOT . "include/common.php");
+require_once(FILES_ROOT . "include/resource02.php");
+
 $SessionId = md5(session_id());
 $userdef = $_SESSION["userdef"];
+RemoveLocksTemporarios($userdef->UserId);
 if ($CriarSessionIntegration) {
     switch ($OrigemLogon) {
         case "ProcessLogon":

@@ -1,10 +1,10 @@
 <?php
 
 function RemoveLocksTemporarios($UserId) {
+    global $connect, $userdef;
     if (empty($UserId)) {
         return;
     }
-    global $connect, $userdef;
     $samaccountname = trim($userdef->UserName);
     $SQL = "update ";
     $SQL .= " casequeue ";
@@ -17,6 +17,7 @@ function RemoveLocksTemporarios($UserId) {
     $SQL .= " and ";
     $SQL .= " AdHoc = 0 ";
     $QUERY = mysqli_query($connect, $SQL);
+    error_log("Resultado Remover Locks", $QUERY);
 }
 
 function IndicePAGINAS_old($Pagina, $TotalRegistros, $Linhas, $destino, $Extend) {
@@ -127,7 +128,7 @@ function IndicePAGINAS($paginaAtual, $totalRegistros, $linhasPorPagina, $destino
 
 
     /** 
-     *  Verifica se é primeira Página
+     *  Verifica se ï¿½ primeira Pï¿½gina
      */
     if ($paginaAtual != 1) {
         $ctrInicio["acao"] = "$destino?PaginaAtual=1";
@@ -156,7 +157,7 @@ function IndicePAGINAS($paginaAtual, $totalRegistros, $linhasPorPagina, $destino
     }
         
     /**
-     *  Verifica se é ultima página
+     *  Verifica se ï¿½ ultima pï¿½gina
      */
     if ($paginaAtual != $totalPaginas) {
         $ctrFim["acao"] = "$destino?PaginaAtual=$totalPaginas";
@@ -240,7 +241,7 @@ function IndicePAGINASXML($Pagina_Atual, $TotalRegistros, $Linhas, $destino, $Ex
 
 
     /**
-     *  Indice de Páginas
+     *  Indice de Pï¿½ginas
      */
     while ($contador < $PAGINASPorVez) {
         $IndicePAGINA = ($contador + ($PosPAGINA * $PAGINASPorVez) - $PAGINASPorVez);
@@ -276,7 +277,7 @@ function IndicePAGINASXML($Pagina_Atual, $TotalRegistros, $Linhas, $destino, $Ex
         if ($TotalPAGINAS == ($IndicePAGINA - $PAGINASPorVez)) {
             if (!$inArray) {
                 echo "\t<PAGINAS>\n\t\t><PAGINA>$IndicePAGINA</PAGINA>\n\t\t<CLASS>PAGINAATUAL</CLASS>\n\t</PAGINAS>\n";
-                echo "\t<PAGINAS>\n\t\t><PAGINA>Próxima</PAGINA>\n\t</PAGINAS>\n";
+                echo "\t<PAGINAS>\n\t\t><PAGINA>Prï¿½xima</PAGINA>\n\t</PAGINAS>\n";
             } else {
 
                 $paginacao["pagina"] = $IndicePAGINA;
@@ -284,7 +285,7 @@ function IndicePAGINASXML($Pagina_Atual, $TotalRegistros, $Linhas, $destino, $Ex
                 $paginacao["class"] = "PAGINAATUAL";
                 array_push($a_Paginas, $paginacao);
 
-                $paginacao["pagina"] = "Próxima";
+                $paginacao["pagina"] = "Prï¿½xima";
                 $paginacao["acao"] = "";
                 $paginacao["class"] = "";
                 array_push($a_Paginas, $paginacao);
@@ -295,7 +296,7 @@ function IndicePAGINASXML($Pagina_Atual, $TotalRegistros, $Linhas, $destino, $Ex
                 if (!$inArray) {
                     echo "\t<PAGINAS>\n\t\t<PAGINA>$IndicePAGINA</PAGINA>\n\t\t<CLASS>PAGINAATUAL</CLASS>\n\t</PAGINAS>\n";
                 } else {
-                    $paginacao["pagina"] = "Próxima";
+                    $paginacao["pagina"] = "Prï¿½xima";
                     $paginacao["acao"] = "";
                     $paginacao["class"] = "PAGINAATUAL";
                     array_push($a_Paginas, $paginacao);
@@ -315,18 +316,18 @@ function IndicePAGINASXML($Pagina_Atual, $TotalRegistros, $Linhas, $destino, $Ex
             $proxima = $Pagina_Atual + 1;
             if ($proxima > $TotalPAGINAS) {
                 if (!$inArray) {
-                    echo "\t<PAGINAS>\n\t\t><PAGINA>Próxima</PAGINA>\n\t\n\t\t<CLASS>PAGINAATUAL</CLASS></PAGINAS>\n";
+                    echo "\t<PAGINAS>\n\t\t><PAGINA>Prï¿½xima</PAGINA>\n\t\n\t\t<CLASS>PAGINAATUAL</CLASS></PAGINAS>\n";
                 } else {
-                    $paginacao["pagina"] = "Próxima";
+                    $paginacao["pagina"] = "Prï¿½xima";
                     $paginacao["acao"] = "";
                     $paginacao["class"] = "PAGINAATUAL";
                     array_push($a_Paginas, $paginacao);
                 }
             } else {
                 if (!$inArray) {
-                    echo "\t<PAGINAS>\n\t\t<ACAO>MudaPagina($proxima, \"$destino\")</ACAO>\n\t\t<PAGINA>Próxima\t\t</PAGINA>\n\t</PAGINAS>\n";
+                    echo "\t<PAGINAS>\n\t\t<ACAO>MudaPagina($proxima, \"$destino\")</ACAO>\n\t\t<PAGINA>Prï¿½xima\t\t</PAGINA>\n\t</PAGINAS>\n";
                 } else {
-                    $paginacao["pagina"] = "Próxima";
+                    $paginacao["pagina"] = "Prï¿½xima";
                     $paginacao["acao"] = "MudaPagina($proxima, \"$destino\")";
                     $paginacao["class"] = "";
                     array_push($a_Paginas, $paginacao);
@@ -355,7 +356,7 @@ function IndicePAGINASXML2($Pagina, $TotalRegistros, $Linhas, $destino, $Extend)
         $TotalPAGINAS == 1;
         echo "\t<PAGINAS>\n\t\t<PAGINA>Anterior</PAGINA>\n\t</PAGINAS>\n";
         echo "\t<PAGINAS>\n\t\t<PAGINA>1</PAGINA>\n\t</PAGINAS>\n";
-        echo "\t<PAGINAS>\n\t\t<PAGINA>Próxima</PAGINA>\n\t</PAGINAS>\n";
+        echo "\t<PAGINAS>\n\t\t<PAGINA>Prï¿½xima</PAGINA>\n\t</PAGINAS>\n";
         return;
     } else {
         if ($TotalPAGINAS == 0) {

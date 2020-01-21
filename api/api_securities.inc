@@ -833,7 +833,7 @@ function api_get_cession_resolution_data($procCode)
     // Pega ProcId das Entidades
     $procIdEntidades = PegaProcIdByCode("SEC_SIGNOR_TRANSFEREE");
 
-    // Pega Dados da Entidade Recebedora
+    // Pega Dados da Entidade Endossante
     // Remove a formatação
     $cnpj = preg_replace("/\D+/", "", $dadosRetorno["TRANSFEREE"]);
     $caseNumEntidade = pegaNumerCasoUnicoAberto($procIdEntidades, $cnpj, "CNPJ");
@@ -845,7 +845,7 @@ function api_get_cession_resolution_data($procCode)
         $dadosRetorno["TRANSFEREE_DATA"]["ASSIGNERS"] = pegaListaTransferee($dadosRetorno["TRANSFEREE_DATA"]["ACCOUNT_KEY"], $procCode);
     }
 
-    // Pega Dados da Entidade Endossador
+    // Pega Dados da Entidade Recebedor
     // Remove a formatação
     $cnpj = preg_replace("/\D+/", "", $dadosRetorno["ASSIGNOR"]);
     $caseNumEntidade = pegaNumerCasoUnicoAberto($procIdEntidades, $cnpj, "CNPJ");

@@ -269,6 +269,13 @@
                 "logon": false
             }
         },
+        "generatehtml": {
+            "POST": {
+                "page": "pages/gerar_arquivo_template.inc",
+                "funcao": "geraHTML",
+                "logon": false
+            }
+        },
         "api/v1/createcontract": {
             "POST": {
                 "page": "api/api_securities.inc",
@@ -307,13 +314,6 @@
             "POST": {
                 "page": "api/api_securities.inc",
                 "funcao": "api_trataWebHook",
-                "logon": false
-            }
-        },
-        "generatehtml": {
-            "POST": {
-                "page": "pages/gerar_arquivo_template.inc",
-                "funcao": "geraHTML",
                 "logon": false
             }
         },

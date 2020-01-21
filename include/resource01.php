@@ -78,6 +78,21 @@ function pegaDadosCaso($procId, $caseNum, $camposSelecionados = "")
 
 // </editor-fold>
 
+function ibge_busca_uf($codigoCidade)
+{
+    $json_ibge = file_get_contents(FILES_ROOT . "/assets/config/municipios_ibge.min.json");
+    $municipios_ibge = json_decode($json_ibge, true);
+    
+    $uf = $municipios_ibge[$codigoCidade]["uf"];
+
+    if ($uf === null)
+    {
+        return false;
+    }
+    return $uf;
+}
+
+
 function cria_dominio_api($novoDominio)
 {
     global $connect;

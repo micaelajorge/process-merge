@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h1 style="color: #01215E">Envio de Arquivo Oferta</h1>
+            <!--<h1 style="color: #FFF">Gateway de Documentos Digitais</h1>-->
+        </div>        
+        <!-- COLOCAR LOGO NO LADO DIREITO DA PÀGINA -->
+        <div class="col-lg-2" style="display:none">
+            <img src="images/{LOGO_PARCEIRO|contant:LOGO_PARCEIRO}" style="width:100%">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1" style="margin-top: 20px">
+        <div class="row">
+            <div class="col-lg-4" style="cursor: pointer">
+                <div class="box box-solid box-success">
+                    <div class="box-header">
+                        <h4 class="Box-title">Enviar Arquivo de Oferta</h4>
+                    </div>
+                    <div class="box-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-12 form-group form-group-sm">
+                                    <label class="text-warning">Fidic de Destino da Cessão</label>
+                                    <select class="form-control input-sm" name="targetFIDC" id="targetFIDC" onchange="jsFidicSelecionado()">
+                                        <option value=""></option>
+                                        <option value="TEMPUS">FIDC Tempus</option>
+                                        <option value="AUTO">FIDC Auto</option>
+                                        <option value="ASTAT">FIDC Astat</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" id="selFileUpLoad" style="display: none">
+                                <div class="col-lg-12">
+                                    <div class="dropzone" id="dropzoneCnab" style="vertical-align: central; padding-top: 80px; text-align: center; width: 100%; height: 100%; border: 2px dashed rgb(204, 204, 204); color: rgb(204, 204, 204); text-align: center; -webkit-box-align: center; -webkit-box-pack: center; z-index: 100; cursor: default;">
+                                        <i class="fa fa-upload fa-4x"></i></br>
+                                        Arraste o arquivo ou click para selecionar
+                                    </div>                        
+                                </div>                            
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>        
+            <div class="col-lg-8" style="cursor: pointer">                
+                <div class="col-lg-12">
+                    <div class="box box-solid box-primary">
+                        <div class="box-header">
+                            Arquivos Enviados
+                        </div>
+                        <div class="box-body" style="height: 200px; overflow: auto">
+                            <div class="loading text-center {SHOW_LOADING}" id="loading_divArquivosOferta"><i class="fa fa-refresh fa-spin fa-4x"></i> <br>Carregando Dados</div>
+                            <div id="divArquivosOferta">                                
+
+                            </div>                                                    
+                        </div>
+                    </div>                    
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+{FORM_QUEUE}

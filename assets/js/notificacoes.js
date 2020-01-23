@@ -117,6 +117,7 @@ function jsVerficaNotificacoesUsuario()
     }).fail(function (data) {
 //        $("#modalSessaoExpirada").show();;
         window.location = "cessaoencerrada";
+        return;
     });
     
     if (typeof jsbuscaBloqueioCaso === 'function')

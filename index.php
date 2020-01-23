@@ -226,8 +226,8 @@ switch ($srvAccess) {
         $EXTERNAL_USERNAME = "root";
 
         // Ignora politicas de segurança
-        define("APLICAR_POLITICAS_SEGURANCA", false);
-
+//        define("APLICAR_POLITICAS_SEGURANCA", false);;
+        define("CHECAR_DUPLICIDADE_ACESSO", true);
         define("INSTANCE_APIS", ["protestos.json", "gateway_registros.json"]);
         define("SITE_ROOT", "http://localhost/");
         switch ($aliasServidor) {
@@ -331,6 +331,11 @@ switch ($srvAccess) {
 //                $EXTERNALDB = "process-new";
                 break;
         }
+        
+        // DEFINE Página de UPLOAD
+        define("TEMPLATE_CNAB_UPLOAD", "t_securities_upload_retorno.html");
+//        define("TEMPLATE_CNAB_UPLOAD", "t_securities_upload_cnab_oferta.html");
+        
         define("FILES_FOLDER", "\\");
         define("SITE_ROOT", "http://$srvAccess");
         define("SITE_FOLDER_COMPLEMENT", "");
@@ -544,7 +549,7 @@ switch ($srvAccess) {
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red-light");
                 define("TEMPLATE_LOGON", "t_logon_dmcard.html");
-                
+
                 define("INSTANCE_APIS", ["gateway_registros.json"]);
                 /**
                  *  Definições Banco de dados
@@ -556,7 +561,7 @@ switch ($srvAccess) {
                 $EXTERNAL_USERNAME = "process";
                 $BPMDB = "mmoscz_git";
                 $EXTERNALDB = 'mmoscz_git';
-                
+
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
@@ -1760,6 +1765,10 @@ if (!defined("SITE_ALIAS")) {
 
 if (defined("APLICAR_POLITICAS_SEGURANCA")) {
     define("APLICAR_POLITICAS_SEGURANCA", false);
+}
+
+if (defined("CHECAR_DUPLICIDADE_ACESSO")) {
+    define("CHECAR_DUPLICIDADE_ACESSO", true);
 }
 
 define("FILES_ROOT", $currentDir . FILES_FOLDER);

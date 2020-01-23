@@ -167,35 +167,11 @@
                 "funcao": "pegaArquivoOfertaRetorno"
             }
         },
-        "gatewayupload": {
-            "GET": {
-                "page": "pages/gateway_upload_entrada.inc"
-            }            
-        },
-        "retornoupload": {
-            "GET": {
-                "page": "pages/gateway_upload_retorno.inc"
-            }            
-        },
         "defs": {
             "GET": {
                 "page": "pages/defs.inc"
             }            
-        },
-        "api/v1/gateway_send_file_retorno": {
-            "POST": {
-                "page": "api/api_gateway_registro.inc",
-                "parametros": ["token_send_file"],
-                "funcao": "envioArquivoRetorno"
-            }            
-        },
-        "api/v1/gateway_send_file_oferta": {
-            "POST": {
-                "page": "api/api_gateway_registro.inc",
-                "parametros": ["token_send_file"],
-                "funcao": "envioArquivoOferta"
-            }            
-        },
+        },        
         "pagecount": {
             "GET": {
                 "page": "include/conta_paginas.php",

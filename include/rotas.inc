@@ -244,10 +244,11 @@ function defineRota($p_dadosURI, $methodHTTP)
     }
 
     if ($userValidado && $sessaoModificada && $dadosURI !== "" && !$validadoToken) {
-        if (APLICAR_POLITICAS_SEGURANCA) {
+        if (APLICAR_POLITICAS_SEGURANCA || CHECAR_DUPLICIDADE) {
             $rota = array();
             $rota["page"] = "pages/operacaocessao.inc";
             $rota["funcao"] = "cessaoAlterada";
+            header("HTTP/1.0 402 Falha autenticacao");
             return $rota;
         }
     }

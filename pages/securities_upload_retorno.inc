@@ -20,8 +20,7 @@ require_once(FILES_ROOT . '/include/toolbar.inc');
 use raelgc\view\Template;
 
 $t_body = new Template(FILES_ROOT . "assets/templates/master/t_master.html");
-$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/securities/" . TEMPLATE_CNAB_UPLOAD);
-//$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/securities/t_securities_upload_cnab_oferta.html");
+$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/t_securities_upload_retorno.html");
 $t_body->addFile("PAGEHEADER", FILES_ROOT . "assets/templates/master/t_header.html");
 $t_body->addFile("PAGEFOOTER", FILES_ROOT . "assets/templates/master/t_footer.html");
 $t_body->addFile("PAGEMENULEFT", FILES_ROOT . "assets/templates/master/t_menu.html");
@@ -39,9 +38,7 @@ $t_body->NOVOCASOSTEPID = "INICIO";
 $t_body->block("BLOCK_STEPIDNOVOCASO");
 $t_body->block("BLOCO_INCLUDE_JAVASCRIPT");
 
-$t_body->SITE_LOCATION = SITE_LOCATION;
-
-$t_body->TITULO_PAGE = "Upload CNAB | " . INSTANCENAME;
+$t_body->TITULO_PAGE = "Creditas SCD | ClickSign Securities";
 
 // Esconde a barra lateral
 $t_body->SIDEBAR_HIDE = " hide";
@@ -87,7 +84,7 @@ $t_body->block("BLOCO_JAVASCRIPT");
 $t_body->ARQUIVO_JS = "queue.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");
 
-$t_body->ARQUIVO_JS = "gateway_arquivos_upload_oferta_queue.js"; // jsTratamentoDataTable
+$t_body->ARQUIVO_JS = "gateway_arquivos_upload_retorno_queue.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");
 
 // Include Drag Drop
@@ -96,23 +93,19 @@ $t_body->block("BLOCO_INCLUDE_FILE_JAVASCRIPT");
 
 // Url para envio do arquivo
 $tokenUpload = calculaToken($userdef->UserName, $userdef->UserEmail, false);
-$urlUpload = "api/v1/gateway_send_file_oferta/$tokenUpload";
+$urlUpload = "api/v1/gateway_send_file_retorno/$tokenUpload";
 
-$t_body->SCRIPT_DATA = "
-    function createDropZone(targetFidc)
-    {
-    $(\".dropzone\").dropzone(
+$t_body->SCRIPT_DATA = "$(\".dropzone\").dropzone(
         {
             url: \"$urlUpload\",
-            allowedFileTypes: 'rem',
+            allowedFileTypes: 'ret',
             width: '100%',
             height: '280',
             text: '<i class=\"fa fa-upload fa-4x\"></i><br />Click ou arraste o arquivo aqui',
             success: jsSecuritiesArquivoEnviado,
-            uploadError: jsSecuritiesErroUpload,
-            params: { targetFidc : targetFidc }
+            uploadError: jsSecuritiesErroUpload
         }
-);}";
+);";
 
 $t_body->block("BLOCO_JAVASCRIPT_INSERTS_FINAL");
 

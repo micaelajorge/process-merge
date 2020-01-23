@@ -1,0 +1,40 @@
+{
+    "rotas": {
+        "api/v1/gateway_send_file_oferta": {
+            "POST": {
+                "page": "api/gateway_digital/api_gateway_digital.inc",
+                "parametros": ["token_send_file"],
+                "funcao": "envioArquivoOferta"
+            }            
+        },
+        "api/v1/gateway_send_file_retorno": {
+            "POST": {
+                "page": "api/gateway_digital/api_gateway_digital.inc",
+                "parametros": ["token_send_file"],
+                "funcao": "envioArquivoRetorno"
+            }            
+        },
+        "api/v1/gateway_send_file_liquidacao": {
+            "POST": {
+                "page": "api/gateway_digital/api_gateway_digital.inc",
+                "parametros": ["token_send_file"],
+                "funcao": "envioArquivoLiquidacaoFundo"
+            }            
+        },
+        "gatewayupload": {
+            "GET": {
+                "page": "pages/gateway_upload_entrada.inc"
+            }            
+        },
+        "retornoupload": {
+            "GET": {
+                "page": "pages/gateway_upload_retorno.inc"
+            }            
+        },
+        "liquidacaoupload": {
+            "GET": {
+                "page": "pages/gateway_upload_liquidacao.inc"
+            }            
+        }
+    }
+}

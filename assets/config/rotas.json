@@ -1,3 +1,10 @@
 {
-    "arquivos": ["rotas_internas.json", "rotas_portal_assinatura.json", "rotas_securities.json", "rotas_protesto.json", "rotas_gateway_registro.json"]
+    "arquivos": [
+        "rotas_internas.json", 
+        "rotas_portal_assinatura.json", 
+        "rotas_securities.json", 
+        "rotas_protesto.json", 
+        "rotas_gateway_registro.json",
+        "rotas_gateway_digital.json"
+    ]
 }

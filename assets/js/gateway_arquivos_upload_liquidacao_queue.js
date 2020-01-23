@@ -26,15 +26,15 @@ function jsCarregaListaArquivosOferta()
     let divDestino = 'divArquivosOferta';
     let templateView = 'assets/templates/t_gateway_lista_arquivos_oferta.html';
 
-    endApiLotes = 'queuelist/ENVIO_CNAB_ACEITE/';
+    endApiLotes = 'queuelist/SEC_CNABS/';
     $("#loading_" + divDestino).show();
 
     let filters = {"columns":
                 [
                     {
-                        "valor": "0",
+                        "valor": "6",
                         "tipo": "LT",
-                        "campo": "15"
+                        "campo": "21"
                     }
                 ]
     };
@@ -61,7 +61,7 @@ function jsCarregaListaArquivosOferta()
         dataType: 'json'
     })
             .done((listArquivos) => {
-                jsCriaTemplateArquivosOferta(listArquivos, divDestino, templateView, jsCarregaListaArquivosRecusados);
+                jsCriaTemplateArquivosOferta(listArquivos, divDestino, templateView);
             });
 }
 

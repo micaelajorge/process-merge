@@ -18,6 +18,7 @@ function iniciaScript()
 function paginaDuplicada()
 {
     $t_body = iniciaScript();
+    $t_body->PAGE_TITLE = "Sessão Duplicada";
     $t_body->block("BLOCK_SESSAO_DUPLICADA_TITULO");
     $t_body->block("BLOCK_SESSAO_DUPLICADA_TEXTO_AUXILIAR");
 /// <editor-fold defaultstate="collapsed" desc="Envia dados para o Browser">
@@ -28,6 +29,7 @@ function paginaDuplicada()
 function cessaoAlterada()
 {
     $t_body = iniciaScript();
+    $t_body->PAGE_TITLE = "Sessão Modificada";
     $t_body->block("BLOCK_SESSAO_MODIFICADA_TITULO");
     $t_body->block("BLOCK_SESSAO_MODIFICADA_TEXTO_AUXILIAR");
 /// <editor-fold defaultstate="collapsed" desc="Envia dados para o Browser">
@@ -38,6 +40,7 @@ function cessaoAlterada()
 function paginaEncerrada()
 {
     $t_body = iniciaScript();
+    $t_body->PAGE_TITLE = "Sessão Encerrada";
     $t_body->block("BLOCK_SESSAO_ENCERRADA_TITULO");
     $t_body->block("BLOCK_SESSAO_ENCERRADA_TEXTO_AUXILIAR");
 /// <editor-fold defaultstate="collapsed" desc="Envia dados para o Browser">

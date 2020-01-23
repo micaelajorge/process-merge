@@ -31,6 +31,16 @@ function converteFieldsParaCaseData($fields)
 /**
  * ROTA: api/v1/gateway_send_file_oferta
  */
+function envioArquivoLiquidacaoFundo()
+{    
+    $campoTipoArquivo = array("fieldCode" => "TIPO_ARQUIVO", "fieldValue" => 2);
+    envioArquivoOfertaRetorno("SEC_CNABS", "ARQUIVO_CNAB", "LIQUIDACAO_ENTRADA", $campoTipoArquivo);
+}
+
+
+/**
+ * ROTA: api/v1/gateway_send_file_oferta
+ */
 function envioArquivoOferta()
 {    
     $campoTipoArquivo = array("fieldCode" => "TIPO_ARQUIVO", "fieldValue" => 0);

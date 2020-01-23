@@ -20,7 +20,7 @@ require_once(FILES_ROOT . '/include/toolbar.inc');
 use raelgc\view\Template;
 
 $t_body = new Template(FILES_ROOT . "assets/templates/master/t_master.html");
-$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/t_gateway_upload_liquidacao.html");
+$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/t_gateway_upload_atualizacao.html");
 $t_body->addFile("PAGEHEADER", FILES_ROOT . "assets/templates/master/t_header.html");
 $t_body->addFile("PAGEFOOTER", FILES_ROOT . "assets/templates/master/t_footer.html");
 $t_body->addFile("PAGEMENULEFT", FILES_ROOT . "assets/templates/master/t_menu.html");
@@ -84,7 +84,7 @@ $t_body->block("BLOCO_JAVASCRIPT");
 $t_body->ARQUIVO_JS = "queue.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");
 
-$t_body->ARQUIVO_JS = "gateway_arquivos_upload_liquidacao_queue.js"; // jsTratamentoDataTable
+$t_body->ARQUIVO_JS = "gateway_arquivos_upload_atualizacao_queue.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");
 
 // Include Drag Drop
@@ -93,7 +93,7 @@ $t_body->block("BLOCO_INCLUDE_FILE_JAVASCRIPT");
 
 // Url para envio do arquivo
 $tokenUpload = calculaToken($userdef->UserName, $userdef->UserEmail, false);
-$urlUpload = "api/v1/gateway_send_file_liquidacao/$tokenUpload";
+$urlUpload = "api/v1/gateway_send_file_atualizacao/$tokenUpload";
 
 $t_body->SCRIPT_DATA = "$(\".dropzone\").dropzone(
         {

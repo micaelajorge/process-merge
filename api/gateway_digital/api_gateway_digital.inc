@@ -31,10 +31,10 @@ function converteFieldsParaCaseData($fields)
 /**
  * ROTA: api/v1/gateway_send_file_oferta
  */
-function envioArquivoLiquidacaoFundo()
+function envioArquivoAtualizacaoFundo()
 {    
     $campoTipoArquivo = array("fieldCode" => "TIPO_ARQUIVO", "fieldValue" => 2);
-    envioArquivoOfertaRetorno("SEC_CNABS", "ARQUIVO_CNAB", "LIQUIDACAO_ENTRADA", $campoTipoArquivo);
+    envioArquivoOfertaRetorno("SEC_CNABS", "ARQUIVO_CNAB", "ATUALIZACAO_ENTRADA", $campoTipoArquivo);
 }
 
 

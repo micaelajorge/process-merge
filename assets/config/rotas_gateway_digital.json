@@ -14,11 +14,11 @@
                 "funcao": "envioArquivoRetorno"
             }            
         },
-        "api/v1/gateway_send_file_liquidacao": {
+        "api/v1/gateway_send_file_atualizacao": {
             "POST": {
                 "page": "api/gateway_digital/api_gateway_digital.inc",
                 "parametros": ["token_send_file"],
-                "funcao": "envioArquivoLiquidacaoFundo"
+                "funcao": "envioArquivoAtualizacaoFundo"
             }            
         },
         "gatewayupload": {
@@ -31,9 +31,9 @@
                 "page": "pages/gateway_upload_retorno.inc"
             }            
         },
-        "liquidacaoupload": {
+        "atualizacaoupload": {
             "GET": {
-                "page": "pages/gateway_upload_liquidacao.inc"
+                "page": "pages/gateway_upload_atualizacao.inc"
             }            
         }
     }

@@ -30,7 +30,9 @@ $t_body = new Template(FILES_ROOT . "assets/templates/master/t_master.html");
 $t_body->addFile("PAGEHEADER", FILES_ROOT . "assets/templates/master/t_header.html");
 $t_body->addFile("PAGEMENULEFT", FILES_ROOT . "assets/templates/master/t_menu.html");
 $t_body->addFile("PAGEFOOTER", FILES_ROOT . "assets/templates/master/t_footer.html");
-$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/t_relatorios.html");
+$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/t_relatorios_cards.html");
+//$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/t_relatorios.html");
+$t_body->addFile("RELATORIO_ITEM", FILES_ROOT . "assets/templates/t_relatorios_item.html");
 $t_body->SITE_LOCATION = SITE_LOCATION;
 
 $t_body->STYLE_LOGO = "style=\"display:none !important\"";
@@ -135,6 +137,7 @@ if (APLICAR_PERMISSAO_RELATORIOS) {
 $Query = mysqli_query($connect, $SQL);
 $aCampos = mysqli_fetch_all($Query, MYSQLI_ASSOC);
 
+$relatorioColuna = 1;
 foreach ($aCampos as $campo) {
     $t_body->ITEMCLASS = "text-primary";
     $t_body->ITEMDISABLED = "";
@@ -161,7 +164,12 @@ foreach ($aCampos as $campo) {
       $t_body->block("BLOCK_PASSOS");
       }
      */
-    $t_body->block("BLOCO_RELATORIO");
+    $t_body->block("BLOCO_RELATORIO_CARD_$relatorioColuna");
+    $relatorioColuna++;
+    if ($relatorioColuna > 3)
+    {
+        $relatorioColuna = 1;
+    }
 }
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="javascript">

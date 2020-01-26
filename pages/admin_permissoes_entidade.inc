@@ -5,7 +5,7 @@
   Data Criação 19/09/2018
   Sistema: Process_XAMPP
  * 
- * ROTA: permissao/processo
+ * @rota permissao/processo
  */
 
 include_once(FILES_ROOT . "include/common.php");

@@ -16,7 +16,7 @@ include_once(FILES_ROOT . "include/resource01.php");
 // <editor-fold defaultstate="collapsed" desc="ocrServiceDefs">
 /**
  * 
- * ROTA: api/ocrservicedefs
+ * @rota api/ocrservicedefs
  * 
  * @global type $connect
  */
@@ -54,7 +54,7 @@ function ocrServiceDefs()
 // <editor-fold defaultstate="collapsed" desc="Lista Documentos Tipificacao">
 /**
  * 
- * ROTA: api/listadocumentostipificacao
+ * @rota api/listadocumentostipificacao
  * 
  * @global type $connect
  */
@@ -90,7 +90,7 @@ function ocrListaDocumentosTipificacao()
 // <editor-fold defaultstate="collapsed" desc="Lista documentos Submeter OCR">
 /**
  * 
- * ROTA: api/listadocumentosocr
+ * @rota api/listadocumentosocr
  * 
  * @global type $connect
  */
@@ -145,7 +145,7 @@ function ocrListaDocumentosOcr()
 // <editor-fold defaultstate="collapsed" desc="Dados Auto Classificacao">
 /**
  * 
- * ROTA: api/dadosautoclassificacao
+ * @rota api/dadosautoclassificacao
  * 
  * @global type $connect
  */

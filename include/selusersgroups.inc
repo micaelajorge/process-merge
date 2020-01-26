@@ -1,6 +1,6 @@
 <?php
 /*
- * rota: /selgruposuser
+ * @rota /selgruposuser
  */
 // <editor-fold defaultstate="collapsed" desc="Incializacao">
 

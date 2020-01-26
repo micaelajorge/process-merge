@@ -9,7 +9,7 @@
 require_once FILES_ROOT . "include/resource01.php";
 
 /**
- * ROTA: api/v1/getfieldsdef
+ * @rota api/v1/getfieldsdef
  */
 function getFieldsDefList()
 {

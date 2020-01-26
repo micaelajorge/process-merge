@@ -28,7 +28,7 @@ function criaCamposDoCaso($campos)
 }
 
 /**
- * ROTA: api/webcapture_anexar
+ * @rota api/webcapture_anexar
  */
 function webcature_anexaDocumento()
 {
@@ -65,7 +65,7 @@ function webcature_anexaDocumento()
 }
 
 /**
- * ROTA: api/webcapture_send
+ * @rota api/webcapture_send
  */
 function webcapture_recebeDados()
 {

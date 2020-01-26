@@ -16,7 +16,7 @@ require_once(FILES_ROOT . "includes_ws/wserror.inc");
 // </editor-fold>
 /// <editor-fold defaultstate="collapsed" desc="Trata CCBS">
 /**
- * Rota: api/v1/changecontract
+ * @rota api/v1/changecontract
  */
 function api_change_contract()
 {
@@ -44,7 +44,7 @@ function api_change_contract()
 }
 
 /**
- * Rota: api/v1/createcontract
+ * @rota api/v1/createcontract
  */
 function api_create_contract()
 {
@@ -96,7 +96,7 @@ function api_create_contract()
 
 // <editor-fold defaultstate="collapsed" desc="Cancela CCB">
 /**
- * ROTA: api/v1/cancelccb
+ * @rota api/v1/cancelccb
  */
 function cancelaCCB()
 {
@@ -264,7 +264,7 @@ function atualizaCCB($dadosCCB)
 
 // <editor-fold defaultstate="collapsed" desc="Fila cessoes resolucoes processadas">
 /**
- * ROTA: api/v1/processedcessionsqueue
+ * @rota api/v1/processedcessionsqueue
  */
 function api_processedQueueCesssions()
 {
@@ -272,7 +272,7 @@ function api_processedQueueCesssions()
 }
 
 /**
- * ROTA: api/v1/processedresolutionsqueue
+ * @rota api/v1/processedresolutionsqueue
  */
 function api_processedQueueResolutions()
 {
@@ -335,7 +335,7 @@ function atualizaStatusCessao($dadosTermo, $tipoDocumento)
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Atualiza Status Cessao">
 /**
- * ROTA: api/v1/docsigned
+ * @rota api/v1/docsigned
  * 
  * @return type
  */
@@ -443,7 +443,7 @@ function trataCCB($dadosCCB)
 }
 
 /**
- * ROTA: process POST
+ * @rota process POST
  */
 function api_trataWebHook()
 {
@@ -462,8 +462,8 @@ function api_trataWebHook()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="api_cessionqueue">
 /**
- * ROTA: cessionsqueue
- * ROTA: api/v1/cessionsqueue
+ * @rota cessionsqueue
+ * @rota api/v1/cessionsqueue
  */
 function api_cessionqueue()
 {
@@ -501,7 +501,7 @@ function get_cession_resolution_queue($procCod)
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="api_process_create">
 /**
- * ROTA: api/v1/process POST
+ * @rota api/v1/process POST
  */
 function api_process_create()
 {
@@ -513,7 +513,7 @@ function api_process_create()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="api_resolution_create">
 /**
- * ROTA: api/v1/resolution POST
+ * @rota api/v1/resolution POST
  */
 function api_resolution_create()
 {
@@ -660,7 +660,7 @@ function processa_cessao_resolucao($procCod)
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="api_process_get">
 /**
- * ROTA: process
+ * @rota process
  */
 function api_process_get()
 {
@@ -716,7 +716,7 @@ function api_process_get()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="api_contracts_put">
 /**
- * ROTA: contracts POST
+ * @rota contracts POST
  *
  * @global type $connect
  * @return int
@@ -780,7 +780,7 @@ function api_contracts_put()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="api_contrats_get">
 /**
- * ROTA: contracts GET
+ * @rota contracts GET
  */
 function api_contracts_get()
 {
@@ -798,7 +798,7 @@ function api_get_cession_data()
 }
 
 /**
- * ROTA: api/v1/resolution
+ * @rota api/v1/resolution
  */
 function api_get_resolution_data()
 {
@@ -963,7 +963,7 @@ function pegaDadosAssinantes($procId, $fieldId, $account_key, $procCode)
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="validacao do contrato">
 /**
- * ROTA: validacontrato
+ * @rota validacontrato
  */
 function api_valida_contrato()
 {
@@ -1067,7 +1067,7 @@ function api_valida_contrato()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="api_change_cession">
 /**
- * Rota: api/v1/cessionchange
+ * @rota api/v1/cessionchange
  */
 function api_change_cession()
 {
@@ -1102,7 +1102,7 @@ function api_change_cession()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="account token">
 /**
- * ROTA: api/v1/getaccounttoken
+ * @rota api/v1/getaccounttoken
  */
 function getAccountToken()
 {
@@ -1126,7 +1126,7 @@ function getAccountToken()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="signers">
 /**
- *  ROTA: api/v1/signers
+ *  @rota api/v1/signers
  */
 function getSingers()
 {
@@ -1180,7 +1180,7 @@ function getSingers()
 
 // </editor-fold>
 // // <editor-fold defaultstate="collapsed" desc="Dummy Templates">
-// ROTA: templates
+// @rota templates
 
 function dummy_template()
 {
@@ -1198,7 +1198,7 @@ function dummy_template()
 // </editor-fold>
 /// <editor-fold defaultstate="collapsed" desc="Verifica contratos">
 /**
- * ROTA: api/v1/checkcontracts
+ * @rota api/v1/checkcontracts
  * 
  * @global type $connect
  */
@@ -1241,7 +1241,7 @@ function verificaCCB()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Pega dasos Casos Pela cessão">
 /**
- * rota: api/v1/getcasesbycession
+ * @rota api/v1/getcasesbycession
  * @global type $connect
  */
 function getCasosDaCessao()
@@ -1274,7 +1274,7 @@ function getCasosDaCessao()
 // </editor-fold>
 /// <editor-fold defaultstate="collapsed" desc="Pega casos pelo contrato">
 /**
- * ROTA: api/v1/getcasesbycontracts
+ * @rota api/v1/getcasesbycontracts
  * 
  * @global type $connect
  */
@@ -1307,7 +1307,7 @@ function pegaCasosPeloNumeroContrato()
 // <editor-fold defaultstate="collapsed" desc="Cessao Existe">
 
 /**
- * ROTA: api/v1/cessionexists
+ * @rota api/v1/cessionexists
  */
 function cessionexists()
 {
@@ -1333,7 +1333,7 @@ function cessionexists()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Casos Aguardando Assinatura">
 /**
- * ROTA: api/v1/queuedcessionsigners
+ * @rota api/v1/queuedcessionsigners
  */
 function ListaCasosAguardandoAssinatura()
 {
@@ -1364,7 +1364,7 @@ function ListaCasosAguardandoAssinatura()
 // </editor-fold>
 
 /**
- * ROTA: api/v1/getcessionclosedcontracts
+ * @rota api/v1/getcessionclosedcontracts
  */
 function getCessionContracts()
 {

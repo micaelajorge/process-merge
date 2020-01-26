@@ -5,7 +5,7 @@ Criação: Marcelo Mosczynski <mmoscz@gmail.com>
 Data Criação 17/12/2018
 Sistema: Process_XAMPP
  
- ROTA: webcaptura
+ @rota webcaptura
 */
 
 use raelgc\view\Template;

@@ -7,7 +7,7 @@
  */
 
 /**
- * rota: api/importdefssafedoc
+ * @rota api/importdefssafedoc
  * @global type $connect
  */
 function import_pegaDefinicoesSafeDoc()

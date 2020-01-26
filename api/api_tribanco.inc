@@ -103,7 +103,7 @@ function funct_tribanco_criaCasoPelaProposta()
  * 
  * @return type
  * 
- * ROTA: api/tribanco/verificaarquivoscarga/
+ * @rota api/tribanco/verificaarquivoscarga/
  */
 function tribanco_buscaDadosCarga()
 {
@@ -281,7 +281,7 @@ function funct_tribanco_pegaArquivos()
  * Gera lista de casos para aguardando para executar a carga
  * @global type $connect 
  * 
- * ROTA: api/tribanco/listacasoscargaimportacao/"
+ * @rota api/tribanco/listacasoscargaimportacao/"
  */
 function tribancoListaCasosCargaParaImportacao()
 {
@@ -337,7 +337,7 @@ function tribancoListaCasosCargaParaImportacao()
  * Lista de Casos para executar o anexar arquivo de carga
  * @global type $connect
  * 
- * ROTA: api/tribanco/cargasemarquivo
+ * @rota api/tribanco/cargasemarquivo
  */
 function tribanco_CargasSemArquivo()
 {
@@ -387,7 +387,7 @@ function tribanco_CargasSemArquivo()
  * Gera lista de casos para aguardando para executar a carga
  * @global type $connect 
  * 
- * ROTA: api/tribanco/listacasoscalculosla/"
+ * @rota api/tribanco/listacasoscalculosla/"
  */
 function tribancoListaCasosCargaSLA()
 {
@@ -461,7 +461,7 @@ function tribanco_listaPropostasSemArquivo()
  * 
  * @return type
  * 
- * ROTA: api/tribanco/enviaarquivospropostas
+ * @rota api/tribanco/enviaarquivospropostas
  */
 function tribanco_receberarquivosproposta()
 {

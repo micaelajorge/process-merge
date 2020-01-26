@@ -54,7 +54,7 @@ function Inicializacao_ext_busca_cartorios($FieldId, $ReadOnly, $Valor_Campo, $d
 /**
  * Carrega o formulario de seleção de Cartórios
  * 
- * ROTA: buscacartorios
+ * @rota buscacartorios
  */
 function CarregaModalBuscaCartorios()
 {
@@ -76,7 +76,7 @@ function CarregaModalBuscaCartorios()
 }
 
 /**
- * ROTA: listacartorios
+ * @rota listacartorios
  * 
  * @return type
  */

@@ -7,7 +7,7 @@ Sistema: Process_XAMPP
 */
 
 /**
- * ROTA: /api/v1/cessionstatuschange
+ * @rota /api/v1/cessionstatuschange
  */
 function CessionStatusChange()
 {

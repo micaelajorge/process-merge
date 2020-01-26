@@ -8,7 +8,7 @@
 include_once(FILES_ROOT . "include/resource01.php");
 
 /**
- * rota: api/ocrdefs
+ * @rota api/ocrdefs
  * @global type $connect
  */
 function ocr_pegaDefinicoes()

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  ROTA: logon
+ *  @rota logon
  */
 require_once(FILES_ROOT . "include/resource01.php");
 require_once FILES_ROOT . "vendor/lib/raelgc/view/template.php";

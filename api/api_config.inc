@@ -23,7 +23,7 @@ function salvaConfig()
 }
 
 /**
- * ROTA: api/v1/configs
+ * @rota api/v1/configs
  */
 function getConfig()
 {

@@ -14,8 +14,8 @@ require_once(FILES_ROOT . "includes_ws/wserror.inc");
 //$camposObrigatoriosProtesto = ["nosso_numero"];
 
 /**
- * ROTA: api/v1/envia_protesto
- * ROTA: api/v1/envio_protesto
+ * @rota api/v1/envia_protesto
+ * @rota api/v1/envio_protesto
  *  Envio de Lote de Protestos
  */
 function envia_lote_protesto_v1()
@@ -24,7 +24,7 @@ function envia_lote_protesto_v1()
 }
 
 /**
- * ROTA: api/v1/cancelamento_protesto
+ * @rota api/v1/cancelamento_protesto
  * 
  *  Envio de lotes de Cancelamento
  */
@@ -34,7 +34,7 @@ function envio_lote_cancelamento_v1()
 }
 
 /**
- *  ROTA: api/v1/desistencia_protesto
+ *  @rota api/v1/desistencia_protesto
  *  Envio de lotes de desistencia
  */
 function envio_lote_desistencia_v1()
@@ -262,7 +262,7 @@ function trataCamposCertdox($dadosCertdox)
 
 /**
  * 
- * ROTA: api/v1/envia_protesto_certdox
+ * @rota api/v1/envia_protesto_certdox
  * @return type
  */
 function protesto_entrada_protesto_v1()

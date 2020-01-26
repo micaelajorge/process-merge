@@ -4,7 +4,7 @@ Criação: Natan Moraes
 Data Criação 08/12/2019
 Sistema: Process_XAMPP
  * 
- * ROTA: bilhetagem
+ * @rota bilhetagem
 */
 
 include_once(FILES_ROOT . "include/common.php");

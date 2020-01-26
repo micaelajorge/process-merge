@@ -5,7 +5,7 @@
   Data Criação 28/02/2019
   Sistema: Process_XAMPP
  * 
- * ROTA: documentosprocesso_getdoc
+ * @rota documentosprocesso_getdoc
  */
 
 include_once(FILES_ROOT . "include/common.php");

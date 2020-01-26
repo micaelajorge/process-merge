@@ -4,7 +4,7 @@ Criação: Micaela Fernanda
 Data Criação 28/11/2019
 Sistema: Process_XAMPP
  * 
- * ROTA: billing
+ * @rota billing
 */
 
 include_once(FILES_ROOT . "include/common.php");

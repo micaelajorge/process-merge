@@ -14,7 +14,7 @@ include_once(FILES_ROOT . "includes_ws/wscasesave.inc");
 
 // <editor-fold defaultstate="collapsed" desc="apicaseprocess">
 /**
- *  Rota: api/v1/apicaseprocess
+ *  @rota api/v1/apicaseprocess
  */
 function apicaseprocess_v1()
 {
@@ -331,7 +331,7 @@ function apicasestartuniqueprocessa_v1()
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="Apicaseprocess">
 /**
- *  Rota: api/apicaseprocess
+ *  @rota api/apicaseprocess
  */
 function apicaseprocess()
 {
@@ -361,8 +361,8 @@ function apicaseprocess()
 // <editor-fold defaultstate="collapsed" desc="Get File">
 /**
  * 
- * ROTA: api/getfile
- * ROTA: api/v1/getfile
+ * @rota api/getfile
+ * @rota api/v1/getfile
  * @return type
  */
 function apigetfile()
@@ -515,7 +515,7 @@ function apiDataHora()
  * @global type $OrigemLogon
  * @return string
  * 
- * ROTA: api/v1/createcase
+ * @rota api/v1/createcase
  */
 function apicasestart_V1()
 {
@@ -599,7 +599,7 @@ function apicasestartunique()
 // <editor-fold defaultstate="collapsed" desc="apicasestart">
 
 /**
- * ROTA: "api/apicasestart"
+ * @rota "api/apicasestart"
  */
 function apicasestart()
 {
@@ -685,7 +685,7 @@ function converteFieldsParaCaseData($fields)
     return $campos;
 }
 
-// ROTA: api/v1/validauser
+// @rota api/v1/validauser
 function apiValidado()
 {
     $dados["validado"] = "ok";

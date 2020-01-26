@@ -29,7 +29,7 @@ function converteFieldsParaCaseData($fields)
 }
 
 /**
- * ROTA: api/v1/gateway_send_file_oferta
+ * @rota api/v1/gateway_send_file_oferta
  */
 function envioArquivoAtualizacaoFundo()
 {    
@@ -39,7 +39,7 @@ function envioArquivoAtualizacaoFundo()
 
 
 /**
- * ROTA: api/v1/gateway_send_file_oferta
+ * @rota api/v1/gateway_send_file_oferta
  */
 function envioArquivoOferta()
 {    
@@ -48,7 +48,7 @@ function envioArquivoOferta()
 }
 
 /**
- * ROTA: api/v1/gateway_send_file_retorno
+ * @rota api/v1/gateway_send_file_retorno
  */
 
 function envioArquivoRetorno()

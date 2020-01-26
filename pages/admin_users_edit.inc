@@ -4,7 +4,7 @@ Criação: Marcelo Mosczynski <mmoscz@gmail.com>
 Data Criação 19/09/2018
 Sistema: Process_XAMPP
  * 
- * ROTA: edituser
+ * @rota edituser
 */
 //error_log("Entrou admin_users_edit.inc");
 include_once(FILES_ROOT . "include/common.php");

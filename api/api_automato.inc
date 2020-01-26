@@ -82,7 +82,7 @@ function pegaCasosAutoStep()
 }
 
 /**
- *  ROTA: api/automato/alive
+ *  @rota api/automato/alive
  */
 function automatoAlive()
 {
@@ -156,7 +156,7 @@ function automatoCheckData()
 }
 
 /**
- *  ROTA: api/v1/checkautomato
+ *  @rota api/v1/checkautomato
  */
 function checkAutomato()
 {
@@ -171,7 +171,7 @@ function checkAutomato()
 }
 
 /**
- * ROTA: api/v1/emailsendqueue
+ * @rota api/v1/emailsendqueue
  */
 function email_send_queue_v1()
 {
@@ -201,7 +201,7 @@ actionsendemailqueue.trueFalse
 }
 
 /**
- * ROTA: api/v1/emailsent
+ * @rota api/v1/emailsent
  */
 function email_sent()
 {
@@ -223,7 +223,7 @@ function email_sent()
 }
 
 /**
- * ROTA: api/v1/getemailbody
+ * @rota api/v1/getemailbody
  */
 function pegaArquivoBody()
 {
@@ -249,7 +249,7 @@ function pegaArquivoBody()
 }
 
 /**
- * ROTA: api/v1/emallist
+ * @rota api/v1/emallist
  */
 function pegaEmailList_v1()
 {

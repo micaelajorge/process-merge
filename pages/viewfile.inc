@@ -5,9 +5,9 @@
   Data Criação 05/08/2018
   Sistema: Process_XAMPP
  * 
- * ROTA: api/tribanco/getfile
- * ROTA: api/getfile
- * ROTA: viewfile
+ * @rota api/tribanco/getfile
+ * @rota api/getfile
+ * @rota viewfile
  * 
  */
 

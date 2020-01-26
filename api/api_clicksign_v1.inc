@@ -8,7 +8,7 @@
 require_once(FILES_ROOT . "/include/resource01.php");
 
 /**
- * ROTA: api/v1/docsend
+ * @rota api/v1/docsend
  */
 function webhook_finalizados()
 {
@@ -40,10 +40,10 @@ function webhook_finalizados()
     echo json_encode($retorno);
 }
 
-// <editor-fold defaultstate="collapsed" desc="Pegar Id caso documento ROTA: api/v1/getcasenumdocument">
+// <editor-fold defaultstate="collapsed" desc="Pegar Id caso documento @rota api/v1/getcasenumdocument">
 
 /**
- * ROTA: api/v1/getcasenumdocument* 
+ * @rota api/v1/getcasenumdocument* 
  * 
  * @global type $connect
  */
@@ -115,7 +115,7 @@ function getCaseNumDocument()
 // </editor-fold>
 
 /**
- * ROTA: api/v1/getlistbatchssendemail
+ * @rota api/v1/getlistbatchssendemail
  * 
  * @global type $connect
  */
@@ -140,7 +140,7 @@ stepdef.stepcod = 'FALHA_ENVIO_EMAIL' ";
 }
 
 /**
- * ROTA: ROTA /api/v1/fakebatch
+ * @rota ROTA /api/v1/fakebatch
  * @global type $connect
  */
 function fakeBatch()
@@ -153,7 +153,7 @@ function fakeBatch()
 }
 
 /**
- * ROTA: ROTA /api/v1/getbatchlist
+ * @rota ROTA /api/v1/getbatchlist
  * @global type $connect
  */
 // <editor-fold defaultstate="collapsed" desc="Funcoes Acessorias">
@@ -386,7 +386,7 @@ function getBatchList_v2()
 // </editor-fold>
 
 /**
- * ROTA: ROTA /api/v1/getbatchlistkeys
+ * @rota ROTA /api/v1/getbatchlistkeys
  * @global type $connect
  */
 function getListKeysBatch_v1()
@@ -499,8 +499,8 @@ function getbatchqueue_clicksign()
 }
 
 /**
- * ROTA: api/v1/callbackclicksign
- * ROTA: api/v1/webhook
+ * @rota api/v1/callbackclicksign
+ * @rota api/v1/webhook
  * @global type $connect
  */
 function callback_clicksign()
@@ -551,7 +551,7 @@ function callback_clicksign()
 }
 
 /**
- * ROTA: api/v1/hooksqueue
+ * @rota api/v1/hooksqueue
  */
 function hook_queue()
 {
@@ -589,7 +589,7 @@ function hook_queue()
 }
 
 /**
- * ROTA: api/v1/hooksetstatus
+ * @rota api/v1/hooksetstatus
  * 
  * @global type $connect
  */
@@ -616,7 +616,7 @@ function hook_set_status()
 }
 
 /**
- *  ROTA: api/hookgetdata
+ *  @rota api/hookgetdata
  */
 function hook_get_data()
 {

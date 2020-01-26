@@ -8,7 +8,7 @@ require_once("include/resource01.php");
 define("LIMITE_FORCA_SENHA", 40);
 
 /**
- * ROTA: api/manager/salvasenharecuparacao
+ * @rota api/manager/salvasenharecuparacao
  * 
  * @global type $USUARIO_SENHA
  */
@@ -43,7 +43,7 @@ function salva_senha_recuperacao()
 
 
 /**
- * ROTA: enviorecuperarsenha
+ * @rota enviorecuperarsenha
  * @global type $connect
  */
 function EnvioEmailRecuperacao()
@@ -98,7 +98,7 @@ function EnvioEmailRecuperacao()
 }
 
 /**
- * ROTA: api/v1/rp
+ * @rota api/v1/rp
  * @global type $connect
  */
 function RecuperarSenha()
@@ -147,7 +147,7 @@ function testaForcaSenha($senhaUsuario)
     return $forcaSenha;
 }
 
-// ROTA: api/manager/savepasswordstart
+// @rota api/manager/savepasswordstart
 function salva_senha_inicial()
 {
     global $USUARIO_SENHA;
@@ -247,7 +247,7 @@ function salvar_senha($USUARIO_ID, $USUARIO_SENHA, $senhaStart = false)
 }
 
 /**
- * ROTA: api/manager/savepassword
+ * @rota api/manager/savepassword
  * 
  * @global type $USUARIO_SENHA
  */

@@ -1,3123 +1,3594 @@
-[13-Jan-2020 21:41:41 America/Sao_Paulo] Rota requer autenticacao: usuarios array (
-  'page' => 'pages/admin_users.inc',
+[22-Jan-2020 18:48:28 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO.csv',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'IMAGENS_INT',
+      'fieldValue' => '{"fileNameStorage":"0000146658000801.csv","fileName":"RELATORIO.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 18:48:28"}',
+    ),
+  ),
+)
+[22-Jan-2020 18:49:39 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
   'funcao' => '',
 )
-[13-Jan-2020 21:41:41 America/Sao_Paulo] Dados Sessao: array (
+[22-Jan-2020 18:49:39 America/Sao_Paulo] Dados Sessao: array (
 )
-[13-Jan-2020 21:42:40 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[13-Jan-2020 21:42:40 America/Sao_Paulo] Dados Sessao: array (
-)
-[13-Jan-2020 21:45:10 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
-)
-[13-Jan-2020 21:45:10 America/Sao_Paulo] Dados Sessao: array (
-)
-[13-Jan-2020 22:22:47 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
-)
-[13-Jan-2020 22:22:47 America/Sao_Paulo] Dados Sessao: array (
-)
-[13-Jan-2020 23:50:17 America/Sao_Paulo] Rota requer autenticacao: api/v1/apicaselist array (
-  'page' => 'api/apicaselist.inc',
-  'funcao' => 'apiPegaListaCasos',
-)
-[13-Jan-2020 23:50:17 America/Sao_Paulo] Dados Sessao: array (
-)
-[13-Jan-2020 23:51:24 America/Sao_Paulo] Rota requer autenticacao: api/v1/apicaselist array (
-  'page' => 'api/apicaselist.inc',
-  'funcao' => 'apiPegaListaCasos',
-)
-[13-Jan-2020 23:51:24 America/Sao_Paulo] Dados Sessao: array (
-)
-[14-Jan-2020 00:40:24 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 18:51:07 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO 2.csv',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
-    ),
-    3 => 
-    array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
-    ),
-    4 => 
-    array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
-    ),
-    5 => 
-    array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
-    ),
-    6 => 
-    array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
-    ),
-    7 => 
-    array (
-    ),
-    8 => 
-    array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146659001001.csv","fileName":"RELATORIO 2.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 18:51:07"}',
     ),
   ),
 )
-[14-Jan-2020 00:45:49 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:03:33 America/Sao_Paulo] Pegando dados cessão: e284f904-1d61-496f-bb82-38a9fb6b47c1
+[22-Jan-2020 22:03:35 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146412',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'queued',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Cessão Verificada',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Cessão Verificada',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
+      'fieldCode' => 'api/v1/cessionchange',
       'fieldValue' => '',
-    ),
-    7 => 
-    array (
-    ),
-    8 => 
-    array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
     ),
   ),
 )
-[14-Jan-2020 00:49:39 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:03:36 America/Sao_Paulo] Pegando dados cessão: fcf65efd-7c18-4cfc-8930-921c852f057e
+[22-Jan-2020 22:03:37 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146433',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '131',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Endossante (assigner) ou Endosatário (transferee) não encontrados',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
-    ),
-    6 => 
-    array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
+      'fieldCode' => 'api/v1/cessionchange',
       'fieldValue' => '',
-    ),
-    7 => 
-    array (
-    ),
-    8 => 
-    array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
     ),
   ),
 )
-[14-Jan-2020 00:50:24 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:03:38 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146433',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '131',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
+      'fieldCode' => 'api/v1/cessionchange',
       'fieldValue' => '',
-    ),
-    7 => 
-    array (
-    ),
-    8 => 
-    array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
     ),
   ),
 )
-[14-Jan-2020 00:52:06 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:03:39 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146433',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '131',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[]',
     ),
     7 => 
     array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[]',
     ),
     8 => 
     array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
     ),
   ),
 )
-[14-Jan-2020 00:52:55 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:03:40 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146433',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '131',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[]',
     ),
     7 => 
     array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[]',
     ),
     8 => 
     array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
     ),
   ),
 )
-[14-Jan-2020 00:53:16 America/Sao_Paulo] Falha '/' 'E:/developer/STORAGE_PROCESS/000000/0000146453/000000/0000146453000001.' 
-[14-Jan-2020 00:53:16 America/Sao_Paulo] array (
-  'procId' => 0,
-  'arquivo' => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
-  'dirName' => 'E:/developer/STORAGE_PROCESS/000000/0000146453/000000',
-  'numeroCaso' => '146453',
-  'nr_Imagem' => 1,
-  'fieldIdImagem' => 0,
-  'fileName' => '',
-  'DirOrigem' => '',
-  'nomeArquivoOrigem' => '',
-  'arquivoNomeImagem_JSON' => '',
-  'extencaoArquivo' => '',
-  'arquivoNomeImagem_STORAGE' => '0000146453000001.',
-  'arquivoNomeImagem_DISPLAY' => '0000146453000001.',
-  'extendData' => '{"fileNameStorage":"0000146453000001.","fileName":"0000146453000001.","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-14 00:53:16"}',
-  'resultado' => false,
-  'nameOrigem' => '/',
-  'nameDestino' => 'E:/developer/STORAGE_PROCESS/000000/0000146453/000000/0000146453000001.',
-)
-[14-Jan-2020 00:53:38 America/Sao_Paulo] Dados Erro: Erro no WebService: 13 - Processo não encontrado ou Id Inválido- Arquivo:  Função: FuncCaseSave End. Remoto: 127.0.0.1
-[14-Jan-2020 00:55:39 America/Sao_Paulo] Falha '/' 'E:/developer/STORAGE_PROCESS/000000/0000146453/000000/0000146453000001.' 
-[14-Jan-2020 00:55:39 America/Sao_Paulo] array (
-  'procId' => 0,
-  'arquivo' => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
-  'dirName' => 'E:/developer/STORAGE_PROCESS/000000/0000146453/000000',
-  'numeroCaso' => '146453',
-  'nr_Imagem' => 1,
-  'fieldIdImagem' => 0,
-  'fileName' => '',
-  'DirOrigem' => '',
-  'nomeArquivoOrigem' => '',
-  'arquivoNomeImagem_JSON' => '',
-  'extencaoArquivo' => '',
-  'arquivoNomeImagem_STORAGE' => '0000146453000001.',
-  'arquivoNomeImagem_DISPLAY' => '0000146453000001.',
-  'extendData' => '{"fileNameStorage":"0000146453000001.","fileName":"0000146453000001.","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-14 00:55:39"}',
-  'resultado' => false,
-  'nameOrigem' => '/',
-  'nameDestino' => 'E:/developer/STORAGE_PROCESS/000000/0000146453/000000/0000146453000001.',
-)
-[14-Jan-2020 00:55:39 America/Sao_Paulo] Dados Erro: Erro no WebService: 13 - Processo não encontrado ou Id Inválido- Arquivo:  Função: FuncCaseSave End. Remoto: 127.0.0.1
-[14-Jan-2020 00:55:40 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:03:42 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146433',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '131',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[]',
     ),
     7 => 
     array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[]',
     ),
     8 => 
     array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
     ),
   ),
 )
-[14-Jan-2020 00:55:52 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:03:44 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146433',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '131',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[]',
     ),
     7 => 
     array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[]',
     ),
     8 => 
     array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
     ),
   ),
 )
-[14-Jan-2020 00:56:15 America/Sao_Paulo] Falha '/' 'E:/developer/STORAGE_PROCESS/000000/0000146453/000000/0000146453000001.' 
-[14-Jan-2020 00:56:15 America/Sao_Paulo] array (
-  'procId' => 0,
-  'arquivo' => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
-  'dirName' => 'E:/developer/STORAGE_PROCESS/000000/0000146453/000000',
-  'numeroCaso' => '146453',
-  'nr_Imagem' => 1,
-  'fieldIdImagem' => 0,
-  'fileName' => '',
-  'DirOrigem' => '',
-  'nomeArquivoOrigem' => '',
-  'arquivoNomeImagem_JSON' => '',
-  'extencaoArquivo' => '',
-  'arquivoNomeImagem_STORAGE' => '0000146453000001.',
-  'arquivoNomeImagem_DISPLAY' => '0000146453000001.',
-  'extendData' => '{"fileNameStorage":"0000146453000001.","fileName":"0000146453000001.","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-14 00:56:15"}',
-  'resultado' => false,
-  'nameOrigem' => '/',
-  'nameDestino' => 'E:/developer/STORAGE_PROCESS/000000/0000146453/000000/0000146453000001.',
-)
-[14-Jan-2020 00:56:15 America/Sao_Paulo] Dados Erro: Erro no WebService: 13 - Processo não encontrado ou Id Inválido- Arquivo:  Função: FuncCaseSave End. Remoto: 127.0.0.1
-[14-Jan-2020 00:57:12 America/Sao_Paulo] Falha '/' 'E:/developer/STORAGE_PROCESS/000152/0000146453/000000/0000146453000001.' 
-[14-Jan-2020 00:57:12 America/Sao_Paulo] array (
-  'procId' => '152',
-  'arquivo' => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
-  'dirName' => 'E:/developer/STORAGE_PROCESS/000152/0000146453/000000',
-  'numeroCaso' => '146453',
-  'nr_Imagem' => 1,
-  'fieldIdImagem' => 0,
-  'fileName' => '',
-  'DirOrigem' => '',
-  'nomeArquivoOrigem' => '',
-  'arquivoNomeImagem_JSON' => '',
-  'extencaoArquivo' => '',
-  'arquivoNomeImagem_STORAGE' => '0000146453000001.',
-  'arquivoNomeImagem_DISPLAY' => '0000146453000001.',
-  'extendData' => '{"fileNameStorage":"0000146453000001.","fileName":"0000146453000001.","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-14 00:57:12"}',
-  'resultado' => false,
-  'nameOrigem' => '/',
-  'nameDestino' => 'E:/developer/STORAGE_PROCESS/000152/0000146453/000000/0000146453000001.',
-)
-[14-Jan-2020 00:57:17 America/Sao_Paulo] Entrada Dadosarray (
-  'fields' => 
-  array (
-    0 => 
-    array (
-      'fieldCode' => 'IMPORTADO',
-      'fieldValue' => 1,
-    ),
-  ),
+[22-Jan-2020 22:03:45 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'fields',
-      'fieldValue' => '{"fileNameStorage":"0000146453000001.","fileName":"0000146453000001.","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-14 00:57:12"}',
-    ),
-  ),
-)
-[14-Jan-2020 00:57:24 America/Sao_Paulo] Entrada Dadosarray (
-  'Fields' => 
-  array (
-    0 => 
-    array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146433',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '131',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Resultado Callback ',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Resultado Callback ',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[]',
     ),
     7 => 
     array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[]',
     ),
     8 => 
     array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
     ),
   ),
 )
-[14-Jan-2020 00:58:39 America/Sao_Paulo] Entrada Dadosarray (
-  0 => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
-  'Fields' => 
-  array (
-  ),
-)
-[14-Jan-2020 00:58:41 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:03:46 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146433',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '131',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Falha Tratando CCBS 
+ Contrato:1919936 Mensagem:Contrato não encontrado',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Falha Tratando CCBS',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[]',
     ),
     7 => 
     array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[]',
     ),
     8 => 
     array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
+      'fieldCode' => 'RETORNO_CALLBACK',
+      'fieldValue' => '',
     ),
     9 => 
     array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
     ),
   ),
 )
-[14-Jan-2020 00:59:39 America/Sao_Paulo] Entrada Dadosarray (
-  0 => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
-  'Fields' => 
-  array (
-  ),
-)
-[14-Jan-2020 00:59:40 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:03:54 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Arquivo Gravado no Gateway',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RC131101 (1).REM',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
-    ),
-    3 => 
-    array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
-    ),
-    4 => 
-    array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
-    ),
-    5 => 
-    array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
-    ),
-    6 => 
-    array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
-    ),
-    7 => 
-    array (
-    ),
-    8 => 
-    array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146660001001.rem","fileName":"RC131101 (1).REM","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:03:54"}',
     ),
   ),
 )
-[14-Jan-2020 00:59:48 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:03:57 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Arquivo CNAB Enviado para Gateway',
+    ),
+  ),
+)
+[22-Jan-2020 22:03:58 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:03:58"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:03:59 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
-    ),
-    2 => 
-    array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
-    ),
-    3 => 
-    array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
-    ),
-    4 => 
-    array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
-    ),
-    5 => 
-    array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
-    ),
-    6 => 
-    array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
-    ),
-    7 => 
-    array (
-    ),
-    8 => 
-    array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => false,
     ),
   ),
 )
-[14-Jan-2020 01:05:57 America/Sao_Paulo] Entrada Dadosarray (
-  0 => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
-  'Fields' => 
-  array (
-  ),
-)
-[14-Jan-2020 01:08:03 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:04:00 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
-    ),
-    2 => 
-    array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
-    ),
-    3 => 
-    array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
-    ),
-    4 => 
-    array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
-    ),
-    5 => 
-    array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
-    ),
-    6 => 
-    array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
-    ),
-    7 => 
-    array (
-    ),
-    8 => 
-    array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => false,
     ),
   ),
 )
-[14-Jan-2020 01:11:34 America/Sao_Paulo] Entrada Dadosarray (
-  0 => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
-  'Fields' => 
-  array (
-  ),
-)
-[14-Jan-2020 01:11:55 America/Sao_Paulo] Entrada Dadosarray (
+[22-Jan-2020 22:04:12 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'TIPO_OPERACAO',
+      'fieldValue' => 'REMESSA',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'originador_cnpj',
+      'fieldValue' => '00000004814563000174',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'cession_number',
+      'fieldValue' => 61201,
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'data_cessao',
+      'fieldValue' => '13-11-2019',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'nr_contratos',
+      'fieldValue' => 132,
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RC131101 (1).REM',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
+      'fieldCode' => 'recusados',
+      'fieldValue' => 
+      array (
+      ),
     ),
     7 => 
     array (
-    ),
-    8 => 
-    array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'JSON_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146660002401.json","fileName":"146660-RC131101 (1).json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:04:12"}',
     ),
   ),
 )
-[14-Jan-2020 01:12:21 America/Sao_Paulo] Entrada Dadosarray (
-  0 => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
+[22-Jan-2020 22:04:51 America/Sao_Paulo] Pegando dados cessão: e284f904-1d61-496f-bb82-38a9fb6b47c1
+[22-Jan-2020 22:04:51 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'IMPORTADO',
-      'fieldValue' => 1,
-    ),
-  ),
-)
-[14-Jan-2020 01:20:16 America/Sao_Paulo] Entrada Dadosarray (
-  0 => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
-  'Fields' => 
-  array (
-    0 => 
-    array (
-      'fieldCode' => 'IMPORTADO',
-      'fieldValue' => 1,
-    ),
-  ),
-)
-[14-Jan-2020 01:20:17 America/Sao_Paulo] Entrada Dadosarray (
-  'Fields' => 
-  array (
-    0 => 
-    array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146412',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
     ),
     7 => 
     array (
-    ),
-    8 => 
-    array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
     ),
   ),
 )
-[14-Jan-2020 01:21:41 America/Sao_Paulo] Entrada Dadosarray (
-  0 => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
+[22-Jan-2020 22:04:53 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'IMPORTADO',
-      'fieldValue' => 1,
-    ),
-  ),
-)
-[14-Jan-2020 01:21:42 America/Sao_Paulo] Entrada Dadosarray (
-  'Fields' => 
-  array (
-    0 => 
-    array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146412',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
     ),
     7 => 
     array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
     ),
     8 => 
     array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
     ),
   ),
 )
-[14-Jan-2020 01:22:33 America/Sao_Paulo] Entrada Dadosarray (
-  0 => 
-  array (
-    'fieldCode' => 'IMPORTADO',
-    'fieldValue' => 1,
-  ),
+[22-Jan-2020 22:04:54 America/Sao_Paulo] Entrada Dadosarray (
   'Fields' => 
   array (
     0 => 
     array (
-      'fieldCode' => 'IMPORTADO',
-      'fieldValue' => 1,
-    ),
-  ),
-)
-[14-Jan-2020 01:22:41 America/Sao_Paulo] Entrada Dadosarray (
-  'Fields' => 
-  array (
-    0 => 
-    array (
-      'fieldCode' => 'NOSSO_NUMERO',
-      'fieldValue' => 'X00000000000003',
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146412',
     ),
     1 => 
     array (
-      'fieldCode' => 'TIPO_PROTESTO ',
-      'fieldValue' => 'C',
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
     ),
     2 => 
     array (
-      'fieldCode' => 'PRACA_PROTESTO_IBGE',
-      'fieldValue' => '03550308',
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
     ),
     3 => 
     array (
-      'fieldCode' => 'TIPO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
     ),
     4 => 
     array (
-      'fieldCode' => 'IDENTIFICACAO_DIVIDA_CDA',
-      'fieldValue' => 'MULTA',
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
     ),
     5 => 
     array (
-      'fieldCode' => 'CCB_EMITIDA_POR_CBI',
-      'fieldValue' => 'CCB EMITIDA POR BRADESCO FINAN-07207996000150',
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
     ),
     6 => 
     array (
-      'fieldCode' => 'API/V1/ENVIA_PROTESTO_CERTDOX',
-      'fieldValue' => '',
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
     ),
     7 => 
     array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
     ),
     8 => 
     array (
-      'fieldCode' => 'TP_DOC_DEVEDOR_0',
-      'fieldValue' => '1',
-    ),
-    9 => 
-    array (
-      'fieldCode' => 'DOC_DEVEDOR_0',
-      'fieldValue' => '12345678900',
-    ),
-    10 => 
-    array (
-      'fieldCode' => 'NOME_DEVEDOR_0',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    11 => 
-    array (
-      'fieldCode' => 'CEP_DEVEDOR_0',
-      'fieldValue' => '03345000',
-    ),
-    12 => 
-    array (
-      'fieldCode' => 'ENDERECO_DEVEDOR_0',
-      'fieldValue' => 'AVENIDA PAULISTA',
-    ),
-    13 => 
-    array (
-      'fieldCode' => 'NUMERO_ENDERECO_DEVEDOR_0',
-      'fieldValue' => '1200',
-    ),
-    14 => 
-    array (
-      'fieldCode' => 'COMPLEM_END_DEVEDOR_0',
-      'fieldValue' => 'APTO 10',
-    ),
-    15 => 
-    array (
-      'fieldCode' => 'BAIRRO_DEVEDOR_0',
-      'fieldValue' => 'CENTRO',
-    ),
-    16 => 
-    array (
-      'fieldCode' => 'CIDADE_IBGE_0',
-      'fieldValue' => '3550308',
-    ),
-    17 => 
-    array (
-      'fieldCode' => 'UF_DEVEDOR_0',
-      'fieldValue' => 'SP',
-    ),
-    18 => 
-    array (
-    ),
-    19 => 
-    array (
-      'fieldCode' => 'TP_DOC_CREDOR',
-      'fieldValue' => '1',
-    ),
-    20 => 
-    array (
-      'fieldCode' => 'DOC_CREDOR',
-      'fieldValue' => '12345678900',
-    ),
-    21 => 
-    array (
-      'fieldCode' => 'NOME_CREDOR',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    22 => 
-    array (
-    ),
-    23 => 
-    array (
-      'fieldCode' => 'TP_DOC_CEDENTE',
-      'fieldValue' => '1',
-    ),
-    24 => 
-    array (
-      'fieldCode' => 'DOC_CEDENTE',
-      'fieldValue' => '12345678900',
-    ),
-    25 => 
-    array (
-      'fieldCode' => 'NOME_CEDENTE',
-      'fieldValue' => 'ANTONIO COUTINHO',
-    ),
-    26 => 
-    array (
-    ),
-    27 => 
-    array (
-      'fieldCode' => 'ESPECIE_TITULO',
-      'fieldValue' => 'CBI',
-    ),
-    28 => 
-    array (
-      'fieldCode' => 'NUM_TITULO',
-      'fieldValue' => 'CBI999991',
-    ),
-    29 => 
-    array (
-      'fieldCode' => 'DATA_EMISSAO',
-      'fieldValue' => '20190210',
-    ),
-    30 => 
-    array (
-      'fieldCode' => 'DATA_VENCIMENTO',
-      'fieldValue' => '20190219',
-    ),
-    31 => 
-    array (
-      'fieldCode' => 'VALOR_TITULO',
-      'fieldValue' => '2000,45',
-    ),
-    32 => 
-    array (
-      'fieldCode' => 'VALOR_PROTESTADO',
-      'fieldValue' => '2000,45',
-    ),
-    33 => 
-    array (
-    ),
-    34 => 
-    array (
-      'fieldCode' => 'NUMERO_PROTESTO',
-      'fieldValue' => 'GRAF00001',
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
     ),
   ),
 )
-[14-Jan-2020 12:24:58 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
+[22-Jan-2020 22:04:56 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146412',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
 )
-[14-Jan-2020 12:24:58 America/Sao_Paulo] Dados Sessao: array (
+[22-Jan-2020 22:04:58 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146412',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
 )
-[14-Jan-2020 12:42:18 America/Sao_Paulo] PHP Fatal error:  Uncaught InvalidArgumentException: block BLOCK_END_POINT does not exist in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:544
+[22-Jan-2020 22:05:00 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146412',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Falha Tratando CCBS 
+ Contrato:AF000001 Mensagem:Contrato não encontrado Contrato:AR000666 Mensagem:Contrato não encontrado
+',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Falha Tratando CCBS',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'RETORNO_CALLBACK',
+      'fieldValue' => '',
+    ),
+    9 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:05:04 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Não há cessão',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'EXISTE_BUCKET',
+      'fieldValue' => false,
+    ),
+  ),
+)
+[22-Jan-2020 22:05:11 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Arquivo Gravado no Gateway',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'Sorocred_Tempus_282-D.REM',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146661001001.rem","fileName":"Sorocred_Tempus_282-D.REM","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:05:11"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:05:15 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000145711003002.json","fileName":"cessao_23_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:05:15"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:05:16 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Arquivo CNAB Enviado para Gateway',
+    ),
+  ),
+)
+[22-Jan-2020 22:05:17 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Aceite CERC Executado
+Resultado:',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'CESSAO_ACEITA_CERC',
+      'fieldValue' => false,
+    ),
+  ),
+)
+[22-Jan-2020 22:05:38 America/Sao_Paulo] Pegando dados cessão: e643a56f-4a15-480d-9ecd-f5beb67acec6
+[22-Jan-2020 22:05:39 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146429',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'queued',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:06:31 America/Sao_Paulo] Pegando dados cessão: e643a56f-4a15-480d-9ecd-f5beb67acec6
+[22-Jan-2020 22:06:32 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146429',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:06:33 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146429',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:06:35 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146429',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:06:37 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146429',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:06:50 America/Sao_Paulo] Pegando dados cessão: 9d6e7b87-82f2-415d-8258-94e8dbf90209
+[22-Jan-2020 22:06:51 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146431',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'queued',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:07:13 America/Sao_Paulo] Pegando dados cessão: 9d6e7b87-82f2-415d-8258-94e8dbf90209
+[22-Jan-2020 22:07:14 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146431',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:07:15 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146431',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:07:17 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146431',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:07:19 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146431',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:08:40 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146431',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:08:41 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146431',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Falha Tratando CCBS 
+ Contrato:1917131 Mensagem:Contrato não encontrado Contrato:1917194 Mensagem:Contrato não encontrado
+ Contrato:1917747 Mensagem:Contrato não encontrado
+ Contrato:1917822 Mensagem:Contrato não encontrado
+ Contrato:1917871 Mensagem:Contrato não encontrado
+ Contrato:1918007 Mensagem:Contrato não encontrado
+ Contrato:1918112 Mensagem:Contrato não encontrado
+ Contrato:1918205 Mensagem:Contrato não encontrado
+ Contrato:1918356 Mensagem:Contrato não encontrado
+ Contrato:1918444 Mensagem:Contrato não encontrado
+ Contrato:1918691 Mensagem:Contrato não encontrado
+ Contrato:1918774 Mensagem:Contrato não encontrado
+ Contrato:1918812 Mensagem:Contrato não encontrado
+ Contrato:1918864 Mensagem:Contrato não encontrado
+ Contrato:1918982 Mensagem:Contrato não encontrado
+ Contrato:1919010 Mensagem:Contrato não encontrado
+ Contrato:1919186 Mensagem:Contrato não encontrado
+ Contrato:1919210 Mensagem:Contrato não encontrado
+ Contrato:1919223 Mensagem:Contrato não encontrado
+ Contrato:1919262 Mensagem:Contrato não encontrado
+ Contrato:1919413 Mensagem:Contrato não encontrado
+ Contrato:1919550 Mensagem:Contrato não encontrado
+ Contrato:1919623 Mensagem:Contrato não encontrado
+ Contrato:1919699 Mensagem:Contrato não encontrado
+ Contrato:1919715 Mensagem:Contrato não encontrado
+ Contrato:1919775 Mensagem:Contrato não encontrado
+ Contrato:1919789 Mensagem:Contrato não encontrado
+ Contrato:1919820 Mensagem:Contrato não encontrado
+ Contrato:1919822 Mensagem:Contrato não encontrado
+ Contrato:1919835 Mensagem:Contrato não encontrado
+ Contrato:1919864 Mensagem:Contrato não encontrado
+ Contrato:1919866 Mensagem:Contrato não encontrado
+ Contrato:1919892 Mensagem:Contrato não encontrado
+ Contrato:1919924 Mensagem:Contrato não encontrado
+ Contrato:1919930 Mensagem:Contrato não encontrado
+ Contrato:1919981 Mensagem:Contrato não encontrado
+ Contrato:1920006 Mensagem:Contrato não encontrado
+ Contrato:1920021 Mensagem:Contrato não encontrado
+ Contrato:1920026 Mensagem:Contrato não encontrado
+ Contrato:1920044 Mensagem:Contrato não encontrado
+ Contrato:1920050 Mensagem:Contrato não encontrado
+ Contrato:1920052 Mensagem:Contrato não encontrado
+ Contrato:1920072 Mensagem:Contrato não encontrado
+ Contrato:1920074 Mensagem:Contrato não encontrado
+ Contrato:1920089 Mensagem:Contrato não encontrado
+ Contrato:1920098 Mensagem:Contrato não encontrado
+ Contrato:1920109 Mensagem:Contrato não encontrado
+ Contrato:1920113 Mensagem:Contrato não encontrado
+ Contrato:1920120 Mensagem:Contrato não encontrado
+ Contrato:1920125 Mensagem:Contrato não encontrado
+ Contrato:1920137 Mensagem:Contrato não encontrado
+ Contrato:1920148 Mensagem:Contrato não encontrado
+ Contrato:1920162 Mensagem:Contrato não encontrado
+ Contrato:1920178 Mensagem:Contrato não encontrado
+ Contrato:1920193 Mensagem:Contrato não encontrado
+ Contrato:1920197 Mensagem:Contrato não encontrado
+ Contrato:1920198 Mensagem:Contrato não encontrado
+ Contrato:1920199 Mensagem:Contrato não encontrado
+ Contrato:1920207 Mensagem:Contrato não encontrado
+ Contrato:1920219 Mensagem:Contrato não encontrado
+ Contrato:1920223 Mensagem:Contrato não encontrado
+ Contrato:1920229 Mensagem:Contrato não encontrado
+ Contrato:1920245 Mensagem:Contrato não encontrado
+ Contrato:1920252 Mensagem:Contrato não encontrado
+ Contrato:1920269 Mensagem:Contrato não encontrado
+ Contrato:1920277 Mensagem:Contrato não encontrado
+ Contrato:1920291 Mensagem:Contrato não encontrado
+ Contrato:1920295 Mensagem:Contrato não encontrado
+ Contrato:1920382 Mensagem:Contrato não encontrado
+ Contrato:1920407 Mensagem:Contrato não encontrado
+ Contrato:1920415 Mensagem:Contrato não encontrado
+ Contrato:1920440 Mensagem:Contrato não encontrado
+ Contrato:1920445 Mensagem:Contrato não encontrado
+ Contrato:1920456 Mensagem:Contrato não encontrado
+ Contrato:1920487 Mensagem:Contrato não encontrado
+ Contrato:1920492 Mensagem:Contrato não encontrado
+ Contrato:1920505 Mensagem:Contrato não encontrado
+ Contrato:1920507 Mensagem:Contrato não encontrado
+ Contrato:1920532 Mensagem:Contrato não encontrado
+ Contrato:1920535 Mensagem:Contrato não encontrado
+ Contrato:1920576 Mensagem:Contrato não encontrado
+ Contrato:1920577 Mensagem:Contrato não encontrado
+ Contrato:1920590 Mensagem:Contrato não encontrado
+ Contrato:1920607 Mensagem:Contrato não encontrado
+ Contrato:1920621 Mensagem:Contrato não encontrado
+ Contrato:1920626 Mensagem:Contrato não encontrado
+ Contrato:1920634 Mensagem:Contrato não encontrado
+ Contrato:1920643 Mensagem:Contrato não encontrado
+ Contrato:1920661 Mensagem:Contrato não encontrado
+ Contrato:1920663 Mensagem:Contrato não encontrado
+ Contrato:1920664 Mensagem:Contrato não encontrado
+ Contrato:1920684 Mensagem:Contrato não encontrado
+ Contrato:1920685 Mensagem:Contrato não encontrado
+ Contrato:1920687 Mensagem:Contrato não encontrado
+ Contrato:1920691 Mensagem:Contrato não encontrado
+ Contrato:1920703 Mensagem:Contrato não encontrado
+ Contrato:1920744 Mensagem:Contrato não encontrado
+ Contrato:1920757 Mensagem:Contrato não encontrado
+ Contrato:1920768 Mensagem:Contrato não encontrado
+ Contrato:1920790 Mensagem:Contrato não encontrado
+ Contrato:1920798 Mensagem:Contrato não encontrado
+ Contrato:1920810 Mensagem:Contrato não encontrado
+ Contrato:1920812 Mensagem:Contrato não encontrado
+ Contrato:1920814 Mensagem:Contrato não encontrado
+ Contrato:1920851 Mensagem:Contrato não encontrado
+ Contrato:1920863 Mensagem:Contrato não encontrado
+ Contrato:1920924 Mensagem:Contrato não encontrado
+ Contrato:1920959 Mensagem:Contrato não encontrado
+ Contrato:1920986 Mensagem:Contrato não encontrado
+ Contrato:1921009 Mensagem:Contrato não encontrado
+ Contrato:1921019 Mensagem:Contrato não encontrado
+ Contrato:1921042 Mensagem:Contrato não encontrado
+ Contrato:1921047 Mensagem:Contrato não encontrado
+ Contrato:1921063 Mensagem:Contrato não encontrado
+ Contrato:1921076 Mensagem:Contrato não encontrado
+ Contrato:1921082 Mensagem:Contrato não encontrado
+ Contrato:1921194 Mensagem:Contrato não encontrado
+ Contrato:1921208 Mensagem:Contrato não encontrado
+ Contrato:1921212 Mensagem:Contrato não encontrado
+ Contrato:1921246 Mensagem:Contrato não encontrado
+ Contrato:1921272 Mensagem:Contrato não encontrado
+ Contrato:1921335 Mensagem:Contrato não encontrado
+ Contrato:1921352 Mensagem:Contrato não encontrado
+ Contrato:1921402 Mensagem:Contrato não encontrado
+ Contrato:1921409 Mensagem:Contrato não encontrado
+ Contrato:1921439 Mensagem:Contrato não encontrado
+ Contrato:1921452 Mensagem:Contrato não encontrado
+ Contrato:1921477 Mensagem:Contrato não encontrado
+ Contrato:1921501 Mensagem:Contrato não encontrado
+ Contrato:1921540 Mensagem:Contrato não encontrado
+ Contrato:1921576 Mensagem:Contrato não encontrado
+ Contrato:1921592 Mensagem:Contrato não encontrado
+ Contrato:1921615 Mensagem:Contrato não encontrado
+ Contrato:1921618 Mensagem:Contrato não encontrado
+ Contrato:1921623 Mensagem:Contrato não encontrado
+ Contrato:1921658 Mensagem:Contrato não encontrado
+ Contrato:1921707 Mensagem:Contrato não encontrado
+ Contrato:1921753 Mensagem:Contrato não encontrado
+ Contrato:1921765 Mensagem:Contrato não encontrado
+ Contrato:1921771 Mensagem:Contrato não encontrado
+ Contrato:1921805 Mensagem:Contrato não encontrado
+ Contrato:1921810 Mensagem:Contrato não encontrado
+ Contrato:1921824 Mensagem:Contrato não encontrado
+ Contrato:1921854 Mensagem:Contrato não encontrado
+ Contrato:1921862 Mensagem:Contrato não encontrado
+ Contrato:1921885 Mensagem:Contrato não encontrado
+ Contrato:1921936 Mensagem:Contrato não encontrado
+ Contrato:1921937 Mensagem:Contrato não encontrado
+ Contrato:1921991 Mensagem:Contrato não encontrado
+ Contrato:1921999 Mensagem:Contrato não encontrado
+ Contrato:1922028 Mensagem:Contrato não encontrado
+ Contrato:1922076 Mensagem:Contrato não encontrado
+ Contrato:1922082 Mensagem:Contrato não encontrado
+ Contrato:1922086 Mensagem:Contrato não encontrado
+ Contrato:1922091 Mensagem:Contrato não encontrado
+ Contrato:1922107 Mensagem:Contrato não encontrado
+ Contrato:1922120 Mensagem:Contrato não encontrado
+ Contrato:1922142 Mensagem:Contrato não encontrado
+ Contrato:1922208 Mensagem:Contrato não encontrado
+ Contrato:1922225 Mensagem:Contrato não encontrado
+ Contrato:1922494 Mensagem:Contrato não encontrado
+',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Falha Tratando CCBS',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'RETORNO_CALLBACK',
+      'fieldValue' => '',
+    ),
+    9 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:08:59 America/Sao_Paulo] Pegando dados cessão: f876e26d-45f5-40d2-b2aa-12598bb6d16a
+[22-Jan-2020 22:09:00 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146434',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'queued',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:09:47 America/Sao_Paulo] Pegando dados cessão: f876e26d-45f5-40d2-b2aa-12598bb6d16a
+[22-Jan-2020 22:09:47 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146434',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:09:48 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146434',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:09:50 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146434',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:09:52 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146434',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:09:54 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146434',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:09:57 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146434',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Falha Tratando CCBS 
+ Contrato: Mensagem:Contrato não encontrado',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Falha Tratando CCBS',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'RETORNO_CALLBACK',
+      'fieldValue' => '',
+    ),
+    9 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:10:16 America/Sao_Paulo] Pegando dados cessão: 719f5a88-5e30-4f14-8ec9-34315b230378
+[22-Jan-2020 22:10:17 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146435',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'queued',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:10:45 America/Sao_Paulo] Pegando dados cessão: 719f5a88-5e30-4f14-8ec9-34315b230378
+[22-Jan-2020 22:10:45 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146435',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:10:47 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146435',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:10:49 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146435',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:10:51 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146435',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:10:53 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146435',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:10:55 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146435',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Falha Tratando CCBS 
+ Contrato:0120200000 Mensagem:Contrato não encontrado',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Falha Tratando CCBS',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'RETORNO_CALLBACK',
+      'fieldValue' => '',
+    ),
+    9 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:11:53 America/Sao_Paulo] Pegando dados cessão: 02899440-2b2f-4553-ab49-570cbb5d6eed
+[22-Jan-2020 22:11:54 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146436',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'queued',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:12:29 America/Sao_Paulo] Pegando dados cessão: 02899440-2b2f-4553-ab49-570cbb5d6eed
+[22-Jan-2020 22:12:30 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146436',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:12:31 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146436',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:12:33 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146436',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:12:35 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146436',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:12:37 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146436',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:12:40 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146436',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Falha Tratando CCBS 
+ Contrato:AF000001 Mensagem:Contrato não encontrado Contrato:AR000666 Mensagem:Contrato não encontrado
+',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Falha Tratando CCBS',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'RETORNO_CALLBACK',
+      'fieldValue' => '',
+    ),
+    9 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:12:52 America/Sao_Paulo] Pegando dados cessão: 0d922af3-f896-46fe-b77a-e5c87b957bb7
+[22-Jan-2020 22:12:53 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146437',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'queued',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Cessão Verificada',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:13:42 America/Sao_Paulo] Pegando dados cessão: 0d922af3-f896-46fe-b77a-e5c87b957bb7
+[22-Jan-2020 22:13:42 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146437',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Verificando Signatarios',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:13:43 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146437',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:13:45 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146437',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:13:47 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146437',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Processando Cessão',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:13:50 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146437',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Resultado Callback ',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'processing',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:13:51 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'caseNum',
+      'fieldValue' => '146437',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'procId',
+      'fieldValue' => '125',
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'stepId',
+      'fieldValue' => '2',
+    ),
+    3 => 
+    array (
+      'fieldCode' => 'CESSION_POSTS',
+      'fieldValue' => 'Falha Tratando CCBS 
+ Contrato:AF000001 Mensagem:Contrato não encontrado Contrato:AR000666 Mensagem:Contrato não encontrado
+',
+    ),
+    4 => 
+    array (
+      'fieldCode' => 'CESSION_POST',
+      'fieldValue' => 'Falha Tratando CCBS',
+    ),
+    5 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_TRANSFEREE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"b3f31da2-7d50-41a3-9db2-bad286f426de","SIGNATARIO_NOME":"Teste Marcelo","ASSINADO":false}]',
+    ),
+    6 => 
+    array (
+      'fieldCode' => 'SIGNATARIOS_ENDORSEE',
+      'fieldValue' => '[{"CHAVE_ASSINATURA":"f3c84f6d-6760-4219-b52e-ed36c76ced7d","SIGNATARIO_NOME":"Marcelo masculino Mosczynski","ASSINADO":false}]',
+    ),
+    7 => 
+    array (
+      'fieldCode' => 'CESSION_STATUS',
+      'fieldValue' => 'reject',
+    ),
+    8 => 
+    array (
+      'fieldCode' => 'RETORNO_CALLBACK',
+      'fieldValue' => '',
+    ),
+    9 => 
+    array (
+      'fieldCode' => 'api/v1/cessionchange',
+      'fieldValue' => '',
+    ),
+  ),
+)
+[22-Jan-2020 22:44:01 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146659002701.json","fileName":"ARQUIVO_LIQUIDACAO_CERC.json.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:44:01"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:44:52 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146659002702.json","fileName":"ARQUIVO_LIQUIDACAO_CERC.json.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:44:52"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:45:38 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146659002702.json","fileName":"ARQUIVO_LIQUIDACAO_CERC.json.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:45:38"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:51:23 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO.csv',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146662001001.csv","fileName":"RELATORIO.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:51:23"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:52:49 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146662002701.json","fileName":"ARQUIVO_LIQUIDACAO_CERC.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:52:49"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:53:45 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO.csv',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146663001001.csv","fileName":"RELATORIO.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:53:45"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:53:54 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146663002701.json","fileName":"ARQUIVO_LIQUIDACAO_CERC.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:53:54"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:56:52 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO.csv',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146664001001.csv","fileName":"RELATORIO.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:56:52"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:57:07 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146664002701.json","fileName":"ARQUIVO_LIQUIDACAO_CERC.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:57:07"}',
+    ),
+  ),
+)
+[22-Jan-2020 22:58:44 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO.csv',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146665001001.csv","fileName":"RELATORIO.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 22:58:44"}',
+    ),
+  ),
+)
+[22-Jan-2020 23:00:12 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146665002701.json","fileName":"ARQUIVO_LIQUIDACAO_CERC.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 23:00:12"}',
+    ),
+  ),
+)
+[22-Jan-2020 23:46:11 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO.csv',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146666001001.csv","fileName":"RELATORIO.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 23:46:11"}',
+    ),
+  ),
+)
+[22-Jan-2020 23:46:29 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146666002701.json","fileName":"RELATORIO.csv_CERC.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-22 23:46:29"}',
+    ),
+  ),
+)
+[23-Jan-2020 00:10:27 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO.csv',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146667001001.csv","fileName":"RELATORIO.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-23 00:10:27"}',
+    ),
+  ),
+)
+[23-Jan-2020 00:11:41 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146667002701.json","fileName":"RELATORIO.csv_CERC.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-23 00:11:41"}',
+    ),
+  ),
+)
+[23-Jan-2020 00:15:02 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO.csv',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146668001001.csv","fileName":"RELATORIO.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-23 00:15:02"}',
+    ),
+  ),
+)
+[23-Jan-2020 00:15:10 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146668002701.json","fileName":"RELATORIO.csv_CERC.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-23 00:15:10"}',
+    ),
+  ),
+)
+[23-Jan-2020 00:16:40 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO.csv',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146669001001.csv","fileName":"RELATORIO.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-23 00:16:40"}',
+    ),
+  ),
+)
+[23-Jan-2020 00:16:48 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146669002701.json","fileName":"RELATORIO.csv_CERC.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-23 00:16:48"}',
+    ),
+  ),
+)
+[23-Jan-2020 12:00:48 America/Sao_Paulo] PHP Fatal error:  Uncaught InvalidArgumentException: file E:\desenvolvimento\PHPSistemas\Process\assets/templates/t_gateway_upload_liquidacao.html does not exist in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:195
 Stack trace:
-#0 E:\desenvolvimento\PHPSistemas\Process\pages\swagger.inc(28): raelgc\view\Template->block('BLOCK_END_POINT')
-#1 E:\desenvolvimento\PHPSistemas\Process\index.php(1805): include('E:\\desenvolvime...')
-#2 {main}
-  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 544
-[14-Jan-2020 13:06:46 America/Sao_Paulo] Rota requer autenticacao:  array (
-  'page' => 'pages/log.inc',
-  'funcao' => '',
+#0 E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php(124): raelgc\view\Template->loadfile('PAGECONTENT', 'E:\\desenvolvime...')
+#1 E:\desenvolvimento\PHPSistemas\Process\pages\gateway_upload_atualizacao.inc(23): raelgc\view\Template->addFile('PAGECONTENT', 'E:\\desenvolvime...')
+#2 E:\desenvolvimento\PHPSistemas\Process\index.php(1872): include('E:\\desenvolvime...')
+#3 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 195
+[23-Jan-2020 12:07:06 America/Sao_Paulo] Dados Erro: Erro no WebService: 14 - Passo não encontrado - LIQUIDACAO_ENTRADAArquivo:  Função: FuncCaseSave End. Remoto: ::1
+[23-Jan-2020 12:08:18 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'NOME_ARQUIVO',
+      'fieldValue' => 'RELATORIO - Copy.csv',
+    ),
+    1 => 
+    array (
+      'fieldCode' => 'TIPO_ARQUIVO',
+      'fieldValue' => 2,
+    ),
+    2 => 
+    array (
+      'fieldCode' => 'ARQUIVO_CNAB',
+      'fieldValue' => '{"fileNameStorage":"0000146671001001.csv","fileName":"RELATORIO - Copy.csv","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-23 12:08:18"}',
+    ),
+  ),
 )
-[14-Jan-2020 13:06:46 America/Sao_Paulo] Dados Sessao: array (
+[23-Jan-2020 12:09:22 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_CESSAO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146671002701.json","fileName":"RELATORIO - Copy.csv_CERC.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-23 12:09:22"}',
+    ),
+  ),
 )
-[14-Jan-2020 13:06:52 America/Sao_Paulo] PHP Fatal error:  Uncaught InvalidArgumentException: block BLOCK_END_POINT does not exist in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:544
-Stack trace:
-#0 E:\desenvolvimento\PHPSistemas\Process\pages\swagger.inc(28): raelgc\view\Template->block('BLOCK_END_POINT')
-#1 E:\desenvolvimento\PHPSistemas\Process\index.php(1805): include('E:\\desenvolvime...')
-#2 {main}
-  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 544
-[14-Jan-2020 13:18:56 America/Sao_Paulo] Rota requer autenticacao: Process array (
+[23-Jan-2020 12:44:48 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146669003001.json","fileName":"cessao_undefined_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-23 12:44:48"}',
+    ),
+  ),
+)
+[23-Jan-2020 12:44:49 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Atualização CERC Executado
+Resultado:',
+    ),
+  ),
+)
+[23-Jan-2020 12:44:50 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+  ),
+)
+[23-Jan-2020 13:09:43 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'JSON_RETORNO_CERC',
+      'fieldValue' => '{"fileNameStorage":"0000146669003002.json","fileName":"cessao_undefined_dados_retorno_cerc.json","descricao":"","versao":"","username":"","userid":0,"data":"2020-01-23 13:09:43"}',
+    ),
+  ),
+)
+[23-Jan-2020 13:09:44 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Atualização CERC Executado
+Resultado:',
+    ),
+  ),
+)
+[23-Jan-2020 13:09:45 America/Sao_Paulo] Entrada Dadosarray (
+  'Fields' => 
+  array (
+    0 => 
+    array (
+      'fieldCode' => 'LOG_OPERACOES',
+      'fieldValue' => 'Processada',
+    ),
+  ),
+)
+[23-Jan-2020 16:35:55 America/Sao_Paulo] Rota requer autenticacao: Process array (
   'page' => 'logon.php',
   'funcao' => '',
 )
-[14-Jan-2020 13:18:56 America/Sao_Paulo] Dados Sessao: array (
+[23-Jan-2020 16:35:56 America/Sao_Paulo] Dados Sessao: array (
 )
-[14-Jan-2020 14:54:27 America/Sao_Paulo] Erro acesso ao DB 
-[14-Jan-2020 14:54:27 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente.
-
-[14-Jan-2020 14:54:27 America/Sao_Paulo] Rota requer autenticacao:  array (
+[23-Jan-2020 16:35:57 America/Sao_Paulo] Rota requer autenticacao: Process array (
+  'page' => 'logon.php',
+  'funcao' => '',
+)
+[23-Jan-2020 16:35:57 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 17:08:22 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
+  'page' => 'api/checkstatus.inc',
+)
+[23-Jan-2020 17:08:22 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 17:09:17 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[23-Jan-2020 17:09:17 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 17:56:42 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
+  'page' => 'api/checkstatus.inc',
+)
+[23-Jan-2020 17:56:42 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 17:57:27 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[23-Jan-2020 17:57:27 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 17:57:51 America/Sao_Paulo] Falha Logon bronze
+[23-Jan-2020 17:57:59 America/Sao_Paulo] Falha Logon bronze
+[23-Jan-2020 17:58:34 America/Sao_Paulo] Rota requer autenticacao:  array (
   'page' => 'pages/log.inc',
   'funcao' => '',
 )
-[14-Jan-2020 14:54:27 America/Sao_Paulo] Dados Sessao: array (
+[23-Jan-2020 17:58:34 America/Sao_Paulo] Dados Sessao: array (
 )
-[14-Jan-2020 14:54:33 America/Sao_Paulo] Erro acesso ao DB 
-[14-Jan-2020 14:54:33 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente.
-
-[14-Jan-2020 14:54:34 America/Sao_Paulo] Erro acesso ao DB 
-[14-Jan-2020 14:54:34 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente.
-
-[14-Jan-2020 14:55:27 America/Sao_Paulo] Erro acesso ao DB 
-[14-Jan-2020 14:55:28 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente.
-
-[14-Jan-2020 14:55:39 America/Sao_Paulo] Erro acesso ao DB 
-[14-Jan-2020 14:55:39 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente.
-
-[14-Jan-2020 14:55:57 America/Sao_Paulo] Erro acesso ao DB 
-[14-Jan-2020 14:55:57 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente.
-
-[14-Jan-2020 14:56:53 America/Sao_Paulo] Rota requer autenticacao: api/checkstatus array (
-  'page' => 'api/checkstatus.inc',
+[23-Jan-2020 17:58:35 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
 )
-[14-Jan-2020 14:56:53 America/Sao_Paulo] Dados Sessao: array (
+[23-Jan-2020 17:58:35 America/Sao_Paulo] Dados Sessao: array (
 )
-[14-Jan-2020 15:25:45 America/Sao_Paulo] Erro acesso ao DB 
-[14-Jan-2020 15:25:45 America/Sao_Paulo] Erro de Conexao: 2002 - Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente.
-
+[23-Jan-2020 17:59:46 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[23-Jan-2020 17:59:46 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 18:01:05 America/Sao_Paulo] Rota requer autenticacao: index.php?XDEBUG_SESSION_START=netbeans-xdebug array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[23-Jan-2020 18:01:05 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 18:18:49 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[23-Jan-2020 18:18:49 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 18:18:50 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[23-Jan-2020 18:18:50 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 18:40:33 America/Sao_Paulo] Erro acesso ao DB 
+[23-Jan-2020 18:40:33 America/Sao_Paulo] Erro de Conexao: 1049 - Unknown database 'tribanco_teste'
+[23-Jan-2020 18:47:38 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[23-Jan-2020 18:47:38 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 19:18:10 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[23-Jan-2020 19:18:10 America/Sao_Paulo] Dados Sessao: array (
+)
+[23-Jan-2020 19:26:21 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[23-Jan-2020 19:26:21 America/Sao_Paulo] Dados Sessao: array (
+)
+[24-Jan-2020 01:09:27 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[24-Jan-2020 01:09:27 America/Sao_Paulo] Dados Sessao: array (
+)
+[24-Jan-2020 16:58:26 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[24-Jan-2020 16:58:26 America/Sao_Paulo] Dados Sessao: array (
+)
+[25-Jan-2020 11:59:18 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[25-Jan-2020 11:59:18 America/Sao_Paulo] Dados Sessao: array (
+)
+[25-Jan-2020 13:13:52 America/Sao_Paulo] PHP Fatal error:  Uncaught InvalidArgumentException: file E:\desenvolvimento\PHPSistemas\Process\assets/templates/localhost does not exist in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:195
+Stack trace:
+#0 E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php(124): raelgc\view\Template->loadfile('FORM_FIELDS', 'E:\\desenvolvime...')
+#1 E:\desenvolvimento\PHPSistemas\Process\include\queuefilter.inc(28): raelgc\view\Template->addFile('FORM_FIELDS', 'E:\\desenvolvime...')
+#2 E:\desenvolvimento\PHPSistemas\Process\index.php(1874): include('E:\\desenvolvime...')
+#3 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 195
+[25-Jan-2020 19:32:36 America/Sao_Paulo] Rota requer autenticacao:  array (
+  'page' => 'pages/log.inc',
+  'funcao' => '',
+)
+[25-Jan-2020 19:32:36 America/Sao_Paulo] Dados Sessao: array (
+)
+[26-Jan-2020 11:18:02 America/Sao_Paulo] Rota requer autenticacao: logon array (
+  'page' => 'pages/logon.inc',
+  'funcao' => '',
+)
+[26-Jan-2020 11:18:02 America/Sao_Paulo] Dados Sessao: array (
+)
+[26-Jan-2020 11:18:08 America/Sao_Paulo] Falha Logon mmoscz
+[26-Jan-2020 16:08:32 America/Sao_Paulo] PHP Fatal error:  Uncaught InvalidArgumentException: file E:\desenvolvimento\PHPSistemas\Process\assets/templates/t_relatorios_item.html does not exist in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:195
+Stack trace:
+#0 E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php(124): raelgc\view\Template->loadfile('RELATORIO_ITEM', 'E:\\desenvolvime...')
+#1 E:\desenvolvimento\PHPSistemas\Process\pages\relatorios.inc(35): raelgc\view\Template->addFile('RELATORIO_ITEM', 'E:\\desenvolvime...')
+#2 E:\desenvolvimento\PHPSistemas\Process\index.php(1880): include('E:\\desenvolvime...')
+#3 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 195
+[26-Jan-2020 16:09:05 America/Sao_Paulo] PHP Fatal error:  Uncaught InvalidArgumentException: block BLOCO_RELATORIO does not exist in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:545
+Stack trace:
+#0 E:\desenvolvimento\PHPSistemas\Process\pages\relatorios.inc(166): raelgc\view\Template->block('BLOCO_RELATORIO')
+#1 E:\desenvolvimento\PHPSistemas\Process\index.php(1880): include('E:\\desenvolvime...')
+#2 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 545
+[26-Jan-2020 16:10:52 America/Sao_Paulo] PHP Fatal error:  Uncaught InvalidArgumentException: block BLOCO_RELATORIO_1 does not exist in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php:545
+Stack trace:
+#0 E:\desenvolvimento\PHPSistemas\Process\pages\relatorios.inc(167): raelgc\view\Template->block('BLOCO_RELATORIO...')
+#1 E:\desenvolvimento\PHPSistemas\Process\index.php(1880): include('E:\\desenvolvime...')
+#2 {main}
+  thrown in E:\desenvolvimento\PHPSistemas\Process\vendor\lib\raelgc\view\template.php on line 545

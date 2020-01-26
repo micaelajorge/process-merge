@@ -18,7 +18,7 @@ include_once(FILES_ROOT . "includes_ws/wsuser.inc");
 // </editor-fold>	
 
 /**
- * Rota: countbyfield
+ * @rota countbyfield
  * 
  * @global type $fieldId
  * @global type $ProcId
@@ -112,7 +112,7 @@ function notificacoesLidas()
 }
 
 /*
- * ROTA: api/casobloqueado/
+ * @rota api/casobloqueado/
  */
 function casoBloqueado()
 {

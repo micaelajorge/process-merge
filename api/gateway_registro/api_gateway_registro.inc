@@ -17,7 +17,7 @@ require_once(FILES_ROOT . "includes_ws/wserror.inc");
 // </editor-fold>
 
 /**
- * ROTA: api/v1/envio_documento_registro
+ * @rota api/v1/envio_documento_registro
  */
 function api_gateway_registro_envio_documento_registro_v1()
 {

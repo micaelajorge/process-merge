@@ -5,7 +5,7 @@
   Data Criação 17/12/2018
   Sistema: Process_XAMPP
 
-  ROTA: editcase_webcaptura
+  @rota editcase_webcaptura
  */
 include_once(FILES_ROOT . "include/resource01.php");
 

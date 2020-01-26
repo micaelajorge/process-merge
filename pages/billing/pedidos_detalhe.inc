@@ -4,7 +4,7 @@ Criação: Natan Moraes
 Data Criação 08/12/2019
 Sistema: Process_XAMPP
  * 
- * ROTA: pedidos_detalhe
+ * @rota pedidos_detalhe
 */
 
 include_once(FILES_ROOT . "include/common.php");

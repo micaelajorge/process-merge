@@ -12,13 +12,19 @@
   // </editor-fold>
 
   /**
- * ROTA: apicaselist
- * ROTA: apo/apicaselist
- * ROTA: api/v1/apicaselist
+ * @rota apicaselist
+ * @rota apo/apicaselist
+ * @rota api/v1/apicaselist
  * 
  * @return type
  */
 
+/**
+ * @rota /api/v1/caselist
+ * 
+ * @global type $userdef
+ * @return type
+ */
 function apiPegaListaCasos()
 {
     global $userdef;
@@ -77,6 +83,14 @@ function apiPegaListaCasos()
     echo $jDados;
 }
 
+/**
+ * 
+ * @global type $userdef
+ * @param type $ProcSource
+ * @param type $StepId
+ * @param type $Filtros
+ * @return type
+ */
 function listaCasosApi($ProcSource, $StepId, $Filtros = "")
 {
     global $userdef;

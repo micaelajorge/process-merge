@@ -85,8 +85,8 @@ function apigetcase()
 }
 
 /**
- * ROTA: "api/apigetcasedata"
- * ROTA: "api/v1/getcasedata"
+ * @rota "api/apigetcasedata"
+ * @rota "api/v1/getcasedata"
  */
 function apigetcasedata_v2()
 {
@@ -130,8 +130,8 @@ function apigetcasedata_v2()
 }
 
 /**
- * ROTA: "api/v1/apigetcasedata"
- * ROTA: "api/v1/getcasedata"
+ * @rota "api/v1/apigetcasedata"
+ * @rota "api/v1/getcasedata"
  */
 function apigetcasedata_v1()
 {

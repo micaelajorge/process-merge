@@ -327,6 +327,8 @@ switch ($srvAccess) {
 //                $EXTERNALDB = "securities_start";
                 $BPMDB = "processteste";
                 $EXTERNALDB = "processteste";
+//                $BPMDB = "protestos_poc";
+//                $EXTERNALDB = "protestos_poc";
 //                $BPMDB = "process-new";
 //                $EXTERNALDB = "process-new";
                 break;
@@ -336,6 +338,7 @@ switch ($srvAccess) {
         define("TEMPLATE_CNAB_UPLOAD", "t_securities_upload_retorno.html");
 //        define("TEMPLATE_CNAB_UPLOAD", "t_securities_upload_cnab_oferta.html");
         
+        define("APLICAR_PERMISSAO_RELATORIOS", true);
         define("FILES_FOLDER", "\\");
         define("SITE_ROOT", "http://$srvAccess");
         define("SITE_FOLDER_COMPLEMENT", "");
@@ -1722,6 +1725,11 @@ switch ($srvAccess) {
     default:
         echo "Não Encontrado: '$srvAccess', Redirect '$redirectUrl'";
         break;
+}
+
+if (!defined("APLICAR_PERMISSAO_RELATORIOS"))
+{
+    define("APLICAR_PERMISSAO_RELATORIOS", false);
 }
 
 if (!defined("DINAMIC_TWAIN_CONFIG")) {

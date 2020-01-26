@@ -13,7 +13,6 @@ if (!empty($Direct)) {
 
 $userdef = $_SESSION["userdef"];
 // </editor-fold>
-
 // <editor-fold defaultstate="collapsed" desc="Define ação que seré feita no caso">
 // Se for visualizacao de Caso de Campo, esconde os itens
 $mostraNavegacao = true;
@@ -105,7 +104,6 @@ $t_body->SIDEBAR_HIDE = "hide";
 $t_body->STYLE_ENTRE_LINHAS = $espacoEntreLinhas;
 $t_body->TITULO_PAGE = "Relatórios | Process";
 // </editor-fold>
-
 // <editor-fold defaultstate="collapsed" desc="Processos">
 
 
@@ -114,7 +112,26 @@ $processosUsuario = $_SESSION["S_Processos"];
 // Gera a Lista de Processos do Usuário
 $listaProcessos = implode(",", array_column($processosUsuario, "ProcId"));
 
-$SQL = "select procdef.procid, procname, stepdef.pageaction, proccod, stepname, stepcod, OrderDesc from procdef, stepdef where procdef.ProcId in ($listaProcessos) and procdef.procid = stepdef.procid and (stepdef.stepcod like 'relatorio%' or stepdef.steptype = 'R') order by ProcName";
+if (APLICAR_PERMISSAO_RELATORIOS) {
+    $SQL = " select "
+            . "procdef.procid, "
+            . "procname, "
+            . "stepdef.pageaction, "
+            . "proccod, "
+            . "stepname, "
+            . "stepcod, "
+            . "OrderDesc "
+            . "from "
+            . "stepaddresses, "
+            . "procdef, "
+            . "stepdef "
+            . "where "
+            . "procdef.ProcId in ($listaProcessos) and procdef.procid = stepdef.procid and (stepdef.stepcod like 'relatorio%' or stepdef.steptype = 'R') and stepaddresses.ProcId = procdef.procid and stepaddresses.stepId = stepdef.StepId and "
+            . "(( stepaddresses.GroupId in ($userdef->usergroups) and  stepaddresses.GRPFLD = 'G') or ( stepaddresses.GroupId in ($userdef->UserId_Process) and  stepaddresses.GRPFLD = 'U'))"
+            . " order by ProcName ";
+} else {
+    $SQL = "select procdef.procid, procname, stepdef.pageaction, proccod, stepname, stepcod, OrderDesc from procdef, stepdef where procdef.ProcId in ($listaProcessos) and procdef.procid = stepdef.procid and (stepdef.stepcod like 'relatorio%' or stepdef.steptype = 'R') order by ProcName";
+}
 $Query = mysqli_query($connect, $SQL);
 $aCampos = mysqli_fetch_all($Query, MYSQLI_ASSOC);
 
@@ -127,28 +144,26 @@ foreach ($aCampos as $campo) {
     $t_body->PROCCOD = $campo["proccod"];
     $t_body->STEPCOD = $campo["stepcod"];
     $t_body->FIELDSELECTION = $campo["OrderDesc"];
-    if ($campo["pageaction"] != "")
-    {
+    if ($campo["pageaction"] != "") {
         $t_body->PAGINA_RELATORIO = $campo["pageaction"];
-    } else { 
+    } else {
         $t_body->PAGINA_RELATORIO = "relatorio_geral";
     }
-    
+
     $t_body->DATA_INICIO = date("01/m/Y");
-    $t_body->DATA_FIM = date("d/m/Y");   
-        
+    $t_body->DATA_FIM = date("d/m/Y");
+
     /*
-    $passosDoUsuario = PassosDoUsuario($campo["procid"], $userdef->Origem);
-    foreach ($passosDoUsuario as $passo) {
-        $t_body->STEPID = $passo["StepId"];
-        $t_body->STEPNAME = $passo["StepName"];
-        $t_body->block("BLOCK_PASSOS");
-    }
-      */              
+      $passosDoUsuario = PassosDoUsuario($campo["procid"], $userdef->Origem);
+      foreach ($passosDoUsuario as $passo) {
+      $t_body->STEPID = $passo["StepId"];
+      $t_body->STEPNAME = $passo["StepName"];
+      $t_body->block("BLOCK_PASSOS");
+      }
+     */
     $t_body->block("BLOCO_RELATORIO");
 }
 // </editor-fold>
-
 // <editor-fold defaultstate="collapsed" desc="javascript">
 $t_body->ARQUIVO_JS = "validacao.js";
 $t_body->block("BLOCO_JAVASCRIPT");

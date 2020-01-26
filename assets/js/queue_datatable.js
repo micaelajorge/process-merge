@@ -219,12 +219,24 @@ function jsLimparFiltros()
     jsQueueFilter(true);
 }
 
-function jsQueueFilter(clearFilter)
+/**
+ * 
+ * @param {type} clearFilter
+ * @param {type} source_form
+ * @returns {undefined}
+ */
+function jsQueueFilter(clearFilter, source_form)
 {
     var aFiltros = {};
     aFiltros.campos = [];
     $("#extendedNav").addClass("hidden");
-    $("#frmQueueFilter").find("input, select").each(function (indice, item)
+    
+    if (!source_form)
+    {
+        source_form = 'frmQueueFilter-left';
+    }
+    
+    $("#" + source_form).find("input, select").each(function (indice, item)
     {
         tipoCampo = $(item).attr("aria-field-type");
         idCampo = $(item).attr("aria-field-id");

@@ -7,18 +7,31 @@
 
 function jsCarregaFiltrosConsultaBasica()
 {
-   procCode = location.href.replace($("base")[0].baseURI + "consultabasica/", "");
+    if (ProcId === undefined)
+    {
+        procCode = location.href.replace($("base")[0].baseURI + "consultabasica/", "");
+    } else {
+        procCode = ProcId
+    }
+    
     $.get("queuefilters/" + procCode + "/t_consultabasica_form.html/t_queue_filter_custon_1.html", (dadosRetornados) =>
     {
         $("#camposConsulta").html(dadosRetornados);
     });
 }
 
-function jsInicializacaoPagina()
+//function jsInicializacaoPagina()
+//{
+//    jsCarregaFiltrosConsultaBasica();
+//}
+//
+//$(document).ready(function () {
+//    jsInicializacaoPagina();
+//});
+
+if (!Array.isArray(funcoes_final))
 {
-    jsCarregaFiltrosConsultaBasica();
+    var funcoes_final = [];
 }
 
-$(document).ready(function () {
-    jsInicializacaoPagina();
-});
+funcoes_final.push(jsCarregaFiltrosConsultaBasica);

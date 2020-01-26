@@ -49,6 +49,9 @@ $filtro_queue = $procdef->filterQueue;
 if ($procdef->ExendProps != "") {
     $obj_ExtenProps = json_decode($procdef->ExendProps, true);
     $sortSelected = $obj_ExtenProps["queueOrder"];
+    
+    // Verifica a posição do Filtro
+    $filterPosition = $obj_ExtenProps["filterPosition"];
 }
 if ($sortSelected !== "desc")
 {
@@ -121,6 +124,7 @@ foreach ($cabecalhoTabela as $cabecalho) {
 
 $t_body->block("BLOCK_CONTENT");
 
+
 // Adiciona o template complemento da Pagina
 $t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/t_queue_form.html");
 $t_body->block("BLOCK_CONTENT");
@@ -147,6 +151,15 @@ $t_body->addFile("TOOLBAR_LEFT", FILES_ROOT . "assets/templates/master/t_toolbar
 if ($procdef->TipoProc == "CT") {
     //$t_body->addFile("TOPO_PAGINA", FILES_ROOT . "assets/templates/t_busca_campos.html");
 }
+
+if ($filterPosition === "filterTop")
+{
+    $t_body->addFile("BOX_FILTROS", FILES_ROOT . "assets/templates/master/t_box_pesquisa.html");
+    $t_body->ARQUIVO_JS = "consultabasica.js";
+    $t_body->block("BLOCO_JAVASCRIPT");    
+}
+    
+
 
 //$t_body->addFile("FILTROS", FILES_ROOT . "assets/templates/t_auditoria.html");
 // Adiciona o css especifico da página
@@ -184,6 +197,7 @@ $t_body->NAV_HEADER_ICO = "fa $procdef->ProcIcon";
 $t_body->NAV_HEADER_CLASS = "text-warning";
 $t_body->NAV_HEADER_COLOR = "$procdef->ProcColor";
 $t_body->block("BLOCO_NAVEGACAO"); // Inclui na navegação do Site
+
 
 if (is_array($filtro_queue)) {
     $t_body->EXTEND_NAV_HIDDEN = " ";
@@ -256,6 +270,8 @@ $t_body->block("BLOCO_JAVASCRIPT_INSERTS");
 $t_body->ARQUIVO_JS = "dataTables.init.js"; // Incicializacao DataTables
 $t_body->block("BLOCO_JAVASCRIPT");
 
+$t_body->ARQUIVO_JS = "executa_funcoes_final.js";
+$t_body->block("BLOCO_JAVASCRIPT");
 
 $t_body->ARQUIVO_JS = "queue_datatable.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");

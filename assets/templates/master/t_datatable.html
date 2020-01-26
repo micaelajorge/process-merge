@@ -6,42 +6,47 @@
     <div class="box hidden">
         {FILTROS}
     </div>
+    {BOX_FILTROS}    
     <!-- TOOL BAR -->
     {TOOLBAR}      
     <!-- TOOL BAR -->
     <!-- Default box -->
-    <div class="box {CLASS_BOX_DATATABLE} {CLASS_BOX_DATATABLE_HIDE}|default:hidden}" style="height: 100%" id="box-content-datatable"> <!-- TODO: BOOTSTRAP: TAMANHO DA PAGINA QDO CARREGA -->
-        <div class="box-header {CLASS_HEADER_BOX_DATATABLE|default:hidden}">
-        </div>
-        <div class="box-body">            
-            <div id="divTopo">
-                {TOPO_PAGINA}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box {CLASS_BOX_DATATABLE} {CLASS_BOX_DATATABLE_HIDE}|default:hidden}" style="height: 100%" id="box-content-datatable"> <!-- TODO: BOOTSTRAP: TAMANHO DA PAGINA QDO CARREGA -->
+                <div class="box-header {CLASS_HEADER_BOX_DATATABLE|default:hidden}">
+                </div>
+                <div class="box-body">            
+                    <div id="divTopo">
+                        {TOPO_PAGINA}
+                    </div>
+                    <div id="divDataTableWrapper" class="{CLASS_DATATABLE_WRAPPER_HIDE}|default:hidden}" style="height: 100%">
+                        <table id="{nomeDataTable|default:tableData}" class="table table-condensed datatable resposive nowrap" style="{TABLE_WIDTH|default|width:100%}">
+                            <thead class="hidden-xs">
+                                <tr>                            
+                                    <!-- BEGIN BLOCK_CABECALHO_TABELA -->
+                                    <th class="{CLASSE_DISPLAY_CABECALHO}">{TEXTO_CABECALHO}</th>
+                                    <!-- END BLOCK_CABECALHO_TABELA -->
+                                </tr>
+                                <!-- BEGIN BLOCK_CABECALHO_CUBO -->
+                                <tr >
+                                    <!-- BEGIN BLOCK_CABECALHO_TABELA_CUBO -->
+                                    <th colspan="{COLSPAN_CABECALHO}">{TEXTO_CABECALHO}</th>
+                                    <!-- END BLOCK_CABECALHO_TABELA_CUBO -->
+                                </tr>
+                                <!-- END BLOCK_CABECALHO_CUBO -->
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <!--    <div class="box-footer">
+                        </div>-->
+                <!-- /.box-footer-->
+                <div class="loading text-center {SHOW_LOADING|default:hidden}"><i class="fa fa-refresh fa-spin fa-4x"></i> <br>Carregando Dados</div>
             </div>
-            <div id="divDataTableWrapper" class="{CLASS_DATATABLE_WRAPPER_HIDE}|default:hidden}" style="height: 100%">
-                <table id="{nomeDataTable|default:tableData}" class="table table-condensed datatable resposive nowrap" style="{TABLE_WIDTH|default|width:100%}">
-                    <thead class="hidden-xs">
-                        <tr>                            
-                            <!-- BEGIN BLOCK_CABECALHO_TABELA -->
-                            <th class="{CLASSE_DISPLAY_CABECALHO}">{TEXTO_CABECALHO}</th>
-                            <!-- END BLOCK_CABECALHO_TABELA -->
-                        </tr>
-                        <!-- BEGIN BLOCK_CABECALHO_CUBO -->
-                        <tr >
-                            <!-- BEGIN BLOCK_CABECALHO_TABELA_CUBO -->
-                            <th colspan="{COLSPAN_CABECALHO}">{TEXTO_CABECALHO}</th>
-                            <!-- END BLOCK_CABECALHO_TABELA_CUBO -->
-                        </tr>
-                        <!-- END BLOCK_CABECALHO_CUBO -->
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
         </div>
-        <!-- /.box-body -->
-        <!--    <div class="box-footer">
-                </div>-->
-        <!-- /.box-footer-->
-        <div class="loading text-center {SHOW_LOADING|default:hidden}"><i class="fa fa-refresh fa-spin fa-4x"></i> <br>Carregando Dados</div>
     </div>
     <!-- /.box -->
 </section>

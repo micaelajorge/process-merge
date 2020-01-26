@@ -432,7 +432,8 @@ class userdef {
             }
 
             // Se não for usuário de sistema, faz os testes de logon
-            if (!$this->systemUser) {
+            if (!$this->systemUser && APLICAR_POLITICAS_SEGURANCA)
+                {
                 $ultimoLogonOK = $this->testaUltimoLogon($result["lastlogon"]);
                 $validado = $usuarioAtivo && $ultimoLogonOK;
             } else {
@@ -445,7 +446,6 @@ class userdef {
 
             if (!$this->systemUser) {
                 // Verifica se é a primeira senha, ou se o tempo para expiração de troca de senha ocorreu
-
                 $trocarSenhaPrimeiroLogon = $this->testaStartLogon($result["lastAlterPassword"]);
                 $this->startLogon = $trocarSenhaPrimeiroLogon & $campoEmailTokenExiste;
                 if ($this->startLogon) {

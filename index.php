@@ -1771,7 +1771,7 @@ if (!defined("SITE_ALIAS")) {
     define("SITE_ALIAS", SITE_FOLDER);
 }
 
-if (defined("APLICAR_POLITICAS_SEGURANCA")) {
+if (!defined("APLICAR_POLITICAS_SEGURANCA")) {
     define("APLICAR_POLITICAS_SEGURANCA", false);
 }
 

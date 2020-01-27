@@ -51,7 +51,8 @@ class userdef {
         /**
          *  Remove a Sess�o se Existe na Tabela
          */
-        $SQL = " delete from $_TABLE_userlogins where UserId = $this->UserId or token = '$this->ASP_session' or SessionId = '$phpSession'";
+        $SQL = " delete from $_TABLE_userlogins where UserId = $this->UserId or SessionId = '$phpSession'";
+//        $SQL = " delete from $_TABLE_userlogins where UserId = $this->UserId or token = '$this->ASP_session' or SessionId = '$phpSession'";
         $ResultDelete = mysqli_query($connect, $SQL);
 
         if (!$ResultDelete) {

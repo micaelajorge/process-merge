@@ -115,7 +115,7 @@ $processosUsuario = $_SESSION["S_Processos"];
 $listaProcessos = implode(",", array_column($processosUsuario, "ProcId"));
 
 if (APLICAR_PERMISSAO_RELATORIOS) {
-    $SQL = " select "
+    $SQL = " select distinct"
             . "procdef.procid, "
             . "procname, "
             . "stepdef.pageaction, "

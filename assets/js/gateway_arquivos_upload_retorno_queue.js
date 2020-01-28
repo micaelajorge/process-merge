@@ -206,3 +206,14 @@ function jsSecuritiesErroUpload(param1, param2)
     retorno = JSON.parse(param1.response);
     alert("Erro no envio do arquivo \n" + retorno.Error);
 }
+
+function jsFidicSelecionado()
+{
+    let fidicDestino = $("#targetFIDC").val();
+    if (fidicDestino !== "") {
+        createDropZone(fidicDestino);
+        $("#selFileUpLoad").show();        
+    } else {
+        $("#selFileUpLoad").hide();
+    }
+}

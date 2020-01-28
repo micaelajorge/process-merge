@@ -87,7 +87,7 @@ $t_body->block("BLOCO_JAVASCRIPT");
 $t_body->ARQUIVO_JS = "queue.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");
 
-$t_body->ARQUIVO_JS = "gateway_arquivos_upload_oferta_queue.js"; // jsTratamentoDataTable
+$t_body->ARQUIVO_JS = "securities_arquivos_upload_retorno_queue.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");
 
 // Include Drag Drop
@@ -96,7 +96,7 @@ $t_body->block("BLOCO_INCLUDE_FILE_JAVASCRIPT");
 
 // Url para envio do arquivo
 $tokenUpload = calculaToken($userdef->UserName, $userdef->UserEmail, false);
-$urlUpload = "api/v1/gateway_send_file_oferta/$tokenUpload";
+$urlUpload = "api/v1/gateway_send_file_retorno/$tokenUpload";
 
 $t_body->SCRIPT_DATA = "
     function createDropZone(targetFidc)

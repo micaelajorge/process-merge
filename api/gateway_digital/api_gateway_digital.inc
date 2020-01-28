@@ -65,6 +65,8 @@ function envioArquivoOfertaRetorno($procCode, $fieldCode, $stepCode, $campoTipoA
 
         $uploadFile_filename = $_FILES["files"]["name"][0];
 
+        $dadosEntrada = apiTrataDadosEntrada(false);
+        
         $fields = array();
         $fields[] = array("fieldCode" => "$fieldCode", "fieldValue" => $_FILES);
         $fields[] = array("fieldCode" => "NOME_ARQUIVO", "fieldValue" => $uploadFile_filename);
@@ -74,8 +76,7 @@ function envioArquivoOfertaRetorno($procCode, $fieldCode, $stepCode, $campoTipoA
         {
             $fields[] = $campoTipoArquivo;
         }
-        
-
+                
         // Busca o Campo UNIQUE
 
         $camposUniqueClose = PegaCampoUniqueClose($procId);
@@ -89,7 +90,10 @@ function envioArquivoOfertaRetorno($procCode, $fieldCode, $stepCode, $campoTipoA
         // Verfifica se é caso unico
         $numeroCasoExiste = pegaNumerCasoUnicoAberto($procId, $valorCampoUnique);
 
-        $dadosCaso["Fields"] = array();
+        
+        
+//        $dadosCaso["Fields"] = array();
+        $dadosCaso["Fields"] = converteFieldsParaCaseData($dadosEntrada);;
         $camposArquivo = array();
 
         foreach ($fields as $campo) {

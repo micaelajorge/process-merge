@@ -4,13 +4,24 @@
  Sistema: Process_XAMPP
  */
 
-function jsCriaTemplateArquivosOferta(listArquivos, divDestino, templateView, proximaFuncao)
+
+
+/**
+ * 
+ * @param {type} listaLotes
+ * @param {type} divDestino
+ * @param {type} proximaFuncao
+ * @returns {undefined}
+ */
+function jsCriaTemplateLotes(listaLotes, divDestino, proximaFuncao)
 {
-    let t_body = new Template(templateView);
+    let t_body = new Template('assets/templates/t_gateway_lista_arquivos_retorno.html');
     novaListaLotes = {};
     novaListaLotes.DATA = [];
 
-    novaListaLotes.DATA = listArquivos;
+    novaListaLotes.DATA = listaLotes;
+
+
     t_body.parseJSON(novaListaLotes);
     var parsed = t_body.parse();
     $("#" + divDestino).html(parsed);
@@ -21,26 +32,13 @@ function jsCriaTemplateArquivosOferta(listArquivos, divDestino, templateView, pr
     }
 }
 
-function jsCarregaListaArquivosOferta()
+
+function jsCarregaListaLotesRetorno()
 {
-    let divDestino = 'divArquivosOferta';
-    let templateView = 'assets/templates/t_gateway_lista_arquivos_oferta.html';
-
-    endApiLotes = 'queuelist/ENVIO_CNAB_ACEITE/';
-    $("#loading_" + divDestino).show();
-
-    let filters = {"columns":
-                [
-                    {
-                        "valor": "0",
-                        "tipo": "LT",
-                        "campo": "15"
-                    }
-                ]
-    };
+    endApiLotes = 'queuelist/SEC_CNABS/';
+    $("#loading_divArquivosRetorno").show();
 
     dadosEnvio = {
-        "where": filters,
         "order": [
             {
                 "column": "0",
@@ -60,33 +58,25 @@ function jsCarregaListaArquivosOferta()
         data: dadosEnvio,
         dataType: 'json'
     })
-            .done((listArquivos) => {
-                jsCriaTemplateArquivosOferta(listArquivos, divDestino, templateView, jsCarregaListaArquivosRecusados);
+            .done((listaLotes) => {
+
+                //Inclui a origem dos dados para setar a URL de download do arquivo
+                jsCriaTemplateLotes(listaLotes, "divArquivosOferta");
             });
 }
 
-function jsCarregaListaArquivosRecusados()
+
+function jsCarregaListaLotesOferta()
 {
-    let divDestino = 'divArquivosRecusados';
+    endApiLotes = 'queuelist/SEC_CNABS/';
+    $("#loading_divArquivosOferta").show();
 
-    // Testa se existe a div de Arquivos Recusados
-    if (!!$("#divArquivosRecusados").length)
-    {
-        return;
-    }
-
-
-    let templateView = 'assets/templates/t_gateway_lista_arquivos_retorno.html';
-
-    endApiLotes = 'queuelist/ENVIO_CNAB_ACEITE/';
-    $("#loading_" + divDestino).show();
-
-    let filters = {"columns":
+    filters = {"columns":
                 [
                     {
                         "valor": "1",
                         "tipo": "LT",
-                        "campo": "15"
+                        "campo": "21"
                     }
                 ]
     };
@@ -112,10 +102,21 @@ function jsCarregaListaArquivosRecusados()
         data: dadosEnvio,
         dataType: 'json'
     })
-            .done((listArquivos) => {
-                jsCriaTemplateArquivosOferta(listArquivos, divDestino, templateView);
+            .done((listaLotes) => {
+                //Inclui a origem dos dados para setar a URL de download do arquivo
+                jsCriaTemplateLotes(listaLotes, "divArquivosOferta", jsCarregaListaLotesRetorno);
             });
 }
+
+function jsInicializacaoPagina()
+{
+    jsCarregaListaLotesOferta();    
+}
+
+$(document).ready(function () {
+    jsInicializacaoPagina();
+});
+
 
 function jsRegistrosQueueFilter()
 {
@@ -179,13 +180,12 @@ function jsRegistrosQueueFilter()
     }
 
     aWhere = jsCriaFiltros(aFiltros, false); ///< Cria o filtro pelos campos
-    jsCarregaListaLotes(aWhere);
+    jsCarregaListaLotesOferta(aWhere);
 }
 
 function jsSecuritiesArquivoEnviado(param1, param2)
 {
-    $(".loading").show();
-    jsCarregaListaArquivosOferta();
+    jsCarregaListaLotesRetorno();
     alert("Arquivo enviado com sucesso");
 }
 
@@ -195,11 +195,13 @@ function jsSecuritiesErroUpload(param1, param2)
     alert("Erro no envio do arquivo \n" + retorno.Error);
 }
 
-async function jsInicializacaoPagina()
+function jsFidicSelecionado()
 {
-    jsCarregaListaArquivosOferta();
+    let fidicDestino = $("#targetFIDC").val();
+    if (fidicDestino !== "") {
+        createDropZone(fidicDestino);
+        $("#selFileUpLoad").show();        
+    } else {
+        $("#selFileUpLoad").hide();
+    }
 }
-
-$(document).ready(function () {
-    jsInicializacaoPagina();
-});

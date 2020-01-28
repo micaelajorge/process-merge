@@ -78,20 +78,32 @@ function pegaDadosCaso($procId, $caseNum, $camposSelecionados = "")
 
 // </editor-fold>
 
+
+function validaData($data)
+{
+    $aData = explode("-", $data);
+    if (!is_array($aData)) {
+        return false;
+    }
+    if (count($aData) != 3) {
+        return false;
+    }
+    $retorno = checkdate($aData[1], $aData[2], $aData[0]);
+    return $retorno;
+}
+
 function ibge_busca_uf($codigoCidade)
 {
     $json_ibge = file_get_contents(FILES_ROOT . "/assets/config/municipios_ibge.min.json");
     $municipios_ibge = json_decode($json_ibge, true);
-    
+
     $uf = $municipios_ibge[$codigoCidade]["uf"];
 
-    if ($uf === null)
-    {
+    if ($uf === null) {
         return false;
     }
     return $uf;
 }
-
 
 function cria_dominio_api($novoDominio)
 {
@@ -124,7 +136,7 @@ function cria_dominio_api($novoDominio)
         $dominiosMaster = $dominiosMaster[SRCACCESS]["dominiosMaster"];
     }
 
-    
+
     // Insere o novo dominio
     $sql = "insert into origem_dominio (origem_user, origem_doc) values ('$novoDominio', '$novoDominio')";
     mysqli_query($connect, $sql);
@@ -2822,31 +2834,31 @@ function CabecalhoReferencias($ProcId, $Campo = '', $Ordem = '', $Action = '')
             $ImagemRef = "ordem_inativa.png";
         ?>
         <td><table width="100%"><td class="LinhaTitulo">
-                    <?= $CamposRef[$i]["Nome"] ?>
+        <?= $CamposRef[$i]["Nome"] ?>
                 </td><td align="right">
                     <a href="<?= $Action ?>Campo=<?= $CamposRef[$i]["Campo"] ?>&Ordem=<?= $Ordem ?>"><img src="images/<?= $ImagemRef ?>" border="0" ></a></td></table></td>	
-        <?php
-    }
-}
+                    <?php
+                }
+            }
 
-function CabecalhoReferenciasSimples($ProcId, $paraTemplate = false, $numRef = 0)
-{
-    AtivaDBProcess();
-    $CamposRef = PegaCamposRef($ProcId);
+            function CabecalhoReferenciasSimples($ProcId, $paraTemplate = false, $numRef = 0)
+            {
+                AtivaDBProcess();
+                $CamposRef = PegaCamposRef($ProcId);
 
-    if ($$numRef > 0) { // Mantem apenas o numero de referencias em $numRef
-        $CamposRef = array_slice($CamposRef, 0, $numRef);
-    }
+                if ($$numRef > 0) { // Mantem apenas o numero de referencias em $numRef
+                    $CamposRef = array_slice($CamposRef, 0, $numRef);
+                }
 
 
 
-    /** Retorna apenas o array ou cria as celulas
-     * 
-     */
-    if ($paraTemplate) {
-        return $CamposRef;
-    } else {
-        ?>
+                /** Retorna apenas o array ou cria as celulas
+                 * 
+                 */
+                if ($paraTemplate) {
+                    return $CamposRef;
+                } else {
+                    ?>
         <td class="Referencia">
             Número
         </td>		
@@ -2854,7 +2866,7 @@ function CabecalhoReferenciasSimples($ProcId, $paraTemplate = false, $numRef = 0
         for ($i = 0; $i < count($CamposRef); $i++) {
             ?>
             <td class="Referencia">
-                <?= htmlentities($CamposRef[$i]["Nome"]) ?>
+            <?= htmlentities($CamposRef[$i]["Nome"]) ?>
             </td>	
             <?php
         }

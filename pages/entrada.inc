@@ -224,7 +224,6 @@ foreach ($_ProcessosLista as $Processo) {
     switch ($Processo["TipoProc"]) {
         case "AD":
             continue;
-            break;
         default:
             $paginaDestinoStep = $Processo["PageAction"];
             if ($paginaDestinoStep == "") {
@@ -297,10 +296,11 @@ foreach ($_ProcessosLista as $Processo) {
     $t_body->PROCNAMELOWERCASE = strtolower($Processo["ProcName"]);
 
     $showProcesso = false;
+    $workSpacesProcesso = "";
     $t_body->WORKSPACE_CLASS = "";
     if ($Processo["workSpace"] != "") {
-        $workSpaceName = str_replace(" ", "-", $Processo["workSpace"]);
-        $t_body->WORKSPACE_CLASS = $workSpaceName;
+        $workSpaceName = str_replace(" ", "-", $Processo["workSpace"]);        
+        $workSpacesProcesso = $workSpaceName;
         if (!in_array($Processo["workSpace"], $listaWorkSpaces)) {
             $listaWorkSpaces[] = $Processo["workSpace"];
         }
@@ -308,14 +308,17 @@ foreach ($_ProcessosLista as $Processo) {
 
     // Verifica se deve mostrar o Processo para o Workspace no cookie
     $t_body->DISPLAY_PROCESSO = "";
-    if ($workSpaceSelByUser != "" & $workSpaceSelByUser != $Processo["workSpace"]) {
+    if ($workSpaceSelByUser != "" & $workSpaceSelByUser != $Processo["workSpace"] & !$Processo["ProcEspecial"]) {
         $t_body->DISPLAY_PROCESSO = "display:none";
     }
 
-    if ($Processo["TotalCasos"] > 0) {
-        $totalProcessos++;
+    if ($Processo["TotalCasos"] > 0 || ($workSpaceSelByUser != "" & $workSpaceSelByUser == $Processo["workSpace"])) {
+        $totalProcessos++;        
+        $t_body->WORKSPACE_CLASS = $workSpacesProcesso;
         $t_body->block("BLOCK_PROCESSO_LARGE");
     } else {
+        $workSpacesProcesso = $workSpacesProcesso . " ZeroCasos";
+        $t_body->WORKSPACE_CLASS = $workSpacesProcesso;
         $t_body->HIDEQUEUE = "";
         if (key_exists("HideQueue", $Processo)) {
             $t_body->HIDEQUEUE = "visibility: hidden";
@@ -329,8 +332,7 @@ foreach ($_ProcessosLista as $Processo) {
     if (!$Processo["ProcEspecial"]) {
         $t_body->block("BLOCO_SHORTCUT_PROCESSOS");
     }
-
-
+    
     unset($Processo);
 }
 //$t_body->block("BLOCK_SEL_PROCESSOS");

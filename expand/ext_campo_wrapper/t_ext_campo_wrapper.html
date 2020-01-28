@@ -35,13 +35,11 @@
         // Adiciona para o acionamento do Botão
         $("[field_wrap_code='" + campoWrap + "']").boxWidget({
             animationSpeed: 500,
-            collapseTrigger: '#button-collapse-button-trigger_{FIELDCODE}',
+            collapseTrigger: '#button-collapse-button-trigger_' + campoWrap,
             collapseIcon: 'fa-minus',
             expandIcon: 'fa-plus'
         });
     }
-
-
 
     funcao_final = () => {
         moveCampoParaWrap('{FIELDCODE}', [{LISTA_CAMPOS_WRAPP}]);

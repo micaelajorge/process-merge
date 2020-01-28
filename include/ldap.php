@@ -264,28 +264,35 @@ function PegaProcessosUsuario()
 {
     global $connect, $userdef;
     $S_Processos = array();
-    $SQL = "select ProcName, ProcDesc, ProcDef.PageAction, procdef.ProcId, ProcIcon, ProcColor, count(*) as TotalCasos, TipoProc, ProcCod, extendPropsProc from "
-            . "procdef, "
-            . "casosdousuario, "
-            . "stepdef "
-            . "where "
-            . "procdef.ProcId = casosdousuario.procId "
-            . "and "
-            . "userid = $userdef->UserId "
-            . "and "
-            . "stepdef.procid = casosdousuario.procid "
-            . "and "
-            . "stepdef.stepid = casosdousuario.stepid "
-            . "and "
-            . "stepdef.EndStep <> 1 "
-            . "group by "
-            . "ProcName, ProcDesc, "
-            . "PageAction, "
-            . "procdef.ProcId, "
-            . "ProcIcon, "
-            . "ProcColor, "
-            . "TipoProc, "
-            . "ProcCod ";
+//    $SQL = "select ProcName, ProcDesc, ProcDef.PageAction, procdef.ProcId, ProcIcon, ProcColor, count(*) as TotalCasos, TipoProc, ProcCod, extendPropsProc from "
+//            . "procdef, "
+//            . "casosdousuario, "
+//            . "stepdef "
+//            . "where "
+//            . "procdef.ProcId = casosdousuario.procId "
+//            . "and "
+//            . "userid = $userdef->UserId "
+//            . "and "
+//            . "stepdef.procid = casosdousuario.procid "
+//            . "and "
+//            . "stepdef.stepid = casosdousuario.stepid "
+//            . "and "
+//            . "stepdef.EndStep <> 1 "
+//            . "group by "
+//            . "ProcName, ProcDesc, "
+//            . "PageAction, "
+//            . "procdef.ProcId, "
+//            . "ProcIcon, "
+//            . "ProcColor, "
+//            . "TipoProc, "
+//            . "ProcCod ";
+
+    $SQL = "select ProcName, ProcDesc, ProcDef.PageAction, procdef.ProcId, ProcIcon, ProcColor, count(*) as TotalCasos, TipoProc, ProcCod, extendPropsProc from procdef, casosdousuario, stepdef where procdef.ProcId = casosdousuario.procId and userid = $userdef->UserId and stepdef.procid = casosdousuario.procid and stepdef.stepid = casosdousuario.stepid and stepdef.EndStep <> 1 group by ProcName, ProcDesc, PageAction, procdef.ProcId, ProcIcon, ProcColor, TipoProc, ProcCod 
+union distinct
+select ProcName, ProcDesc, ProcDef.PageAction, procdef.ProcId, ProcIcon, ProcColor, 0 as TotalCasos, TipoProc, ProcCod, extendPropsProc from procdef, stepdef, stepaddresses where stepaddresses.groupid = $userdef->UserId and GrpFld = 'U' and stepdef.procid = stepaddresses.procid and stepdef.stepid = stepaddresses.stepid and stepdef.EndStep <> 1 group by ProcName, ProcDesc, PageAction, procdef.ProcId, ProcIcon, ProcColor, TipoProc, ProcCod 
+union distinct
+select ProcName, ProcDesc, ProcDef.PageAction, procdef.ProcId, ProcIcon, ProcColor, 0 as TotalCasos, TipoProc, ProcCod, extendPropsProc from procdef, stepdef, stepaddresses, usergroup where usergroup.GroupId in ($userdef->usergroups) and stepaddresses.groupid = usergroup.GroupId and GrpFld = 'G' and stepdef.procid = stepaddresses.procid and stepdef.stepid = stepaddresses.stepid and stepdef.EndStep <> 1 group by ProcName, ProcDesc, PageAction, procdef.ProcId, ProcIcon, ProcColor, TipoProc, ProcCod 
+order by ProcName";
 
     $Query = mysqli_query($connect, $SQL);
     //echo $SQL;
@@ -326,9 +333,10 @@ function PegaProcessosUsuario()
         $extendProps = json_decode($result["extendPropsProc"], true);
 
         $S_Processos[$i]["workSpace"] = "";
-        if (is_array($extendProps)) {
-            $S_Processos[$i]["workSpace"] = $extendProps["procWorkplace"];
-        }
+        $S_Processos[$i]["workSpace"] = $extendProps["procWorkplace"];
+//        if (is_array($extendProps)) {
+//            $S_Processos[$i]["workSpace"] = $extendProps["procWorkplace"];
+//        }
 
         $i++;
     }

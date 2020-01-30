@@ -1,4 +1,4 @@
-<?php
+<?php //
 
 /*
   Criação: Marcelo Mosczynski <mmoscz@gmail.com>
@@ -8,9 +8,25 @@
 
 include_once(FILES_ROOT . "include/resource01.php");
 
+function evaluate()
+{
+    $dadosEntrada = apiTrataDadosEntrada();
+    
+    $expressao = $dadosEntrada["expressao"];
+    $dadosAvaliacao= $dadosEntrada["parametros"];
+    
+    $retorno = trataExpressao($expressao, $dadosAvaliacao);
+    
+    $jDados = json_encode($retorno);
+    header("HTTP/1.0 202 Regra Ok");
+    header('Content-Type: application/json');
+    echo $jDados;    
+}
+
+
 function avaliaExpressoes($expressoes, $parametros)
 {
-    $dadosRetorno = array();
+    $dadosRetorno = array();    
     foreach ($expressoes as $expressaoAvaliada) {
         
         //Verifica se deve avaliar a expressão
@@ -18,6 +34,7 @@ function avaliaExpressoes($expressoes, $parametros)
         {
             continue;
         }        
+//        error_log("Avaliando " . var_export($expressaoAvaliada, true));
         $dadosRetorno[] = trataExpressao($expressaoAvaliada, $parametros);
     }
     return $dadosRetorno;
@@ -141,6 +158,7 @@ function verificaFuncaoExiste($funcao)
     if (in_array($matches[1], $listaFuncoes["user"])) {
         return true;
     }
+        
     return false;
 }
 
@@ -164,16 +182,24 @@ function trataLogicaFuncao($regra, $dadosAvaliacao)
 
     if (!function_exists($matches_funcao[1])) {
         $retorno["falha"] = "Função " . $matches_funcao[1] . " não encontrada";
+        $retorno["regra"] = $regra;
         $json_retorno = json_encode($retorno);
         header("HTTP/1.0 422 Falha tratamento Regra");
         header('Content-Type: application/json');
         echo $json_retorno;
         die();
     }
+       
+//    // Busca a função strlen e modifica para função interna w_strlen
+//    if (strtolower($matches_funcao[1]) == "strlen")
+//    {
+//        $funcao = str_ireplace("strlen", "w_strlen", $funcao);
+//    }
 
     $NOME_CAMPO = $matches_campos[1];
     $comparador = "";
     if (key_exists("comparador", $regra)) {
+        $comparador = $regra["comparador"];
         if ($comparador != "") {
             $comparador = $regra["comparador"];
             if (key_exists("comparador", $regra)) {
@@ -228,7 +254,11 @@ function avaliaRegraSelecionada($ruleCode, $dadosEntrada)
     $json_regras = buscaDadosRegra($ruleCode);
     $json_regras = str_replace("\\\\", "\\", $json_regras);
     $rule = json_decode($json_regras, true);
-    $resultadoAvaliacao = avaliaExpressoes($rule["regras"], $dadosEntrada);
+    try {
+        $resultadoAvaliacao = avaliaExpressoes($rule["regras"], $dadosEntrada);
+        } catch (Exception $ex) {        
+    }
+    
     $dadosRetorno["resultado"] = trataRetornos($resultadoAvaliacao);
     $dadosRetorno["dados"] = $resultadoAvaliacao;
     $dadosRetorno["retornoMensagem"] = $rule["retornoMensagem"];    

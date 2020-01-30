@@ -60,6 +60,10 @@ function apiPegaListaCasos()
                 echo $json_retorno;
                 return;
             }
+            if (key_exists("fieldType", $filtro))
+            {
+                $filtroTratado["tipo"] = $filtro["fieldType"];
+            }
             $filtroTratado["campo"] = $idField;
             $filtroTratado["valor"] = $filtro["fieldValue"];
         } else {

@@ -80,78 +80,83 @@
 
         </style>
     </head>
-    <body class="skin-blue-light layout_default" style="margin:5px">
-        <div class="box">
-            <div class="box-body">
-                <div class="row">                    
-                    <div class="col-lg-6">                                               
-                        <a href="#" onclick="$('#arquivo_json').click()"><i class="fa fa-file-code-o"></i> Carregar Arquivo Layout para PARSE</a>
-                        <input type='file' id="arquivo_json" accept='.json' onchange="openFile(event, carregaLayout)" style="display:none">
-                        <input type='file' id="arquivo_cnab" accept='.rem,.ret' onchange="openFile(event, carregaCNAB)"  style="display:none">
-                    </div>
-                    <div class="col-lg-6">
-                        <a href="#" onclick="$('#arquivo_cnab').click()"><i class="fa fa-file-text-o"></i> Carregar Arquivo CNAB para PARSE</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        Arquivo Layout:<span id="nomeArquivoLayout"></span>                         
-                    </div>
-                    <div class="col-lg-6">
-                        Arquivo CNAB:<span id="nomeArquivoCNAB"></span>  
-                        <a href="#" onclick="reloadScripts()" class="pull-right">Reload</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <label>Layout JSON</label> <b><span class="text-red pull-right" id="textoErro"></span></b>
-                        <pre id="json-display" class="layout_default"></pre>            
-                    </div>
-                    <div class="col-lg-6">
-                        <label>Resultado Parse</label> <a href="#" onclick="limparResultado()">Limpar Resultado</a> 
-                        <pre id="json-viewer" class="layout_default">            
-                        </pre>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <a href="#" onclick="executaParse()">Executar Parse</a>
-                        <a href="#" onclick="salvarArquivoLayout()">Salvar Layout</a>                
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="nav-tabs-custom">
-                            <ul class="nav nav-tabs">
-                                <li class="header">
-                                    <a href="#" onclick="doZoom()" id="btnZoom" title="Zoon In"><i id="iconeButtonZoom" class="fa fa-search-plus text-primary"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true" ><span id="captionSelField">Campos</span> <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu" id="selecaoColunas">
-                                    </ul>
-                                </li>                            
-                            </ul>
+    <body class="skin-blue-light layout_default" style="margin:10px; overflow: hidden">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div class="row">                    
+                            <div class="col-lg-6">                                               
+                                <a href="#" onclick="$('#arquivo_json').click()"><i class="fa fa-file-code-o"></i> Carregar Arquivo Layout para PARSE</a>
+                                <input type='file' id="arquivo_json" accept='.json' onchange="openFile(event, carregaLayout)" style="display:none">
+                                <input type='file' id="arquivo_cnab" accept='.rem,.ret' onchange="openFile(event, carregaCNAB)"  style="display:none">
+                            </div>
+                            <div class="col-lg-6">
+                                <a href="#" onclick="$('#arquivo_cnab').click()"><i class="fa fa-file-text-o"></i> Carregar Arquivo CNAB para PARSE</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                Arquivo Layout:<span id="nomeArquivoLayout"></span>                         
+                            </div>
+                            <div class="col-lg-6">
+                                Arquivo CNAB:<span id="nomeArquivoCNAB"></span>  
+                                <a href="#" onclick="reloadScripts()" class="pull-right">Reload</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Layout JSON</label> <b><span class="text-red pull-right" id="textoErro"></span></b>
+                                <pre id="json-display" class="layout_default"></pre>            
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Resultado Parse</label> <a href="#" onclick="limparResultado()">Limpar Resultado</a> 
+                                <pre id="json-viewer" class="layout_default">            
+                                </pre>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <a href="#" onclick="executaParse()" title="Executar Parse do Arquivo"><i class="fa fa-gears"></i></a>
+                                <a href="#" onclick="salvarArquivoLayout()"  title="Salvar Arquivo Layout"><i class="fa fa-save"></i></a>                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs">
+                                        <li class="header">
+                                            <a href="#" onclick="doZoom()" id="btnZoom" title="Zoon In"><i id="iconeButtonZoom" class="fa fa-search-plus text-primary"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="true" ><span id="captionSelField">Campos</span> <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu" id="selecaoColunas">
+                                            </ul>
+                                        </li>                            
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
 
-                            Inicio <input type="number" id="txtInicio" style="width: 50px"> 
+                                Inicio <input type="number" id="txtInicio" style="width: 50px"> 
 
-                            Tamanho <input type="number" id="txtTamanho" style="width: 50px"> 
+                                Tamanho <input type="number" id="txtTamanho" style="width: 50px"> 
 
-                            <a href="#" onclick="hiLightParms()">Selecionar</a>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="dadosCnab dadosCnabZoonOut" id="dadosCnab">                
-                        </div>            
-                    </div>
+                                <a href="#" onclick="hiLightParms()">Selecionar</a>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="dadosCnab dadosCnabZoonOut" id="dadosCnab">                
+                                </div>            
+                            </div>
+                        </div>
+                    </div>            
                 </div>
-            </div>            
+
+                <div id="layout_cnab" style="width: 100%;height:800px;display:none">                    
+                </div>
+            </div>
         </div>
-        <div id="layout_cnab" style="width: 100%;height:800px;display:none">                    
-        </div>        
         <script src="vendor/js/jquery.min.js"></script>
         <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>-->    
         <script src="vendor/beatiful-json/jquery.json-editor.min.js" type="text/javascript">
@@ -163,191 +168,191 @@
         <script src="/securities/lib/cnabreader.js" type="text/javascript"></script>
         <script src="/securities/lib/cnabmap.js" type="text/javascript"></script>
         <script>
-                            /*
-                             function extraiDadosCessao(linhaRecebida)
-                             {
-                             let chavesHeader = Object.keys(layoutCNAB600GERU.header);
-                             let dadosHeader = {};
-                             for (let i = 0; i < chavesHeader.length; i++)
-                             {
-                             let nomeChave = chavesHeader[i];
-                             let infCampo = layoutCNAB600GERU.header[nomeChave];
-                             let valorCampoLido = linhaRecebida.substring(parseInt(infCampo.inicio - 1), parseInt(infCampo.inicio) - 1 + parseInt(infCampo.tamanho)).trim();
-                             let valor = parseValorCampoCNAB(valorCampoLido, infCampo.tipo);
-                             dadosHeader[nomeChave] = valor;
-                             }
-                             return dadosHeader;
-                             }
-                             
-                             function pegaValorCampo(linhaRecebida, infCampo)
-                             {
-                             let valorExtraido = "";
-                             if (typeof infCampo === "object")
-                             {
-                             // Extrai os dados do Campo
-                             let valorCampoLido = linhaRecebida.substring(parseInt(infCampo.inicio) - 1, parseInt(infCampo.inicio) - 1 + parseInt(infCampo.tamanho)).trim();
-                             // Faz o parse para o formato correto do campo
-                             valorExtraido = parseValorCampoCNAB(valorCampoLido, infCampo.tipo);
-                             } else {
-                             
-                             // valor Padrão campo
-                             valorExtraido = infCampo;
-                             }
-                             return valorExtraido;
-                             }
-                             
-                             function parseValorCampoCNAB(valorCampoRecebido, tipoCampo)
-                             {
-                             switch (tipoCampo)
-                             {
-                             case "N":
-                             valorCampo = parseInt(valorCampoRecebido);
-                             break;
-                             case "V":
-                             valorCampo = parseFloat(valorCampoRecebido) / 100;
-                             break;
-                             case "D":
-                             valorCampo = valorCampoRecebido.replace(/(\d{2})?(\d{2})?(\d{4})/g, "\$3-\$2-\$1");
-                             break;
-                             default:
-                             valorCampo = valorCampoRecebido;
-                             }
-                             return valorCampo;
-                             }
-                             
-                             function getUniqueField()
-                             {
-                             let infCamposCNAB = Object.keys(layoutCNAB600GERU.contracts);
-                             for (let i = 0; i < infCamposCNAB.length; i++)
-                             {
-                             let key = infCamposCNAB[i];
-                             if (typeof layoutCNAB600GERU.contracts[key]["unique"] !== undefined)
-                             {
-                             return key;
-                             }
-                             }
-                             return null;
-                             }
-                             
-                             // Pega campos para ultimo valor
-                             function getLastKeyFields()
-                             {
-                             let lastFields = [];
-                             let infCamposCNAB = Object.keys(layoutCNAB600GERU.contracts);
-                             for (let i = 0; i < infCamposCNAB.length; i++)
-                             {
-                             let key = infCamposCNAB[i];
-                             if (typeof layoutCNAB600GERU.contracts[key]["last"] !== undefined)
-                             {
-                             lastFields.push(key);
-                             }
-                             }
-                             return lastFields;
-                             }
-                             
-                             function extraiCCB(linhaRecebida, contratoRecebido)
-                             {
-                             let contratoLido = {};
-                             if (contratoRecebido !== null)
-                             {
-                             // Dados do Contrato Lido
-                             contratoLido = JSON.parse(JSON.stringify(contratoRecebido));
-                             }
-                             
-                             // Pega os campos do Layout de CNAB            
-                             let infCamposCNAB = Object.keys(layoutCNAB600GERU.contracts);
-                             
-                             // Percorre a lista de campos de Detalhe
-                             for (let i = 0; i < infCamposCNAB.length; i++) {
-                             // Pega a definição do Campo
-                             let infCampo = layoutCNAB600GERU.contracts[infCamposCNAB[i]];
-                             
-                             // Pega o valor do campo
-                             let valorExtraido = pegaValorCampo(linhaRecebida, infCampo);
-                             
-                             // Se for primeiro campo ignora
-                             if (typeof contratoRecebido !== "undefined" && contratoRecebido !== null)
-                             {
-                             if (infCampo["source"] === "first")
-                             {
-                             continue;
-                             }
-                             if (infCampo["source"] === "max")
-                             {
-                             if (valorExtraido < contratoRecebido[infCamposCNAB[i]])
-                             {
-                             continue;
-                             }
-                             }
-                             if (infCampo["source"] === "min")
-                             {
-                             if (valorExtraido > contratoRecebido[infCamposCNAB[i]])
-                             {
-                             continue;
-                             }
-                             }
-                             }
-                             
-                             
-                             contratoLido[infCamposCNAB[i]] = valorExtraido;
-                             }
-                             return contratoLido;
-                             }
-                             
-                             function extraiCCBS(arquivoTexto)
-                             {
-                             try {
-                             let linhasArquivo = arquivoTexto.split('\n');
-                             var contratos = [];
-                             
-                             let contratoOld = null;
-                             let contratoOld2 = null;
-                             let contratoRetornado = {};
-                             let valueUniqueField = null;
-                             
-                             // Pega o campo unique
-                             let uniqueField = getUniqueField();
-                             
-                             
-                             let dadosCessao = extraiDadosCessao(linhasArquivo[0]);
-                             
-                             let inicio = false;
-                             if (uniqueField !== null)
-                             {
-                             for (let i = 1; i < linhasArquivo.length - 2; i++)
-                             {
-                             contratoRetornado = extraiCCB(linhasArquivo[i], contratoOld2);
-                             valueUniqueField = (contratoOld) ? contratoOld[uniqueField] : null;
-                             if (inicio && valueUniqueField !== contratoRetornado[uniqueField])
-                             {
-                             contratos.push(contratoOld);
-                             contratoOld2 = null;
-                             contratoOld = JSON.parse(JSON.stringify(contratoRetornado));
-                             } else {
-                             inicio = true;
-                             contratoOld = JSON.parse(JSON.stringify(contratoRetornado));
-                             contratoOld2 = JSON.parse(JSON.stringify(contratoRetornado));
-                             }
-                             }
-                             
-                             // Insere o ultimo contrato lido
-                             contratos.push(contratoOld);
-                             } else {
-                             for (let i = 1; i < linhasArquivo.length - 2; i++)
-                             {
-                             contratos.push(contratoRetornado);
-                             i = i + contratoRetornado.parcels;
-                             }
-                             }
-                             dadosCessao['contracts'] = contratos;
-                             return dadosCessao;
-                             } catch (e) {
-                             console.log(e);
-                             retorno = e;
-                             }
-                             }
-                             
-                             */
+                                    /*
+                                     function extraiDadosCessao(linhaRecebida)
+                                     {
+                                     let chavesHeader = Object.keys(layoutCNAB600GERU.header);
+                                     let dadosHeader = {};
+                                     for (let i = 0; i < chavesHeader.length; i++)
+                                     {
+                                     let nomeChave = chavesHeader[i];
+                                     let infCampo = layoutCNAB600GERU.header[nomeChave];
+                                     let valorCampoLido = linhaRecebida.substring(parseInt(infCampo.inicio - 1), parseInt(infCampo.inicio) - 1 + parseInt(infCampo.tamanho)).trim();
+                                     let valor = parseValorCampoCNAB(valorCampoLido, infCampo.tipo);
+                                     dadosHeader[nomeChave] = valor;
+                                     }
+                                     return dadosHeader;
+                                     }
+                                     
+                                     function pegaValorCampo(linhaRecebida, infCampo)
+                                     {
+                                     let valorExtraido = "";
+                                     if (typeof infCampo === "object")
+                                     {
+                                     // Extrai os dados do Campo
+                                     let valorCampoLido = linhaRecebida.substring(parseInt(infCampo.inicio) - 1, parseInt(infCampo.inicio) - 1 + parseInt(infCampo.tamanho)).trim();
+                                     // Faz o parse para o formato correto do campo
+                                     valorExtraido = parseValorCampoCNAB(valorCampoLido, infCampo.tipo);
+                                     } else {
+                                     
+                                     // valor Padrão campo
+                                     valorExtraido = infCampo;
+                                     }
+                                     return valorExtraido;
+                                     }
+                                     
+                                     function parseValorCampoCNAB(valorCampoRecebido, tipoCampo)
+                                     {
+                                     switch (tipoCampo)
+                                     {
+                                     case "N":
+                                     valorCampo = parseInt(valorCampoRecebido);
+                                     break;
+                                     case "V":
+                                     valorCampo = parseFloat(valorCampoRecebido) / 100;
+                                     break;
+                                     case "D":
+                                     valorCampo = valorCampoRecebido.replace(/(\d{2})?(\d{2})?(\d{4})/g, "\$3-\$2-\$1");
+                                     break;
+                                     default:
+                                     valorCampo = valorCampoRecebido;
+                                     }
+                                     return valorCampo;
+                                     }
+                                     
+                                     function getUniqueField()
+                                     {
+                                     let infCamposCNAB = Object.keys(layoutCNAB600GERU.contracts);
+                                     for (let i = 0; i < infCamposCNAB.length; i++)
+                                     {
+                                     let key = infCamposCNAB[i];
+                                     if (typeof layoutCNAB600GERU.contracts[key]["unique"] !== undefined)
+                                     {
+                                     return key;
+                                     }
+                                     }
+                                     return null;
+                                     }
+                                     
+                                     // Pega campos para ultimo valor
+                                     function getLastKeyFields()
+                                     {
+                                     let lastFields = [];
+                                     let infCamposCNAB = Object.keys(layoutCNAB600GERU.contracts);
+                                     for (let i = 0; i < infCamposCNAB.length; i++)
+                                     {
+                                     let key = infCamposCNAB[i];
+                                     if (typeof layoutCNAB600GERU.contracts[key]["last"] !== undefined)
+                                     {
+                                     lastFields.push(key);
+                                     }
+                                     }
+                                     return lastFields;
+                                     }
+                                     
+                                     function extraiCCB(linhaRecebida, contratoRecebido)
+                                     {
+                                     let contratoLido = {};
+                                     if (contratoRecebido !== null)
+                                     {
+                                     // Dados do Contrato Lido
+                                     contratoLido = JSON.parse(JSON.stringify(contratoRecebido));
+                                     }
+                                     
+                                     // Pega os campos do Layout de CNAB            
+                                     let infCamposCNAB = Object.keys(layoutCNAB600GERU.contracts);
+                                     
+                                     // Percorre a lista de campos de Detalhe
+                                     for (let i = 0; i < infCamposCNAB.length; i++) {
+                                     // Pega a definição do Campo
+                                     let infCampo = layoutCNAB600GERU.contracts[infCamposCNAB[i]];
+                                     
+                                     // Pega o valor do campo
+                                     let valorExtraido = pegaValorCampo(linhaRecebida, infCampo);
+                                     
+                                     // Se for primeiro campo ignora
+                                     if (typeof contratoRecebido !== "undefined" && contratoRecebido !== null)
+                                     {
+                                     if (infCampo["source"] === "first")
+                                     {
+                                     continue;
+                                     }
+                                     if (infCampo["source"] === "max")
+                                     {
+                                     if (valorExtraido < contratoRecebido[infCamposCNAB[i]])
+                                     {
+                                     continue;
+                                     }
+                                     }
+                                     if (infCampo["source"] === "min")
+                                     {
+                                     if (valorExtraido > contratoRecebido[infCamposCNAB[i]])
+                                     {
+                                     continue;
+                                     }
+                                     }
+                                     }
+                                     
+                                     
+                                     contratoLido[infCamposCNAB[i]] = valorExtraido;
+                                     }
+                                     return contratoLido;
+                                     }
+                                     
+                                     function extraiCCBS(arquivoTexto)
+                                     {
+                                     try {
+                                     let linhasArquivo = arquivoTexto.split('\n');
+                                     var contratos = [];
+                                     
+                                     let contratoOld = null;
+                                     let contratoOld2 = null;
+                                     let contratoRetornado = {};
+                                     let valueUniqueField = null;
+                                     
+                                     // Pega o campo unique
+                                     let uniqueField = getUniqueField();
+                                     
+                                     
+                                     let dadosCessao = extraiDadosCessao(linhasArquivo[0]);
+                                     
+                                     let inicio = false;
+                                     if (uniqueField !== null)
+                                     {
+                                     for (let i = 1; i < linhasArquivo.length - 2; i++)
+                                     {
+                                     contratoRetornado = extraiCCB(linhasArquivo[i], contratoOld2);
+                                     valueUniqueField = (contratoOld) ? contratoOld[uniqueField] : null;
+                                     if (inicio && valueUniqueField !== contratoRetornado[uniqueField])
+                                     {
+                                     contratos.push(contratoOld);
+                                     contratoOld2 = null;
+                                     contratoOld = JSON.parse(JSON.stringify(contratoRetornado));
+                                     } else {
+                                     inicio = true;
+                                     contratoOld = JSON.parse(JSON.stringify(contratoRetornado));
+                                     contratoOld2 = JSON.parse(JSON.stringify(contratoRetornado));
+                                     }
+                                     }
+                                     
+                                     // Insere o ultimo contrato lido
+                                     contratos.push(contratoOld);
+                                     } else {
+                                     for (let i = 1; i < linhasArquivo.length - 2; i++)
+                                     {
+                                     contratos.push(contratoRetornado);
+                                     i = i + contratoRetornado.parcels;
+                                     }
+                                     }
+                                     dadosCessao['contracts'] = contratos;
+                                     return dadosCessao;
+                                     } catch (e) {
+                                     console.log(e);
+                                     retorno = e;
+                                     }
+                                     }
+                                     
+                                     */
         </script>   
     </body>
 </html>

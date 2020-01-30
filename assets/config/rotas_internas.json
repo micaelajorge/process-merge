@@ -478,6 +478,18 @@
                 "parametros": ["ruleVersion", "ruleCode"]
             }            
         },
+        "api/v1/evaluate": {
+            "POST": {
+                "page": "api/api_rules.inc",
+                "funcao": "evaluate",
+                "logon" : false
+            },            
+            "GET": {
+                "page": "api/api_rules.inc",
+                "funcao": "testarRegra",               
+                "parametros": ["ruleVersion", "ruleCode"]
+            }            
+        },
         "relatorioonline": {
             "GET": {
                 "page": "pages/relatorio_online.inc",

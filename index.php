@@ -793,7 +793,7 @@ switch ($srvAccess) {
 //                ini_set('display_startup_errors', 1);
 //                error_reporting(E_ALL);
 
-                define("LOGAR_ROTA", true);
+                define("LOGAR_ROTA", false);
                 define("APLICAR_POLITICAS_SEGURANCA", false);
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");

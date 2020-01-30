@@ -93,7 +93,6 @@ function api_create_contract()
 }
 
 // </editor-fold>
-
 // <editor-fold defaultstate="collapsed" desc="Cancela CCB">
 /**
  * @rota api/v1/cancelccb
@@ -114,11 +113,11 @@ function cancelaCCB()
 
     if ($caseNumCCB != 0) {
         $numeroCCB = PegaValorCampo("SEC_CCBS", $caseNumCCB, "CONTRATO");
-        
+
         $campo["fieldCode"] = "CONTRATO";
         $campo["fieldValue"] = "C-$numeroCCB";
         $camposEnvio[] = $campo;
-                
+
         $campo["fieldCode"] = "STATUS_CLICKSIGN";
         $campo["fieldValue"] = "cancelada";
         $camposEnvio[] = $campo;
@@ -126,7 +125,7 @@ function cancelaCCB()
         $campo["fieldCode"] = "CCB_CEDIDA";
         $campo["fieldValue"] = "1";
         $camposEnvio[] = $campo;
-                
+
 //        error_log("camposEnvio " . var_export($camposEnvio, true));
 
         $dadosCaso["Fields"] = $camposEnvio;
@@ -134,13 +133,9 @@ function cancelaCCB()
         FuncCaseSave($userData, "SEC_CCBS", 'START', $caseNumCCB, $dadosCaso, 0, 0);
     }
     return $caseNumCCB;
-    
 }
 
-
 // </editor-fold>
-
-
 // <editor-fold defaultstate="collapsed" desc="api_trataWebHook Criação CCB">
 /**
  * 
@@ -180,7 +175,7 @@ function criaCCB($dadosCCB)
         } else {
             $dadosTemplate = $dadosCCB["data"]["document"]["template"]["data"]["document"]["template"]["data"];
         }
-        
+
         // Mudado para remover apenas PONTUAÇÃO e LETRAS
 //        $campo["fieldCode"] = "CONTRATO";
 ////        $campo["fieldValue"] = preg_replace("/\D+/", "", $dadosTemplate["number"]);
@@ -213,18 +208,18 @@ function criaCCB($dadosCCB)
         $campo["fieldValue"] = $dadosTemplate["maturity"];
         $camposEnvio[] = $campo;
 
-        
+
         $campo["fieldCode"] = "NR_CONTRATO_TEMPLATE";
         $campo["fieldValue"] = $dadosTemplate["number"];
-        $camposEnvio[] = $campo; 
-        
+        $camposEnvio[] = $campo;
+
         $campo["fieldCode"] = "CONTRATO";
         $campo["fieldValue"] = preg_replace("/[^a-zA-Z0-9]/", "", $dadosTemplate["number"]);
 //        $campo["fieldValue"] = $dadosTemplate["number"];
-        $camposEnvio[] = $campo;       
-        
-        $dadosCaso["Fields"] = $camposEnvio;        
-        
+        $camposEnvio[] = $campo;
+
+        $dadosCaso["Fields"] = $camposEnvio;
+
         return FuncCaseSave($userData, "SEC_CCBS", 'START', 0, $dadosCaso, 0, 1);
     } else {
         return $caseNumCCB;
@@ -339,25 +334,22 @@ function atualizaStatusCessao($dadosTermo, $tipoDocumento)
  * 
  * @return type
  */
-
 function buscaChaveAssinanteTermo($jsonAssinantes, $chaveSignatario, $codigoCampo)
 {
     $campo = array();
-        $assinantesAssignor = json_decode($jsonAssinantes, true);
-        
-        $chavesSignatario = array_column($assinantesAssignor, "CHAVE_ASSINATURA");
-        
-        $posicaoAssinante = array_search($chaveSignatario, $chavesSignatario);
-        if ($posicaoAssinante !== false)
-        {
-            $assinantesAssignor[$posicaoAssinante]["ASSINADO"] = true;
-            $campo["fieldCode"] = $codigoCampo;
-            $campo["fieldValue"] = json_encode($assinantesAssignor);            
-            return $campo;
-        }       
-        return false;
-}
+    $assinantesAssignor = json_decode($jsonAssinantes, true);
 
+    $chavesSignatario = array_column($assinantesAssignor, "CHAVE_ASSINATURA");
+
+    $posicaoAssinante = array_search($chaveSignatario, $chavesSignatario);
+    if ($posicaoAssinante !== false) {
+        $assinantesAssignor[$posicaoAssinante]["ASSINADO"] = true;
+        $campo["fieldCode"] = $codigoCampo;
+        $campo["fieldValue"] = json_encode($assinantesAssignor);
+        return $campo;
+    }
+    return false;
+}
 
 function atualizaAssinaturaCessao()
 {
@@ -371,27 +363,25 @@ function atualizaAssinaturaCessao()
 
     $documentKey = $dadosEntrada["document_key"];
     $caseNumCCB = pegaNumerCasoUnicoAberto($procId, $documentKey, $fieldId);
-    
+
 
     if ($caseNumCCB != 0) {
         $camposEnvio = array();
-        
+
         // Pega o Valor de Campo de Assinantes Assingor
         $jsonAssinantesAssignor = PegaValorCampo($procId, $caseNumCCB, "SIGNATARIOS_ENDORSEE");
         $retornoBuscaSignatario = buscaChaveAssinanteTermo($jsonAssinantesAssignor, $dadosEntrada["signer"], "SIGNATARIOS_ENDORSEE");
-        if ($retornoBuscaSignatario !== false)
-        {
-            $camposEnvio[] = $retornoBuscaSignatario;    
+        if ($retornoBuscaSignatario !== false) {
+            $camposEnvio[] = $retornoBuscaSignatario;
         }
-                
-         // Pega o Valor de Campo de Assinantes Transferre
+
+        // Pega o Valor de Campo de Assinantes Transferre
         $jsonAcampoAssinantesTransferee = PegaValorCampo($procId, $caseNumCCB, "SIGNATARIOS_TRANSFEREE");
         $retornoBuscaSignatario = buscaChaveAssinanteTermo($jsonAcampoAssinantesTransferee, $dadosEntrada["signer"], "SIGNATARIOS_TRANSFEREE");
-        if ($retornoBuscaSignatario !== false)
-        {
-            $camposEnvio[] = $retornoBuscaSignatario;    
+        if ($retornoBuscaSignatario !== false) {
+            $camposEnvio[] = $retornoBuscaSignatario;
         }
-                
+
         $campo["fieldCode"] = "ASSINANTES_TERMO";
         $campo["fieldValue"] = $dadosEntrada["signer"];
         $camposEnvio[] = $campo;
@@ -530,7 +520,7 @@ function api_resolution_create()
 
 function processa_cessao_resolucao($procCod)
 {
-    try {        
+    try {
         $dadosEntrada = apiTrataDadosEntrada();
 
         $chavesRecebidas = array_keys($dadosEntrada);
@@ -650,7 +640,7 @@ function processa_cessao_resolucao($procCod)
         $jDados = json_encode($ex);
         header("Access-Control-Allow-Origin: *");
         header('Content-Type: application/json');
-        echo $jDados;       
+        echo $jDados;
     }
     header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
@@ -670,7 +660,7 @@ function api_process_get()
 
     error_log("Pegando dados de Cessão: $cessionId");
 
-    
+
     $procId = PegaProcIdByCode("SEC_CESSOES");
     $fieldCessionUUID = PegaFieldIdByCode($procId, 'CESSION_UUID');
 
@@ -706,7 +696,7 @@ function api_process_get()
         $dadosRetorno["cession_contracts"] = json_decode($dadosRetorno["cession_contracts"]);
     }
 
-    
+
     $jDados = json_encode($dadosRetorno);
     header("Access-Control-Allow-Origin: *");
     header('Content-Type: application/json');
@@ -862,8 +852,8 @@ function api_get_cession_resolution_data($procCode)
             $listaTokens = array();
             $accountKey = $dadosRetorno["ASSIGNOR_DATA"]["ACCOUNT_KEY"];
             $itemTokens["ACCOUNT_KEY"] = $accountKey;
-            $itemTokens["ACCOUNT_TOKEN"] = $tokens;            
-            $listaTokens[] = $itemTokens;            
+            $itemTokens["ACCOUNT_TOKEN"] = $tokens;
+            $listaTokens[] = $itemTokens;
         }
         $dadosRetorno["ASSIGNOR_DATA"]["ACCOUNT_TOKEN"] = $listaTokens;
         $dadosRetorno["ASSIGNOR_DATA"]["ASSIGNERS"] = pegaListaAssigners($dadosRetorno["ASSIGNOR_DATA"]["ACCOUNT_KEY"], $procCode);
@@ -979,10 +969,22 @@ function api_valida_contrato()
     $ccbNumero = preg_replace("/[^a-zA-Z0-9]/", "", $dadosEntrada["contrato"]["number"]);
 
     // <editor-fold defaultstate="collapsed" desc="Busca dados do caso da CCB">
-    $caseNumCCB = pegaNumerCasoUnicoAberto($procId, $ccbNumero);
+    $caseNumCCB = pegaNumerCasoUnicoAberto($procId, $ccbNumero, "", "", true);
+
+    if ($caseNumCCB  ==  -1) {
+        $dadosRetorno["message"] = "Contrato duplicado ou não encontrado";
+        $dadosRetorno["contractNumber"] = $dadosEntrada["contrato"]["number"];
+        $dadosRetorno["resultadoAvaliacao"] = false;
+        $jDados = json_encode($dadosRetorno);
+        header('Content-Type: application/json');
+        echo $jDados;
+        return;
+    }
 
     $SQL = "select fieldCod, fieldValue from casedata, procfieldsdef where caseNum = $caseNumCCB  and casedata.procid = $procId and procfieldsdef.procid = casedata.procid and procfieldsdef.fieldid = casedata.fieldid";
     $query = mysqli_query($connect, $SQL);
+
+
 
     $valoresCampos = mysqli_fetch_all($query, MYSQLI_ASSOC);
 

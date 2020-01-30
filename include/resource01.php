@@ -1181,7 +1181,7 @@ function PegaExtendsPropProc($ProcId)
  * @param type $fieldCaseClosed
  * @return int
  */
-function pegaNumerCasoUnicoAberto($procId, $valorCampo, $fieldUnique = "", $fieldCaseClosed = "")
+function pegaNumerCasoUnicoAberto($procId, $valorCampo, $fieldUnique = "", $fieldCaseClosed = "", $failDuplicate = false)
 {
     global $connect;
 // Pesquisa o NR do Case UNIQUE
@@ -1249,7 +1249,13 @@ function pegaNumerCasoUnicoAberto($procId, $valorCampo, $fieldUnique = "", $fiel
     }
     $Query = mysqli_query($connect, $SQL);
 
-    if (mysqli_num_rows($Query) > 0) {
+    $totalEncontrados = mysqli_num_rows($Query);
+    if ($totalEncontrados > 0) {
+        // Retorna -1 se houver mais de um caso
+        if ($failDuplicate & $totalEncontrados > 1)
+        {
+            $numeroCaso = -1;
+        }
         $Linha = mysqli_fetch_array($Query);
         $numeroCaso = $Linha["CaseNum"];
     } else {

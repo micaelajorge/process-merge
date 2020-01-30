@@ -165,9 +165,16 @@ function validaData($data)
     if (!is_array($aData)) {
         return false;
     }
-    if (count($aData) != 3) {
+    
+    if (mb_strlen($aData, 'UTF8') < 10)
+    {
         return false;
     }
+    
+    if (count($aData) != 3) {
+        return false;
+    }    
+    
     $retorno = checkdate($aData[1], $aData[2], $aData[0]);
     return $retorno;
 }

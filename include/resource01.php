@@ -78,6 +78,86 @@ function pegaDadosCaso($procId, $caseNum, $camposSelecionados = "")
 
 // </editor-fold>
 
+/**
+ * wrap interno para a chamada da função strlen em regras do sistema
+ * 
+ * @param type $stringRecebida
+ * @return type
+ */
+function w_strlen($stringRecebida)
+{
+    $retorno = mb_strlen($stringRecebida, 'UTF8');
+    return $retorno;
+}
+
+/**
+ * 
+ * @param string $uf
+ * @param string $cidade
+ * @return string
+ */
+function buscaComarcaCidade($uf, $cidade)
+{
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://registros.certdox.com.br/api/v1/apicaselist",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "{\n    \"procCode\": \"CARTORIOS_GATEWAY_REGISTROS\",\n    \"stepCode\": \"START\",\n        \"filters\": [\n        {\n            \"fieldCode\": \"AREA_ABRANGENCIA\",\n            \"fieldValue\": \"$cidade\",\n            \"fieldType\": \"TX\"\n        },\n        {\n            \"fieldCode\": \"ATTRIBUICAO\",\n            \"fieldValue\": \"Protesto\",\n            \"fieldType\": \"TX\"\n        },\n        {\n            \"fieldCode\": \"UF\",\n            \"fieldValue\": \"$uf\",\n            \"fieldType\": \"TX\"\n        }\t\n        ]\n}",
+        CURLOPT_HTTPHEADER => array(
+            "token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI0MC4xMTQuNDYuODlcL2FsaWNyZWRcL2FwaVwvbWFuYWdlclwvc2FsdmFyZGFkb3N1c3VhcmlvIiwibmFtZSI6ImF1dG9tYXRvIiwiZW1haWwiOiJNTU9TQ1pAR01BSUwuQ09NIn0=.3+sf0o69WCAsIjhId9N7gyF2hjKPvyUfJHNLImttB/E=",
+            "Content-Type: application/json",
+            "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJsb2NhbGhvc3RcL3Byb2Nlc3NcL2FwaVwvbWFuYWdlclwvc2FsdmFyZGFkb3N1c3VhcmlvIiwibmFtZSI6bnVsbCwiZW1haWwiOiIifQ==.8+fihEnzr3j+kKCQqKf7RY6ghYdE4q77V9BIF2zubIg="
+        ),
+    ));
+    $json_response = curl_exec($curl);
+    curl_close($curl);
+
+    $response = json_decode($json_response, true);
+
+    if (json_last_error()) {
+        return "";
+    }
+
+    $caseNum = $response[0]["CaseNum"];
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://registros.certdox.com.br/api/apigetcasedata/",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "{\n\t\"caseNum\": \"$caseNum\",\n\t\"fieldCode\": \"COMARCA\"\n}",
+        CURLOPT_HTTPHEADER => array(
+            "Content-Type: application/json",
+            "token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI0MC4xMTQuNDYuODlcL2FsaWNyZWRcL2FwaVwvbWFuYWdlclwvc2FsdmFyZGFkb3N1c3VhcmlvIiwibmFtZSI6ImF1dG9tYXRvIiwiZW1haWwiOiJNTU9TQ1pAR01BSUwuQ09NIn0=.3+sf0o69WCAsIjhId9N7gyF2hjKPvyUfJHNLImttB/E="
+        ),
+    ));
+
+    $json_response = curl_exec($curl);
+    curl_close($curl);
+
+    $response = json_decode($json_response, true);
+
+    if (json_last_error()) {
+        return "";
+    }
+
+    curl_close($curl);
+    $retorno = $response["Fields"][0]["fieldvalue"];
+    return $retorno;
+}
 
 function validaData($data)
 {
@@ -2834,31 +2914,31 @@ function CabecalhoReferencias($ProcId, $Campo = '', $Ordem = '', $Action = '')
             $ImagemRef = "ordem_inativa.png";
         ?>
         <td><table width="100%"><td class="LinhaTitulo">
-        <?= $CamposRef[$i]["Nome"] ?>
+                    <?= $CamposRef[$i]["Nome"] ?>
                 </td><td align="right">
                     <a href="<?= $Action ?>Campo=<?= $CamposRef[$i]["Campo"] ?>&Ordem=<?= $Ordem ?>"><img src="images/<?= $ImagemRef ?>" border="0" ></a></td></table></td>	
-                    <?php
-                }
-            }
+        <?php
+    }
+}
 
-            function CabecalhoReferenciasSimples($ProcId, $paraTemplate = false, $numRef = 0)
-            {
-                AtivaDBProcess();
-                $CamposRef = PegaCamposRef($ProcId);
+function CabecalhoReferenciasSimples($ProcId, $paraTemplate = false, $numRef = 0)
+{
+    AtivaDBProcess();
+    $CamposRef = PegaCamposRef($ProcId);
 
-                if ($$numRef > 0) { // Mantem apenas o numero de referencias em $numRef
-                    $CamposRef = array_slice($CamposRef, 0, $numRef);
-                }
+    if ($$numRef > 0) { // Mantem apenas o numero de referencias em $numRef
+        $CamposRef = array_slice($CamposRef, 0, $numRef);
+    }
 
 
 
-                /** Retorna apenas o array ou cria as celulas
-                 * 
-                 */
-                if ($paraTemplate) {
-                    return $CamposRef;
-                } else {
-                    ?>
+    /** Retorna apenas o array ou cria as celulas
+     * 
+     */
+    if ($paraTemplate) {
+        return $CamposRef;
+    } else {
+        ?>
         <td class="Referencia">
             Número
         </td>		
@@ -2866,7 +2946,7 @@ function CabecalhoReferencias($ProcId, $Campo = '', $Ordem = '', $Action = '')
         for ($i = 0; $i < count($CamposRef); $i++) {
             ?>
             <td class="Referencia">
-            <?= htmlentities($CamposRef[$i]["Nome"]) ?>
+                <?= htmlentities($CamposRef[$i]["Nome"]) ?>
             </td>	
             <?php
         }
@@ -4101,7 +4181,12 @@ function TrataFiltros($Filtros, $ProcId = 0)
 
 
         $Campo = $filtro["campo"];
-        $tipoCampo = $filtro["tipo"];
+        if (key_exists("tipoCampo", $filtro)) {
+            $tipoCampo = $filtro["tipoCampo"];
+        }
+        if (key_exists("tipo", $filtro)) {
+            $tipoCampo = $filtro["tipo"];
+        }
 
         if (!is_numeric($Campo)) {
             $Campo = PegaFieldIdByCode($ProcId, $Campo);

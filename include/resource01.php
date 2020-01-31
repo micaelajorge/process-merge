@@ -179,6 +179,22 @@ function validaData($data)
     return $retorno;
 }
 
+function ibge_busca_cidade($codigoCidade, $uf)
+{
+    $json_ibge = file_get_contents(FILES_ROOT . "/assets/config/municipios_ibge.min.json");
+    $municipios_ibge = json_decode($json_ibge, true);
+
+    if ($municipios_ibge[$codigoCidade]["uf"] != $uf) {
+        return false;
+    }
+    return true;
+
+//    if ($uf === null) {
+//        return false;
+//    }
+//    return $uf;
+}
+
 function ibge_busca_uf($codigoCidade)
 {
     $json_ibge = file_get_contents(FILES_ROOT . "/assets/config/municipios_ibge.min.json");

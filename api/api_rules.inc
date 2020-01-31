@@ -1,4 +1,6 @@
-<?php //
+<?php
+
+//
 
 /*
   Criação: Marcelo Mosczynski <mmoscz@gmail.com>
@@ -8,34 +10,45 @@
 
 include_once(FILES_ROOT . "include/resource01.php");
 
+/**
+ * 
+ * @rota: api/v1/evaluate
+ */
 function evaluate()
 {
+    ini_set('html_errors', false);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ERROR | E_PARSE);
     $dadosEntrada = apiTrataDadosEntrada();
-    
+
     $expressao = $dadosEntrada["expressao"];
-    $dadosAvaliacao= $dadosEntrada["parametros"];
-    
-    $retorno = trataExpressao($expressao, $dadosAvaliacao);
-    
+    $dadosAvaliacao = $dadosEntrada["parametros"];
+    try {
+        $retorno = trataExpressao($expressao, $dadosAvaliacao);
+    } catch (ParseError $p) {
+
+        echo $p->getMessage();
+    }
+
     $jDados = json_encode($retorno);
     header("HTTP/1.0 202 Regra Ok");
     header('Content-Type: application/json');
-    echo $jDados;    
+    echo $jDados;
 }
-
 
 function avaliaExpressoes($expressoes, $parametros)
 {
-    $dadosRetorno = array();    
+    $dadosRetorno = array();
     foreach ($expressoes as $expressaoAvaliada) {
-        
+
         //Verifica se deve avaliar a expressão
-        if ($expressaoAvaliada["evaluate_expression"] === "false")
-        {
+        if ($expressaoAvaliada["evaluate_expression"] === "false") {
             continue;
-        }        
-//        error_log("Avaliando " . var_export($expressaoAvaliada, true));
+        }
+        error_log("Avaliando " . var_export($expressaoAvaliada, true));
         $dadosRetorno[] = trataExpressao($expressaoAvaliada, $parametros);
+        error_log("Avaliada" . var_export($expressaoAvaliada, true));
     }
     return $dadosRetorno;
 }
@@ -92,41 +105,40 @@ function trataExpressao($listaOperadores, $dadosAvaliacao)
     }
 
     if ($resultadoAvaliacao !== "false") {
-        $resultadoOperacao = $listaOperadores["resultado"]['true'];                
+        $resultadoOperacao = $listaOperadores["resultado"]['true'];
     } else {
         $resultadoOperacao = $listaOperadores["resultado"]['false'];
     }
 
-    if (key_exists("AVALIAR_REGRA", $resultadoOperacao))
-    {
+    if (key_exists("AVALIAR_REGRA", $resultadoOperacao)) {
         $resultadoRegra = avaliaRegraSelecionada($resultadoOperacao["AVALIAR_REGRA"], $dadosAvaliacao);
-        
+
         $dadosRetorno = $resultadoRegra["dados"];
-        
+
         $retorno = array();
-        
-        foreach($dadosRetorno as $dadoRetornado)
-        {
+
+        foreach ($dadosRetorno as $dadoRetornado) {
             $retorno[] = $dadoRetornado;
-        }        
+        }
 //        if (!isset($resultadoOperacao["dados"]))
 //        {
 //            $resultadoOperacao["dados"] = array();
 //        }
 //        $dadosRegra = $resultadoRegra["dados"];
 //        $resultadoOperacao["dados"] = array_merge($resultadoOperacao["dados"], $dadosRegra);
-        
-        
-    }
-    else {
+    } else {
         $retorno = array_merge(["operacao" => $listaOperadores["operacao"]], $resultadoOperacao);
-    } 
-            
+    }
+
     return $retorno;
 }
 
 function testarRegra()
 {
+    ini_set('html_errors', false);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ERROR | E_PARSE);
     $dadosEntrada = apiTrataDadosEntrada();
     $parametros = $dadosEntrada["inputData"];
     $rule = $dadosEntrada["rules"];
@@ -158,7 +170,7 @@ function verificaFuncaoExiste($funcao)
     if (in_array($matches[1], $listaFuncoes["user"])) {
         return true;
     }
-        
+
     return false;
 }
 
@@ -189,7 +201,7 @@ function trataLogicaFuncao($regra, $dadosAvaliacao)
         echo $json_retorno;
         die();
     }
-       
+
 //    // Busca a função strlen e modifica para função interna w_strlen
 //    if (strtolower($matches_funcao[1]) == "strlen")
 //    {
@@ -256,12 +268,13 @@ function avaliaRegraSelecionada($ruleCode, $dadosEntrada)
     $rule = json_decode($json_regras, true);
     try {
         $resultadoAvaliacao = avaliaExpressoes($rule["regras"], $dadosEntrada);
-        } catch (Exception $ex) {        
+    } catch (Exception $ex) {
+        
     }
-    
+
     $dadosRetorno["resultado"] = trataRetornos($resultadoAvaliacao);
     $dadosRetorno["dados"] = $resultadoAvaliacao;
-    $dadosRetorno["retornoMensagem"] = $rule["retornoMensagem"];    
+    $dadosRetorno["retornoMensagem"] = $rule["retornoMensagem"];
     return $dadosRetorno;
 }
 
@@ -275,7 +288,7 @@ function avaliaRegra_v1()
 {
     global $ruleCode;
     $dadosEntrada = apiTrataDadosEntrada();
-    
+
     $dadosRetorno = avaliaRegraSelecionada($ruleCode, $dadosEntrada);
     if (!is_array($dadosRetorno)) {
         $dadosRetorno["resultado"] = false;
@@ -361,8 +374,8 @@ function trataRetornos($dadosRetorno)
             $resultado = false;
             break;
         }
-                
-        if (!key_exists("resultado", $retorno)) {                                   
+
+        if (!key_exists("resultado", $retorno)) {
             $retorno["resultado"] = trataRetornos($retorno);
         }
         // Trata se foi definido como BOOLEANO ou como TEXTO "true" / "false"

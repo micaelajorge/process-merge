@@ -1,11 +1,9 @@
 <?php
-
 /*
   Criação: Marcelo Mosczynski <mmoscz@gmail.com>
   Data Criação 01/06/2018
   Sistema: Creditus
  */
-
 define("RELEASE_SCRIPT", "0057");
 define("SYS_VERSION", "3.3.0");
 define("LOG_DATA", false);
@@ -23,7 +21,6 @@ function iniciarPhpSession()
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
 ini_set("error_reporting", E_ERROR);
-
 
 $failRequireModules = false;
 if (!extension_loaded('gd')) {

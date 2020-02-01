@@ -1,0 +1,82 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Mecanismo de Regras",
+    "contact": {
+      "name": "CertDox",
+      "email": "contato@certdox.com.br"
+    }
+  },
+  "host": "{RULES_URL}",  
+  "basePath": "/datasnap/rest/TServerMethods1/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    <!-- BEGIN BLOCK_REGRA -->
+    {RULE_COMMA}
+    "api/v1/rules/{RULE_CODE}": {
+      "post": {         
+        "tags":["Regras Disponíveis"],
+        "description": "",
+        "consumes":["application/json"],
+        "produces":["application/json"],
+        "parameters": [
+          {
+            "in":"body",
+            "name": "{RULE_NAME}",      
+            "description": "",
+            "required": true,
+            "type": "array",
+            "schema": {
+                 "type":"array",
+                     "items":{
+                    "$ref":"#/definitions/{RULE_CODE}"}}
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Recebido"
+          }
+        }
+      }
+    }
+    <!-- END BLOCK_REGRA -->
+  },
+  "definitions": {
+        "token": {
+            "type": "object",
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "example": "f3fad34sddresesss"
+                }
+            }
+        }
+        <!-- BEGIN BLOCK_DEFINITION -->        
+        ,
+        "{RULE_CODE}": {
+            "type": "object",
+            "properties": {
+                <!-- BEGIN BLOCK_FIELD -->
+                {FIELD_COMA}
+                "{FIELD_NAME}": {
+                    "type": "{FIELD_TYPE}",
+                    <!-- BEGIN BLOCK_FORMAT -->
+                    "format": "{FIELD_FORMAT}",
+                    <!-- END BLOCK_FORMAT -->
+                    <!-- BEGIN BLOCK_SIZE -->
+                    "size": "{FIELD_SIZE}",
+                    <!-- END BLOCK_SIZE -->
+                    "example": "{FIELD_EXAMPLE}"
+                }
+                <!-- END BLOCK_FIELD -->
+            },
+            "xml": {
+                "name": "Category"
+            }            
+        }    
+        <!-- END BLOCK_DEFINITION -->
+    }
+}

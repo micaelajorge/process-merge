@@ -451,7 +451,7 @@
                 "funcao": "",
                 "logon": false
             }            
-        },
+        },        
         "api/v1/rules": {
             "POST": {
                 "page": "api/api_rules.inc",
@@ -464,6 +464,18 @@
                 "funcao": "avaliaRegra_v1",                
                 "parametros": ["ruleVersion", "ruleCode"],
                 "logon": true
+            }            
+        },
+        "rules/swagger": {
+            "GET": {
+                "page": "pages/rules_swagger.inc",
+                "logon": false
+            }            
+        },
+        "rules/swagger/data": {
+            "GET": {
+                "page": "pages/rules_data.inc",
+                "logon": false
             }            
         },
         "api/v1/ruletest": {

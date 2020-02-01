@@ -8,7 +8,16 @@
   Sistema: Process_XAMPP
  */
 
-include_once(FILES_ROOT . "include/resource01.php");
+// <editor-fold defaultstate="collapsed" desc="Inclusões do script">
+require_once(FILES_ROOT . 'includes_ws/funcsws.php');
+require_once(FILES_ROOT . "include/resource01.php");
+require_once(FILES_ROOT . "includes_ws/wsuser.inc");
+require_once(FILES_ROOT . "includes_ws/wscasestart.inc");
+require_once(FILES_ROOT . "includes_ws/wscasesave.inc");
+require_once(FILES_ROOT . "includes_ws/wserror.inc");
+
+// </editor-fold>
+
 
 /**
  * 
@@ -37,6 +46,12 @@ function evaluate()
     echo $jDados;
 }
 
+/**
+ * 
+ * @param type $expressoes
+ * @param type $parametros
+ * @return type
+ */
 function avaliaExpressoes($expressoes, $parametros)
 {
     $dadosRetorno = array();
@@ -53,6 +68,12 @@ function avaliaExpressoes($expressoes, $parametros)
     return $dadosRetorno;
 }
 
+/**
+ * 
+ * @param type $listaOperadores
+ * @param type $dadosAvaliacao
+ * @return type
+ */
 function trataExpressao($listaOperadores, $dadosAvaliacao)
 {
     $codigoAvaliacao_Regra = "";
@@ -133,6 +154,9 @@ function trataExpressao($listaOperadores, $dadosAvaliacao)
     return $retorno;
 }
 
+/**
+ * 
+ */
 function testarRegra()
 {
     ini_set('html_errors', false);
@@ -155,6 +179,11 @@ function testarRegra()
     echo $jDados;
 }
 
+/**
+ * 
+ * @param type $funcao
+ * @return boolean
+ */
 function verificaFuncaoExiste($funcao)
 {
     $regex = "/^(.*?)\(/m";
@@ -174,6 +203,12 @@ function verificaFuncaoExiste($funcao)
     return false;
 }
 
+/**
+ * 
+ * @param type $regra
+ * @param type $dadosAvaliacao
+ * @return string
+ */
 function trataLogicaFuncao($regra, $dadosAvaliacao)
 {
     $funcao = $regra["funcao"];
@@ -223,6 +258,12 @@ function trataLogicaFuncao($regra, $dadosAvaliacao)
     return $dadosRegra;
 }
 
+/**
+ * 
+ * @param type $regra
+ * @param type $dadosAvaliacao
+ * @return type
+ */
 function trataLogicaSimples($regra, $dadosAvaliacao)
 {
     $valorCampo = $dadosAvaliacao[$regra["campo"]];
@@ -248,6 +289,11 @@ function trataLogicaSimples($regra, $dadosAvaliacao)
     return $dadosRegra;
 }
 
+/**
+ * 
+ * @param type $code
+ * @return type
+ */
 function betterEval($code)
 {
     ob_start();
@@ -261,6 +307,12 @@ function betterEval($code)
     return $resultadoAvaliacao;
 }
 
+/**
+ * 
+ * @param type $ruleCode
+ * @param type $dadosEntrada
+ * @return type
+ */
 function avaliaRegraSelecionada($ruleCode, $dadosEntrada)
 {
     $json_regras = buscaDadosRegra($ruleCode);
@@ -278,6 +330,96 @@ function avaliaRegraSelecionada($ruleCode, $dadosEntrada)
     return $dadosRetorno;
 }
 
+/** 
+ * @global array $camposObrigatoriosProtesto
+ */
+function grava_log_rule_v1($retornoRule)
+{    
+    $procCod = "RULE_LOG";
+
+    try {
+
+        $ExecuteUUID = get_guid();
+
+        $dadosBody = get_request_body();
+                
+        $request = array();
+        $request["headers"] = getallheaders();
+        $request["server_data"] = $_SERVER;
+        $request["receive_body"] = $dadosBody;        
+        
+        // Transforma Dados Entrada em JSON
+        $request_json = json_encode($request, JSON_PRETTY_PRINT);
+
+        // Transforma em BASE64
+        $request_json_base64 = base64_encode($request_json);
+        
+        // Transforma Resultado em JSON
+        $resultado_json = json_encode($retornoRule, JSON_PRETTY_PRINT);
+                
+        // Transforma em BASE64
+        $resultado_json_base64 = base64_encode($resultado_json);
+        
+        
+        // Inicializacao do Campo
+        $campo["fieldCode"] = "IMAGENS_INT";
+        $campo["fieldValue"] = array();
+        
+        // Guarda Dados Recebidos
+        $arquivoDados["fileName"] = "request_data.$ExecuteUUID.json";
+        $arquivoDados["fileData"] = $request_json_base64;
+        $campo["fieldValue"][] = $arquivoDados;
+
+        // Guarda Dados Enviados
+        $arquivoDados["fileName"] = "response_data.$ExecuteUUID.json";
+        $arquivoDados["fileData"] = $resultado_json_base64;
+        $campo["fieldValue"][] = $arquivoDados;
+        $camposEnvio[] = $campo;
+        
+        $campo["fieldCode"] = "REQUEST_UUID";
+        $campo["fieldValue"] = $ExecuteUUID;
+        $camposEnvio[] = $campo;
+
+        // Pega o ProcId do Caso
+        $procId = PegaProcIdByCode($procCod);
+
+        $userData = "";
+
+        foreach ($camposEnvio as $campo) {
+            if (!is_array($campo["fieldValue"])) {
+                $dadosCaso["Fields"][] = $campo;
+            } else {
+                $camposArquivo[] = $campo;
+            }
+        }
+
+
+        // Pega os dados do Usuário
+        $userdef = $_SESSION["userdef"];
+
+        $numeroCaso = GetNewCase($procId, $userdef);
+
+        $camposArquivo = criarArquivosEmCampo($procId, $numeroCaso, $camposArquivo);
+
+        $dadosCaso["Fields"] = array_merge($dadosCaso["Fields"], $camposArquivo);
+
+        $caseNum = FuncCaseSave($userData, $procId, 'CHAMADA_EFETUADA', $numeroCaso, $dadosCaso, 0, 1);
+        if ($caseNum !== 0) {
+            header("HTTP/1.0 201 Created");
+            $novoCaseNum["process"] = $loteUUID;
+            $novoCaseNum["error"] = array();
+        }
+        $dadosRetorno = $novoCaseNum;
+        $jDados = json_encode($dadosRetorno);
+        if (json_last_error() > 0) {
+            $erroJSON = json_last_error() . " " . json_last_error_msg();
+            error_log("Json erro: " . $erroJSON);
+        }
+    } catch (Exception $ex) {
+    }
+}
+
+
 /**
  * 
  * @global type $ruleCode
@@ -294,6 +436,10 @@ function avaliaRegra_v1()
         $dadosRetorno["resultado"] = false;
     }
     $jDados = json_encode($dadosRetorno);
+
+    // Grava o log da Executação da REGRA
+    grava_log_rule_v1($dadosRetorno);
+    
     header('Content-Type: application/json');
     echo $jDados;
 }

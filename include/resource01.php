@@ -1110,11 +1110,12 @@ function criarArquivosEmCampo($procId, $numeroCaso, $campos)
 // Cria o diretorio de armazenamento
         $dirName = criaDiretorioCampoArquivo($procId, $numeroCaso, $fieldIdImagem);
 
+        $aImagens = array();
         foreach ($campo["fieldValue"] as $arquivo) {
             if (isset($arquivo["fileData"])) {
-                $aImagens = trataArquivoRecebidoJson($procId, $arquivo, $dirName, $numeroCaso, $nr_Imagem, $fieldIdImagem);
+                $aImagens[] = trataArquivoRecebidoJson($procId, $arquivo, $dirName, $numeroCaso, $nr_Imagem, $fieldIdImagem);
             } else {
-                $aImagens = trataArquivoRecebidoPost($procId, $arquivo, $dirName, $numeroCaso, $nr_Imagem, $fieldIdImagem);
+                $aImagens[] = trataArquivoRecebidoPost($procId, $arquivo, $dirName, $numeroCaso, $nr_Imagem, $fieldIdImagem);
             }
             $nr_Imagem++;
         }

@@ -28,11 +28,10 @@
             "name": "{RULE_NAME}",      
             "description": "",
             "required": true,
-            "type": "array",
+            "type": "object",
             "schema": {
-                 "type":"array",
-                     "items":{
-                    "$ref":"#/definitions/{RULE_CODE}"}}
+                "$ref": "#/definitions/{RULE_CODE}"
+             }   
           }
         ],
         "responses": {

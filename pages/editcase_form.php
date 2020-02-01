@@ -582,6 +582,16 @@ function MontaCampoParaFormulario($templateFields, $ProcId, $CaseNum, $valoresCa
             $templateFields->block("BLOCK_CAMPO_IF");
 
             break;
+
+        // Campo para VISUALIZACAO DE IMAGENS    
+        case "WEB":
+            $contadorDocumentos = 1;
+            $primeiraImagem = true;
+            $templateFields->addfile("CONTROLES_IMAGEM", FILES_ROOT . "assets/templates/t_campo_web.html");
+            $templateFields->CLASSE_COLUNA_IMAGEM = "col-lg-12";
+            $templateFields->block("BLOCK_CAMPO_IF");
+            break;
+            
         case "TL": // Texto Livre
             $templateFields->READONLY = $CampoReadOnly;
             $templateFields->FIELD_VALUE = $Valor_Campo;

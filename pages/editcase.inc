@@ -794,6 +794,27 @@ switch ($tipoFormulario) {
 // Marca para não voltar a Queue e processar o proximo caso
         $t_body->POSACTION = "ProcessarNext";
         break;
+
+    case "W":
+        $retorno = MontaFormulario($ProcId, $StepId, $CaseNum, $Campos, $Action);
+        $t_body->CONTEUDO_FIELDS = $retorno["CONTEUDO"];
+
+        $CampoImagem[0]["fieldtype"] = "WEB";
+
+        $retorno = MontaFormulario($ProcId, $StepId, $CaseNum, $CampoImagem, $Action);
+
+        $t_body->IMAGEM_FORMALIZACAO = $retorno["CONTEUDO"];
+//        $t_body->CAMPO_IMAGEM_FORMALIZACAO = $retorno["CONTEUDO"];
+        $t_body->block("BLOCK_FORMALIZACAO");
+
+        $t_body->ARQUIVO_JS = "fixar_formalizacao.js";
+        $t_body->block("BLOCO_JAVASCRIPT");
+
+// Marca para não voltar a Queue e processar o proximo caso
+        $t_body->POSACTION = "ProcessarNext";
+        break;
+    
+    
     case "S":
         $Campos = CamposFormulario($ProcId, $StepIdBuscaCampos);
         $retorno = CriaFormularioFluxoWF($t_body, $ProcId, $StepId, $CaseNum, $Campos, $Action);

@@ -451,20 +451,26 @@
                 "funcao": "",
                 "logon": false
             }            
-        },        
+        },                
         "api/v1/rules": {
+            "POST": {
+                "page": "api/api_rules.inc",
+                "funcao": "executeRule_v1",
+                "parametros": ["ruleVersion", "ruleCode"]
+            },            
+            "GET": {
+                "page": "api/api_rules.inc",
+                "funcao": "ruleData_v1",                
+                "parametros": ["ruleVersion", "ruleCode"]
+            }            
+        },
+        "api/v1/rules_real": {
             "POST": {
                 "page": "api/api_rules.inc",
                 "funcao": "avaliaRegra_v1",
                 "parametros": ["ruleVersion", "ruleCode"],
                 "logon": true
-            },            
-            "GET": {
-                "page": "api/api_rules.inc",
-                "funcao": "avaliaRegra_v1",                
-                "parametros": ["ruleVersion", "ruleCode"],
-                "logon": true
-            }            
+            }                     
         },
         "rules/swagger": {
             "GET": {

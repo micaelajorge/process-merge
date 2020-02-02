@@ -165,16 +165,15 @@ function validaData($data)
     if (!is_array($aData)) {
         return false;
     }
-    
-    if (mb_strlen($aData, 'UTF8') < 10)
-    {
+
+    if (mb_strlen($aData, 'UTF8') < 10) {
         return false;
     }
-    
+
     if (count($aData) != 3) {
         return false;
-    }    
-    
+    }
+
     $retorno = checkdate($aData[1], $aData[2], $aData[0]);
     return $retorno;
 }
@@ -1276,8 +1275,7 @@ function pegaNumerCasoUnicoAberto($procId, $valorCampo, $fieldUnique = "", $fiel
     $totalEncontrados = mysqli_num_rows($Query);
     if ($totalEncontrados > 0) {
         // Retorna -1 se houver mais de um caso
-        if ($failDuplicate & $totalEncontrados > 1)
-        {
+        if ($failDuplicate & $totalEncontrados > 1) {
             $numeroCaso = -1;
         }
         $Linha = mysqli_fetch_array($Query);
@@ -2944,7 +2942,7 @@ function CabecalhoReferencias($ProcId, $Campo = '', $Ordem = '', $Action = '')
             $ImagemRef = "ordem_inativa.png";
         ?>
         <td><table width="100%"><td class="LinhaTitulo">
-                    <?= $CamposRef[$i]["Nome"] ?>
+        <?= $CamposRef[$i]["Nome"] ?>
                 </td><td align="right">
                     <a href="<?= $Action ?>Campo=<?= $CamposRef[$i]["Campo"] ?>&Ordem=<?= $Ordem ?>"><img src="images/<?= $ImagemRef ?>" border="0" ></a></td></table></td>	
         <?php
@@ -2960,8 +2958,6 @@ function CabecalhoReferenciasSimples($ProcId, $paraTemplate = false, $numRef = 0
         $CamposRef = array_slice($CamposRef, 0, $numRef);
     }
 
-
-
     /** Retorna apenas o array ou cria as celulas
      * 
      */
@@ -2976,163 +2972,163 @@ function CabecalhoReferenciasSimples($ProcId, $paraTemplate = false, $numRef = 0
         for ($i = 0; $i < count($CamposRef); $i++) {
             ?>
             <td class="Referencia">
-                <?= htmlentities($CamposRef[$i]["Nome"]) ?>
+            <?= htmlentities($CamposRef[$i]["Nome"]) ?>
             </td>	
-            <?php
+                <?php
+            }
+        }
+        return;
+    }
+
+    function PegaListaDominio($Origem)
+    {
+        global $connect;
+        $SQL = "select Origem_User from origemdominio where Origem_DOC = '$Origem'";
+        $Query = mysqli_query($connect, $SQL);
+        $Dominio = array();
+        while ($Result = mysqli_fetch_array($Query)) {
+            array_push($Dominio, $Result["Origem_User"]);
+        }
+        return $Dominio;
+    }
+
+    function PegaOrigemCaso($CaseNum)
+    {
+        global $connect, $userdef;
+        $SQL = "select Origem from exportkeys where CaseNum = $CaseNum";
+        $query = mysqli_query($connect, $SQL);
+        $Result = mysqli_fetch_array($query);
+        $Origem = $Result["Origem"];
+        if (empty($Origem)) {
+            $Origem = $userdef->Origem;
+        }
+        return $Origem;
+    }
+
+    function PegaOrigem()
+    {
+        global $connect, $userdef;
+        $SQL = "select Origem from origemgrupos where Grupo in ($userdef->usergroups)";
+        $Query = mysqli_query($connect, $SQL);
+        $Result = mysqli_fetch_array($Query);
+        return $Result["Origem"];
+    }
+
+    function Enteraudittrail($ProcId, $CaseNum, $StepId = 0, $Codigo = 0, $ActionDesc = '')
+    {
+        global $connect, $userdef;
+        $StepName = PegaNomeStep($ProcId, $StepId);
+        $SQL = "insert into ";
+        $SQL .= " audittrail ";
+        $SQL .= " ( ";
+        $SQL .= " ProcId, ";
+        $SQL .= " CaseNum, ";
+        $SQL .= " StepId, ";
+        $SQL .= " EventId, ";
+        $SQL .= " EventDatetime, ";
+        $SQL .= " UserId, ";
+        $SQL .= " UserName, ";
+        $SQL .= " StepName, ";
+        $SQL .= " ActionDesc";
+        $SQL .= " ) ";
+        $SQL .= " values  ";
+        $SQL .= " ( ";
+        $SQL .= " $ProcId,  ";
+        $SQL .= " $CaseNum,  ";
+        $SQL .= " $StepId,  ";
+        $SQL .= " $Codigo,  ";
+        $SQL .= " now(),  ";
+        $SQL .= " $userdef->UserId, ";
+        $SQL .= " '$userdef->UserDesc', ";
+        $SQL .= " '$StepName', ";
+        $SQL .= " '$ActionDesc'";
+        $SQL .= " ) ";
+        mysqli_query($connect, $SQL);
+    }
+
+    function unhtmlentities($string)
+    {
+        $trans_tbl = get_html_translation_table(HTML_ENTITIES);
+        $trans_tbl = array_flip($trans_tbl);
+        return strtr($string, $trans_tbl);
+    }
+
+    function Carregaconfig()
+    {
+        global $connect;
+        $config = array();
+        $SQL = "select * from config";
+        $Query = mysqli_query($connect, $SQL);
+        while ($Result = mysqli_fetch_array($Query)) {
+            $Chave = trim($Result["Funcao"]);
+            $config[$Chave] = trim($Result["Valor"]);
+        }
+        return $config;
+    }
+
+    function PegaNomeInstancia($ProcId)
+    {
+        global $connect;
+        $SQL = " select InstanceName from procdef where ProcId = $ProcId";
+        $Query = mysqli_query($connect, $SQL);
+        $result = mysqli_fetch_array($Query);
+        mysqli_free_result($Query);
+        $Valor = $result["InstanceName"];
+        if (empty($Valor)) {
+            $Valor = "Caso";
+        }
+        return $Valor;
+    }
+
+    function e_ordenado($ProcId, $campo)
+    {
+        global $connect;
+        $SQL = " select ";
+        $SQL .= "  ExtendProp ";
+        $SQL .= "  from ";
+        $SQL .= "  procfieldsdef ";
+        $SQL .= "  where ";
+        $SQL .= "  ProcId = $ProcId";
+        $SQL .= "  and ";
+        $SQL .= "  FieldId = $campo ";
+
+        $Query = mysqli_query($connect, $SQL);
+        $result = mysqli_fetch_array($Query);
+        mysqli_free_result($Query);
+        $valores = $result["ExtendProp"];
+        $pos = strpos($valores, "Sorted");
+        if (is_numeric($pos)) {
+            return true;
+        } else {
+            return false;
         }
     }
-    return;
-}
 
-function PegaListaDominio($Origem)
-{
-    global $connect;
-    $SQL = "select Origem_User from origemdominio where Origem_DOC = '$Origem'";
-    $Query = mysqli_query($connect, $SQL);
-    $Dominio = array();
-    while ($Result = mysqli_fetch_array($Query)) {
-        array_push($Dominio, $Result["Origem_User"]);
-    }
-    return $Dominio;
-}
-
-function PegaOrigemCaso($CaseNum)
-{
-    global $connect, $userdef;
-    $SQL = "select Origem from exportkeys where CaseNum = $CaseNum";
-    $query = mysqli_query($connect, $SQL);
-    $Result = mysqli_fetch_array($query);
-    $Origem = $Result["Origem"];
-    if (empty($Origem)) {
-        $Origem = $userdef->Origem;
-    }
-    return $Origem;
-}
-
-function PegaOrigem()
-{
-    global $connect, $userdef;
-    $SQL = "select Origem from origemgrupos where Grupo in ($userdef->usergroups)";
-    $Query = mysqli_query($connect, $SQL);
-    $Result = mysqli_fetch_array($Query);
-    return $Result["Origem"];
-}
-
-function Enteraudittrail($ProcId, $CaseNum, $StepId = 0, $Codigo = 0, $ActionDesc = '')
-{
-    global $connect, $userdef;
-    $StepName = PegaNomeStep($ProcId, $StepId);
-    $SQL = "insert into ";
-    $SQL .= " audittrail ";
-    $SQL .= " ( ";
-    $SQL .= " ProcId, ";
-    $SQL .= " CaseNum, ";
-    $SQL .= " StepId, ";
-    $SQL .= " EventId, ";
-    $SQL .= " EventDatetime, ";
-    $SQL .= " UserId, ";
-    $SQL .= " UserName, ";
-    $SQL .= " StepName, ";
-    $SQL .= " ActionDesc";
-    $SQL .= " ) ";
-    $SQL .= " values  ";
-    $SQL .= " ( ";
-    $SQL .= " $ProcId,  ";
-    $SQL .= " $CaseNum,  ";
-    $SQL .= " $StepId,  ";
-    $SQL .= " $Codigo,  ";
-    $SQL .= " now(),  ";
-    $SQL .= " $userdef->UserId, ";
-    $SQL .= " '$userdef->UserDesc', ";
-    $SQL .= " '$StepName', ";
-    $SQL .= " '$ActionDesc'";
-    $SQL .= " ) ";
-    mysqli_query($connect, $SQL);
-}
-
-function unhtmlentities($string)
-{
-    $trans_tbl = get_html_translation_table(HTML_ENTITIES);
-    $trans_tbl = array_flip($trans_tbl);
-    return strtr($string, $trans_tbl);
-}
-
-function Carregaconfig()
-{
-    global $connect;
-    $config = array();
-    $SQL = "select * from config";
-    $Query = mysqli_query($connect, $SQL);
-    while ($Result = mysqli_fetch_array($Query)) {
-        $Chave = trim($Result["Funcao"]);
-        $config[$Chave] = trim($Result["Valor"]);
-    }
-    return $config;
-}
-
-function PegaNomeInstancia($ProcId)
-{
-    global $connect;
-    $SQL = " select InstanceName from procdef where ProcId = $ProcId";
-    $Query = mysqli_query($connect, $SQL);
-    $result = mysqli_fetch_array($Query);
-    mysqli_free_result($Query);
-    $Valor = $result["InstanceName"];
-    if (empty($Valor)) {
-        $Valor = "Caso";
-    }
-    return $Valor;
-}
-
-function e_ordenado($ProcId, $campo)
-{
-    global $connect;
-    $SQL = " select ";
-    $SQL .= "  ExtendProp ";
-    $SQL .= "  from ";
-    $SQL .= "  procfieldsdef ";
-    $SQL .= "  where ";
-    $SQL .= "  ProcId = $ProcId";
-    $SQL .= "  and ";
-    $SQL .= "  FieldId = $campo ";
-
-    $Query = mysqli_query($connect, $SQL);
-    $result = mysqli_fetch_array($Query);
-    mysqli_free_result($Query);
-    $valores = $result["ExtendProp"];
-    $pos = strpos($valores, "Sorted");
-    if (is_numeric($pos)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function Prioridade($Prioridade)
-{
-    $contador = 1;
-    $APrioridade[0] = 'Sem Horário marcado';
-    for ($contador1 = 6; $contador1 < 22; $contador1++) {
-        for ($contador2 = 0; $contador2 < 4; $contador2++) {
-            $minuto = $contador2 * 15;
-            if ($minuto == 0)
-                $minuto = '00';
-            $hora = $contador1;
-            if ($hora < 10)
-                $hora = '0' . $hora;
-            $APrioridade[$contador] = $hora . ':' . $minuto;
-            $contador++;
+    function Prioridade($Prioridade)
+    {
+        $contador = 1;
+        $APrioridade[0] = 'Sem Horário marcado';
+        for ($contador1 = 6; $contador1 < 22; $contador1++) {
+            for ($contador2 = 0; $contador2 < 4; $contador2++) {
+                $minuto = $contador2 * 15;
+                if ($minuto == 0)
+                    $minuto = '00';
+                $hora = $contador1;
+                if ($hora < 10)
+                    $hora = '0' . $hora;
+                $APrioridade[$contador] = $hora . ':' . $minuto;
+                $contador++;
+            }
         }
+        $APrioridade[$contador] = '22:00';
+        return $APrioridade[$Prioridade];
     }
-    $APrioridade[$contador] = '22:00';
-    return $APrioridade[$Prioridade];
-}
 
-function PegaAcao($ProcId, $StepId, $CaseNum = 0)
-{
-    global $connect, $userdef;
-    AtivaDBProcess();
-    $SQL = "(select action from stepaddresses where ProcId = $ProcId and StepId = $StepId  and ((GroupId in ($userdef->usergroups) and GrpFld = 'G') or (GroupId = $userdef->UserId and GrpFld = 'U')))
+    function PegaAcao($ProcId, $StepId, $CaseNum = 0)
+    {
+        global $connect, $userdef;
+        AtivaDBProcess();
+        $SQL = "(select action from stepaddresses where ProcId = $ProcId and StepId = $StepId  and ((GroupId in ($userdef->usergroups) and GrpFld = 'G') or (GroupId = $userdef->UserId and GrpFld = 'U')))
 	union 
 	(select Action from stepaddresses SA, fieldaddresses FA, procfieldsdef PF 
 	where 
@@ -3172,560 +3168,251 @@ function PegaAcao($ProcId, $StepId, $CaseNum = 0)
 	FieldType = 'GR'
 	) ";
 
-    $Q = mysqli_query($connect, $SQL);
-    while ($linha = mysqli_fetch_array($Q)) {
-        if ($linha["action"] == 1) {
-            return "Edit";
+        $Q = mysqli_query($connect, $SQL);
+        while ($linha = mysqli_fetch_array($Q)) {
+            if ($linha["action"] == 1) {
+                return "Edit";
+            }
+        }
+        return "View";
+    }
+
+    function PegaInstanceName($ProcId)
+    {
+        global $connect;
+        $SQL = " Select ";
+        $SQL .= " InstanceName ";
+        $SQL .= " from ";
+        $SQL .= " procdef ";
+        $SQL .= " where ";
+        $SQL .= " ProcId = $ProcId ";
+        $Query = mysqli_query($connect, $SQL);
+        $result = mysqli_fetch_array($Query);
+        return $result["InstanceName"];
+    }
+
+    function PegaStepDoc($ProcId, $CaseNum)
+    {
+        global $connect;
+        $SQL = " Select ";
+        $SQL .= " StepId ";
+        $SQL .= " from ";
+        $SQL .= " casequeue ";
+        $SQL .= " where ";
+        $SQL .= " ProcId = $ProcId ";
+        $SQL .= " and ";
+        $SQL .= " CaseId = $CaseNum ";
+        $SQL .= " order by StepId desc ";
+        $Query = mysqli_query($connect, $SQL);
+        $result = mysqli_fetch_array($Query);
+        return $result["StepId"];
+    }
+
+    function PegaStepName($StepId, $ProcId)
+    {
+        return PegaNomeStep($ProcId, $StepId);
+    }
+
+    function PegaProcName($ProcId)
+    {
+        return PegaNomeProc($ProcId);
+    }
+
+    function Descompacta($dir, $Source)
+    {
+        if (!empty($Source)) {
+            exec("tar -xzf $dir$Source");
         }
     }
-    return "View";
-}
 
-function PegaInstanceName($ProcId)
-{
-    global $connect;
-    $SQL = " Select ";
-    $SQL .= " InstanceName ";
-    $SQL .= " from ";
-    $SQL .= " procdef ";
-    $SQL .= " where ";
-    $SQL .= " ProcId = $ProcId ";
-    $Query = mysqli_query($connect, $SQL);
-    $result = mysqli_fetch_array($Query);
-    return $result["InstanceName"];
-}
-
-function PegaStepDoc($ProcId, $CaseNum)
-{
-    global $connect;
-    $SQL = " Select ";
-    $SQL .= " StepId ";
-    $SQL .= " from ";
-    $SQL .= " casequeue ";
-    $SQL .= " where ";
-    $SQL .= " ProcId = $ProcId ";
-    $SQL .= " and ";
-    $SQL .= " CaseId = $CaseNum ";
-    $SQL .= " order by StepId desc ";
-    $Query = mysqli_query($connect, $SQL);
-    $result = mysqli_fetch_array($Query);
-    return $result["StepId"];
-}
-
-function PegaStepName($StepId, $ProcId)
-{
-    return PegaNomeStep($ProcId, $StepId);
-}
-
-function PegaProcName($ProcId)
-{
-    return PegaNomeProc($ProcId);
-}
-
-function Descompacta($dir, $Source)
-{
-    if (!empty($Source)) {
-        exec("tar -xzf $dir$Source");
+    function DateDiff($to, $from, $Tipo = "m")
+    {
+        return date_diff_i($to, $from, $Tipo);
     }
-}
 
-function DateDiff($to, $from, $Tipo = "m")
-{
-    return date_diff_i($to, $from, $Tipo);
-}
+    function PegaDadosCampoTabela($ProcId, $Campo)
+    {
+        global $connect;
+        $SQL = " select  ";
+        $SQL .= "  FieldSourceTable,  ";
+        $SQL .= "  FieldSourceField,  ";
+        $SQL .= "  FieldDisplayField,  ";
+        $SQL .= "  FieldUserId  ";
+        $SQL .= "  from  ";
+        $SQL .= "  procfieldsdef  ";
+        $SQL .= "  where  ";
+        $SQL .= "  ProcId = $ProcId  ";
+        $SQL .= "  and  ";
+        $SQL .= "  FieldId = $Campo ";
+        $Query = mysqli_query($connect, $SQL);
+        $result = mysqli_fetch_array($Query);
+        $SourceData[0] = str_replace("''", "'", $result["FieldSourceTable"]);
+        $SourceData[1] = $result["FieldSourceField"];
+        $SourceData[2] = $result["FieldDisplayField"];
+        $SourceData[3] = $result["FieldUserId"];
+        return $SourceData;
+    }
 
-function PegaDadosCampoTabela($ProcId, $Campo)
-{
-    global $connect;
-    $SQL = " select  ";
-    $SQL .= "  FieldSourceTable,  ";
-    $SQL .= "  FieldSourceField,  ";
-    $SQL .= "  FieldDisplayField,  ";
-    $SQL .= "  FieldUserId  ";
-    $SQL .= "  from  ";
-    $SQL .= "  procfieldsdef  ";
-    $SQL .= "  where  ";
-    $SQL .= "  ProcId = $ProcId  ";
-    $SQL .= "  and  ";
-    $SQL .= "  FieldId = $Campo ";
-    $Query = mysqli_query($connect, $SQL);
-    $result = mysqli_fetch_array($Query);
-    $SourceData[0] = str_replace("''", "'", $result["FieldSourceTable"]);
-    $SourceData[1] = $result["FieldSourceField"];
-    $SourceData[2] = $result["FieldDisplayField"];
-    $SourceData[3] = $result["FieldUserId"];
-    return $SourceData;
-}
+    function ExtendMes($mes)
+    {
+        $meses[1] = "Janeiro";
+        $meses[2] = "Fevereiro";
+        $meses[3] = "Mar�o";
+        $meses[4] = "Abril";
+        $meses[5] = "Maio";
+        $meses[6] = "Junho";
+        $meses[7] = "Julho";
+        $meses[8] = "Agosto";
+        $meses[9] = "Setembro";
+        $meses[10] = "Outubro";
+        $meses[11] = "Novembro";
+        $meses[12] = "Dezembro";
+        return $meses[$mes];
+    }
 
-function ExtendMes($mes)
-{
-    $meses[1] = "Janeiro";
-    $meses[2] = "Fevereiro";
-    $meses[3] = "Mar�o";
-    $meses[4] = "Abril";
-    $meses[5] = "Maio";
-    $meses[6] = "Junho";
-    $meses[7] = "Julho";
-    $meses[8] = "Agosto";
-    $meses[9] = "Setembro";
-    $meses[10] = "Outubro";
-    $meses[11] = "Novembro";
-    $meses[12] = "Dezembro";
-    return $meses[$mes];
-}
-
-function date_diff_i($from, $to, $periodo = "m")
-{
+    function date_diff_i($from, $to, $periodo = "m")
+    {
 // Separa Data da Hora
-    list($Date_from, $Time_from) = explode(" ", $from);
-    list($Date_to, $Time_to) = explode(" ", $to);
+        list($Date_from, $Time_from) = explode(" ", $from);
+        list($Date_to, $Time_to) = explode(" ", $to);
 
 //Separa Dia mes e ano
-    list($from_year, $from_month, $from_day) = explode("-", $Date_from);
-    list($to_year, $to_month, $to_day) = explode("-", $Date_to);
+        list($from_year, $from_month, $from_day) = explode("-", $Date_from);
+        list($to_year, $to_month, $to_day) = explode("-", $Date_to);
 // list($from_year, $from_month, $from_day, $Time_from) = explode(" ", $from); 
 // list($to_year, $to_month, $to_day, $Time_to) = explode(" ", $to);          	
 // $from_month = $meses["$from_month"];
 // $to_month = $meses["$to_month"];
 // Separa Minuto e segundo
-    list($from_hora, $from_minutos, $from_segundos) = explode(":", $Time_from);
-    list($to_hora, $to_minutos, $to_segundos) = explode(":", $Time_to);
-    if (empty($to_segundos)) {
-        $to_segundos = 0;
+        list($from_hora, $from_minutos, $from_segundos) = explode(":", $Time_from);
+        list($to_hora, $to_minutos, $to_segundos) = explode(":", $Time_to);
+        if (empty($to_segundos)) {
+            $to_segundos = 0;
+        }
+
+        if (empty($from_segundos)) {
+            $from_segundos = 0;
+        }
+
+        if ($from_year < 1970) {
+            $from_year = 1971;
+        }
+        if ($to_year < 1970) {
+            $to_year = 1971;
+        }
+        $from_date = mktime($from_hora, $from_minutos, $from_segundos, $from_month, $from_day, $from_year);
+        $to_date = mktime($to_hora, $to_minutos, $to_segundos, $to_month, $to_day, $to_year);
+        $diff = ($to_date - $from_date);
+        switch ($periodo) {
+            case "d":
+                $days = $diff / 86400;
+                break;
+            case "h":
+                $horas = $diff / 3600;
+                $days = $horas;
+                break;
+            case "m":
+                $days = $diff / 60;
+                break;
+            case "s":
+                $days = $diff;
+                break;
+        }
+        return $days;
     }
 
-    if (empty($from_segundos)) {
-        $from_segundos = 0;
-    }
-
-    if ($from_year < 1970) {
-        $from_year = 1971;
-    }
-    if ($to_year < 1970) {
-        $to_year = 1971;
-    }
-    $from_date = mktime($from_hora, $from_minutos, $from_segundos, $from_month, $from_day, $from_year);
-    $to_date = mktime($to_hora, $to_minutos, $to_segundos, $to_month, $to_day, $to_year);
-    $diff = ($to_date - $from_date);
-    switch ($periodo) {
-        case "d":
-            $days = $diff / 86400;
-            break;
-        case "h":
-            $horas = $diff / 3600;
-            $days = $horas;
-            break;
-        case "m":
-            $days = $diff / 60;
-            break;
-        case "s":
-            $days = $diff;
-            break;
-    }
-    return $days;
-}
-
-function ConvDate($dataRecebida, $SupressZero = false, $dataOnly = false)
-{
+    function ConvDate($dataRecebida, $SupressZero = false, $dataOnly = false)
+    {
 // Convers�o de formato DB data para pt/BR
-    $DataValor = "";
-    if (!empty($dataRecebida)) {
-        if (strpos($dataRecebida, ":") == 0) {
-            if (strpos($dataRecebida, "/") == 0) {
-                $DataConv = explode(" ", $dataRecebida);
-                $Data = explode("-", $DataConv[0]);
-                $DataValor = $Data[2] . "/" . $Data[1] . "/" . $Data[0];
-            } else {
-                $DataValor = $dataRecebida;
-            }
-        } else {
-            if (strpos($dataRecebida, "/")) {
-                if ($SupressZero && strpos($Data, " ")) {
+        $DataValor = "";
+        if (!empty($dataRecebida)) {
+            if (strpos($dataRecebida, ":") == 0) {
+                if (strpos($dataRecebida, "/") == 0) {
                     $DataConv = explode(" ", $dataRecebida);
-                    return $DataConv[0];
-                }
-                return $dataRecebida;
-            }
-            $DataConv = explode(" ", $dataRecebida);
-            if (empty($DataConv[1])) {
-                $DataValor = $DataConv[0];
-            } else {
-                $DataValor = explode("-", $DataConv[0]);
-            }
-            if (empty($DataConv[1]) && $SupressZero) {
-                $DataValor = $DataValor[2] . "/" . $DataValor[1] . "/" . $DataValor[0];
-            } else {
-                $DataValor = $DataValor[2] . "/" . $DataValor[1] . "/" . $DataValor[0] . " " . substr($DataConv[1], 0, 5);
-            }
-        }
-    }
-    return $DataValor;
-}
-
-function PegaDefaultStep($ProcId)
-{
-    global $connect;
-    $SQL = "select ";
-    $SQL .= "  StepId ";
-    $SQL .= "  from ";
-    $SQL .= "  stepdef ";
-    $SQL .= "  where ";
-    $SQL .= "  (DefaultView = '1' or DefaultView = 'T')";
-    $SQL .= "  and ";
-    $SQL .= "  ProcId = $ProcId ";
-    $QUERY = mysqli_query($connect, $SQL);
-    $result = mysqli_fetch_array($QUERY);
-    mysqli_free_result($QUERY);
-    return $result['StepId'];
-}
-
-function PegaCamposRef($ProcId)
-{
-    global $connect;
-    $SQL = " select ";
-    $SQL .= "  FieldName, FieldId ";
-    $SQL .= "  from ";
-    $SQL .= "  procfieldsdef ";
-    $SQL .= "  where ";
-    $SQL .= "  FieldRef <> 0 ";
-    $SQL .= "  and ";
-    $SQL .= "  ProcId = $ProcId ";
-    $SQL .= "  order by ";
-    $SQL .= "  FieldRefOrder ";
-    $QUERY1 = mysqli_query($connect, $SQL);
-    $Campos = array();
-    while ($Result = mysqli_fetch_array($QUERY1)) {
-        $Campo["Campo"] = "Campo" . $Result["FieldId"];
-        $Campo["Nome"] = $Result["FieldName"];
-        array_push($Campos, $Campo);
-    }
-    return $Campos;
-}
-
-function FormataCampo($Valor, $Tipo, $campo)
-{
-    global $S_procdef;
-    $Processo = $S_procdef["ProcId"];
-//	AtivaDBProcess();	
-    switch ($Tipo) {
-        case "DC":
-            $SourceData = PegaDadosCampoTabela($Processo, $campo);
-            $Valor = PegaValorCampo($SourceData[0], $Valor, $SourceData[2], "TXT", 1);
-            break;
-        case "LT":
-//$Valor = PegaValorCampoLista($Processo, $campo, $Valor); // Como usa Campo Display o valor j� est� transformado
-            break;
-        case "TB":
-            $SourceData = PegaDadosCampoTabela($Processo, $campo);
-            $Valor = PegaValorCampoTabela($Valor, $SourceData[0], $SourceData[1], $SourceData[2], $SourceData[3]);
-            break;
-        case "US":
-            $Valor = PegaNomeUsuario($Valor);
-            break;
-        case "GR":
-            $Valor = PegaValorCampoTabela($Valor, "groupdef", "GroupId", "GroupName");
-            break;
-        case "BO":
-            if ($Valor == 1) {
-                $Valor = "Sim";
-            } else {
-                $Valor = "N�o";
-            }
-            break;
-        case "DT":
-            $Valor = ConvDate($Valor, true, true);
-            break;
-        case "TM";
-// N�o muda
-            break;
-    }
-    return $Valor;
-}
-
-function ValorCampoQueue($Valor, $Tipo, $campo, $CaseNum, $Code)
-{
-    global $S_procdef;
-    $Processo = $S_procdef["ProcId"];
-//	AtivaDBProcess();
-    switch ($Tipo) {
-        case "DC":
-            $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, 'DC', 0)";
-            break;
-        case "LT":
-        case "TX":
-        case "NU":
-            if (empty($Valor)) {
-                $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, '$Tipo', 1);";
-            }
-            break;
-        case "TB":
-            $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, '$Tipo', 0);";
-            break;
-        case "US":
-            if (empty($Valor)) {
-                $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, 'US', 1);";
-            }
-            break;
-        case "GR":
-            $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, 'GR', 0);";
-            break;
-        case "BO":
-            if ($Valor == 1 || $Valor == "Sim") {
-                $Valor = "Sim";
-            } else {
-                $Valor = "N�o";
-            }
-            break;
-
-        case "DT":
-            if (empty($Valor)) {
-                $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, 'DT', 1);";
-            }
-            break;
-    }
-    return $Valor;
-}
-
-function PegaMascaraCampoReferencia($Campo)
-{
-    global $S_procdef;
-    for ($i = 0; $i < count($S_procdef["exportkeys"]); $i++) {
-        if ($S_procdef["exportkeys"][$i]["FieldId"] == $Campo) {
-            return $S_procdef["exportkeys"][$i]["FieldMask"];
-        }
-    }
-    return "";
-}
-
-function PegaTipoCampoReferencia($Campo)
-{
-    global $S_procdef;
-    for ($i = 0; $i < count($S_procdef["exportkeys"]); $i++) {
-        if ($S_procdef["exportkeys"][$i]["FieldId"] == $Campo) {
-            return $S_procdef["exportkeys"][$i]["FieldType"];
-        }
-    }
-    return "TX";
-}
-
-function PegaNomeCampoReferencia($Campo)
-{
-    global $S_procdef;
-    if ($Campo == "CaseNum") {
-        return "N�mero do Caso";
-    }
-    for ($i = 0; $i < count($S_procdef["exportkeys"]); $i++) {
-        if ($S_procdef["exportkeys"][$i]["FieldId"] == $Campo) {
-            return $S_procdef["exportkeys"][$i]["FieldName"];
-        }
-    }
-    return "";
-}
-
-function PegaCamposReferenciaProcesso($ProcId)
-{
-    global $connect, $S_procdef;
-
-    if (!is_numeric($ProcId)) {
-        $ProcId = PegaProcIdByCode($ProcId);
-    }
-
-    if ($S_procdef["ProcId"] == $ProcId) {
-        if (is_array($S_procdef["Referencias"])) {
-            if (count($S_procdef["Referencias"]) > 0) {
-                return;
-            }
-        }
-    }
-    $_SESSION["S_procdef"] = $S_procdef;
-    $S_procdef["ProcId"] = $ProcId;
-    $S_procdef["Referencias"] = array();
-    $S_procdef["exportkeys"] = array();
-    $SQL = " select ";
-    $SQL .= "  FieldName, FieldId, FieldType, FieldRef, FieldSourceTable, FieldSourceField, FieldDisplayField, FieldCod, FieldMask  ";
-    $SQL .= "  from ";
-    $SQL .= "  procfieldsdef ";
-    $SQL .= "  where ";
-    $SQL .= "  (FieldKey <> 0 or FieldRef <> 0)";
-    $SQL .= "  and ";
-    $SQL .= "  ProcId = $ProcId ";
-    $SQL .= "  and ";
-    $SQL .= "  Active = 1";
-    $SQL .= "  order by ";
-    $SQL .= "  FieldRef desc, ";
-    $SQL .= "  FieldRefOrder, ";
-    $SQL .= "  FieldName ";
-    $QUERY1 = mysqli_query($connect, $SQL);
-    while ($Result = mysqli_fetch_array($QUERY1)) {
-        if ($Result["FieldRef"] == 1) {
-            array_push($S_procdef["Referencias"], $Result);
-        }
-        array_push($S_procdef["exportkeys"], $Result);
-    }
-}
-
-function PegaReferencias($ProcId, $CaseNum, $inArray = 0, $ExportKey = 0, $StepCode = 0, $numRef = 0)
-{
-    global $connect, $S_procdef;
-
-    PegaCamposReferenciaProcesso($ProcId);
-    $Key = 0;
-    $CamposSQL = array();
-    foreach ($S_procdef["Referencias"] as $Ref) {
-        array_push($CamposSQL, "CampoDisplay" . $Ref["FieldId"]);
-    }
-
-    if (count($CamposSQL) > 0) {
-        $CamposSQL = implode(",", $CamposSQL);
-        $SQL = "select $CamposSQL from exportkeysdisplay where CaseNum = $CaseNum and ProcId = $ProcId";
-        $Qryvalores = mysqli_query($connect, $SQL);
-    }
-
-    if (!$Qryvalores) {
-        $SQL = "select * from exportkeysdisplay where CaseNum = $CaseNum and ProcId = $ProcId";
-        $Qryvalores = mysqli_query($connect, $SQL);
-    }
-    $valores = mysqli_fetch_array($Qryvalores);
-    for ($i = 0; $i < count($S_procdef["Referencias"]); $i++) {
-        if ($numRef != 0 & $i > $numRef - 1) { // Tras apenas o N�mero de Referencias selecionado
-            break;
-        }
-        $LINHA1 = $S_procdef["Referencias"][$i];
-        $Valor = trim($valores["CampoDisplay" . $LINHA1['FieldId']]);
-        $Valor = str_replace("/*%/*", "'", $Valor);
-        $Valor = str_replace("/*#/*", ";", $Valor);
-        $Valor = str_replace("/*!/*", ",", $Valor);
-        $Valor = str_replace("&", "&amp;", $Valor);
-        ;
-        $Valor = str_replace("<", "&lt;", $Valor);
-        ;
-        $Valor = str_replace(">", "&gt;", $Valor);
-        ;
-        if (empty($Valor)) {
-            $Retorno[$Key]['Empty'] = true;
-        }
-        if ($inArray == 0) {
-//			$Retorno[$contador] = "&nbsp;<span class=\"texto1blackBold\" >$Campo:</span><span class=\"texto1black\"> $Valor </span>";
-            $Retorno[$Key] = FormataCampo($Valor, $LINHA1["FieldType"], $LINHA1['FieldId']);
-        } else {
-            if ($ExportKey == 1) {
-                $Retorno[$Key]['FieldName'] = "Campo" . $LINHA1["FieldId"];
-            } else {
-                $Retorno[$Key]['FieldName'] = $LINHA1["FieldName"];
-            }
-            $Retorno[$Key]['FieldCod'] = $LINHA1["FieldCod"];
-            $Retorno[$Key]['FieldValue'] = ValorCampoQueue($Valor, $LINHA1["FieldType"], $LINHA1['FieldId'], $CaseNum, $LINHA1["FieldCod"] . $StepCode);
-        }
-        $Key++;
-    }
-    return $Retorno;
-}
-
-function PegaArrayReferencias($ProcId, $ACaseNum, $retornarComoArray = 0, $ExportKey = 0, $StepCode = 0, $retornarFuncaoValorCampo = true)
-{
-    global $connect, $S_procdef, $AReferencias;
-
-    if (!is_numeric($ProcId)) {
-        $ProcId = PegaProcIdByCode($ProcId);
-    }
-
-    if (count($ACaseNum) == 0) {
-        return;
-    }
-    $SCaseNum = implode(",", $ACaseNum);
-    if (empty($SCaseNum)) {
-        return;
-    }
-
-    PegaCamposReferenciaProcesso($ProcId);
-    $CamposSQL = array();
-    array_push($CamposSQL, "CaseNum");
-    foreach ($S_procdef["Referencias"] as $Ref) {
-        array_push($CamposSQL, "CampoDisplay" . $Ref["FieldId"]);
-    }
-
-    $Qryvalores = false;
-    if (count($CamposSQL) > 0) {
-        $CamposSQL = implode(",", $CamposSQL);
-        $SQL = "select $CamposSQL, CaseNum from exportkeysdisplay where ProcId = $ProcId and CaseNum in ($SCaseNum)";
-        $Qryvalores = mysqli_query($connect, $SQL);
-    }
-
-
-    if (!$Qryvalores | $Qryvalores->numrows == 0) {
-        $SQL = "select * from exportkeysdisplay where CaseNum in ($SCaseNum) and ProcId = $ProcId";
-        $Qryvalores = mysqli_query($connect, $SQL);
-    }
-
-    if (!$Qryvalores) {
-        error_log("Falha ao pegar campos referência: $SQL");
-        return;
-    }
-    $Total_Referencias = count($S_procdef["Referencias"]);
-    while ($valores = mysqli_fetch_array($Qryvalores)) {
-        $Key = 0;
-        $Retorno = array();
-        for ($i = 0; $i < $Total_Referencias; $i++) {
-            $Retorno[$Key]['Empty'] = false;
-            $LINHA1 = $S_procdef["Referencias"][$i];
-            $campoDisplay = "CampoDisplay" . $LINHA1['FieldId'];
-            $Valor = $valores[$campoDisplay];
-            $Valor = trim($Valor);
-            $Valor = str_replace("/*%/*", "'", $Valor);
-            $Valor = str_replace("/*#/*", ";", $Valor);
-            $Valor = str_replace("/*!/*", ",", $Valor);
-            $Valor = str_replace("&", "&amp;", $Valor);
-            $Valor = str_replace("<", "&lt;", $Valor);
-            $Valor = str_replace(">", "&gt;", $Valor);
-
-            $fieldEmpty = empty($Valor);
-            $fieldValue = $Valor;
-            $fieldName = $LINHA1["FieldName"];
-            if ($retornarComoArray == 0 | !$retornarFuncaoValorCampo) {
-                if (!$retornarFuncaoValorCampo) {
-                    if ($Retorno[$Key]['Empty']) {
-                        $fieldValue = FormataCampo($Valor, $LINHA1["FieldType"], $LINHA1['FieldId']);
-                    }
+                    $Data = explode("-", $DataConv[0]);
+                    $DataValor = $Data[2] . "/" . $Data[1] . "/" . $Data[0];
                 } else {
-                    if ($Retorno[$Key]['Empty']) {
-//$Retorno[$Key] = FormataCampo($Valor, $LINHA1["FieldType"], $LINHA1['FieldId']);
-                        $fieldValue = FormataCampo($Valor, $LINHA1["FieldType"], $LINHA1['FieldId']);
-                    }
+                    $DataValor = $dataRecebida;
                 }
             } else {
-                if ($ExportKey == 1) {
-                    $FieldName = "Campo" . $LINHA1["FieldId"];
-                    $fieldName = $FieldName;
+                if (strpos($dataRecebida, "/")) {
+                    if ($SupressZero && strpos($Data, " ")) {
+                        $DataConv = explode(" ", $dataRecebida);
+                        return $DataConv[0];
+                    }
+                    return $dataRecebida;
                 }
-                if ($fieldEmpty) {
-                    $fieldValue = ValorCampoQueue($Valor, $LINHA1["FieldType"], $LINHA1['FieldId'], $valores["CaseNum"], $LINHA1["FieldCod"] . $StepCode);
+                $DataConv = explode(" ", $dataRecebida);
+                if (empty($DataConv[1])) {
+                    $DataValor = $DataConv[0];
+                } else {
+                    $DataValor = explode("-", $DataConv[0]);
+                }
+                if (empty($DataConv[1]) && $SupressZero) {
+                    $DataValor = $DataValor[2] . "/" . $DataValor[1] . "/" . $DataValor[0];
+                } else {
+                    $DataValor = $DataValor[2] . "/" . $DataValor[1] . "/" . $DataValor[0] . " " . substr($DataConv[1], 0, 5);
                 }
             }
-            $Retorno[$Key]['FieldName'] = $fieldName;
-            $Retorno[$Key]['FieldId'] = $LINHA1["FieldId"];
-            $Retorno[$Key]['FieldCod'] = $LINHA1["FieldCod"];
-            $Retorno[$Key]['FieldValue'] = $fieldValue;
-            $Retorno[$Key]['Empty'] = $fieldEmpty;
-            $Key++;
         }
-        $AReferencias[$valores["CaseNum"]] = $Retorno;
+        return $DataValor;
     }
-    return $AReferencias;
-}
 
-function FormataCampoRef($ProcId, $Campo, $Valor, $Tipo = "TX", $Mascara = 1)
-{
-    if ($Mascara == 1) {
+    function PegaDefaultStep($ProcId)
+    {
+        global $connect;
+        $SQL = "select ";
+        $SQL .= "  StepId ";
+        $SQL .= "  from ";
+        $SQL .= "  stepdef ";
+        $SQL .= "  where ";
+        $SQL .= "  (DefaultView = '1' or DefaultView = 'T')";
+        $SQL .= "  and ";
+        $SQL .= "  ProcId = $ProcId ";
+        $QUERY = mysqli_query($connect, $SQL);
+        $result = mysqli_fetch_array($QUERY);
+        mysqli_free_result($QUERY);
+        return $result['StepId'];
+    }
+
+    function PegaCamposRef($ProcId)
+    {
+        global $connect;
+        $SQL = " select ";
+        $SQL .= "  FieldName, FieldId ";
+        $SQL .= "  from ";
+        $SQL .= "  procfieldsdef ";
+        $SQL .= "  where ";
+        $SQL .= "  FieldRef <> 0 ";
+        $SQL .= "  and ";
+        $SQL .= "  ProcId = $ProcId ";
+        $SQL .= "  order by ";
+        $SQL .= "  FieldRefOrder ";
+        $QUERY1 = mysqli_query($connect, $SQL);
+        $Campos = array();
+        while ($Result = mysqli_fetch_array($QUERY1)) {
+            $Campo["Campo"] = "Campo" . $Result["FieldId"];
+            $Campo["Nome"] = $Result["FieldName"];
+            array_push($Campos, $Campo);
+        }
+        return $Campos;
+    }
+
+    function FormataCampo($Valor, $Tipo, $campo)
+    {
+        global $S_procdef;
+        $Processo = $S_procdef["ProcId"];
+//	AtivaDBProcess();	
         switch ($Tipo) {
             case "DC":
-                $SourceData = PegaDadosCampoTabela($ProcId, $Campo);
+                $SourceData = PegaDadosCampoTabela($Processo, $campo);
                 $Valor = PegaValorCampo($SourceData[0], $Valor, $SourceData[2], "TXT", 1);
                 break;
             case "LT":
-                $Valor = PegaValorCampoLista($ProcId, $Campo, $Valor);
+//$Valor = PegaValorCampoLista($Processo, $campo, $Valor); // Como usa Campo Display o valor j� est� transformado
                 break;
             case "TB":
-                $SourceData = PegaDadosCampoTabela($ProcId, $Campo);
+                $SourceData = PegaDadosCampoTabela($Processo, $campo);
                 $Valor = PegaValorCampoTabela($Valor, $SourceData[0], $SourceData[1], $SourceData[2], $SourceData[3]);
                 break;
             case "US":
@@ -3742,193 +3429,299 @@ function FormataCampoRef($ProcId, $Campo, $Valor, $Tipo = "TX", $Mascara = 1)
                 }
                 break;
             case "DT":
-                $Valor = ConvDate($Valor, false);
+                $Valor = ConvDate($Valor, true, true);
                 break;
             case "TM";
 // N�o muda
                 break;
-            case "SFR":
-                $Valor = PegaNomeStep($ProcId, $Valor);
+        }
+        return $Valor;
+    }
+
+    function ValorCampoQueue($Valor, $Tipo, $campo, $CaseNum, $Code)
+    {
+        global $S_procdef;
+        $Processo = $S_procdef["ProcId"];
+//	AtivaDBProcess();
+        switch ($Tipo) {
+            case "DC":
+                $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, 'DC', 0)";
+                break;
+            case "LT":
+            case "TX":
+            case "NU":
+                if (empty($Valor)) {
+                    $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, '$Tipo', 1);";
+                }
+                break;
+            case "TB":
+                $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, '$Tipo', 0);";
+                break;
+            case "US":
+                if (empty($Valor)) {
+                    $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, 'US', 1);";
+                }
+                break;
+            case "GR":
+                $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, 'GR', 0);";
+                break;
+            case "BO":
+                if ($Valor == 1 || $Valor == "Sim") {
+                    $Valor = "Sim";
+                } else {
+                    $Valor = "N�o";
+                }
+                break;
+
+            case "DT":
+                if (empty($Valor)) {
+                    $Valor = "PegaValorCampo('$Code$CaseNum', $Processo, $CaseNum, $campo, 'DT', 1);";
+                }
                 break;
         }
-    }
-    return $Valor;
-}
-
-function PegaUltimoValorCampoMultiLinhas($ProcId, $CaseNum, $Campo)
-{
-    global $connect;
-    $SQL = "select FieldValue from casedata where ProcId = $ProcId and CaseNum = $CaseNum and FieldId = $Campo order by ValueId desc";
-    $Query = mysqli_query($connect, $SQL);
-    $Result = mysqli_fetch_array($Query);
-    if ($Result) {
-        return ExplodeValueTickler($Result["FieldValue"], 0);
-    }
-    return false;
-}
-
-function PegaValorConstant($ProcId, $Codigo)
-{
-    global $connect;
-    $SQL = "select ConstValue from internalconstants where ProcId = $ProcId and ConstCode = '$Codigo'";
-    $Query = mysqli_query($connect, $SQL);
-    $Result = mysqli_fetch_array($Query);
-    return $Result["ConstValue"];
-}
-
-function ParsevaloresCampos($ProcId, $CaseNum, $contents)
-{
-    if (strpos($contents, '!%') === false && strpos($contents, '!$') === false && strpos($contents, '!{') === false || ((substr_count($contents, '!$') % 2) != 0 && (substr_count($contents, '!%') % 2) != 0 && strpos($contents, '!{') === false )) {
-        return $contents;
+        return $Valor;
     }
 
-    if (substr_count($contents, '!{') != substr_count($contents, '}!')) {
-        return $contents;
-    }
-
-    while (strpos($contents, '!{') !== false && (substr_count($texto, '!{') == substr_count($texto, '}!'))) {
-        $inicio = strpos($contents, '!{');
-        $fim = strpos($contents, '}!', $inicio + 2);
-        $CodigoCampo = substr($contents, $inicio + 2, $fim - $inicio - 2);
-        $Valor = PegaValorConstant($ProcId, $CodigoCampo);
-        $contents = str_replace("!{" . $CodigoCampo . "}!", $Valor, $contents);
-    }
-
-    while (strpos($contents, '!$') !== false && (substr_count($texto, '!$') % 2) == 0) {
-        $inicio = strpos($contents, '!$');
-        $fim = strpos($contents, '!$', $inicio + 2);
-        $CodigoCampo = substr($contents, $inicio + 2, $fim - $inicio - 2);
-        $Valor = ParseValorCampo($ProcId, $CaseNum, $CodigoCampo, '', 0);
-        $contents = str_replace("!$" . $CodigoCampo . "!$", $Valor, $contents);
-    }
-
-    while (strpos($contents, '!%') !== false && (substr_count($texto, '!%') % 2) == 0) {
-        $inicio = strpos($contents, '!%');
-        $fim = strpos($contents, '!%', $inicio + 2);
-        $CodigoCampo = substr($contents, $inicio + 2, $fim - $inicio - 2);
-        $Valor = ParseValorCampo($ProcId, $CaseNum, $CodigoCampo, '', 1);
-        $contents = str_replace("!%" . $CodigoCampo . "!%", $Valor, $contents);
-    }
-    return $contents;
-}
-
-function ParseValorCampo($Processo, $Caso, $campo, $Tipo, $Mascara = 0)
-{
-    if ($campo == "SYSTEMDATETIME" | $campo == "DATA") {
-        return date("d/m/Y H:i");
-    }
-
-    if ($campo == "SYSTEMDATE" | $campo == "DATA") {
-        return date("d/m/Y");
-    }
-
-    if ($campo == "SYSTEMTIME" | $campo == "DATA") {
-        return date("H:i");
-    }
-    return PegaValorCampo($Processo, $Caso, $campo, $Tipo, $Mascara);
-}
-
-function PegaTipoCampo($Processo, $campo)
-{
-    global $connect;
-    if (!is_numeric($Processo)) {
-        $Processo = PegaProcIdByCode($Processo);
-    }
-
-    if (!is_numeric($campo)) {
-        $campo = PegaFieldIdByCode($Processo, $campo);
-    }
-
-    $SQL = "select FieldType from procfieldsdef where ProcId = $Processo and FieldId = $campo";
-    $Query = mysqli_query($connect, $SQL);
-    $Result = mysqli_fetch_array($Query);
-    return $Result["FieldType"];
-}
-
-/**
- * 
- * @global type $connect
- * @param type $Processo
- * @param type $Caso
- * @param type $campo
- * @param type $TipoCampo
- * @param type $Mascara
- * @param type $HTML
- * @param type $valores
- * @param type $DefaultValue
- * @return type
- */
-function PegaValorCampo($Processo, $Caso, $campo, $TipoCampo = "ND", $Mascara = 0, $HTML = 1, $valores = "", $DefaultValue = "")
-{
-    global $connect;
-    AtivaDBProcess();
-
-    if (!is_numeric($Processo)) {
-        $Processo = PegaProcIdByCode($Processo);
-    }
-
-    if (!is_numeric($campo)) {
-        $campo = PegaFieldIdByCode($Processo, $campo);
-    }
-
-    if ($TipoCampo == '' && $Mascara == 1) {
-        $TipoCampo = PegaTipoCampo($Processo, $campo);
-    }
-
-    if ($TipoCampo == 'ND' && $Mascara == 0) {
-        $TipoCampo = 'TX';
-    }
-
-    if (!is_array($valores) || in_array($TipoCampo, array('IM', 'AR', 'TM', 'TK', 'IF', 'IT', 'STS', 'PRC', 'EXT'))) {
-        $SQL = " SELECT ";
-        $SQL .= " FieldValue, ExtendData, ValueId";
-        $SQL .= " FROM";
-        $SQL .= " casedata";
-        $SQL .= " where";
-        $SQL .= " fieldid = $campo";
-        $SQL .= " and ";
-        $SQL .= " procid = $Processo ";
-        $SQL .= " and ";
-        $SQL .= " casenum = $Caso ";
-        $QUERY2 = mysqli_query($connect, $SQL);
-        if (!$QUERY2) {
-            error_log("Falha ao capturar valor de campo \"$campo\" Processo \"$Processo\" Caso \"$Caso\" Script: " . $_SERVER['SCRIPT_NAME']);
-        }
-        if (in_array($TipoCampo, array("IF", "IT"))) {
-            $Valor = mysqli_fetch_all($QUERY2, MYSQLI_ASSOC);
-        } else {
-            $linha = mysqli_fetch_array($QUERY2, MYSQLI_ASSOC);
-            $Valor = $linha["FieldValue"];
-        }
-        if (in_array($TipoCampo, array("AR", "IM", "EXT"))) {
-            $extendData = $linha["ExtendData"];
-            if ($extendData != "") {
-                $Valor = $extendData;
+    function PegaMascaraCampoReferencia($Campo)
+    {
+        global $S_procdef;
+        for ($i = 0; $i < count($S_procdef["exportkeys"]); $i++) {
+            if ($S_procdef["exportkeys"][$i]["FieldId"] == $Campo) {
+                return $S_procdef["exportkeys"][$i]["FieldMask"];
             }
         }
-        mysqli_free_result($QUERY2);
-    } else {
-        $Valor = $valores[$campo];
+        return "";
     }
 
-    if (!is_array($Valor)) {
-        $Valor = trim($Valor);
-        $Valor = str_replace("/*%/*", "'", $Valor);
-        $Valor = str_replace("/*#/*", ";", $Valor);
+    function PegaTipoCampoReferencia($Campo)
+    {
+        global $S_procdef;
+        for ($i = 0; $i < count($S_procdef["exportkeys"]); $i++) {
+            if ($S_procdef["exportkeys"][$i]["FieldId"] == $Campo) {
+                return $S_procdef["exportkeys"][$i]["FieldType"];
+            }
+        }
+        return "TX";
     }
 
-    if ($Valor <> "") {
+    function PegaNomeCampoReferencia($Campo)
+    {
+        global $S_procdef;
+        if ($Campo == "CaseNum") {
+            return "N�mero do Caso";
+        }
+        for ($i = 0; $i < count($S_procdef["exportkeys"]); $i++) {
+            if ($S_procdef["exportkeys"][$i]["FieldId"] == $Campo) {
+                return $S_procdef["exportkeys"][$i]["FieldName"];
+            }
+        }
+        return "";
+    }
+
+    function PegaCamposReferenciaProcesso($ProcId)
+    {
+        global $connect, $S_procdef;
+
+        if (!is_numeric($ProcId)) {
+            $ProcId = PegaProcIdByCode($ProcId);
+        }
+
+        if ($S_procdef["ProcId"] == $ProcId) {
+            if (is_array($S_procdef["Referencias"])) {
+                if (count($S_procdef["Referencias"]) > 0) {
+                    return;
+                }
+            }
+        }
+        $_SESSION["S_procdef"] = $S_procdef;
+        $S_procdef["ProcId"] = $ProcId;
+        $S_procdef["Referencias"] = array();
+        $S_procdef["exportkeys"] = array();
+        $SQL = " select ";
+        $SQL .= "  FieldName, FieldId, FieldType, FieldRef, FieldSourceTable, FieldSourceField, FieldDisplayField, FieldCod, FieldMask  ";
+        $SQL .= "  from ";
+        $SQL .= "  procfieldsdef ";
+        $SQL .= "  where ";
+        $SQL .= "  (FieldKey <> 0 or FieldRef <> 0)";
+        $SQL .= "  and ";
+        $SQL .= "  ProcId = $ProcId ";
+        $SQL .= "  and ";
+        $SQL .= "  Active = 1";
+        $SQL .= "  order by ";
+        $SQL .= "  FieldRef desc, ";
+        $SQL .= "  FieldRefOrder, ";
+        $SQL .= "  FieldName ";
+        $QUERY1 = mysqli_query($connect, $SQL);
+        while ($Result = mysqli_fetch_array($QUERY1)) {
+            if ($Result["FieldRef"] == 1) {
+                array_push($S_procdef["Referencias"], $Result);
+            }
+            array_push($S_procdef["exportkeys"], $Result);
+        }
+    }
+
+    function PegaReferencias($ProcId, $CaseNum, $inArray = 0, $ExportKey = 0, $StepCode = 0, $numRef = 0)
+    {
+        global $connect, $S_procdef;
+
+        PegaCamposReferenciaProcesso($ProcId);
+        $Key = 0;
+        $CamposSQL = array();
+        foreach ($S_procdef["Referencias"] as $Ref) {
+            array_push($CamposSQL, "CampoDisplay" . $Ref["FieldId"]);
+        }
+
+        if (count($CamposSQL) > 0) {
+            $CamposSQL = implode(",", $CamposSQL);
+            $SQL = "select $CamposSQL from exportkeysdisplay where CaseNum = $CaseNum and ProcId = $ProcId";
+            $Qryvalores = mysqli_query($connect, $SQL);
+        }
+
+        if (!$Qryvalores) {
+            $SQL = "select * from exportkeysdisplay where CaseNum = $CaseNum and ProcId = $ProcId";
+            $Qryvalores = mysqli_query($connect, $SQL);
+        }
+        $valores = mysqli_fetch_array($Qryvalores);
+        for ($i = 0; $i < count($S_procdef["Referencias"]); $i++) {
+            if ($numRef != 0 & $i > $numRef - 1) { // Tras apenas o N�mero de Referencias selecionado
+                break;
+            }
+            $LINHA1 = $S_procdef["Referencias"][$i];
+            $Valor = trim($valores["CampoDisplay" . $LINHA1['FieldId']]);
+            $Valor = str_replace("/*%/*", "'", $Valor);
+            $Valor = str_replace("/*#/*", ";", $Valor);
+            $Valor = str_replace("/*!/*", ",", $Valor);
+            $Valor = str_replace("&", "&amp;", $Valor);
+            ;
+            $Valor = str_replace("<", "&lt;", $Valor);
+            ;
+            $Valor = str_replace(">", "&gt;", $Valor);
+            ;
+            if (empty($Valor)) {
+                $Retorno[$Key]['Empty'] = true;
+            }
+            if ($inArray == 0) {
+//			$Retorno[$contador] = "&nbsp;<span class=\"texto1blackBold\" >$Campo:</span><span class=\"texto1black\"> $Valor </span>";
+                $Retorno[$Key] = FormataCampo($Valor, $LINHA1["FieldType"], $LINHA1['FieldId']);
+            } else {
+                if ($ExportKey == 1) {
+                    $Retorno[$Key]['FieldName'] = "Campo" . $LINHA1["FieldId"];
+                } else {
+                    $Retorno[$Key]['FieldName'] = $LINHA1["FieldName"];
+                }
+                $Retorno[$Key]['FieldCod'] = $LINHA1["FieldCod"];
+                $Retorno[$Key]['FieldValue'] = ValorCampoQueue($Valor, $LINHA1["FieldType"], $LINHA1['FieldId'], $CaseNum, $LINHA1["FieldCod"] . $StepCode);
+            }
+            $Key++;
+        }
+        return $Retorno;
+    }
+
+    function PegaArrayReferencias($ProcId, $ACaseNum, $retornarComoArray = 0, $ExportKey = 0, $StepCode = 0, $retornarFuncaoValorCampo = true)
+    {
+        global $connect, $S_procdef, $AReferencias;
+
+        if (!is_numeric($ProcId)) {
+            $ProcId = PegaProcIdByCode($ProcId);
+        }
+
+        if (count($ACaseNum) == 0) {
+            return;
+        }
+        $SCaseNum = implode(",", $ACaseNum);
+        if (empty($SCaseNum)) {
+            return;
+        }
+
+        PegaCamposReferenciaProcesso($ProcId);
+        $CamposSQL = array();
+        array_push($CamposSQL, "CaseNum");
+        foreach ($S_procdef["Referencias"] as $Ref) {
+            array_push($CamposSQL, "CampoDisplay" . $Ref["FieldId"]);
+        }
+
+        $Qryvalores = false;
+        if (count($CamposSQL) > 0) {
+            $CamposSQL = implode(",", $CamposSQL);
+            $SQL = "select $CamposSQL, CaseNum from exportkeysdisplay where ProcId = $ProcId and CaseNum in ($SCaseNum)";
+            $Qryvalores = mysqli_query($connect, $SQL);
+        }
+
+
+        if (!$Qryvalores | $Qryvalores->numrows == 0) {
+            $SQL = "select * from exportkeysdisplay where CaseNum in ($SCaseNum) and ProcId = $ProcId";
+            $Qryvalores = mysqli_query($connect, $SQL);
+        }
+
+        if (!$Qryvalores) {
+            error_log("Falha ao pegar campos referência: $SQL");
+            return;
+        }
+        $Total_Referencias = count($S_procdef["Referencias"]);
+        while ($valores = mysqli_fetch_array($Qryvalores)) {
+            $Key = 0;
+            $Retorno = array();
+            for ($i = 0; $i < $Total_Referencias; $i++) {
+                $Retorno[$Key]['Empty'] = false;
+                $LINHA1 = $S_procdef["Referencias"][$i];
+                $campoDisplay = "CampoDisplay" . $LINHA1['FieldId'];
+                $Valor = $valores[$campoDisplay];
+                $Valor = trim($Valor);
+                $Valor = str_replace("/*%/*", "'", $Valor);
+                $Valor = str_replace("/*#/*", ";", $Valor);
+                $Valor = str_replace("/*!/*", ",", $Valor);
+                $Valor = str_replace("&", "&amp;", $Valor);
+                $Valor = str_replace("<", "&lt;", $Valor);
+                $Valor = str_replace(">", "&gt;", $Valor);
+
+                $fieldEmpty = empty($Valor);
+                $fieldValue = $Valor;
+                $fieldName = $LINHA1["FieldName"];
+                if ($retornarComoArray == 0 | !$retornarFuncaoValorCampo) {
+                    if (!$retornarFuncaoValorCampo) {
+                        if ($Retorno[$Key]['Empty']) {
+                            $fieldValue = FormataCampo($Valor, $LINHA1["FieldType"], $LINHA1['FieldId']);
+                        }
+                    } else {
+                        if ($Retorno[$Key]['Empty']) {
+//$Retorno[$Key] = FormataCampo($Valor, $LINHA1["FieldType"], $LINHA1['FieldId']);
+                            $fieldValue = FormataCampo($Valor, $LINHA1["FieldType"], $LINHA1['FieldId']);
+                        }
+                    }
+                } else {
+                    if ($ExportKey == 1) {
+                        $FieldName = "Campo" . $LINHA1["FieldId"];
+                        $fieldName = $FieldName;
+                    }
+                    if ($fieldEmpty) {
+                        $fieldValue = ValorCampoQueue($Valor, $LINHA1["FieldType"], $LINHA1['FieldId'], $valores["CaseNum"], $LINHA1["FieldCod"] . $StepCode);
+                    }
+                }
+                $Retorno[$Key]['FieldName'] = $fieldName;
+                $Retorno[$Key]['FieldId'] = $LINHA1["FieldId"];
+                $Retorno[$Key]['FieldCod'] = $LINHA1["FieldCod"];
+                $Retorno[$Key]['FieldValue'] = $fieldValue;
+                $Retorno[$Key]['Empty'] = $fieldEmpty;
+                $Key++;
+            }
+            $AReferencias[$valores["CaseNum"]] = $Retorno;
+        }
+        return $AReferencias;
+    }
+
+    function FormataCampoRef($ProcId, $Campo, $Valor, $Tipo = "TX", $Mascara = 1)
+    {
         if ($Mascara == 1) {
-            switch ($TipoCampo) {
+            switch ($Tipo) {
                 case "DC":
-                    $SourceData = PegaDadosCampoTabela($Processo, $campo);
+                    $SourceData = PegaDadosCampoTabela($ProcId, $Campo);
                     $Valor = PegaValorCampo($SourceData[0], $Valor, $SourceData[2], "TXT", 1);
                     break;
                 case "LT":
-                    $Valor = PegaValorCampoLista($Processo, $campo, $Valor);
+                    $Valor = PegaValorCampoLista($ProcId, $Campo, $Valor);
                     break;
                 case "TB":
-                    $SourceData = PegaDadosCampoTabela($Processo, $campo);
+                    $SourceData = PegaDadosCampoTabela($ProcId, $Campo);
                     $Valor = PegaValorCampoTabela($Valor, $SourceData[0], $SourceData[1], $SourceData[2], $SourceData[3]);
                     break;
                 case "US":
@@ -3937,730 +3730,895 @@ function PegaValorCampo($Processo, $Caso, $campo, $TipoCampo = "ND", $Mascara = 
                 case "GR":
                     $Valor = PegaValorCampoTabela($Valor, "groupdef", "GroupId", "GroupName");
                     break;
+                case "BO":
+                    if ($Valor == 1) {
+                        $Valor = "Sim";
+                    } else {
+                        $Valor = "N�o";
+                    }
+                    break;
                 case "DT":
                     $Valor = ConvDate($Valor, false);
                     break;
-                case "BO":
+                case "TM";
+// N�o muda
+                    break;
+                case "SFR":
+                    $Valor = PegaNomeStep($ProcId, $Valor);
+                    break;
+            }
+        }
+        return $Valor;
+    }
+
+
+    function PegaUltimoValorCampoMultiLinhas($ProcId, $CaseNum, $Campo)
+    {
+        global $connect;
+        $SQL = "select FieldValue from casedata where ProcId = $ProcId and CaseNum = $CaseNum and FieldId = $Campo order by ValueId desc";
+        $Query = mysqli_query($connect, $SQL);
+        $Result = mysqli_fetch_array($Query);
+        if ($Result) {
+            return ExplodeValueTickler($Result["FieldValue"], 0);
+        }
+        return false;
+    }
+
+    function PegaValorConstant($ProcId, $Codigo)
+    {
+        global $connect;
+        $SQL = "select ConstValue from internalconstants where ProcId = $ProcId and ConstCode = '$Codigo'";
+        $Query = mysqli_query($connect, $SQL);
+        $Result = mysqli_fetch_array($Query);
+        return $Result["ConstValue"];
+    }
+
+    function ParsevaloresCampos($ProcId, $CaseNum, $contents)
+    {
+        if (strpos($contents, '!%') === false && strpos($contents, '!$') === false && strpos($contents, '!{') === false || ((substr_count($contents, '!$') % 2) != 0 && (substr_count($contents, '!%') % 2) != 0 && strpos($contents, '!{') === false )) {
+            return $contents;
+        }
+
+        if (substr_count($contents, '!{') != substr_count($contents, '}!')) {
+            return $contents;
+        }
+
+        while (strpos($contents, '!{') !== false && (substr_count($texto, '!{') == substr_count($texto, '}!'))) {
+            $inicio = strpos($contents, '!{');
+            $fim = strpos($contents, '}!', $inicio + 2);
+            $CodigoCampo = substr($contents, $inicio + 2, $fim - $inicio - 2);
+            $Valor = PegaValorConstant($ProcId, $CodigoCampo);
+            $contents = str_replace("!{" . $CodigoCampo . "}!", $Valor, $contents);
+        }
+
+        while (strpos($contents, '!$') !== false && (substr_count($texto, '!$') % 2) == 0) {
+            $inicio = strpos($contents, '!$');
+            $fim = strpos($contents, '!$', $inicio + 2);
+            $CodigoCampo = substr($contents, $inicio + 2, $fim - $inicio - 2);
+            $Valor = ParseValorCampo($ProcId, $CaseNum, $CodigoCampo, '', 0);
+            $contents = str_replace("!$" . $CodigoCampo . "!$", $Valor, $contents);
+        }
+
+        while (strpos($contents, '!%') !== false && (substr_count($texto, '!%') % 2) == 0) {
+            $inicio = strpos($contents, '!%');
+            $fim = strpos($contents, '!%', $inicio + 2);
+            $CodigoCampo = substr($contents, $inicio + 2, $fim - $inicio - 2);
+            $Valor = ParseValorCampo($ProcId, $CaseNum, $CodigoCampo, '', 1);
+            $contents = str_replace("!%" . $CodigoCampo . "!%", $Valor, $contents);
+        }
+        return $contents;
+    }
+
+    function ParseValorCampo($Processo, $Caso, $campo, $Tipo, $Mascara = 0)
+    {
+        if ($campo == "SYSTEMDATETIME" | $campo == "DATA") {
+            return date("d/m/Y H:i");
+        }
+
+        if ($campo == "SYSTEMDATE" | $campo == "DATA") {
+            return date("d/m/Y");
+        }
+
+        if ($campo == "SYSTEMTIME" | $campo == "DATA") {
+            return date("H:i");
+        }
+        return PegaValorCampo($Processo, $Caso, $campo, $Tipo, $Mascara);
+    }
+
+    function PegaTipoCampo($Processo, $campo)
+    {
+        global $connect;
+        if (!is_numeric($Processo)) {
+            $Processo = PegaProcIdByCode($Processo);
+        }
+
+        if (!is_numeric($campo)) {
+            $campo = PegaFieldIdByCode($Processo, $campo);
+        }
+
+        $SQL = "select FieldType from procfieldsdef where ProcId = $Processo and FieldId = $campo";
+        $Query = mysqli_query($connect, $SQL);
+        $Result = mysqli_fetch_array($Query);
+        return $Result["FieldType"];
+    }
+
+    /**
+     * 
+     * @global type $connect
+     * @param type $Processo
+     * @param type $Caso
+     * @param type $campo
+     * @param type $TipoCampo
+     * @param type $Mascara
+     * @param type $HTML
+     * @param type $valores
+     * @param type $DefaultValue
+     * @return type
+     */
+    function PegaValorCampo($Processo, $Caso, $campo, $TipoCampo = "ND", $Mascara = 0, $HTML = 1, $valores = "", $DefaultValue = "")
+    {
+        global $connect;
+        AtivaDBProcess();
+
+        if (!is_numeric($Processo)) {
+            $Processo = PegaProcIdByCode($Processo);
+        }
+
+        if (!is_numeric($campo)) {
+            $campo = PegaFieldIdByCode($Processo, $campo);
+        }
+
+        if ($TipoCampo == '' && $Mascara == 1) {
+            $TipoCampo = PegaTipoCampo($Processo, $campo);
+        }
+
+        if ($TipoCampo == 'ND' && $Mascara == 0) {
+            $TipoCampo = 'TX';
+        }
+
+        if (!is_array($valores) || in_array($TipoCampo, array('IM', 'AR', 'TM', 'TK', 'IF', 'IT', 'STS', 'PRC', 'EXT'))) {
+            $SQL = " SELECT ";
+            $SQL .= " FieldValue, ExtendData, ValueId";
+            $SQL .= " FROM";
+            $SQL .= " casedata";
+            $SQL .= " where";
+            $SQL .= " fieldid = $campo";
+            $SQL .= " and ";
+            $SQL .= " procid = $Processo ";
+            $SQL .= " and ";
+            $SQL .= " casenum = $Caso ";
+            $QUERY2 = mysqli_query($connect, $SQL);
+            if (!$QUERY2) {
+                error_log("Falha ao capturar valor de campo \"$campo\" Processo \"$Processo\" Caso \"$Caso\" Script: " . $_SERVER['SCRIPT_NAME']);
+            }
+            if (in_array($TipoCampo, array("IF", "IT"))) {
+                $Valor = mysqli_fetch_all($QUERY2, MYSQLI_ASSOC);
+            } else {
+                $linha = mysqli_fetch_array($QUERY2, MYSQLI_ASSOC);
+                $Valor = $linha["FieldValue"];
+            }
+            if (in_array($TipoCampo, array("AR", "IM", "EXT"))) {
+                $extendData = $linha["ExtendData"];
+                if ($extendData != "") {
+                    $Valor = $extendData;
+                }
+            }
+            mysqli_free_result($QUERY2);
+        } else {
+            $Valor = $valores[$campo];
+        }
+
+        if (!is_array($Valor)) {
+            $Valor = trim($Valor);
+            $Valor = str_replace("/*%/*", "'", $Valor);
+            $Valor = str_replace("/*#/*", ";", $Valor);
+        }
+
+        if ($Valor <> "") {
+            if ($Mascara == 1) {
+                switch ($TipoCampo) {
+                    case "DC":
+                        $SourceData = PegaDadosCampoTabela($Processo, $campo);
+                        $Valor = PegaValorCampo($SourceData[0], $Valor, $SourceData[2], "TXT", 1);
+                        break;
+                    case "LT":
+                        $Valor = PegaValorCampoLista($Processo, $campo, $Valor);
+                        break;
+                    case "TB":
+                        $SourceData = PegaDadosCampoTabela($Processo, $campo);
+                        $Valor = PegaValorCampoTabela($Valor, $SourceData[0], $SourceData[1], $SourceData[2], $SourceData[3]);
+                        break;
+                    case "US":
+                        $Valor = PegaNomeUsuario($Valor);
+                        break;
+                    case "GR":
+                        $Valor = PegaValorCampoTabela($Valor, "groupdef", "GroupId", "GroupName");
+                        break;
+                    case "DT":
+                        $Valor = ConvDate($Valor, false);
+                        break;
+                    case "BO":
+                        if ($Valor == 1) {
+                            $Valor = "Sim";
+                        } else {
+                            $Valor = "Não";
+                        }
+                        break;
+                    case "DT":
+                        $Valor = ConvDate($linha["fieldvalue"], false);
+                        break;
+                    case "TM";
+// Não muda
+                        break;
+                }
+            }
+        } else {
+            if ($TipoCampo == "BO") {
+                $Valor = PegaDefaultValue($Processo, $campo, $TipoCampo, $DefaultValue);
+                if ($Mascara == 1) {
                     if ($Valor == 1) {
                         $Valor = "Sim";
                     } else {
                         $Valor = "Não";
                     }
-                    break;
-                case "DT":
-                    $Valor = ConvDate($linha["fieldvalue"], false);
-                    break;
-                case "TM";
-// Não muda
-                    break;
-            }
-        }
-    } else {
-        if ($TipoCampo == "BO") {
-            $Valor = PegaDefaultValue($Processo, $campo, $TipoCampo, $DefaultValue);
-            if ($Mascara == 1) {
-                if ($Valor == 1) {
-                    $Valor = "Sim";
-                } else {
-                    $Valor = "Não";
                 }
+            } else {
+                $Valor = PegaDefaultValue($Processo, $campo, $TipoCampo, $DefaultValue);
             }
-        } else {
-            $Valor = PegaDefaultValue($Processo, $campo, $TipoCampo, $DefaultValue);
         }
-    }
 
 
-    if ($Tipo == STS) {
-        $Valor = PegaStatusProcessoDefault($Processo);
-    }
-
-    if (!in_array($Tipo, array("AR", "IM"))) {
-        if ($HTML == 1) {
-            $Valor = $Valor;
-        } else {
-
-            $Valor = addslashes($Valor);
+        if ($Tipo == STS) {
+            $Valor = PegaStatusProcessoDefault($Processo);
         }
+
+        if (!in_array($Tipo, array("AR", "IM"))) {
+            if ($HTML == 1) {
+                $Valor = $Valor;
+            } else {
+
+                $Valor = addslashes($Valor);
+            }
+        }
+
+
+        if (!is_array($Valor)) {
+            $Valor = trim($Valor);
+        }
+        return $Valor;
     }
 
-
-    if (!is_array($Valor)) {
-        $Valor = trim($Valor);
+    function DateDB($Data)
+    {
+        if (!empty($Data)) {
+            $Data = substr($Data, 6, 4) . "-" . substr($Data, 3, 2) . "-" . substr($Data, 0, 2);
+        }
+        return $Data;
     }
-    return $Valor;
-}
 
-function DateDB($Data)
-{
-    if (!empty($Data)) {
-        $Data = substr($Data, 6, 4) . "-" . substr($Data, 3, 2) . "-" . substr($Data, 0, 2);
-    }
-    return $Data;
-}
-
-function TrataMetaSubstituicao($DefaultValue)
-{
-    $MetaDado = array();
-    $retorno = $DefaultValue;
-    $encontrados = preg_match_all('/!{.*?}/m', $DefaultValue, $MetaDados);
-    if ($encontrados == 0) {
+    function TrataMetaSubstituicao($DefaultValue)
+    {
+        $MetaDado = array();
+        $retorno = $DefaultValue;
+        $encontrados = preg_match_all('/!{.*?}/m', $DefaultValue, $MetaDados);
+        if ($encontrados == 0) {
+            return $retorno;
+        }
+        foreach ($MetaDados[0] as $MetaDado) {
+            switch ($MetaDado) {
+                case "!{LONGDATE}":
+                    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+                    date_default_timezone_set('America/Sao_Paulo');
+                    $substituicao = strftime('%d de %B de %Y %H:%M', strtotime('now'));
+                    break;
+                case "!{DATE}":
+                    $substituicao = strftime('%d/%m/%Y', strtotime('now'));
+                    break;
+                case "!{TIME}":
+                    $substituicao = strftime('%H:%M', strtotime('now'));
+                    break;
+                case "!{DATETIME}":
+                    $substituicao = strftime('%d/%m/%Y %H:%M', strtotime('now'));
+                    break;
+                case "!{CASENUM}":
+                    global $CaseNum;
+                    $substituicao = $CaseNum;
+                    break;
+                default:
+                    $substituicao = "";
+            }
+            $retorno = str_replace($MetaDado, $substituicao, $retorno);
+        }
         return $retorno;
     }
-    foreach ($MetaDados[0] as $MetaDado) {
-        switch ($MetaDado) {
-            case "!{LONGDATE}":
-                setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-                date_default_timezone_set('America/Sao_Paulo');
-                $substituicao = strftime('%d de %B de %Y %H:%M', strtotime('now'));
-                break;
-            case "!{DATE}":
-                $substituicao = strftime('%d/%m/%Y', strtotime('now'));
-                break;
-            case "!{TIME}":
-                $substituicao = strftime('%H:%M', strtotime('now'));
-                break;
-            case "!{DATETIME}":
-                $substituicao = strftime('%d/%m/%Y %H:%M', strtotime('now'));
-                break;
-            case "!{CASENUM}":
-                global $CaseNum;
-                $substituicao = $CaseNum;
-                break;
-            default:
-                $substituicao = "";
-        }
-        $retorno = str_replace($MetaDado, $substituicao, $retorno);
-    }
-    return $retorno;
-}
 
-function PegaDefaultValue($ProcId, $campo, $TipoCampo, $DefaultValue)
-{
-    global $connect;
-    $DefaultValue = trim($DefaultValue);
-    if ($DefaultValue != "") {
-        if ((strpos(strtolower($DefaultValue), 'date("y-m-d")') !== false)) {
-            $valor = '';
-            $Eval = ' $valor = date("Y-m-d")' . ";";
-            eval($Eval);
-            return $valor;
-        }
+    function PegaDefaultValue($ProcId, $campo, $TipoCampo, $DefaultValue)
+    {
+        global $connect;
+        $DefaultValue = trim($DefaultValue);
+        if ($DefaultValue != "") {
+            if ((strpos(strtolower($DefaultValue), 'date("y-m-d")') !== false)) {
+                $valor = '';
+                $Eval = ' $valor = date("Y-m-d")' . ";";
+                eval($Eval);
+                return $valor;
+            }
 
-        if ((strpos(strtolower($DefaultValue), "date(\"h:i\")") !== false)) {
-            $valor = '';
-            $Eval = ' $valor = date("H:i")' . ";";
-            eval($Eval);
-            return $valor;
-        }
-        if ($TipoCampo == 'DT') {
-            $Eval = '$valor = ' . $DefaultValue . ';';
-            if (@!eval($Eval)) {
-                $valor = $DefaultValue;
+            if ((strpos(strtolower($DefaultValue), "date(\"h:i\")") !== false)) {
+                $valor = '';
+                $Eval = ' $valor = date("H:i")' . ";";
+                eval($Eval);
+                return $valor;
+            }
+            if ($TipoCampo == 'DT') {
+                $Eval = '$valor = ' . $DefaultValue . ';';
+                if (@!eval($Eval)) {
+                    $valor = $DefaultValue;
+                }
+            } else {
+                $valor = TrataMetaSubstituicao($DefaultValue);
             }
         } else {
-            $valor = TrataMetaSubstituicao($DefaultValue);
+            $valor = '';
         }
-    } else {
-        $valor = '';
+        return $valor;
     }
-    return $valor;
-}
 
-function pegaTotalMensagens($UserId)
-{
-    global $connect;
-    $SQL = "Select ";
-    $SQL .= "  count(*) as Total";
-    $SQL .= "  from ";
-    $SQL .= "  procdef, ";
-    $SQL .= "  casedata ";
-    $SQL .= "  where ";
-    $SQL .= "  procdef.TipoProc = 'WG' ";
-    $SQL .= "  and ";
-    $SQL .= "  casedata.FieldId = 6 ";
-    $SQL .= "  and ";
-    $SQL .= "  FieldValue = $UserId ";
-    $SQL .= "  and ";
-    $SQL .= "  casedata.ProcId = procdef.ProcId ";
-    $SQL .= "  and ";
-    $SQL .= "  casedata.ProcId = procdef.ProcId ";
-    $QUERY = mysqli_query($connect, $SQL);
-    $result = mysqli_fetch_array($QUERY);
-    $Total = $result['Total'];
-    mysqli_free_result($QUERY);
-    if ($Total == 0) {
-        return 'Nenhuma Mensagem';
-    } else {
-        if ($Total == 1) {
-            return '1 Mensagem';
+    function pegaTotalMensagens($UserId)
+    {
+        global $connect;
+        $SQL = "Select ";
+        $SQL .= "  count(*) as Total";
+        $SQL .= "  from ";
+        $SQL .= "  procdef, ";
+        $SQL .= "  casedata ";
+        $SQL .= "  where ";
+        $SQL .= "  procdef.TipoProc = 'WG' ";
+        $SQL .= "  and ";
+        $SQL .= "  casedata.FieldId = 6 ";
+        $SQL .= "  and ";
+        $SQL .= "  FieldValue = $UserId ";
+        $SQL .= "  and ";
+        $SQL .= "  casedata.ProcId = procdef.ProcId ";
+        $SQL .= "  and ";
+        $SQL .= "  casedata.ProcId = procdef.ProcId ";
+        $QUERY = mysqli_query($connect, $SQL);
+        $result = mysqli_fetch_array($QUERY);
+        $Total = $result['Total'];
+        mysqli_free_result($QUERY);
+        if ($Total == 0) {
+            return 'Nenhuma Mensagem';
         } else {
-            return $Total . ' Mensagems';
+            if ($Total == 1) {
+                return '1 Mensagem';
+            } else {
+                return $Total . ' Mensagems';
+            }
         }
     }
-}
 
-function Lido($ProcId, $StepId, $CaseNum)
-{
-    global $lidos;
-    $naolido = 'style="border: 1px dotted #FF0000;"';
-    echo 'id="$ProcId$StepId$CaseNum"';
-    if (is_array($lidos)) {
-        if (!in_array("$ProcId-$StepId-$CaseNum", $lidos)) {
+    function Lido($ProcId, $StepId, $CaseNum)
+    {
+        global $lidos;
+        $naolido = 'style="border: 1px dotted #FF0000;"';
+        echo 'id="$ProcId$StepId$CaseNum"';
+        if (is_array($lidos)) {
+            if (!in_array("$ProcId-$StepId-$CaseNum", $lidos)) {
+                echo $naolido;
+            }
+        } else {
             echo $naolido;
         }
-    } else {
-        echo $naolido;
     }
-}
 
-function CorLinha($cor)
-{
-    if ($cor == "linha2") {
-        $cor = "linha1";
-    } else {
-        $cor = "linha2";
+    function CorLinha($cor)
+    {
+        if ($cor == "linha2") {
+            $cor = "linha1";
+        } else {
+            $cor = "linha2";
+        }
+        echo "class='$cor'";
+        return $cor;
     }
-    echo "class='$cor'";
-    return $cor;
-}
 
-function TotalCasosGuest($ProcId)
-{
-    global $connect;
-    $SQL .= " select  distinct ";
-    $SQL .= "  count(*) as Total  ";
-    $SQL .= " from  ";
-    $SQL .= " casequeue,  ";
-    $SQL .= " procdef,  ";
-    $SQL .= " stepdef  ";
-    $SQL .= " where  ";
-    $SQL .= " procdef.ProcId = $ProcId ";
-    $SQL .= " and ";
-    $SQL .= " casequeue.ProcId = procdef.ProcId ";
-    $SQL .= " and ";
-    $SQL .= " casequeue.StepId > 0 ";
-    $SQL .= " and ";
-    $SQL .= " stepdef.ProcId = procdef.ProcId ";
-    $SQL .= " and ";
-    $SQL .= " stepdef.StepId = casequeue.StepId ";
-    $QUERY = mysqli_query($connect, $SQL);
-    $linha = mysqli_fetch_array($QUERY);
-    return $linha["Total"];
-}
+    function TotalCasosGuest($ProcId)
+    {
+        global $connect;
+        $SQL .= " select  distinct ";
+        $SQL .= "  count(*) as Total  ";
+        $SQL .= " from  ";
+        $SQL .= " casequeue,  ";
+        $SQL .= " procdef,  ";
+        $SQL .= " stepdef  ";
+        $SQL .= " where  ";
+        $SQL .= " procdef.ProcId = $ProcId ";
+        $SQL .= " and ";
+        $SQL .= " casequeue.ProcId = procdef.ProcId ";
+        $SQL .= " and ";
+        $SQL .= " casequeue.StepId > 0 ";
+        $SQL .= " and ";
+        $SQL .= " stepdef.ProcId = procdef.ProcId ";
+        $SQL .= " and ";
+        $SQL .= " stepdef.StepId = casequeue.StepId ";
+        $QUERY = mysqli_query($connect, $SQL);
+        $linha = mysqli_fetch_array($QUERY);
+        return $linha["Total"];
+    }
 
-function trataFiltroCampoDataIntervalo($dataSelecionada, $Campo)
-{
-    $filtros = array();
-    $data = $dataSelecionada[0];
-    $dataFormatada = FormataData($data);
-    $filtros[] = "Campo$Campo >= '$dataFormatada 00:00'";
+    function trataFiltroCampoDataIntervalo($dataSelecionada, $Campo)
+    {
+        $filtros = array();
+        $data = $dataSelecionada[0];
+        $dataFormatada = FormataData($data);
+        $filtros[] = "Campo$Campo >= '$dataFormatada 00:00'";
 
-    $data = $dataSelecionada[1];
-    $dataFormatada = FormataData($data);
-    $filtros[] = "Campo$Campo <= '$dataFormatada 23:59'";
-    return $filtros;
-}
+        $data = $dataSelecionada[1];
+        $dataFormatada = FormataData($data);
+        $filtros[] = "Campo$Campo <= '$dataFormatada 23:59'";
+        return $filtros;
+    }
 
-function trataFiltroCampoSimples($dataSelecionada, $Campo)
-{
-    $dataFormatada = FormataData($dataSelecionada);
-    if (strrpos($dataFormatada, ":")) {
-        if (substr($dataFormatada, strrpos($dataFormatada, ":") + 1, 2) == '00') {
-            $data = substr($dataFormatada, 0, strrpos($dataFormatada, ":"));
-            $Filtro = "convert(datetime,Campo$Campo) >= '$data:00'";
+    function trataFiltroCampoSimples($dataSelecionada, $Campo)
+    {
+        $dataFormatada = FormataData($dataSelecionada);
+        if (strrpos($dataFormatada, ":")) {
+            if (substr($dataFormatada, strrpos($dataFormatada, ":") + 1, 2) == '00') {
+                $data = substr($dataFormatada, 0, strrpos($dataFormatada, ":"));
+                $Filtro = "convert(datetime,Campo$Campo) >= '$data:00'";
+                $Filtro .= " and ";
+                $Filtro .= "convert(datetime,Campo$Campo) <= '$data:59'";
+            } else {
+                $Filtro = "convert(datetime, Campo$Campo) = 'Valor'";
+            }
+        } else {
+            $Filtro = " Campo$Campo >= '$dataFormatada 00:00" . "'";
             $Filtro .= " and ";
-            $Filtro .= "convert(datetime,Campo$Campo) <= '$data:59'";
+            $Filtro .= "Campo$Campo <= '$dataFormatada 23:59" . "'";
+        }
+        return $Filtro;
+    }
+
+    /**
+     * 
+     * @param type $dataSelecionada
+     */
+    function trataFiltroCampoData($dataSelecionada, $Campo)
+    {
+        if (is_array($dataSelecionada)) {
+            $filtro = trataFiltroCampoDataIntervalo($dataSelecionada, $Campo);
         } else {
-            $Filtro = "convert(datetime, Campo$Campo) = 'Valor'";
+            $filtro = trataFiltroCampoSimples($dataSelecionada, $Campo);
         }
-    } else {
-        $Filtro = " Campo$Campo >= '$dataFormatada 00:00" . "'";
-        $Filtro .= " and ";
-        $Filtro .= "Campo$Campo <= '$dataFormatada 23:59" . "'";
-    }
-    return $Filtro;
-}
-
-/**
- * 
- * @param type $dataSelecionada
- */
-function trataFiltroCampoData($dataSelecionada, $Campo)
-{
-    if (is_array($dataSelecionada)) {
-        $filtro = trataFiltroCampoDataIntervalo($dataSelecionada, $Campo);
-    } else {
-        $filtro = trataFiltroCampoSimples($dataSelecionada, $Campo);
-    }
-    return $filtro;
-}
-
-function TrataFiltros($Filtros, $ProcId = 0)
-{
-    $retorno = array();
-    foreach ($Filtros as $filtro) {
-        if (key_exists("filter", $filtro)) {
-            $filtro = $filtro["filter"];
-        }
-        if (key_exists("filtro", $filtro)) {
-            $filtro = $filtro["filtro"];
-        }
-        $Valor = $filtro["valor"];
-        //$Valor = trim($filtro["valor"]);
-
-
-        $Campo = $filtro["campo"];
-        if (key_exists("tipoCampo", $filtro)) {
-            $tipoCampo = $filtro["tipoCampo"];
-        }
-        if (key_exists("tipo", $filtro)) {
-            $tipoCampo = $filtro["tipo"];
-        }
-
-        if (!is_numeric($Campo)) {
-            $Campo = PegaFieldIdByCode($ProcId, $Campo);
-        }
-
-        /**
-         * Cria Filtro pelo CaseNum        
-         */
-        if ($Campo == "CaseNum") {
-            $retorno[] = "exportkeys.CaseNum = '$Valor'";
-            continue;
-        }
-
-        /**
-         * Trata Filtro outros campos
-         */
-        switch ($tipoCampo) {
-            case "DT":
-                $Filtro = trataFiltroCampoData($Valor, $Campo);
-                break;
-            case "TX":
-                $Filtro = "Campo$Campo like '%$Valor%'";
-                break;
-            default:
-                $Filtro = "Campo$Campo = '$Valor'";
-        }
-
-        /**
-         * Verifica se o filtro é um array e faz o merge
-         */
-        if (is_array($Filtro)) {
-            $retorno = array_merge($retorno, $Filtro);
-        } else {
-            $retorno[] = $Filtro;
-        }
+        return $filtro;
     }
 
-    return $retorno;
-}
-
-function TrataCampoOrdem($Campo)
-{
-    global $S_procdef;
-    $Campo = trim($Campo);
-    if (empty($Campo)) {
-        return '';
-    }
-    $key = str_replace("Campo", "", $Campo);
-    if (!is_array($S_procdef["Referencias"])) {
-        $S_procdef["Referencias"] = [];
-    }
-    for ($i = 0; $i < count($S_procdef["Referencias"]); $i++) {
-        if ($S_procdef["Referencias"][$i]["FieldId"] == $key) {
-            if ($S_procdef["Referencias"][$i]["FieldType"] == 'DT') {
-                $Campo = "convert(datetime, $Campo)";
+    function TrataFiltros($Filtros, $ProcId = 0)
+    {
+        $retorno = array();
+        foreach ($Filtros as $filtro) {
+            if (key_exists("filter", $filtro)) {
+                $filtro = $filtro["filter"];
             }
-            if ($S_procdef["Referencias"][$i]["FieldType"] == 'NU') {
-                $Campo = "convert(float, $Campo)";
+            if (key_exists("filtro", $filtro)) {
+                $filtro = $filtro["filtro"];
+            }
+            $Valor = $filtro["valor"];
+            //$Valor = trim($filtro["valor"]);
+
+
+            $Campo = $filtro["campo"];
+            if (key_exists("tipoCampo", $filtro)) {
+                $tipoCampo = $filtro["tipoCampo"];
+            }
+            if (key_exists("tipo", $filtro)) {
+                $tipoCampo = $filtro["tipo"];
+            }
+
+            if (!is_numeric($Campo)) {
+                $Campo = PegaFieldIdByCode($ProcId, $Campo);
+            }
+
+            /**
+             * Cria Filtro pelo CaseNum        
+             */
+            if ($Campo == "CaseNum") {
+                $retorno[] = "exportkeys.CaseNum = '$Valor'";
+                continue;
+            }
+
+            /**
+             * Trata Filtro outros campos
+             */
+            switch ($tipoCampo) {
+                case "DT":
+                    $Filtro = trataFiltroCampoData($Valor, $Campo);
+                    break;
+                case "TX":
+                    $Filtro = "Campo$Campo like '%$Valor%'";
+                    break;
+                default:
+                    $Filtro = "Campo$Campo = '$Valor'";
+            }
+
+            /**
+             * Verifica se o filtro é um array e faz o merge
+             */
+            if (is_array($Filtro)) {
+                $retorno = array_merge($retorno, $Filtro);
+            } else {
+                $retorno[] = $Filtro;
             }
         }
-    }
-    return $Campo;
-}
 
-function NovosCasosUsuario($ProcCode = "", $Origem = "")
-{
-    global $connect, $userdef;
-    require_once('sqlqueue.php');
-    $Filtros[0] = "insertdate >= '" . $userdef->lastnotification . "'";
-
-    if (!is_numeric($ProcCode)) {
-        $ProcId = PegaProcIdByCode($ProcCode);
+        return $retorno;
     }
 
-    $SQLUnion = ")";
-    $SQLUnion .= "union";
-    $SQLUnion .= "( \n";
-    $SQL = "(";
-    $Campos[0] = " count(*) as total ";
+    function TrataCampoOrdem($Campo)
+    {
+        global $S_procdef;
+        $Campo = trim($Campo);
+        if (empty($Campo)) {
+            return '';
+        }
+        $key = str_replace("Campo", "", $Campo);
+        if (!is_array($S_procdef["Referencias"])) {
+            $S_procdef["Referencias"] = [];
+        }
+        for ($i = 0; $i < count($S_procdef["Referencias"]); $i++) {
+            if ($S_procdef["Referencias"][$i]["FieldId"] == $key) {
+                if ($S_procdef["Referencias"][$i]["FieldType"] == 'DT') {
+                    $Campo = "convert(datetime, $Campo)";
+                }
+                if ($S_procdef["Referencias"][$i]["FieldType"] == 'NU') {
+                    $Campo = "convert(float, $Campo)";
+                }
+            }
+        }
+        return $Campo;
+    }
 
-    $StepId = "";
-    $HideQueue = false;
-    $Campo = "";
-    $ViewQueue = "1";
+    function NovosCasosUsuario($ProcCode = "", $Origem = "")
+    {
+        global $connect, $userdef;
+        require_once('sqlqueue.php');
+        $Filtros[0] = "insertdate >= '" . $userdef->lastnotification . "'";
 
-    $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, $ViewQueue);
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, $ViewQueue);
+        if (!is_numeric($ProcCode)) {
+            $ProcId = PegaProcIdByCode($ProcCode);
+        }
 
-    $SQL1 = $SQLUnion;
-    $SQL1 .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, $ViewQueue);
-    $SQL1 .= $SQLUnion;
+        $SQLUnion = ")";
+        $SQLUnion .= "union";
+        $SQLUnion .= "( \n";
+        $SQL = "(";
+        $Campos[0] = " count(*) as total ";
 
-    $SQL2 = SQLCasosCampoGrupo($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, $ViewQueue);
-    $SQL2 = $SQL2;
+        $StepId = "";
+        $HideQueue = false;
+        $Campo = "";
+        $ViewQueue = "1";
+
+        $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, $ViewQueue);
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, $ViewQueue);
+
+        $SQL1 = $SQLUnion;
+        $SQL1 .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, $ViewQueue);
+        $SQL1 .= $SQLUnion;
+
+        $SQL2 = SQLCasosCampoGrupo($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, $ViewQueue);
+        $SQL2 = $SQL2;
 //$SQL3 = $SQLUnion . SQLCasosAdHoc($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, $ViewQueue);
-    $SQL3 = "";
-    $SQL4 = $SQL . $SQL1 . $SQL2 . $SQL3;
+        $SQL3 = "";
+        $SQL4 = $SQL . $SQL1 . $SQL2 . $SQL3;
 
-    $SQL4 .= ")";
+        $SQL4 .= ")";
 
 //$SQL_DADOS = "select * from casequeue";
 //$SQL_DADOS = " select sum(total) as total from ($SQL4) as notificacoes ";
-    $SQL_DADOS = " select sum(total) as total from ($SQL4) as notificacoes ";
+        $SQL_DADOS = " select sum(total) as total from ($SQL4) as notificacoes ";
 //echo $SQL_DADOS;
 
-    $retorno = mysqli_query($connect, $SQL_DADOS);
-    return $retorno;
-}
+        $retorno = mysqli_query($connect, $SQL_DADOS);
+        return $retorno;
+    }
 
-function PermissoesDoCasoNoPasso($procId, $stepId, $caseNum)
-{
-    global $connect;
-    $filtros = array();
-    $filtro = array();
+    function PermissoesDoCasoNoPasso($procId, $stepId, $caseNum)
+    {
+        global $connect;
+        $filtros = array();
+        $filtro = array();
 // Coloca o Filtro para Pegar as Acoes permitidas no Caso
-    $filtro["Campo"] = "CaseNum";
-    $filtro["Valor"] = $caseNum;
-    array_push($filtros, $filtro);
+        $filtro["Campo"] = "CaseNum";
+        $filtro["Valor"] = $caseNum;
+        array_push($filtros, $filtro);
 
-    $CamposSelect = array("Action");
+        $CamposSelect = array("Action");
 
-    $SQL = MontaSQLCasosNaFila($procId, $stepId, false, "", "", "", $filtros, 1, $CamposSelect);
-    $Query = mysqli_query($connect, $SQL);
-    $resultado = false;
-    while ($Linha = mysqli_fetch_array($Query)) {
-        $resultado = $resultado | ($Linha["Action"] == 1);
-    }
-    $retorno = ($resultado) ? 1 : 0;
-    return $retorno;
-}
-
-function MontaSQLCasosNaFila($ProcId, $StepId, $HideQueue, $CampoOrdem, $Ordem, $Origem, $Filtros, $ViewQueue, $CamposSQLQueue)
-{
-    $SQLUnion = ")";
-    $SQLUnion .= " union ";
-    $SQLUnion .= "( \n";
-
-    $SQL = "(";
-
-    $FiltrosTratados = "";
-    if (is_array($Filtros)) {
-        $FiltrosTratados = TrataFiltros($Filtros);
+        $SQL = MontaSQLCasosNaFila($procId, $stepId, false, "", "", "", $filtros, 1, $CamposSelect);
+        $Query = mysqli_query($connect, $SQL);
+        $resultado = false;
+        while ($Linha = mysqli_fetch_array($Query)) {
+            $resultado = $resultado | ($Linha["Action"] == 1);
+        }
+        $retorno = ($resultado) ? 1 : 0;
+        return $retorno;
     }
 
-    $Campos = $CamposSQLQueue;
+    function MontaSQLCasosNaFila($ProcId, $StepId, $HideQueue, $CampoOrdem, $Ordem, $Origem, $Filtros, $ViewQueue, $CamposSQLQueue)
+    {
+        $SQLUnion = ")";
+        $SQLUnion .= " union ";
+        $SQLUnion .= "( \n";
+
+        $SQL = "(";
+
+        $FiltrosTratados = "";
+        if (is_array($Filtros)) {
+            $FiltrosTratados = TrataFiltros($Filtros);
+        }
+
+        $Campos = $CamposSQLQueue;
 
 
-    $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
+        $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
 
-    $SQL1 = $SQLUnion;
-    $SQL1 .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
-    $SQL1 .= $SQLUnion;
+        $SQL1 = $SQLUnion;
+        $SQL1 .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
+        $SQL1 .= $SQLUnion;
 
-    $SQL2 = SQLCasosCampoGrupo($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
-    $SQL2 = $SQL2;
+        $SQL2 = SQLCasosCampoGrupo($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
+        $SQL2 = $SQL2;
 //$SQL3 = $SQLUnion . SQLCasosAdHoc($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
 
-    $SQL4 = $SQL . $SQL1 . $SQL2 . $SQL3;
-    $SQL4 .= ")";
+        $SQL4 = $SQL . $SQL1 . $SQL2 . $SQL3;
+        $SQL4 .= ")";
 
 
-    /*
-      $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
-      $SQL .= $SQLUnion;
-      $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
+        /*
+          $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
+          $SQL .= $SQLUnion;
+          $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
 
-      $SQL1 = $SQLUnion;
-      $SQL1 .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
-      $SQL1 .= $SQLUnion;
+          $SQL1 = $SQLUnion;
+          $SQL1 .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
+          $SQL1 .= $SQLUnion;
 
-      $SQL2 = SQLCasosCampoGrupo($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
-      $SQL2 = $SQL2 . $SQLUnion;
-      $SQL3 = SQLCasosAdHoc($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
+          $SQL2 = SQLCasosCampoGrupo($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
+          $SQL2 = $SQL2 . $SQLUnion;
+          $SQL3 = SQLCasosAdHoc($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
 
-      $SQL4 = $SQL . $SQL1 . $SQL2 . $SQL3;
-      $SQL4 .= ")";
-     */
+          $SQL4 = $SQL . $SQL1 . $SQL2 . $SQL3;
+          $SQL4 .= ")";
+         */
 
 //    $SQL4 = SQLCasosGrupos($ProcId, $Campos, $StepId, $HideQueue, $CampoOrdem, $Origem, $FiltrosTratados, $ViewQueue);
-    $SQLOrdem = " ";
-    if (!empty($CampoOrdem)) {
-        $posPonto = strpos($CampoOrdem, ".");
-        if ($posPonto > - 1) {
-            $CampoOrdem = substr($CampoOrdem, $posPonto);
+        $SQLOrdem = " ";
+        if (!empty($CampoOrdem)) {
+            $posPonto = strpos($CampoOrdem, ".");
+            if ($posPonto > - 1) {
+                $CampoOrdem = substr($CampoOrdem, $posPonto);
+            }
+            $SQLOrdem .= " order by $CampoOrdem $Ordem ";
         }
-        $SQLOrdem .= " order by $CampoOrdem $Ordem ";
-    }
-    $SQL4 .= $SQLOrdem;
-    return $SQL4;
-}
-
-/**
- * 
- * @global type $connect
- * @param type $ProcId
- * @param type $StepId
- * @param type $HideQueue
- * @param type $CampoOrdenacao
- * @param type $Ordem
- * @param type $Origem
- * @param type $Filtros
- * @param type $ViewQueue
- * @param type $RetornarCampos
- * @return type
- */
-function pegaListaCasosNaFila($ProcId, $StepId = '-1', $HideQueue = 1, $CampoOrdenacao = '', $Ordem = '', $Origem = '', $Filtros = '', $ViewQueue = 1, $RetornarCampos = true)
-{
-    global $connect;
-    require_once('sqlqueue.php');
-
-    if (!is_numeric($ProcId)) {
-        $ProcId = PegaProcIdByCode($ProcId);
+        $SQL4 .= $SQLOrdem;
+        return $SQL4;
     }
 
-    if (!is_numeric($StepId) & $StepId != '') {
-        $StepId = PegaStepIdByCode($ProcId, $StepId);
+    /**
+     * 
+     * @global type $connect
+     * @param type $ProcId
+     * @param type $StepId
+     * @param type $HideQueue
+     * @param type $CampoOrdenacao
+     * @param type $Ordem
+     * @param type $Origem
+     * @param type $Filtros
+     * @param type $ViewQueue
+     * @param type $RetornarCampos
+     * @return type
+     */
+    function pegaListaCasosNaFila($ProcId, $StepId = '-1', $HideQueue = 1, $CampoOrdenacao = '', $Ordem = '', $Origem = '', $Filtros = '', $ViewQueue = 1, $RetornarCampos = true)
+    {
+        global $connect;
+        require_once('sqlqueue.php');
+
+        if (!is_numeric($ProcId)) {
+            $ProcId = PegaProcIdByCode($ProcId);
+        }
+
+        if (!is_numeric($StepId) & $StepId != '') {
+            $StepId = PegaStepIdByCode($ProcId, $StepId);
+        }
+
+        $CamposSQL = CamposSQLQueue($CampoOrdenacao, $RetornarCampos);
+        $CampoOrdem = TrataCampoOrdem($CampoOrdenacao);
+        $SQL = MontaSQLCasosNaFila($ProcId, $StepId, $HideQueue, $CampoOrdem, $Ordem, $Origem, $Filtros, $ViewQueue, $CamposSQL);
+        $retorno = mysqli_query($connect, $SQL);
+        if (mysqli_error($connect)) {
+            $error = "Casos na Fila " . mysqli_error($connect);
+            error_log($error);
+            error_log("SQL casos na fila: $SQL");
+        }
+        return $retorno;
     }
 
-    $CamposSQL = CamposSQLQueue($CampoOrdenacao, $RetornarCampos);
-    $CampoOrdem = TrataCampoOrdem($CampoOrdenacao);
-    $SQL = MontaSQLCasosNaFila($ProcId, $StepId, $HideQueue, $CampoOrdem, $Ordem, $Origem, $Filtros, $ViewQueue, $CamposSQL);
-    $retorno = mysqli_query($connect, $SQL);
-    if (mysqli_error($connect)) {
-        $error = "Casos na Fila " . mysqli_error($connect);
-        error_log($error);
-        error_log("SQL casos na fila: $SQL");
-    }
-    return $retorno;
-}
+    function PassosDoUsuario($ProcId, $Origem, $Filtros = "")
+    {
+        global $connect, $procdef;
 
-function PassosDoUsuario($ProcId, $Origem, $Filtros = "")
-{
-    global $connect, $procdef;
-
-    if ($procdef == "") {
-        $procdef = new procdef();
-        $procdef->create($ProcId, $connect);
-    }
-    require_once('sqlqueue.php');
-    if (is_array($Filtros)) {
-        $Filtros = TrataFiltros($Filtros, $ProcId);
-    }
-    $Campos[0] = " stepaddresses.StepId ";
-    $SQLUnion = ")";
-    $SQLUnion .= " union ";
-    $SQLUnion .= "( \n";
-    $SQL .= '(';
-    $SQL .= SQLCasosGrupos($ProcId, $Campos, '', 1, '', $Origem, $Filtros);
-    $SQL .= " group by stepaddresses.StepId";
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosUsuario($ProcId, $Campos, '', 1, '', $Origem, $Filtros);
-    $SQL .= " group by stepaddresses.StepId";
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosCampoUsuario($ProcId, $Campos, '', 1, '', $Origem, $Filtros);
-    $SQL .= " group by stepaddresses.StepId";
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosCampoGrupo($ProcId, $Campos, '', 1, '', $Origem, $Filtros);
+        if ($procdef == "") {
+            $procdef = new procdef();
+            $procdef->create($ProcId, $connect);
+        }
+        require_once('sqlqueue.php');
+        if (is_array($Filtros)) {
+            $Filtros = TrataFiltros($Filtros, $ProcId);
+        }
+        $Campos[0] = " stepaddresses.StepId ";
+        $SQLUnion = ")";
+        $SQLUnion .= " union ";
+        $SQLUnion .= "( \n";
+        $SQL .= '(';
+        $SQL .= SQLCasosGrupos($ProcId, $Campos, '', 1, '', $Origem, $Filtros);
+        $SQL .= " group by stepaddresses.StepId";
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosUsuario($ProcId, $Campos, '', 1, '', $Origem, $Filtros);
+        $SQL .= " group by stepaddresses.StepId";
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosCampoUsuario($ProcId, $Campos, '', 1, '', $Origem, $Filtros);
+        $SQL .= " group by stepaddresses.StepId";
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosCampoGrupo($ProcId, $Campos, '', 1, '', $Origem, $Filtros);
 //    $SQL .= $SQLUnion;
 //    $SQL .= SQLCasosAdHoc($ProcId, $Campos, '', 1, '', $Origem, $Filtros);
-    $SQL .= " group by stepaddresses.StepId";
-    $SQL .= ")";
-    $QUERY = mysqli_query($connect, $SQL);
-    $Steps = array();
-    while ($Result = mysqli_fetch_array($QUERY)) {
-        $StepId = $Result["StepId"];
-        if ($StepId == 0) {
-            $StepId = PegaDefaultStep($ProcId);
+        $SQL .= " group by stepaddresses.StepId";
+        $SQL .= ")";
+        $QUERY = mysqli_query($connect, $SQL);
+        $Steps = array();
+        while ($Result = mysqli_fetch_array($QUERY)) {
+            $StepId = $Result["StepId"];
+            if ($StepId == 0) {
+                $StepId = PegaDefaultStep($ProcId);
+            }
+            $StepCode = $procdef->Steps[$StepId]["StepCod"];
+            $StepName = $procdef->Steps[$StepId]["StepName"];
+            $Result["StepCode"] = $StepCode;
+            $Result["StepName"] = $StepName;
+            array_push($Steps, $Result);
         }
-        $StepCode = $procdef->Steps[$StepId]["StepCod"];
-        $StepName = $procdef->Steps[$StepId]["StepName"];
-        $Result["StepCode"] = $StepCode;
-        $Result["StepName"] = $StepName;
-        array_push($Steps, $Result);
+        return $Steps;
     }
-    return $Steps;
-}
 
-function NovoProcessosUsuario($ViewQueue = 1)
-{
-    global $connect, $userdef;
-    $SQL = " select ProcName, PageAction, SA.ProcId, count(CQ.StepId) as NumCount, CQ.StepId from procdef, stepaddresses SA left join casequeue CQ on SA.ProcId = CQ.ProcId and SA.StepId = CQ.StepId where (SA.GRPFLD = 'G' and GroupId  
+    function NovoProcessosUsuario($ViewQueue = 1)
+    {
+        global $connect, $userdef;
+        $SQL = " select ProcName, PageAction, SA.ProcId, count(CQ.StepId) as NumCount, CQ.StepId from procdef, stepaddresses SA left join casequeue CQ on SA.ProcId = CQ.ProcId and SA.StepId = CQ.StepId where (SA.GRPFLD = 'G' and GroupId  
 in ($userdef->usergroups) or GrpFld = 'U' and GroupId = $userdef->UserId_Process ) and SA.ViewQueue = 1 and SA.ProcId = procdef.ProcId
 group by ProcName, SA.ProcId, CQ.StepId, PageAction order by NumCount desc ";
-    $Query = mysqli_query($connect, $SQL);
-    $Processos = array();
-    while ($Result = mysqli_fetch_array($Query)) {
-        array_push($Processos, $Result);
+        $Query = mysqli_query($connect, $SQL);
+        $Processos = array();
+        while ($Result = mysqli_fetch_array($Query)) {
+            array_push($Processos, $Result);
+        }
+        return $Processos;
     }
-    return $Processos;
-}
 
-function TotalCasosPorCampo($ProcId, $StepId = '', $FieldId = "")
-{
-    global $connect;
-    require_once('sqlqueue.php');
-    $SQLUnion = ")";
-    $SQLUnion .= " union ";
-    $SQLUnion .= "( \n";
-    $SQL = '(';
-    $Campos[0] = "campo$FieldId as status, exportkeys.casenum";
-    $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId);
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId);
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId);
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosCampoGrupo($ProcId, $Campos, $StepId);
+    function TotalCasosPorCampo($ProcId, $StepId = '', $FieldId = "")
+    {
+        global $connect;
+        require_once('sqlqueue.php');
+        $SQLUnion = ")";
+        $SQLUnion .= " union ";
+        $SQLUnion .= "( \n";
+        $SQL = '(';
+        $Campos[0] = "campo$FieldId as status, exportkeys.casenum";
+        $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId);
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId);
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId);
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosCampoGrupo($ProcId, $Campos, $StepId);
 //    $SQL .= $SQLUnion;
 //    $Campos[0] = "CaseId";
 //    $SQL .= SQLCasosAdHoc($ProcId, $Campos, $StepId);
-    $SQL .= ")";
-    $SQL_AGRUPAMENTO = " select status , count(*) as total from ($SQL) as totais group by status";
-    $QUERY = mysqli_query($connect, $SQL_AGRUPAMENTO);
-    error_log("TotalCasosPorCampo $SQL_AGRUPAMENTO");
-    return mysqli_fetch_all($QUERY, MYSQLI_ASSOC);
-}
-
-function TotalCasosNaFila($ProcId, $StepId = '')
-{
-    global $connect;
-    require_once('sqlqueue.php');
-    $SQLUnion = ")";
-    $SQLUnion .= " union all";
-    $SQLUnion .= "( \n";
-    $SQL = '(';
-    $Campos[0] = "CaseId";
-    $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId);
-    $SQL .= $SQLUnion;
-    $Campos[0] = "CaseId";
-    $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId);
-    $SQL .= $SQLUnion;
-    $Campos[0] = "CaseId";
-    $SQL .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId);
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosCampoGrupo($ProcId, $Campos, $StepId);
-//    $SQL .= $SQLUnion;
-    $Campos[0] = "CaseId";
-//    $SQL .= SQLCasosAdHoc($ProcId, $Campos, $StepId);
-    $SQL .= ")";
-    $QUERY = mysqli_query($connect, $SQL);
-    return mysqli_num_rows($QUERY);
-}
-
-function PegaProximoCasoFila($ProcId, $StepId = "")
-{
-    global $connect;
-
-    $procDef = $_SESSION["procdef"];
-
-    $filtro = $procDef->filterQueue;
-
-    require_once('sqlqueue.php');
-    $SQLUnion = ")";
-    $SQLUnion .= " union ";
-    $SQLUnion .= "( \n";
-
-    $Campos[0] = "CaseId";
-    $Campos[1] = "casequeue.StepId";
-
-    $FiltrosTratados = array();
-    if (is_array($filtro)) {
-        $FiltrosTratados = TrataFiltros($filtro, $ProcId);
+        $SQL .= ")";
+        $SQL_AGRUPAMENTO = " select status , count(*) as total from ($SQL) as totais group by status";
+        $QUERY = mysqli_query($connect, $SQL_AGRUPAMENTO);
+        error_log("TotalCasosPorCampo $SQL_AGRUPAMENTO");
+        return mysqli_fetch_all($QUERY, MYSQLI_ASSOC);
     }
 
-    $FiltrosTratados[] = "lockedbyid = 0";
+    function TotalCasosNaFila($ProcId, $StepId = '')
+    {
+        global $connect;
+        require_once('sqlqueue.php');
+        $SQLUnion = ")";
+        $SQLUnion .= " union all";
+        $SQLUnion .= "( \n";
+        $SQL = '(';
+        $Campos[0] = "CaseId";
+        $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId);
+        $SQL .= $SQLUnion;
+        $Campos[0] = "CaseId";
+        $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId);
+        $SQL .= $SQLUnion;
+        $Campos[0] = "CaseId";
+        $SQL .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId);
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosCampoGrupo($ProcId, $Campos, $StepId);
+//    $SQL .= $SQLUnion;
+        $Campos[0] = "CaseId";
+//    $SQL .= SQLCasosAdHoc($ProcId, $Campos, $StepId);
+        $SQL .= ")";
+        $QUERY = mysqli_query($connect, $SQL);
+        return mysqli_num_rows($QUERY);
+    }
 
-    $SQL = '(';
-    $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId, '', '', "", $FiltrosTratados);
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId, "", "", "", $FiltrosTratados);
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId, "", "", "", $FiltrosTratados);
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosCampoGrupo($ProcId, $Campos, $StepId, "", "", "", $FiltrosTratados);
+    function PegaProximoCasoFila($ProcId, $StepId = "")
+    {
+        global $connect;
+
+        $procDef = $_SESSION["procdef"];
+
+        $filtro = $procDef->filterQueue;
+
+        require_once('sqlqueue.php');
+        $SQLUnion = ")";
+        $SQLUnion .= " union ";
+        $SQLUnion .= "( \n";
+
+        $Campos[0] = "CaseId";
+        $Campos[1] = "casequeue.StepId";
+
+        $FiltrosTratados = array();
+        if (is_array($filtro)) {
+            $FiltrosTratados = TrataFiltros($filtro, $ProcId);
+        }
+
+        $FiltrosTratados[] = "lockedbyid = 0";
+
+        $SQL = '(';
+        $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId, '', '', "", $FiltrosTratados);
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId, "", "", "", $FiltrosTratados);
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId, "", "", "", $FiltrosTratados);
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosCampoGrupo($ProcId, $Campos, $StepId, "", "", "", $FiltrosTratados);
 //    $SQL .= $SQLUnion;
 //    $SQL .= SQLCasosAdHoc($ProcId, $Campos, $StepId, "", "", "", $filtro);
-    $SQL .= ")";
+        $SQL .= ")";
 
-    $SqlFinal = "select CaseId, StepId from ( $SQL ) as dados limit 1";
-    $QUERY = mysqli_query($connect, $SqlFinal);
-    $retorno = mysqli_fetch_array($QUERY, MYSQLI_ASSOC);
-    return $retorno;
-}
-
-function ZerosaEsquera($Numero, $NrZeros)
-{
-    $Size = strlen($Numero);
-    $Zeros = "";
-    for ($contador = 1; $contador <= ($NrZeros - $Size); $contador++) {
-        $Zeros = "0$Zeros";
+        $SqlFinal = "select CaseId, StepId from ( $SQL ) as dados limit 1";
+        $QUERY = mysqli_query($connect, $SqlFinal);
+        $retorno = mysqli_fetch_array($QUERY, MYSQLI_ASSOC);
+        return $retorno;
     }
-    return $Zeros . $Numero;
-}
 
-function formataCaseNum($Numero, $NrZeros)
-{
-    return ZerosaEsquera($Numero, $NrZeros);
-}
-
-function StepFim($ProcId, $StepId)
-{
-    global $connect;
-    $SQL = " select ";
-    $SQL .= "  EndStep ";
-    $SQL .= "  from ";
-    $SQL .= "  stepdef ";
-    $SQL .= "  where ";
-    $SQL .= "  ProcId = $ProcId ";
-    $SQL .= "  and ";
-    $SQL .= "  StepId = $StepId ";
-    $QUERY = mysqli_query($connect, $SQL);
-    $result = mysqli_fetch_array($QUERY);
-    mysqli_free_result($QUERY);
-    return $result["EndStep"];
-}
-
-/**
- * 
- * @global type $connect
- * @global type $procdef
- * @param type $ProcId
- * @param type $StepId
- * @param type $IncluirDescricao
- * @return string
- */
-function PegaNomeStep($ProcId, $StepId, $IncluirDescricao = 0)
-{
-    global $connect, $procdef;
-    if ($StepId == 0) {
-        return "Administradores";
-    }
-    if (is_object($procdef)) {
-        if ($procdef->ProcId == $ProcId & is_array($procdef->Steps)) {
-            foreach ($procdef->Steps as $result) {
-                if ($result["StepId"] == $StepId) {
-                    break;
-                }
-            }
+    function ZerosaEsquera($Numero, $NrZeros)
+    {
+        $Size = strlen($Numero);
+        $Zeros = "";
+        for ($contador = 1; $contador <= ($NrZeros - $Size); $contador++) {
+            $Zeros = "0$Zeros";
         }
-    } else {
+        return $Zeros . $Numero;
+    }
+
+    function formataCaseNum($Numero, $NrZeros)
+    {
+        return ZerosaEsquera($Numero, $NrZeros);
+    }
+
+    function StepFim($ProcId, $StepId)
+    {
+        global $connect;
         $SQL = " select ";
-        $SQL .= "  StepName, ";
-        $SQL .= "  StepDesc ";
+        $SQL .= "  EndStep ";
         $SQL .= "  from ";
         $SQL .= "  stepdef ";
         $SQL .= "  where ";
@@ -4670,720 +4628,759 @@ function PegaNomeStep($ProcId, $StepId, $IncluirDescricao = 0)
         $QUERY = mysqli_query($connect, $SQL);
         $result = mysqli_fetch_array($QUERY);
         mysqli_free_result($QUERY);
+        return $result["EndStep"];
     }
-    if ($IncluirDescricao == 1) {
-        $StepName = $result["StepName"] . " - " . $result["StepDesc"];
-    } else {
-        $StepName = $result["StepName"];
-    }
-    return $StepName;
-}
 
-function PegaNomeCondition($ProcId, $StepId, $ConditionId)
-{
-    global $connect;
-    $SQL = " select ";
-    $SQL .= "  ConditionName ";
-    $SQL .= "  from ";
-    $SQL .= "  stepconditiondef ";
-    $SQL .= "  where ";
-    $SQL .= "  ProcId = $ProcId ";
-    $SQL .= "  and ";
-    $SQL .= "  StepId = $StepId ";
-    $SQL .= "  and ";
-    $SQL .= "  ConditionId = $ConditionId ";
-    $QUERY = mysqli_query($connect, $SQL);
-    if (!$QUERY) {
-        error_log("Erro " . $SQL);
+    /**
+     * 
+     * @global type $connect
+     * @global type $procdef
+     * @param type $ProcId
+     * @param type $StepId
+     * @param type $IncluirDescricao
+     * @return string
+     */
+    function PegaNomeStep($ProcId, $StepId, $IncluirDescricao = 0)
+    {
+        global $connect, $procdef;
+        if ($StepId == 0) {
+            return "Administradores";
+        }
+        if (is_object($procdef)) {
+            if ($procdef->ProcId == $ProcId & is_array($procdef->Steps)) {
+                foreach ($procdef->Steps as $result) {
+                    if ($result["StepId"] == $StepId) {
+                        break;
+                    }
+                }
+            }
+        } else {
+            $SQL = " select ";
+            $SQL .= "  StepName, ";
+            $SQL .= "  StepDesc ";
+            $SQL .= "  from ";
+            $SQL .= "  stepdef ";
+            $SQL .= "  where ";
+            $SQL .= "  ProcId = $ProcId ";
+            $SQL .= "  and ";
+            $SQL .= "  StepId = $StepId ";
+            $QUERY = mysqli_query($connect, $SQL);
+            $result = mysqli_fetch_array($QUERY);
+            mysqli_free_result($QUERY);
+        }
+        if ($IncluirDescricao == 1) {
+            $StepName = $result["StepName"] . " - " . $result["StepDesc"];
+        } else {
+            $StepName = $result["StepName"];
+        }
+        return $StepName;
     }
-    $result = mysqli_fetch_array($QUERY);
-    mysqli_free_result($QUERY);
-    $Condition = $result["ConditionName"];
-    return $Condition;
-}
 
-function PegaNomeProc($ProcId)
-{
-    global $connect;
-    $SQL = " select ";
-    $SQL .= "  ProcName ";
-    $SQL .= "  from ";
-    $SQL .= "  procdef ";
-    $SQL .= "  where ";
-    $SQL .= "  ProcId = $ProcId ";
-    $QUERY = mysqli_query($connect, $SQL);
-
-    $result = mysqli_fetch_array($QUERY);
-    mysqli_free_result($QUERY);
-    return $result["ProcName"];
-}
-
-function CampoReadOnly($Valor, $StiloObjeto, $id = "", $MaiorComprimento = 0, $Class = "form-control input-sm", $icon = "")
-{
-    if ($MaiorComprimento > 0) {
-        $Tamanho = $MaiorComprimento + 10;
-    } else {
-        $Tamanho = strlen($Valor) + 20;
+    function PegaNomeCondition($ProcId, $StepId, $ConditionId)
+    {
+        global $connect;
+        $SQL = " select ";
+        $SQL .= "  ConditionName ";
+        $SQL .= "  from ";
+        $SQL .= "  stepconditiondef ";
+        $SQL .= "  where ";
+        $SQL .= "  ProcId = $ProcId ";
+        $SQL .= "  and ";
+        $SQL .= "  StepId = $StepId ";
+        $SQL .= "  and ";
+        $SQL .= "  ConditionId = $ConditionId ";
+        $QUERY = mysqli_query($connect, $SQL);
+        if (!$QUERY) {
+            error_log("Erro " . $SQL);
+        }
+        $result = mysqli_fetch_array($QUERY);
+        mysqli_free_result($QUERY);
+        $Condition = $result["ConditionName"];
+        return $Condition;
     }
-    if ($Valor == "Não") {
-        $StiloObjeto1 = "style='color:red'";
+
+    function PegaNomeProc($ProcId)
+    {
+        global $connect;
+        $SQL = " select ";
+        $SQL .= "  ProcName ";
+        $SQL .= "  from ";
+        $SQL .= "  procdef ";
+        $SQL .= "  where ";
+        $SQL .= "  ProcId = $ProcId ";
+        $QUERY = mysqli_query($connect, $SQL);
+
+        $result = mysqli_fetch_array($QUERY);
+        mysqli_free_result($QUERY);
+        return $result["ProcName"];
     }
-    $Campo = "\t\t\t\t<div class=\"input-group\"><input type=\"text\" class=\"$Class\" value=\"$Valor\" readonly=\"True\"  id=\"r$id\" name=\"r$id\">\n";
+
+    function CampoReadOnly($Valor, $StiloObjeto, $id = "", $MaiorComprimento = 0, $Class = "form-control input-sm", $icon = "")
+    {
+        if ($MaiorComprimento > 0) {
+            $Tamanho = $MaiorComprimento + 10;
+        } else {
+            $Tamanho = strlen($Valor) + 20;
+        }
+        if ($Valor == "Não") {
+            $StiloObjeto1 = "style='color:red'";
+        }
+        $Campo = "\t\t\t\t<div class=\"input-group\"><input type=\"text\" class=\"$Class\" value=\"$Valor\" readonly=\"True\"  id=\"r$id\" name=\"r$id\">\n";
 
 // Adiciona o Icone se existir
-    if (!empty($icon)) {
-        $Campo .= "<span class=\"input-group-addon\"><i class=\"fa $icon\"></i></span>";
-    }
-    $Campo .= "</div>";
-    return $Campo;
-}
-
-/*
-  function MontaBoleano($Valor, $ReadOnly, $StiloObjeto)
-  {
-  Global $campo;
-  if ($ReadOnly == 1)
-  {
-  if  ($Valor==0)
-  {
-  $Valor="N�o";
-  }
-  else
-  {
-  $Valor="Sim";
-  }
-  $Campo = CampoReadOnly($Valor, $StiloObjeto);
-  $pagina=$pagina."$Campo";
-  }
-  else
-  {
-  $pagina=$pagina."\t\t\t\t<input type=\"radio\" name=\"t$campo\" ";
-  if ($Valor==1)
-  {
-  $pagina=$pagina." checked ";
-  }
-  $pagina=$pagina." value = \"1\"><span class=\"Bolean\">Sim</span>\n";
-  $pagina=$pagina."\t\t\t\t<input type=\"radio\" name=\"t$campo\" ";
-  if ($Valor==0)
-  {
-  $pagina=$pagina." checked ";
-  }
-  $pagina=$pagina." value = \"0\"><span class=\"Bolean\">N�o</span>\n";
-  }
-  return $pagina;
-  }
- */
-
-function PegaValorCampoTabela($Valor, $TableSource, $SourceField, $DisplayField, $UserField = "")
-{
-    global $connectDBExterno, $UserId;
-    AtivaDBExterno();
-    $UserField = trim($UserField);
-    $Valor = trim($Valor);
-    if (empty($DisplayField) | empty($Valor)) {
-        return "";
-    }
-    if (!strpos($TableSource, 'select')) {
-        $SQL = "select * from ";
-    }
-    $SQL .= $TableSource;
-    $SQL .= "  where ";
-    $SQL .= "  $SourceField = $Valor ";
-    if (!empty($UserField)) {
-        $SQL .= " and ";
-        $SQL .= " $UserField = $UserId ";
-    }
-    $QUERY = mysqli_query($connectDBExterno, $SQL);
-    $linha = mysqli_fetch_array($QUERY);
-    mysqli_free_result($QUERY);
-    return $linha["$DisplayField"];
-}
-
-function ReplaceFieldsValues($String)
-{
-    global $userdef, $ProcId, $CaseNum;
-
-// Substitui Origem do Usu�rio
-    $String = str_replace('!%OrigemUser!%', $userdef->Origem, $String);
-
-// Substitui Nome do Usuario
-    $String = str_replace('!%UserName!%', $userdef->UserName, $String);
-
-// Substitui Id do Usuario
-    $String = str_replace('!%UserId!%', $userdef->UserId, $String);
-
-// Substitui ProcId
-    $String = str_replace('!%ProcId!%', $ProcId, $String);
-
-// Substitui CaseId
-    $String = str_replace('!%CaseId!%', $CaseNum, $String);
-
-// Substitui ProcId
-    $String = str_replace('!%CaseNum!%', $CaseNum, $String);
-
-    $String = ParsevaloresCampos($ProcId, $CaseNum, $String);
-
-
-    return $String;
-}
-
-function PegaValorCampos($CaseNum)
-{
-    global $connect;
-    $SQL = "select "
-            . "FieldValue, "
-            . "casedata.FieldId, "
-            . "FieldType, "
-            . "ExtendData, "
-            . "ValueId "
-            . "from "
-            . "casedata, "
-            . "procfieldsdef "
-            . "where "
-            . "CaseNum = $CaseNum "
-            . "and "
-            . "procfieldsdef.ProcId = casedata.ProcId "
-            . "and "
-            . "procfieldsdef.FieldId = casedata.FieldId "
-            . "and "
-            . "not fieldtype in ('AR', 'TM', 'TK') "
-            . "order by ValueId";
-    $Query = mysqli_query($connect, $SQL);
-    while ($Linha = mysqli_fetch_array($Query)) {
-        if ($Linha["FieldType"] != "AR") {
-            $valores[$Linha["FieldId"]] = $Linha["FieldValue"];
-        } else {
-            $valores[$Linha["FieldId"]] = $Linha["ExtendData"];
+        if (!empty($icon)) {
+            $Campo .= "<span class=\"input-group-addon\"><i class=\"fa $icon\"></i></span>";
         }
-    }
-    return $valores;
-}
-
-function PegaValorCampolista($ProcId, $Campo, $ValorCampo)
-{
-    global $connect, $_ExtendProps;
-    if (!isset($_ExtendProps)) {
-        $SQL = "select ExtendProp from procfieldsdef where procid = $ProcId and FieldId = $Campo ";
-        $Query = mysqli_query($connect, $SQL);
-        $lista = mysqli_fetch_all($Query, MYSQLI_ASSOC);
-        $_ExtendProps = $lista[0]["ExtendProp"];
+        $Campo .= "</div>";
+        return $Campo;
     }
 
-    if (!is_array($_ExtendProps)) {
-        $_ExtendProps = array();
-        session_register("_ExtendProps");
-    }
-    if ($ValorCampo == -1 || $ValorCampo == "") {
-        return '';
-    } else {
-        if (!is_array($_ExtendProps[$Campo])) {
-            $valores = explode(".", PegavaloresLista($ProcId, $Campo));
-            $_ExtendProps[$Campo] = $valores;
-        }
-        reset($_ExtendProps[$Campo]);
-        foreach ($_ExtendProps[$Campo] as $Valor) {
-            $AValor = explode("|", $Valor);
-            $ValorSel = $AValor[0];
-            if (count($AValor) > 1) {
-                $ValorSel = $AValor[1];
-            }
-            if ($ValorSel == $ValorCampo) {
-                $retorno = $AValor[0];
-                break;
-            }
-        }
-        return $retorno;
-    }
-}
-
-function PegaValoresCampoLista_array($ProcId, $Campo)
-{
-    $valores = explode(".", PegavaloresLista($ProcId, $Campo));
-    $retorno = array();
-    foreach ($valores as $Valor) {
-        $AValor = explode("|", $Valor);
-        $itemCampo["display"] = $AValor[0];
-        $itemCampo["valor"] = $AValor[1];
-        $retorno[] = $itemCampo;
-    }
-    return $retorno;
-}
-
-function PegavaloresLista($ProcId, $campo)
-{
-    global $connect;
-    $SQL = " select ";
-    $SQL .= "  ExtendProp as OptValues ";
-    $SQL .= "  from ";
-    $SQL .= "  procfieldsdef ";
-    $SQL .= "  where ";
-    $SQL .= "  ProcId = $ProcId";
-    $SQL .= "  and ";
-    $SQL .= "  FieldId = $campo ";
-    $Query = mysqli_query($connect, $SQL);
-    $result = mysqli_fetch_array($Query);
-    mysqli_free_result($Query);
-    return $result["OptValues"];
-}
-
-function Totalvalores($ProcId, $FieldId, $CaseNum)
-{
-    global $connect;
-    $SQL = "select count(*) as Total from casedata where ProcID = $ProcId and CaseNum = $CaseNum and FieldId = $FieldId";
-    $Query = mysqli_query($connect, $SQL);
-    $Result = mysqli_fetch_array($Query);
-    return $Result["Total"];
-}
-
-function campoMT_Totalvalores($ProcId, $CaseNum, $FieldId)
-{
-    global $connect;
-    $SQL = "select count(*) as Total from casedata where ProcID = $ProcId and CaseNum = $CaseNum and FieldId = $FieldId";
-    $Query = mysqli_query($connect, $SQL);
-    $Result = mysqli_fetch_array($Query);
-    return $Result["Total"];
-}
-
-function PegavaloresListaUsuario($UserId, $Tabela, $CampoKey, $CampoDisp)
-{
-    global $connect;
-    $SQL = "select $CampoDisp from $Tabela where $CampoKey = $UserId";
-    $Query = mysqli_query($connect, $SQL);
-    $result = mysqli_fetch_array($Query);
-    mysqli_free_result($Query);
-    $valores = $result[$CampoDisp];
-    return explode(";", $valores);
-}
-
-function CamposFormulario($ProcId, $StepId, $FieldId = 0)
-{
-    global $connect;
-    $SQL = "SELECT ";
-    $SQL .= " procfieldsdef.fieldid, ";
-    $SQL .= " fieldname, ";
-    $SQL .= " fielddesc, ";
-    $SQL .= " fieldtype, ";
-    $SQL .= " fieldlength, ";
-    $SQL .= " readonly, ";
-    $SQL .= " optional, ";
-    $SQL .= " fieldspecial, ";
-    $SQL .= " OrderId, ";
-    $SQL .= " NewLine, ";
-    $SQL .= " FieldSourceTable, ";
-    $SQL .= " FieldSourceField, ";
-    $SQL .= " FieldDisplayField, ";
-    $SQL .= " DefaultValue, ";
-    $SQL .= " GroupSource, ";
-    $SQL .= " ScriptValida, ";
-    $SQL .= " ExtendProp, ";
-    $SQL .= " FieldCod, ";
-    $SQL .= " CSS, ";
-    $SQL .= " FieldHelp, ";
-    $SQL .= " FieldChange,";
-    $SQL .= " FieldKeyMaster, ";
-    $SQL .= " FieldMaster, ";
-    $SQL .= " FieldMask, ";
-    $SQL .= " footertext, ";
-    $SQL .= " FixarValor ";
-    $SQL .= " from ";
-    $SQL .= " procfieldsdef, ";
-    $SQL .= " stepfieldsdef ";
-    $SQL .= " where ";
-    $SQL .= " procfieldsdef.procid = $ProcId ";
-    $SQL .= " and ";
-    $SQL .= " stepfieldsdef.procid = procfieldsdef.procid ";
-    $SQL .= " and ";
-    $SQL .= " stepfieldsdef.stepid = $StepId ";
-    $SQL .= " and ";
-    $SQL .= " stepfieldsdef.fieldid = procfieldsdef.fieldid ";
-    $SQL .= " and ";
-    $SQL .= " procfieldsdef.Active = 1 ";
-    if ($FieldId != 0) {
-        $SQL .= " and ";
-        $SQL .= " stepfieldsdef.fieldid = $FieldId ";
-    }
-    $SQL .= " order by ";
-    $SQL .= " OrderId ";
-    $Query = mysqli_query($connect, $SQL);
-    $retorno = mysqli_fetch_all($Query, MYSQLI_ASSOC);
-    return $retorno;
-}
-
-function PegaDadosCampoLista($ProcId, $FieldId, $Valor, $ExtendProps = '')
-{
-    $Valor = html_entity_decode($Valor);
-    if (empty($ExtendProps)) {
-        $ExtendProps = PegavaloresLista($ProcId, $FieldId);
-    }
-    $ExtendProps = str_replace("\"", "", $ExtendProps);
-    $ExtendProps = explode(";", $ExtendProps);
-    if (is_array($ExtendProps)) {
-        $ExtendProps = $ExtendProps[0];
-    }
-    $Listavalores = explode(".", $ExtendProps);
-    $NovaLista = array();
-    foreach ($Listavalores as $ItemValor) {
-        $Item["Display"] = $ItemValor;
-        $Item["Valor"] = $ItemValor;
-        $A_Item = explode("|", $ItemValor);
-        if (count($A_Item) > 1) {
-            $Item["Display"] = $A_Item[0];
-            $Item["Valor"] = $A_Item[1];
-        }
-        $Item["selected"] = false;
-        if ($Item["Valor"] == $Valor) {
-            $Item["selected"] = true;
-        }
-        array_push($NovaLista, $Item);
-    }
-    return $NovaLista;
-}
-
-function PegaParametroCSS($ParametrosCSS, $Parametro, $Default = "")
-{
-    $CSS = explode(";", $ParametrosCSS);
-    $Contador = 0;
-    while ($Contador < count($CSS)) {
-        $CSSParse = explode(":", $CSS[$Contador]);
-        if ($CSSParse[0] == $Parametro) {
-            return $CSSParse[1];
-        }
-        $Contador = $Contador + 1;
-    }
-    return $Default;
-}
-
-function PegaDescUsuario($UserId)
-{
-    global $connect;
-    $OrigemLogon = "";
-    $EXTERNAL_USERFULLNAME = "";
-    $EXTERNAL_userdef = "";
-    $EXTERNAL_USERID = "";
-    include("../include/config.config.php");
-    require_once("connection.php");
-    if (empty($UserId) | $UserId == 0) {
-        return "";
-    }
-    if ($OrigemLogon == "External") {
-        $connectDBExterno = AtivaDbExterno();
-        $SQL = " Select $EXTERNAL_USERFULLNAME as UserFullName from $EXTERNAL_userdef where $EXTERNAL_USERID = $UserId ";
-        $QUERY1 = mysqli_query($connectDBExterno, $SQL);
-        $linha = mysqli_fetch_array($QUERY1);
-        if (mysqli_num_rows($QUERY1) > 0) {
-            $retorno = $linha["UserFullName"];
-        } else {
-            $retorno = "Usu�rio Inativo";
-        }
-        mysqli_free_result($QUERY1);
-        AtivaDBProcess();
-        return $retorno;
-    } else {
-        $SQL = " Select UserDesc from userdef where UserId = $UserId ";
-        $QUERY1 = mysqli_query($connect, $SQL);
-        $linha = mysqli_fetch_array($QUERY1);
-        if (mysqli_num_rows($QUERY1) > 0) {
-            $retorno = $linha["UserDesc"];
-        } else {
-            $retorno = "Usu�rio Inativo";
-        }
-        mysqli_free_result($QUERY1);
-        return $retorno;
-    }
-}
-
-function PegaNomeUsuario($UserId)
-{
-    global $connect, $connectDBExterno, $OrigemLogon;
-    $EXTERNAL_USERNAME = "";
-    $EXTERNAL_userdef = "";
-    $EXTERNAL_USERID = "";
-    include(FILES_ROOT . "/include/config.config.php");
-    require_once("connection.php");
-    if (empty($UserId) | $UserId == 0) {
-        return "";
-    }
-    if ($OrigemLogon == "External") {
-        $connectDBExterno = AtivaDbExterno();
-        $SQL = " Select $EXTERNAL_USERNAME as UserName from $EXTERNAL_userdef where $EXTERNAL_USERID = $UserId ";
-        $QUERY1 = mysqli_query($connectDBExterno, $SQL);
-        $linha = mysqli_fetch_array($QUERY1);
-        mysqli_free_result($QUERY1);
-        AtivaDBProcess();
-        return $linha["UserName"];
-    } else {
-        $SQL = " Select UserDesc as UserName from userdef where UserId = $UserId ";
-        $QUERY1 = mysqli_query($connect, $SQL);
-        $linha = mysqli_fetch_array($QUERY1);
-        mysqli_free_result($QUERY1);
-        return $linha["UserName"];
-    }
-}
-
-function PegaIdPeloNome($UserName)
-{
-    global $connect, $connectDBExterno, $OrigemLogon;
-    $EXTERNAL_USERID = "";
-    $EXTERNAL_userdef = "";
-    $EXTERNAL_USERNAME = "";
-    include("../include/config.config.php");
-    require_once("connection.php");
-    if (empty($UserName)) {
-        return "0";
-    }
-    if ($OrigemLogon == "External") {
-        $connectDBExterno = AtivaDbExterno();
-        $SQL = " Select $EXTERNAL_USERID as UserId from $EXTERNAL_userdef where $EXTERNAL_USERNAME = '$UserName' ";
-        $QUERY1 = mysqli_query($connectDBExterno, $SQL);
-        if (mysqli_num_rows($QUERY1) == 0) {
-            return 0;
-        }
-        $linha = mysqli_fetch_array($QUERY1);
-        mysqli_free_result($QUERY1);
-        AtivaDBProcess();
-        return $linha["UserId"];
-    } else {
-        $SQL = " Select UserId from userdef where UserName = $UserName ";
-        $QUERY1 = mysqli_query($connect, $SQL);
-        if (mysqli_num_rows($QUERY1) == 0) {
-            return 0;
-        }
-        $linha = mysqli_fetch_array($QUERY1);
-        mysqli_free_result($QUERY1);
-        return $linha["UserId"];
-    }
-}
-
-function MaiorComprimento($valores)
-{
-    $tamanho = 0;
-    for ($contador = 0; $contador < count($valores); $contador++) {
-        if ($tamanho < strlen($valores[$contador])) {
-            $tamanho = strlen($valores[$contador]);
-        }
-    }
-    return $tamanho;
-}
-
-function PegaDescricaoUsuario($UserId)
-{
-    global $connect, $OrigemLogon;
-    $EXTERNAL_USERFULLNAME = "";
-    $EXTERNAL_userdef = "";
-    $EXTERNAL_USERID = "";
-    include("../include/config.config.php");
-    if (empty($UserId) || $UserId == 0) {
-        return "Autom�tico";
-    }
-    if ($OrigemLogon == "External") {
-        $connectDBExterno = AtivaDbExterno();
-        $SQL = " Select $EXTERNAL_USERFULLNAME as UserFullName from $EXTERNAL_userdef where $EXTERNAL_USERID = $UserId ";
-        $QUERY1 = mysqli_query($connectDBExterno, $SQL);
-        $linha = mysqli_fetch_array($QUERY1);
-        mysqli_free_result($QUERY1);
-        AtivaDBProcess();
-        return $linha[$EXTERNAL_USERFULLNAME];
-    } else {
-        $SQL = " Select UserDesc from userdef where UserId = $UserId ";
-        $QUERY1 = mysqli_query($connect, $SQL);
-        $linha = mysqli_fetch_array($QUERY1);
-        mysqli_free_result($QUERY1);
-        return $linha["UserDesc"];
-    }
-}
-
-function MontaEstilo($ParametrosCSS, $campo, $Tipo, $ReadOnly, $optional)
-{
-    $CSS = " $ParametrosCSS ";
-    $CSSColor = PegaParametroCSS($ParametrosCSS, "Color");
-    if (empty($CSSColor)) {
-        if ($ReadOnly == 1) {
-            $CSSColor = "Color:White";
-        } else {
-            if ($optional == 1) {
-                $CSSColor = "Color:blue";
-            } else {
-                $CSSColor = "Color:red";
-            }
-        }
-    } else {
-        $CSSColor = ";Color:$CSSColor;";
-    }
-    $BackgroudDiv = "";
-    if ($Tipo <> "Normal") {
-        $BackgroudDiv = "Background:silver;";
-    }
-    $CSSDiv = " div.campo$campo { $CSS;$CSSColor;Cursor:hand;$BackgroudDiv } ";
-    $CSSTD = " td.campo$campo { $CSSColor } ";
-    return "\t$CSSDiv\n\t$CSSTD";
-}
-
-function Filhos($comentarios_ord, $comentarios, $Pai)
-{
-    for ($contador = 1; $contador < count($comentarios) + 1; $contador++) {
-        if (empty($comentarios[$contador][3])) {
-            continue;
-        }
-        if ($comentarios[$contador][3] == $Pai) {
-            $comentarios_ord[count($comentarios_ord) + 1] = $comentarios[$contador];
-            $comentarios_ord = Filhos($comentarios_ord, $comentarios, $comentarios[$contador][4]);
-        }
-    }
-    return $comentarios_ord;
-}
-
-function OrdenaComentarios($comentarios)
-{
-    if (count($comentarios) <= 1) {
-        return $comentarios;
-    }
-    $comentarios_ord[1] = $comentarios[1];
-    $comentarios_ord = Filhos($comentarios_ord, $comentarios, $comentarios[0][4]);
-    for ($contador = 2; $contador < count($comentarios) + 1; $contador++) {
-        if (empty($comentarios[$contador][3])) {
-            $comentarios_ord[count($comentarios_ord) + 1] = $comentarios[$contador];
-            $comentarios_ord = Filhos($comentarios_ord, $comentarios, $comentarios[$contador][4]);
-        } else {
-            $comentarios_ord[count($comentarios_ord) + 1] = $comentarios[$contador];
-            $comentarios_ord = Filhos($comentarios_ord, $comentarios, $comentarios[$contador][4]);
-        }
-    }
-    return $comentarios_ord;
-}
-
-function ExplodeValueTickler($ValorCampo, $ValueId)
-{
-    $ValorCampo = str_replace("/*%/*", "'", str_replace("/*;/*", "/*#/*", $ValorCampo));
-    $ValorCampo = explode(";", $ValorCampo);
-
-    $Valor = $ValorCampo[0];
-    $Valor = substr($Valor, 8, 2) . "/" . substr($Valor, 5, 2) . "/" . substr($Valor, 0, 4) . " " . substr($Valor, 11, 5);
-    $ValorCampo[0] = $Valor;
-
-    $ValorCampo[2] = str_replace("/*#/*", ";", $ValorCampo[2]);
-    $ValorCampo[5] = $ValorCampo[5];
     /*
-      if (!empty($comentario[$contador][4]) & $AdHoc)
+      function MontaBoleano($Valor, $ReadOnly, $StiloObjeto)
       {
-      //			$comentario[$contador][1] = "<a href=\"BPMAdHoc.php?ProcId=$ProcId&StepId=$StepId&FieldId=$FieldTickler&CaseNum=$CaseNum&Tickler=1&NovaLinha=$TotalComentarios&Edit=0&Tickler=1&Valor=" .  $comentario[$contador][4] . "\" onmouseMOVE=\"window.status = ===='Enviar ADHOC para " . $comentario[$contador][1] . "'\" onmouseOUT=\"window.status = ====''\">"  . $comentario[$contador][1] . "</a>";
+      Global $campo;
+      if ($ReadOnly == 1)
+      {
+      if  ($Valor==0)
+      {
+      $Valor="N�o";
+      }
+      else
+      {
+      $Valor="Sim";
+      }
+      $Campo = CampoReadOnly($Valor, $StiloObjeto);
+      $pagina=$pagina."$Campo";
+      }
+      else
+      {
+      $pagina=$pagina."\t\t\t\t<input type=\"radio\" name=\"t$campo\" ";
+      if ($Valor==1)
+      {
+      $pagina=$pagina." checked ";
+      }
+      $pagina=$pagina." value = \"1\"><span class=\"Bolean\">Sim</span>\n";
+      $pagina=$pagina."\t\t\t\t<input type=\"radio\" name=\"t$campo\" ";
+      if ($Valor==0)
+      {
+      $pagina=$pagina." checked ";
+      }
+      $pagina=$pagina." value = \"0\"><span class=\"Bolean\">N�o</span>\n";
+      }
+      return $pagina;
       }
      */
-    $ValorCampo[4] = $ValueId;
-    return $ValorCampo;
-}
 
-function Tickler($ProcId, $FieldId, $CaseNum)
-{
-    global $connect;
-    $SQL = "select FieldValue, ValueId from casedata where ProcId = $ProcId and FieldId = $FieldId and CaseNum = $CaseNum order by ValueId desc";
-    $Query = mysqli_query($connect, $SQL);
-    $contador = 0;
-    $comentario = array();
-    while ($result = mysqli_fetch_array($Query)) {
-        $contador++;
-        $comentario[$contador] = ExplodeValueTickler($result["FieldValue"], $result["ValueId"]);
+    function PegaValorCampoTabela($Valor, $TableSource, $SourceField, $DisplayField, $UserField = "")
+    {
+        global $connectDBExterno, $UserId;
+        AtivaDBExterno();
+        $UserField = trim($UserField);
+        $Valor = trim($Valor);
+        if (empty($DisplayField) | empty($Valor)) {
+            return "";
+        }
+        if (!strpos($TableSource, 'select')) {
+            $SQL = "select * from ";
+        }
+        $SQL .= $TableSource;
+        $SQL .= "  where ";
+        $SQL .= "  $SourceField = $Valor ";
+        if (!empty($UserField)) {
+            $SQL .= " and ";
+            $SQL .= " $UserField = $UserId ";
+        }
+        $QUERY = mysqli_query($connectDBExterno, $SQL);
+        $linha = mysqli_fetch_array($QUERY);
+        mysqli_free_result($QUERY);
+        return $linha["$DisplayField"];
     }
-    return OrdenaComentarios($comentario);
-}
 
-function TipoProc($ProcId)
-{
-    global $connect;
-    $SQL = "select TipoProc from procdef where ProcId = $ProcId";
-    $Query = mysqli_query($connect, $SQL);
-    $Linha = mysqli_fetch_array($Query);
-    return $Linha["TipoProc"];
-}
+    function ReplaceFieldsValues($String)
+    {
+        global $userdef, $ProcId, $CaseNum;
 
-function CasosNosProcessos()
-{
-    global $connect, $S_procdef, $userdef, $Filtros;
-    require_once('sqlqueue.php');
-    $Campos[0] = 'exportkeys.CaseNum ';
-    $SQLUnion = ")";
-    $SQLUnion .= " union ";
-    $SQLUnion .= "( \n";
-    if (is_array($Filtros)) {
-        $Filtros = TrataFiltros($Filtros);
+// Substitui Origem do Usu�rio
+        $String = str_replace('!%OrigemUser!%', $userdef->Origem, $String);
+
+// Substitui Nome do Usuario
+        $String = str_replace('!%UserName!%', $userdef->UserName, $String);
+
+// Substitui Id do Usuario
+        $String = str_replace('!%UserId!%', $userdef->UserId, $String);
+
+// Substitui ProcId
+        $String = str_replace('!%ProcId!%', $ProcId, $String);
+
+// Substitui CaseId
+        $String = str_replace('!%CaseId!%', $CaseNum, $String);
+
+// Substitui ProcId
+        $String = str_replace('!%CaseNum!%', $CaseNum, $String);
+
+        $String = ParsevaloresCampos($ProcId, $CaseNum, $String);
+
+
+        return $String;
     }
-    $Campo = TrataCampoOrdem($Campo);
-    $SQL = "select ProcId, Count(*) as totais from casequeue where CaseId in (";
-    $SQL .= '(';
-    $SQL .= SQLCasosGrupos('', $Campos, -1, 1, '', $userdef->Origem);
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosUsuario('', $Campos, -1, 1, '', $userdef->Origem);
+
+    function PegaValorCampos($CaseNum)
+    {
+        global $connect;
+        $SQL = "select "
+                . "FieldValue, "
+                . "casedata.FieldId, "
+                . "FieldType, "
+                . "ExtendData, "
+                . "ValueId "
+                . "from "
+                . "casedata, "
+                . "procfieldsdef "
+                . "where "
+                . "CaseNum = $CaseNum "
+                . "and "
+                . "procfieldsdef.ProcId = casedata.ProcId "
+                . "and "
+                . "procfieldsdef.FieldId = casedata.FieldId "
+                . "and "
+                . "not fieldtype in ('AR', 'TM', 'TK') "
+                . "order by ValueId";
+        $Query = mysqli_query($connect, $SQL);
+        while ($Linha = mysqli_fetch_array($Query)) {
+            if ($Linha["FieldType"] != "AR") {
+                $valores[$Linha["FieldId"]] = $Linha["FieldValue"];
+            } else {
+                $valores[$Linha["FieldId"]] = $Linha["ExtendData"];
+            }
+        }
+        return $valores;
+    }
+
+    function PegaValorCampolista($ProcId, $Campo, $ValorCampo)
+    {
+        global $connect, $_ExtendProps;
+        if (!isset($_ExtendProps)) {
+            $SQL = "select ExtendProp from procfieldsdef where procid = $ProcId and FieldId = $Campo ";
+            $Query = mysqli_query($connect, $SQL);
+            $lista = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+            $_ExtendProps = $lista[0]["ExtendProp"];
+        }
+
+        if (!is_array($_ExtendProps)) {
+            $_ExtendProps = array();
+            session_register("_ExtendProps");
+        }
+        if ($ValorCampo == -1 || $ValorCampo == "") {
+            return '';
+        } else {
+            if (!is_array($_ExtendProps[$Campo])) {
+                $valores = explode(".", PegavaloresLista($ProcId, $Campo));
+                $_ExtendProps[$Campo] = $valores;
+            }
+            reset($_ExtendProps[$Campo]);
+            foreach ($_ExtendProps[$Campo] as $Valor) {
+                $AValor = explode("|", $Valor);
+                $ValorSel = $AValor[0];
+                if (count($AValor) > 1) {
+                    $ValorSel = $AValor[1];
+                }
+                if ($ValorSel == $ValorCampo) {
+                    $retorno = $AValor[0];
+                    break;
+                }
+            }
+            return $retorno;
+        }
+    }
+
+    function PegaValoresCampoLista_array($ProcId, $Campo)
+    {
+        $valores = explode(".", PegavaloresLista($ProcId, $Campo));
+        $retorno = array();
+        foreach ($valores as $Valor) {
+            $AValor = explode("|", $Valor);
+            $itemCampo["display"] = $AValor[0];
+            $itemCampo["valor"] = $AValor[1];
+            $retorno[] = $itemCampo;
+        }
+        return $retorno;
+    }
+
+    function PegavaloresLista($ProcId, $campo)
+    {
+        global $connect;
+        $SQL = " select ";
+        $SQL .= "  ExtendProp as OptValues ";
+        $SQL .= "  from ";
+        $SQL .= "  procfieldsdef ";
+        $SQL .= "  where ";
+        $SQL .= "  ProcId = $ProcId";
+        $SQL .= "  and ";
+        $SQL .= "  FieldId = $campo ";
+        $Query = mysqli_query($connect, $SQL);
+        $result = mysqli_fetch_array($Query);
+        mysqli_free_result($Query);
+        return $result["OptValues"];
+    }
+
+    function Totalvalores($ProcId, $FieldId, $CaseNum)
+    {
+        global $connect;
+        $SQL = "select count(*) as Total from casedata where ProcID = $ProcId and CaseNum = $CaseNum and FieldId = $FieldId";
+        $Query = mysqli_query($connect, $SQL);
+        $Result = mysqli_fetch_array($Query);
+        return $Result["Total"];
+    }
+
+    function campoMT_Totalvalores($ProcId, $CaseNum, $FieldId)
+    {
+        global $connect;
+        $SQL = "select count(*) as Total from casedata where ProcID = $ProcId and CaseNum = $CaseNum and FieldId = $FieldId";
+        $Query = mysqli_query($connect, $SQL);
+        $Result = mysqli_fetch_array($Query);
+        return $Result["Total"];
+    }
+
+    function PegavaloresListaUsuario($UserId, $Tabela, $CampoKey, $CampoDisp)
+    {
+        global $connect;
+        $SQL = "select $CampoDisp from $Tabela where $CampoKey = $UserId";
+        $Query = mysqli_query($connect, $SQL);
+        $result = mysqli_fetch_array($Query);
+        mysqli_free_result($Query);
+        $valores = $result[$CampoDisp];
+        return explode(";", $valores);
+    }
+
+    function CamposFormulario($ProcId, $StepId, $FieldId = 0)
+    {
+        global $connect;
+        $SQL = "SELECT ";
+        $SQL .= " procfieldsdef.fieldid, ";
+        $SQL .= " fieldname, ";
+        $SQL .= " fielddesc, ";
+        $SQL .= " fieldtype, ";
+        $SQL .= " fieldlength, ";
+        $SQL .= " readonly, ";
+        $SQL .= " optional, ";
+        $SQL .= " fieldspecial, ";
+        $SQL .= " OrderId, ";
+        $SQL .= " NewLine, ";
+        $SQL .= " FieldSourceTable, ";
+        $SQL .= " FieldSourceField, ";
+        $SQL .= " FieldDisplayField, ";
+        $SQL .= " DefaultValue, ";
+        $SQL .= " GroupSource, ";
+        $SQL .= " ScriptValida, ";
+        $SQL .= " ExtendProp, ";
+        $SQL .= " FieldCod, ";
+        $SQL .= " CSS, ";
+        $SQL .= " FieldHelp, ";
+        $SQL .= " FieldChange,";
+        $SQL .= " FieldKeyMaster, ";
+        $SQL .= " FieldMaster, ";
+        $SQL .= " FieldMask, ";
+        $SQL .= " footertext, ";
+        $SQL .= " FixarValor ";
+        $SQL .= " from ";
+        $SQL .= " procfieldsdef, ";
+        $SQL .= " stepfieldsdef ";
+        $SQL .= " where ";
+        $SQL .= " procfieldsdef.procid = $ProcId ";
+        $SQL .= " and ";
+        $SQL .= " stepfieldsdef.procid = procfieldsdef.procid ";
+        $SQL .= " and ";
+        $SQL .= " stepfieldsdef.stepid = $StepId ";
+        $SQL .= " and ";
+        $SQL .= " stepfieldsdef.fieldid = procfieldsdef.fieldid ";
+        $SQL .= " and ";
+        $SQL .= " procfieldsdef.Active = 1 ";
+        if ($FieldId != 0) {
+            $SQL .= " and ";
+            $SQL .= " stepfieldsdef.fieldid = $FieldId ";
+        }
+        $SQL .= " order by ";
+        $SQL .= " OrderId ";
+        $Query = mysqli_query($connect, $SQL);
+        $retorno = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+        return $retorno;
+    }
+
+    function PegaDadosCampoLista($ProcId, $FieldId, $Valor, $ExtendProps = '')
+    {
+        $Valor = html_entity_decode($Valor);
+        if (empty($ExtendProps)) {
+            $ExtendProps = PegavaloresLista($ProcId, $FieldId);
+        }
+        $ExtendProps = str_replace("\"", "", $ExtendProps);
+        $ExtendProps = explode(";", $ExtendProps);
+        if (is_array($ExtendProps)) {
+            $ExtendProps = $ExtendProps[0];
+        }
+        $Listavalores = explode(".", $ExtendProps);
+        $NovaLista = array();
+        foreach ($Listavalores as $ItemValor) {
+            $Item["Display"] = $ItemValor;
+            $Item["Valor"] = $ItemValor;
+            $A_Item = explode("|", $ItemValor);
+            if (count($A_Item) > 1) {
+                $Item["Display"] = $A_Item[0];
+                $Item["Valor"] = $A_Item[1];
+            }
+            $Item["selected"] = false;
+            if ($Item["Valor"] == $Valor) {
+                $Item["selected"] = true;
+            }
+            array_push($NovaLista, $Item);
+        }
+        return $NovaLista;
+    }
+
+    function PegaParametroCSS($ParametrosCSS, $Parametro, $Default = "")
+    {
+        $CSS = explode(";", $ParametrosCSS);
+        $Contador = 0;
+        while ($Contador < count($CSS)) {
+            $CSSParse = explode(":", $CSS[$Contador]);
+            if ($CSSParse[0] == $Parametro) {
+                return $CSSParse[1];
+            }
+            $Contador = $Contador + 1;
+        }
+        return $Default;
+    }
+
+    function PegaDescUsuario($UserId)
+    {
+        global $connect;
+        $OrigemLogon = "";
+        $EXTERNAL_USERFULLNAME = "";
+        $EXTERNAL_userdef = "";
+        $EXTERNAL_USERID = "";
+        include("../include/config.config.php");
+        require_once("connection.php");
+        if (empty($UserId) | $UserId == 0) {
+            return "";
+        }
+        if ($OrigemLogon == "External") {
+            $connectDBExterno = AtivaDbExterno();
+            $SQL = " Select $EXTERNAL_USERFULLNAME as UserFullName from $EXTERNAL_userdef where $EXTERNAL_USERID = $UserId ";
+            $QUERY1 = mysqli_query($connectDBExterno, $SQL);
+            $linha = mysqli_fetch_array($QUERY1);
+            if (mysqli_num_rows($QUERY1) > 0) {
+                $retorno = $linha["UserFullName"];
+            } else {
+                $retorno = "Usu�rio Inativo";
+            }
+            mysqli_free_result($QUERY1);
+            AtivaDBProcess();
+            return $retorno;
+        } else {
+            $SQL = " Select UserDesc from userdef where UserId = $UserId ";
+            $QUERY1 = mysqli_query($connect, $SQL);
+            $linha = mysqli_fetch_array($QUERY1);
+            if (mysqli_num_rows($QUERY1) > 0) {
+                $retorno = $linha["UserDesc"];
+            } else {
+                $retorno = "Usu�rio Inativo";
+            }
+            mysqli_free_result($QUERY1);
+            return $retorno;
+        }
+    }
+
+    function PegaNomeUsuario($UserId)
+    {
+        global $connect, $connectDBExterno, $OrigemLogon;
+        $EXTERNAL_USERNAME = "";
+        $EXTERNAL_userdef = "";
+        $EXTERNAL_USERID = "";
+        include(FILES_ROOT . "/include/config.config.php");
+        require_once("connection.php");
+        if (empty($UserId) | $UserId == 0) {
+            return "";
+        }
+        if ($OrigemLogon == "External") {
+            $connectDBExterno = AtivaDbExterno();
+            $SQL = " Select $EXTERNAL_USERNAME as UserName from $EXTERNAL_userdef where $EXTERNAL_USERID = $UserId ";
+            $QUERY1 = mysqli_query($connectDBExterno, $SQL);
+            $linha = mysqli_fetch_array($QUERY1);
+            mysqli_free_result($QUERY1);
+            AtivaDBProcess();
+            return $linha["UserName"];
+        } else {
+            $SQL = " Select UserDesc as UserName from userdef where UserId = $UserId ";
+            $QUERY1 = mysqli_query($connect, $SQL);
+            $linha = mysqli_fetch_array($QUERY1);
+            mysqli_free_result($QUERY1);
+            return $linha["UserName"];
+        }
+    }
+
+    function PegaIdPeloNome($UserName)
+    {
+        global $connect, $connectDBExterno, $OrigemLogon;
+        $EXTERNAL_USERID = "";
+        $EXTERNAL_userdef = "";
+        $EXTERNAL_USERNAME = "";
+        include("../include/config.config.php");
+        require_once("connection.php");
+        if (empty($UserName)) {
+            return "0";
+        }
+        if ($OrigemLogon == "External") {
+            $connectDBExterno = AtivaDbExterno();
+            $SQL = " Select $EXTERNAL_USERID as UserId from $EXTERNAL_userdef where $EXTERNAL_USERNAME = '$UserName' ";
+            $QUERY1 = mysqli_query($connectDBExterno, $SQL);
+            if (mysqli_num_rows($QUERY1) == 0) {
+                return 0;
+            }
+            $linha = mysqli_fetch_array($QUERY1);
+            mysqli_free_result($QUERY1);
+            AtivaDBProcess();
+            return $linha["UserId"];
+        } else {
+            $SQL = " Select UserId from userdef where UserName = $UserName ";
+            $QUERY1 = mysqli_query($connect, $SQL);
+            if (mysqli_num_rows($QUERY1) == 0) {
+                return 0;
+            }
+            $linha = mysqli_fetch_array($QUERY1);
+            mysqli_free_result($QUERY1);
+            return $linha["UserId"];
+        }
+    }
+
+    function MaiorComprimento($valores)
+    {
+        $tamanho = 0;
+        for ($contador = 0; $contador < count($valores); $contador++) {
+            if ($tamanho < strlen($valores[$contador])) {
+                $tamanho = strlen($valores[$contador]);
+            }
+        }
+        return $tamanho;
+    }
+
+    function PegaDescricaoUsuario($UserId)
+    {
+        global $connect, $OrigemLogon;
+        $EXTERNAL_USERFULLNAME = "";
+        $EXTERNAL_userdef = "";
+        $EXTERNAL_USERID = "";
+        include("../include/config.config.php");
+        if (empty($UserId) || $UserId == 0) {
+            return "Autom�tico";
+        }
+        if ($OrigemLogon == "External") {
+            $connectDBExterno = AtivaDbExterno();
+            $SQL = " Select $EXTERNAL_USERFULLNAME as UserFullName from $EXTERNAL_userdef where $EXTERNAL_USERID = $UserId ";
+            $QUERY1 = mysqli_query($connectDBExterno, $SQL);
+            $linha = mysqli_fetch_array($QUERY1);
+            mysqli_free_result($QUERY1);
+            AtivaDBProcess();
+            return $linha[$EXTERNAL_USERFULLNAME];
+        } else {
+            $SQL = " Select UserDesc from userdef where UserId = $UserId ";
+            $QUERY1 = mysqli_query($connect, $SQL);
+            $linha = mysqli_fetch_array($QUERY1);
+            mysqli_free_result($QUERY1);
+            return $linha["UserDesc"];
+        }
+    }
+
+    function MontaEstilo($ParametrosCSS, $campo, $Tipo, $ReadOnly, $optional)
+    {
+        $CSS = " $ParametrosCSS ";
+        $CSSColor = PegaParametroCSS($ParametrosCSS, "Color");
+        if (empty($CSSColor)) {
+            if ($ReadOnly == 1) {
+                $CSSColor = "Color:White";
+            } else {
+                if ($optional == 1) {
+                    $CSSColor = "Color:blue";
+                } else {
+                    $CSSColor = "Color:red";
+                }
+            }
+        } else {
+            $CSSColor = ";Color:$CSSColor;";
+        }
+        $BackgroudDiv = "";
+        if ($Tipo <> "Normal") {
+            $BackgroudDiv = "Background:silver;";
+        }
+        $CSSDiv = " div.campo$campo { $CSS;$CSSColor;Cursor:hand;$BackgroudDiv } ";
+        $CSSTD = " td.campo$campo { $CSSColor } ";
+        return "\t$CSSDiv\n\t$CSSTD";
+    }
+
+    function Filhos($comentarios_ord, $comentarios, $Pai)
+    {
+        for ($contador = 1; $contador < count($comentarios) + 1; $contador++) {
+            if (empty($comentarios[$contador][3])) {
+                continue;
+            }
+            if ($comentarios[$contador][3] == $Pai) {
+                $comentarios_ord[count($comentarios_ord) + 1] = $comentarios[$contador];
+                $comentarios_ord = Filhos($comentarios_ord, $comentarios, $comentarios[$contador][4]);
+            }
+        }
+        return $comentarios_ord;
+    }
+
+    function OrdenaComentarios($comentarios)
+    {
+        if (count($comentarios) <= 1) {
+            return $comentarios;
+        }
+        $comentarios_ord[1] = $comentarios[1];
+        $comentarios_ord = Filhos($comentarios_ord, $comentarios, $comentarios[0][4]);
+        for ($contador = 2; $contador < count($comentarios) + 1; $contador++) {
+            if (empty($comentarios[$contador][3])) {
+                $comentarios_ord[count($comentarios_ord) + 1] = $comentarios[$contador];
+                $comentarios_ord = Filhos($comentarios_ord, $comentarios, $comentarios[$contador][4]);
+            } else {
+                $comentarios_ord[count($comentarios_ord) + 1] = $comentarios[$contador];
+                $comentarios_ord = Filhos($comentarios_ord, $comentarios, $comentarios[$contador][4]);
+            }
+        }
+        return $comentarios_ord;
+    }
+
+    function ExplodeValueTickler($ValorCampo, $ValueId)
+    {
+        $ValorCampo = str_replace("/*%/*", "'", str_replace("/*;/*", "/*#/*", $ValorCampo));
+        $ValorCampo = explode(";", $ValorCampo);
+
+        $Valor = $ValorCampo[0];
+        $Valor = substr($Valor, 8, 2) . "/" . substr($Valor, 5, 2) . "/" . substr($Valor, 0, 4) . " " . substr($Valor, 11, 5);
+        $ValorCampo[0] = $Valor;
+
+        $ValorCampo[2] = str_replace("/*#/*", ";", $ValorCampo[2]);
+        $ValorCampo[5] = $ValorCampo[5];
+        /*
+          if (!empty($comentario[$contador][4]) & $AdHoc)
+          {
+          //			$comentario[$contador][1] = "<a href=\"BPMAdHoc.php?ProcId=$ProcId&StepId=$StepId&FieldId=$FieldTickler&CaseNum=$CaseNum&Tickler=1&NovaLinha=$TotalComentarios&Edit=0&Tickler=1&Valor=" .  $comentario[$contador][4] . "\" onmouseMOVE=\"window.status = ===='Enviar ADHOC para " . $comentario[$contador][1] . "'\" onmouseOUT=\"window.status = ====''\">"  . $comentario[$contador][1] . "</a>";
+          }
+         */
+        $ValorCampo[4] = $ValueId;
+        return $ValorCampo;
+    }
+
+    function Tickler($ProcId, $FieldId, $CaseNum)
+    {
+        global $connect;
+        $SQL = "select FieldValue, ValueId from casedata where ProcId = $ProcId and FieldId = $FieldId and CaseNum = $CaseNum order by ValueId desc";
+        $Query = mysqli_query($connect, $SQL);
+        $contador = 0;
+        $comentario = array();
+        while ($result = mysqli_fetch_array($Query)) {
+            $contador++;
+            $comentario[$contador] = ExplodeValueTickler($result["FieldValue"], $result["ValueId"]);
+        }
+        return OrdenaComentarios($comentario);
+    }
+
+    function TipoProc($ProcId)
+    {
+        global $connect;
+        $SQL = "select TipoProc from procdef where ProcId = $ProcId";
+        $Query = mysqli_query($connect, $SQL);
+        $Linha = mysqli_fetch_array($Query);
+        return $Linha["TipoProc"];
+    }
+
+    function CasosNosProcessos()
+    {
+        global $connect, $S_procdef, $userdef, $Filtros;
+        require_once('sqlqueue.php');
+        $Campos[0] = 'exportkeys.CaseNum ';
+        $SQLUnion = ")";
+        $SQLUnion .= " union ";
+        $SQLUnion .= "( \n";
+        if (is_array($Filtros)) {
+            $Filtros = TrataFiltros($Filtros);
+        }
+        $Campo = TrataCampoOrdem($Campo);
+        $SQL = "select ProcId, Count(*) as totais from casequeue where CaseId in (";
+        $SQL .= '(';
+        $SQL .= SQLCasosGrupos('', $Campos, -1, 1, '', $userdef->Origem);
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosUsuario('', $Campos, -1, 1, '', $userdef->Origem);
 //	$SQL .= $SQLUnion;
 //	$SQL .= SQLCasosCampo('', $Campos, -1, 1, '', $userdef->Origem);
 //    $SQL .= $SQLUnion;
 //    $SQL .= SQLCasosAdHoc('', $Campos, -1, 1, '', $userdef->Origem);
-    $SQL .= ")";
-    $SQL .= ")";
-    $SQL .= " group by ProcId ";
-    $QUERY = mysqli_query($connect, $SQL);
-    return $QUERY;
-}
+        $SQL .= ")";
+        $SQL .= ")";
+        $SQL .= " group by ProcId ";
+        $QUERY = mysqli_query($connect, $SQL);
+        return $QUERY;
+    }
 
-function TotaisProcessosUsuario()
-{
-    global $connect, $S_procdef, $S_Processos;
-    require_once('sqlqueue.php');
-    $Campos = CamposSQLProcessos();
-    $SQLUnion = ")";
-    $SQLUnion .= " union ";
-    $SQLUnion .= "( \n";
-    $SQL = '(';
-    $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, 1, " group by casequeue.ProcId");
-    $SQL .= $SQLUnion;
-    $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, 1, " group by casequeue.ProcId");
+    function TotaisProcessosUsuario()
+    {
+        global $connect, $S_procdef, $S_Processos;
+        require_once('sqlqueue.php');
+        $Campos = CamposSQLProcessos();
+        $SQLUnion = ")";
+        $SQLUnion .= " union ";
+        $SQLUnion .= "( \n";
+        $SQL = '(';
+        $SQL .= SQLCasosGrupos($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, 1, " group by casequeue.ProcId");
+        $SQL .= $SQLUnion;
+        $SQL .= SQLCasosUsuario($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, 1, " group by casequeue.ProcId");
 //	$SQL .= $SQLUnion;
 //	$SQL .= SQLCasosCampoUsuario($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, 1, " group by casequeue.ProcId");
 //	$SQL .= $SQLUnion;
 //	$SQL .= SQLCasosCampoGrupo($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, 1, " group by casequeue.ProcId");
 //	$SQL .= $SQLUnion;
 //	$SQL .= SQLCasosAdHoc($ProcId, $Campos, $StepId, $HideQueue, $Campo, $Origem, $Filtros, 1, " group by casequeue.ProcId");
-    $SQL .= ")";
-    $SQL .= " order by casequeue.ProcId ";
-    $Query = @mysqli_query($connect, $SQL);
-    while ($Result = mysqli_fetch_array($Query)) {
-        $ProcId = $Result["ProcId"];
-        if ($ProcId <> $ProcIdOld) {
-            $ProcName = PegaNomeProc($ProcId);
-            $ProcIdOld = $ProcId;
+        $SQL .= ")";
+        $SQL .= " order by casequeue.ProcId ";
+        $Query = @mysqli_query($connect, $SQL);
+        while ($Result = mysqli_fetch_array($Query)) {
+            $ProcId = $Result["ProcId"];
+            if ($ProcId <> $ProcIdOld) {
+                $ProcName = PegaNomeProc($ProcId);
+                $ProcIdOld = $ProcId;
+            }
+            $Total = $Result["TotalCasos"];
+            $Processos[$ProcName]["ProcId"] = $ProcId;
+            $Processos[$ProcName]["TotalCasos"] += $Total;
+            $Processos[$ProcName]["ProcName"] = $ProcName;
         }
-        $Total = $Result["TotalCasos"];
-        $Processos[$ProcName]["ProcId"] = $ProcId;
-        $Processos[$ProcName]["TotalCasos"] += $Total;
-        $Processos[$ProcName]["ProcName"] = $ProcName;
+
+        $Total = 0;
+        ksort($Processos);
+        $ProcessosZero = array();
+        foreach ($S_Processos as $Processo) {
+            $ProcName = $Processo["ProcName"];
+            $ProcessosZero[$ProcName]["ProcName"] = $ProcName;
+            $ProcessosZero[$ProcName]["ProcId"] = $Processo["ProcId"];
+            $ProcessosZero[$ProcName]["TotalCasos"] += $Total;
+        }
+        ksort($ProcessosZero);
+        $Processos = $Processos + $ProcessosZero;
+        return $Processos;
     }
 
-    $Total = 0;
-    ksort($Processos);
-    $ProcessosZero = array();
-    foreach ($S_Processos as $Processo) {
-        $ProcName = $Processo["ProcName"];
-        $ProcessosZero[$ProcName]["ProcName"] = $ProcName;
-        $ProcessosZero[$ProcName]["ProcId"] = $Processo["ProcId"];
-        $ProcessosZero[$ProcName]["TotalCasos"] += $Total;
-    }
-    ksort($ProcessosZero);
-    $Processos = $Processos + $ProcessosZero;
-    return $Processos;
-}
-
-function generateCallTrace()
-{
-    $e = new Exception();
-    $trace = explode("\n", $e->getTraceAsString());
+    function generateCallTrace()
+    {
+        $e = new Exception();
+        $trace = explode("\n", $e->getTraceAsString());
 // reverse array to make steps line up chronologically
-    $trace = array_reverse($trace);
-    array_shift($trace); // remove {main}
-    array_pop($trace); // remove call to this method
-    $length = count($trace);
-    $result = array();
+        $trace = array_reverse($trace);
+        array_shift($trace); // remove {main}
+        array_pop($trace); // remove call to this method
+        $length = count($trace);
+        $result = array();
 
-    for ($i = 0; $i < $length; $i++) {
-        $result[] = ($i + 1) . ')' . substr($trace[$i], strpos($trace[$i], ' ')); // replace '#someNum' with '$i)', set the right ordering
+        for ($i = 0; $i < $length; $i++) {
+            $result[] = ($i + 1) . ')' . substr($trace[$i], strpos($trace[$i], ' ')); // replace '#someNum' with '$i)', set the right ordering
+        }
+        error_log("\t" . implode("\n\t", $result));
     }
-    error_log("\t" . implode("\n\t", $result));
-}
-?>
+    ?>

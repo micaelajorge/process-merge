@@ -74,7 +74,11 @@ if (key_exists("REQUEST_URI", $_SERVER)) {
     $redirectUrl = $_SERVER["REDIRECT_SCRIPT_URI"];
 }
 
-$INSTANCIA_APLICACAO = str_replace($redirectQueryString, "", $redirectUrl);
+$INSTANCIA_APLICACAO = str_replace(urldecode($redirectQueryString), "", $redirectUrl);
+
+$serverURL = $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . $INSTANCIA_APLICACAO;
+
+define("SERVER_URL", $serverURL);
 
 $regexPattern = '/\/(.*?)\//m';
 $retorno = preg_match($regexPattern, $redirectUrl, $encontrados);

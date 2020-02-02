@@ -15,9 +15,89 @@ require_once(FILES_ROOT . "includes_ws/wsuser.inc");
 require_once(FILES_ROOT . "includes_ws/wscasestart.inc");
 require_once(FILES_ROOT . "includes_ws/wscasesave.inc");
 require_once(FILES_ROOT . "includes_ws/wserror.inc");
-
 // </editor-fold>
 
+/**
+ * 
+ * @global type $ruleCode
+ * 
+ * @rota api/v1/rules
+ */
+function avaliaRegra_v1()
+{
+    global $ruleCode;
+    $dadosEntrada = apiTrataDadosEntrada();    
+
+    $dadosRetorno = avaliaRegraSelecionada($ruleCode, $dadosEntrada);
+    if (!is_array($dadosRetorno)) {
+        $dadosRetorno["resultado"] = false;
+    }
+    $jDados = json_encode($dadosRetorno);
+
+    header("HTTP/1.0 201");
+    header('Content-Type: application/json');
+    echo $jDados;            
+}
+
+
+function callRule($dadosEntrada, $userToken, $ruleCode)
+{
+    $curl = curl_init();
+
+    $urlCall = "localhost/api/v1/rules_real/$ruleCode";
+    
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "$urlCall",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => "",
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "POST",
+        CURLOPT_POSTFIELDS => "",
+        CURLOPT_HTTPHEADER => array(
+            "token: $userToken",
+            "Content-Type: application/json"
+        ),
+    ));
+    $json_response = curl_exec($curl);
+    $returnHttpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+   
+    $dadosRetorno = array();
+    $dadosRetorno["httpCode"] = $returnHttpCode;
+    $dadosRetorno["jsonReturn"] = $json_response;
+    
+    curl_close($curl);
+    return $dadosRetorno;
+}
+
+function executeRule_v1()
+{
+    global $ruleCode;
+    
+    $dadosEntrada = apiTrataDadosEntrada();    
+    
+    $executeUUID = get_guid();
+
+    $headers = getallheaders();
+    
+    $userToken = $headers["token"];
+    
+    $jsonDadosEntrada = json_encode($dadosEntrada);
+    
+    $dadosRetorno = callRule($jsonDadosEntrada, $userToken, $ruleCode);  
+   
+    $httpCode = $dadosRetorno["httpCode"];    
+
+    // Grava o log da Executação da REGRA
+    grava_log_rule_v1($dadosRetorno, $executeUUID, $ruleCode, $httpCode);    
+    
+    header("HTTP/1.0 $httpCode");
+    header("X-Request-UUID: $executeUUID");
+    header('Content-Type: application/json');      
+    echo $dadosRetorno["jsonReturn"];
+}
 
 /**
  * 
@@ -333,14 +413,12 @@ function avaliaRegraSelecionada($ruleCode, $dadosEntrada)
 /** 
  * @global array $camposObrigatoriosProtesto
  */
-function grava_log_rule_v1($retornoRule)
+function grava_log_rule_v1($retornoRule, $ExecuteUUID, $ruleCode, $httpCode)
 {    
     $procCod = "RULE_LOG";
 
     try {
-
-        $ExecuteUUID = get_guid();
-
+        
         $dadosBody = get_request_body();
                 
         $request = array();
@@ -380,6 +458,19 @@ function grava_log_rule_v1($retornoRule)
         $campo["fieldValue"] = $ExecuteUUID;
         $camposEnvio[] = $campo;
 
+        $campo["fieldCode"] = "RULE_CODE";
+        $campo["fieldValue"] = $ruleCode;
+        $camposEnvio[] = $campo;
+
+        $campo["fieldCode"] = "HTTP_CODE";
+        $campo["fieldValue"] = $httpCode;
+        $camposEnvio[] = $campo;
+
+        $campo["fieldCode"] =  "URL_SERVER";
+        $campo["fieldValue"] = SERVER_URL;
+        $camposEnvio[] = $campo;
+
+        
         // Pega o ProcId do Caso
         $procId = PegaProcIdByCode($procCod);
 
@@ -417,31 +508,6 @@ function grava_log_rule_v1($retornoRule)
         }
     } catch (Exception $ex) {
     }
-}
-
-
-/**
- * 
- * @global type $ruleCode
- * 
- * @rota api/v1/rules
- */
-function avaliaRegra_v1()
-{
-    global $ruleCode;
-    $dadosEntrada = apiTrataDadosEntrada();
-
-    $dadosRetorno = avaliaRegraSelecionada($ruleCode, $dadosEntrada);
-    if (!is_array($dadosRetorno)) {
-        $dadosRetorno["resultado"] = false;
-    }
-    $jDados = json_encode($dadosRetorno);
-
-    // Grava o log da Executação da REGRA
-    grava_log_rule_v1($dadosRetorno);
-    
-    header('Content-Type: application/json');
-    echo $jDados;
 }
 
 function _avaliaRegra_v1()

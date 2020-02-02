@@ -24,6 +24,16 @@
         "produces":["application/json"],
         "parameters": [
           {
+            "in":"header",
+            "name": "token",      
+            "description": "token de autenticação do usuário",
+            "required": true,
+            "type": "string",
+            "schema": {
+                "$ref": "#/definitions/token"
+             }   
+          },        
+          {
             "in":"body",
             "name": "{RULE_NAME}",      
             "description": "",
@@ -32,11 +42,19 @@
             "schema": {
                 "$ref": "#/definitions/{RULE_CODE}"
              }   
-          }
+          }                   
         ],
         "responses": {
           "201": {
-            "description": "Recebido"
+            "description": "Recebido",
+            "headers": {
+                "X-Request-UUID": {
+                    "schema": {
+                       "type" : "string"
+                    },
+                    "description" : "Identificador unico da execução da Regra"
+                }
+            }
           }
         }
       }

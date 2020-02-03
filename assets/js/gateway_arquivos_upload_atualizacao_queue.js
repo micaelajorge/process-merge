@@ -24,7 +24,7 @@ function jsCriaTemplateArquivosOferta(listArquivos, divDestino, templateView, pr
 function jsCarregaListaArquivosOferta()
 {
     let divDestino = 'divArquivosOferta';
-    let templateView = 'assets/templates/t_gateway_lista_arquivos_oferta.html';
+    let templateView = 'assets/templates/gateway_registros/t_gateway_lista_arquivos_oferta.html';
 
     endApiLotes = 'queuelist/SEC_CNABS/';
     $("#loading_" + divDestino).show();
@@ -76,7 +76,7 @@ function jsCarregaListaArquivosRecusados()
     }
 
 
-    let templateView = 'assets/templates/t_gateway_lista_arquivos_retorno.html';
+    let templateView = 'assets/templates/gateway_registros/t_gateway_lista_arquivos_retorno.html';
 
     endApiLotes = 'queuelist/ENVIO_CNAB_ACEITE/';
     $("#loading_" + divDestino).show();

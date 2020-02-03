@@ -162,7 +162,7 @@
         },
         "gateway_viewfile": {
             "GET": {
-                "page": "pages/gateway_view_files.inc",
+                "page": "pages/gateway_digital/gateway_view_files.inc",
                 "parametros": ["ProcId", "CaseNum"],
                 "funcao": "pegaArquivoOfertaRetorno"
             }

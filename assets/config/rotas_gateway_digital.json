@@ -23,17 +23,17 @@
         },
         "gatewayupload": {
             "GET": {
-                "page": "pages/gateway_upload_entrada.inc"
+                "page": "pages/gateway_digital/gateway_upload_entrada.inc"
             }            
         },
         "retornoupload": {
             "GET": {
-                "page": "pages/gateway_upload_retorno.inc"
+                "page": "pages/gateway_digital/gateway_upload_retorno.inc"
             }            
         },
         "atualizacaoupload": {
             "GET": {
-                "page": "pages/gateway_upload_atualizacao.inc"
+                "page": "pages/gateway_digital/gateway_upload_atualizacao.inc"
             }            
         }
     }

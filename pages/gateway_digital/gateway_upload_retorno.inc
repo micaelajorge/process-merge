@@ -20,11 +20,12 @@ require_once(FILES_ROOT . '/include/toolbar.inc');
 use raelgc\view\Template;
 
 $t_body = new Template(FILES_ROOT . "assets/templates/master/t_master.html");
-$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/t_gateway_upload_atualizacao.html");
+$t_body->addFile("PAGECONTENT", FILES_ROOT . "assets/templates/gateway_registros/t_gateway_upload_retorno.html");
 $t_body->addFile("PAGEHEADER", FILES_ROOT . "assets/templates/master/t_header.html");
 $t_body->addFile("PAGEFOOTER", FILES_ROOT . "assets/templates/master/t_footer.html");
 $t_body->addFile("PAGEMENULEFT", FILES_ROOT . "assets/templates/master/t_menu.html");
 $t_body->addFile("FORM_QUEUE",  FILES_ROOT . "assets/templates/t_queue.html");
+$t_body->addFile("TOOLBAR_TOP", FILES_ROOT . "assets/templates/master/t_toolbar_top.html");
 
 // Insere o ProcId para tratamento no Datatable
 $t_body->SCRIPT_DATA = "var ProcId = 'GATEWAY_DIGITAL';";
@@ -38,7 +39,7 @@ $t_body->NOVOCASOSTEPID = "INICIO";
 $t_body->block("BLOCK_STEPIDNOVOCASO");
 $t_body->block("BLOCO_INCLUDE_JAVASCRIPT");
 
-$t_body->TITULO_PAGE = "Arquivo Liquidação | " . INSTANCENAME;
+$t_body->TITULO_PAGE = "Creditas SCD | Gateway CERTDOX";
 
 // Esconde a barra lateral
 $t_body->SIDEBAR_HIDE = " hide";
@@ -84,7 +85,7 @@ $t_body->block("BLOCO_JAVASCRIPT");
 $t_body->ARQUIVO_JS = "queue.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");
 
-$t_body->ARQUIVO_JS = "gateway_arquivos_upload_atualizacao_queue.js"; // jsTratamentoDataTable
+$t_body->ARQUIVO_JS = "gateway_arquivos_upload_retorno_queue.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");
 
 // Include Drag Drop
@@ -93,12 +94,12 @@ $t_body->block("BLOCO_INCLUDE_FILE_JAVASCRIPT");
 
 // Url para envio do arquivo
 $tokenUpload = calculaToken($userdef->UserName, $userdef->UserEmail, false);
-$urlUpload = "api/v1/gateway_send_file_atualizacao/$tokenUpload";
+$urlUpload = "api/v1/gateway_send_file_retorno/$tokenUpload";
 
 $t_body->SCRIPT_DATA = "$(\".dropzone\").dropzone(
         {
             url: \"$urlUpload\",
-            allowedFileTypes: 'csv',
+            allowedFileTypes: 'ret',
             width: '100%',
             height: '280',
             text: '<i class=\"fa fa-upload fa-4x\"></i><br />Click ou arraste o arquivo aqui',
@@ -108,5 +109,13 @@ $t_body->SCRIPT_DATA = "$(\".dropzone\").dropzone(
 );";
 
 $t_body->block("BLOCO_JAVASCRIPT_INSERTS_FINAL");
+
+$S_Processos = $_SESSION["S_Processos"];
+if (count($S_Processos) > 1) {
+    $Menu = 97;
+    populaToolBarTemplate($t_body, $Menu);
+    $t_body->block("BLOCK_TOOLBAR");
+}
+
 
 $t_body->show();

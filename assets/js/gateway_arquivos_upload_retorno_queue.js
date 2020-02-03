@@ -15,7 +15,7 @@
  */
 function jsCriaTemplateLotes(listaLotes, divDestino, proximaFuncao)
 {
-    let t_body = new Template('assets/templates/t_gateway_lista_arquivos_retorno.html');
+    let t_body = new Template('assets/templates/gateway_registros/t_gateway_lista_arquivos_retorno.html');
     novaListaLotes = {};
     novaListaLotes.DATA = [];
 

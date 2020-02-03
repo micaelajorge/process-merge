@@ -4,7 +4,7 @@
   Data Criação 01/06/2018
   Sistema: Creditus
  */
-define("RELEASE_SCRIPT", "0057");
+define("RELEASE_SCRIPT", "0059");
 define("SYS_VERSION", "3.3.0");
 define("LOG_DATA", false);
 
@@ -1576,7 +1576,7 @@ switch ($srvAccess) {
         $EXTERNALPWD = "cerberus";
         $EXTERNAL_USERNAME = "process";
         $BPMDB = "caruana";
-        $EXTERNALDB = 'caruana';
+        $EXTERNALDB = 'caruana';       
 //        define("TEMPLATE_LOGON", "t_logon_agiliza.html");
         define("TEMASISTEMA", "skin-blue");
         define("FILES_FOLDER", "/");

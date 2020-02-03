@@ -416,7 +416,7 @@ function jsUploadImage(editCase) {
         var CurrentPath = CurrentPathName.replace(/editcase.*/, "");
         var strActionPage = CurrentPath + "api/webcapture_send";
 
-        DWObject.IfSSL = false; // Set whether SSL is used
+        DWObject.IfSSL = true; // Set whether SSL is used
         DWObject.HTTPPort = location.port == "" ? 80 : location.port;
         DWObject.SelectedImagesCount = 3;
         DWObject.GetSelectedImagesSize(4); // 4 - PDF format. Calculate the size of selected images in PDF format.

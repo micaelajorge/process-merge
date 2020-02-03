@@ -87,7 +87,7 @@ $t_body->block("BLOCO_JAVASCRIPT");
 $t_body->ARQUIVO_JS = "queue.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");
 
-$t_body->ARQUIVO_JS = "securities_arquivos_upload_retorno_queue.js"; // jsTratamentoDataTable
+$t_body->ARQUIVO_JS = "gateway_digital/securities_arquivos_upload_retorno_queue.js"; // jsTratamentoDataTable
 $t_body->block("BLOCO_JAVASCRIPT");
 
 // Include Drag Drop

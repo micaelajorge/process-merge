@@ -217,7 +217,15 @@ if (key_exists("mostrarTodosProcessos", $_COOKIE)) {
 
 $listaWorkSpaces = array();
 
+$processosInseridos = array();
+
 foreach ($_ProcessosLista as $Processo) {
+    
+    if (in_array($Processo["ProcId"], $processosInseridos))
+    {
+        continue;
+    }
+    $processosInseridos = $Processo["ProcId"];
     if ($Processo["HideEntrada"] == 1) {
         continue;
     }

@@ -157,7 +157,7 @@ function jsFileUploadScan(formSource, ProcId, StepId, CaseNum, FieldId, UserId) 
         var strActionPage = CurrentPath + "foldersendfile";
 
 
-        DWObject.IfSSL = location.protocol === 'https' // Set whether SSL is used
+        DWObject.IfSSL = location.protocol === 'https:'; // Set whether SSL is used
 //        DWObject.HTTPPort = location.port == "" ? 80 : location.port;
 
         totalPaginasScan = DWObject.HowManyImagesInBuffer

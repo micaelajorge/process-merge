@@ -29,7 +29,7 @@ $t_body->addFile("FORM_FIELDS", FILES_ROOT . "assets/templates/$templateFields")
 
 $procId = PegaProcIdByCode($procId);
 
-$SQL = "select *, FieldRazaoOrder + FieldName as order_sort from procfieldsdef where ProcId = $procId and FieldKey = 1 and FieldSpecial = 0 order by order_sort";
+$SQL = "select *, FieldRazaoOrder + FieldName as order_sort from procfieldsdef where ProcId = $procId and FieldKey = 1 and FieldSpecial = 0 and FieldRazao >= 0 order by order_sort";
 $Query = mysqli_query($connect, $SQL);
 $camposFiltro = mysqli_fetch_all($Query, MYSQLI_ASSOC);
 $procdef = $_SESSION["procdef"];

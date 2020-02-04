@@ -1621,7 +1621,7 @@ switch ($srvAccess) {
         define("configDB", "localhost");
         define("SERVER_ADDRESS", $srvAccess);
         define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
-        define("FILES_UPLOAD", "/system/tribanco/files");
+        define("FILES_UPLOAD", "/system/tribanco/files/storage/");
         define("_SECRET_KEY", "cLWD;KCBgP?a1'(0m03W");
         define("ALLOW_SEARCH", false);
         define("INSTANCENAME", 'Tribanco');

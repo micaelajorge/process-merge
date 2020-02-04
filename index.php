@@ -853,7 +853,7 @@ switch ($srvAccess) {
                 define("APLICAR_POLITICAS_SEGURANCA", false);
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
-                define("TEMPLATE_LOGON", "gateway_digital/t_logon_protesto.html");
+                define("TEMPLATE_LOGON", "protestos/t_logon_protesto.html");
 
                 /**
                  *  Definições Banco de dados

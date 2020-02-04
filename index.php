@@ -284,7 +284,7 @@ switch ($srvAccess) {
 
             case "dmcard":
                 define("TEMASISTEMA", "skin-red");
-                define("TEMPLATE_LOGON", "t_logon_dmcard.html");
+                define("TEMPLATE_LOGON", "gateway_registros/t_logon_dmcard.html");
                 define("INSTANCENAME", 'DM Card');
                 define("SITE_FOLDER", "/dmcard/");
                 define("INSTANCENAME", 'DM Card');
@@ -566,7 +566,7 @@ switch ($srvAccess) {
             case "homolog_registros":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red-light");
-                define("TEMPLATE_LOGON", "t_logon_dmcard.html");
+                define("TEMPLATE_LOGON", "gateway_registros/t_logon_dmcard.html");
 
                 define("INSTANCE_APIS", ["gateway_registros.json"]);
                 /**
@@ -736,7 +736,7 @@ switch ($srvAccess) {
             case "gatewaydigital":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
-                define("TEMPLATE_LOGON", "t_logon_dmcard.html");
+                define("TEMPLATE_LOGON", "gateway_digital/t_logon_dmcard.html");
 
                 /**
                  *  Definições Banco de dados
@@ -771,7 +771,7 @@ switch ($srvAccess) {
             case "protestos_poc":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
-                define("TEMPLATE_LOGON", "t_logon_dmcard.html");
+                define("TEMPLATE_LOGON", "protestos/t_logon_protesto.html");
 
                 /**
                  *  Definições Banco de dados
@@ -812,7 +812,7 @@ switch ($srvAccess) {
                 define("APLICAR_POLITICAS_SEGURANCA", false);
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
-                define("TEMPLATE_LOGON", "t_logon_dmcard.html");
+                define("TEMPLATE_LOGON", "/protestos/t_logon_protesto.html");
 
                 /**
                  *  Definições Banco de dados
@@ -853,7 +853,7 @@ switch ($srvAccess) {
                 define("APLICAR_POLITICAS_SEGURANCA", false);
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
-                define("TEMPLATE_LOGON", "t_logon_dmcard.html");
+                define("TEMPLATE_LOGON", "/gateway_digital/t_logon_protesto.html");
 
                 /**
                  *  Definições Banco de dados
@@ -1354,7 +1354,7 @@ switch ($srvAccess) {
     case "registros.certdox.com.br":
         define("ALINHAMENTO_LOGO", "float:left");
         define("TEMASISTEMA", "skin-blue-light");
-        define("TEMPLATE_LOGON", "t_logon_dmcard.html");
+        define("TEMPLATE_LOGON", "gateway_digial/t_logon_dmcard.html");
 
         /**
          *  Definições Banco de dados

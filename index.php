@@ -1284,7 +1284,7 @@ switch ($srvAccess) {
                 define("FILES_FOLDER", "/");
                 define("FILES_UPLOAD", "/storage/certdox");
                 define("INSTANCENAME", 'Certdox');
-                define("SITE_FOLDER", "/");
+                define("SITE_FOLDER", "/mmoscz/");
                 define("SITE_FOLDER_COMPLEMENT", "");
                 define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
                 define("PARCEIRONAME", 'Certdox');

@@ -1262,7 +1262,6 @@ switch ($srvAccess) {
                 define("NAME_OWNER", "Clicksign Securities");
                 break;
             
-            
             default:
                 define("ALINHAMENTO_LOGO", "float:left");
                 /**
@@ -1275,6 +1274,38 @@ switch ($srvAccess) {
                 $EXTERNAL_USERNAME = "process";
                 $BPMDB = "mmoscz_git";
                 $EXTERNALDB = 'mmoscz_git';
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("SITE_ROOT", "http://$srvAccess");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("SERVER_ADDRESS", $srvAccess);
+                define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
+                define("_SECRET_KEY", "f9QsJ4Oufz");
+                define("ALLOW_SEARCH", FALSE);
+                define("FILES_FOLDER", "/");
+                define("FILES_UPLOAD", "/storage/certdox");
+                define("INSTANCENAME", 'Certdox');
+                define("SITE_FOLDER", "/");
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+                define("PARCEIRONAME", 'Certdox');
+                define("ICONE_PARCEIRO", "icone-certdox.png");
+                define("URL_OWNER", "https://www.certdox.com.br");
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("NAME_OWNER", "Certdox");
+                break;
+            
+            default:
+                define("ALINHAMENTO_LOGO", "float:left");
+                /**
+                 *  Definições Banco de dados
+                 */
+                $BPMUSER = "process";
+                $BPMPWD = "cerberus";
+                $EXTERNALUSER = "process";
+                $EXTERNALPWD = "cerberus";
+                $EXTERNAL_USERNAME = "process";
+                $BPMDB = "process_certdox_poc";
+                $EXTERNALDB = 'process_certdox_poc';
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");

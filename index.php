@@ -1229,6 +1229,40 @@ switch ($srvAccess) {
                 define("NAME_OWNER", "Clicksign Securities");
                 break;
 
+            case "creditas":
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("TEMASISTEMA", "skin-red");
+                /**
+                 *  Definições Banco de dados
+                 */
+                $BPMUSER = "process";
+                $BPMPWD = "cerberus";
+                $EXTERNALUSER = "process";
+                $EXTERNALPWD = "cerberus";
+                $EXTERNAL_USERNAME = "process";
+                $BPMDB = "process_certdox_creditas";
+                $EXTERNALDB = 'process_certdox_creditas';
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("SITE_ROOT", "http://$srvAccess/creditas/");
+                define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");
+                define("SERVER_ADDRESS", $srvAccess);
+                define("ARQUIVO_ERROR_LOG_PHP", "log/PHP_errors.log");
+                define("_SECRET_KEY", "f9QsJ4Oufz");
+                define("ALLOW_SEARCH", FALSE);
+                define("FILES_FOLDER", "/");
+                define("FILES_UPLOAD", "/storage/creditas");
+                define("INSTANCENAME", 'Sandbox Creditas');
+                define("SITE_FOLDER", "/creditas/");
+                define("SITE_FOLDER_COMPLEMENT", "");
+                define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
+                define("PARCEIRONAME", 'Sandbox Creditas');
+                define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
+                define("URL_OWNER", "https://www.clicksign-securities.com");
+                define("ALINHAMENTO_LOGO", "float:left");
+                define("NAME_OWNER", "Clicksign Securities");
+                break;
+            
+            
             default:
                 define("ALINHAMENTO_LOGO", "float:left");
                 /**
@@ -1239,8 +1273,8 @@ switch ($srvAccess) {
                 $EXTERNALUSER = "process";
                 $EXTERNALPWD = "cerberus";
                 $EXTERNAL_USERNAME = "process";
-                $BPMDB = "process_certdox_poc";
-                $EXTERNALDB = 'process_certdox_poc';
+                $BPMDB = "mmoscz_git";
+                $EXTERNALDB = 'mmoscz_git';
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("SITE_ROOT", "http://$srvAccess");
                 define("SITE_PRINCIPAL_PAGE", "pages/entrada.inc");

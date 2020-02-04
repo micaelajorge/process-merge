@@ -56,7 +56,7 @@ function callRule($dadosEntrada, $userToken, $ruleCode)
 {
     $curl = curl_init();
 
-    $urlCall = "localhost/api/v1/rules_real/$ruleCode";
+    $urlCall = SERVER_URL . "/api/v1/rules_real/$ruleCode";
 
     $dadosChamadaCurl = array(
         CURLOPT_URL => "$urlCall",

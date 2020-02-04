@@ -1263,6 +1263,7 @@ switch ($srvAccess) {
                 break;
             
             case "mmoscz":
+                echo "Entrou";
                 define("ALINHAMENTO_LOGO", "float:left");
                 /**
                  *  Definições Banco de dados
@@ -1282,7 +1283,7 @@ switch ($srvAccess) {
                 define("_SECRET_KEY", "f9QsJ4Oufz");
                 define("ALLOW_SEARCH", FALSE);
                 define("FILES_FOLDER", "/");
-                define("FILES_UPLOAD", "/storage/certdox");
+                define("FILES_UPLOAD", "/storage/mmoscz_git");
                 define("INSTANCENAME", 'Certdox');
                 define("SITE_FOLDER", "/mmoscz/");
                 define("SITE_FOLDER_COMPLEMENT", "");

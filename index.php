@@ -552,11 +552,11 @@ switch ($srvAccess) {
                 define("ALLOW_SEARCH", FALSE);
                 define("FILES_FOLDER", "/");
                 define("FILES_UPLOAD", "/storage/homolog_registros");
-                define("INSTANCENAME", 'Homolog Gateway Registros');
-                define("SITE_FOLDER", "/homolog_registros/");
+                define("INSTANCENAME", 'Instância mmoscz');
+                define("SITE_FOLDER", "/mmoscz/");
                 define("SITE_FOLDER_COMPLEMENT", "");
                 define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
-                define("PARCEIRONAME", 'Homolog Gateway Registros');
+                define("PARCEIRONAME", 'Instância mmoscz');
                 define("ICONE_PARCEIRO", "icone-certdox-final.jpg");
                 define("URL_OWNER", "https://www.certdox.com.br");
                 define("ALINHAMENTO_LOGO", "float:left");

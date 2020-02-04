@@ -1262,7 +1262,7 @@ switch ($srvAccess) {
                 define("NAME_OWNER", "Clicksign Securities");
                 break;
             
-            default:
+            case "mmoscz":
                 define("ALINHAMENTO_LOGO", "float:left");
                 /**
                  *  Definições Banco de dados

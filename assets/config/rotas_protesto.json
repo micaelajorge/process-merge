@@ -57,6 +57,19 @@
                 "logon": false  
             }
         },
+        "api/v1/status_protesto": {
+            "GET": {
+                "page": "api\/protesto\/apiprotesto.php",
+                "funcao": "statusById", 
+                "parametros": ["Id"],
+                "logon": false  
+            },
+            "POST": {
+                "page": "api\/protesto\/apiprotesto.php",
+                "funcao": "statusById", 
+                "logon": false  
+            }
+        },
         "api/v1/envio_protesto": {
             "POST": {
                 "page": "api/protesto/api_protesto.inc",

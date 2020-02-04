@@ -17,6 +17,18 @@ require_once(FILES_ROOT . "includes_ws/wscasesave.inc");
 require_once(FILES_ROOT . "includes_ws/wserror.inc");
 // </editor-fold>
 
+function ruleData_v1()
+{
+    global $ruleCode;
+    
+    $dadosRegra = buscaDadosEntradaRegra($ruleCode);
+
+    header("HTTP/1.0 200");
+    header('Content-Type: application/json');    
+    $dadosRegra_saida = json_decode($dadosRegra);
+    echo json_encode($dadosRegra_saida, JSON_PRETTY_PRINT);
+}
+
 /**
  * 
  * @global type $ruleCode
@@ -55,7 +67,7 @@ function callRule($dadosEntrada, $userToken, $ruleCode)
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_POSTFIELDS => "",
+        CURLOPT_POSTFIELDS => json_encode($dadosEntrada),
         CURLOPT_HTTPHEADER => array(
             "token: $userToken",
             "Content-Type: application/json"
@@ -577,6 +589,16 @@ function buscaDadosRegra($ruleCode)
     $retorno = mysqli_fetch_all($query, MYSQLI_ASSOC);
     return $retorno[0]["rule_operations"];
 }
+
+function buscaDadosEntradaRegra($ruleCode)
+{
+    global $connect;
+    $SQL = "select rule_input from rules where UCASE(rule_code) = UCASE('$ruleCode')";
+    $query = mysqli_query($connect, $SQL);
+    $retorno = mysqli_fetch_all($query, MYSQLI_ASSOC);
+    return $retorno[0]["rule_input"];
+}
+
 
 function trataRetornos($dadosRetorno)
 {

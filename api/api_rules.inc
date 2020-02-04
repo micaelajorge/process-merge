@@ -15,16 +15,17 @@ require_once(FILES_ROOT . "includes_ws/wsuser.inc");
 require_once(FILES_ROOT . "includes_ws/wscasestart.inc");
 require_once(FILES_ROOT . "includes_ws/wscasesave.inc");
 require_once(FILES_ROOT . "includes_ws/wserror.inc");
+
 // </editor-fold>
 
 function ruleData_v1()
 {
     global $ruleCode;
-    
+
     $dadosRegra = buscaDadosEntradaRegra($ruleCode);
 
     header("HTTP/1.0 200");
-    header('Content-Type: application/json');    
+    header('Content-Type: application/json');
     $dadosRegra_saida = json_decode($dadosRegra);
     echo json_encode($dadosRegra_saida, JSON_PRETTY_PRINT);
 }
@@ -38,7 +39,7 @@ function ruleData_v1()
 function avaliaRegra_v1()
 {
     global $ruleCode;
-    $dadosEntrada = apiTrataDadosEntrada();    
+    $dadosEntrada = apiTrataDadosEntrada();
 
     $dadosRetorno = avaliaRegraSelecionada($ruleCode, $dadosEntrada);
     if (!is_array($dadosRetorno)) {
@@ -48,17 +49,16 @@ function avaliaRegra_v1()
 
     header("HTTP/1.0 201");
     header('Content-Type: application/json');
-    echo $jDados;            
+    echo $jDados;
 }
-
 
 function callRule($dadosEntrada, $userToken, $ruleCode)
 {
     $curl = curl_init();
 
     $urlCall = "localhost/api/v1/rules_real/$ruleCode";
-    
-    curl_setopt_array($curl, array(
+
+    $dadosChamadaCurl = array(
         CURLOPT_URL => "$urlCall",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
@@ -71,15 +71,22 @@ function callRule($dadosEntrada, $userToken, $ruleCode)
         CURLOPT_HTTPHEADER => array(
             "token: $userToken",
             "Content-Type: application/json"
-        ),
-    ));
+        )
+    );
+
+    curl_setopt_array($curl, $dadosChamadaCurl);
     $json_response = curl_exec($curl);
     $returnHttpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-   
+
+    if ($returnHttpCode == 500)
+    {
+        error_log("Falha na chamada callRule " . var_export($dadosChamadaCurl, true));
+    }
+    
     $dadosRetorno = array();
     $dadosRetorno["httpCode"] = $returnHttpCode;
     $dadosRetorno["jsonReturn"] = $json_response;
-    
+
     curl_close($curl);
     return $dadosRetorno;
 }
@@ -87,27 +94,27 @@ function callRule($dadosEntrada, $userToken, $ruleCode)
 function executeRule_v1()
 {
     global $ruleCode;
-    
-    $dadosEntrada = apiTrataDadosEntrada();    
-    
+
+    $dadosEntrada = apiTrataDadosEntrada();
+
     $executeUUID = get_guid();
 
     $headers = getallheaders();
-    
+
     $userToken = $headers["token"];
-    
+
     $jsonDadosEntrada = json_encode($dadosEntrada);
-    
-    $dadosRetorno = callRule($jsonDadosEntrada, $userToken, $ruleCode);  
-   
-    $httpCode = $dadosRetorno["httpCode"];    
+
+    $dadosRetorno = callRule($jsonDadosEntrada, $userToken, $ruleCode);
+
+    $httpCode = $dadosRetorno["httpCode"];
 
     // Grava o log da Executação da REGRA
-    grava_log_rule_v1($dadosRetorno, $executeUUID, $ruleCode, $httpCode);    
-    
+    grava_log_rule_v1($dadosRetorno, $executeUUID, $ruleCode, $httpCode);
+
     header("HTTP/1.0 $httpCode");
     header("X-Request-UUID: $executeUUID");
-    header('Content-Type: application/json');      
+    header('Content-Type: application/json');
     echo $dadosRetorno["jsonReturn"];
 }
 
@@ -422,39 +429,39 @@ function avaliaRegraSelecionada($ruleCode, $dadosEntrada)
     return $dadosRetorno;
 }
 
-/** 
+/**
  * @global array $camposObrigatoriosProtesto
  */
 function grava_log_rule_v1($retornoRule, $ExecuteUUID, $ruleCode, $httpCode)
-{    
+{
     $procCod = "RULE_LOG";
 
     try {
-        
+
         $dadosBody = get_request_body();
-                
+
         $request = array();
         $request["headers"] = getallheaders();
         $request["server_data"] = $_SERVER;
-        $request["receive_body"] = $dadosBody;        
-        
+        $request["receive_body"] = $dadosBody;
+
         // Transforma Dados Entrada em JSON
         $request_json = json_encode($request, JSON_PRETTY_PRINT);
 
         // Transforma em BASE64
         $request_json_base64 = base64_encode($request_json);
-        
+
         // Transforma Resultado em JSON
         $resultado_json = json_encode($retornoRule, JSON_PRETTY_PRINT);
-                
+
         // Transforma em BASE64
         $resultado_json_base64 = base64_encode($resultado_json);
-        
-        
+
+
         // Inicializacao do Campo
         $campo["fieldCode"] = "IMAGENS_INT";
         $campo["fieldValue"] = array();
-        
+
         // Guarda Dados Recebidos
         $arquivoDados["fileName"] = "request_data.$ExecuteUUID.json";
         $arquivoDados["fileData"] = $request_json_base64;
@@ -465,7 +472,7 @@ function grava_log_rule_v1($retornoRule, $ExecuteUUID, $ruleCode, $httpCode)
         $arquivoDados["fileData"] = $resultado_json_base64;
         $campo["fieldValue"][] = $arquivoDados;
         $camposEnvio[] = $campo;
-        
+
         $campo["fieldCode"] = "REQUEST_UUID";
         $campo["fieldValue"] = $ExecuteUUID;
         $camposEnvio[] = $campo;
@@ -478,11 +485,11 @@ function grava_log_rule_v1($retornoRule, $ExecuteUUID, $ruleCode, $httpCode)
         $campo["fieldValue"] = $httpCode;
         $camposEnvio[] = $campo;
 
-        $campo["fieldCode"] =  "URL_SERVER";
+        $campo["fieldCode"] = "URL_SERVER";
         $campo["fieldValue"] = SERVER_URL;
         $camposEnvio[] = $campo;
 
-        
+
         // Pega o ProcId do Caso
         $procId = PegaProcIdByCode($procCod);
 
@@ -519,6 +526,7 @@ function grava_log_rule_v1($retornoRule, $ExecuteUUID, $ruleCode, $httpCode)
             error_log("Json erro: " . $erroJSON);
         }
     } catch (Exception $ex) {
+        
     }
 }
 
@@ -598,7 +606,6 @@ function buscaDadosEntradaRegra($ruleCode)
     $retorno = mysqli_fetch_all($query, MYSQLI_ASSOC);
     return $retorno[0]["rule_input"];
 }
-
 
 function trataRetornos($dadosRetorno)
 {

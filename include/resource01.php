@@ -4216,7 +4216,7 @@ function CabecalhoReferenciasSimples($ProcId, $paraTemplate = false, $numRef = 0
             $Valor = $filtro["valor"];
             //$Valor = trim($filtro["valor"]);
 
-
+            $tipoCampo = "";
             $Campo = $filtro["campo"];
             if (key_exists("tipoCampo", $filtro)) {
                 $tipoCampo = $filtro["tipoCampo"];

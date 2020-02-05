@@ -48,6 +48,7 @@ function apiPegaListaCasos()
 
     $filtrosTratados = [];
     foreach ($Filtros as $filtro) {
+        $filtroTratado = array();
         if (!is_numeric($filtro["fieldCode"])) {
             $fieldCode = $filtro["fieldCode"];
             $idField = PegaFieldIdByCode($ProcSource, $fieldCode);

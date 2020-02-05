@@ -47,16 +47,16 @@ function avaliaRegra_v1()
     }
     $jDados = json_encode($dadosRetorno);
 
-    header("HTTP/1.0 201");
+    header("HTTP/1.0 200");
     header('Content-Type: application/json');
     echo $jDados;
 }
 
-function callRule($dadosEntrada, $userToken, $ruleCode, $ExecuteUUID)
+function callRule($dadosEntrada, $userToken, $ruleCode, $ruleVersion, $ExecuteUUID)
 {
     $curl = curl_init();
 
-    $urlCall = SERVER_URL . "/api/v1/rules_real/$ruleCode";
+    $urlCall = SERVER_URL . "api/v1/rules_real/$ruleVersion/$ruleCode";
 
     $dadosChamadaCurl = array(
         CURLOPT_URL => "$urlCall",
@@ -71,8 +71,10 @@ function callRule($dadosEntrada, $userToken, $ruleCode, $ExecuteUUID)
         CURLOPT_HTTPHEADER => array(
             "token: $userToken",
             "Content-Type: application/json"
-        )
+        )        
     );
+    
+//    $dadosChamadaCurl["CURLOPT_COOKIE"] = "XDEBUG_SESSION=netbeans-xdebug; path=/process%20/api/v1/status_protesto; domain=localhost;";
 
     curl_setopt_array($curl, $dadosChamadaCurl);
     $json_response = curl_exec($curl);
@@ -96,7 +98,7 @@ function callRule($dadosEntrada, $userToken, $ruleCode, $ExecuteUUID)
 
 function executeRule_v1()
 {
-    global $ruleCode;
+    global $ruleCode, $ruleVersion;
 
     $dadosEntrada = apiTrataDadosEntrada();
 
@@ -108,7 +110,7 @@ function executeRule_v1()
 
     $jsonDadosEntrada = json_encode($dadosEntrada);
 
-    $dadosRetorno = callRule($jsonDadosEntrada, $userToken, $ruleCode, $executeUUID);
+    $dadosRetorno = callRule($jsonDadosEntrada, $userToken, $ruleCode, $ruleVersion, $executeUUID);
 
     $httpCode = $dadosRetorno["httpCode"];
 

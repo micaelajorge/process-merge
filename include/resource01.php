@@ -161,12 +161,22 @@ function buscaComarcaCidade($uf, $cidade)
 
 function validaData($data)
 {
-    $aData = explode("-", $data);
-    if (!is_array($aData)) {
+    $aDataHora = explode(" ", $data);
+
+    if (mb_strlen($data, 'UTF8') < 10) {
         return false;
     }
-
-    if (mb_strlen($aData, 'UTF8') < 10) {
+    
+    if (is_array($aDataHora))
+    {
+        $aData = $aDataHora[0];
+    } else {
+        $aData = $data;
+    }
+    
+    $aData = explode("-", $aData);
+    
+    if (!is_array($aData)) {
         return false;
     }
 

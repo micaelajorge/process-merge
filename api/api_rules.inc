@@ -52,7 +52,7 @@ function avaliaRegra_v1()
     echo $jDados;
 }
 
-function callRule($dadosEntrada, $userToken, $ruleCode)
+function callRule($dadosEntrada, $userToken, $ruleCode, $ExecuteUUID)
 {
     $curl = curl_init();
 
@@ -80,7 +80,10 @@ function callRule($dadosEntrada, $userToken, $ruleCode)
 
     if ($returnHttpCode == 500)
     {
-        error_log("Falha na chamada callRule " . var_export($dadosChamadaCurl, true));
+        // Seta o UUID da CHAMADA para gravar no log
+        $dadosChamada["ExecuteUUID"] = $ExecuteUUID;
+        $dadosChamada["DadosCURL"] = $dadosChamadaCurl;
+        error_log("Falha na chamada callRule " . var_export($dadosChamada , true));
     }
     
     $dadosRetorno = array();

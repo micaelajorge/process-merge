@@ -700,6 +700,7 @@ switch ($srvAccess) {
                 break;
 
             case "gateway_creditas_scd":
+            case "gateway_creditas_scd_2":
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-blue-light");
                 /**

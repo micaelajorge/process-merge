@@ -213,7 +213,7 @@ function SQLCasosGrupos($ProcId, $CamposSQL, $StepId = "-1", $HideQueue = 1, $Ca
     }
     if (is_array($Filtros)) {
         for ($i = 0; $i < count($Filtros); $i++) {
-            $SQL .= "and ";
+            $SQL .= " and ";
             $SQL .= $Filtros[$i];
         }
     }

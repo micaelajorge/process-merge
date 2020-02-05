@@ -108,7 +108,7 @@ function executeRule_v1()
 
     $jsonDadosEntrada = json_encode($dadosEntrada);
 
-    $dadosRetorno = callRule($jsonDadosEntrada, $userToken, $ruleCode);
+    $dadosRetorno = callRule($jsonDadosEntrada, $userToken, $ruleCode, $executeUUID);
 
     $httpCode = $dadosRetorno["httpCode"];
 

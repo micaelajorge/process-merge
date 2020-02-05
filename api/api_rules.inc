@@ -40,6 +40,8 @@ function avaliaRegra_v1()
 {
     global $ruleCode;
     $dadosEntrada = apiTrataDadosEntrada();
+    
+    error_log("Dados Entrada" . var_export($dadosEntrada, true));
 
     $dadosRetorno = avaliaRegraSelecionada($ruleCode, $dadosEntrada);
     if (!is_array($dadosRetorno)) {
@@ -67,7 +69,7 @@ function callRule($dadosEntrada, $userToken, $ruleCode, $ruleVersion, $ExecuteUU
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "POST",
-        CURLOPT_POSTFIELDS => json_encode($dadosEntrada),
+        CURLOPT_POSTFIELDS => $dadosEntrada,
         CURLOPT_HTTPHEADER => array(
             "token: $userToken",
             "Content-Type: application/json"
@@ -165,9 +167,9 @@ function avaliaExpressoes($expressoes, $parametros)
         if ($expressaoAvaliada["evaluate_expression"] === "false") {
             continue;
         }
-        error_log("Avaliando " . var_export($expressaoAvaliada, true));
+//        error_log("Avaliando " . var_export($expressaoAvaliada, true));
         $dadosRetorno[] = trataExpressao($expressaoAvaliada, $parametros);
-        error_log("Avaliada" . var_export($expressaoAvaliada, true));
+//        error_log("Avaliada" . var_export($expressaoAvaliada, true));
     }
     return $dadosRetorno;
 }

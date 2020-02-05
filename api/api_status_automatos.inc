@@ -6,7 +6,7 @@ Data Criação 24/10/2019
 Sistema: Process_XAMPP
 */
 /**
- * @rota 
+ * @rota api/v1/statusautomato
  * 
  * @global type $portaAutomato
  */

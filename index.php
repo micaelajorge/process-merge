@@ -813,6 +813,7 @@ switch ($srvAccess) {
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
                 define("TEMPLATE_LOGON", "protestos/t_logon_protesto.html");
+                define("INSTANCE_APIS", ["protestos.json"]);
 
                 /**
                  *  Definições Banco de dados
@@ -854,6 +855,7 @@ switch ($srvAccess) {
                 define("ALINHAMENTO_LOGO", "float:left");
                 define("TEMASISTEMA", "skin-red");
                 define("TEMPLATE_LOGON", "protestos/t_logon_protesto.html");
+                define("INSTANCE_APIS", ["protestos.json"]);
 
                 /**
                  *  Definições Banco de dados

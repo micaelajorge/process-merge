@@ -50,14 +50,19 @@ function FuncCaseSave($AuthUser, $ProcCode, $StepCode, $CaseNum, $dadosDoCaso, $
     try {
         require_once(FILES_ROOT . "pages/ostepdoc.inc");
 
-        error_log("Entrada Dados" . var_export($dadosDoCaso, true));
+        if (defined("GRAVAR_DADOS_ACAO_FuncCaseSave"))
+        {
+            if (GRAVAR_DADOS_ACAO_FuncCaseSave)
+            {
+                error_log("Entrada Dados" . var_export($dadosDoCaso, true));
+            }
+        }
         
         $dadosDoCasoTratados = TrataArrayCamposWebService($ProcId, $dadosDoCaso);
 
-        //$retornoValidacao = ValidaCampos($ProcId, $StepId, $dadosDoCasoTratados);
+//        $retornoValidacao = ValidaCampos($ProcId, $StepId, $dadosDoCasoTratados);
         $retornoValidacao = true;
-                       
-        
+                               
         if (!$retornoValidacao & $Acao != 1) {
             return -1004;
         }

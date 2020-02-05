@@ -98,6 +98,12 @@
                 "funcao": "buscaStatusAutomato",
                 "parametros": ["portaAutomato"],
                 "logon": false
+            },
+            "POST": {
+                "page": "api/api_status_automatos.inc",
+                "funcao": "setaPortaAutomato",
+                "parametros": ["portaAutomato"],
+                "logon": false
             }
         },
         "api/v1/getcessionclosedcontracts": {

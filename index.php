@@ -722,7 +722,7 @@ switch ($srvAccess) {
                 define("FILES_FOLDER", "/");
                 define("FILES_UPLOAD", "/storage/gateway_creditas_scd");
                 define("INSTANCENAME", 'Gateway Creditas');
-                define("SITE_FOLDER", "/gateway_creditas_scd_2/"); // Nome do Alias no APACHE
+                define("SITE_FOLDER", "/gateway_creditas_scd/"); // Nome do Alias no APACHE
                 define("SITE_FOLDER_COMPLEMENT", "");
                 define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
                 define("PARCEIRONAME", 'Certdox');
@@ -755,7 +755,7 @@ switch ($srvAccess) {
                 define("FILES_FOLDER", "/");
                 define("FILES_UPLOAD", "/storage/gateway_creditas_scd");
                 define("INSTANCENAME", 'Gateway Creditas');
-                define("SITE_FOLDER", "/gateway_creditas_scd/"); // Nome do Alias no APACHE
+                define("SITE_FOLDER", "/gateway_creditas_scd_2/"); // Nome do Alias no APACHE
                 define("SITE_FOLDER_COMPLEMENT", "");
                 define("LOGO_PARCEIRO", "logo-certdox-final.jpg");
                 define("PARCEIRONAME", 'Certdox');

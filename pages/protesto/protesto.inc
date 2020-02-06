@@ -4,7 +4,7 @@ Criação: Micaela Fernanda
 Data Criação 26/12/2019
 Sistema: Process_XAMPP
  * 
- * @rota protesto
+ * ROTA: protesto
 */
 
 include_once(FILES_ROOT . "include/common.php");

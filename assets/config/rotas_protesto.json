@@ -1,82 +1,31 @@
 {
     "rotas": {    
         "protesto": {
-            "GET": {
+           "GET": {
                 "page": "pages\/protesto\/protesto.inc",
                 "funcao": ""
             }
         },
-        "v1/envio_protesto": {
+        "relatorioprotesto": {
+           "GET": {
+                "page": "pages\/protesto\/relatorios.inc",                 
+                "funcao": ""
+            },
             "POST": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": "enviaProtesto", 
-                "parametros": ["RequestBody"],
-                "logon": false  
+                "page": "pages\/protesto\/relatorios.inc",                 
+                "funcao": ""
+            }
+        },
+        "relatorios_protesto": {
+            "GET": {
+                "page": "pages\/protesto\/relatorios_protesto.inc",
+                "funcao": "relatorioXLS"
             }, 
-            "GET": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": "enviaProtesto", 
-                "parametros": ["RequestBody"],
-                "logon": false  
-            }           
-        },
-        "v1/cancelamento_protesto": {
             "POST": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": "cancelaProtesto", 
-                "logon": false  
-            }, 
-            "GET": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": "cancelaProtesto", 
-                "logon": false  
+                "page": "pages\/protesto\/relatorios_protesto.inc",
+                "funcao": "relatorioXLS"
             }
-        },
-        "v1/desistencia_protesto": {
-            "POST": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": "desistenciaProtesto", 
-                "logon": false  
-            },
-            "GET": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": "desistenciaProtesto", 
-                "logon": false  
-            }
-        },
-        "v1/status_protesto": {
-            "GET": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": "statusById", 
-                "parametros": ["Id"],
-                "logon": false  
-            },
-            "POST": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": "statusById", 
-                "logon": false  
-            }
-        },
-        "api/v1/status_protesto": {
-            "GET": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": "statusById", 
-                "parametros": ["Id"],
-                "logon": false  
-            },
-            "POST": {
-                "page": "api\/protesto\/apiprotesto.php",
-                "funcao": "statusById", 
-                "logon": false  
-            }
-        },
-        "api/v1/envio_protesto": {
-            "POST": {
-                "page": "api/protesto/api_protesto.inc",
-                "logon": false,        
-                "funcao": "envia_lote_protesto_v1"
-            }
-        },
+        },  
         "api/v1/envia_protesto": {
             "POST": {
                 "page": "api/protesto/api_protesto.inc",
@@ -96,6 +45,13 @@
                 "page": "api/protesto/api_protesto.inc",
                 "logon": false,        
                 "funcao": "envio_lote_cancelamento_v1"
+            }
+        },
+        "api/v1/status_protesto": {
+        "GET": {
+                "page": "api\/protesto\/api_protesto.inc",
+                "funcao": "statusById", 
+                "logon": false  
             }
         },
         "api/v1/envia_protesto_certdox": {

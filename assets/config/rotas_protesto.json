@@ -19,10 +19,12 @@
         "relatorios_protesto": {
             "GET": {
                 "page": "pages\/protesto\/relatorios_protesto.inc",
+                "logon": false,  
                 "funcao": "relatorioXLS"
             }, 
             "POST": {
                 "page": "pages\/protesto\/relatorios_protesto.inc",
+                "logon": false,  
                 "funcao": "relatorioXLS"
             }
         },  

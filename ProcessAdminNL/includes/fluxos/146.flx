@@ -1,0 +1,51 @@
+var texto = ''
+texto = texto + '<div id="Step1" class="FluxStep">'
+texto = texto + '<div  class="FluxShadow" style="top:16px;Left:20px"></div>'
+texto = texto + '<div title="Consulta Genérica" class="FluxStepStartBox" onclick="jsSelecaoStepFluxo(funcfluxoselStep1)" style="top:16px;Left:20px">'
+texto = texto + '<div class="tituloDentrodaCaixaStep">Consulta Genérica</div><div style="text-align:right;margin-right:5px;font-size:14px;text-shadow: 1px 1px 1px #999999"> <i class="fa fa-star" title="Inicio de Processo"></i></div></div>'
+texto = texto + '</div>'
+texto = texto + '<div id="FluxoUnSel"></div>'
+texto = texto + '<div id="fluxosel" ></div>'
+document.getElementById('Fluxo').innerHTML = texto;
+var jg = new jsGraphics("FluxoUnSel")
+var jgSel = new jsGraphics("fluxosel")
+StepSel = function(Sel)
+{
+}
+funcfluxoselStep1= function(Sel)
+ { 
+	var ClassStep ="FluxStep"
+	var LayerOutput = jg
+	var Objsel = document.getElementById("Step1")
+	MenuFloat='MenuStep'
+	Objsel.onmouseover="MenuFloat=''"
+	ImagemCond="images/fluxo-condition.jpg"
+	if (Sel == 1) 
+		{
+		LayerOutput = jgSel;
+		jsMostraMenuStep();
+		LayerOutput.clear()
+		ClassStep ="FluxStepSel"
+		document.getElementById("DivStepNameProps").innerHTML="Consulta Genérica"
+		Objsel.className="FluxStepSel"
+		MenuFloat='MenuStep'
+		StepSelecionado=1
+		Objsel.onmouseover=MouseOverStep
+		Objsel.onmouseout=MouseOutStep
+		ClassTxName = "FluxStepNameSel"
+		document.getElementById("MenuPropriedades").innerHTML = document.getElementById("MenuStep").innerHTML
+		Imagem="images/fluxo-step-NewDoc-sel.jpg"
+		ImagemCond="images/fluxo-condition-sel.jpg"
+		}
+	if (Sel == 1 || Sel == 0)
+		{
+		Objsel.className=ClassStep
+		}
+	if (Sel == 0)
+		{		return
+		jsEscondeMenuStep()
+		}
+	jg.setColor("#CCCCCC");
+;
+}
+funcfluxoselStep1(2)

@@ -1,0 +1,535 @@
+var texto = ''
+texto = texto + '<div id="Step1" class="FluxStep">'
+texto = texto + '<div  class="FluxShadow" style="top:16px;Left:20px"></div>'
+texto = texto + '<div title="ENTRADA" class="FluxStepStartBox" onclick="jsSelecaoStepFluxo(funcfluxoselStep1)" style="top:16px;Left:20px">'
+texto = texto + '<div class="tituloDentrodaCaixaStep">ENTRADA</div><div style="text-align:right;margin-right:5px;font-size:14px;text-shadow: 1px 1px 1px #999999"> <i class="fa fa-star" title="Inicio de Processo"></i></div></div>'
+	texto = texto + '<div class="FluxCondShadow" style="position:absolute;top:26px;Left:142.5px"></div>'
+	texto = texto + '<div class="FluxCond" style="position:absolute;top:26px;Left:142.5px"></div>'
+texto = texto + '</div>'
+texto = texto + '<div id="Step3" class="FluxStep">'
+texto = texto + '<div  class="FluxShadow" style="top:16px;Left:190px"></div>'
+texto = texto + '<div title="ImportarArquivo" class="FluxStepBox" onclick="jsSelecaoStepFluxo(funcfluxoselStep3)" style="top:16px;Left:190px">'
+texto = texto + '<div class="tituloDentrodaCaixaStep">ImportarArquivo</div><div style="text-align:right;margin-right:5px;font-size:14px;text-shadow: 1px 1px 1px #999999"></div></div>'
+	texto = texto + '<div class="FluxCondShadow" style="position:absolute;top:26px;Left:312.5px"></div>'
+	texto = texto + '<div class="FluxCond" style="position:absolute;top:26px;Left:312.5px"></div>'
+texto = texto + '</div>'
+texto = texto + '<div id="Step8" class="FluxStep">'
+texto = texto + '<div  class="FluxShadow" style="top:16px;Left:360px"></div>'
+texto = texto + '<div title="CalculoSLA" class="FluxStepBox" onclick="jsSelecaoStepFluxo(funcfluxoselStep8)" style="top:16px;Left:360px">'
+texto = texto + '<div class="tituloDentrodaCaixaStep">CalculoSLA</div><div style="text-align:right;margin-right:5px;font-size:14px;text-shadow: 1px 1px 1px #999999"></div></div>'
+	texto = texto + '<div class="FluxCondShadow" style="position:absolute;top:26px;Left:482.5px"></div>'
+	texto = texto + '<div class="FluxCond" style="position:absolute;top:26px;Left:482.5px"></div>'
+texto = texto + '</div>'
+texto = texto + '<div id="Step2" class="FluxStep">'
+texto = texto + '<div  class="FluxShadow" style="top:16px;Left:530px"></div>'
+texto = texto + '<div title="GERAR Propostas para Analise" class="FluxStepBox" onclick="jsSelecaoStepFluxo(funcfluxoselStep2)" style="top:16px;Left:530px">'
+texto = texto + '<div class="tituloDentrodaCaixaStep">GERAR Propostas para Analise</div><div style="text-align:right;margin-right:5px;font-size:14px;text-shadow: 1px 1px 1px #999999"></div></div>'
+	texto = texto + '<div class="FluxCondShadow" style="position:absolute;top:26px;Left:652.5px"></div>'
+	texto = texto + '<div class="FluxCond" style="position:absolute;top:26px;Left:652.5px"></div>'
+texto = texto + '</div>'
+texto = texto + '<div id="Step5" class="FluxStep">'
+texto = texto + '<div  class="FluxShadow" style="top:16px;Left:700px"></div>'
+texto = texto + '<div title="Carga Importada" class="FluxStepBox" onclick="jsSelecaoStepFluxo(funcfluxoselStep5)" style="top:16px;Left:700px">'
+texto = texto + '<div class="tituloDentrodaCaixaStep">Carga Importada</div><div style="text-align:right;margin-right:5px;font-size:14px;text-shadow: 1px 1px 1px #999999"></div></div>'
+	texto = texto + '<div class="FluxCondShadow" style="position:absolute;top:26px;Left:822.5px"></div>'
+	texto = texto + '<div class="FluxCond" style="position:absolute;top:26px;Left:822.5px"></div>'
+texto = texto + '</div>'
+texto = texto + '<div id="Step6" class="FluxStep">'
+texto = texto + '<div  class="FluxShadow" style="top:77px;Left:700px"></div>'
+texto = texto + '<div title="Falha Importação" class="FluxStepBox" onclick="jsSelecaoStepFluxo(funcfluxoselStep6)" style="top:77px;Left:700px">'
+texto = texto + '<div class="tituloDentrodaCaixaStep">Falha Importação</div><div style="text-align:right;margin-right:5px;font-size:14px;text-shadow: 1px 1px 1px #999999"></div></div>'
+	texto = texto + '<div class="FluxCondShadow" style="position:absolute;top:87px;Left:822.5px"></div>'
+	texto = texto + '<div class="FluxCond" style="position:absolute;top:87px;Left:822.5px"></div>'
+texto = texto + '</div>'
+texto = texto + '<div id="Step4" class="FluxStep">'
+texto = texto + '<div  class="FluxShadow" style="top:138px;Left:360px"></div>'
+texto = texto + '<div title="Falha Receber arquivo" class="FluxStepBox" onclick="jsSelecaoStepFluxo(funcfluxoselStep4)" style="top:138px;Left:360px">'
+texto = texto + '<div class="tituloDentrodaCaixaStep">Falha Receber arquivo</div><div style="text-align:right;margin-right:5px;font-size:14px;text-shadow: 1px 1px 1px #999999"></div></div>'
+texto = texto + '</div>'
+texto = texto + '<div id="FluxoUnSel"></div>'
+texto = texto + '<div id="fluxosel" ></div>'
+document.getElementById('Fluxo').innerHTML = texto;
+var jg = new jsGraphics("FluxoUnSel")
+var jgSel = new jsGraphics("fluxosel")
+StepSel = function(Sel)
+{
+}
+funcfluxoselStep1= function(Sel)
+ { 
+	var ClassStep ="FluxStep"
+	var LayerOutput = jg
+	var Objsel = document.getElementById("Step1")
+	MenuFloat='MenuStep'
+	Objsel.onmouseover="MenuFloat=''"
+	ImagemCond="images/fluxo-condition.jpg"
+	if (Sel == 1) 
+		{
+		LayerOutput = jgSel;
+		jsMostraMenuStep();
+		LayerOutput.clear()
+		ClassStep ="FluxStepSel"
+		document.getElementById("DivStepNameProps").innerHTML="ENTRADA"
+		Objsel.className="FluxStepSel"
+		MenuFloat='MenuStep'
+		StepSelecionado=1
+		Objsel.onmouseover=MouseOverStep
+		Objsel.onmouseout=MouseOutStep
+		ClassTxName = "FluxStepNameSel"
+		document.getElementById("MenuPropriedades").innerHTML = document.getElementById("MenuStep").innerHTML
+		Imagem="images/fluxo-step-NewDoc-sel.jpg"
+		ImagemCond="images/fluxo-condition-sel.jpg"
+		}
+	if (Sel == 1 || Sel == 0)
+		{
+		Objsel.className=ClassStep
+		}
+	if (Sel == 0)
+		{		return
+		jsEscondeMenuStep()
+		}
+	jg.setColor("#CCCCCC");
+Func1Step1Cond1 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#3399FF");
+		}
+	LayerOutput.drawLine(121, 36, 143, 36)
+LayerOutput.paint()
+}
+setTimeout("Func1Step1Cond1(" + Sel + ")", 1)
+FuncStep1Cond13 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawLine(185, 31, 190, 36)
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawPolyline(new Array(185,190,185,190), new Array(31,36,41,36))
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawLine(163, 36, 191, 36)
+LayerOutput.paint()
+}
+setTimeout("FuncStep1Cond13(" + Sel + ")", 2)
+;
+}
+funcfluxoselStep3= function(Sel)
+ { 
+	var ClassStep ="FluxStep"
+	var LayerOutput = jg
+	var Objsel = document.getElementById("Step3")
+	MenuFloat='MenuStep'
+	Objsel.onmouseover="MenuFloat=''"
+	ImagemCond="images/fluxo-condition.jpg"
+	if (Sel == 1) 
+		{
+		LayerOutput = jgSel;
+		jsMostraMenuStep();
+		LayerOutput.clear()
+		ClassStep ="FluxStepSel"
+		document.getElementById("DivStepNameProps").innerHTML="ImportarArquivo"
+		Objsel.className="FluxStepSel"
+		MenuFloat='MenuStep'
+		StepSelecionado=3
+		Objsel.onmouseover=MouseOverStep
+		Objsel.onmouseout=MouseOutStep
+		ClassTxName = "FluxStepNameSel"
+		document.getElementById("MenuPropriedades").innerHTML = document.getElementById("MenuStep").innerHTML
+		Imagem="images/fluxo-step-sel.jpg"
+		ImagemCond="images/fluxo-condition-sel.jpg"
+		}
+	if (Sel == 1 || Sel == 0)
+		{
+		Objsel.className=ClassStep
+		}
+	if (Sel == 0)
+		{		return
+		jsEscondeMenuStep()
+		}
+	jg.setColor("#CCCCCC");
+Func3Step3Cond2 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#3399FF");
+		}
+	LayerOutput.drawLine(291, 36, 313, 36)
+LayerOutput.paint()
+}
+setTimeout("Func3Step3Cond2(" + Sel + ")", 1)
+FuncStep3Cond28 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawLine(355, 31, 360, 36)
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawPolyline(new Array(355,360,355,360), new Array(31,36,41,36))
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawLine(333, 36, 361, 36)
+LayerOutput.paint()
+}
+setTimeout("FuncStep3Cond28(" + Sel + ")", 2)
+FuncStep3Cond24 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#FF0000");
+		}
+	LayerOutput.drawLine(355, 153, 360, 158)
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#FF0000");
+		}
+	LayerOutput.drawPolyline(new Array(355,360,355,360), new Array(153,158,163,158))
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#FF0000");
+		}
+	LayerOutput.drawPolyline(new Array(334,344,344,344,344,361,344,361), new Array(36,36,36,158,158,158,158,158))
+LayerOutput.paint()
+}
+setTimeout("FuncStep3Cond24(" + Sel + ")", 3)
+;
+}
+funcfluxoselStep8= function(Sel)
+ { 
+	var ClassStep ="FluxStep"
+	var LayerOutput = jg
+	var Objsel = document.getElementById("Step8")
+	MenuFloat='MenuStep'
+	Objsel.onmouseover="MenuFloat=''"
+	ImagemCond="images/fluxo-condition.jpg"
+	if (Sel == 1) 
+		{
+		LayerOutput = jgSel;
+		jsMostraMenuStep();
+		LayerOutput.clear()
+		ClassStep ="FluxStepSel"
+		document.getElementById("DivStepNameProps").innerHTML="CalculoSLA"
+		Objsel.className="FluxStepSel"
+		MenuFloat='MenuStep'
+		StepSelecionado=8
+		Objsel.onmouseover=MouseOverStep
+		Objsel.onmouseout=MouseOutStep
+		ClassTxName = "FluxStepNameSel"
+		document.getElementById("MenuPropriedades").innerHTML = document.getElementById("MenuStep").innerHTML
+		Imagem="images/fluxo-step-sel.jpg"
+		ImagemCond="images/fluxo-condition-sel.jpg"
+		}
+	if (Sel == 1 || Sel == 0)
+		{
+		Objsel.className=ClassStep
+		}
+	if (Sel == 0)
+		{		return
+		jsEscondeMenuStep()
+		}
+	jg.setColor("#CCCCCC");
+Func8Step8Cond1 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#3399FF");
+		}
+	LayerOutput.drawLine(461, 36, 483, 36)
+LayerOutput.paint()
+}
+setTimeout("Func8Step8Cond1(" + Sel + ")", 1)
+FuncStep8Cond12 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawLine(525, 31, 530, 36)
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawPolyline(new Array(525,530,525,530), new Array(31,36,41,36))
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawLine(503, 36, 531, 36)
+LayerOutput.paint()
+}
+setTimeout("FuncStep8Cond12(" + Sel + ")", 2)
+;
+}
+funcfluxoselStep2= function(Sel)
+ { 
+	var ClassStep ="FluxStep"
+	var LayerOutput = jg
+	var Objsel = document.getElementById("Step2")
+	MenuFloat='MenuStep'
+	Objsel.onmouseover="MenuFloat=''"
+	ImagemCond="images/fluxo-condition.jpg"
+	if (Sel == 1) 
+		{
+		LayerOutput = jgSel;
+		jsMostraMenuStep();
+		LayerOutput.clear()
+		ClassStep ="FluxStepSel"
+		document.getElementById("DivStepNameProps").innerHTML="GERAR Propostas para Analise"
+		Objsel.className="FluxStepSel"
+		MenuFloat='MenuStep'
+		StepSelecionado=2
+		Objsel.onmouseover=MouseOverStep
+		Objsel.onmouseout=MouseOutStep
+		ClassTxName = "FluxStepNameSel"
+		document.getElementById("MenuPropriedades").innerHTML = document.getElementById("MenuStep").innerHTML
+		Imagem="images/fluxo-step-sel.jpg"
+		ImagemCond="images/fluxo-condition-sel.jpg"
+		}
+	if (Sel == 1 || Sel == 0)
+		{
+		Objsel.className=ClassStep
+		}
+	if (Sel == 0)
+		{		return
+		jsEscondeMenuStep()
+		}
+	jg.setColor("#CCCCCC");
+Func2Step2Cond1 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#3399FF");
+		}
+	LayerOutput.drawLine(631, 36, 653, 36)
+LayerOutput.paint()
+}
+setTimeout("Func2Step2Cond1(" + Sel + ")", 1)
+FuncStep2Cond15 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawLine(695, 31, 700, 36)
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawPolyline(new Array(695,700,695,700), new Array(31,36,41,36))
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawLine(673, 36, 701, 36)
+LayerOutput.paint()
+}
+setTimeout("FuncStep2Cond15(" + Sel + ")", 2)
+FuncStep2Cond16 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#FF0000");
+		}
+	LayerOutput.drawLine(695, 92, 700, 97)
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#FF0000");
+		}
+	LayerOutput.drawPolyline(new Array(695,700,695,700), new Array(92,97,102,97))
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#FF0000");
+		}
+	LayerOutput.drawPolyline(new Array(674,684,684,684,684,701,684,701), new Array(36,36,36,97,97,97,97,97))
+LayerOutput.paint()
+}
+setTimeout("FuncStep2Cond16(" + Sel + ")", 3)
+;
+}
+funcfluxoselStep5= function(Sel)
+ { 
+	var ClassStep ="FluxStep"
+	var LayerOutput = jg
+	var Objsel = document.getElementById("Step5")
+	MenuFloat='MenuStep'
+	Objsel.onmouseover="MenuFloat=''"
+	ImagemCond="images/fluxo-condition.jpg"
+	if (Sel == 1) 
+		{
+		LayerOutput = jgSel;
+		jsMostraMenuStep();
+		LayerOutput.clear()
+		ClassStep ="FluxStepSel"
+		document.getElementById("DivStepNameProps").innerHTML="Carga Importada"
+		Objsel.className="FluxStepSel"
+		MenuFloat='MenuStep'
+		StepSelecionado=5
+		Objsel.onmouseover=MouseOverStep
+		Objsel.onmouseout=MouseOutStep
+		ClassTxName = "FluxStepNameSel"
+		document.getElementById("MenuPropriedades").innerHTML = document.getElementById("MenuStep").innerHTML
+		Imagem="images/fluxo-step-sel.jpg"
+		ImagemCond="images/fluxo-condition-sel.jpg"
+		}
+	if (Sel == 1 || Sel == 0)
+		{
+		Objsel.className=ClassStep
+		}
+	if (Sel == 0)
+		{		return
+		jsEscondeMenuStep()
+		}
+	jg.setColor("#CCCCCC");
+Func5Step5Cond1 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#3399FF");
+		}
+	LayerOutput.drawLine(801, 36, 823, 36)
+LayerOutput.paint()
+}
+setTimeout("Func5Step5Cond1(" + Sel + ")", 1)
+FuncStep5Cond18 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawLine(355, 31, 360, 36)
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawPolyline(new Array(355,360,355,360), new Array(31,36,41,36))
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawPolyline(new Array(843,850,850,850,850,352,352,352,352,361), new Array(36,36,36,6,6,6,6,36,36,36))
+LayerOutput.paint()
+}
+setTimeout("FuncStep5Cond18(" + Sel + ")", 2)
+;
+}
+funcfluxoselStep6= function(Sel)
+ { 
+	var ClassStep ="FluxStep"
+	var LayerOutput = jg
+	var Objsel = document.getElementById("Step6")
+	MenuFloat='MenuStep'
+	Objsel.onmouseover="MenuFloat=''"
+	ImagemCond="images/fluxo-condition.jpg"
+	if (Sel == 1) 
+		{
+		LayerOutput = jgSel;
+		jsMostraMenuStep();
+		LayerOutput.clear()
+		ClassStep ="FluxStepSel"
+		document.getElementById("DivStepNameProps").innerHTML="Falha Importação"
+		Objsel.className="FluxStepSel"
+		MenuFloat='MenuStep'
+		StepSelecionado=6
+		Objsel.onmouseover=MouseOverStep
+		Objsel.onmouseout=MouseOutStep
+		ClassTxName = "FluxStepNameSel"
+		document.getElementById("MenuPropriedades").innerHTML = document.getElementById("MenuStep").innerHTML
+		Imagem="images/fluxo-step-sel.jpg"
+		ImagemCond="images/fluxo-condition-sel.jpg"
+		}
+	if (Sel == 1 || Sel == 0)
+		{
+		Objsel.className=ClassStep
+		}
+	if (Sel == 0)
+		{		return
+		jsEscondeMenuStep()
+		}
+	jg.setColor("#CCCCCC");
+Func6Step6Cond1 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#3399FF");
+		}
+	LayerOutput.drawLine(801, 97, 823, 97)
+LayerOutput.paint()
+}
+setTimeout("Func6Step6Cond1(" + Sel + ")", 1)
+FuncStep6Cond18 = function(Sel)
+{
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawLine(355, 31, 360, 36)
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawPolyline(new Array(355,360,355,360), new Array(31,36,41,36))
+	if (Sel == 1)
+		{
+		LayerOutput.setColor("#00CC00");
+		}
+	LayerOutput.drawPolyline(new Array(843,850,850,850,850,352,352,352,352,361), new Array(97,97,97,62,62,62,62,36,36,36))
+LayerOutput.paint()
+}
+setTimeout("FuncStep6Cond18(" + Sel + ")", 2)
+;
+}
+funcfluxoselStep4= function(Sel)
+ { 
+	var ClassStep ="FluxStep"
+	var LayerOutput = jg
+	var Objsel = document.getElementById("Step4")
+	MenuFloat='MenuStep'
+	Objsel.onmouseover="MenuFloat=''"
+	ImagemCond="images/fluxo-condition.jpg"
+	if (Sel == 1) 
+		{
+		LayerOutput = jgSel;
+		jsMostraMenuStep();
+		LayerOutput.clear()
+		ClassStep ="FluxStepSel"
+		document.getElementById("DivStepNameProps").innerHTML="Falha Receber arquivo"
+		Objsel.className="FluxStepSel"
+		MenuFloat='MenuStep'
+		StepSelecionado=4
+		Objsel.onmouseover=MouseOverStep
+		Objsel.onmouseout=MouseOutStep
+		ClassTxName = "FluxStepNameSel"
+		document.getElementById("MenuPropriedades").innerHTML = document.getElementById("MenuStep").innerHTML
+		Imagem="images/fluxo-step-sel.jpg"
+		ImagemCond="images/fluxo-condition-sel.jpg"
+		}
+	if (Sel == 1 || Sel == 0)
+		{
+		Objsel.className=ClassStep
+		}
+	if (Sel == 0)
+		{		return
+		jsEscondeMenuStep()
+		}
+	jg.setColor("#CCCCCC");
+;
+}
+funcfluxoselStep1(2)
+funcfluxoselStep3(2)
+funcfluxoselStep8(2)
+funcfluxoselStep2(2)
+funcfluxoselStep5(2)
+funcfluxoselStep6(2)
+funcfluxoselStep4(2)

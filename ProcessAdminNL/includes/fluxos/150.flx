@@ -1,0 +1,9 @@
+var texto = ''
+texto = texto + '<div id="FluxoUnSel"></div>'
+texto = texto + '<div id="fluxosel" ></div>'
+document.getElementById('Fluxo').innerHTML = texto;
+var jg = new jsGraphics("FluxoUnSel")
+var jgSel = new jsGraphics("fluxosel")
+StepSel = function(Sel)
+{
+}

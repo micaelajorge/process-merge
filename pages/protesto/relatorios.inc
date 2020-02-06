@@ -129,10 +129,12 @@ foreach ($aCampos as $campo) {
     $t_body->STEPCOD = $campo["stepcod"];
     $t_body->FIELDSELECTION = $campo["OrderDesc"];
 
-    if ($campo["pageaction"] != "")
-    {
-        $t_body->PAGINA_RELATORIO = $campo["pageaction"];
-    }//else $t_body->PAGINA_RELATORIO = "relatorios_protesto";   
+//    if ($campo["pageaction"] != "")
+//    {
+//        $t_body->PAGINA_RELATORIO = $campo["pageaction"];
+//    }
+//    else 
+    $t_body->PAGINA_RELATORIO = "relatorios_protesto";   
     $t_body->block("BLOCO_RELATORIO");
 }
 // </editor-fold>

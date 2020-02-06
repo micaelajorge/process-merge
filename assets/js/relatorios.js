@@ -6,7 +6,7 @@
 
 
 
-function jsGeraRelatorioPDF(formulario, urlRelatorio, nomeRelatorio)
+function jsGeraRelatorio(formulario, urlRelatorio, nomeRelatorio)
 {
     dadosEnvio = getFormValues(formulario);
     
@@ -27,10 +27,45 @@ function jsGeraRelatorioPDF(formulario, urlRelatorio, nomeRelatorio)
     });
 }
 
-function jsGerarRelatorioCsvXls(formSubmit, type, formAction)
+function jsGeraXSL(formSubmit)
+{    
+    $("#" + formSubmit).attr('action', 'relatorio_geral');
+    $("#" + formSubmit).submit();
+}
+
+function jsGeraXSLProtesto(formSubmit)
+{    
+    $("#" + formSubmit).attr('action', 'relatorios_protesto');
+    UF = $("#estado").val();
+    nomerelatorio = UF;
+    $("#" + formSubmit).submit();
+}
+
+function jsGeraProtesto(formulario, urlRelatorio, nomeRelatorio)
 {
-    $("#" + formSubmit).attr('action', formAction + "_" + type);     
-    $("#" + formSubmit).submit();    
+    dadosEnvio = getFormValues(formulario);
+    
+    dataInicio = $("#" + formulario + "_data_inicio").val();
+    dataFim = $("#" + formulario + "_data_fim").val();
+    nomeRelatorio = nomeRelatorio + " Período: " + dataInicio + " até " + dataFim;
+    $.ajax({
+        type: "POST",
+        url: urlRelatorio,
+        data: dadosEnvio
+    }).done(function (dadosRetorno) {
+//        var w = window.open('');
+//        w.document.open();
+//        w.document.write(dadosRetorno);
+//        w.document.close();        
+        $("#divRelPreview").html(dadosRetorno);
+        jsGeraPdf(nomeRelatorio);
+    });
+}
+
+function jsGeraCSV(formSubmit)
+{    
+    $("#" + formSubmit).attr('action', 'relatorio_geral_csv');
+    $("#" + formSubmit).submit();
 }
 
 function jsGeraPdf(nomeRelatorio)

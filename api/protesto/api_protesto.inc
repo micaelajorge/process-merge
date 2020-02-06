@@ -344,3 +344,115 @@ function protesto_entrada_protesto_v1()
     header('Content-Type: application/json');
     echo $jDados;
 }
+
+function statusById()
+{   
+    try {
+        global $connect, $numero_protesto;       
+ 
+        $procCod = "PROTESTO_TITULOS"; 
+        
+        // Pega o ProcId do Caso
+        $procId = PegaProcIdByCode($procCod);
+
+        $campoNumeroProtesto = PegaFieldIdByCode($procId, "NUMERO_PROTESTO");
+        $campoTituloStatus  = PegaFieldIdByCode($procId, "TITULO_STATUS");
+        $campoResultado = PegaFieldIdByCode($procId, "ELEGIBILIDADE_RESULTADO");
+        $campoTipoOperacao = PegaFieldIdByCode($procId, "TIPO_OPERACAO");
+        $campos = array();
+        
+        $SQL = "";
+        if($numero_protesto != "")  
+        {     
+            $filtros_where[0]["campo"]= "NUMERO_PROTESTO";
+            $filtros_where[0]["valor"]=$numero_protesto;
+            $campos[0] = "Campo$campoNumeroProtesto";
+            $campos[1] = "Campo$campoTituloStatus";
+            $campos[2] = "Campo$campoResultado";
+            $campos[3] = "Campo$campoTipoOperacao";
+            $camposTexto = implode($campos, ",");
+            
+            $camposSelecionados = array();  
+            $camposSelecionados =["ELEGIBILIDADE_RESULTADO","TITULO_STATUS", "TIPO_OPERACAO", 
+                "NUMERO_PROTESTO", "DATA_ATUALIZACAO", "VALOR_CUSTAS"];
+            $Query = pegaListaCasosNaFila($procId, -1, 1, '' , '', '', '', 1, true);
+            $retorno = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+            //$caseNum = pegaNumerCasoUnicoAberto($procId, $numero_protesto, $campoNumeroProtesto);
+            //$resultado = $retorno;
+            
+           //                if($resultado["TITULO_STATUS"] == "") header("HTTP/1.0 404 Não encontrado.");
+//                else header("HTTP/1.0 200 Sucesso");
+            //$resultado = pegaDadosCaso($procId, $caseNum, $camposSelecionados);
+            $header = "HTTP/1.0 404 Não encontrado.";
+            $i = 0;
+                foreach ($retorno as $resultado){
+
+                $caseNum = $resultado["CaseId"];
+                $caso = pegaDadosCaso($procId, $caseNum, $camposSelecionados);
+                if($caso["NUMERO_PROTESTO"] == $numero_protesto){
+                    $header = "HTTP/1.0 200 Sucesso";
+                  
+
+                    $dadosRetorno[$i]["casenum"] = $caseNum;
+                    $dadosRetorno[$i]["caso"] = $caso;   
+                    //$dadosRetorno["resultado"] = $resultado;
+                    $dadosRetorno[$i]["numero_protesto"] = $numero_protesto;                
+                    $dadosRetorno[$i]["status"] = $caso["TITULO_STATUS"];                
+                    $dadosRetorno[$i]["data_ultimo_status"] = date($caso["DATA_ATUALIZACAO"]);  
+                    $dadosREtorno[$i]["valor_custas"] = $caso["VALOR_CUSTAS"];
+                    switch ($caso["TIPO_OPERACAO"])
+                    {
+                        case 1: $dadosRetorno[$i]["solicitacao"] = "PROTESTO"; break;
+                        case 2: $dadosRetorno[$i]["solicitacao"] = "DESISTÊNCIA"; break;
+                        case 3: $dadosRetorno[$i]["solicitacao"] = "CANCELAMENTO"; break;
+                    }
+                    $dadosRetorno[$i]["Erros"] =  json_decode($caso["ELEGIBILIDADE_RESULTADO"]);
+                    $i++;
+                }
+            }
+        }
+        else 
+        {
+            header("HTTP/1.0 402 Falha");
+            //$dadosRetorno["status"] = $SQL ;
+            $dadosRetorno[0]["Error"] = "";
+    
+        }
+        $jDados = json_encode($dadosRetorno);   
+    }
+    catch (Exception $ex) {
+            $jDados = json_encode($ex);
+    }
+    finally {
+        header("Access-Control-Allow-Origin: *");
+        header('Content-Type: application/json');
+        echo $jDados;
+    }
+}
+
+function detalheTitulo($titulo, $numero_protesto)
+{   
+    try {
+        global $connect;       
+ 
+        $procCod = "PROTESTO_TITULOS";         
+        // Pega o ProcId do Caso
+        $procId = PegaProcIdByCode($procCod);
+
+        $campoNumeroProtesto = PegaFieldIdByCode($procId, "NUMERO_PROTESTO");
+        
+        $camposSelecionados = array();  
+        $camposSelecionados =[]; // determinar campos
+        $Query = pegaListaCasosNaFila($procId, -1, 1, '' , '', '', '', 1, true);
+        $retorno = mysqli_fetch_all($Query, MYSQLI_ASSOC);
+        $caseNum = pegaNumerCasoUnicoAberto($procId, $numero_protesto, $campoNumeroProtesto);
+        $resultado = pegaDadosCaso($procId, $caseNum, $camposSelecionados);
+        $caso = pegaDadosCaso($procId, $caseNum, $camposSelecionados);
+        return $caso;
+    }
+    catch (Exception $ex) {
+            return ex;
+    }
+}
+
+

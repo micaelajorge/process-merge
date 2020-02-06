@@ -394,7 +394,7 @@ function statusById()
                   
 
                     $dadosRetorno[$i]["casenum"] = $caseNum;
-                    $dadosRetorno[$i]["caso"] = $caso;   
+                    //$dadosRetorno[$i]["caso"] = $caso;   
                     //$dadosRetorno["resultado"] = $resultado;
                     $dadosRetorno[$i]["numero_protesto"] = $numero_protesto;                
                     $dadosRetorno[$i]["status"] = $caso["TITULO_STATUS"];                

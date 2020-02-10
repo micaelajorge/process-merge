@@ -608,7 +608,7 @@ function relatorioXLS()
                 $caseNum = $resultado["CaseId"];
 
                 $caso = pegaDadosCaso($procId, $caseNum, $camposSelecionados);
-                if(strtoupper((string)$caso[$campoEstado]) == $UF && $caso["TIPO_OPERACAO"] == "1"){
+                if(strtoupper((string)$caso[$campoEstado]) == $UF){
                     foreach ($camposSelecionados as $campo)
                     {
                         $t_body->COLSPAN = 1;

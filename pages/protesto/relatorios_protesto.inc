@@ -29,6 +29,7 @@ function relatorioXLS()
     $nomerelatorio = "";
     $PROCCOD = "PROTESTO_TITULOS";
     $STEPCOD = "TRIADO";
+    $TIPO = "1"; //tipo_operacao => PROTESTO
     $procId = PegaProcIdByCode($PROCCOD);    
     $stepId = PegaStepIdByCode($procId, $STEPCOD);
     $fieldSelecao = PegaFieldIdByCode($procId, "UF_COMARCA");
@@ -607,7 +608,7 @@ function relatorioXLS()
                 $caseNum = $resultado["CaseId"];
 
                 $caso = pegaDadosCaso($procId, $caseNum, $camposSelecionados);
-                if(strtoupper((string)$caso[$campoEstado]) == $UF){
+                if(strtoupper((string)$caso[$campoEstado]) == $UF && $caso["TIPO_OPERACAO"] == "1"){
                     foreach ($camposSelecionados as $campo)
                     {
                         $t_body->COLSPAN = 1;

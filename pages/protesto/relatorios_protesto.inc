@@ -65,6 +65,40 @@ function relatorioXLS()
         case "AP": 
             break;
         case "AM": 
+            // <editor-fold defaultstate="collapsed" desc="fieldname">
+            $camposRelatorio[0]["fieldname"] = "NOMESACADOR";	
+            $camposRelatorio[1]["fieldname"] = "DOCUMENTOSACADOR";	
+            $camposRelatorio[2]["fieldname"] = "ENDERECOSACADOR";	
+            $camposRelatorio[3]["fieldname"] = "CEPSACADOR";	
+            $camposRelatorio[4]["fieldname"] = "CIDADESACADOR";	
+            $camposRelatorio[5]["fieldname"] = "UFSACADOR";	
+            $camposRelatorio[6]["fieldname"] = "CEDENTE";	
+            $camposRelatorio[7]["fieldname"] = "DEVEDOR";	
+            $camposRelatorio[8]["fieldname"] = "SEQUENCIALDEVEDOR";	
+            $camposRelatorio[9]["fieldname"] = "CPFCNPJ";	
+            $camposRelatorio[10]["fieldname"] = "ENDERECO";	
+            $camposRelatorio[11]["fieldname"] = "CEP";	
+            $camposRelatorio[12]["fieldname"] = "BAIRRO";	
+            $camposRelatorio[13]["fieldname"] = "MUNICIPIO";	
+            $camposRelatorio[14]["fieldname"] = "ESTADO";	
+            $camposRelatorio[15]["fieldname"] = "NUMEROTITULO";	
+            $camposRelatorio[16]["fieldname"] = "EMISSAO";	
+            $camposRelatorio[17]["fieldname"] = "VENCIMENTO";	
+            $camposRelatorio[18]["fieldname"] = "VALOR";	
+            $camposRelatorio[19]["fieldname"] = "SALDO";	
+            $camposRelatorio[20]["fieldname"] = "NOSSONUMERO";
+            $camposRelatorio[21]["fieldname"] = "ESPECIE";	
+            $camposRelatorio[22]["fieldname"] = "COMARCA";	
+            $camposRelatorio[23]["fieldname"] = "DECLARACAO";	
+            $camposRelatorio[24]["fieldname"] = "ENDOSSO";
+            // </editor-fold>
+            
+            // <editor-fold defaultstate="collapsed" desc="fieldcode">
+                        $camposBD[0] = "NOME_CREDOR";	$camposBD[1] = "DOC_CREDOR";	$camposBD[2] = "";	$camposBD[3] = "";	$camposBD[4] = "";	$camposBD[5] = "";	$camposBD[6] = "NOME_CEDENTE";	$camposBD[7] = "NOME_DEVEDOR_0";	$camposBD[8] = "SEQUENCIAL_DEVEDOR";	$camposBD[9] = "DOC_DEVEDOR_0";	$camposBD[10] = "ENDERECO_DEVEDOR_0";	$camposBD[11] = "CEP_DEVEDOR_0";	$camposBD[12] = "BAIRRO_DEVEDOR_0";	$camposBD[13] = " CIDADE_IBGE_0";	$camposBD[14] = "UF_DEVEDOR_0";	$camposBD[15] = "NUM_TITULO";	$camposBD[16] = "DATA_EMISSAO";	$camposBD[17] = "DATA_VENCIMENTO";	$camposBD[18] = "VALOR_TITULO";	$camposBD[19] = "VALOR_PROTESTADO";	$camposBD[20] = "NOSSO_NUMERO";	$camposBD[21] = "ESPECIE_TITULO";	$camposBD[22] = "COMARCA";	$camposBD[23] = "DECLARACAO";	$camposBD[24] = "ENDOSSO";
+            // </editor-fold>
+            $campoEstado = "UF_DEVEDOR_0";
+            $TODAY = date("dm.y");
+            $nomerelatorio = "AM".$TODAY."1";
             break;
         case "BA": 
             break;
@@ -108,6 +142,40 @@ function relatorioXLS()
             $nomerelatorio = "XCCC".$TODAY."1";
             break;
         case "ES": 
+            // <editor-fold defaultstate="collapsed" desc="fieldname">
+            $camposRelatorio[0]["fieldname"] = "NOMESACADOR";	
+            $camposRelatorio[1]["fieldname"] = "DOCUMENTOSACADOR";	
+            $camposRelatorio[2]["fieldname"] = "ENDERECOSACADOR";	
+            $camposRelatorio[3]["fieldname"] = "CEPSACADOR";	
+            $camposRelatorio[4]["fieldname"] = "CIDADESACADOR";	
+            $camposRelatorio[5]["fieldname"] = "UFSACADOR";	
+            $camposRelatorio[6]["fieldname"] = "CEDENTE";	
+            $camposRelatorio[7]["fieldname"] = "DEVEDOR";	
+            $camposRelatorio[8]["fieldname"] = "SEQUENCIALDEVEDOR";	
+            $camposRelatorio[9]["fieldname"] = "CPFCNPJ";	
+            $camposRelatorio[10]["fieldname"] = "ENDERECO";	
+            $camposRelatorio[11]["fieldname"] = "CEP";	
+            $camposRelatorio[12]["fieldname"] = "BAIRRO";	
+            $camposRelatorio[13]["fieldname"] = "MUNICIPIO";	
+            $camposRelatorio[14]["fieldname"] = "ESTADO";	
+            $camposRelatorio[15]["fieldname"] = "NUMEROTITULO";	
+            $camposRelatorio[16]["fieldname"] = "EMISSAO";	
+            $camposRelatorio[17]["fieldname"] = "VENCIMENTO";	
+            $camposRelatorio[18]["fieldname"] = "VALOR";	
+            $camposRelatorio[19]["fieldname"] = "SALDO";	
+            $camposRelatorio[20]["fieldname"] = "NOSSONUMERO";
+            $camposRelatorio[21]["fieldname"] = "ESPECIE";	
+            $camposRelatorio[22]["fieldname"] = "COMARCA";	
+            $camposRelatorio[23]["fieldname"] = "DECLARACAO";	
+            $camposRelatorio[24]["fieldname"] = "ENDOSSO";
+            // </editor-fold>
+            
+            // <editor-fold defaultstate="collapsed" desc="fieldcode">
+                        $camposBD[0] = "NOME_CREDOR";	$camposBD[1] = "DOC_CREDOR";	$camposBD[2] = "";	$camposBD[3] = "";	$camposBD[4] = "";	$camposBD[5] = "";	$camposBD[6] = "NOME_CEDENTE";	$camposBD[7] = "NOME_DEVEDOR_0";	$camposBD[8] = "SEQUENCIAL_DEVEDOR";	$camposBD[9] = "DOC_DEVEDOR_0";	$camposBD[10] = "ENDERECO_DEVEDOR_0";	$camposBD[11] = "CEP_DEVEDOR_0";	$camposBD[12] = "BAIRRO_DEVEDOR_0";	$camposBD[13] = " CIDADE_IBGE_0";	$camposBD[14] = "UF_DEVEDOR_0";	$camposBD[15] = "NUM_TITULO";	$camposBD[16] = "DATA_EMISSAO";	$camposBD[17] = "DATA_VENCIMENTO";	$camposBD[18] = "VALOR_TITULO";	$camposBD[19] = "VALOR_PROTESTADO";	$camposBD[20] = "NOSSO_NUMERO";	$camposBD[21] = "ESPECIE_TITULO";	$camposBD[22] = "COMARCA";	$camposBD[23] = "DECLARACAO";	$camposBD[24] = "ENDOSSO";
+            // </editor-fold>
+            $campoEstado = "UF_DEVEDOR_0";
+            $TODAY = date("dm.y");
+            $nomerelatorio = "ES".$TODAY."1";
             break;
         case "GO": 
             // <editor-fold defaultstate="collapsed" desc="fieldname">
